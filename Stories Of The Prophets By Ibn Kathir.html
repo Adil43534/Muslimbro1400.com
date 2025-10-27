@@ -428,17 +428,17 @@
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
+      <img src="menu.png" alt="Menu" />
     </button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/about.html">About</a>
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadith</a>
+      <a href="islamic-books.html">Islamic Books</a>
+      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
     </div>
   </nav>
@@ -491,11 +491,11 @@
     <section class="chapter" id="prophet1"></section>
 
     <div class="navigation">
-      <a href="/islamic-books.html">← Back to Islamic Books</a>
+      <a href="islamic-books.html">← Back to Islamic Books</a>
     </div>
 
     <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
-      <img src="/assets/icons/arrow-up.png" alt="Back to Top" />
+      <img src="arrow-up.png" alt="Back to Top" />
     </button>
   </main>
 
@@ -734,10 +734,10 @@ const chapters = [
       icon.classList.add('rotate');
 
       if (document.body.classList.contains('dark-mode')) {
-        icon.src = "/assets/icons/sun.png";
+        icon.src = "sun.png";
         icon.alt = "Switch to light mode";
       } else {
-        icon.src = "/assets/icons/moon.png";
+        icon.src = "moon.png";
         icon.alt = "Switch to dark mode";
       }
     }
