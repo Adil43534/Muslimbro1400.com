@@ -219,43 +219,42 @@
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
+      <img src="menu.png" alt="Menu" />
     </button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/islamic-calendar.html">Islamic Calendar</a>
-      <a href="/about.html">About</a>
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadith</a>
+      <a href="islamic-books.html">Islamic Books</a>
+      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
     </div>
   </nav>
 
   <header class="banner">
-    <img src="/assets/banner.png" alt="Banner" class="banner-img">
+    <img src="banner.png" alt="Banner" class="banner-img">
   </header>
 
   <main class="container">
     <h1 class="main-title"><hr>Islamic Books<hr></h1>
     <section class="cards">
-      <a href="/books/Stories Of The Prophets By Ibn Kathir.html" class="card">
-        <img src="/assets/book covers/Stories Of The Prophets By Ibn Kathir.jpg" alt="Stories Of The Prophets By Ibn Kathir Cover" />
+      <a href="Stories Of The Prophets By Ibn Kathir.html" class="card">
+        <img src="Stories Of The Prophets By Ibn Kathir.jpg" alt="Stories Of The Prophets By Ibn Kathir Cover" />
         <h3>Stories Of The Prophets By Ibn Kathir</h3>
       </a>
-      <a href="/books/sealed-nectar.html" class="card">
-        <img src="/assets/book-covers/sealed-nectar.jpg" alt="The Sealed Nectar Cover" />
+      <a href="sealed-nectar.html" class="card">
+        <img src="sealed-nectar.jpg" alt="The Sealed Nectar Cover" />
         <h3>The Sealed Nectar</h3>
       </a>
-      <a href="/books/fortress-of-the-muslim.html" class="card">
-        <img src="/assets/book-covers/fortress-of-the-muslim.jpg" alt="Fortress of the Muslim Cover" />
+      <a href="fortress-of-the-muslim.html" class="card">
+        <img src="fortress-of-the-muslim.jpg" alt="Fortress of the Muslim Cover" />
         <h3>Fortress of the Muslim</h3>
       </a>
-      <a href="/books/tafsir-ibn-kathir.html" class="card">
-        <img src="/assets/book-covers/tafsir-ibn-kathir.jpg" alt="Tafsir Ibn Kathir Cover" />
+      <a href="tafsir-ibn-kathir.html" class="card">
+        <img src="tafsir-ibn-kathir.jpg" alt="Tafsir Ibn Kathir Cover" />
         <h3>Tafsir Ibn Kathir</h3>
       </a>
     </section>
@@ -269,10 +268,10 @@
       icon.classList.add('rotate');
 
       if (document.body.classList.contains('dark-mode')) {
-        icon.src = "/assets/icons/sun.png";
+        icon.src = "sun.png";
         icon.alt = "Switch to light mode";
       } else {
-        icon.src = "/assets/icons/moon.png";
+        icon.src = "moon.png";
         icon.alt = "Switch to dark mode";
       }
     }
