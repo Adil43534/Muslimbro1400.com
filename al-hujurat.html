@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Al-Hujurat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Al-Hujurat (سورة الحجرات)</h1>
+      <p class="meaning">Meaning: The Rooms</p>
+      <p class="meta">Madani - 18 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br/><br>
+        <audio id="surahAudio" controls>
+          <source src="/assets/audio/Saad Al Ghamdi/049.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-fath.html">← Surah Al-Fath</a>
+        <a href="qaf.html">Next: Surah Qaf →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <div class="navigation">
+      <a href="al-fath.html">← Surah Al-Fath</a>
+      <a href="qaf.html">Next: Surah Qaf →</a>
+    </div>
+  </div>
+
+  <script>
+    const ayahs = [
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تُقَدِّموا بَينَ يَدَيِ اللَّهِ وَرَسولِهِ ۖ وَاتَّقُوا اللَّهَ ۚ إِنَّ اللَّهَ سَميعٌ عَليمٌ",
+        en: "O believers! Do not proceed ˹in any matter˺ before ˹a decree from˺ Allah and His Messenger. And fear Allah. Surely Allah is All-Hearing, All-Knowing.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تَرفَعوا أَصواتَكُم فَوقَ صَوتِ النَّبِيِّ وَلا تَجهَروا لَهُ بِالقَولِ كَجَهرِ بَعضِكُم لِبَعضٍ أَن تَحبَطَ أَعمالُكُم وَأَنتُم لا تَشعُرونَ",
+        en: "O believers! Do not raise your voices above the voice of the Prophet, nor speak loudly to him as you do to one another, or your deeds will become void while you are unaware.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ يَغُضّونَ أَصواتَهُم عِندَ رَسولِ اللَّهِ أُولٰئِكَ الَّذينَ امتَحَنَ اللَّهُ قُلوبَهُم لِلتَّقوىٰ ۚ لَهُم مَغفِرَةٌ وَأَجرٌ عَظيمٌ",
+        en: "Indeed, those who lower their voices in the presence of Allah’s Messenger are the ones whose hearts Allah has refined for righteousness. They will have forgiveness and a great reward.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ يُنادونَكَ مِن وَراءِ الحُجُراتِ أَكثَرُهُم لا يَعقِلونَ",
+        en: "Indeed, most of those who call out to you ˹O Prophet˺ from outside ˹your˺ private quarters have no understanding ˹of manners˺.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَو أَنَّهُم صَبَروا حَتّىٰ تَخرُجَ إِلَيهِم لَكانَ خَيرًا لَهُم ۚ وَاللَّهُ غَفورٌ رَحيمٌ",
+        en: "Had they been patient until you could come out to them, it would have certainly been better for them. And Allah is All-Forgiving, Most Merciful.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِن جاءَكُم فاسِقٌ بِنَبَإٍ فَتَبَيَّنوا أَن تُصيبوا قَومًا بِجَهالَةٍ فَتُصبِحوا عَلىٰ ما فَعَلتُم نادِمينَ",
+        en: "O believers, if an evildoer brings you any news, verify ˹it˺ so you do not harm people unknowingly, becoming regretful for what you have done.",
+        ur: ""
+      },
+      {
+        arabic: "وَاعلَموا أَنَّ فيكُم رَسولَ اللَّهِ ۚ لَو يُطيعُكُم في كَثيرٍ مِنَ الأَمرِ لَعَنِتُّم وَلٰكِنَّ اللَّهَ حَبَّبَ إِلَيكُمُ الإيمانَ وَزَيَّنَهُ في قُلوبِكُم وَكَرَّهَ إِلَيكُمُ الكُفرَ وَالفُسوقَ وَالعِصيانَ ۚ أُولٰئِكَ هُمُ الرّاشِدونَ",
+        en: "And keep in mind that Allah’s Messenger is ˹still˺ in your midst. If he were to yield to you in many matters, you would surely suffer ˹the consequences˺. But Allah has endeared faith to you, making it appealing in your hearts. And He has made disbelief, rebelliousness, and disobedience detestable to you. Those are the ones rightly guided.",
+        ur: ""
+      },  
+      {
+        arabic: "فَضلًا مِنَ اللَّهِ وَنِعمَةً ۚ وَاللَّهُ عَليمٌ حَكيمٌ",
+        en: "˹This is˺ a bounty and a blessing from Allah. And Allah is All-Knowing, All-Wise.",
+        ur: ""
+      },
+      {
+        arabic: "وَإِن طائِفَتانِ مِنَ المُؤمِنينَ اقتَتَلوا فَأَصلِحوا بَينَهُما ۖ فَإِن بَغَت إِحداهُما عَلَى الأُخرىٰ فَقاتِلُوا الَّتي تَبغي حَتّىٰ تَفيءَ إِلىٰ أَمرِ اللَّهِ ۚ فَإِن فاءَت فَأَصلِحوا بَينَهُما بِالعَدلِ وَأَقسِطوا ۖ إِنَّ اللَّهَ يُحِبُّ المُقسِطينَ",
+        en: "And if two groups of believers fight each other, then make peace between them. But if one of them transgresses against the other, then fight against the transgressing group until they ˹are willing to˺ submit to the rule of Allah. If they do so, then make peace between both ˹groups˺ in all fairness and act justly. Surely Allah loves those who uphold justice.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّمَا المُؤمِنونَ إِخوَةٌ فَأَصلِحوا بَينَ أَخَوَيكُم ۚ وَاتَّقُوا اللَّهَ لَعَلَّكُم تُرحَمونَ",
+        en: "The believers are but one brotherhood, so make peace between your brothers. And be mindful of Allah so you may be shown mercy.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا يَسخَر قَومٌ مِن قَومٍ عَسىٰ أَن يَكونوا خَيرًا مِنهُم وَلا نِساءٌ مِن نِساءٍ عَسىٰ أَن يَكُنَّ خَيرًا مِنهُنَّ ۖ وَلا تَلمِزوا أَنفُسَكُم وَلا تَنابَزوا بِالأَلقابِ ۖ بِئسَ الِاسمُ الفُسوقُ بَعدَ الإيمانِ ۚ وَمَن لَم يَتُب فَأُولٰئِكَ هُمُ الظّالِمونَ",
+        en: "O believers! Do not let some ˹men˺ ridicule others, they may be better than them, nor let ˹some˺ women ridicule other women, they may be better than them. Do not defame one another, nor call each other by offensive nicknames. How evil it is to act rebelliously after having faith! And whoever does not repent, it is they who are the ˹true˺ wrongdoers.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنُوا اجتَنِبوا كَثيرًا مِنَ الظَّنِّ إِنَّ بَعضَ الظَّنِّ إِثمٌ ۖ وَلا تَجَسَّسوا وَلا يَغتَب بَعضُكُم بَعضًا ۚ أَيُحِبُّ أَحَدُكُم أَن يَأكُلَ لَحمَ أَخيهِ مَيتًا فَكَرِهتُموهُ ۚ وَاتَّقُوا اللَّهَ ۚ إِنَّ اللَّهَ تَوّابٌ رَحيمٌ",
+        en: "O  believers! Avoid many suspicions, ˹for˺ indeed, some suspicions are sinful. And do not spy, nor backbite one another. Would any of you like to eat the flesh of their dead brother? You would despise that! And fear Allah. Surely Allah is ˹the˺ Accepter of Repentance, Most Merciful.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا النّاسُ إِنّا خَلَقناكُم مِن ذَكَرٍ وَأُنثىٰ وَجَعَلناكُم شُعوبًا وَقَبائِلَ لِتَعارَفوا ۚ إِنَّ أَكرَمَكُم عِندَ اللَّهِ أَتقاكُم ۚ إِنَّ اللَّهَ عَليمٌ خَبيرٌ",
+        en: "O humanity! Indeed, We created you from a male and a female, and made you into peoples and tribes so that you may ˹get to˺ know one another. Surely the most noble of you in the sight of Allah is the most righteous among you. Allah is truly All-Knowing, All-Aware.",
+        ur: ""
+      },
+      {
+        arabic: "۞ قالَتِ الأَعرابُ آمَنّا ۖ قُل لَم تُؤمِنوا وَلٰكِن قولوا أَسلَمنا وَلَمّا يَدخُلِ الإيمانُ في قُلوبِكُم ۖ وَإِن تُطيعُوا اللَّهَ وَرَسولَهُ لا يَلِتكُم مِن أَعمالِكُم شَيئًا ۚ إِنَّ اللَّهَ غَفورٌ رَحيمٌ",
+        en: "˹Some of˺ the nomadic Arabs say, “We believe.” Say, ˹O Prophet,˺ “You have not believed. But say, ‘We have submitted,’ for faith has not yet entered your hearts. But if you obey Allah and His Messenger ˹wholeheartedly˺, He will not discount anything from ˹the reward of˺ your deeds. Allah is truly All-Forgiving, Most Merciful.”",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّمَا المُؤمِنونَ الَّذينَ آمَنوا بِاللَّهِ وَرَسولِهِ ثُمَّ لَم يَرتابوا وَجاهَدوا بِأَموالِهِم وَأَنفُسِهِم في سَبيلِ اللَّهِ ۚ أُولٰئِكَ هُمُ الصّادِقونَ",
+        en: "The ˹true˺ believers are only those who believe in Allah and His Messenger—never doubting—and strive with their wealth and their lives in the cause of Allah. They are the ones true in faith.",
+        ur: ""
+      },
+      {
+        arabic: "قُل أَتُعَلِّمونَ اللَّهَ بِدينِكُم وَاللَّهُ يَعلَمُ ما فِي السَّماواتِ وَما فِي الأَرضِ ۚ وَاللَّهُ بِكُلِّ شَيءٍ عَليمٌ",
+        en: "Say, “Do you inform Allah of your faith, when Allah ˹already˺ knows whatever is in the heavens and whatever is on the earth? And Allah has ˹perfect˺ knowledge of all things.”",
+        ur: ""
+      },
+      {
+        arabic: "يَمُنّونَ عَلَيكَ أَن أَسلَموا ۖ قُل لا تَمُنّوا عَلَيَّ إِسلامَكُم ۖ بَلِ اللَّهُ يَمُنُّ عَلَيكُم أَن هَداكُم لِلإيمانِ إِن كُنتُم صادِقينَ",
+        en: "They regard their acceptance of Islam as a favour to you. Tell ˹them, O  Prophet˺, “Do not regard your Islam as a favour to me. Rather, it is Allah Who has done you a favour by guiding you to the faith, if ˹indeed˺ you are faithful.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ اللَّهَ يَعلَمُ غَيبَ السَّماواتِ وَالأَرضِ ۚ وَاللَّهُ بَصيرٌ بِما تَعمَلونَ",
+        en: "Surely Allah knows the unseen of the heavens and earth. And Allah is All-Seeing of what you do.”",
+        ur: ""
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+        // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const audio = document.getElementById('surahAudio');
+      audio.src = `/assets/audio/${reciter}/001.mp3`;
+      audio.load();
+      audio.play();
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "/assets/icons/sun.png"
+        : "/assets/icons/moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+    };
+  </script>
+</body>
+</html>

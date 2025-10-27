@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuslimBro1400 - Stories of the Prophets By Ibn Kathir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar {
+      background-color: #2c2c2c;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a {
+      color: #e0e0e0;
+    }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .book-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .book-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .book-info .author {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .author {
+      color: #bbb;
+    }
+
+    .lang-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .index {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .dark-mode .index {
+      background-color: #2c2c2c;
+    }
+
+    .index h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .index ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .index li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .index a {
+      color: #007b5e;
+      text-decoration: none;
+    }
+
+    .dark-mode .index a {
+      color: #0c8;
+    }
+
+    .index a:hover {
+      text-decoration: underline;
+    }
+
+    .chapter {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+    }
+
+    .dark-mode .chapter {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .chapter h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .chapter h2.ar, .chapter h2.ur {
+      font-family: 'Amiri', serif;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .chapter h2.ur {
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .chapter p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .chapter p.ar {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .chapter p.ur {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.1rem;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .dark-mode .chapter p {
+      color: #ccc;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a {
+      color: #0c8;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007b5e;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode .back-to-top {
+      background-color: #0c8;
+    }
+
+    .back-to-top:hover {
+      background-color: #005f4a;
+      transform: scale(1.1);
+    }
+
+    .dark-mode .back-to-top:hover {
+      background-color: #0a6;
+    }
+
+    .back-to-top img {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .book-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .index h2 {
+        font-size: 1.3rem;
+      }
+
+      .chapter h2 {
+        font-size: 1.5rem;
+      }
+
+      .chapter p {
+        font-size: 0.95rem;
+      }
+
+      .chapter p.ar {
+        font-size: 1.1rem;
+      }
+
+      .chapter p.ur {
+        font-size: 1rem;
+      }
+
+      .lang-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .back-to-top img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="book-info">
+      <h1>Stories of the Prophets By Ibn Kathir</h1>
+      <p class="author">Al-Imam ibn Kathir</p>
+      <div class="lang-select">
+        <label for="language">Read in:</label>
+        <select id="language" onchange="renderChapter()"></select>
+      </div>
+    </div>
+
+    <section class="index">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#prophet1">Prophet Adam</a></li>
+        <li><a href="#prophet2">Prophet Idris (Enoch)</a></li>
+        <li><a href="#prophet3">Prophet Nuh (Noah)</a></li>
+        <li><a href="#prophet4">Prophet Hud</a></li>
+        <li><a href="#prophet5">Prophet Salih</a></li>
+        <li><a href="#prophet6">Prophet Ibrahim (Abraham)</a></li>
+        <li><a href="#prophet7">Prophet Isma'il (Ishmael)</a></li>
+        <li><a href="#prophet8">Prophet Ishaq (Isaac)</a></li>
+        <li><a href="#prophet9">Prophet Yaqub (Jacob)</a></li>
+        <li><a href="#prophet10">Prophet Lot (Lot)</a></li>
+        <li><a href="#prophet11">Prophet Shuaib</a></li>
+        <li><a href="#prophet12">Prophet Yusuf (Joseph)</a></li>
+        <li><a href="#prophet13">Prophet Ayoub (Job)</a></li>
+        <li><a href="#prophet14">Prophet Dhul-Kifl</a></li>
+        <li><a href="#prophet15">Prophet Yunus (Jonah)</a></li>
+        <li><a href="#prophet16">Prophet Musa (Moses) & Harun (Aaron)</a></li>
+        <li><a href="#prophet17">Prophet Hizqeel (Ezekiel)</a></li>
+        <li><a href="#prophet18">Prophet Elyas (Elisha)</a></li>
+        <li><a href="#prophet19">Prophet Shammil (Samuel)</a></li>
+        <li><a href="#prophet20">Prophet Dawud (David)</a></li>
+        <li><a href="#prophet21">Prophet Sulaiman (Soloman)</a></li>
+        <li><a href="#prophet22">Prophet Shia (Isaiah)</a></li>
+        <li><a href="#prophet23">Prophet Aramaya (Jeremiah)</a></li>
+        <li><a href="#prophet24">Prophet Daniel</a></li>
+        <li><a href="#prophet25">Prophet Uzair (Ezra)</a></li>
+        <li><a href="#prophet26">Prophet Zakariyah (Zechariah)</a></li>
+        <li><a href="#prophet27">Prophet Yahya (John)</a></li>
+        <li><a href="#prophet28">Prophet Isa (Jesus)</a></li>
+        <li><a href="#prophet29">Prophet Muhammad</a></li>
+      </ol>
+    </section>
+
+    <section class="chapter" id="prophet1"></section>
+
+    <div class="navigation">
+      <a href="/islamic-books.html">← Back to Islamic Books</a>
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
+      <img src="/assets/icons/arrow-up.png" alt="Back to Top" />
+    </button>
+  </main>
+
+  <script>
+
+const chapters = [
+  {
+    id: 1,
+    en: {
+      title: "Prophet Adam",
+      subheading: "Informing the Angels About Adam",
+      content: [
+        "Allah the Almighty revealed: \"Remember when your Lord said to the angels: 'Verily, I am going to place mankind generations after generations on earth.' They said: 'Will You place therein those who will make mischief therein and shed blood, while we glorify You with praises and thanks (exalted be You above all that they associate with You as partners) and sanctify You.' Allah said: 'I know that which you do not know.'",
+        "Allah taught Adam all the names of everything, then He showed them to the angels and said: \"Tell Me the names of these if you are truthful.\" They (angels) said: \"Glory be to You, we have no knowledge except what You have taught us. Verily, it is You, the All-Knower, the All-Wise.\"",
+        "He said: \"O Adam! Inform them of their names,\" and when he had informed them of their names, He said: \"Did I not tell you that I know the unseen in the heavens and the earth, and I know what you reveal and what you have been hiding?\"",
+        "Remember when We said to the angels: \"Prostrate yourself before Adam\" They prostrated except Iblis, he refused and was proud and was one of the disbelievers (disobedient to Allah).",
+        "We said: \"O Adam! Dwell you and your wife in the Paradise and both of you freely with pleasure and delight of things therein as wherever you will but come not near this tree or you both will be of the Zalimeen (wrongdoers).\"",
+        "Then the Satan made them slip therefrom (the Paradise), and got them out from that in which they were. We said: \"Get you down all with enmity between yourselves. On earth will be a dwelling place for you and an enjoyment for a time.\"",
+        "Then Adam received from his Lord Words. His Lord pardoned him (accepted his repentance). Verily He is the One Who forgives (accepts repentance), the most Merciful.",
+        "We said: \"Get down all of you from this place (the Paradise), then whenever there comes to you Guidance from Me, and whoever follows My Guidance there shall be no fear on them, nor shall they grieve. But those who disbelieve and believe Our Ayah (proofs, evidences, verses, lessons, and signs and revelations, etc) such are the dwellers of the Fire, they shall abide therein forever.\" (Chapter 2:30-39, Qur'an).",
+        "Almighty Allah also revealed: \"And surely, We created you (your father Adam) and then gave you shape (the noble shape of a human being), then We told the angels, 'Prostrate to Adam', and they prostrated, except Iblis, he refused to be those who prostrate.\"",
+        "Allah said: \"What prevented you (O Iblis) that you did not prostrate when I commanded you?\" Iblis said: \"I am better than him (Adam), You created me from fire and him You created from clay.\"",
+        "Allah said: \"O Iblis get down from this (Paradise), it is not for you to be arrogant here. Get out for you are of those humiliated and disgraced.\"",
+        "Iblis said: \"Allow me respite till the Day they are raised up (Day of Resurrection).\"",
+        "Allah said: \"You are of those allowed respite.\"",
+        "Iblis said: \"Because You have sent me astray, surely I will sit in wait against them (human beings) on Your Straight Path. Then I will come to them from before them and behind them, from their right and from their left and You will not find most of them as thankful ones (they will not be dutiful to You).\"",
+        "Allah said: \"Get out from Paradise, disgraced and expelled. Whoever of them (mankind) will follow you, then surely I will fill Hell with you all.\"",
+        "\"And O Adam! Dwell you and your wife in Paradise, and eat thereof as you both wish, but approach not this tree otherwise you both will be of the Zalimeen (unjust and wrongdoers).\"",
+        "Then Satan whispered suggestions to them both in order to uncover that which was hidden from them of their private parts before, he said: \"Your Lord did not forbid you this tree save you should become angels or become of the immortals.\"",
+        "Satan swore by Allah to them both saying: \"Verily I am one of the sincere well-wishers for you both.\"",
+        "So he misled them with deception. Then when they tasted of the tree, that which was hidden from them of their shame (private parts) became manifest to them and they began to stick together the leaves of Paradise over themselves (in order to cover their shame). Their Lord called out to them saying \"Did I not forbid you that tree and tell you, Verily Satan is an open enemy unto you?\"",
+        "They said: \"Our Lord! We have wronged ourselves. If You forgive us not, and bestow not upon us Your Mercy, we shall certainly be of the losers.\" Allah said: \"Get down one of you an enemy to the other (i.e. Adam, Eve, and Satan etc). On earth will be a dwelling place for you and an enjoyment, for a time.\"",
+        "He said: \"Therein you shall live, and therein you shall die, and from it you shall be brought out (resurrected).\" (Chapter 7:11-25, Qur'an).",
+        "We imagine when Allah the Almighty decided to create Adam: He addressed His angels and told them to prostrate before him. He did not mean to ask their opinion or take their advice, for He is above that. Allah the Exalted told them that He was going to create a vicegerent on the earth who would have children and grandchildren who would corrupt the earth and shed each other's blood. That is why the angels said to Allah the Almighty: \"Will You place therein those who will make mischief therein and shed blood!\" (Chapter 2:30, Qur'an).",
+        "There are old traditions about the angels before the creation of Adam. According to Ibn Qatadah, it was said that the angels were informed about the creation of Adam and his progeny by the jinn who lived before Adam. Abdullah Ibn Umar said that the jinn had existed for about 2000 years before Adam and then shed blood. Therefore Allah sent on them an army of angels that drove them out to the depths of the seas.",
+        "Ibn Abi Hatim narrated from Ali Jafar Al Baqer that the angels were informed that man would cause wickedness and shed blood on earth. It was also said that they knew that no one would be created on earth who would not be wicked and shed blood.",
+        "Whether or not these traditions are correct, the angels did understand that Allah would create a vicegerent on earth. Allah the Almighty announced that He was going to create a human being out of clay, that He would mold him and blow His spirit into him and then the angels should prostrate before him.",
+        "Abi Musa al Sha'arai narrated that the Prophet Muhammad (peace be upon him) said: \"Allah created Adam from a handful of dust taken from different lands, so the children of Adam have been created according to the composition of the land. Therefore from mankind we have white, red, black and yellow ones; we have good and evil, ease and sorrow, and what comes in between them.\" (Sahih al Bukhari).",
+        "Ibn Masud and other companions of the Prophet (PBUH) said that Allah the Almighty sent Gabriel onto the earth to get Him clay therefrom. The earth said: \"I seek refuge in Allah from your decreasing my quantity or disfiguring me.\" So Gabriel returned and did not take anything. He said: \"My Lord, the land sought refuge in You and it was granted.\"",
+        "So Allah sent Michael for the same purpose, and the land sought refuge with Allah and it was granted. So he went back and said to Allah what Gabriel has said before him. Then Allah sent the Angel of Death, and the land sought refuge in Allah, the angel said: \"I also seek refuge with Allah from returning without carrying out His command.\" So he took clay from the face of the earth and mixed it. He did not take from one particular place, but rather he took white, red, and black clay from different places.",
+        "The Angel of Death ascended with it, Allah soaked the clay till it became sticky. Then Allah said to the angels: \"Truly, I am going to create man from clay. So when I have fashioned him and breathed into him (his) soul created by Me, then you fall down prostrate to him.\" (Chapter 38:71-72 Quran).",
+        "So Allah shaped Adam into a human being, but he remained a figure of clay for forty years. The angels went past him. They were seized with fear by what they saw, and Iblis felt fear most. He used to pass by the figure of Adam, buffeting it, which would make a sound like pottery. Allah told us: \"He created man (Adam) from sounding clay like the clay of pottery.\" (Chapter 55:14 Quran).",
+        "When the time drew near to breathe the spirit into Adam, as Allah decreed, He commanded the angels: \"When I breathe My spirit into him prostrate before him.\" Allah breathed His spirit into Adam and when it reached his head Adam sneezed. The angels said: \"Say all praise belongs to Allah.\" Adam repeated: \"All praise belongs to Allah.\" Allah said to him: \"Your Lord has granted you mercy.\" When the spirit reached his eyes, Adam looked at the fruits of Paradise. When it reached his abdomen Adam felt an appetite for food. He jumped hurriedly before the spirit could reach his legs, so that he could eat from the fruits of Paradise. Allah, therefore, said: \"Man is created of haste.\" (Chapter 21:37 Quran).",
+        "And then: \"The angels prostrated themselves all of them together. Except Iblis, he refused to be among the prostrators.\" (Chapter 15:31-32 Quran).",
+        "Abu Hurairah narrated that the Prophet Muhammad (PBUH) said: \"Allah created Adam from dust after He mixed the clay and left him for some time until it became sticky mud, after which Allah shaped him. After that Allah left him till it became like potter's clay. Iblis used to go past him saying 'You have been created for a great purpose.' After that Allah breathed His spirit into him. The first thing into which the spirit passed was his eye and then his nose. He sneezed. Allah said: \"May your Lord have mercy upon you, O Adam! Go to those angels and see what they would say.\" So Adam went and greeted them. They replied saying: \"Peace be upon you and the mercy and blessings of Allah.\" Allah said: \"O Adam! This is your greeting and that of your offspring.\" (Sahih al Bukhari).",
+        "Allah the Almighty revealed: \"Remember when your Lord brought forth from the children of Adam, from their loins, their seed (or from Adam's loin his offspring) and made them testify as to themselves saying: 'Am I not your Lord?' They said: 'Yes! We testify' lest you should say on the Day of Resurrection: 'Verily we have been unaware of this'. Or lest you should say: 'It was only our father aforetime who took others as partners in worship along with Allah and we were merely their descendants after them; will you then destroy us because of the deeds of men who practiced al batil (polytheism) and committing crimes and sins, invoking and worshipping others besides Allah?' Thus do We explain the Ayah (proofs, evidences, verses, lessons, signs, revelations etc) in detail so that they may turn unto the truth.\" (Chapter 7:172-174 Quran).",
+        "Adam's progeny declared: \"Our Lord, we bear witness that You are our Lord; we have no other Lord but Allah.\" Allah raised their father Adam, and he looked at them and saw those of them who were rich and those who were poor, and those who had good forms and those who did not. Adam said: \"O Allah! I wish You to make Your servants equal.\" Allah replied: \"I love being thanked.\" Adam saw among the prophets like lamps among his progeny.",
+        "Almighty Allah declared: \"Remember when We took from the Prophets their covenant, and from you (O Muhammad), and from Noah, Abraham, Moses, and Jesus son of Mary. We took from them a strong covenant.\" (Chapter 33:7 Quran).",
+        "In another verse Allah the Exalted commanded: \"So set you (O Muhammad) your face towards the religion of pure Islamic Monotheism Hanifan (worship none but Allah Alone) Allah's Fitrah (Allah's Islamic Monotheism), with which He has created mankind. No change let there be in khalqillah (the Religion of Allah--Islamic Monotheism), that is the straight religion, but most men know not.\" (Chapter 30:30 Quran).",
+        "Another version of the story relates that Allah took a handful of the dust of the earth and mixed into it the colors, white, black, yellow and red. That is the reason why men are born different colors. When Allah mixed the dust with water, it turned into potter's clay that makes a sound. It was fermented and had a smell. Iblis passed by, wondering what was going to be made of that clay. From the clay Allah created Adam. He molded his form with His own hands and blew His spirit into him. Adam's body quivered as life was imbued into it.",
+        "Then We drowned the other (disbelievers and polytheists, etc.). (Chapter 37:82 Quran).",
+        "Similarity between Adam and Jesus (PBUT): Allah the Almighty declared: \"Verily the likeness of Jesus, in Allah's Sight is the likeness of Adam, He created him from the dust then He said to him 'Be!' --and he was.\" (Chapter 3:59 Quran).",
+        "The Meaning of the Angel's Prostration: Adam opened his eyes and saw all the angels prostrating before him except one being who was standing at a distance. Adam did not know what kind of creature it was that did not prostrate before him nor did he know its name. Iblis was standing with the angels so as to be included in the command given to them but he was not one of them. He was a jinn, and as such he was supposed to be inferior to the angels. What is clear is that this prostration was to show respect and did not mean that the angels were worshipping Adam. Prostrating in worship is done only for Allah.",
+        "Almighty Allah recounted the story of Iblis's refusal to prostrate before Adam: \"Remember when your Lord said to the angels, 'I am going to create a man (Adam) from sounding clay of altered black smooth mud. So when I have fashioned him completely and breathed into him (Adam) the soul which I created for him then fall you down prostrating yourselves unto him.' So the angels prostrated themselves all of them together, except Iblis, he refused to be among the prostrators. Allah said: 'O Iblis! What is your reason for not being among the prostrators?' Iblis said: 'I am not the one to prostrate myself to a human being, whom You created from sounding clay of altered black smooth mud.' Allah said: 'Then get out from here for verily you are Rajim (an outcast or cursed one). Verily the curse shall be upon you till Day of Recompense (Day of Resurrection)'\" (Chapter 15:28-35 Quran).",
+        "In another surah Almighty Allah recounted it thus: \"Surely We created you (your father Adam) and then gave you shape (the noble shape of a human being), then We told the angels: 'Prostrate to Adam and they prostrated except Iblis he refused to be of those who prostrate.\" Allah said: \"What prevented you Iblis that you did not prostrate when I commanded you?\" Iblis said: 'I am better than him (Adam), You created me from fire and him You created from clay.' Allah said: 'Get down from this Paradise, it is not for you to be arrogant here. Get out, for you are of those humiliated and disgraced.' Iblis said: 'Allow me respite till the Day of Resurrection.' Allah said: 'You are of those allowed respite.'\" (Chapter 7:11-15 Quran).",
+        "Ibn Jarir reported that Muhammad Ibn Sirin said that the first one to reach a conclusion by reasoning was Iblis and that the sun and moon were not worshiped except through this method. This means that Iblis tried to compare himself to Adam. He believed that he was more honorable than Adam. Therefore he abstained from prostrating even though Allah had commanded him to do so, just as He had commanded the angels. If an analogy is made we see that Iblis is vain. For indeed clay is better than fire because in it can be found the qualities of calmness, clemency, perseverance and growth; whereas in fire can be found heedlessness, insignificance, haste, and incineration. Iblis tried in vain to justify his refusal.",
+        "\"Shall I prostrate to one whom You created from clay?\" Iblis said: \"See? those whom You have honored above me, if You give me respite (keep me alive) to the Day of Resurrection, I will surely seize and mislead his offspring (by sending them astray) all but a few!\" (Chapter 17:62 Quran).",
+        "Adam was following what was happening around him and had feelings of love, awe, and astonishment. Deep love of Allah, Who had created and glorified him and Who had made His angels prostrate before him. Awe of the Creator's wrath when He excluded Iblis from His mercy. Adam was surprised by this creature, Iblis who abhorred him without even knowing him and who imagined himself better than Adam without having proved that he was worthier. What a strange creature Iblis was, and how strange was his excuse for not prostrating!",
+        "He imagined that fire is better than clay, but how did he get such an idea? Such knowledge is exclusive to Allah Who created fire and clay and Who knows which is the better of the two. From the dialogue Adam realized that Iblis was a creature characterized by cunning and ingratitude. He then knew that Iblis was his eternal enemy. He was greatly astonished at Iblis's audacity and Allah's tolerance. Immediately after his creation Adam witnessed the large amount of freedom that Allah gives to His commissioned creatures.",
+        "Allah knew that Iblis was not going to obey Him in prostrating before Adam. Allah could have totally annihilated him or turned him into a handful of dust or stifled the refusal in his mouth. Yet, Allah gives His commissioned creatures absolute freedom even to the extent that they can refuse Allah the Almighty's commands. He grants them the freedom of denial, disobedience, and even disagreement with Him. His kingdom will not diminish if the disbelievers do not believe in Him nor will it be extended if many people believe in Him. On the contrary, the disbelievers will lose, and the believers will gain but Allah is above all of that.",
+        "There were many traditions about Iblis at the time of Prophet Muhammad (PBUH). Ibn Masud, Ibn Abbas and a group of the companions of the Prophet Muhammad (PBUH) said that Iblis had been the head of the angels in the worldly heavens. Ibn Abbas said in one narration that his name had been Azazil and in another narration he said it had been Al Harith. Ibn Abbas also said that Iblis was a jinn and that they had once been the keepers of Paradise, with Iblis the most honorable and the most learned and the most pious of them. Another tradition says that he had been one of the famous four possessors of wings (angels), before Allah transformed him into the accursed Satan.",
+        "Allah Almighty recounts Iblis's disobedience in another surah: \"Remember when your Lord said to the angels: 'Truly I am going to create man from clay. So when I have fashioned him and breathed into him (his) soul created by Me, then you fall down prostrate to him.' So the angels prostrated themselves all of them; except Iblis, he was proud and was one of the disbelievers.\" Allah said: \"The truth is, and the truth I say, that I will fill Hell with you and those of them (mankind) that follow you together.\" (Chapter 38:71-85 Quran)."
+      ]
+    },
+    ur: {
+      title: "نبی آدم",
+      subheading: "فرشتوں کو آدم کے بارے میں اطلاع دینا",
+      content: [
+        "اللہ تعالیٰ نے فرمایا: 'جب تمہارے رب نے فرشتوں سے کہا: میں زمین پر نسلوں کے بعد نسلیں بنانے والا ہوں۔' انہوں نے کہا: 'کیا تو اسے وہاں رکھے گا جو اس میں فساد کرے گا اور خون بہائے گا، جبکہ ہم تیری حمد و ثناء کرتے ہیں اور تیری تقدیس کرتے ہیں۔' اللہ نے فرمایا: 'میں وہ جانتا ہوں جو تم نہیں جانتے۔'",
+        "اللہ نے آدم کو ہر چیز کے نام سکھائے، پھر اس نے انہیں فرشتوں کو دکھایا اور کہا: 'اگر تم سچے ہو تو مجھے ان کے نام بتاؤ۔' انہوں نے کہا: 'تیری ذات پاک ہے، ہمیں کوئی علم نہیں سوائے اس کے جو تو نے ہمیں سکھایا۔ بے شک تو ہی سب کچھ جاننے والا، حکمت والا ہے۔'",
+        "اس نے فرمایا: 'اے آدم! انہیں ان کے نام بتاؤ،' اور جب اس نے انہیں ان کے نام بتائے، تو اس نے کہا: 'کیا میں نے تم سے نہیں کہا کہ میں آسمانوں اور زمین کے غیب کو جانتا ہوں، اور جو تم ظاہر کرتے ہو اور جو تم چھپاتے ہو وہ بھی جانتا ہوں؟'",
+        "جب ہم نے فرشتوں سے کہا: 'آدم کے سامنے سجدہ کرو' تو انہوں نے سجدہ کیا سوائے ابلیس کے، اس نے انکار کیا اور تکبر کیا اور کافروں میں سے ہو گیا۔",
+        "ہم نے کہا: 'اے آدم! تم اور تمہاری بیوی جنت میں رہو اور وہاں کی چیزوں سے آزادانہ لطف اٹھاؤ، لیکن اس درخت کے قریب نہ آنا ورنہ تم دونوں ظالموں میں سے ہو جاؤ گے۔'",
+        "پھر شیطان نے انہیں وہاں سے پھسلایا اور انہیں اس حالت سے نکال دیا جس میں وہ تھے۔ ہم نے کہا: 'تم سب نیچے اترو، ایک دوسرے کے دشمن بن کر۔ زمین پر تمہارا ٹھکانہ ہوگا اور ایک وقت تک نفع اٹھانے کی جگہ۔'",
+        "پھر آدم نے اپنے رب سے کلمات حاصل کیے۔ اس کے رب نے اسے معاف کیا (اس کی توبہ قبول کی)۔ بے شک وہ وہی ہے جو معاف کرنے والا، نہایت رحم کرنے والا ہے۔",
+        "ہم نے کہا: 'تم سب اس جگہ (جنت) سے نیچے اترو، پھر جب بھی تمہارے پاس میری طرف سے ہدایت آئے، اور جو کوئی میری ہدایت پر چلے گا اسے نہ کوئی خوف ہوگا اور نہ وہ غمگین ہوں گے۔ لیکن جو کافر ہوئے اور ہماری آیات (ثبوت، شواہد، آیات، اسباق، اور نشانیاں وغیرہ) کو جھٹلایا، وہ آگ کے رہنے والے ہیں، وہ اس میں ہمیشہ رہیں گے۔' (سورہ البقرہ: 30-39)۔",
+        "اللہ تعالیٰ نے یہ بھی فرمایا: 'اور بے شک ہم نے تم (تمہارے باپ آدم) کو پیدا کیا اور پھر تمہیں شکل دی (انسان کی عظیم شکل)، پھر ہم نے فرشتوں سے کہا، 'آدم کے سامنے سجدہ کرو'، تو انہوں نے سجدہ کیا سوائے ابلیس کے، اس نے سجدہ کرنے والوں میں سے ہونے سے انکار کیا۔'",
+        "اللہ نے فرمایا: 'اے ابلیس! جب میں نے تجھے حکم دیا تو کیا چیز تجھے سجدہ کرنے سے روکتی ہے؟' ابلیس نے کہا: 'میں اس (آدم) سے بہتر ہوں، تو نے مجھے آگ سے بنایا اور اسے مٹی سے بنایا۔'",
+        "اللہ نے فرمایا: 'اے ابلیس! اس (جنت) سے نیچے اتر، یہاں تکبر کرنے کی جگہ نہیں ہے۔ نکل جا کیونکہ تو ذلیل اور رسوا ہونے والوں میں سے ہے۔'",
+        "ابلیس نے کہا: 'مجھے اس دن تک مہلت دے جب تک وہ (انسان) دوبارہ اٹھائے جائیں گے (قیامت کا دن)۔'",
+        "اللہ نے فرمایا: 'تجھے مہلت دی گئی ہے۔'",
+        "ابلیس نے کہا: 'چونکہ تو نے مجھے گمراہ کیا، میں ضرور تیری سیدھی راہ پر ان (انسانوں) کے خلاف گھات لگا کر بیٹھوں گا۔ پھر میں ان کے سامنے سے، پیچھے سے، ان کے دائیں اور بائیں سے آؤں گا اور تو ان میں سے اکثر کو شکر گزار نہ پائے گا (وہ تیرا فرمانبردار نہ ہوں گے)۔'",
+        "اللہ نے فرمایا: 'جنت سے نکل جا، ذلیل اور نکالا ہوا۔ جو کوئی ان (انسانوں) میں سے تیرا پیچھا کرے گا، تو میں ضرور جہنم کو تم سب سے بھر دوں گا۔'",
+        "'اور اے آدم! تم اور تمہاری بیوی جنت میں رہو، اور اس سے جہاں چاہو کھاؤ، لیکن اس درخت کے قریب نہ آنا ورنہ تم دونوں ظالموں میں سے ہو جاؤ گے۔'",
+        "پھر شیطان نے دونوں کو وسوسے ڈالے تاکہ ان کے شرمگاہوں کو جو پہلے ان سے چھپا ہوا تھا، ظاہر کر دے۔ اس نے کہا: 'تمہارے رب نے تمہیں اس درخت سے منع نہیں کیا مگر اس لیے کہ تم فرشتے بن جاؤ یا ہمیشہ رہنے والوں میں سے ہو جاؤ۔'",
+        "شیطان نے اللہ کی قسم کھا کر دونوں سے کہا: 'بے شک میں تم دونوں کے لیے مخلص خیر خواہوں میں سے ہوں۔'",
+        "پس اس نے دھوکے سے انہیں گمراہ کیا۔ پھر جب انہوں نے اس درخت کا مزہ چکھا، تو ان کی شرمگاہیں جو ان سے چھپی ہوئی تھیں، ان پر ظاہر ہو گئیں اور وہ جنت کے پتوں کو اپنے آپ پر چپکانے لگے (تا کہ اپنی شرم ڈھانپیں)۔ ان کے رب نے انہیں پکار کر کہا: 'کیا میں نے تمہیں اس درخت سے منع نہیں کیا تھا اور تم سے کہا تھا کہ بے شک شیطان تمہارا کھلا دشمن ہے؟'",
+        "انہوں نے کہا: 'اے ہمارے رب! ہم نے اپنے آپ پر ظلم کیا۔ اگر تو ہمیں معاف نہ کرے اور ہم پر اپنی رحمت نہ کرے، تو ہم ضرور نقصان اٹھانے والوں میں سے ہوں گے۔' اللہ نے فرمایا: 'نیچے اترو، تم ایک دوسرے کے دشمن ہو (یعنی آدم، حوا اور شیطان وغیرہ)۔ زمین پر تمہارا ٹھکانہ ہوگا اور ایک وقت تک نفع اٹھانے کی جگہ۔'",
+        "اس نے فرمایا: 'اس میں تم جیو گے، اور اس میں تم مرو گے، اور اسی سے تم نکالے جاؤ گے (دوبارہ اٹھائے جاؤ گے)۔' (سورہ الاعراف: 11-25)۔",
+        "ہم تصور کرتے ہیں جب اللہ تعالیٰ نے آدم کو پیدا کرنے کا فیصلہ کیا: اس نے اپنے فرشتوں سے خطاب کیا اور ان سے کہا کہ وہ اس کے سامنے سجدہ کریں۔ اس کا مقصد ان کی رائے مانگنا یا مشورہ لینا نہیں تھا، کیونکہ وہ اس سے بالا تر ہے۔ اللہ تعالیٰ نے ان سے کہا کہ وہ زمین پر ایک نائب بنانے والا ہے جو بچوں اور پوتوں پڑپوتوں کو پیدا کرے گا جو زمین پر فساد کریں گے اور ایک دوسرے کا خون بہائیں گے۔ اسی لیے فرشتوں نے اللہ تعالیٰ سے کہا: 'کیا تو اسے وہاں رکھے گا جو اس میں فساد کرے گا اور خون بہائے گا!' (سورہ البقرہ: 30)۔",
+        "آدم کی تخلیق سے پہلے فرشتوں کے بارے میں پرانی روایات ہیں۔ ابن قتادہ کے مطابق، کہا جاتا ہے کہ فرشتوں کو آدم اور اس کی نسل کے بارے میں جنات نے بتایا جو آدم سے پہلے رہتے تھے۔ عبداللہ ابن عمر نے کہا کہ جنات آدم سے تقریباً دو ہزار سال پہلے موجود تھے اور پھر انہوں نے خون بہایا۔ اس لیے اللہ نے ان پر فرشتوں کی ایک فوج بھیجی جس نے انہیں سمندروں کی گہرائیوں میں دھکیل دیا۔",
+        "ابن ابی حاتم نے علی جعفر الباقر سے روایت کی کہ فرشتوں کو بتایا گیا کہ انسان زمین پر شرارت اور خونریزی کرے گا۔ یہ بھی کہا گیا کہ انہیں معلوم تھا کہ زمین پر کوئی بھی پیدا نہیں کیا جائے گا جو شرارت اور خونریزی نہ کرے۔",
+        "خواہ یہ روایات درست ہوں یا نہ ہوں، فرشتوں کو سمجھ آ گیا تھا کہ اللہ زمین پر ایک نائب بنائے گا۔ اللہ تعالیٰ نے اعلان کیا کہ وہ مٹی سے ایک انسان بنانے والا ہے، کہ وہ اسے سانچے میں ڈھالے گا اور اس میں اپنی روح پھونکے گا اور پھر فرشتوں کو اس کے سامنے سجدہ کرنا چاہیے۔",
+        "ابی موسیٰ الشعرائی نے روایت کی کہ نبی محمد (صلى الله عليه وسلم) نے فرمایا: 'اللہ نے آدم کو مختلف زمینوں سے لی گئی ایک مٹھی بھر مٹی سے بنایا، اس لیے آدم کی اولاد زمین کی ساخت کے مطابق بنائی گئی۔ اس لیے انسانوں میں سے ہمارے پاس سفید، سرخ، سیاہ اور زرد ہیں؛ ہمارے پاس اچھے اور برے، آرام اور غم، اور اس کے درمیان جو کچھ آتا ہے۔' (صحیح البخاری)۔",
+        "ابن مسعود اور نبی (صلى الله عليه وسلم) کے دیگر صحابہ نے کہا کہ اللہ تعالیٰ نے جبریل کو زمین پر بھیجا تاکہ اس کے لیے مٹی لے آئے۔ زمین نے کہا: 'میں اللہ کی پناہ مانگتی ہوں کہ تم میری مقدار کم کرو یا میری شکل بگاڑو۔' چنانچہ جبریل واپس آئے اور کچھ نہ لائے۔ انہوں نے کہا: 'اے میرے رب، زمین نے تیری پناہ مانگی اور اسے عطا کی گئی۔'",
+        "پھر اللہ نے اسی مقصد کے لیے میکائیل کو بھیجا، اور زمین نے اللہ کی پناہ مانگی اور اسے عطا کی گئی۔ چنانچہ وہ واپس آئے اور اللہ سے وہی کہا جو جبریل نے ان سے پہلے کہا تھا۔ پھر اللہ نے موت کے فرشتے کو بھیجا، اور زمین نے اللہ کی پناہ مانگی، فرشتے نے کہا: 'میں بھی اللہ کی پناہ مانگتا ہوں کہ اس کے حکم کو پورا کیے بغیر واپس آؤں۔' چنانچہ اس نے زمین کے چہرے سے مٹی لی اور اسے ملایا۔ اس نے ایک خاص جگہ سے نہیں لیا، بلکہ اس نے مختلف جگہوں سے سفید، سرخ اور سیاہ مٹی لی۔",
+        "موت کا فرشتہ اسے لے کر چڑھا، اللہ نے مٹی کو بھگو دیا یہاں تک کہ وہ چپچپا ہو گئی۔ پھر اللہ نے فرشتوں سے کہا: 'بے شک میں مٹی سے انسان بنانے والا ہوں۔ جب میں اسے بناؤں اور اس میں اپنی بنائی ہوئی روح پھونک دوں، تو تم اس کے سامنے سجدہ کرو۔' (سورہ ص: 71-72)۔",
+        "چنانچہ اللہ نے آدم کو انسانی شکل میں ڈھالا، لیکن وہ چالیس سال تک مٹی کی مورت رہا۔ فرشتے اس کے پاس سے گزرتے تھے۔ وہ جو دیکھتے تھے اس سے خوفزدہ ہو جاتے تھے، اور ابلیس سب سے زیادہ خوفزدہ تھا۔ وہ آدم کی مورت کے پاس سے گزرتا تھا، اسے ٹھوکر مارتا تھا، جس سے برتنوں جیسی آواز نکلتی تھی۔ اللہ نے ہمیں بتایا: 'اس نے انسان (آدم) کو برتنوں کی مٹی جیسے کھنکھناتی مٹی سے بنایا۔' (سورہ الرحمن: 14)۔",
+        "جب اللہ کے حکم کے مطابق آدم میں روح پھونکنے کا وقت قریب آیا، اس نے فرشتوں کو حکم دیا: 'جب میں اس میں اپنی روح پھونک دوں تو اس کے سامنے سجدہ کرو۔' اللہ نے آدم میں اپنی روح پھونکی اور جب وہ اس کے سر تک پہنچی تو آدم نے چھینک ماری۔ فرشتوں نے کہا: 'کہو کہ ساری تعریف اللہ کے لیے ہے۔' آدم نے دہرایا: 'ساری تعریف اللہ کے لیے ہے۔' اللہ نے اس سے کہا: 'تیرے رب نے تجھ پر رحم کیا۔' جب روح اس کی آنکھوں تک پہنچی، آدم نے جنت کے پھلوں کو دیکھا۔ جب یہ اس کے پیٹ تک پہنچی تو آدم کو بھوک لگی۔ وہ جلدی سے اٹھ کھڑا ہوا اس سے پہلے کہ روح اس کی ٹانگوں تک پہنچے، تاکہ وہ جنت کے پھلوں سے کھا سکے۔ اس لیے اللہ نے فرمایا: 'انسان جلدبازی سے بنایا گیا ہے۔' (سورہ الانبیاء: 37)۔",
+        "اور پھر: 'فرشتوں نے سب نے مل کر سجدہ کیا۔ سوائے ابلیس کے، اس نے سجدہ کرنے والوں میں شامل ہونے سے انکار کیا۔' (سورہ الحجر: 31-32)۔",
+        "ابو ہریرہ نے روایت کی کہ نبی محمد (صلى الله عليه وسلم) نے فرمایا: 'اللہ نے آدم کو مٹی سے بنایا جب اس نے مٹی کو ملا کر کچھ وقت کے لیے چھوڑ دیا یہاں تک کہ وہ چپچپا کیچڑ بن گئی، جس کے بعد اللہ نے اسے شکل دی۔ اس کے بعد اللہ نے اسے چھوڑ دیا یہاں تک کہ وہ برتنوں کی مٹی کی طرح ہو گیا۔ ابلیس اس کے پاس سے گزرتا تھا اور کہتا تھا: 'تمہیں ایک عظیم مقصد کے لیے بنایا گیا ہے۔' اس کے بعد اللہ نے اس میں اپنی روح پھونکی۔ سب سے پہلے روح اس کی آنکھ اور پھر اس کی ناک میں داخل ہوئی۔ اس نے چھینک ماری۔ اللہ نے فرمایا: 'اے آدم! تیرے رب تجھ پر رحم کرے۔ ان فرشتوں کے پاس جا اور دیکھ کہ وہ کیا کہتے ہیں۔' چنانچہ آدم گیا اور انہیں سلام کیا۔ انہوں نے جواب دیا: 'تم پر سلامتی ہو اور اللہ کی رحمت اور برکات ہوں۔' اللہ نے فرمایا: 'اے آدم! یہ تیرا اور تیری اولاد کا سلام ہے۔' (صحیح البخاری)۔",
+        "اللہ تعالیٰ نے فرمایا: 'اذکر جب تمہارے رب نے آدم کی اولاد سے، ان کی پشتوں سے، ان کی نسل کو نکالا اور ان سے خود ان کے بارے میں گواہی لی کہ: 'کیا میں تمہارا رب نہیں ہوں؟' انہوں نے کہا: 'ہاں! ہم گواہی دیتے ہیں' تاکہ تم قیامت کے دن نہ کہو: 'بے شک ہم اس سے بے خبر تھے۔' یا نہ کہو: 'یہ تو صرف ہمارے باپ دادا نے پہلے اللہ کے ساتھ دوسروں کو شریک کیا اور ہم تو صرف ان کے بعد ان کی اولاد تھے؛ کیا تو ہمیں ان لوگوں کے اعمال کی وجہ سے ہلاک کرے گا جو باطل (شرک) کرتے تھے اور گناہ اور جرائم کرتے تھے، اللہ کے علاوہ دوسروں کو پکارتے اور پوجتے تھے؟' اس طرح ہم آیات (ثبوت، شواہد، آیات، اسباق، نشانیاں اور وحی وغیرہ) کو تفصیل سے بیان کرتے ہیں تاکہ وہ سچائی کی طرف رجوع کریں۔' (سورہ الاعراف: 172-174)۔",
+        "آدم کی اولاد نے اعلان کیا: 'اے ہمارے رب، ہم گواہی دیتے ہیں کہ تو ہمارا رب ہے؛ ہمارا کوئی اور رب نہیں سوائے اللہ کے۔' اللہ نے ان کے باپ آدم کو اٹھایا، اور اس نے انہیں دیکھا اور ان میں سے کچھ کو امیر اور کچھ کو غریب دیکھا، کچھ کو اچھی شکلوں والا اور کچھ کو نہیں۔ آدم نے کہا: 'اے اللہ! میں چاہتا ہوں کہ تو اپنے بندوں کو برابر کر دے۔' اللہ نے جواب دیا: 'مجھے شکر کیا جانا پسند ہے۔' آدم نے اپنی اولاد میں انبیاء کو چراغوں کی طرح دیکھا۔",
+        "اللہ تعالیٰ نے فرمایا: 'اذکر جب ہم نے انبیاء سے ان کا عہد لیا، اور تم سے (اے محمد)، اور نوح، ابراہیم، موسیٰ، اور عیسیٰ بن مریم سے۔ ہم نے ان سے مضبوط عہد لیا۔' (سورہ الاحزاب: 33:7)۔",
+        "ایک اور آیت میں اللہ تعالیٰ نے حکم دیا: 'پس (اے محمد) اپنا رخ خالص اسلامی توحید کی طرف کر، حنیف (صرف اللہ کی عبادت کر)، اللہ کی فطرت (اسلامی توحید) کے ساتھ، جس کے ساتھ اس نے انسانوں کو بنایا۔ اللہ کی خلق (اللہ کا دین - اسلامی توحید) میں کوئی تبدیلی نہ ہو، یہ سیدھا دین ہے، لیکن اکثر لوگ نہیں جانتے۔' (سورہ الروم: 30:30)۔",
+        "ایک اور روایت کے مطابق اللہ نے زمین کی مٹی کی ایک مٹھی لی اور اس میں سفید، سیاہ، زرد اور سرخ رنگ ملائے۔ اسی وجہ سے انسان مختلف رنگوں میں پیدا ہوتے ہیں۔ جب اللہ نے مٹی کو پانی کے ساتھ ملایا، تو وہ برتنوں کی مٹی بن گئی جو آواز دیتی ہے۔ یہ خمیر ہوئی اور اس سے بو آئی۔ ابلیس اس کے پاس سے گزرا، سوچتا تھا کہ اس مٹی سے کیا بننے والا ہے۔ اللہ نے اس مٹی سے آدم کو بنایا۔ اس نے اپنے ہاتھوں سے اس کی شکل بنائی اور اس میں اپنی روح پھونکی۔ آدم کا جسم زندگی ملنے پر کانپ اٹھا۔",
+        "پھر ہم نے دوسروں (کافروں اور مشرکین وغیرہ) کو غرق کر دیا۔ (سورہ الصافات: 37:82)۔",
+        "آدم اور عیسیٰ (علیہما السلام) کے درمیان مشابہت: اللہ تعالیٰ نے فرمایا: 'بے شک عیسیٰ کی مثال اللہ کے نزدیک آدم کی مثال کی طرح ہے، اس نے اسے مٹی سے بنایا پھر اس سے کہا: 'ہو جا!' اور وہ ہو گیا۔' (سورہ آل عمران: 3:59)۔",
+        "فرشتوں کے سجدے کا مفہوم: آدم نے اپنی آنکھیں کھولیں اور دیکھا کہ تمام فرشتوں نے اس کے سامنے سجدہ کیا سوائے ایک ہستی کے جو فاصلے پر کھڑی تھی۔ آدم کو نہیں معلوم تھا کہ یہ کون سی مخلوق تھی جس نے اس کے سامنے سجدہ نہیں کیا اور نہ ہی اسے اس کا نام معلوم تھا۔ ابلیس فرشتوں کے ساتھ کھڑا تھا تاکہ انہیں دیے گئے حکم میں شامل ہو، لیکن وہ ان میں سے نہیں تھا۔ وہ جنات میں سے تھا، اور اس طرح وہ فرشتوں سے کمتر تھا۔ یہ واضح ہے کہ یہ سجدہ احترام کے لیے تھا اور اس کا مطلب یہ نہیں تھا کہ فرشتے آدم کی عبادت کر رہے تھے۔ عبادت کے لیے سجدہ صرف اللہ کے لیے کیا جاتا ہے۔",
+        "اللہ تعالیٰ نے ابلیس کے آدم کے سامنے سجدہ نہ کرنے کی کہانی بیان کی: 'اذکر جب تمہارے رب نے فرشتوں سے کہا: 'میں ایک انسان (آدم) کو کھنکھناتی مٹی سے، جو کہ سیاہ ہموار کیچڑ سے تبدیل شدہ ہے، بنانے والا ہوں۔ جب میں اسے مکمل طور پر بناؤں اور اس میں اس کی روح پھونک دوں جو میں نے اس کے لیے بنائی، تو تم اس کے سامنے سجدہ کرو۔' چنانچہ فرشتوں نے سب نے مل کر سجدہ کیا، سوائے ابلیس کے، اس نے سجدہ کرنے والوں میں شامل ہونے سے انکار کیا۔ اللہ نے فرمایا: 'اے ابلیس! تجھے سجدہ کرنے والوں میں شامل نہ ہونے کی کیا وجہ ہے؟' ابلیس نے کہا: 'میں اس انسان کے سامنے سجدہ نہیں کروں گا، جسے تو نے کھنکھناتی مٹی سے، جو کہ سیاہ ہموار کیچڑ سے تبدیل شدہ ہے، بنایا۔' اللہ نے فرمایا: 'تو یہاں سے نکل جا کیونکہ تو رجیم (ملعون یا نکالا ہوا) ہے۔ بے شک لعنت تجھ پر قیامت کے دن تک رہے گی۔' (سورہ الحجر: 28-35)۔",
+        "ایک اور سورہ میں اللہ تعالیٰ نے اسے یوں بیان کیا: 'بے شک ہم نے تم (تمہارے باپ آدم) کو بنایا اور پھر تمہیں شکل دی (انسان کی عظیم شکل)، پھر ہم نے فرشتوں سے کہا: 'آدم کے سامنے سجدہ کرو' اور انہوں نے سجدہ کیا سوائے ابلیس کے، اس نے سجدہ کرنے والوں میں سے ہونے سے انکار کیا۔' اللہ نے فرمایا: 'اے ابلیس! جب میں نے تجھے حکم دیا تو کیا چیز تجھے سجدہ کرنے سے روکتی ہے؟' ابلیس نے کہا: 'میں اس (آدم) سے بہتر ہوں، تو نے مجھے آگ سے بنایا اور اسے مٹی سے بنایا۔' اللہ نے فرمایا: 'اس جنت سے نیچے اتر، یہاں تکبر کرنے کی جگہ نہیں ہے۔ نکل جا، کیونکہ تو ذلیل اور رسوا ہونے والوں میں سے ہے۔' ابلیس نے کہا: 'مجھے قیامت کے دن تک مہلت دے۔' اللہ نے فرمایا: 'تجھے مہلت دی گئی ہے۔' (سورہ الاعراف: 11-15)۔",
+        "ابن جریر نے روایت کی کہ محمد بن سیرین نے کہا کہ سب سے پہلے عقل کے ذریعے نتیجہ اخذ کرنے والا ابلیس تھا اور سورج اور چاند کی عبادت اسی طریقے سے شروع ہوئی۔ اس کا مطلب یہ ہے کہ ابلیس نے اپنے آپ کو آدم سے موازنہ کرنے کی کوشش کی۔ اس کا خیال تھا کہ وہ آدم سے زیادہ عزت دار ہے۔ اس لیے اس نے سجدہ کرنے سے انکار کیا حالانکہ اللہ نے اسے حکم دیا تھا، جیسا کہ اس نے فرشتوں کو حکم دیا تھا۔ اگر ایک مشابہت بنائی جائے تو ہم دیکھتے ہیں کہ ابلیس مغرور ہے۔ کیونکہ بے شک مٹی آگ سے بہتر ہے کیونکہ اس میں سکون، رحم، صبر اور نشوونما کے اوصاف پائے جاتے ہیں؛ جبکہ آگ میں بے پروائی، کمزوری، جلدبازی اور تباہی پائی جاتی ہے۔ ابلیس نے اپنے انکار کو بے فائدہ جواز دینے کی کوشش کی۔",
+        "ابلیس نے کہا: 'کیا میں اس کے سامنے سجدہ کروں جسے تو نے مٹی سے بنایا؟' اس نے کہا: 'دیکھ! جنہیں تو نے مجھ پر عزت دی، اگر تو مجھے قیامت کے دن تک مہلت دے تو میں ضرور اس کی اولاد کو پکڑ کر گمراہ کروں گا، سوائے چند کے!' (سورہ الاسراء: 17:62)۔",
+        "آدم اس سب کو دیکھ رہا تھا جو اس کے ارد گرد ہو رہا تھا اور اسے محبت، ہیبت اور حیرت کے جذبات تھے۔ اللہ سے گہری محبت، جس نے اسے بنایا اور اسے عزت دی اور اپنے فرشتوں کو اس کے سامنے سجدہ کرنے کا حکم دیا۔ خالق کے غضب سے خوف جب اس نے ابلیس کو اپنی رحمت سے خارج کیا۔ آدم اس مخلوق، ابلیس، سے حیران تھا جو اسے جانے بغیر اس سے نفرت کرتا تھا اور جس نے خود کو آدم سے بہتر سمجھا بغیر یہ ثابت کیے کہ وہ زیادہ مستحق ہے۔ کیا عجیب مخلوق تھا ابلیس، اور اس کا سجدہ نہ کرنے کا عذر کتنا عجیب تھا!",
+        "اس نے تصور کیا کہ آگ مٹی سے بہتر ہے، لیکن اسے یہ خیال کیسے آیا؟ یہ علم صرف اللہ کے پاس ہے جس نے آگ اور مٹی کو بنایا اور جو جانتا ہے کہ ان دونوں میں سے کون سا بہتر ہے۔ اس مکالمے سے آدم نے سمجھا کہ ابلیس ایک ایسی مخلوق ہے جو مکر اور ناشکری سے نمایاں ہے۔ اس نے تب جانا کہ ابلیس اس کا ابدی دشمن ہے۔ وہ ابلیس کی جرات اور اللہ کی برداشت پر بہت حیران ہوا۔ اپنی تخلیق کے فوراً بعد آدم نے دیکھا کہ اللہ اپنی ذمہ دار مخلوقات کو کتنی بڑی آزادی دیتا ہے۔",
+        "اللہ جانتا تھا کہ ابلیس آدم کے سامنے سجدہ کرنے میں اس کی اطاعت نہیں کرے گا۔ اللہ اسے مکمل طور پر نیست و نابود کر سکتا تھا یا اسے مٹھی بھر مٹی میں تبدیل کر سکتا تھا یا اس کے منہ میں اس کے انکار کو دبا سکتا تھا۔ اس کے باوجود، اللہ اپنی ذمہ دار مخلوقات کو مکمل آزادی دیتا ہے یہاں تک کہ وہ اللہ تعالیٰ کے احکامات کو رد کر سکتے ہیں۔ وہ انہیں انکار، نافرمانی، اور یہاں تک کہ اس سے اختلاف کی آزادی دیتا ہے۔ اس کی بادشاہت کم نہیں ہوگی اگر کافر اس پر ایمان نہ لائیں اور نہ ہی یہ بڑھے گی اگر بہت سے لوگ اس پر ایمان لائیں۔ اس کے برعکس، کافر نقصان اٹھائیں گے، اور مومن فائدہ اٹھائیں گے لیکن اللہ اس سب سے بالا تر ہے۔",
+        "نبی محمد (صلى الله عليه وسلم) کے زمانے میں ابلیس کے بارے میں بہت سی روایات تھیں۔ ابن مسعود، ابن عباس اور نبی محمد (صلى الله عليه وسلم) کے صحابہ کے ایک گروہ نے کہا کہ ابلیس دنیاوی آسمانوں میں فرشتوں کا سربراہ تھا۔ ابن عباس نے ایک روایت میں کہا کہ اس کا نام عزازیل تھا اور دوسری روایت میں کہا کہ یہ الحارث تھا۔ ابن عباس نے یہ بھی کہا کہ ابلیس جنات میں سے تھا اور وہ جنت کے نگہبان تھے، اور ابلیس ان میں سب سے زیادہ عزت دار، عالم اور پرہیزگار تھا۔ ایک اور روایت کہتی ہے کہ وہ چار مشہور پروں والے فرشتوں (ملائکہ) میں سے ایک تھا، اس سے پہلے کہ اللہ اسے ملعون شیطان میں تبدیل کرے۔",
+        "اللہ تعالیٰ نے ایک اور سورہ میں ابلیس کی نافرمانی کو بیان کیا: 'اذکر جب تمہارے رب نے فرشتوں سے کہا: 'میں مٹی سے انسان بنانے والا ہوں۔ جب میں اسے بناؤں اور اس میں اپنی بنائی ہوئی روح پھونک دوں، تو تم اس کے سامنے سجدہ کرو۔' چنانچہ فرشتوں نے سب نے سجدہ کیا؛ سوائے ابلیس کے، وہ مغرور ہوا اور کافروں میں سے ہو گیا۔' اللہ نے فرمایا: 'حق ہے، اور میں حق کہتا ہوں، کہ میں جہنم کو تم سے اور ان (انسانوں) سے جو تیرا پیچھا کریں گے، سب سے بھر دوں گا۔' (سورہ ص: 71-85)۔"
+      ]
+    },
+    ar: {
+      title: "النبي آدم",
+      subheading: "إعلام الملائكة عن آدم",
+      content: [
+        "كشف الله تعالى: \"اذكر عندما قال ربك للملائكة: 'إني سأجعل البشر أجيالاً بعد أجيال على الأرض.' قالوا: 'أتضع فيها من يفسد فيها ويسفك الدماء، بينما نحن نسبح بحمدك ونقدس لك.' قال الله: 'أعلم ما لا تعلمون.'",
+        "علم الله آدم أسماء كل شيء، ثم عرضها على الملائكة وقال: \"أخبروني بأسماء هؤلاء إن كنتم صادقين.\" قالوا: \"سبحانك لا علم لنا إلا ما علمتنا، إنك أنت العليم الحكيم.\"",
+        "قال: \"يا آدم! أخبرهم بأسمائهم،\" فلما أخبرهم بأسمائهم، قال: \"ألم أقل لكم إني أعلم غيب السماوات والأرض، وأعلم ما تبدون وما كنتم تكتمون؟\"",
+        "اذكر عندما قلنا للملائكة: \"اسجدوا لآدم\" فسجدوا إلا إبليس، رفض وتكبر وكان من الكافرين (العاصين لله).",
+        "قلنا: \"يا آدم! اسكن أنت وزوجتك الجنة وكلا منها بحرية ومتعة كيفما شئتما، لكن لا تقربا هذه الشجرة وإلا كنتما من الظالمين.\"",
+        "ثم جعل الشيطان يزلهما منها (الجنة)، وأخرجهما مما كانا فيه. قلنا: \"اهبطوا جميعاً ببعضكم عدو لبعض. ستكون الأرض مكان إقامتكم ومتعتكم لمدة.\"",
+        "ثم تلقى آدم من ربه كلمات، فتاب عليه ربه. إنه هو التواب الرحيم.",
+        "قلنا: \"اهبطوا جميعاً من هذا المكان (الجنة)، ثم إذا جاءتكم هداية مني، فمن تبع هدايتي فلا خوف عليهم ولا هم يحزنون. والذين كفروا وكذبوا بآياتنا (الأدلة، البراهين، الآيات، الدروس، والعلامات والوحي، إلخ) أولئك أصحاب النار، هم فيها خالدون.\" (سورة البقرة: 30-39).",
+        "كشف الله تعالى أيضاً: \"ولقد خلقناكم (أباكم آدم) ثم صورناكم (صورة الإنسان النبيلة)، ثم قلنا للملائكة: 'اسجدوا لآدم'، فسجدوا إلا إبليس، رفض أن يكون من الساجدين.\"",
+        "قال الله: \"ما منعك (يا إبليس) أن تسجد حين أمرتك؟\" قال إبليس: \"أنا خير منه (آدم)، خلقتني من نار وخلقته من طين.\"",
+        "قال الله: \"يا إبليس اهبط من هنا (الجنة)، ليس لك أن تتكبر هنا. اخرج فإنك من المهانين المطرودين.\"",
+        "قال إبليس: \"أنظِرني إلى يوم يبعثون (يوم القيامة).\"",
+        "قال الله: \"إنك من المنظرين.\"",
+        "قال إبليس: \"بما أغويتني، لأقعدن لهم في طريقك المستقيم. ثم لآتينهم من بين أيديهم ومن خلفهم، وعن أيمانهم وعن شمائلهم، ولن تجد أكثرهم شاكرين (لن يكونوا مطيعين لك).\"",
+        "قال الله: \"اخرج من الجنة، مدحوراً مطروداً. من تبعك منهم (البشر)، فلأملأن جهنم منكم أجمعين.\"",
+        "\"ويا آدم! اسكن أنت وزوجتك الجنة، وكلا منها كما تشاءان، لكن لا تقربا هذه الشجرة وإلا كنتما من الظالمين.\"",
+        "ثم وسوس الشيطان لهما ليكشف لهما ما ووري عنهما من سوءاتهما، وقال: \"ما نهاكما ربكما عن هذه الشجرة إلا أن تصبحا ملكين أو تكونا من الخالدين.\"",
+        "وقاسمهما بالله إنه لمن الناصحين لهما.",
+        "فغرهما بالغرور. فلما ذاقا الشجرة بدت لهما سوءاتهما وطفقا يخصفان عليهما من ورق الجنة. وناداهما ربهما: \"ألم أنهكما عن تلك الشجرة وأقل لكما إن الشيطان لكما عدو مبين؟\"",
+        "قالا: \"ربنا ظلمنا أنفسنا وإن لم تغفر لنا وترحمنا لنكونن من الخاسرين.\" قال الله: \"اهبطوا بعضكم لبعض عدو، ولكم في الأرض مستقر ومتاع إلى حين.\"",
+        "قال: \"فيها تحيون، وفيها تموتون، ومنها تخرجون.\" (سورة الأعراف: 11-25).",
+        "نتخيل عندما قرر الله تعالى خلق آدم: خاطب ملائكته وأمرهم أن يسجدوا له. لم يكن يقصد طلب رأيهم أو أخذ مشورتهم، فإنه فوق ذلك. أخبرهم الله تعالى أنه سيخلق نائباً على الأرض سيكون له أبناء وأحفاد سيفسدون في الأرض ويسفكون دماء بعضهم بعضاً. لذلك قالت الملائكة لله تعالى: \"أتضع فيها من يفسد فيها ويسفك الدماء!\" (سورة البقرة: 30).",
+        "هناك تقاليد قديمة عن الملائكة قبل خلق آدم. وفقاً لابن قتادة، قيل إن الملائكة أُخبرت عن خلق آدم ونسله من قبل الجن الذين عاشوا قبل آدم. قال عبد الله بن عمر إن الجن كانوا موجودين لمدة ألفي عام تقريباً قبل آدم ثم سفكوا الدماء. لذلك أرسل الله عليهم جيشاً من الملائكة طردوهم إلى أعماق البحار.",
+        "روى ابن أبي حاتم عن علي جعفر الباقر أن الملائكة أُخبروا أن الإنسان سيتسبب في الشر والدماء على الأرض. وقيل أيضاً إنهم كانوا يعلمون أنه لن يُخلق أحد على الأرض إلا وسيكون شريراً وسفّاكاً للدماء.",
+        "سواء كانت هذه التقاليد صحيحة أم لا، فقد فهمت الملائكة أن الله سيخلق نائباً على الأرض. أعلن الله تعالى أنه سيشكل إنساناً من طين، وأنه سيصوره وينفخ فيه من روحه ثم يجب على الملائكة أن تسجد له.",
+        "روى أبو موسى الشعراوي أن النبي محمد (صلى الله عليه وسلم) قال: \"خلق الله آدم من قبضة من تراب أخذت من أراضٍ مختلفة، فخُلقت ذرية آدم وفقاً لتكوين الأرض. لذلك من البشر لدينا البيض والحمر والسود والصفر، ولدينا الخير والشر، والراحة والحزن، وما بينهما.\" (صحيح البخاري).",
+        "قال ابن مسعود وغيره من أصحاب النبي (صلى الله عليه وسلم) إن الله تعالى أرسل جبريل إلى الأرض ليأتيه بطين منها. قالت الأرض: \"أعوذ بالله من أن تنقص مقداري أو تشوهني.\" فعاد جبريل ولم يأخذ شيئاً. وقال: \"يا رب، استغاثت الأرض بك فأُعيذت.\"",
+        "فأرسل الله ميكائيل لنفس الغرض، فاستغاثت الأرض بالله فأُعيذت. فعاد وقال لله ما قاله جبريل من قبله. ثم أرسل الله ملاك الموت، فاستغاثت الأرض بالله، فقال الملاك: \"أعوذ بالله أن أعود دون تنفيذ أمره.\" فأخذ طيناً من وجه الأرض وخلطه. لم يأخذ من مكان واحد بعينه، بل أخذ طيناً أبيض وأحمر وأسود من أماكن مختلفة.",
+        "صعد ملاك الموت به، فبلّل الله الطين حتى أصبح لزجاً. ثم قال الله للملائكة: \"إني خالق بشراً من طين. فإذا سويته ونفخت فيه من روحي فقعوا له ساجدين.\" (سورة ص: 71-72).",
+        "فشكل الله آدم إلى إنسان، لكنه بقي تمثالاً من طين لمدة أربعين عاماً. كانت الملائكة تمر به. استولى عليهم الخوف مما رأوه، وكان إبليس أكثر من شعر بالخوف. كان يمر بتمثال آدم ويضربه، فيصدر صوتاً كالفخار. أخبرنا الله: \"خلق الإنسان (آدم) من صلصال كالفخار.\" (سورة الرحمن: 14).",
+        "عندما اقترب الوقت لنفخ الروح في آدم، كما قدر الله، أمر الملائكة: \"إذا نفخت فيه من روحي فقعوا له ساجدين.\" نفخ الله روحه في آدم، فلما بلغت رأسه عطس آدم. قالت الملائكة: \"قل الحمد لله.\" كرر آدم: \"الحمد لله.\" قال الله له: \"رحمك ربك.\" عندما بلغت الروح عينيه، نظر آدم إلى ثمار الجنة. وعندما بلغت بطنه شعر آدم بالجوع. قفز مسرعاً قبل أن تصل الروح إلى ساقيه، ليأكل من ثمار الجنة. فقال الله: \"خلق الإنسان من عجل.\" (سورة الأنبياء: 37).",
+        "ثم: \"سجدت الملائكة كلهم أجمعون. إلا إبليس، أبى أن يكون من الساجدين.\" (سورة الحجر: 31-32).",
+        "روى أبو هريرة أن النبي محمد (صلى الله عليه وسلم) قال: \"خلق الله آدم من تراب بعد أن خلط الطين وتركه بعض الوقت حتى أصبح طيناً لزجاً، ثم شكله الله. ثم تركه الله حتى أصبح كالفخار. كان إبليس يمر به قائلاً: 'لقد خلقت لغرض عظيم.' ثم نفخ الله فيه من روحه. أول ما دخلت فيه الروح كان عينه ثم أنفه. عطس. قال الله: \"رحمك ربك يا آدم! اذهب إلى هؤلاء الملائكة وانظر ماذا يقولون.\" فذهب آدم وسلم عليهم. فقالوا: \"السلام عليك ورحمة الله وبركاته.\" قال الله: \"يا آدم! هذه تحيتك وتحية ذريتك.\" (صحيح البخاري).",
+        "كشف الله تعالى: \"واذكر إذ أخرج ربك من بني آدم من أصلابهم ذريتهم وأشهدهم على أنفسهم قائلاً: 'ألست بربكم؟' قالوا: 'بلى، شهدنا' لئلا تقولوا يوم القيامة: 'إنا كنا عن هذا غافلين.' أو تقولوا: 'إنما أشرك آباؤنا من قبل وكنا ذرية من بعدهم، أفتهلكنا بما فعل المبطلون (الشرك والجرائم والذنوب، والدعاء والعبادة لغير الله)؟' وكذلك نفصل الآيات (الأدلة، البراهين، الآيات، الدروس، العلامات والوحي) لعلهم يرجعون إلى الحق.\" (سورة الأعراف: 172-174).",
+        "أعلنت ذرية آدم: \"ربنا، نشهد أنك ربنا، ليس لنا رب سوى الله.\" رفع الله أباهم آدم، فنظر إليهم ورأى منهم الأغنياء والفقراء، ومن لهم أشكال حسنة ومن ليس كذلك. قال آدم: \"يا الله! أريدك أن تجعل عبيدك متساوين.\" أجاب الله: \"أحب أن أُشكر.\" رأى آدم بين الأنبياء كالأنوار بين ذريته.",
+        "أعلن الله تعالى: \"واذكر إذ أخذنا من الأنبياء ميثاقهم، ومنك (يا محمد)، ومن نوح وإبراهيم وموسى وعيسى ابن مريم. وأخذنا منهم ميثاقاً غليظاً.\" (سورة الأحزاب: 33:7).",
+        "في آية أخرى أمر الله تعالى: \"فأقم وجهك للدين حنيفاً، فطرة الله التي فطر الناس عليها. لا تبديل لخلق الله (دين الله - التوحيد الإسلامي)، ذلك الدين القيم، ولكن أكثر الناس لا يعلمون.\" (سورة الروم: 30:30).",
+        "رواية أخرى تقول إن الله أخذ قبضة من تراب الأرض وخلط فيها الألوان، الأبيض والأسود والأصفر والأحمر. ولهذا السبب يولد الناس بألوان مختلفة. عندما خلط الله التراب بالماء، تحول إلى طين الفخار الذي يصدر صوتاً. كان مخمراً وله رائحة. مر إبليس، متسائلاً عما سيصنع من ذلك الطين. من الطين خلق الله آدم. شكل صورته بيديه ونفخ فيه من روحه. ارتجف جسد آدم عندما أُودعت فيه الحياة.",
+        "ثم أغرقنا الآخرين (الكافرين والمشكرين وغيرهم). (سورة الصافات: 37:82).",
+        "التشابه بين آدم وعيسى (عليهما السلام): أعلن الله تعالى: \"إن مثل عيسى عند الله كمثل آدم، خلقه من تراب ثم قال له 'كن' فيكون.\" (سورة آل عمران: 3:59).",
+        "معنى سجود الملائكة: فتح آدم عينيه ورأى جميع الملائكة يسجدون له إلا كائناً واحداً كان واقفاً على مسافة. لم يعرف آدم أي نوع من المخلوقات كان ذلك الذي لم يسجد له ولم يعرف اسمه. كان إبليس يقف مع الملائكة ليُدرج في الأمر الموجه إليهم لكنه لم يكن منهم. كان من الجن، وكذلك كان يفترض أن يكون أدنى من الملائكة. من الواضح أن هذا السجود كان لإظهار الاحترام ولم يعنِ أن الملائكة كانوا يعبدون آدم. السجود في العبادة يكون لله وحده.",
+        "روى الله تعالى قصة رفض إبليس السجود لآدم: \"اذكر إذ قال ربك للملائكة: 'إني خالق بشراً من صلصال من حمإ مسنون. فإذا سويته ونفخت فيه من روحي فقعوا له ساجدين.' فسجدت الملائكة كلهم أجمعون، إلا إبليس، أبى أن يكون من الساجدين. قال الله: 'يا إبليس ما لك ألا تكون مع الساجدين؟' قال إبليس: 'لستُ الذي أسجد لبشر خلقته من صلصال من حمإ مسنون.' قال الله: 'فاخرج منها فإنك رجيم. وإن عليك اللعنة إلى يوم الدين.'\" (سورة الحجر: 28-35).",
+        "في سورة أخرى روى الله تعالى ذلك كذلك: \"لقد خلقناكم (أباكم آدم) ثم صورناكم (صورة الإنسان النبيلة)، ثم قلنا للملائكة: 'اسجدوا لآدم' فسجدوا إلا إبليس لم يكن من الساجدين.\" قال الله: \"ما منعك يا إبليس أن تسجد حين أمرتك؟\" قال إبليس: \"أنا خير منه، خلقتني من نار وخلقته من طين.\" قال الله: \"اهبط منها فليس لك أن تتكبر هنا. اخرج فإنك من المهانين.\" قال إبليس: \"أنظرني إلى يوم يبعثون.\" قال الله: \"إنك من المنظرين.\" (سورة الأعراف: 11-15).",
+        "روى ابن جرير أن محمد بن سيرين قال إن أول من توصل إلى نتيجة بالتفكير كان إبليس وأن الشمس والقمر لم يُعبدا إلا بهذه الطريقة. هذا يعني أن إبليس حاول مقارنة نفسه بآدم. كان يعتقد أنه أكثر شرفاً من آدم. لذلك امتنع عن السجود رغم أن الله أمره بذلك، كما أمر الملائكة. إذا قمنا بالمقارنة، نرى أن إبليس مغرور. فالطين بالفعل أفضل من النار لأنه يمكن أن يوجد فيه صفات الهدوء، الرحمة، الصبر والنمو؛ بينما في النار يمكن أن نجد التهور، التفاهة، العجلة والاحتراق. حاول إبليس عبثاً تبرير رفضه.",
+        "قال إبليس: \"أأسجد لمن خلقت طيناً؟\" قال: \"أرأيت هذا الذي كرّمته عليّ، لئن أنظرتَني إلى يوم القيامة لأحتنكنّ ذريته إلا قليلاً.\" (سورة الإسراء: 17:62).",
+        "كان آدم يتابع ما يحدث حوله وكانت لديه مشاعر الحب، الرهبة، والدهشة. حب عميق لله، الذي خلقه وكرّمه وجعل ملائكته تسجد له. رهبة من غضب الخالق عندما استثنى إبليس من رحمته. تفاجأ آدم بهذا المخلوق، إبليس، الذي كرهه دون أن يعرفه وتخيّل أنه أفضل من آدم دون أن يثبت أنه أكثر استحقاقاً. يا لها من مخلوق غريب إبليس، ويا لعذره الغريب لعدم السجود!",
+        "تخيّل أن النار أفضل من الطين، لكن كيف حصل على هذه الفكرة؟ هذا العلم حصري لله الذي خلق النار والطين ويعلم أيهما أفضل. من الحوار أدرك آدم أن إبليس كائن يتميز بالمكر والنكران. ثم عرف أن إبليس هو عدوه الأبدي. تفاجأ كثيراً بجرأة إبليس وتسامح الله. فور خلقه، شهد آدم مقدار الحرية الكبيرة التي يمنحها الله لمخلوقاته المكلّفة.",
+        "كان الله يعلم أن إبليس لن يطيعه في السجود لآدم. كان بإمكان الله أن يفنيه تماماً أو يحوّله إلى قبضة من التراب أو يكتم رفضه في فمه. ومع ذلك، يمنح الله مخلوقاته المكلّفة حرية مطلقة حتى إنهم يستطيعون رفض أوامر الله تعالى. يمنحهم حرية الإنكار، العصيان، وحتى الاختلاف معه. لن تنقص مملكته إذا لم يؤمن به الكافرون ولن تتسع إذا آمن به كثيرون. على العكس، سيخسر الكافرون، وسيكسب المؤمنون، لكن الله فوق كل ذلك.",
+        "كانت هناك تقاليد كثيرة عن إبليس في زمن النبي محمد (صلى الله عليه وسلم). قال ابن مسعود وابن عباس ومجموعة من أصحاب النبي محمد (صلى الله عليه وسلم) إن إبليس كان رأس الملائكة في السماوات الدنيوية. قال ابن عباس في رواية إن اسمه كان عزازيل، وفي رواية أخرى قال إنه كان الحارث. قال ابن عباس أيضاً إن إبليس كان من الجن وكانوا حراس الجنة، وكان إبليس أكثرهم شرفاً وعلماً وتقوى. تقول رواية أخرى إنه كان أحد الملائكة الأربعة المشهورين بأجنحتهم، قبل أن يحوّله الله إلى الشيطان الملعون.",
+        "روى الله تعالى عصيان إبليس في سورة أخرى: \"اذكر إذ قال ربك للملائكة: 'إني خالق بشراً من طين. فإذا سويته ونفخت فيه من روحي فقعوا له ساجدين.' فسجدت الملائكة كلهم، إلا إبليس، تكبر وكان من الكافرين.\" قال الله: \"الحق وأقول الحق، لأملأنّ جهنم منك ومن تبعك منهم أجمعين.\" (سورة ص: 71-85)."
+      ]
+    }
+  }
+];
+
+    let currentChapterId = 1;
+
+    const chapterSection = document.getElementById('prophet1');
+    const langSelect = document.getElementById('language');
+
+    // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English' },
+      { value: 'ur', name: 'Urdu' },
+      { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderChapter() {
+      const lang = langSelect.value;
+      const chapter = chapters.find(ch => ch.id === currentChapterId);
+      chapterSection.innerHTML = `
+        <h2 class="${lang}">${chapter[lang].title}</h2>
+        <p class="${lang}">${chapter[lang].subheading}</p>
+        ${chapter[lang].content.map(text => `<p class="${lang}">${text}</p>`).join('')}
+      `;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleScroll() {
+      const backToTopButton = document.querySelector('.back-to-top');
+      if (window.scrollY > 100) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+
+      if (document.body.classList.contains('dark-mode')) {
+        icon.src = "/assets/icons/sun.png";
+        icon.alt = "Switch to light mode";
+      } else {
+        icon.src = "/assets/icons/moon.png";
+        icon.alt = "Switch to dark mode";
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      populateLanguageSelector();
+      renderChapter();
+      window.addEventListener('scroll', handleScroll);
+    };
+  </script>
+</body>
+</html>

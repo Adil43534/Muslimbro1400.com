@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Al-Mujadila</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Al-Mujadila (سورة المجادلة)</h1>
+      <p class="meaning">Meaning: The Pleading Woman</p>
+      <p class="meta">Madani - 22 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br/><br>
+        <audio id="surahAudio" controls>
+          <source src="/assets/audio/Saad Al Ghamdi/058.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-hadid.html">← Surah Al-Hadid</a>
+        <a href="al-Hashr.html">Next: Surah Al-Hashr →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <div class="navigation">
+      <a href="al-hadid.html">← Surah Al-Hadid</a>
+      <a href="al-hashr.html">Next: Surah Al-Hashr →</a>
+    </div>
+  </div>
+
+  <script>
+    const ayahs = [
+      {
+        arabic: "قَد سَمِعَ اللَّهُ قَولَ الَّتي تُجادِلُكَ في زَوجِها وَتَشتَكي إِلَى اللَّهِ وَاللَّهُ يَسمَعُ تَحاوُرَكُما ۚ إِنَّ اللَّهَ سَميعٌ بَصيرٌ",
+        en: "Indeed, Allah has heard the argument of the woman who pleaded with you ˹O Prophet˺ concerning her husband, and appealed to Allah. Allah has heard your exchange. Surely Allah is All-Hearing, All-Seeing.",
+        ur: ""
+      },
+      {
+        arabic: "الَّذينَ يُظاهِرونَ مِنكُم مِن نِسائِهِم ما هُنَّ أُمَّهاتِهِم ۖ إِن أُمَّهاتُهُم إِلَّا اللّائي وَلَدنَهُم ۚ وَإِنَّهُم لَيَقولونَ مُنكَرًا مِنَ القَولِ وَزورًا ۚ وَإِنَّ اللَّهَ لَعَفُوٌّ غَفورٌ",
+        en: "Those of you who ˹sinfully˺ divorce their wives by comparing them to their mothers ˹should know that˺ their wives are in no way their mothers. None can be their mothers except those who gave birth to them. What they say is certainly detestable and false. Yet Allah is truly Ever-Pardoning, All-Forgiving.",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ يُظاهِرونَ مِن نِسائِهِم ثُمَّ يَعودونَ لِما قالوا فَتَحريرُ رَقَبَةٍ مِن قَبلِ أَن يَتَماسّا ۚ ذٰلِكُم توعَظونَ بِهِ ۚ وَاللَّهُ بِما تَعمَلونَ خَبيرٌ",
+        en: "Those who divorce their wives in this manner, then ˹wish to˺ retract what they said, must free a slave before they touch each other. This ˹penalty˺ is meant to deter you. And Allah is All-Aware of what you do.",
+        ur: ""
+      },
+      {
+        arabic: "فَمَن لَم يَجِد فَصِيامُ شَهرَينِ مُتَتابِعَينِ مِن قَبلِ أَن يَتَماسّا ۖ فَمَن لَم يَستَطِع فَإِطعامُ سِتّينَ مِسكينًا ۚ ذٰلِكَ لِتُؤمِنوا بِاللَّهِ وَرَسولِهِ ۚ وَتِلكَ حُدودُ اللَّهِ ۗ وَلِلكافِرينَ عَذابٌ أَليمٌ",
+        en: "But if the husband cannot afford this, let him then fast two consecutive months before the couple touch each other. But if he is unable ˹to fast˺, then let him feed sixty poor people. This is to re-affirm your faith in Allah and His Messenger. These are the limits set by Allah. And the disbelievers will suffer a painful punishment.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ يُحادّونَ اللَّهَ وَرَسولَهُ كُبِتوا كَما كُبِتَ الَّذينَ مِن قَبلِهِم ۚ وَقَد أَنزَلنا آياتٍ بَيِّناتٍ ۚ وَلِلكافِرينَ عَذابٌ مُهينٌ",
+        en: "Indeed, those who defy Allah and His Messenger will be debased, just like those before them. We have certainly sent down clear revelations. And the disbelievers will suffer a humiliating punishment.",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ يَبعَثُهُمُ اللَّهُ جَميعًا فَيُنَبِّئُهُم بِما عَمِلوا ۚ أَحصاهُ اللَّهُ وَنَسوهُ ۚ وَاللَّهُ عَلىٰ كُلِّ شَيءٍ شَهيدٌ",
+        en: "On the Day Allah resurrects them all together, He will then inform them of what they have done. Allah has kept account of it all, while they have forgotten it. For Allah is a Witness over all things.",
+        ur: ""
+      },
+      {
+        arabic: "أَلَم تَرَ أَنَّ اللَّهَ يَعلَمُ ما فِي السَّماواتِ وَما فِي الأَرضِ ۖ ما يَكونُ مِن نَجوىٰ ثَلاثَةٍ إِلّا هُوَ رابِعُهُم وَلا خَمسَةٍ إِلّا هُوَ سادِسُهُم وَلا أَدنىٰ مِن ذٰلِكَ وَلا أَكثَرَ إِلّا هُوَ مَعَهُم أَينَ ما كانوا ۖ ثُمَّ يُنَبِّئُهُم بِما عَمِلوا يَومَ القِيامَةِ ۚ إِنَّ اللَّهَ بِكُلِّ شَيءٍ عَليمٌ",
+        en: "Do you not see that Allah knows whatever is in the heavens and whatever is on the earth? If three converse privately, He is their fourth. If five, He is their sixth. Whether fewer or more, He is with them wherever they may be. Then, on the Day of Judgment, He will inform them of what they have done. Surely Allah has ˹perfect˺ knowledge of all things.",
+        ur: ""
+      },  
+      {
+        arabic: "أَلَم تَرَ إِلَى الَّذينَ نُهوا عَنِ النَّجوىٰ ثُمَّ يَعودونَ لِما نُهوا عَنهُ وَيَتَناجَونَ بِالإِثمِ وَالعُدوانِ وَمَعصِيَتِ الرَّسولِ وَإِذا جاءوكَ حَيَّوكَ بِما لَم يُحَيِّكَ بِهِ اللَّهُ وَيَقولونَ في أَنفُسِهِم لَولا يُعَذِّبُنَا اللَّهُ بِما نَقولُ ۚ حَسبُهُم جَهَنَّمُ يَصلَونَها ۖ فَبِئسَ المَصيرُ",
+        en: "Have you not seen those who were forbidden from secret talks, yet they ˹always˺ return to what they were forbidden from, conspiring in sin, aggression, and disobedience to the Messenger? And when they come to you ˹O Prophet˺, they greet you not as Allah greets you, and say to one another, “Why does Allah not punish us for what we say?” Hell is enough for them—they will burn in it. And what an evil destination!",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِذا تَناجَيتُم فَلا تَتَناجَوا بِالإِثمِ وَالعُدوانِ وَمَعصِيَتِ الرَّسولِ وَتَناجَوا بِالبِرِّ وَالتَّقوىٰ ۖ وَاتَّقُوا اللَّهَ الَّذي إِلَيهِ تُحشَرونَ",
+        en: "O believers! When you converse privately, let it not be for sin, aggression, or disobedience to the Messenger, but let it be for goodness and righteousness. And fear Allah, to Whom you will ˹all˺ be gathered.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّمَا النَّجوىٰ مِنَ الشَّيطانِ لِيَحزُنَ الَّذينَ آمَنوا وَلَيسَ بِضارِّهِم شَيئًا إِلّا بِإِذنِ اللَّهِ ۚ وَعَلَى اللَّهِ فَليَتَوَكَّلِ المُؤمِنونَ",
+        en: "Secret talks are only inspired by Satan to grieve the believers. Yet he cannot harm them whatsoever except by Allah’s Will. So in Allah let the believers put their trust.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِذا قيلَ لَكُم تَفَسَّحوا فِي المَجالِسِ فَافسَحوا يَفسَحِ اللَّهُ لَكُم ۖ وَإِذا قيلَ انشُزوا فَانشُزوا يَرفَعِ اللَّهُ الَّذينَ آمَنوا مِنكُم وَالَّذينَ أوتُوا العِلمَ دَرَجاتٍ ۚ وَاللَّهُ بِما تَعمَلونَ خَبيرٌ",
+        en: "O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. And if you are told to rise, then do so. Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. And Allah is All-Aware of what you do.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِذا ناجَيتُمُ الرَّسولَ فَقَدِّموا بَينَ يَدَي نَجواكُم صَدَقَةً ۚ ذٰلِكَ خَيرٌ لَكُم وَأَطهَرُ ۚ فَإِن لَم تَجِدوا فَإِنَّ اللَّهَ غَفورٌ رَحيمٌ",
+        en: "O believers! When you consult the Messenger privately, give something in charity before your consultation. That is better and purer for you. But if you lack the means, then Allah is truly All-Forgiving, Most Merciful.",
+        ur: ""
+      },
+      {
+        arabic: "أَأَشفَقتُم أَن تُقَدِّموا بَينَ يَدَي نَجواكُم صَدَقاتٍ ۚ فَإِذ لَم تَفعَلوا وَتابَ اللَّهُ عَلَيكُم فَأَقيمُوا الصَّلاةَ وَآتُوا الزَّكاةَ وَأَطيعُوا اللَّهَ وَرَسولَهُ ۚ وَاللَّهُ خَبيرٌ بِما تَعمَلونَ",
+        en: "Are you afraid of spending in charity before your private consultations ˹with him˺? Since you are unable to do so, and Allah has turned to you in mercy, then ˹continue to˺ establish prayer, pay alms-tax, and obey Allah and His Messenger. And Allah is All-Aware of what you do.",
+        ur: ""
+      },
+      {
+        arabic: "۞ أَلَم تَرَ إِلَى الَّذينَ تَوَلَّوا قَومًا غَضِبَ اللَّهُ عَلَيهِم ما هُم مِنكُم وَلا مِنهُم وَيَحلِفونَ عَلَى الكَذِبِ وَهُم يَعلَمونَ",
+        en: "Have you not seen those ˹hypocrites˺ who ally themselves with a people with whom Allah is displeased? They are neither with you nor with them. And they swear to lies knowingly.",
+        ur: ""
+      },
+      {
+        arabic: "أَعَدَّ اللَّهُ لَهُم عَذابًا شَديدًا ۖ إِنَّهُم ساءَ ما كانوا يَعمَلونَ",
+        en: "Allah has prepared for them a severe punishment. Evil indeed is what they do.",
+        ur: ""
+      },
+      {
+        arabic: "اتَّخَذوا أَيمانَهُم جُنَّةً فَصَدّوا عَن سَبيلِ اللَّهِ فَلَهُم عَذابٌ مُهينٌ",
+        en: "They have made their ˹false˺ oaths as a shield, hindering ˹others˺ from the cause of Allah. So they will suffer a humiliating punishment.",
+        ur: ""
+      },
+      {
+        arabic: "لَن تُغنِيَ عَنهُم أَموالُهُم وَلا أَولادُهُم مِنَ اللَّهِ شَيئًا ۚ أُولٰئِكَ أَصحابُ النّارِ ۖ هُم فيها خالِدونَ",
+        en: "Neither their wealth nor children will be of any help to them against Allah whatsoever. It is they who will be the residents of the Fire. They will be there forever.",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ يَبعَثُهُمُ اللَّهُ جَميعًا فَيَحلِفونَ لَهُ كَما يَحلِفونَ لَكُم ۖ وَيَحسَبونَ أَنَّهُم عَلىٰ شَيءٍ ۚ أَلا إِنَّهُم هُمُ الكاذِبونَ",
+        en: "On the Day Allah resurrects them all, they will ˹falsely˺ swear to Him as they swear to you, thinking they have something to stand on. Indeed, it is they who are the ˹total˺ liars.",
+        ur: ""
+      },
+      {
+        arabic: "استَحوَذَ عَلَيهِمُ الشَّيطانُ فَأَنساهُم ذِكرَ اللَّهِ ۚ أُولٰئِكَ حِزبُ الشَّيطانِ ۚ أَلا إِنَّ حِزبَ الشَّيطانِ هُمُ الخاسِرونَ",
+        en: "Satan has taken hold of them, causing them to forget the remembrance of Allah. They are the party of Satan. Surely Satan’s party is bound to lose.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ يُحادّونَ اللَّهَ وَرَسولَهُ أُولٰئِكَ فِي الأَذَلّينَ",
+        en: "˹As for˺ those who defy Allah and His Messenger, they will definitely be among the most debased.",
+        ur: ""
+      },
+      {
+        arabic: "كَتَبَ اللَّهُ لَأَغلِبَنَّ أَنا وَرُسُلي ۚ إِنَّ اللَّهَ قَوِيٌّ عَزيزٌ",
+        en: "Allah has decreed, “I and My messengers will certainly prevail.” Surely Allah is All-Powerful, Almighty.",
+        ur: ""
+      },
+      {
+        arabic: "لا تَجِدُ قَومًا يُؤمِنونَ بِاللَّهِ وَاليَومِ الآخِرِ يُوادّونَ مَن حادَّ اللَّهَ وَرَسولَهُ وَلَو كانوا آباءَهُم أَو أَبناءَهُم أَو إِخوانَهُم أَو عَشيرَتَهُم ۚ أُولٰئِكَ كَتَبَ في قُلوبِهِمُ الإيمانَ وَأَيَّدَهُم بِروحٍ مِنهُ ۖ وَيُدخِلُهُم جَنّاتٍ تَجري مِن تَحتِهَا الأَنهارُ خالِدينَ فيها ۚ رَضِيَ اللَّهُ عَنهُم وَرَضوا عَنهُ ۚ أُولٰئِكَ حِزبُ اللَّهِ ۚ أَلا إِنَّ حِزبَ اللَّهِ هُمُ المُفلِحونَ",
+        en: "You will never find a people who ˹truly˺ believe in Allah and the Last Day loyal to those who defy Allah and His Messenger, even if they were their parents, children, siblings, or extended family. For those ˹believers˺, Allah has instilled faith in their hearts and strengthened them with a spirit from Him. He will admit them into Gardens under which rivers flow, to stay there forever. Allah is pleased with them and they are pleased with Him. They are the party of Allah. Indeed, Allah’s party is bound to succeed.",
+        ur: ""
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+        // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const audio = document.getElementById('surahAudio');
+      audio.src = `/assets/audio/${reciter}/001.mp3`;
+      audio.load();
+      audio.play();
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "/assets/icons/sun.png"
+        : "/assets/icons/moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+    };
+  </script>
+</body>
+</html>

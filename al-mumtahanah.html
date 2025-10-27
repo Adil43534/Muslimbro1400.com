@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Al-Mumtahanah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Al-Mumtahanah (سورة الممتحنة)</h1>
+      <p class="meaning">Meaning: She That Is To Be Examined</p>
+      <p class="meta">Madani - 13 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br/><br>
+        <audio id="surahAudio" controls>
+          <source src="/assets/audio/Saad Al Ghamdi/060.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-hashr.html">← Surah Al-Hashr</a>
+        <a href="as-saf.html">Next: Surah As-Saf →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <div class="navigation">
+      <a href="al-hashr.html">← Surah Al-Hashr</a>
+      <a href="as-saf.html">Next: Surah As-Saf →</a>
+    </div>
+  </div>
+
+  <script>
+    const ayahs = [
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تَتَّخِذوا عَدُوّي وَعَدُوَّكُم أَولِياءَ تُلقونَ إِلَيهِم بِالمَوَدَّةِ وَقَد كَفَروا بِما جاءَكُم مِنَ الحَقِّ يُخرِجونَ الرَّسولَ وَإِيّاكُم ۙ أَن تُؤمِنوا بِاللَّهِ رَبِّكُم إِن كُنتُم خَرَجتُم جِهادًا في سَبيلي وَابتِغاءَ مَرضاتي ۚ تُسِرّونَ إِلَيهِم بِالمَوَدَّةِ وَأَنا أَعلَمُ بِما أَخفَيتُم وَما أَعلَنتُم ۚ وَمَن يَفعَلهُ مِنكُم فَقَد ضَلَّ سَواءَ السَّبيلِ",
+        en: "O believers! Do not take My enemies and yours as trusted allies, showing them affection even though they deny what has come to you of the truth. They drove the Messenger and yourselves out ˹of Mecca˺, simply for your belief in Allah, your Lord. If you ˹truly˺ emigrated to struggle in My cause and seek My pleasure, ˹then do not take them as allies,˺ disclosing secrets ˹of the believers˺ to the pagans out of affection for them, when I know best whatever you conceal and whatever you reveal. And whoever of you does this has truly strayed from the Right Way.",
+        ur: ""
+      },
+      {
+        arabic: "إِن يَثقَفوكُم يَكونوا لَكُم أَعداءً وَيَبسُطوا إِلَيكُم أَيدِيَهُم وَأَلسِنَتَهُم بِالسّوءِ وَوَدّوا لَو تَكفُرونَ",
+        en: "If they gain the upper hand over you, they would be your ˹open˺ enemies, unleashing their hands and tongues to harm you, and wishing that you would abandon faith.",
+        ur: ""
+      },
+      {
+        arabic: "لَن تَنفَعَكُم أَرحامُكُم وَلا أَولادُكُم ۚ يَومَ القِيامَةِ يَفصِلُ بَينَكُم ۚ وَاللَّهُ بِما تَعمَلونَ بَصيرٌ",
+        en: "Neither your relatives nor children will benefit you on Judgment Day—He will decide between you ˹all˺. For Allah is All-Seeing of what you do.",
+        ur: ""
+      },
+      {
+        arabic: "قَد كانَت لَكُم أُسوَةٌ حَسَنَةٌ في إِبراهيمَ وَالَّذينَ مَعَهُ إِذ قالوا لِقَومِهِم إِنّا بُرَآءُ مِنكُم وَمِمّا تَعبُدونَ مِن دونِ اللَّهِ كَفَرنا بِكُم وَبَدا بَينَنا وَبَينَكُمُ العَداوَةُ وَالبَغضاءُ أَبَدًا حَتّىٰ تُؤمِنوا بِاللَّهِ وَحدَهُ إِلّا قَولَ إِبراهيمَ لِأَبيهِ لَأَستَغفِرَنَّ لَكَ وَما أَملِكُ لَكَ مِنَ اللَّهِ مِن شَيءٍ ۖ رَبَّنا عَلَيكَ تَوَكَّلنا وَإِلَيكَ أَنَبنا وَإِلَيكَ المَصيرُ",
+        en: "You already have an excellent example in Abraham and those with him, when they said to their people, “We totally dissociate ourselves from you and ˹shun˺ whatever ˹idols˺ you worship besides Allah. We reject you. The enmity and hatred that has arisen between us and you will last until you believe in Allah alone.” The only exception is when Abraham said to his father, “I will seek forgiveness for you,˹” adding, “but˺ I cannot protect you from Allah at all.” ˹The believers prayed,˺ “Our Lord! In You we trust. And to You we ˹always˺ turn. And to You is the final return.",
+        ur: ""
+      },
+      {
+        arabic: "رَبَّنا لا تَجعَلنا فِتنَةً لِلَّذينَ كَفَروا وَاغفِر لَنا رَبَّنا ۖ إِنَّكَ أَنتَ العَزيزُ الحَكيمُ",
+        en: "Our Lord! Do not subject us to the persecution of the disbelievers. Forgive us, our Lord! You ˹alone˺ are truly the Almighty, All-Wise.”",
+        ur: ""
+      },
+      {
+        arabic: "لَقَد كانَ لَكُم فيهِم أُسوَةٌ حَسَنَةٌ لِمَن كانَ يَرجُو اللَّهَ وَاليَومَ الآخِرَ ۚ وَمَن يَتَوَلَّ فَإِنَّ اللَّهَ هُوَ الغَنِيُّ الحَميدُ",
+        en: "You certainly have an excellent example in them for whoever has hope in Allah and the Last Day. But whoever turns away, then surely Allah ˹alone˺ is the Self-Sufficient, Praiseworthy.",
+        ur: ""
+      },
+      {
+        arabic: "۞ عَسَى اللَّهُ أَن يَجعَلَ بَينَكُم وَبَينَ الَّذينَ عادَيتُم مِنهُم مَوَدَّةً ۚ وَاللَّهُ قَديرٌ ۚ وَاللَّهُ غَفورٌ رَحيمٌ",
+        en: "˹In time,˺ Allah may bring about goodwill between you and those of them you ˹now˺ hold as enemies. For Allah is Most Capable. And Allah is All-Forgiving, Most Merciful.",
+        ur: ""
+      },  
+      {
+        arabic: "لا يَنهاكُمُ اللَّهُ عَنِ الَّذينَ لَم يُقاتِلوكُم فِي الدّينِ وَلَم يُخرِجوكُم مِن دِيارِكُم أَن تَبَرّوهُم وَتُقسِطوا إِلَيهِم ۚ إِنَّ اللَّهَ يُحِبُّ المُقسِطينَ",
+        en: "Allah does not forbid you from dealing kindly and fairly with those who have neither fought nor driven you out of your homes. Surely Allah loves those who are fair.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّما يَنهاكُمُ اللَّهُ عَنِ الَّذينَ قاتَلوكُم فِي الدّينِ وَأَخرَجوكُم مِن دِيارِكُم وَظاهَروا عَلىٰ إِخراجِكُم أَن تَوَلَّوهُم ۚ وَمَن يَتَوَلَّهُم فَأُولٰئِكَ هُمُ الظّالِمونَ",
+        en: "Allah only forbids you from befriending those who have fought you for ˹your˺ faith, driven you out of your homes, or supported ˹others˺ in doing so. And whoever takes them as friends, then it is they who are the ˹true˺ wrongdoers.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِذا جاءَكُمُ المُؤمِناتُ مُهاجِراتٍ فَامتَحِنوهُنَّ ۖ اللَّهُ أَعلَمُ بِإيمانِهِنَّ ۖ فَإِن عَلِمتُموهُنَّ مُؤمِناتٍ فَلا تَرجِعوهُنَّ إِلَى الكُفّارِ ۖ لا هُنَّ حِلٌّ لَهُم وَلا هُم يَحِلّونَ لَهُنَّ ۖ وَآتوهُم ما أَنفَقوا ۚ وَلا جُناحَ عَلَيكُم أَن تَنكِحوهُنَّ إِذا آتَيتُموهُنَّ أُجورَهُنَّ ۚ وَلا تُمسِكوا بِعِصَمِ الكَوافِرِ وَاسأَلوا ما أَنفَقتُم وَليَسأَلوا ما أَنفَقوا ۚ ذٰلِكُم حُكمُ اللَّهِ ۖ يَحكُمُ بَينَكُم ۚ وَاللَّهُ عَليمٌ حَكيمٌ",
+        en: "O believers! When the believing women come to you as emigrants, test their intentions—their faith is best known to Allah—and if you find them to be believers, then do not send them back to the disbelievers. These ˹women˺ are not lawful ˹wives˺ for the disbelievers, nor are the disbelievers lawful ˹husbands˺ for them. ˹But˺ repay the disbelievers whatever ˹dowries˺ they had paid. And there is no blame on you if you marry these ˹women˺ as long as you pay them their dowries. And do not hold on to marriage with polytheistic women. ˹But˺ demand ˹repayment of˺ whatever ˹dowries˺ you had paid, and let the disbelievers do the same. That is the judgment of Allah—He judges between you. And Allah is All-Knowing, All-Wise.",
+        ur: ""
+      },
+      {
+        arabic: "وَإِن فاتَكُم شَيءٌ مِن أَزواجِكُم إِلَى الكُفّارِ فَعاقَبتُم فَآتُوا الَّذينَ ذَهَبَت أَزواجُهُم مِثلَ ما أَنفَقوا ۚ وَاتَّقُوا اللَّهَ الَّذي أَنتُم بِهِ مُؤمِنونَ",
+        en: "And if any of your wives desert you to the disbelievers, and later you take spoils from them, then pay those whose wives have gone, the equivalent of whatever ˹dowry˺ they had paid. And be mindful of Allah, in Whom you believe.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا النَّبِيُّ إِذا جاءَكَ المُؤمِناتُ يُبايِعنَكَ عَلىٰ أَن لا يُشرِكنَ بِاللَّهِ شَيئًا وَلا يَسرِقنَ وَلا يَزنينَ وَلا يَقتُلنَ أَولادَهُنَّ وَلا يَأتينَ بِبُهتانٍ يَفتَرينَهُ بَينَ أَيديهِنَّ وَأَرجُلِهِنَّ وَلا يَعصينَكَ في مَعروفٍ ۙ فَبايِعهُنَّ وَاستَغفِر لَهُنَّ اللَّهَ ۖ إِنَّ اللَّهَ غَفورٌ رَحيمٌ",
+        en: "O Prophet! When the believing women come to you, pledging to you that they will neither associate anything with Allah ˹in worship˺, nor steal, nor fornicate, nor kill their children, nor falsely attribute ˹illegitimate˺ children to their husbands, nor disobey you in what is right, then accept their pledge, and ask Allah to forgive them. Surely Allah is All-Forgiving, Most Merciful.",
+        ur: ""
+      },
+      {
+        arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تَتَوَلَّوا قَومًا غَضِبَ اللَّهُ عَلَيهِم قَد يَئِسوا مِنَ الآخِرَةِ كَما يَئِسَ الكُفّارُ مِن أَصحابِ القُبورِ",
+        en: "O believers! Do not ally yourselves with a people Allah is displeased with. They already have no hope for the Hereafter, just like the disbelievers lying in ˹their˺ graves.",
+        ur: ""
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+        // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const audio = document.getElementById('surahAudio');
+      audio.src = `/assets/audio/${reciter}/001.mp3`;
+      audio.load();
+      audio.play();
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "/assets/icons/sun.png"
+        : "/assets/icons/moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+    };
+  </script>
+</body>
+</html>

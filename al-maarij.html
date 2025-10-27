@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Al-Ma'arij</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Al-Ma'arij (سورة المعارج)</h1>
+      <p class="meaning">Meaning: The Ascending Stairways</p>
+      <p class="meta">Mecca - 44 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br/><br>
+        <audio id="surahAudio" controls>
+          <source src="/assets/audio/Saad Al Ghamdi/070.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-haqqah.html">← Surah Al-Haqqah</a>
+        <a href="nuh.html">Next: Surah Nuh →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <div class="navigation">
+      <a href="al-haqqah.html">← Surah Al-Haqqah</a>
+      <a href="nuh.html">Next: Surah Nuh →</a>
+    </div>
+  </div>
+
+  <script>
+    const ayahs = [
+      {
+        arabic: "سَأَلَ سائِلٌ بِعَذابٍ واقِعٍ",
+        en: "A challenger has demanded a punishment bound to come",
+        ur: ""
+      },
+      {
+        arabic: "لِلكافِرينَ لَيسَ لَهُ دافِعٌ",
+        en: "for the disbelievers—to be averted by none—",
+        ur: ""
+      },
+      {
+        arabic: "مِنَ اللَّهِ ذِي المَعارِجِ",
+        en: "from Allah, Lord of pathways of ˹heavenly˺ ascent,",
+        ur: ""
+      },
+      {
+        arabic: "تَعرُجُ المَلائِكَةُ وَالرّوحُ إِلَيهِ في يَومٍ كانَ مِقدارُهُ خَمسينَ أَلفَ سَنَةٍ",
+        en: "˹through which˺ the angels and the ˹holy˺ spirit will ascend to Him on a Day fifty thousand years in length.",
+        ur: ""
+      },
+      {
+        arabic: "فَاصبِر صَبرًا جَميلًا",
+        en: "So endure ˹this denial, O  Prophet,˺ with beautiful patience.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّهُم يَرَونَهُ بَعيدًا",
+        en: "They truly see this ˹Day˺ as impossible,",
+        ur: ""
+      },
+      {
+        arabic: "وَنَراهُ قَريبًا",
+        en: "but We see it as inevitable.",
+        ur: ""
+      },  
+      {
+        arabic: "يَومَ تَكونُ السَّماءُ كَالمُهلِ",
+        en: "On that Day the sky will be like molten brass",
+        ur: ""
+      },
+      {
+        arabic: "وَتَكونُ الجِبالُ كَالعِهنِ",
+        en: "and the mountains like ˹tufts of˺ wool.",
+        ur: ""
+      },
+      {
+        arabic: "وَلا يَسأَلُ حَميمٌ حَميمًا",
+        en: "And no close friend will ask ˹about˺ their friends,",
+        ur: ""
+      },
+      {
+        arabic: "يُبَصَّرونَهُم ۚ يَوَدُّ المُجرِمُ لَو يَفتَدي مِن عَذابِ يَومِئِذٍ بِبَنيهِ",
+        en: "˹although˺ they will be made to see each other. The wicked will wish to ransom themselves from the punishment of that Day by their children,",
+        ur: ""
+      },
+      {
+        arabic: "وَصاحِبَتِهِ وَأَخيهِ",
+        en: "their spouses, their siblings,",
+        ur: ""
+      },
+      {
+        arabic: "وَفَصيلَتِهِ الَّتي تُؤويهِ",
+        en: "their clan that sheltered them,",
+        ur: ""
+      },
+      {
+        arabic: "وَمَن فِي الأَرضِ جَميعًا ثُمَّ يُنجيهِ",
+        en: "and everyone on earth altogether, just to save themselves.",
+        ur: ""
+      },
+      {
+        arabic: "كَلّا ۖ إِنَّها لَظىٰ",
+        en: "But no! There will certainly be a raging Flame",
+        ur: ""
+      },
+      {
+        arabic: "نَزّاعَةً لِلشَّوىٰ",
+        en: "ripping off scalps.",
+        ur: ""
+      },
+      {
+        arabic: "تَدعو مَن أَدبَرَ وَتَوَلّىٰ",
+        en: "It will summon whoever turned their backs ˹on Allah˺ and turned away ˹from the truth˺,",
+        ur: ""
+      },
+      {
+        arabic: "وَجَمَعَ فَأَوعىٰ",
+        en: "and gathered and hoarded ˹wealth˺.",
+        ur: ""
+      },
+      {
+        arabic: "۞ إِنَّ الإِنسانَ خُلِقَ هَلوعًا",
+        en: "Indeed, humankind was created impatient:",
+        ur: ""
+      },
+      {
+        arabic: "إِذا مَسَّهُ الشَّرُّ جَزوعًا",
+        en: "distressed when touched with evil,",
+        ur: ""
+      },
+      {
+        arabic: "وَإِذا مَسَّهُ الخَيرُ مَنوعًا",
+        en: "and withholding when touched with good—",
+        ur: ""
+      },
+      {
+        arabic: "إِلَّا المُصَلّينَ",
+        en: "except those who pray,",
+        ur: ""
+      },
+      {
+        arabic: "الَّذينَ هُم عَلىٰ صَلاتِهِم دائِمونَ",
+        en: "consistently performing their prayers;",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ في أَموالِهِم حَقٌّ مَعلومٌ",
+        en: "and who give the rightful share of their wealth",
+        ur: ""
+      },
+      {
+        arabic: "لِلسّائِلِ وَالمَحرومِ",
+        en: "to the beggar and the poor;",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ يُصَدِّقونَ بِيَومِ الدّينِ",
+        en: "and who ˹firmly˺ believe in the Day of Judgment;",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ هُم مِن عَذابِ رَبِّهِم مُشفِقونَ",
+        en: "and those who fear the punishment of their Lord—",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ عَذابَ رَبِّهِم غَيرُ مَأمونٍ ۜ",
+        en: "˹knowing that˺ none should feel secure from their Lord’s punishment—",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ هُم لِفُروجِهِم حافِظونَ",
+        en: "and those who guard their chastity",
+        ur: ""
+      },
+      {
+        arabic: "إِلّا عَلىٰ أَزواجِهِم أَو ما مَلَكَت أَيمانُهُم فَإِنَّهُم غَيرُ مَلومينَ",
+        en: "except with their wives or those ˹bondwomen˺ in their possession, for then they are free from blame,",
+        ur: ""
+      },
+      {
+        arabic: "فَمَنِ ابتَغىٰ وَراءَ ذٰلِكَ فَأُولٰئِكَ هُمُ العادونَ",
+        en: "but whoever seeks beyond that are the transgressors.",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ هُم لِأَماناتِهِم وَعَهدِهِم راعونَ",
+        en: "˹The faithful are˺ also those who are true to their trusts and covenants;",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ هُم بِشَهاداتِهِم قائِمونَ",
+        en: "and who are honest in their testimony;",
+        ur: ""
+      },
+      {
+        arabic: "وَالَّذينَ هُم عَلىٰ صَلاتِهِم يُحافِظونَ",
+        en: "and who are ˹properly˺ observant of their prayers.",
+        ur: ""
+      },
+      {
+        arabic: "أُولٰئِكَ في جَنّاتٍ مُكرَمونَ",
+        en: "These will be in Gardens, held in honour.",
+        ur: ""
+      },
+      {
+        arabic: "فَمالِ الَّذينَ كَفَروا قِبَلَكَ مُهطِعينَ",
+        en: "So what is the matter with the disbelievers that they rush ˹head-long˺ towards you ˹O Prophet˺,",
+        ur: ""
+      },
+      {
+        arabic: "عَنِ اليَمينِ وَعَنِ الشِّمالِ عِزينَ",
+        en: "from the right and the left, in groups ˹to mock you˺?",
+        ur: ""
+      },
+      {
+        arabic: "أَيَطمَعُ كُلُّ امرِئٍ مِنهُم أَن يُدخَلَ جَنَّةَ نَعيمٍ",
+        en: "Does every one of them expect to be admitted into a Garden of Bliss?",
+        ur: ""
+      },
+      {
+        arabic: "كَلّا ۖ إِنّا خَلَقناهُم مِمّا يَعلَمونَ",
+        en: "But no! Indeed, they ˹already˺ know what We created them from.",
+        ur: ""
+      },
+      {
+        arabic: "فَلا أُقسِمُ بِرَبِّ المَشارِقِ وَالمَغارِبِ إِنّا لَقادِرونَ",
+        en: "So, I do swear by the Lord of ˹all˺ the points of sunrise and sunset that We are truly capable",
+        ur: ""
+      },
+      {
+        arabic: "عَلىٰ أَن نُبَدِّلَ خَيرًا مِنهُم وَما نَحنُ بِمَسبوقينَ",
+        en: "of replacing them with ˹others˺ better than them, and We cannot be prevented ˹from doing so˺.",
+        ur: ""
+      },
+      {
+        arabic: "فَذَرهُم يَخوضوا وَيَلعَبوا حَتّىٰ يُلاقوا يَومَهُمُ الَّذي يوعَدونَ",
+        en: "So let them indulge ˹in falsehood˺ and amuse ˹themselves˺ until they face their Day, which they have been threatened with—",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ يَخرُجونَ مِنَ الأَجداثِ سِراعًا كَأَنَّهُم إِلىٰ نُصُبٍ يوفِضونَ",
+        en: "the Day they will come forth from the graves swiftly, as if racing to an idol ˹for a blessing˺,",
+        ur: ""
+      },
+      {
+        arabic: "خاشِعَةً أَبصارُهُم تَرهَقُهُم ذِلَّةٌ ۚ ذٰلِكَ اليَومُ الَّذي كانوا يوعَدونَ",
+        en: "with eyes downcast, utterly covered with disgrace. That is the Day they have ˹always˺ been warned of.",
+        ur: ""
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+        // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const audio = document.getElementById('surahAudio');
+      audio.src = `/assets/audio/${reciter}/001.mp3`;
+      audio.load();
+      audio.play();
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "/assets/icons/sun.png"
+        : "/assets/icons/moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuslimBro1400 - Islamic Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar {
+      background-color: #2c2c2c;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a {
+      color: #e0e0e0;
+    }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .banner {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .main-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .welcome-box {
+      background-color: #dcfbff;
+      padding: 1.5rem;
+      border-left: 4px solid #30d7f4;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+      text-align: left;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode .welcome-box {
+      background-color: #3a3a3a;
+      border-left-color: #0c8;
+    }
+
+    .welcome-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .welcome-box p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .welcome-box p {
+      color: #ccc;
+    }
+
+    .calendar-month {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease, color 0.5s ease;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .dark-mode .calendar-month {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .calendar-month h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .calendar-month p.approx {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .calendar-month p.approx {
+      color: #ccc;
+    }
+
+    .calendar-month p.current-date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .month-grid.headers {
+      display: grid;
+      grid-template-columns: repeat(7, 50px);
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .month-grid.days {
+      display: grid;
+      grid-template-columns: repeat(7, 50px);
+      gap: 2px;
+    }
+
+    .day-header {
+      width: 50px;
+      height: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background-color: #f7f7f7;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .day-header {
+      background-color: #333;
+      border-color: #444;
+    }
+
+    .day {
+      width: 50px;
+      height: 50px;
+      font-size: 0.9rem;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      position: relative;
+    }
+
+    .dark-mode .day {
+      background-color: #2c2c2c;
+      border-color: #444;
+    }
+
+    .day.empty {
+      background-color: #f0f0f0;
+      cursor: default;
+    }
+
+    .dark-mode .day.empty {
+      background-color: #333;
+    }
+
+    .day.event, .day.current {
+      background-color: #e6f5f0;
+      border-left: 3px solid #007b5e;
+      font-weight: 600;
+    }
+
+    .dark-mode .day.event, .dark-mode .day.current {
+      background-color: #244c3a;
+      border-left-color: #0c8;
+    }
+
+    .day.expanded {
+      width: 60px;
+      height: 60px;
+      z-index: 10;
+    }
+
+    .day.expanded .event-text {
+      display: block;
+      font-size: 0.7rem;
+      color: #333;
+      margin-top: 2px;
+    }
+
+    .dark-mode .day.expanded .event-text {
+      color: #e0e0e0;
+    }
+
+    .event-text {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .main-title {
+        font-size: 1.5rem;
+      }
+
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .welcome-box h2 {
+        font-size: 1.3rem;
+      }
+
+      .welcome-box p {
+        font-size: 0.95rem;
+      }
+
+      .calendar-month {
+        padding: 1rem;
+      }
+
+      .calendar-month h3 {
+        font-size: 1.2rem;
+      }
+
+      .calendar-month p.approx, .calendar-month p.current-date {
+        font-size: 0.95rem;
+      }
+
+      .month-grid.headers, .month-grid.days {
+        grid-template-columns: repeat(7, 40px);
+      }
+
+      .day, .day-header {
+        font-size: 0.8rem;
+        width: 40px;
+        height: 40px;
+      }
+
+      .day.expanded {
+        width: 50px;
+        height: 50px;
+      }
+
+      .day.expanded .event-text {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <a href="/islamic-calendar.html">Islamic Calendar</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <header class="banner">
+    <img src="/assets/banner.png" alt="Banner" class="banner-img">
+  </header>
+
+  <main class="container">
+    <h1 class="main-title">Islamic Calendar</h1>
+    <section class="welcome-box">
+      <h2>Today’s Hijri Date</h2>
+      <p>The Islamic Calendar, or Hijri Calendar, began in 1 AH (622 CE) with the Hijra, the migration of Prophet Muhammad (<span class="arabic">ﷺ</span>) from Mecca to Medina. It is a lunar calendar, and dates may vary due to moon sightings. Below is the current Hijri month and date. Always verify exact dates with local authorities.</p>
+    </section>
+
+    <section class="calendar-year">
+      <div id="calendar-month"></div>
+    </section>
+  </main>
+
+  <script>
+    // Hijri month data
+    const hijriMonths = [
+      { name: 'Muharram', days: 30 },
+      { name: 'Safar', days: 29 },
+      { name: 'Rabi’ al-Awwal', days: 30 },
+      { name: 'Rabi’ al-Thani', days: 29 },
+      { name: 'Jumada al-Ula', days: 30 },
+      { name: 'Jumada al-Thani', days: 29 },
+      { name: 'Rajab', days: 30 },
+      { name: 'Sha’ban', days: 29 },
+      { name: 'Ramadan', days: 30 },
+      { name: 'Shawwal', days: 29 },
+      { name: 'Dhul-Qa’da', days: 30 },
+      { name: 'Dhul-Hijjah', days: 29 }
+    ];
+
+    // Key Islamic events
+    const islamicEvents = [
+      { month: 'Muharram', day: 1, name: 'New Hijri Year' },
+      { month: 'Muharram', day: 10, name: 'Ashura' },
+      { month: 'Rabi’ al-Awwal', day: 12, name: 'Prophet’s Birthday' },
+      { month: 'Ramadan', day: 27, name: 'Laylat al-Qadr' },
+      { month: 'Shawwal', day: 1, name: 'Eid al-Fitr' },
+      { month: 'Dhul-Hijjah', day: 8, name: 'Hajj Begins' },
+      { month: 'Dhul-Hijjah', day: 10, name: 'Eid al-Adha' }
+    ];
+
+    // Approximate Gregorian month names for display
+    const gregorianApprox = [
+      'July', 'August', 'September', 'October', 'November', 'December',
+      'January', 'February', 'March–April', 'April', 'May', 'June'
+    ];
+
+    // Day abbreviations
+    const dayNames = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+    // Calculate approximate Hijri date from Gregorian date
+    function getHijriDate(gregorianDate) {
+      const startDate = new Date('622-07-16'); // Approximate start of 1 AH
+      const msPerHijriYear = 354.367 * 24 * 60 * 60 * 1000;
+      const msDiff = gregorianDate.getTime() - startDate.getTime();
+      const hijriYear = Math.floor(msDiff / msPerHijriYear) + 1;
+      const daysSinceStart = Math.floor(msDiff / (24 * 60 * 60 * 1000)) % 354.367;
+
+      let totalDays = 0;
+      let currentMonthIndex = 0;
+      for (let i = 0; i < hijriMonths.length; i++) {
+        if (totalDays + hijriMonths[i].days > daysSinceStart) {
+          currentMonthIndex = i;
+          break;
+        }
+        totalDays += hijriMonths[i].days;
+      }
+      const currentDay = Math.floor(daysSinceStart - totalDays) + 1;
+
+      return {
+        year: hijriYear,
+        month: hijriMonths[currentMonthIndex].name,
+        monthIndex: currentMonthIndex,
+        day: currentDay,
+        monthDays: hijriMonths[currentMonthIndex].days
+      };
+    }
+
+    function renderCalendar() {
+      const today = new Date('2025-07-13'); // Fixed date for July 13, 2025
+      const hijriDate = getHijriDate(today);
+      const calendarMonth = document.getElementById('calendar-month');
+      calendarMonth.innerHTML = '';
+
+      const monthDiv = document.createElement('div');
+      monthDiv.className = 'calendar-month';
+
+      const monthTitle = document.createElement('h3');
+      monthTitle.textContent = `${hijriDate.month} ${hijriDate.year} AH`;
+      monthDiv.appendChild(monthTitle);
+
+      const approxP = document.createElement('p');
+      approxP.className = 'approx';
+      approxP.textContent = `Approx. ${gregorianApprox[hijriDate.monthIndex]} 2025`;
+      monthDiv.appendChild(approxP);
+
+      const currentDateP = document.createElement('p');
+      currentDateP.className = 'current-date';
+      currentDateP.textContent = `Today: ${hijriDate.day} ${hijriDate.month} ${hijriDate.year} AH`;
+      monthDiv.appendChild(currentDateP);
+
+      const headerRow = document.createElement('div');
+      headerRow.className = 'month-grid headers';
+      // Add day headers
+      dayNames.forEach(day => {
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'day-header';
+        dayHeader.textContent = day;
+        headerRow.appendChild(dayHeader);
+      });
+      monthDiv.appendChild(headerRow);
+
+      const monthGrid = document.createElement('div');
+      monthGrid.className = 'month-grid days';
+
+      // Generate days
+      for (let day = 1; day <= 35; day++) { // Max 5 rows for consistency
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'day';
+        if (day > hijriDate.monthDays) {
+          dayDiv.className += ' empty';
+        } else {
+          const dayNumber = document.createElement('span');
+          dayNumber.textContent = day;
+          dayDiv.appendChild(dayNumber);
+          // Highlight current day
+          if (day === hijriDate.day) {
+            dayDiv.className += ' current';
+            const eventText = document.createElement('span');
+            eventText.className = 'event-text';
+            eventText.textContent = 'Today';
+            dayDiv.appendChild(eventText);
+            dayDiv.onclick = (e) => toggleExpanded(e, dayDiv);
+          }
+          // Check for events
+          const event = islamicEvents.find(e => e.month === hijriDate.month && e.day === day);
+          if (event && day !== hijriDate.day) {
+            dayDiv.className += ' event';
+            const eventText = document.createElement('span');
+            eventText.className = 'event-text';
+            eventText.textContent = event.name;
+            dayDiv.appendChild(eventText);
+            dayDiv.onclick = (e) => toggleExpanded(e, dayDiv);
+          }
+        }
+        monthGrid.appendChild(dayDiv);
+      }
+
+      monthDiv.appendChild(monthGrid);
+      calendarMonth.appendChild(monthDiv);
+    }
+
+    function toggleExpanded(event, dayDiv) {
+      event.stopPropagation(); // Prevent event from bubbling to document
+      // Collapse all expanded cards
+      document.querySelectorAll('.day.expanded').forEach(expandedDay => {
+        expandedDay.classList.remove('expanded');
+      });
+      // Expand the clicked day if it has an event or is current
+      if (dayDiv.classList.contains('event') || dayDiv.classList.contains('current')) {
+        dayDiv.classList.add('expanded');
+      }
+    }
+
+    // Collapse all expanded cards when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.day')) {
+        document.querySelectorAll('.day.expanded').forEach(expandedDay => {
+          expandedDay.classList.remove('expanded');
+        });
+      }
+    });
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+
+      if (document.body.classList.contains('dark-mode')) {
+        icon.src = "/assets/icons/sun.png";
+        icon.alt = "Switch to light mode";
+      } else {
+        icon.src = "/assets/icons/moon.png";
+        icon.alt = "Switch to dark mode";
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderCalendar();
+    };
+  </script>
+</body>
+</html>

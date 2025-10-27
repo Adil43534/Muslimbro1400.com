@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Ghafir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="/assets/icons/menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="/home.html">Home</a>
+      <a href="/quran.html">Quran</a>
+      <a href="/hadith.html">Hadith</a>
+      <a href="/islamic-books.html">Islamic Books</a>
+      <a href="/quran-recitations.html">Quran Recitations</a>
+      <a href="/about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Ghafir (سورة غافر)</h1>
+      <p class="meaning">Meaning: The Forgiver</p>
+      <p class="meta">Mecca - 85 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br/><br>
+        <audio id="surahAudio" controls>
+          <source src="/assets/audio/Saad Al Ghamdi/040.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <div class="navigation">
+        <a href="az-zumar.html">← Surah Az-Zumar</a>
+        <a href="fussilat.html">Next: Surah Fussilat →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <div class="navigation">
+      <a href="az-zumar.html">← Surah Az-Zumar</a>
+      <a href="fussilat.html">Next: Surah Fussilat →</a>
+    </div>
+  </div>
+
+  <script>
+    const ayahs = [
+      {
+        arabic: "حم",
+        en: "Ḥâ-Mĩm.",
+        ur: ""
+      },
+      {
+        arabic: "تَنزيلُ الكِتابِ مِنَ اللَّهِ العَزيزِ العَليمِ",
+        en: "The revelation of this Book is from Allah—the Almighty, All-Knowing,",
+        ur: ""
+      },
+      {
+        arabic: "غافِرِ الذَّنبِ وَقابِلِ التَّوبِ شَديدِ العِقابِ ذِي الطَّولِ ۖ لا إِلٰهَ إِلّا هُوَ ۖ إِلَيهِ المَصيرُ",
+        en: "the Forgiver of sin and Accepter of repentance, the Severe in punishment, and Infinite in bounty. There is no god ˹worthy of worship˺ except Him. To Him ˹alone˺  is the final return.",
+        ur: ""
+      },
+      {
+        arabic: "ما يُجادِلُ في آياتِ اللَّهِ إِلَّا الَّذينَ كَفَروا فَلا يَغرُركَ تَقَلُّبُهُم فِي البِلادِ",
+        en: "None disputes the signs of Allah except the disbelievers, so do not be deceived by their prosperity throughout the land.",
+        ur: ""
+      },
+      {
+        arabic: "كَذَّبَت قَبلَهُم قَومُ نوحٍ وَالأَحزابُ مِن بَعدِهِم ۖ وَهَمَّت كُلُّ أُمَّةٍ بِرَسولِهِم لِيَأخُذوهُ ۖ وَجادَلوا بِالباطِلِ لِيُدحِضوا بِهِ الحَقَّ فَأَخَذتُهُم ۖ فَكَيفَ كانَ عِقابِ",
+        en: "Before them, the people of Noah denied ˹the truth˺, as did ˹other˺ enemy forces afterwards. Every community plotted against its prophet to seize him, and argued in falsehood, ˹hoping˺ to discredit the truth with it. So I seized them. And how ˹horrible˺ was My punishment!",
+        ur: ""
+      },
+      {
+        arabic: "وَكَذٰلِكَ حَقَّت كَلِمَتُ رَبِّكَ عَلَى الَّذينَ كَفَروا أَنَّهُم أَصحابُ النّارِ",
+        en: "And so your Lord’s decree has been proven true against the disbelievers—that they will be the inmates of the Fire.",
+        ur: ""
+      },
+      {
+        arabic: "الَّذينَ يَحمِلونَ العَرشَ وَمَن حَولَهُ يُسَبِّحونَ بِحَمدِ رَبِّهِم وَيُؤمِنونَ بِهِ وَيَستَغفِرونَ لِلَّذينَ آمَنوا رَبَّنا وَسِعتَ كُلَّ شَيءٍ رَحمَةً وَعِلمًا فَاغفِر لِلَّذينَ تابوا وَاتَّبَعوا سَبيلَكَ وَقِهِم عَذابَ الجَحيمِ",
+        en: "Those ˹angels˺ who carry the Throne and those around it glorify the praises of their Lord, have faith in Him, and seek forgiveness for the believers, ˹praying:˺ “Our Lord! You encompass everything in ˹Your˺ mercy and knowledge. So forgive those who repent and follow Your Way, and protect them from the torment of the Hellfire.",
+        ur: ""
+      },  
+      {
+        arabic: "رَبَّنا وَأَدخِلهُم جَنّاتِ عَدنٍ الَّتي وَعَدتَهُم وَمَن صَلَحَ مِن آبائِهِم وَأَزواجِهِم وَذُرِّيّاتِهِم ۚ إِنَّكَ أَنتَ العَزيزُ الحَكيمُ",
+        en: "Our Lord! Admit them into the Gardens of Eternity which You have promised them, along with the righteous among their parents, spouses, and descendants. You ˹alone˺ are truly the Almighty, All-Wise.",
+        ur: ""
+      },
+      {
+        arabic: "وَقِهِمُ السَّيِّئَاتِ ۚ وَمَن تَقِ السَّيِّئَاتِ يَومَئِذٍ فَقَد رَحِمتَهُ ۚ وَذٰلِكَ هُوَ الفَوزُ العَظيمُ",
+        en: "And protect them from ˹the consequences of their˺ evil deeds. For whoever You protect from the evil of their deeds on that Day will have been shown Your mercy. That is ˹truly˺ the ultimate triumph.”",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ كَفَروا يُنادَونَ لَمَقتُ اللَّهِ أَكبَرُ مِن مَقتِكُم أَنفُسَكُم إِذ تُدعَونَ إِلَى الإيمانِ فَتَكفُرونَ",
+        en: "Indeed, it will be announced to the disbelievers, “Allah’s contempt for you—as you disbelieved when invited to belief—was far worse than your contempt for one another ˹Today˺.”",
+        ur: ""
+      },
+      {
+        arabic: "قالوا رَبَّنا أَمَتَّنَا اثنَتَينِ وَأَحيَيتَنَا اثنَتَينِ فَاعتَرَفنا بِذُنوبِنا فَهَل إِلىٰ خُروجٍ مِن سَبيلٍ",
+        en: "They will plead, “Our Lord! You made us lifeless twice, and gave us life twice. Now we confess our sins. So is there any way out?”",
+        ur: ""
+      },
+      {
+        arabic: "ذٰلِكُم بِأَنَّهُ إِذا دُعِيَ اللَّهُ وَحدَهُ كَفَرتُم ۖ وَإِن يُشرَك بِهِ تُؤمِنوا ۚ فَالحُكمُ لِلَّهِ العَلِيِّ الكَبيرِ",
+        en: "˹They will be told,˺ “˹No!˺ This is because when Allah alone was invoked, you ˹staunchly˺ disbelieved. But when others were associated with Him ˹in worship˺, you ˹readily˺ believed. So ˹Today˺ judgment belongs to Allah ˹alone˺—the Most High, All-Great.”",
+        ur: ""
+      },
+      {
+        arabic: "هُوَ الَّذي يُريكُم آياتِهِ وَيُنَزِّلُ لَكُم مِنَ السَّماءِ رِزقًا ۚ وَما يَتَذَكَّرُ إِلّا مَن يُنيبُ",
+        en: "He is the One Who shows you His signs and sends down ˹rain as˺ a provision for you from the sky. ˹But˺ none will be mindful except those who turn ˹to Him˺.",
+        ur: ""
+      },
+      {
+        arabic: "فَادعُوا اللَّهَ مُخلِصينَ لَهُ الدّينَ وَلَو كَرِهَ الكافِرونَ",
+        en: "So call upon Allah with sincere devotion, even to the dismay of the disbelievers.",
+        ur: ""
+      },
+      {
+        arabic: "رَفيعُ الدَّرَجاتِ ذُو العَرشِ يُلقِي الرّوحَ مِن أَمرِهِ عَلىٰ مَن يَشاءُ مِن عِبادِهِ لِيُنذِرَ يَومَ التَّلاقِ",
+        en: "˹He is˺ Highly Exalted in rank, Lord of the Throne. He sends down the revelation by His command to whoever He wills of His servants to warn ˹all˺ of the Day of Meeting—",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ هُم بارِزونَ ۖ لا يَخفىٰ عَلَى اللَّهِ مِنهُم شَيءٌ ۚ لِمَنِ المُلكُ اليَومَ ۖ لِلَّهِ الواحِدِ القَهّارِ",
+        en: "the Day all will appear ˹before Allah˺. Nothing about them will be hidden from Him. ˹He will ask,˺ “Who does all authority belong to this Day? To Allah—the One, the Supreme!",
+        ur: ""
+      },
+      {
+        arabic: "اليَومَ تُجزىٰ كُلُّ نَفسٍ بِما كَسَبَت ۚ لا ظُلمَ اليَومَ ۚ إِنَّ اللَّهَ سَريعُ الحِسابِ",
+        en: "Today every soul will be rewarded for what it has done. No injustice Today! Surely Allah is swift in reckoning.”",
+        ur: ""
+      },
+      {
+        arabic: "وَأَنذِرهُم يَومَ الآزِفَةِ إِذِ القُلوبُ لَدَى الحَناجِرِ كاظِمينَ ۚ ما لِلظّالِمينَ مِن حَميمٍ وَلا شَفيعٍ يُطاعُ",
+        en: "Warn them ˹O Prophet˺ of the approaching Day when the hearts will jump into the throats, suppressing distress. The wrongdoers will have neither a close friend nor intercessor to be heard.",
+        ur: ""
+      },
+      {
+        arabic: "يَعلَمُ خائِنَةَ الأَعيُنِ وَما تُخفِي الصُّدورُ",
+        en: "Allah ˹even˺ knows the sly glances of the eyes and whatever the hearts conceal.",
+        ur: ""
+      },
+      {
+        arabic: "وَاللَّهُ يَقضي بِالحَقِّ ۖ وَالَّذينَ يَدعونَ مِن دونِهِ لا يَقضونَ بِشَيءٍ ۗ إِنَّ اللَّهَ هُوَ السَّميعُ البَصيرُ",
+        en: "And Allah judges with the truth, while those ˹idols˺ they invoke besides Him cannot judge at all. Indeed, Allah ˹alone˺ is the All-Hearing, All-Seeing.",
+        ur: ""
+      },
+      {
+        arabic: "۞ أَوَلَم يَسيروا فِي الأَرضِ فَيَنظُروا كَيفَ كانَ عاقِبَةُ الَّذينَ كانوا مِن قَبلِهِم ۚ كانوا هُم أَشَدَّ مِنهُم قُوَّةً وَآثارًا فِي الأَرضِ فَأَخَذَهُمُ اللَّهُ بِذُنوبِهِم وَما كانَ لَهُم مِنَ اللَّهِ مِن واقٍ",
+        en: "Have they not travelled throughout the land to see what was the end of those ˹destroyed˺ before them? They were far superior in might and ˹richer in˺ monuments throughout the land. But Allah seized them for their sins, and they had no protector from Allah.",
+        ur: ""
+      },
+      {
+        arabic: "ذٰلِكَ بِأَنَّهُم كانَت تَأتيهِم رُسُلُهُم بِالبَيِّناتِ فَكَفَروا فَأَخَذَهُمُ اللَّهُ ۚ إِنَّهُ قَوِيٌّ شَديدُ العِقابِ",
+        en: "That was because their messengers used to come to them with clear proofs, but they persisted in disbelief. So Allah seized them. Surely He is All-Powerful, severe in punishment.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَقَد أَرسَلنا موسىٰ بِآياتِنا وَسُلطانٍ مُبينٍ",
+        en: "Indeed, We sent Moses with Our signs and compelling proof",
+        ur: ""
+      },
+      {
+        arabic: "إِلىٰ فِرعَونَ وَهامانَ وَقارونَ فَقالوا ساحِرٌ كَذّابٌ",
+        en: "to Pharaoh, Hamân, and Korah. But they responded: “Magician! Total liar!”",
+        ur: ""
+      },
+      {
+        arabic: "فَلَمّا جاءَهُم بِالحَقِّ مِن عِندِنا قالُوا اقتُلوا أَبناءَ الَّذينَ آمَنوا مَعَهُ وَاستَحيوا نِساءَهُم ۚ وَما كَيدُ الكافِرينَ إِلّا في ضَلالٍ",
+        en: "Then, when he came to them with the truth from Us, they said, “Kill the sons of those who believe with him and keep their women.” But the plotting of the disbelievers was only in vain.",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ فِرعَونُ ذَروني أَقتُل موسىٰ وَليَدعُ رَبَّهُ ۖ إِنّي أَخافُ أَن يُبَدِّلَ دينَكُم أَو أَن يُظهِرَ فِي الأَرضِ الفَسادَ",
+        en: "And Pharaoh said, “Let me kill Moses, and let him call upon his Lord! I truly fear that he may change your traditions or cause mischief in the land.”",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ موسىٰ إِنّي عُذتُ بِرَبّي وَرَبِّكُم مِن كُلِّ مُتَكَبِّرٍ لا يُؤمِنُ بِيَومِ الحِسابِ",
+        en: "Moses replied, “I seek refuge in my Lord and your Lord from every arrogant person who does not believe in the Day of Reckoning.”",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ رَجُلٌ مُؤمِنٌ مِن آلِ فِرعَونَ يَكتُمُ إيمانَهُ أَتَقتُلونَ رَجُلًا أَن يَقولَ رَبِّيَ اللَّهُ وَقَد جاءَكُم بِالبَيِّناتِ مِن رَبِّكُم ۖ وَإِن يَكُ كاذِبًا فَعَلَيهِ كَذِبُهُ ۖ وَإِن يَكُ صادِقًا يُصِبكُم بَعضُ الَّذي يَعِدُكُم ۖ إِنَّ اللَّهَ لا يَهدي مَن هُوَ مُسرِفٌ كَذّابٌ",
+        en: "A believing man from Pharaoh’s people, who was hiding his faith, argued, “Will you kill a man ˹only˺ for saying: ‘My Lord is Allah,’ while he has in fact come to you with clear proofs from your Lord? If he is a liar, it will be to his own loss. But if he is truthful, then you will be afflicted with some of what he is threatening you with. Surely Allah does not guide whoever is a transgressor, a total liar.",
+        ur: ""
+      },
+      {
+        arabic: "يا قَومِ لَكُمُ المُلكُ اليَومَ ظاهِرينَ فِي الأَرضِ فَمَن يَنصُرُنا مِن بَأسِ اللَّهِ إِن جاءَنا ۚ قالَ فِرعَونُ ما أُريكُم إِلّا ما أَرىٰ وَما أَهديكُم إِلّا سَبيلَ الرَّشادِ",
+        en: "O  my people! Authority belongs to you today, reigning supreme in the land. But who would help us against the torment of Allah, if it were to befall us?” Pharaoh assured ˹his people˺, “I am telling you only what I believe, and I am leading you only to the way of guidance.”",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ الَّذي آمَنَ يا قَومِ إِنّي أَخافُ عَلَيكُم مِثلَ يَومِ الأَحزابِ",
+        en: "And the man who believed cautioned, “O my people! I truly fear for you the doom of ˹earlier˺ enemy forces—",
+        ur: ""
+      },
+      {
+        arabic: "مِثلَ دَأبِ قَومِ نوحٍ وَعادٍ وَثَمودَ وَالَّذينَ مِن بَعدِهِم ۚ وَمَا اللَّهُ يُريدُ ظُلمًا لِلعِبادِ",
+        en: "like the fate of the people of Noah, ’Ȃd, Thamûd, and those after them. For Allah would never will to wrong ˹His˺ servants.",
+        ur: ""
+      },
+      {
+        arabic: "وَيا قَومِ إِنّي أَخافُ عَلَيكُم يَومَ التَّنادِ",
+        en: "O  my people! I truly fear for you the Day all will be crying out ˹to each other˺—",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ تُوَلّونَ مُدبِرينَ ما لَكُم مِنَ اللَّهِ مِن عاصِمٍ ۗ وَمَن يُضلِلِ اللَّهُ فَما لَهُ مِن هادٍ",
+        en: "the Day you will ˹try in vain to˺ turn your backs and run away, with no one to protect you from Allah. And whoever Allah leaves to stray will be left with no guide.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَقَد جاءَكُم يوسُفُ مِن قَبلُ بِالبَيِّناتِ فَما زِلتُم في شَكٍّ مِمّا جاءَكُم بِهِ ۖ حَتّىٰ إِذا هَلَكَ قُلتُم لَن يَبعَثَ اللَّهُ مِن بَعدِهِ رَسولًا ۚ كَذٰلِكَ يُضِلُّ اللَّهُ مَن هُوَ مُسرِفٌ مُرتابٌ",
+        en: "Joseph already came to you earlier with clear proofs, yet you never ceased to doubt what he came to you with. When he died you said, ‘Allah will never send a messenger after him.’ This is how Allah leaves every transgressor and doubter to stray—",
+        ur: ""
+      },
+      {
+        arabic: "الَّذينَ يُجادِلونَ في آياتِ اللَّهِ بِغَيرِ سُلطانٍ أَتاهُم ۖ كَبُرَ مَقتًا عِندَ اللَّهِ وَعِندَ الَّذينَ آمَنوا ۚ كَذٰلِكَ يَطبَعُ اللَّهُ عَلىٰ كُلِّ قَلبِ مُتَكَبِّرٍ جَبّارٍ",
+        en: "those who dispute Allah’s signs with no proof given to them. How despicable is that for Allah and the believers! This is how Allah seals the heart of every arrogant tyrant.”",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ فِرعَونُ يا هامانُ ابنِ لي صَرحًا لَعَلّي أَبلُغُ الأَسبابَ",
+        en: "Pharaoh ordered, “O Hamân! Build me a high tower so I may reach the pathways",
+        ur: ""
+      },
+      {
+        arabic: "أَسبابَ السَّماواتِ فَأَطَّلِعَ إِلىٰ إِلٰهِ موسىٰ وَإِنّي لَأَظُنُّهُ كاذِبًا ۚ وَكَذٰلِكَ زُيِّنَ لِفِرعَونَ سوءُ عَمَلِهِ وَصُدَّ عَنِ السَّبيلِ ۚ وَما كَيدُ فِرعَونَ إِلّا في تَبابٍ",
+        en: "leading up to the heavens and look for the God of Moses, although I am sure he is a liar.” And so Pharaoh’s evil deeds were made so appealing to him that he was hindered from the ˹Right˺ Way. But the plotting of Pharaoh was only in vain.",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ الَّذي آمَنَ يا قَومِ اتَّبِعونِ أَهدِكُم سَبيلَ الرَّشادِ",
+        en: "And the man who believed urged, “O my people! Follow me, ˹and˺ I will lead you to the Way of Guidance.",
+        ur: ""
+      },
+      {
+        arabic: "يا قَومِ إِنَّما هٰذِهِ الحَياةُ الدُّنيا مَتاعٌ وَإِنَّ الآخِرَةَ هِيَ دارُ القَرارِ",
+        en: "O  my people! This worldly life is only ˹a fleeting˺ enjoyment, whereas the Hereafter is truly the home of settlement.",
+        ur: ""
+      },
+      {
+        arabic: "مَن عَمِلَ سَيِّئَةً فَلا يُجزىٰ إِلّا مِثلَها ۖ وَمَن عَمِلَ صالِحًا مِن ذَكَرٍ أَو أُنثىٰ وَهُوَ مُؤمِنٌ فَأُولٰئِكَ يَدخُلونَ الجَنَّةَ يُرزَقونَ فيها بِغَيرِ حِسابٍ",
+        en: "Whoever does an evil deed will only be paid back with its equivalent. And whoever does good, whether male or female, and is a believer, they will enter Paradise, where they will be provided for without limit.",
+        ur: ""
+      },
+      {
+        arabic: "۞ وَيا قَومِ ما لي أَدعوكُم إِلَى النَّجاةِ وَتَدعونَني إِلَى النّارِ",
+        en: "O  my people! How is it that I invite you to salvation, while you invite me to the Fire!",
+        ur: ""
+      },
+      {
+        arabic: "تَدعونَني لِأَكفُرَ بِاللَّهِ وَأُشرِكَ بِهِ ما لَيسَ لي بِهِ عِلمٌ وَأَنا أَدعوكُم إِلَى العَزيزِ الغَفّارِ",
+        en: "You invite me to disbelieve in Allah and associate with Him what I have no knowledge of, while I invite you to the Almighty, Most Forgiving.",
+        ur: ""
+      },
+      {
+        arabic: "لا جَرَمَ أَنَّما تَدعونَني إِلَيهِ لَيسَ لَهُ دَعوَةٌ فِي الدُّنيا وَلا فِي الآخِرَةِ وَأَنَّ مَرَدَّنا إِلَى اللَّهِ وَأَنَّ المُسرِفينَ هُم أَصحابُ النّارِ",
+        en: "There is no doubt that whatever ˹idols˺ you invite me to ˹worship˺ are not worthy to be invoked either in this world or the Hereafter. ˹Undoubtedly,˺ our return is to Allah, and the transgressors will be the inmates of the Fire.",
+        ur: ""
+      },
+      {
+        arabic: "فَسَتَذكُرونَ ما أَقولُ لَكُم ۚ وَأُفَوِّضُ أَمري إِلَى اللَّهِ ۚ إِنَّ اللَّهَ بَصيرٌ بِالعِبادِ",
+        en: "You will remember what I say to you, and I entrust my affairs to Allah. Surely Allah is All-Seeing of all ˹His˺ servants.”",
+        ur: ""
+      },
+      {
+        arabic: "فَوَقاهُ اللَّهُ سَيِّئَاتِ ما مَكَروا ۖ وَحاقَ بِآلِ فِرعَونَ سوءُ العَذابِ",
+        en: "So Allah protected him from the evil of their schemes. And Pharaoh’s people were overwhelmed by an evil punishment:",
+        ur: ""
+      },
+      {
+        arabic: "النّارُ يُعرَضونَ عَلَيها غُدُوًّا وَعَشِيًّا ۖ وَيَومَ تَقومُ السّاعَةُ أَدخِلوا آلَ فِرعَونَ أَشَدَّ العَذابِ",
+        en: "they are exposed to the Fire ˹in their graves˺ morning and evening. And on the Day the Hour will be established ˹it will be said˺, “Admit Pharaoh’s people into the harshest punishment ˹of Hell˺.”",
+        ur: ""
+      },
+      {
+        arabic: "وَإِذ يَتَحاجّونَ فِي النّارِ فَيَقولُ الضُّعَفاءُ لِلَّذينَ استَكبَروا إِنّا كُنّا لَكُم تَبَعًا فَهَل أَنتُم مُغنونَ عَنّا نَصيبًا مِنَ النّارِ",
+        en: "˹Consider the Day˺ when they will dispute in the Fire, and the lowly ˹followers˺ will appeal to the arrogant ˹leaders˺, “We were your ˹dedicated˺ followers, will you then shield us from a portion of the Fire?”",
+        ur: ""
+      },
+      {
+        arabic: "قالَ الَّذينَ استَكبَروا إِنّا كُلٌّ فيها إِنَّ اللَّهَ قَد حَكَمَ بَينَ العِبادِ",
+        en: "The arrogant will say, “We are all in it! ˹For˺ Allah has already passed judgment over ˹His˺ servants.”",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ الَّذينَ فِي النّارِ لِخَزَنَةِ جَهَنَّمَ ادعوا رَبَّكُم يُخَفِّف عَنّا يَومًا مِنَ العَذابِ",
+        en: "And those in the Fire will cry out to the keepers of Hell, “Pray to your Lord to lighten the torment for us ˹even˺ for one day!”",
+        ur: ""
+      },
+      {
+        arabic: "قالوا أَوَلَم تَكُ تَأتيكُم رُسُلُكُم بِالبَيِّناتِ ۖ قالوا بَلىٰ ۚ قالوا فَادعوا ۗ وَما دُعاءُ الكافِرينَ إِلّا في ضَلالٍ",
+        en: "The keepers will reply, “Did your messengers not ˹constantly˺ come to you with clear proofs?” They will say, “Yes ˹they did˺.” The keepers will say, “Then pray! Though the prayer of the disbelievers is only in vain.”",
+        ur: ""
+      },
+      {
+        arabic: "إِنّا لَنَنصُرُ رُسُلَنا وَالَّذينَ آمَنوا فِي الحَياةِ الدُّنيا وَيَومَ يَقومُ الأَشهادُ",
+        en: "We certainly help Our messengers and the believers, ˹both˺ in this worldly life and on the Day the witnesses will stand forth ˹for testimony˺—",
+        ur: ""
+      },
+      {
+        arabic: "يَومَ لا يَنفَعُ الظّالِمينَ مَعذِرَتُهُم ۖ وَلَهُمُ اللَّعنَةُ وَلَهُم سوءُ الدّارِ",
+        en: "the Day the wrongdoers’ excuses will be of no benefit to them. They will be condemned, and will have the worst outcome.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَقَد آتَينا موسَى الهُدىٰ وَأَورَثنا بَني إِسرائيلَ الكِتابَ",
+        en: "And indeed, We gave Moses ˹true˺ guidance, and made the Children of Israel inherit the Scripture—",
+        ur: ""
+      },
+      {
+        arabic: "هُدًى وَذِكرىٰ لِأُولِي الأَلبابِ",
+        en: "a guide and a reminder to people of reason.",
+        ur: ""
+      },
+      {
+        arabic: "فَاصبِر إِنَّ وَعدَ اللَّهِ حَقٌّ وَاستَغفِر لِذَنبِكَ وَسَبِّح بِحَمدِ رَبِّكَ بِالعَشِيِّ وَالإِبكارِ",
+        en: "So be patient ˹O Prophet˺, ˹for˺ Allah’s promise is certainly true. Seek forgiveness for your shortcomings. And glorify the praises of your Lord morning and evening.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ الَّذينَ يُجادِلونَ في آياتِ اللَّهِ بِغَيرِ سُلطانٍ أَتاهُم ۙ إِن في صُدورِهِم إِلّا كِبرٌ ما هُم بِبالِغيهِ ۚ فَاستَعِذ بِاللَّهِ ۖ إِنَّهُ هُوَ السَّميعُ البَصيرُ",
+        en: "Surely those who dispute Allah’s signs—with no proof given to them—have nothing in their hearts but greed for dominance, which they will never attain. So seek refuge in Allah. Indeed, He alone is the All-Hearing, All-Seeing.",
+        ur: ""
+      },
+      {
+        arabic: "لَخَلقُ السَّماواتِ وَالأَرضِ أَكبَرُ مِن خَلقِ النّاسِ وَلٰكِنَّ أَكثَرَ النّاسِ لا يَعلَمونَ",
+        en: "The creation of the heavens and the earth is certainly greater than the re-creation of humankind, but most people do not know.",
+        ur: ""
+      },
+      {
+        arabic: "وَما يَستَوِي الأَعمىٰ وَالبَصيرُ وَالَّذينَ آمَنوا وَعَمِلُوا الصّالِحاتِ وَلَا المُسيءُ ۚ قَليلًا ما تَتَذَكَّرونَ",
+        en: "Those blind ˹to the truth˺ and those who can see are not equal, nor are those who believe and do good ˹equal˺ to those who do evil. Yet you are hardly mindful.",
+        ur: ""
+      },
+      {
+        arabic: "إِنَّ السّاعَةَ لَآتِيَةٌ لا رَيبَ فيها وَلٰكِنَّ أَكثَرَ النّاسِ لا يُؤمِنونَ",
+        en: "The Hour is certainly coming, there is no doubt about it. But most people do not believe.",
+        ur: ""
+      },
+      {
+        arabic: "وَقالَ رَبُّكُمُ ادعوني أَستَجِب لَكُم ۚ إِنَّ الَّذينَ يَستَكبِرونَ عَن عِبادَتي سَيَدخُلونَ جَهَنَّمَ داخِرينَ",
+        en: "Your Lord has proclaimed, “Call upon Me, I will respond to you. Surely those who are too proud to worship Me will enter Hell, fully humbled.”",
+        ur: ""
+      },
+      {
+        arabic: "اللَّهُ الَّذي جَعَلَ لَكُمُ اللَّيلَ لِتَسكُنوا فيهِ وَالنَّهارَ مُبصِرًا ۚ إِنَّ اللَّهَ لَذو فَضلٍ عَلَى النّاسِ وَلٰكِنَّ أَكثَرَ النّاسِ لا يَشكُرونَ",
+        en: "It is Allah Who has made the night for you to rest in and the day bright. Surely Allah is ever Bountiful to humanity, but most people are ungrateful.",
+        ur: ""
+      },
+      {
+        arabic: "ذٰلِكُمُ اللَّهُ رَبُّكُم خالِقُ كُلِّ شَيءٍ لا إِلٰهَ إِلّا هُوَ ۖ فَأَنّىٰ تُؤفَكونَ",
+        en: "That is Allah, your Lord, the Creator of all things. There is no god ˹worthy of worship˺ except Him. How can you then be deluded ˹from the truth˺?",
+        ur: ""
+      },
+      {
+        arabic: "كَذٰلِكَ يُؤفَكُ الَّذينَ كانوا بِآياتِ اللَّهِ يَجحَدونَ",
+        en: "This is how those who used to reject Allah’s signs were ˹also˺ deluded.",
+        ur: ""
+      },
+      {
+        arabic: "اللَّهُ الَّذي جَعَلَ لَكُمُ الأَرضَ قَرارًا وَالسَّماءَ بِناءً وَصَوَّرَكُم فَأَحسَنَ صُوَرَكُم وَرَزَقَكُم مِنَ الطَّيِّباتِ ۚ ذٰلِكُمُ اللَّهُ رَبُّكُم ۖ فَتَبارَكَ اللَّهُ رَبُّ العالَمينَ",
+        en: "It is Allah Who made the earth a place of settlement for you and the sky a canopy. He shaped you ˹in the womb˺, perfecting your form. And He has provided you with what is good and lawful. That is Allah—your Lord. So Blessed is Allah, Lord of all worlds.",
+        ur: ""
+      },
+      {
+        arabic: "هُوَ الحَيُّ لا إِلٰهَ إِلّا هُوَ فَادعوهُ مُخلِصينَ لَهُ الدّينَ ۗ الحَمدُ لِلَّهِ رَبِّ العالَمينَ",
+        en: "He is the Ever-Living. There is no god ˹worthy of worship˺ except Him. So call upon Him with sincere devotion, ˹saying,˺ “All praise is for Allah—Lord of all worlds.”",
+        ur: ""
+      },
+      {
+        arabic: "۞ قُل إِنّي نُهيتُ أَن أَعبُدَ الَّذينَ تَدعونَ مِن دونِ اللَّهِ لَمّا جاءَنِيَ البَيِّناتُ مِن رَبّي وَأُمِرتُ أَن أُسلِمَ لِرَبِّ العالَمينَ",
+        en: "Say, ˹O Prophet,˺ “I have been forbidden to worship those ˹idols˺ you worship besides Allah, since clear proofs have come to me from my Lord. And I have been commanded to ˹fully˺ submit to the Lord of all worlds.”",
+        ur: ""
+      },
+      {
+        arabic: "هُوَ الَّذي خَلَقَكُم مِن تُرابٍ ثُمَّ مِن نُطفَةٍ ثُمَّ مِن عَلَقَةٍ ثُمَّ يُخرِجُكُم طِفلًا ثُمَّ لِتَبلُغوا أَشُدَّكُم ثُمَّ لِتَكونوا شُيوخًا ۚ وَمِنكُم مَن يُتَوَفّىٰ مِن قَبلُ ۖ وَلِتَبلُغوا أَجَلًا مُسَمًّى وَلَعَلَّكُم تَعقِلونَ",
+        en: "He is the One Who created you from dust, then from a sperm-drop, then ˹developed you into˺ a clinging clot, then He brings you forth as infants, so that you may reach your prime, and become old—though some of you ˹may˺ die sooner—reaching an appointed time, so perhaps you may understand ˹Allah’s power˺.",
+        ur: ""
+      },
+      {
+        arabic: "هُوَ الَّذي يُحيي وَيُميتُ ۖ فَإِذا قَضىٰ أَمرًا فَإِنَّما يَقولُ لَهُ كُن فَيَكونُ",
+        en: "He is the One Who gives life and causes death. When He decrees a matter, He simply tells it, “Be!” And it is!",
+        ur: ""
+      },
+      {
+        arabic: "أَلَم تَرَ إِلَى الَّذينَ يُجادِلونَ في آياتِ اللَّهِ أَنّىٰ يُصرَفونَ",
+        en: "Have you not seen how those who dispute Allah’s signs are turned away?",
+        ur: ""
+      },
+      {
+        arabic: "الَّذينَ كَذَّبوا بِالكِتابِ وَبِما أَرسَلنا بِهِ رُسُلَنا ۖ فَسَوفَ يَعلَمونَ",
+        en: "˹They are˺ the ones who reject this Book and all ˹scriptures˺ We sent Our messengers with. So they will know ˹the consequences˺",
+        ur: ""
+      },
+      {
+        arabic: "إِذِ الأَغلالُ في أَعناقِهِم وَالسَّلاسِلُ يُسحَبونَ",
+        en: "when shackles will be around their necks and chains ˹on their legs˺. They will be dragged",
+        ur: ""
+      },
+      {
+        arabic: "فِي الحَميمِ ثُمَّ فِي النّارِ يُسجَرونَ",
+        en: "through boiling water, then burned in the Fire ˹as fuel˺.",
+        ur: ""
+      },
+      {
+        arabic: "ثُمَّ قيلَ لَهُم أَينَ ما كُنتُم تُشرِكونَ",
+        en: "Then they will be asked, “Where are those ˹idols˺ you used to associate",
+        ur: ""
+      },
+      {
+        arabic: "مِن دونِ اللَّهِ ۖ قالوا ضَلّوا عَنّا بَل لَم نَكُن نَدعو مِن قَبلُ شَيئًا ۚ كَذٰلِكَ يُضِلُّ اللَّهُ الكافِرينَ",
+        en: "with Allah?” They will cry, “They have ˹all˺ failed us. In fact, we did not invoke anything ˹real˺ before.” This is how Allah leaves the disbelievers to stray.",
+        ur: ""
+      },
+      {
+        arabic: "ذٰلِكُم بِما كُنتُم تَفرَحونَ فِي الأَرضِ بِغَيرِ الحَقِّ وَبِما كُنتُم تَمرَحونَ",
+        en: "˹They will be told,˺ “This ˹punishment˺ is for being prideful on earth unjustly and for acting arrogantly.",
+        ur: ""
+      },
+      {
+        arabic: "ادخُلوا أَبوابَ جَهَنَّمَ خالِدينَ فيها ۖ فَبِئسَ مَثوَى المُتَكَبِّرينَ",
+        en: "Enter the gates of Hell, to stay there forever. What an evil home for the arrogant!”",
+        ur: ""
+      },
+      {
+        arabic: "فَاصبِر إِنَّ وَعدَ اللَّهِ حَقٌّ ۚ فَإِمّا نُرِيَنَّكَ بَعضَ الَّذي نَعِدُهُم أَو نَتَوَفَّيَنَّكَ فَإِلَينا يُرجَعونَ",
+        en: "So be patient ˹O Prophet˺. Surely Allah’s promise is true. Whether We show you some of what We threaten them with, or cause you to die ˹before that˺, to Us they will ˹all˺ be returned.",
+        ur: ""
+      },  
+      {
+        arabic: "وَلَقَد أَرسَلنا رُسُلًا مِن قَبلِكَ مِنهُم مَن قَصَصنا عَلَيكَ وَمِنهُم مَن لَم نَقصُص عَلَيكَ ۗ وَما كانَ لِرَسولٍ أَن يَأتِيَ بِآيَةٍ إِلّا بِإِذنِ اللَّهِ ۚ فَإِذا جاءَ أَمرُ اللَّهِ قُضِيَ بِالحَقِّ وَخَسِرَ هُنالِكَ المُبطِلونَ",
+        en: "We already sent messengers before you. We have told you the stories of some of them, while others We have not. It was not for any messenger to bring a sign without Allah’s permission. But when Allah’s decree comes, judgment will be passed with fairness, and the people of falsehood will then be in ˹total˺ loss.",
+        ur: ""
+      },
+      {
+        arabic: "اللَّهُ الَّذي جَعَلَ لَكُمُ الأَنعامَ لِتَركَبوا مِنها وَمِنها تَأكُلونَ",
+        en: "It is Allah Who made cattle for you so that you may ride some and eat others.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَكُم فيها مَنافِعُ وَلِتَبلُغوا عَلَيها حاجَةً في صُدورِكُم وَعَلَيها وَعَلَى الفُلكِ تُحمَلونَ",
+        en: "Also, you find in them ˹other˺ benefits. And by means of them you may reach destinations you desire. And you are carried upon ˹some of˺ them and upon ships.",
+        ur: ""
+      },
+      {
+        arabic: "وَيُريكُم آياتِهِ فَأَيَّ آياتِ اللَّهِ تُنكِرونَ",
+        en: "And He shows you His signs. Now which of Allah’s signs will you deny?",
+        ur: ""
+      },
+      {
+        arabic: "أَفَلَم يَسيروا فِي الأَرضِ فَيَنظُروا كَيفَ كانَ عاقِبَةُ الَّذينَ مِن قَبلِهِم ۚ كانوا أَكثَرَ مِنهُم وَأَشَدَّ قُوَّةً وَآثارًا فِي الأَرضِ فَما أَغنىٰ عَنهُم ما كانوا يَكسِبونَ",
+        en: "Have they not travelled throughout the land to see what was the end of those who were ˹destroyed˺ before them? They were far superior in number and might and ˹richer in˺ monuments throughout the land, but their ˹worldly˺ gains were of no benefit to them.",
+        ur: ""
+      },
+      {
+        arabic: "فَلَمّا جاءَتهُم رُسُلُهُم بِالبَيِّناتِ فَرِحوا بِما عِندَهُم مِنَ العِلمِ وَحاقَ بِهِم ما كانوا بِهِ يَستَهزِئونَ",
+        en: "When their messengers came to them with clear proofs, they were prideful in whatever ˹worldly˺ knowledge they had, and were ˹ultimately˺ overwhelmed by what they used to ridicule.",
+        ur: ""
+      },
+      {
+        arabic: "فَلَمّا رَأَوا بَأسَنا قالوا آمَنّا بِاللَّهِ وَحدَهُ وَكَفَرنا بِما كُنّا بِهِ مُشرِكينَ",
+        en: "When they saw Our punishment, they cried, “˹Now˺ we believe in Allah alone and reject what we had been associating with Him!”",
+        ur: ""
+      },
+      {
+        arabic: "فَلَم يَكُ يَنفَعُهُم إيمانُهُم لَمّا رَأَوا بَأسَنا ۖ سُنَّتَ اللَّهِ الَّتي قَد خَلَت في عِبادِهِ ۖ وَخَسِرَ هُنالِكَ الكافِرونَ",
+        en: "But their faith was of no benefit to them when they saw Our torment. This has ˹always˺ been Allah’s way ˹of dealing˺ with His ˹wicked˺ servants. Then and there the disbelievers were in ˹total˺ loss.",
+        ur: ""
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+        // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const audio = document.getElementById('surahAudio');
+      audio.src = `/assets/audio/${reciter}/001.mp3`;
+      audio.load();
+      audio.play();
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "/assets/icons/sun.png"
+        : "/assets/icons/moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+    };
+  </script>
+</body>
+</html>
