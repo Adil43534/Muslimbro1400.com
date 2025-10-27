@@ -199,51 +199,51 @@
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
+      <img src="menu.png" alt="Menu" />
     </button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/about.html">About</a>
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadith</a>
+      <a href="islamic-books.html">Islamic Books</a>
+      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
     </div>
   </nav>
 
   <!-- Banner -->
   <div class="banner">
-    <img class="banner-img" src="/assets/banner.png" alt="Hadith Banner" />
+    <img class="banner-img" src="banner.png" alt="Hadith Banner" />
   </div>
 
   <!-- Main Content -->
   <div class="container">
     <h1><hr>Books of Hadiths Collections<hr></h1>
     <div class="cards">
-      <a href="/bukhari.html" class="card">
+      <a href="bukhari.html" class="card">
         <h3>Sahih al-Bukhari</h3>
         <p>Most authentic collection of hadiths by Imam Bukhari.</p>
       </a>
-      <a href="/muslim.html" class="card">
+      <a href="muslim.html" class="card">
         <h3>Sahih Muslim</h3>
         <p>Second most authentic hadith collection by Imam Muslim.</p>
       </a>
-      <a href="/tirmidhi.html" class="card">
+      <a href="tirmidhi.html" class="card">
         <h3>Jami` at-Tirmidhi</h3>
         <p>Collection of hadiths categorized by subject.</p>
       </a>
-      <a href="/abudawood.html" class="card">
+      <a href="abudawood.html" class="card">
         <h3>Sunan Abu Dawood</h3>
         <p>Important hadiths covering Islamic laws and practices.</p>
       </a>
-      <a href="/nasai.html" class="card">
+      <a href="nasai.html" class="card">
         <h3>Sunan an-Nasa'i</h3>
         <p>Detailed narrations covering prayer, zakah, and fasting.</p>
       </a>
-      <a href="/ibnmajah.html" class="card">
+      <a href="ibnmajah.html" class="card">
         <h3>Sunan Ibn Majah</h3>
         <p>Hadith collection with unique narrations not in others.</p>
       </a>
@@ -257,8 +257,8 @@
       void icon.offsetWidth;
       icon.classList.add('rotate');
       icon.src = document.body.classList.contains('dark-mode')
-        ? "/assets/icons/sun.png"
-        : "/assets/icons/moon.png";
+        ? "sun.png"
+        : "moon.png";
       icon.alt = document.body.classList.contains('dark-mode')
         ? "Switch to light mode"
         : "Switch to dark mode";
