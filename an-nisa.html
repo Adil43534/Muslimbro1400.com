@@ -387,7 +387,7 @@
         </select>
         <br/><br>
         <audio id="surahAudio" controls>
-          <source src="004.mp3" type="audio/mp3" />
+          <source src="https://www.dropbox.com/scl/fi/tb6rdzpyh6j7op3elyur3/004.mp3?rlkey=4ht7cn2yrnoizx42jccjibm78&st=lgt9ntks&raw=1" type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>
@@ -1371,9 +1371,22 @@
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
       const audio = document.getElementById('surahAudio');
-      audio.src = `/assets/audio/${reciter}/001.mp3`;
-      audio.load();
-      audio.play();
+
+      // Define your reciter audio sources
+      const reciterLinks = {
+        saadalghamdi: "https://www.dropbox.com/scl/fi/tb6rdzpyh6j7op3elyur3/004.mp3?rlkey=4ht7cn2yrnoizx42jccjibm78&st=lgt9ntks&raw=1", 
+      };
+
+      // Get the correct URL for the selected reciter
+      const newSrc = reciterLinks[reciter];
+
+      if (newSrc) {
+        audio.src = newSrc;
+        audio.load();
+        audio.play();
+      } else {
+        alert("Audio source not available for this reciter.");
+      }
     }
 
     function switchTab(tab) {
