@@ -383,11 +383,11 @@
       <div class="audio-select">
         <label for="reciter">Reciter:</label>
         <select id="reciter" onchange="changeReciter()">
-          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+          <option value="saadalghamdi">Saad Al Ghamdi</option>
         </select>
         <br/><br>
         <audio id="surahAudio" controls>
-          <source src="001.mp3" type="audio/mp3" />
+          <source src="https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1" type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>
@@ -523,9 +523,22 @@
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
       const audio = document.getElementById('surahAudio');
-      audio.src = `/assets/audio/${reciter}/001.mp3`;
-      audio.load();
-      audio.play();
+
+      // Define your reciter audio sources
+      const reciterLinks = {
+        saadalghamdi: "https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1", 
+      };
+
+      // Get the correct URL for the selected reciter
+      const newSrc = reciterLinks[reciter];
+
+      if (newSrc) {
+        audio.src = newSrc;
+        audio.load();
+        audio.play();
+      } else {
+        alert("Audio source not available for this reciter.");
+      }
     }
 
     function switchTab(tab) {
