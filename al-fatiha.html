@@ -527,6 +527,13 @@
         <button class="tab-button" onclick="switchTab('translate')">Translation</button>
       </div>
 
+         <!-- Go to Verse -->
+      <div class="go-to-verse">
+        <label for="verse-number">Go to Verse:</label>
+        <input type="number" id="verse-number" min="1" max="7">
+        <button onclick="goToVerse()">Go</button>
+      </div>
+
       <div class="navigation">
         <a href="quran.html">← Back to Quran</a>
         <a href="al-baqarah.html">Next: Surah Al-Baqarah →</a>
@@ -544,13 +551,6 @@
 
     <!-- Translation Tab -->
     <div id="translate-tab" class="hidden"></div>
-
-          <!-- Go to Verse -->
-    <div class="go-to-verse">
-      <label for="verse-number">Go to Verse:</label>
-      <input type="number" id="verse-number" min="1" max="7">
-      <button onclick="goToVerse()">Go</button>
-    </div>
 
     <div class="navigation">
       <a href="quran.html">← Back to Quran</a>
