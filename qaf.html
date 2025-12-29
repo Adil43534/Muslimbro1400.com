@@ -294,6 +294,133 @@
 
     .hidden { display: none; }
 
+    .go-to-verse {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-verse label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-verse label {
+      color: #e0e0e0;
+    }
+
+    .go-to-verse input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-verse input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-verse input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-verse input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-verse input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-verse input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-verse button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-verse button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-verse button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-verse button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+
     @media (max-width: 600px) {
       .navbar h1 {
         font-size: 1.25rem;
@@ -383,7 +510,7 @@
       <div class="audio-select">
         <label for="reciter">Reciter:</label>
         <select id="reciter" onchange="changeReciter()">
-          <option value="Saad Al Ghamdi">Saad Al Ghamdi</option>
+          <option value="saadalghamdi">Saad Al Ghamdi</option>
         </select>
         <br/><br>
         <audio id="surahAudio" controls>
@@ -398,6 +525,13 @@
       <div class="tabs">
         <button class="tab-button active" onclick="switchTab('read')">Read</button>
         <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+               <!-- Go to Verse -->
+      <div class="go-to-verse">
+        <label for="verse-number">Go to Verse:</label>
+        <input type="number" id="verse-number" min="1" max="45">
+        <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
@@ -426,6 +560,9 @@
       <a href="adh-dhariyat.html">Next: Surah Adh-Dhariyat →</a>
     </div>
   </div>
+
+      <!-- Scroll to Top Button -->
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
   <script>
     const ayahs = [
@@ -716,9 +853,44 @@
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
       const audio = document.getElementById('surahAudio');
-      audio.src = `/assets/audio/${reciter}/001.mp3`;
-      audio.load();
-      audio.play();
+
+      // Define your reciter audio sources
+      const reciterLinks = {
+        saadalghamdi: "", 
+      };
+
+      // Get the correct URL for the selected reciter
+      const newSrc = reciterLinks[reciter];
+
+      if (newSrc) {
+        audio.src = newSrc;
+        audio.load();
+        audio.play();
+      } else {
+        alert("Audio source not available for this reciter.");
+      }
+    }
+
+    function goToVerse() {
+      const verseNumber = parseInt(document.getElementById('verse-number').value);
+      if (isNaN(verseNumber) || verseNumber < 1 || verseNumber > 45) {
+        alert('Please enter a valid verse number between 1 and 45.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = readTab.classList.contains('hidden') ? translateTab : readTab;
+      const ayahs = activeTab.querySelectorAll('.ayah');
+
+      if (ayahs[verseNumber - 1]) {
+        ayahs[verseNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the verse temporarily
+        ayahs[verseNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          ayahs[verseNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
     }
 
     function switchTab(tab) {
@@ -761,6 +933,24 @@
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
     }
+
+            // Scroll to Top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide scroll to top button based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
