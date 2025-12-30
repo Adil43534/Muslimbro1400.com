@@ -20,21 +20,19 @@
     }
 
     #progress-bar {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 0%;
-     height: 4px;
-     background-color: #007b5e;
-     z-index: 1001;
-     transition: width 0.25s ease;
-   }
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
 
-
-   .dark-mode #progress-bar {
-     background-color: #0c8;
-   }
-
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
 
     .navbar {
       display: flex;
@@ -281,6 +279,35 @@
       -moz-appearance: none;
     }
 
+    .audio-select button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .audio-select button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .audio-select button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .audio-select button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
     .dark-mode .lang-select select, .dark-mode .audio-select select {
       background-color: #2c2c2c;
       border-color: #0c8;
@@ -310,6 +337,77 @@
     }
 
     .hidden { display: none; }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content iframe {
+      border-radius: 8px;
+      border: none;
+    }
+
+    .modal-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+    }
 
         .go-to-verse {
       margin-top: 1rem;
@@ -498,7 +596,7 @@
   </style>
 </head>
 <body>
-   <div id="progress-bar"></div>
+  <div id="progress-bar"></div>
   <!-- Navbar -->
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
@@ -530,11 +628,7 @@
         <select id="reciter" onchange="changeReciter()">
           <option value="saadalghamdi">Saad Al Ghamdi</option>
         </select>
-        <br/><br>
-        <audio id="surahAudio" controls>
-          <source src="https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1" type="audio/mp3" />
-          Your browser does not support the audio element.
-        </audio>
+        <button id="playButton" onclick="playAudio()">Play Audio</button>
       </div>
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
@@ -573,6 +667,15 @@
     <div class="navigation">
       <a href="quran.html">← Back to Quran</a>
       <a href="al-baqarah.html">Next: Surah Al-Baqarah →</a>
+    </div>
+  </div>
+
+  <!-- Audio Modal -->
+  <div id="audioModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <iframe src="https://archive.org/embed/001_20251230" width="500" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+      <br><br>
+      <button onclick="closeModal()">Close</button>
     </div>
   </div>
 
@@ -677,23 +780,34 @@
 
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
-      const audio = document.getElementById('surahAudio');
+      const playButton = document.getElementById('playButton');
 
-      // Define your reciter audio sources
+      // Define your reciter audio sources (though not used directly now)
       const reciterLinks = {
-        saadalghamdi: "https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1", 
+        saadalghamdi: "https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1",
       };
 
       // Get the correct URL for the selected reciter
       const newSrc = reciterLinks[reciter];
 
       if (newSrc) {
-        audio.src = newSrc;
-        audio.load();
-        audio.play();
+        // Show the play button
+        playButton.style.display = 'block';
       } else {
         alert("Audio source not available for this reciter.");
+        playButton.style.display = 'none';
       }
+    }
+
+    function playAudio() {
+      // Show the modal with the embed iframe
+      const modal = document.getElementById('audioModal');
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('audioModal');
+      modal.style.display = 'none';
     }
 
     function switchTab(tab) {
@@ -767,22 +881,21 @@
       });
     }
 
-   // Show/hide scroll to top button and update progress bar based on scroll position
-   window.addEventListener('scroll', () => {
-     const scrollToTopBtn = document.getElementById('scrollToTop');
-     if (window.pageYOffset > 300) {
-       scrollToTopBtn.classList.add('show');
-     } else {
-       scrollToTopBtn.classList.remove('show');
-     }
+    // Show/hide scroll to top button and update progress bar based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
 
-
-     // Update progress bar
-     const progressBar = document.getElementById('progress-bar');
-     const totalHeight = document.body.scrollHeight - window.innerHeight;
-     const progress = (window.pageYOffset / totalHeight) * 100;
-     progressBar.style.width = progress + '%';
-   });
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
@@ -791,6 +904,8 @@
       setThemeIcon();
       populateLanguageSelector();
       renderReadTab();
+      // Ensure modal is hidden on load
+      document.getElementById('audioModal').classList.add('hidden');
     };
   </script>
 </body>
