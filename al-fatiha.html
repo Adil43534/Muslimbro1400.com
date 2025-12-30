@@ -19,6 +19,23 @@
       color: #e0e0e0;
     }
 
+    #progress-bar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 0%;
+     height: 4px;
+     background-color: #007b5e;
+     z-index: 1001;
+     transition: width 0.25s ease;
+   }
+
+
+   .dark-mode #progress-bar {
+     background-color: #0c8;
+   }
+
+
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -481,6 +498,7 @@
   </style>
 </head>
 <body>
+   <div id="progress-bar"></div>
   <!-- Navbar -->
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
@@ -749,15 +767,22 @@
       });
     }
 
-    // Show/hide scroll to top button based on scroll position
-    window.addEventListener('scroll', () => {
-      const scrollToTopBtn = document.getElementById('scrollToTop');
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('show');
-      } else {
-        scrollToTopBtn.classList.remove('show');
-      }
-    });
+   // Show/hide scroll to top button and update progress bar based on scroll position
+   window.addEventListener('scroll', () => {
+     const scrollToTopBtn = document.getElementById('scrollToTop');
+     if (window.pageYOffset > 300) {
+       scrollToTopBtn.classList.add('show');
+     } else {
+       scrollToTopBtn.classList.remove('show');
+     }
+
+
+     // Update progress bar
+     const progressBar = document.getElementById('progress-bar');
+     const totalHeight = document.body.scrollHeight - window.innerHeight;
+     const progress = (window.pageYOffset / totalHeight) * 100;
+     progressBar.style.width = progress + '%';
+   });
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
