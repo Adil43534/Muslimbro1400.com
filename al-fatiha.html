@@ -183,6 +183,15 @@
 
     .dark-mode .translation { color: #ccc; }
 
+    .transliteration {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-style: italic;
+    }
+
+    .dark-mode .transliteration { color: #ccc; }
+
     .verse-icon {
       display: inline-block;
       font-size: 1.2rem;
@@ -240,6 +249,35 @@
     }
 
     .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .transliteration-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+
+    .transliteration-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+
+    .dark-mode .transliteration-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+
+    .dark-mode .transliteration-toggle.active {
       background-color: #0c8;
     }
 
@@ -383,6 +421,8 @@
     .modal-content iframe {
       border-radius: 8px;
       border: none;
+      width: 100%;
+      height: 60px;
     }
 
     .modal-content button {
@@ -628,6 +668,7 @@
         <select id="reciter" onchange="changeReciter()">
           <option value="saadalghamdi">Saad Al Ghamdi</option>
         </select>
+        <br><br>
         <button id="playButton" onclick="playAudio()">Play Audio</button>
       </div>
       
@@ -638,6 +679,9 @@
         <button class="tab-button active" onclick="switchTab('read')">Read</button>
         <button class="tab-button" onclick="switchTab('translate')">Translation</button>
       </div>
+
+            <!-- Transliteration Toggle -->
+      <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
          <!-- Go to Verse -->
       <div class="go-to-verse">
@@ -687,37 +731,46 @@
       {
         arabic: "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
         en: "In the name of Allah—the Most Compassionate, Most Merciful.",
-        ur: "شروع اللہ کے نام سے جو بڑا مہربان، نہایت رحم والا ہے۔"
+        ur: "شروع اللہ کے نام سے جو بڑا مہربان، نہایت رحم والا ہے۔",
+        trans: "bi-smi llāhi r-raḥmāni r-raḥīmi"
       },
       {
         arabic: "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ",
         en: "All praise is for Allah—Lord of all worlds,",
-        ur: "سب تعریفیں اللہ کے لیے ہیں جو سب جہانوں کا رب ہے۔"
+        ur: "سب تعریفیں اللہ کے لیے ہیں جو سب جہانوں کا رب ہے۔",
+        trans: "al-ḥamdu li-llāhi rabbi l-ʿālamīna"
+
       },
       {
         arabic: "ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
         en: "the Most Compassionate, Most Merciful,",
-        ur: "بڑا مہربان، نہایت رحم کرنے والا،"
+        ur: "بڑا مہربان، نہایت رحم کرنے والا،",
+        trans: "ar-raḥmāni r-raḥīmi"
       },
       {
         arabic: "مَـٰلِكِ يَوْمِ ٱلدِّينِ",
         en: "Master of the Day of Judgment.",
-        ur: "روزِ جزا کا مالک۔"
+        ur: "روزِ جزا کا مالک۔",
+        trans: "māliki yawmi d-dīni"
       },
       {
         arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
         en: "You ˹alone˺ we worship and You ˹alone˺ we ask for help.",
-        ur: "ہم صرف تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں۔"
+        ur: "ہم صرف تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں۔",
+        trans: "ʾiyyāka naʿbudu wa-ʾiyyāka nastaʿīnu"
       },
       {
         arabic: "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
         en: "Guide us along the Straight Path,",
-        ur: "ہمیں سیدھے راستے کی ہدایت دے،"
+        ur: "ہمیں سیدھے راستے کی ہدایت دے،",
+        trans: "ihdinā ṣ-ṣirāṭa l-mustaqīma"
       },
       {
         arabic: "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
         en: "the Path of those You have blessed—not those You are displeased with, or those who are astray.",
-        ur: "ان لوگوں کا راستہ جن پر تو نے انعام فرمایا، ان کا نہیں جن پر غضب کیا گیا اور نہ گمراہوں کا۔"
+        ur: "ان لوگوں کا راستہ جن پر تو نے انعام فرمایا، ان کا نہیں جن پر غضب کیا گیا اور نہ گمراہوں کا۔",
+        trans: "ṣirāṭa lladhīna ʾanʿamta ʿalayhim ghayri l-maghḍūbi ʿalayhim wa-lā ḍ-ḍāllīna"
+
       }
     ];
 
@@ -725,6 +778,8 @@
     const translateTab = document.getElementById('translate-tab');
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
+    let showTransliteration = false;
+
 
     // Language options with display names
     const languages = [
@@ -756,9 +811,15 @@
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
+        let transliterationHTML = '';
+        if (showTransliteration && ayah.trans) {
+          transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
+        }
+
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+          ${transliterationHTML}
         `;
         readTab.appendChild(div);
       });
@@ -872,6 +933,20 @@
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
     }
+
+    function toggleTransliteration() {
+      showTransliteration = !showTransliteration;
+      const toggleButton = document.getElementById('transliteration-toggle');
+      if (showTransliteration) {
+        toggleButton.textContent = 'Hide Transliteration';
+        toggleButton.classList.add('active');
+      } else {
+        toggleButton.textContent = 'Show Transliteration';
+        toggleButton.classList.remove('active');
+      }
+      renderReadTab();
+    }
+
 
         // Scroll to Top functionality
     function scrollToTop() {
