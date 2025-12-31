@@ -2392,7 +2392,7 @@
     let showTransliteration = false;
     let currentAyahIndex = 0;
 
-        // Language options with display names
+    // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
       { value: 'ur', name: 'Urdu' }
@@ -2443,7 +2443,7 @@
       translateTab.innerHTML = '';
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
-        div.className = 'ayah';
+        div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
@@ -2458,10 +2458,10 @@
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
       const playButton = document.getElementById('playButton');
-      
+
       // Define your reciter audio sources (though not used directly now)
       const reciterLinks = {
-        saadalghamdi: "https://www.dropbox.com/scl/fi/u91zoxp6nvh7cw2bbhft7/002.mp3?rlkey=hbdol4kn1sllmjergbykp38e3&st=f5r57g4g&raw=1", 
+        saadalghamdi: "https://www.dropbox.com/scl/fi/1j0a85wopvybwndkfgs84/001.mp3?rlkey=cajqasfwlwwcxj8qchn0p3f3a&st=ayz17npz&raw=1",
       };
 
       // Get the correct URL for the selected reciter
@@ -2495,6 +2495,7 @@
         readTab.classList.remove('hidden');
         translateTab.classList.add('hidden');
         langWrapper.classList.add('hidden');
+        renderReadTab();
       } else {
         readTab.classList.add('hidden');
         translateTab.classList.remove('hidden');
@@ -2561,7 +2562,7 @@
       }
       renderReadTab();
     }
-    
+
         // Scroll to Top functionality
     function scrollToTop() {
       window.scrollTo({
@@ -2570,7 +2571,7 @@
       });
     }
 
-        // Share functions
+    // Share functions
     function openShareModal(index) {
       currentAyahIndex = index;
       document.getElementById('includeTransliteration').checked = false;
@@ -2605,9 +2606,15 @@
       // Create a canvas
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 800;   
+      canvas.width = 800;
+      const arabicMaxWidth = canvas.width - 80;
+
+      // Set font for measurements
+      ctx.font = '36px Amiri, serif';
+
       // Calculate dynamic height
       let y = 60; // Title
+      y += 60; // Space after title
       // Estimate lines for Arabic
       let arabicWords1 = ayah.arabic.split(' ');
       let arabicLine1 = '';
@@ -2643,8 +2650,6 @@
         lineCount++; // Last line
         y += lineCount * 30;
       }
-      y += 60; // Space after title
-
       if (includeTranslation) {
         // Estimate lines for translation
         const maxWidth = canvas.width - 80;
@@ -2667,7 +2672,7 @@
       if (includeName && userName) y += 40;
       y += 20; // Watermark
       canvas.height = y + 120; // Extra space for QR and padding
-      
+
       // Set background based on theme
       const bgColor = isDarkMode ? '#1a1a1a' : '#f9f9f9';
       const textColor = isDarkMode ? '#e0e0e0' : '#333';
@@ -2685,9 +2690,10 @@
       // Set text properties
       ctx.fillStyle = textColor;
       ctx.textAlign = 'center';
+
       y = 60;
 
-            // Title
+      // Title
       ctx.font = 'bold 28px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
       ctx.fillStyle = accentColor;
       ctx.fillText(`Surah Al-Baqarah - Verse ${currentAyahIndex + 1}`, canvas.width / 2, y);
@@ -2784,7 +2790,7 @@
       ctx.fillStyle = secondaryColor;
       ctx.fillText('MuslimBro1400', canvas.width / 2, y);
 
-            // Add QR code
+      // Add QR code
       const qrSvg = '<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" height="392" width="392" class="pyqrcode"><path transform="scale(8)" stroke="#000" class="pyqrline" d="M4 4.5h7m1 0h1m1 0h1m7 0h2m1 0h1m1 0h2m3 0h2m1 0h1m2 0h7m-41 1h1m5 0h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h4m2 0h3m2 0h1m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m2 0h4m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m3 0h1m5 0h1m6 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h2m2 0h4m2 0h1m1 0h4m1 0h3m1 0h3m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h2m2 0h3m1 0h4m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h3m1 0h1m2 0h1m1 0h2m5 0h1m3 0h1m3 0h1m-31 1h3m1 0h1m1 0h1m2 0h2m4 0h1m3 0h1m2 0h2m2 0h2m3 0h3m2 0h3m-40 1h2m2 0h1m1 0h1m1 0h1m4 0h2m2 0h1m2 0h1m8 0h7m1 0h3m-41 1h1m1 0h2m2 0h3m2 0h2m2 0h2m1 0h2m1 0h2m1 0h2m1 0h1m1 0h2m1 0h1m1 0h3m2 0h1m-40 1h2m1 0h2m6 0h1m1 0h1m2 0h2m2 0h1m1 0h1m3 0h3m1 0h6m1 0h1m-38 1h1m2 0h1m2 0h1m1 0h3m1 0h1m2 0h3m1 0h2m1 0h2m3 0h1m1 0h4m1 0h1m2 0h2m1 0h1m-41 1h3m4 0h1m2 0h1m1 0h6m2 0h1m1 0h7m1 0h1m2 0h1m1 0h2m3 0h1m-41 1h1m3 0h1m1 0h1m4 0h2m1 0h4m1 0h4m1 0h1m1 0h1m5 0h2m1 0h1m1 0h2m-39 1h1m3 0h2m1 0h1m1 0h2m1 0h4m2 0h3m1 0h2m1 0h1m2 0h1m1 0h1m3 0h3m-37 1h3m2 0h2m1 0h1m1 0h6m1 0h1m4 0h1m2 0h1m3 0h2m1 0h2m1 0h1m1 0h2m-39 1h3m4 0h1m1 0h1m2 0h2m2 0h3m1 0h1m2 0h2m3 0h1m2 0h1m2 0h3m3 0h1m-41 1h4m1 0h3m2 0h1m1 0h1m4 0h2m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m1 0h4m-40 1h2m1 0h1m3 0h1m4 0h1m2 0h2m4 0h1m1 0h4m1 0h1m2 0h2m3 0h2m-37 1h4m1 0h1m1 0h1m3 0h1m7 0h2m3 0h1m4 0h3m2 0h2m1 0h1m-38 1h2m4 0h3m4 0h1m2 0h1m8 0h1m4 0h2m1 0h1m1 0h5m-41 1h1m1 0h1m3 0h2m1 0h1m3 0h7m1 0h2m1 0h5m4 0h1m1 0h4m-37 1h3m2 0h1m2 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h2m-38 1h2m1 0h1m2 0h1m1 0h1m1 0h6m2 0h1m2 0h1m3 0h2m1 0h1m8 0h1m-41 1h3m1 0h1m3 0h1m2 0h4m3 0h3m8 0h3m2 0h4m1 0h2m-40 1h1m3 0h3m1 0h1m3 0h1m2 0h1m1 0h4m2 0h4m1 0h1m2 0h2m1 0h2m-37 1h2m1 0h2m3 0h1m2 0h1m1 0h1m2 0h2m2 0h1m1 0h3m1 0h3m1 0h3m4 0h1m2 0h1m-39 1h6m5 0h4m2 0h1m3 0h2m3 0h2m1 0h1m1 0h1m3 0h2m1 0h1m-41 1h2m1 0h2m2 0h1m1 0h3m1 0h1m2 0h1m7 0h1m2 0h1m2 0h1m1 0h1m2 0h3m2 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m5 0h2m1 0h6m1 0h2m1 0h2m-35 1h1m1 0h3m2 0h3m3 0h1m3 0h1m6 0h4m2 0h6m-36 1h1m2 0h4m1 0h2m1 0h1m1 0h3m2 0h2m1 0h2m4 0h1m1 0h8m1 0h1m1 0h1m-33 1h1m3 0h1m1 0h1m1 0h2m2 0h1m3 0h2m3 0h1m2 0h1m3 0h3m1 0h1m-41 1h7m4 0h1m4 0h1m1 0h3m4 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m-40 1h1m5 0h1m3 0h1m2 0h2m1 0h2m3 0h1m2 0h2m1 0h1m1 0h4m3 0h2m2 0h1m-41 1h1m1 0h3m1 0h1m1 0h4m4 0h3m3 0h1m1 0h4m4 0h5m1 0h2m-40 1h1m1 0h3m1 0h1m1 0h1m2 0h6m8 0h2m1 0h3m1 0h2m1 0h1m1 0h4m-41 1h1m1 0h3m1 0h1m1 0h1m3 0h4m2 0h2m2 0h1m1 0h1m1 0h3m1 0h1m2 0h4m1 0h2m-40 1h1m5 0h1m3 0h1m1 0h4m2 0h3m1 0h4m1 0h1m4 0h1m3 0h4m-40 1h7m3 0h1m1 0h2m6 0h1m1 0h4m3 0h1m1 0h1m1 0h1m1 0h2"/></svg>';
       const qrImg = new Image();
       qrImg.onload = function() {
@@ -2799,7 +2805,7 @@
       qrImg.src = 'data:image/svg+xml;base64,' + btoa(qrSvg);
     }
 
-    // Show/hide scroll to top button based on scroll position
+    // Show/hide scroll to top button and update progress bar based on scroll position
     window.addEventListener('scroll', () => {
       const scrollToTopBtn = document.getElementById('scrollToTop');
       if (window.pageYOffset > 300) {
@@ -2808,7 +2814,7 @@
         scrollToTopBtn.classList.remove('show');
       }
 
-            // Update progress bar
+      // Update progress bar
       const progressBar = document.getElementById('progress-bar');
       const totalHeight = document.body.scrollHeight - window.innerHeight;
       const progress = (window.pageYOffset / totalHeight) * 100;
