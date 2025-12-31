@@ -1215,12 +1215,49 @@
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       canvas.width = 800;
+      const arabicMaxWidth = canvas.width - 80;
+
+      // Set font for measurements
+      ctx.font = '36px Amiri, serif';
 
       // Calculate dynamic height
       let y = 60; // Title
       y += 60; // Space after title
-      y += 80; // Arabic
-      if (includeTransliteration && ayah.trans) y += 50;
+      // Estimate lines for Arabic
+      let arabicWords1 = ayah.arabic.split(' ');
+      let arabicLine1 = '';
+      let arabicLineCount = 0;
+      for (let i = 0; i < arabicWords1.length; i++) {
+        const testLine = arabicLine1 + arabicWords1[i] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > arabicMaxWidth && i > 0) {
+          arabicLineCount++;
+          arabicLine1 = arabicWords1[i] + ' ';
+        } else {
+          arabicLine1 = testLine;
+        }
+      }
+      arabicLineCount++; // Last line
+      y += arabicLineCount * 40;
+      if (includeTransliteration && ayah.trans) {
+        // Estimate lines for transliteration
+        const maxWidth = canvas.width - 80;
+        const words = ayah.trans.split(' ');
+        let line = '';
+        let lineCount = 0;
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxWidth && i > 0) {
+            lineCount++;
+            line = words[i] + ' ';
+          } else {
+            line = testLine;
+          }
+        }
+        lineCount++; // Last line
+        y += lineCount * 30;
+      }
       if (includeTranslation) {
         // Estimate lines for translation
         const maxWidth = canvas.width - 80;
@@ -1261,6 +1298,7 @@
       // Set text properties
       ctx.fillStyle = textColor;
       ctx.textAlign = 'center';
+
       y = 60;
 
       // Title
@@ -1272,15 +1310,52 @@
       // Arabic text
       ctx.font = '36px Amiri, serif';
       ctx.fillStyle = textColor;
-      ctx.fillText(ayah.arabic, canvas.width / 2, y);
-      y += 80;
+      // Handle long Arabic text wrapping
+      const arabicWords2 = ayah.arabic.split(' ');
+      let arabicLine2 = '';
+      const arabicLines = [];
+      for (let i = 0; i < arabicWords2.length; i++) {
+        const testLine = arabicLine2 + arabicWords2[i] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > arabicMaxWidth && i > 0) {
+          arabicLines.push(arabicLine2);
+          arabicLine2 = arabicWords2[i] + ' ';
+        } else {
+          arabicLine2 = testLine;
+        }
+      }
+      arabicLines.push(arabicLine2);
+
+      arabicLines.forEach(line => {
+        ctx.fillText(line.trim(), canvas.width / 2, y);
+        y += 40;
+      });
 
       // Transliteration
       if (includeTransliteration && ayah.trans) {
         ctx.font = 'italic 24px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
         ctx.fillStyle = secondaryColor;
-        ctx.fillText(ayah.trans, canvas.width / 2, y);
-        y += 50;
+        // Handle long text wrapping
+        const maxWidth = canvas.width - 80;
+        const words = ayah.trans.split(' ');
+        let line = '';
+        const lines = [];
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxWidth && i > 0) {
+            lines.push(line);
+            line = words[i] + ' ';
+          } else {
+            line = testLine;
+          }
+        }
+        lines.push(line);
+
+        lines.forEach(line => {
+          ctx.fillText(line.trim(), canvas.width / 2, y);
+          y += 30;
+        });
       }
 
       // Translation
