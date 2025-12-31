@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <title>Surah Al-Fatiha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">  <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -141,7 +140,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem;
+      padding: 1rem 3rem 1rem 1rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -178,7 +177,7 @@
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Serif Devanagari', serif;
+      font-family: 'Noto Nastaliq Urdu', serif;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -203,6 +202,21 @@
 
     .dark-mode .verse-icon {
       color: #0c8;
+    }
+
+    .share-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .share-icon:hover {
+      opacity: 1;
     }
 
     .navigation {
@@ -576,6 +590,185 @@
       background-color: #0a6;
     }
 
+        /* Share Modal Styling */
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .modal-content input[type="text"]:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content input[type="text"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .modal-content input[type="text"]:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"]:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content input[type="text"]:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
     @media (max-width: 600px) {
       .navbar h1 {
         font-size: 1.25rem;
@@ -723,6 +916,36 @@
     </div>
   </div>
 
+    <!-- Share Modal -->
+  <div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Share Ayah Options</h2>
+      <div>
+        <label><input type="checkbox" id="includeTransliteration"> Include Transliteration</label>
+      </div>
+      <div>
+        <label><input type="checkbox" id="includeTranslation" onchange="toggleLanguageSelect()"> Include Translation</label>
+      </div>
+      <div id="languageSelectDiv" style="display: none;">
+        <label for="shareLanguage">Translation Language:</label>
+        <select id="shareLanguage">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <div>
+        <label><input type="checkbox" id="includeName" onchange="toggleNameInput()"> Include Name</label>
+      </div>
+      <div id="nameInputDiv" style="display: none;">
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" placeholder="Enter your name">
+      </div>
+      <br>
+      <button onclick="generateAndDownloadImage()">Download Image</button>
+      <button onclick="closeShareModal()">Cancel</button>
+    </div>
+  </div>
+
     <!-- Scroll to Top Button -->
   <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
@@ -779,6 +1002,8 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let currentAyahIndex = 0;
+
 
 
     // Language options with display names
@@ -820,6 +1045,9 @@
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
         `;
         readTab.appendChild(div);
       });
@@ -834,6 +1062,9 @@
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
         `;
         translateTab.appendChild(div);
       });
@@ -947,13 +1178,139 @@
       renderReadTab();
     }
 
-
         // Scroll to Top functionality
     function scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
+    }
+
+        // Share functions
+    function openShareModal(index) {
+      currentAyahIndex = index;
+      document.getElementById('includeTransliteration').checked = false;
+      document.getElementById('includeTranslation').checked = false;
+      document.getElementById('languageSelectDiv').style.display = 'none';
+      document.getElementById('shareModal').style.display = 'flex';
+    }
+
+    function toggleLanguageSelect() {
+      const includeTranslation = document.getElementById('includeTranslation').checked;
+      document.getElementById('languageSelectDiv').style.display = includeTranslation ? 'block' : 'none';
+    }
+
+    function toggleNameInput() {
+      const includeName = document.getElementById('includeName').checked;
+      document.getElementById('nameInputDiv').style.display = includeName ? 'block' : 'none';
+    }
+
+    function closeShareModal() {
+      document.getElementById('shareModal').style.display = 'none';
+    }
+
+    function generateAndDownloadImage() {
+      const ayah = ayahs[currentAyahIndex];
+      const includeTransliteration = document.getElementById('includeTransliteration').checked;
+      const includeTranslation = document.getElementById('includeTranslation').checked;
+      const shareLanguage = document.getElementById('shareLanguage').value;
+      const includeName = document.getElementById('includeName').checked;
+      const userName = document.getElementById('userName').value.trim();
+      const isDarkMode = document.body.classList.contains('dark-mode');
+
+      // Create a canvas
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 800;
+      canvas.height = includeName && userName ? 650 : 600;
+
+      // Set background based on theme
+      const bgColor = isDarkMode ? '#1a1a1a' : '#f9f9f9';
+      const textColor = isDarkMode ? '#e0e0e0' : '#333';
+      const secondaryColor = isDarkMode ? '#ccc' : '#666';
+      const accentColor = isDarkMode ? '#0c8' : '#007b5e';
+
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add border
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 4;
+      ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+      // Set text properties
+      ctx.fillStyle = textColor;
+      ctx.textAlign = 'center';
+
+      let y = 60;
+
+      // Title
+      ctx.font = 'bold 28px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+      ctx.fillStyle = accentColor;
+      ctx.fillText(`Surah Al-Fatiha - Verse ${currentAyahIndex + 1}`, canvas.width / 2, y);
+      y += 60;
+
+      // Arabic text
+      ctx.font = '36px Amiri, serif';
+      ctx.fillStyle = textColor;
+      ctx.fillText(ayah.arabic, canvas.width / 2, y);
+      y += 80;
+
+      // Transliteration
+      if (includeTransliteration && ayah.trans) {
+        ctx.font = 'italic 24px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+        ctx.fillStyle = secondaryColor;
+        ctx.fillText(ayah.trans, canvas.width / 2, y);
+        y += 50;
+      }
+
+      // Translation
+      if (includeTranslation) {
+        ctx.font = '22px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+        ctx.fillStyle = textColor;
+        // Handle long text wrapping
+        const maxWidth = canvas.width - 80;
+        const words = ayah[shareLanguage].split(' ');
+        let line = '';
+        const lines = [];
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxWidth && i > 0) {
+            lines.push(line);
+            line = words[i] + ' ';
+          } else {
+            line = testLine;
+          }
+        }
+        lines.push(line);
+
+        lines.forEach(line => {
+          ctx.fillText(line.trim(), canvas.width / 2, y);
+          y += 30;
+        });
+      }
+
+      // User's name
+      if (includeName && userName) {
+        ctx.font = '20px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+        ctx.fillStyle = textColor;
+        ctx.fillText(`Shared by: ${userName}`, canvas.width / 2, y);
+        y += 40;
+      }
+
+      // Add a subtle watermark or footer
+      ctx.font = '14px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+      ctx.fillStyle = secondaryColor;
+      ctx.fillText('MuslimBro1400', canvas.width / 2, y);
+
+      // Download the image
+      const link = document.createElement('a');
+      link.download = `ayah-${currentAyahIndex + 1}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+
+      closeShareModal();
     }
 
     // Show/hide scroll to top button and update progress bar based on scroll position
