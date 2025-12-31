@@ -145,6 +145,7 @@
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
+      position: relative;
     }
 
     .dark-mode .ayah {
@@ -721,6 +722,52 @@
       border-color: #0c8;
     }
 
+        .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .modal-content input[type="text"]:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content input[type="text"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .modal-content input[type="text"]:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"]:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content input[type="text"]:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
     @media (max-width: 600px) {
       .navbar h1 {
         font-size: 1.25rem;
@@ -812,7 +859,7 @@
         <select id="reciter" onchange="changeReciter()">
           <option value="saadalghamdi">Saad Al Ghamdi</option>
         </select>
-        <br/><br>
+        <br><br>
         <button id="playButton" onclick="playAudio()">Play Audio</button>
       </div>
       
@@ -839,46 +886,7 @@
         <a href="al-imran.html">Next: Surah Al-Imran →</a>
       </div>
 
-        <!-- Audio Modal -->
-      <div id="audioModal" class="modal" style="display: none;">
-        <div class="modal-content">
-          <iframe src="https://archive.org/embed/001_20251230" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-          <br><br>
-          <button onclick="closeModal()">Close</button>
-        </div>
-      </div>
-
-        <!-- Share Modal -->
-      <div id="shareModal" class="modal" style="display: none;">
-        <div class="modal-content">
-          <h2>Share Ayah Options</h2>
-          <div>
-            <label><input type="checkbox" id="includeTransliteration"> Include Transliteration</label>
-          </div>
-          <div>
-            <label><input type="checkbox" id="includeTranslation" onchange="toggleLanguageSelect()"> Include Translation</label>
-          </div>
-          <div id="languageSelectDiv" style="display: none;">
-            <label for="shareLanguage">Translation Language:</label>
-            <select id="shareLanguage">
-              <option value="en">English</option>
-              <option value="ur">Urdu</option>
-            </select>
-          </div>
-          <div>
-            <label><input type="checkbox" id="includeName" onchange="toggleNameInput()"> Include Name</label>
-          </div>
-          <div id="nameInputDiv" style="display: none;">
-            <label for="userName">Your Name:</label>
-            <input type="text" id="userName" placeholder="Enter your name">
-          </div>
-          <br>
-          <button onclick="generateAndDownloadImage()">Download Image</button>
-          <button onclick="closeShareModal()">Cancel</button>
-        </div>
-      </div>
-
-      <!-- Language Selector -->
+            <!-- Language Selector -->
       <div class="lang-select hidden" id="languageSelector">
         <label for="language">Translation Language: </label>
         <select id="language" onchange="renderTranslation()">
@@ -899,6 +907,46 @@
       <a href="al-imran.html">Next: Surah Al-Imran →</a>
     </div>
   </div>
+
+  <!-- Audio Modal -->
+  <div id="audioModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <iframe src="https://archive.org/embed/001_20251230" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+      <br><br>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+    <!-- Share Modal -->
+  <div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Share Ayah Options</h2>
+      <div>
+        <label><input type="checkbox" id="includeTransliteration"> Include Transliteration</label>
+      </div>
+      <div>
+        <label><input type="checkbox" id="includeTranslation" onchange="toggleLanguageSelect()"> Include Translation</label>
+      </div>
+      <div id="languageSelectDiv" style="display: none;">
+        <label for="shareLanguage">Translation Language:</label>
+        <select id="shareLanguage">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <div>
+        <label><input type="checkbox" id="includeName" onchange="toggleNameInput()"> Include Name</label>
+      </div>
+      <div id="nameInputDiv" style="display: none;">
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" placeholder="Enter your name">
+      </div>
+      <br>
+      <button onclick="generateAndDownloadImage()">Download Image</button>
+      <button onclick="closeShareModal()">Cancel</button>
+    </div>
+  </div>
+
 
     <!-- Scroll to Top Button -->
   <button id="scrollToTop" onclick="scrollToTop()">↑</button>
@@ -2608,7 +2656,7 @@
             // Title
       ctx.font = 'bold 28px Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
       ctx.fillStyle = accentColor;
-      ctx.fillText(`Surah Al-Fatiha - Verse ${currentAyahIndex + 1}`, canvas.width / 2, y);
+      ctx.fillText(`Surah Al-Baqarah - Verse ${currentAyahIndex + 1}`, canvas.width / 2, y);
       y += 60;
 
       // Arabic text
