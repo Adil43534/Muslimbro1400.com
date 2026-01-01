@@ -2707,11 +2707,11 @@
       let arabicLine2 = '';
       const arabicLines = [];
       for (let i = 0; i < arabicWords2.length; i++) {
-        const testLine = arabicLine2 + arabicWords2[i] + ' ';
+        const testLine = arabicLine2 + arabicWords2[i] + '  ';
         const metrics = ctx.measureText(testLine);
         if (metrics.width > arabicMaxWidth && i > 0) {
           arabicLines.push(arabicLine2);
-          arabicLine2 = arabicWords2[i] + ' ';
+          arabicLine2 = arabicWords2[i] + '  ';
         } else {
           arabicLine2 = testLine;
         }
