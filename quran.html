@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MuslimBro1400 - Quran</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">
   <style>
     * {
       box-sizing: border-box;
@@ -117,6 +118,7 @@
       justify-content: center;
       gap: 1rem;
       margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     .tab-button {
@@ -193,12 +195,13 @@
 
     .card {
       background-color: #fff;
-      padding: 1rem;
+      padding: 2rem 1rem 1rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       color: inherit;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: transform 0.2s, background-color 0.5s ease;
+      position: relative;
     }
 
     .card:hover {
@@ -252,8 +255,66 @@
       color: #999;
     }
 
+    .icons {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .favorite-icon, .bookmark-icon {
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .favorite-icon:hover, .bookmark-icon:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .icons {
+        top: 0.3rem;
+        right: 0.3rem;
+        font-size: 1rem;
+      }
+    }
+
     .hidden {
       display: none;
+    }
+
+    .recent-surah-section {
+      margin-top: 1rem;
+    }
+
+    .recent-card-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .recent-card {
+      width: 100%;
+    }
+
+    .myquran-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .myquran-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #007b5e;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .myquran-section h3 {
+      color: #0c8;
     }
 
     h2 {
@@ -300,8 +361,86 @@
         display: block;
       }
     }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .search-input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+      background-color: #fff;
+      color: #333;
+      transition: border-color 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #007b5e;
+    }
+
+    .dark-mode .search-input {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      border-color: #444;
+    }
+
+    .dark-mode .search-input:focus {
+      border-color: #0c8;
+    }
   </style>
   <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
     const surahData = [
       { number: 1, name: "Al-Fatiha", meaning: "The Opening", verses: 7, file: "al-fatiha" },
       { number: 2, name: "Al-Baqarah", meaning: "The Cow", verses: 286, file: "al-baqarah" },
@@ -451,13 +590,31 @@
 
       document.getElementById(tab + '-tab').classList.add('active');
       document.getElementById(tab + '-content').classList.remove('hidden');
+
+      if (tab === 'myquran') {
+        populateMyQuran();
+      }
     }
 
     function createSurahCard(surah) {
       const card = document.createElement('a');
       card.href = `${surah.file}.html`;
       card.className = 'card';
+      card.setAttribute('data-surah', surah.number);
+      card.onclick = () => {
+        localStorage.setItem('recentSurah', surah.number);
+      };
+
+      const favoritedSurahs = JSON.parse(localStorage.getItem('favoritedSurahs') || '[]');
+      const bookmarkedSurahs = JSON.parse(localStorage.getItem('bookmarkedSurahs') || '[]');
+      const isFavorited = favoritedSurahs.includes(surah.number);
+      const isBookmarked = bookmarkedSurahs.includes(surah.number);
+
       card.innerHTML = `
+        <div class="icons">
+          <span class="favorite-icon" onclick="event.preventDefault(); toggleFavoriteSurah(${surah.number});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+          <span class="bookmark-icon" onclick="event.preventDefault(); toggleBookmarkSurah(${surah.number});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
+        </div>
         <div class="card-content">
           <span class="surah-number">${surah.number}. ${surah.name}</span>
           <span class="surah-meaning">${surah.meaning}</span>
@@ -467,10 +624,46 @@
       return card;
     }
 
-    function populateSurahs() {
+    function toggleFavoriteSurah(surahNumber) {
+      let favoritedSurahs = JSON.parse(localStorage.getItem('favoritedSurahs') || '[]');
+      if (favoritedSurahs.includes(surahNumber)) {
+        favoritedSurahs = favoritedSurahs.filter(num => num !== surahNumber);
+      } else {
+        favoritedSurahs.push(surahNumber);
+      }
+      localStorage.setItem('favoritedSurahs', JSON.stringify(favoritedSurahs));
+      // Update all icons for this surah across the page
+      const isFavorited = favoritedSurahs.includes(surahNumber);
+      const cards = document.querySelectorAll(`[data-surah="${surahNumber}"] .favorite-icon`);
+      cards.forEach(icon => {
+        icon.innerHTML = isFavorited ? favoriteSVG : unfavoriteSVG;
+      });
+    }
+
+    function toggleBookmarkSurah(surahNumber) {
+      let bookmarkedSurahs = JSON.parse(localStorage.getItem('bookmarkedSurahs') || '[]');
+      if (bookmarkedSurahs.includes(surahNumber)) {
+        bookmarkedSurahs = bookmarkedSurahs.filter(num => num !== surahNumber);
+      } else {
+        bookmarkedSurahs.push(surahNumber);
+      }
+      localStorage.setItem('bookmarkedSurahs', JSON.stringify(bookmarkedSurahs));
+      // Update all icons for this surah across the page
+      const isBookmarked = bookmarkedSurahs.includes(surahNumber);
+      const cards = document.querySelectorAll(`[data-surah="${surahNumber}"] .bookmark-icon`);
+      cards.forEach(icon => {
+        icon.innerHTML = isBookmarked ? bookmarkedSVG : unbookmarkedSVG;
+      });
+    }
+
+    function populateSurahs(filter = '') {
       const surahContainer = document.querySelector('#surah-content .cards');
       surahContainer.innerHTML = '';
-      surahData.forEach(surah => {
+      const filteredSurahs = filter ? surahData.filter(surah =>
+        surah.name.toLowerCase().includes(filter.toLowerCase()) ||
+        surah.meaning.toLowerCase().includes(filter.toLowerCase())
+      ) : surahData;
+      filteredSurahs.forEach(surah => {
         surahContainer.appendChild(createSurahCard(surah));
       });
     }
@@ -557,6 +750,88 @@
       });
     }
 
+    function showRecentSurah() {
+      const recentSurahNumber = localStorage.getItem('recentSurah');
+      if (recentSurahNumber) {
+        const recentSurah = surahData.find(s => s.number == recentSurahNumber);
+        if (recentSurah) {
+          const recentCardContainer = document.querySelector('.recent-card-container');
+          recentCardContainer.innerHTML = '';
+          const card = createSurahCard(recentSurah);
+          card.classList.add('recent-card');
+          recentCardContainer.appendChild(card);
+          document.getElementById('recent-surah-section').classList.remove('hidden');
+        }
+      }
+    }
+
+    function createAyahCard(ayah) {
+      const surah = surahData.find(s => s.number === ayah.surah);
+      const card = document.createElement('a');
+      card.href = `${surah.file}.html?ayah=${ayah.ayah}`;
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-content">
+          <span class="surah-number">${surah.name} - Ayah ${ayah.ayah}</span>
+          <span class="surah-meaning">${surah.meaning}</span>
+        </div>
+      `;
+      return card;
+    }
+
+    function populateMyQuran() {
+      // Favorited Surahs
+      const favoritedSurahs = JSON.parse(localStorage.getItem('favoritedSurahs') || '[]');
+      const favoritedSurahsContainer = document.getElementById('favorited-surahs');
+      favoritedSurahsContainer.innerHTML = '';
+      favoritedSurahs.forEach(surahNum => {
+        const surah = surahData.find(s => s.number === surahNum);
+        if (surah) {
+          favoritedSurahsContainer.appendChild(createSurahCard(surah));
+        }
+      });
+
+      // Favorited Ayahs
+      const favoritedAyahs = JSON.parse(localStorage.getItem('favoritedAyahs') || '[]');
+      const favoritedAyahsContainer = document.getElementById('favorited-ayahs');
+      favoritedAyahsContainer.innerHTML = '';
+      favoritedAyahs.forEach(ayah => {
+        favoritedAyahsContainer.appendChild(createAyahCard(ayah));
+      });
+
+      // Bookmarked Surahs
+      const bookmarkedSurahs = JSON.parse(localStorage.getItem('bookmarkedSurahs') || '[]');
+      const bookmarkedSurahsContainer = document.getElementById('bookmarked-surahs');
+      bookmarkedSurahsContainer.innerHTML = '';
+      bookmarkedSurahs.forEach(surahNum => {
+        const surah = surahData.find(s => s.number === surahNum);
+        if (surah) {
+          bookmarkedSurahsContainer.appendChild(createSurahCard(surah));
+        }
+      });
+
+      // Bookmarked Ayahs
+      const bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs') || '[]');
+      const bookmarkedAyahsContainer = document.getElementById('bookmarked-ayahs');
+      bookmarkedAyahsContainer.innerHTML = '';
+      bookmarkedAyahs.forEach(ayah => {
+        bookmarkedAyahsContainer.appendChild(createAyahCard(ayah));
+      });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
@@ -565,6 +840,15 @@
       populateSurahs();
       populateJuz();
       populateRevelationOrder();
+      showRecentSurah();
+
+      // Add search functionality
+      const searchInput = document.getElementById('surah-search');
+      searchInput.addEventListener('input', () => {
+        if (document.getElementById('surah-tab').classList.contains('active')) {
+          populateSurahs(searchInput.value);
+        }
+      });
     };
   </script>
 </head>
@@ -592,13 +876,21 @@
   </header>
 
   <main class="container">
+    <div class="search-container">
+      <input type="text" id="surah-search" placeholder="Search for Surahs..." class="search-input">
+    </div>
     <div class="tabs">
       <button id="surah-tab" class="tab-button active" onclick="switchTab('surah')">Surahs</button>
       <button id="juz-tab" class="tab-button" onclick="switchTab('juz')">Juz</button>
       <button id="reveal-tab" class="tab-button" onclick="switchTab('reveal')">Revelation Order</button>
+      <button id="myquran-tab" class="tab-button" onclick="switchTab('myquran')">My Quran</button>
     </div>
 
     <section id="surah-content" class="tab-content">
+      <div id="recent-surah-section" class="recent-surah-section hidden">
+        <h2><hr> Recently Visited Surah<hr></h2>
+        <div class="recent-card-container"></div>
+      </div>
       <h2><hr> All Surahs<hr></h2>
       <div class="cards"></div>
     </section>
@@ -612,6 +904,30 @@
       <h2><hr>Read in Revelation Order<hr></h2>
       <div class="cards"></div>
     </section>
+
+    <section id="myquran-content" class="tab-content hidden">
+      <h2><hr>My Quran<hr></h2>
+      <div class="myquran-sections">
+        <div class="myquran-section">
+          <h3>Favorited Ayahs</h3>
+          <div id="favorited-ayahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Favorited Surahs</h3>
+          <div id="favorited-surahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Bookmarked Ayahs</h3>
+          <div id="bookmarked-ayahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Bookmarked Surahs</h3>
+          <div id="bookmarked-surahs" class="cards"></div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 </body>
 </html>
