@@ -2423,13 +2423,13 @@
     let bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs')) || [];
 
     function isFavorite(index) {
-      return favoritedAyahs.some(ayah => ayah.surah === 1 && ayah.ayah === index + 1);
+      return favoritedAyahs.some(ayah => ayah.surah === 2 && ayah.ayah === index + 1);
     }
 
     function toggleFavorite(index) {
-      const ayahObj = { surah: 1, ayah: index + 1 };
+      const ayahObj = { surah: 2, ayah: index + 1 };
       if (isFavorite(index)) {
-        favoritedAyahs = favoritedAyahs.filter(ayah => !(ayah.surah === 1 && ayah.ayah === index + 1));
+        favoritedAyahs = favoritedAyahs.filter(ayah => !(ayah.surah === 2 && ayah.ayah === index + 1));
       } else {
         favoritedAyahs.push(ayahObj);
       }
@@ -2439,13 +2439,13 @@
     }
 
     function isBookmarked(index) {
-      return bookmarkedAyahs.some(ayah => ayah.surah === 1 && ayah.ayah === index + 1);
+      return bookmarkedAyahs.some(ayah => ayah.surah === 2 && ayah.ayah === index + 1);
     }
 
     function toggleBookmark(index) {
-      const ayahObj = { surah: 1, ayah: index + 1 };
+      const ayahObj = { surah: 2, ayah: index + 1 };
       if (isBookmarked(index)) {
-        bookmarkedAyahs = bookmarkedAyahs.filter(ayah => !(ayah.surah === 1 && ayah.ayah === index + 1));
+        bookmarkedAyahs = bookmarkedAyahs.filter(ayah => !(ayah.surah === 2 && ayah.ayah === index + 1));
       } else {
         bookmarkedAyahs.push(ayahObj);
       }
