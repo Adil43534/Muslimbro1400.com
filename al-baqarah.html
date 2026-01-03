@@ -5,6 +5,7 @@
   <title>Surah Al-Baqarah</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -218,6 +219,34 @@
 
     .share-icon:hover {
       opacity: 1;
+    }
+
+    .favorite-btn, .bookmark-btn {
+      position: absolute;
+      top: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover {
+      opacity: 1;
+    }
+
+    .favorite-btn {
+      right: 4rem;
+    }
+
+    .bookmark-btn {
+      right: 7rem;
+    }
+
+    .share-icon {
+      right: 1rem;
     }
 
     .navigation {
@@ -945,6 +974,10 @@
   <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
   <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`
     const ayahs = [
       {
         arabic: "الٓمٓ",
@@ -2385,6 +2418,42 @@
     let showTransliteration = false;
     let currentAyahIndex = 0;
 
+    // Favorites and Bookmarks storage
+    let favoritedAyahs = JSON.parse(localStorage.getItem('favoritedAyahs')) || [];
+    let bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs')) || [];
+
+    function isFavorite(index) {
+      return favoritedAyahs.some(ayah => ayah.surah === 1 && ayah.ayah === index + 1);
+    }
+
+    function toggleFavorite(index) {
+      const ayahObj = { surah: 1, ayah: index + 1 };
+      if (isFavorite(index)) {
+        favoritedAyahs = favoritedAyahs.filter(ayah => !(ayah.surah === 1 && ayah.ayah === index + 1));
+      } else {
+        favoritedAyahs.push(ayahObj);
+      }
+      localStorage.setItem('favoritedAyahs', JSON.stringify(favoritedAyahs));
+      renderReadTab();
+      renderTranslation();
+    }
+
+    function isBookmarked(index) {
+      return bookmarkedAyahs.some(ayah => ayah.surah === 1 && ayah.ayah === index + 1);
+    }
+
+    function toggleBookmark(index) {
+      const ayahObj = { surah: 1, ayah: index + 1 };
+      if (isBookmarked(index)) {
+        bookmarkedAyahs = bookmarkedAyahs.filter(ayah => !(ayah.surah === 1 && ayah.ayah === index + 1));
+      } else {
+        bookmarkedAyahs.push(ayahObj);
+      }
+      localStorage.setItem('bookmarkedAyahs', JSON.stringify(bookmarkedAyahs));
+      renderReadTab();
+      renderTranslation();
+    }
+
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
@@ -2423,6 +2492,8 @@
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
           </svg>
@@ -2440,6 +2511,8 @@
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
           </svg>
@@ -2448,7 +2521,7 @@
       });
     }
 
-    let currentEmbedSrc = "https://archive.org/embed/001_20251230"; // Default for saadalghamdi
+    let currentEmbedSrc = "https://archive.org/embed/002_20260101"; // Default for saadalghamdi
 
     function changeReciter() {
       const reciter = document.getElementById('reciter').value;
@@ -2456,7 +2529,7 @@
 
       // Define your reciter embed sources (Archive.org embed links)
       const reciterEmbeds = {
-        saadalghamdi: "https://archive.org/embed/001_20251230",
+        saadalghamdi: "https://archive.org/embed/002_20260101",
         // Add more reciters here as needed, e.g., anotherreciter: "https://archive.org/embed/another_id"
       };
 
@@ -2645,6 +2718,14 @@
       renderReadTab();
       // Ensure modal is hidden on load
       document.getElementById('audioModal').classList.add('hidden');
+
+      // Check for ayah parameter in URL and navigate to it
+      const urlParams = new URLSearchParams(window.location.search);
+      const ayah = urlParams.get('ayah');
+      if (ayah) {
+        document.getElementById('verse-number').value = ayah;
+        goToVerse();
+      }
     };
   </script>
 </body>
