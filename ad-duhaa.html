@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surah Ad-Duha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
+
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .surah-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .surah-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .meaning {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meaning { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .bismillah {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .bismillah { color: #0c8; }
+
+    .ayah {
+      background-color: #fff;
+      padding: 1rem 3rem 1rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .ayah {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .ayah-number {
+      font-size: 0.9rem;
+      color: #007b5e;
+      margin-bottom: 0.4rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .ayah-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      font-family: 'Noto Nastaliq Urdu', serif;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .transliteration {
+      margin-top: 0.5rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-style: italic;
+    }
+
+    .dark-mode .transliteration { color: #ccc; }
+
+    .verse-icon {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      color: #007b5e;
+      font-family: 'Amiri', serif;
+    }
+
+    .dark-mode .verse-icon {
+      color: #0c8;
+    }
+
+    .share-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .share-icon:hover {
+      opacity: 1;
+    }
+
+    .favorite-btn, .bookmark-btn {
+      position: absolute;
+      top: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover {
+      opacity: 1;
+    }
+
+    .favorite-btn {
+      right: 4rem;
+    }
+
+    .bookmark-btn {
+      right: 7rem;
+    }
+
+    .share-icon {
+      right: 1rem;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .transliteration-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .transliteration-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .transliteration-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .lang-select, .audio-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label, .audio-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label, .dark-mode .audio-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select, .audio-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .audio-select button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .audio-select button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .audio-select button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .audio-select button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .dark-mode .lang-select select, .dark-mode .audio-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover, .audio-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus, .audio-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .hidden { display: none; }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content iframe {
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      height: 60px;
+    }
+
+    .modal-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+    }
+
+        .go-to-verse {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-verse label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-verse label {
+      color: #e0e0e0;
+    }
+
+    .go-to-verse input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-verse input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-verse input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-verse input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-verse input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-verse input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-verse button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-verse button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-verse button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-verse button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+
+    /* Share Modal Styling */
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .modal-content input[type="text"]:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content input[type="text"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .modal-content input[type="text"]:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content input[type="text"]:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content input[type="text"]:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select, .audio-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .surah-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .bismillah {
+        font-size: 1.3rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadith</a>
+      <a href="islamic-books.html">Islamic Books</a>
+      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="surah-info">
+      <h1>Surah Ad-Duha (سورة الضحى)</h1>
+      <p class="meaning">Meaning: The Morning Hours</p>
+      <p class="meta">Mecca - 11 Verses</p>
+      
+      <div class="audio-select">
+        <label for="reciter">Reciter:</label>
+        <select id="reciter" onchange="changeReciter()">
+          <option value="saadalghamdi">Saad Al Ghamdi</option>
+        </select>
+        <br><br>
+        <button id="playButton" onclick="playAudio()">Play Audio</button>
+      </div>
+      
+      <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+            <!-- Transliteration Toggle -->
+      <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
+
+               <!-- Go to Verse -->
+      <div class="go-to-verse">
+        <label for="verse-number">Go to Verse:</label>
+        <input type="number" id="verse-number" min="1" max="11">
+        <button onclick="goToVerse()">Go</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-lail.html">← Surah Al-Lail</a>
+        <a href="ash-sharh.html">Next: Surah Ash-Sharh →</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()"></select>
+      </div>
+    </div>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+      <div class="navigation">
+        <a href="al-lail.html">← Surah Al-Lail</a>
+        <a href="ash-sharh.html">Next: Surah Ash-Sharh →</a>
+      </div>
+
+  <!-- Audio Modal -->
+  <div id="audioModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <iframe src="https://archive.org/embed/093_20260102" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+      <br><br>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+    <!-- Share Modal -->
+  <div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Share Ayah Options</h2>
+      <div>
+        <label><input type="checkbox" id="includeTransliteration"> Include Transliteration</label>
+      </div>
+      <div>
+        <label><input type="checkbox" id="includeTranslation" onchange="toggleLanguageSelect()"> Include Translation</label>
+      </div>
+      <div id="languageSelectDiv" style="display: none;">
+        <label for="shareLanguage">Translation Language:</label>
+        <select id="shareLanguage">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <br>
+      <div id="shareMessage" style="display: none; margin-top: 1rem; text-align: center; font-weight: bold;"></div>
+      <button onclick="generateAndCopyText()">Copy Text</button>
+      <button onclick="closeShareModal()">Cancel</button>
+    </div>
+  </div>
+
+    <!-- Scroll to Top Button -->
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+  <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    const ayahs = [
+      {
+        arabic: "وَالضُّحىٰ",
+        en: "By the morning sunlight,",
+        ur: ""
+      },
+      {
+        arabic: "وَاللَّيلِ إِذا سَجىٰ",
+        en: "and the night when it falls still!",
+        ur: ""
+      },
+      {
+        arabic: "ما وَدَّعَكَ رَبُّكَ وَما قَلىٰ",
+        en: "Your Lord ˹O Prophet˺ has not abandoned you, nor has He become hateful ˹of you˺.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَلآخِرَةُ خَيرٌ لَكَ مِنَ الأولىٰ",
+        en: "And the next life is certainly far better for you than this one.",
+        ur: ""
+      },
+      {
+        arabic: "وَلَسَوفَ يُعطيكَ رَبُّكَ فَتَرضىٰ",
+        en: "And ˹surely˺ your Lord will give so much to you that you will be pleased.",
+        ur: ""
+      },
+      {
+        arabic: "أَلَم يَجِدكَ يَتيمًا فَآوىٰ",
+        en: "Did He not find you as an orphan then sheltered you?",
+        ur: ""
+      },
+      {
+        arabic: "وَوَجَدَكَ ضالًّا فَهَدىٰ",
+        en: "Did He not find you unguided then guided you?",
+        ur: ""
+      },  
+      {
+        arabic: "وَوَجَدَكَ عائِلًا فَأَغنىٰ",
+        en: "And did He not find you needy then satisfied your needs?",
+        ur: ""
+      },
+      {
+        arabic: "فَأَمَّا اليَتيمَ فَلا تَقهَر",
+        en: "So do not oppress the orphan,",
+        ur: ""
+      },
+      {
+        arabic: "وَأَمَّا السّائِلَ فَلا تَنهَر",
+        en: "nor repulse the beggar.",
+        ur: ""
+      },
+      {
+        arabic: "وَأَمّا بِنِعمَةِ رَبِّكَ فَحَدِّث",
+        en: "And proclaim the blessings of your Lord.",
+        ur: ""
+      }
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+    let showTransliteration = false;
+    let currentAyahIndex = 0;
+
+    // Favorites and Bookmarks storage
+    let favoritedAyahs = JSON.parse(localStorage.getItem('favoritedAyahs')) || [];
+    let bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs')) || [];
+
+    function isFavorite(index) {
+      return favoritedAyahs.some(ayah => ayah.surah === 93 && ayah.ayah === index + 1);
+    }
+
+    function toggleFavorite(index) {
+      const ayahObj = { surah: 93, ayah: index + 1 };
+      if (isFavorite(index)) {
+        favoritedAyahs = favoritedAyahs.filter(ayah => !(ayah.surah === 93 && ayah.ayah === index + 1));
+      } else {
+        favoritedAyahs.push(ayahObj);
+      }
+      localStorage.setItem('favoritedAyahs', JSON.stringify(favoritedAyahs));
+      renderReadTab();
+      renderTranslation();
+    }
+
+    function isBookmarked(index) {
+      return bookmarkedAyahs.some(ayah => ayah.surah === 93 && ayah.ayah === index + 1);
+    }
+
+    function toggleBookmark(index) {
+      const ayahObj = { surah: 93, ayah: index + 1 };
+      if (isBookmarked(index)) {
+        bookmarkedAyahs = bookmarkedAyahs.filter(ayah => !(ayah.surah === 93 && ayah.ayah === index + 1));
+      } else {
+        bookmarkedAyahs.push(ayahObj);
+      }
+      localStorage.setItem('bookmarkedAyahs', JSON.stringify(bookmarkedAyahs));
+      renderReadTab();
+      renderTranslation();
+    }
+
+    // Language options with display names
+    const languages = [
+      { value: 'en', name: 'English: Dr. Mustafa Khattab' },
+      { value: 'ur', name: 'Urdu' }
+      // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
+    ];
+
+    // Populate language selector with sorted options
+    function populateLanguageSelector() {
+      // Sort languages alphabetically by name
+      languages.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear existing options
+      langSelect.innerHTML = '';
+      
+      // Add sorted options
+      languages.forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang.value;
+        option.textContent = lang.name;
+        langSelect.appendChild(option);
+      });
+    }
+
+    // Load Arabic verses
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = 'ayah';
+        let transliterationHTML = '';
+        if (showTransliteration && ayah.trans) {
+          transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
+        }
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
+          ${transliterationHTML}
+          <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      ayahs.forEach((ayah, index) => {
+        const div = document.createElement('div');
+        div.className = `ayah translation ${lang}`;
+        div.innerHTML = `
+          <div class="ayah-number">Verse ${index + 1}</div>
+          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    let currentEmbedSrc = "https://archive.org/embed/093_20260102"; // Default for saadalghamdi
+
+    function changeReciter() {
+      const reciter = document.getElementById('reciter').value;
+      const playButton = document.getElementById('playButton');
+
+      // Define your reciter embed sources (Archive.org embed links)
+      const reciterEmbeds = {
+        saadalghamdi: "https://archive.org/embed/093_20260102",
+        // Add more reciters here as needed, e.g., anotherreciter: "https://archive.org/embed/another_id"
+      };
+
+      // Get the correct embed URL for the selected reciter
+      const newSrc = reciterEmbeds[reciter];
+
+      if (newSrc) {
+        currentEmbedSrc = newSrc;
+        // Show the play button
+        playButton.style.display = 'block';
+      } else {
+        alert("Embed source not available for this reciter.");
+        playButton.style.display = 'none';
+      }
+    }
+
+    function playAudio() {
+      // Show the modal with the embed iframe
+      const modal = document.getElementById('audioModal');
+      const iframe = modal.querySelector('iframe');
+      iframe.src = currentEmbedSrc;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('audioModal');
+      modal.style.display = 'none';
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function goToVerse() {
+      const verseNumber = parseInt(document.getElementById('verse-number').value);
+      if (isNaN(verseNumber) || verseNumber < 1 || verseNumber > 11) {
+        alert('Please enter a valid verse number between 1 and 11.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = readTab.classList.contains('hidden') ? translateTab : readTab;
+      const ayahs = activeTab.querySelectorAll('.ayah');
+
+      if (ayahs[verseNumber - 1]) {
+        ayahs[verseNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the verse temporarily
+        ayahs[verseNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          ayahs[verseNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "sun.png"
+        : "moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function toggleTransliteration() {
+      showTransliteration = !showTransliteration;
+      const toggleButton = document.getElementById('transliteration-toggle');
+      if (showTransliteration) {
+        toggleButton.textContent = 'Hide Transliteration';
+        toggleButton.classList.add('active');
+      } else {
+        toggleButton.textContent = 'Show Transliteration';
+        toggleButton.classList.remove('active');
+      }
+      renderReadTab();
+    }
+
+        // Scroll to Top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Share functions
+    function openShareModal(index) {
+      currentAyahIndex = index;
+      document.getElementById('includeTransliteration').checked = false;
+      document.getElementById('includeTranslation').checked = false;
+      document.getElementById('languageSelectDiv').style.display = 'none';
+      document.getElementById('shareMessage').style.display = 'none';
+      document.getElementById('shareModal').style.display = 'flex';
+    }
+
+    function toggleLanguageSelect() {
+      const includeTranslation = document.getElementById('includeTranslation').checked;
+      document.getElementById('languageSelectDiv').style.display = includeTranslation ? 'block' : 'none';
+    }
+
+    function closeShareModal() {
+      document.getElementById('shareModal').style.display = 'none';
+    }
+
+    function generateAndCopyText() {
+      const ayah = ayahs[currentAyahIndex];
+      let text = `Surah Ad-Duha\nVerse ${currentAyahIndex + 1}\n\nArabic:\n${ayah.arabic}\n`;
+
+      if (document.getElementById('includeTransliteration').checked && ayah.trans) {
+        text += `\nTransliteration:\n${ayah.trans}\n`;
+      }
+
+      if (document.getElementById('includeTranslation').checked) {
+        const lang = document.getElementById('shareLanguage').value;
+        text += `\nTranslation (${lang === 'en' ? 'English' : 'Urdu'}):\n${ayah[lang]}\n`;
+      }
+
+      text += `\nhttps://adil43534.github.io/Muslimbro1400.com/`;
+
+      const shareMessage = document.getElementById('shareMessage');
+      navigator.clipboard.writeText(text).then(() => {
+        shareMessage.textContent = 'Text copied to clipboard!';
+        shareMessage.style.color = '#007b5e';
+        shareMessage.style.display = 'block';
+        setTimeout(() => {
+          closeShareModal();
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        shareMessage.textContent = 'Failed to copy text. Please try again.';
+        shareMessage.style.color = '#d9534f';
+        shareMessage.style.display = 'block';
+      });
+    }
+
+    // Show/hide scroll to top button and update progress bar based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      populateLanguageSelector();
+      renderReadTab();
+      // Ensure modal is hidden on load
+      document.getElementById('audioModal').classList.add('hidden');
+
+      // Check for ayah parameter in URL and navigate to it
+      const urlParams = new URLSearchParams(window.location.search);
+      const ayah = urlParams.get('ayah');
+      if (ayah) {
+        document.getElementById('verse-number').value = ayah;
+        goToVerse();
+      }
+    };
+  </script>
+</body>
+</html>
