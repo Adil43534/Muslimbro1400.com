@@ -297,6 +297,8 @@
       border-color: #0a6;
     }
 
+
+
     .hadith {
       background-color: #fff;
       padding: 1rem 3rem 1rem 1rem;
@@ -650,9 +652,59 @@
         font-size: 1.5rem;
       }
     }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
+
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+      transform: scale(1.1);
+    }
+
+    #scrollToTop.show {
+      display: block;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
   </style>
 </head>
 <body>
+  <div id="progress-bar"></div>
   <!-- Navbar -->
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
@@ -685,16 +737,9 @@
         <button class="tab-button" onclick="switchTab('translate')">Translation</button>
       </div>
 
-      <!-- Go to Hadith -->
-      <div class="go-to-hadith">
-        <label for="hadith-number">Go to Hadith:</label>
-        <input type="number" id="hadith-number" min="1" max="7" placeholder="1-7">
-        <button onclick="goToHadith()">Go</button>
-      </div>
 
-      <div class="navigation">
-        <a href="bukhari.html">← Back to Sahih Al-Bukhari</a>
-      </div>
+
+
 
       <!-- Language Selector -->
       <div class="lang-select hidden" id="languageSelector">
@@ -704,7 +749,22 @@
           <option value="ur">Urdu</option>
         </select>
       </div>
+
+      <!-- Go to Hadith -->
+      <div class="go-to-hadith">
+        <label for="hadith-number">Go to Hadith:</label>
+        <input type="number" id="hadith-number" min="1" max="7" placeholder="1-7">
+        <button onclick="goToHadith()">Go</button>
+      </div>
     </div>
+
+    <!-- Navigation above hadith container -->
+    <div class="navigation">
+      <a href="bukhari.html">Back to Bukhari</a>
+      <a href="bukhari-chp2.html">Next Chapter</a>
+    </div>
+
+    <br>
 
     <!-- Arabic Tab -->
     <div id="read-tab"></div>
@@ -712,13 +772,13 @@
     <!-- Translation Tab -->
     <div id="translate-tab" class="hidden"></div>
 
-    <!-- Navigation -->
+    <!-- Navigation below hadith container -->
     <div class="navigation">
-      <a id="prev-hadith" href="#" class="hidden">← Previous Hadith</a>
-      <!-- <a href="hadith.html">Back to Hadith</a> -->
-      <a id="next-hadith" href="#">Next Hadith →</a>
+      <a href="bukhari.html">Back to Bukhari</a>
+      <a href="bukhari-chp2.html">Next Chapter</a>
     </div>
   </div>
+
 
   <!-- Share Modal -->
   <div id="share-modal" class="modal hidden">
@@ -778,18 +838,41 @@
         arabic: "أَوَّلُ مَا بُدِئَ بِهِ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مِنَ الوَحْيِ الرُّؤْيَا الصَّالِحَةُ",
         en: "The first revelation to Allah's Messenger (peace be upon him) was a true dream.",
         ur: "اللہ کے رسول صلی اللہ علیہ وسلم پر وحی کا آغاز سچے خواب سے ہوا۔",
+      },
+      {
+        id: 4,
+        volume: 1,
+        arabic: "أَوَّلُ مَا بُدِئَ بِهِ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مِنَ الوَحْيِ الرُّؤْيَا الصَّالِحَةُ فِي النَّوْمِ فَكَانَ لاَ يَرَى رُؤْيَا إِلاَّ جَاءَتْ مِثْلَ فَلَقِ الصُّبْحِ",
+        en: "The first thing that was revealed to Allah's Messenger (peace be upon him) was the true dream in his sleep, so he never saw a dream but it came like the break of dawn.",
+        ur: "اللہ کے رسول صلی اللہ علیہ وسلم پر وحی کا آغاز نیند میں سچے خواب سے ہوا، تو وہ کوئی خواب نہیں دیکھتے تھے مگر وہ صبح کی روشنی کی طرح آتا تھا۔",
+      },
+      {
+        id: 5,
+        volume: 1,
+        arabic: "ثُمَّ حُبِّبَ إِلَيْهِ الْخَلَاءُ وَكَانَ يَخْلُو بِغَارِ حِرَاءٍ فَيَتَحَنَّثُ فِيهِ وَيَتَعَبَّدُ لَيَالِيَ ذَوَاتِ الْعَدَدِ قَبْلَ أَنْ يَنْزِعَ إِلَى أَهْلِهِ وَيَتَزَوَّدُ لِذَلِكَ ثُمَّ يَرْجِعُ إِلَى خَدِيجَةَ فَيَتَزَوَّدُ لِمِثْلِهَا حَتَّى جَاءَهُ الْحَقُّ وَهُوَ فِي غَارِ حِرَاءٍ",
+        en: "Then seclusion was made beloved to him, and he used to seclude himself in the cave of Hira, where he would worship for several nights before returning to his family, and he would take provisions for that. Then he would return to Khadijah and take provisions for a similar period, until the truth came to him while he was in the cave of Hira.",
+        ur: "پھر انہیں تنہائی پسند آئی، اور وہ غار حراء میں تنہا رہتے تھے جہاں وہ کئی راتیں عبادت کرتے تھے اس سے پہلے کہ اپنے گھر والوں کے پاس لوٹتے، اور اس کے لیے سامان لے لیتے تھے۔ پھر وہ خدیجہ کے پاس لوٹتے اور اسی طرح کے لیے سامان لے لیتے یہاں تک کہ انہیں غار حراء میں حق آیا۔",
+      },
+      {
+        id: 6,
+        volume: 1,
+        arabic: "فَجَاءَهُ الْمَلَكُ فَقَالَ اقْرَأْ قَالَ مَا أَنَا بِقَارِئٍ قَالَ فَأَخَذَنِي فَغَطَّنِي حَتَّى بَلَغَ مِنِّي الْجَهْدَ ثُمَّ أَرْسَلَنِي فَقَالَ اقْرَأْ قَالَ مَا أَنَا بِقَارِئٍ فَأَخَذَنِي فَغَطَّنِي الثَّانِيَةَ حَتَّى بَلَغَ مِنِّي الْجَهْدَ ثُمَّ أَرْسَلَنِي فَقَالَ اقْرَأْ فَقُلْتُ مَا أَنَا بِقَارِئٍ فَأَخَذَنِي فَغَطَّنِي الثَّالِثَةَ حَتَّى بَلَغَ مِنِّي الْجَهْدَ ثُمَّ أَرْسَلَنِي فَقَالَ اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",
+        en: "Then the angel came to him and said, 'Read!' He said, 'I am not a reader.' So he took me and squeezed me until I reached the limit of my strength, then he released me and said, 'Read!' I said, 'I am not a reader.' So he took me and squeezed me a second time until I reached the limit of my strength, then he released me and said, 'Read!' I said, 'I am not a reader.' So he took me and squeezed me a third time until I reached the limit of my strength, then he released me and said, 'Read in the name of your Lord who created.'",
+        ur: "پھر فرشتہ ان کے پاس آیا اور کہا اقرأ (پڑھو) انہوں نے کہا میں پڑھنے والا نہیں ہوں۔ تو اس نے مجھے پکڑا اور دبانا شروع کیا یہاں تک کہ مجھ سے طاقت نکل گئی پھر مجھے چھوڑا اور کہا اقرأ میں نے کہا میں پڑھنے والا نہیں ہوں۔ تو اس نے مجھے دوسری بار پکڑا اور دبانا شروع کیا یہاں تک کہ مجھ سے طاقت نکل گئی پھر مجھے چھوڑا اور کہا اقرأ میں نے کہا میں پڑھنے والا نہیں ہوں۔ تو اس نے مجھے تیسر ی بار پکڑا اور دبانا شروع کیا یہاں تک کہ مجھ سے طاقت نکل گئی پھر مجھے چھوڑا اور کہا اقرأ بسم ربک الذی خلق (اپنے رب کے نام سے پڑھو جس نے پیدا کیا)",
+      },
+      {
+        id: 7,
+        volume: 1,
+        arabic: "فَرَجَعَ بِهَا رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَرْجُفُ فُؤَادُهُ حَتَّى دَخَلَ عَلَى خَدِيجَةَ بِنْتِ خُوَيْلِدٍ فَقَالَ زَمِّلُونِي زَمِّلُونِي فَزَمَّلُوهُ حَتَّى ذَهَبَ عَنْهُ الرَّوْعُ ثُمَّ قَالَ لِخَدِيجَةَ مَا لِي يَا خَدِيجَةُ فَأَخْبَرَهَا الْخَبَرَ فَقَالَتْ خَدِيجَةُ كَلَّا وَاللَّهِ مَا يُخْزِيكَ اللَّهُ أَبَدًا إِنَّكَ لَتَصِلُ الرَّحِمَ وَتَحْمِلُ الْكَلَّ وَتَكْسِبُ الْمَعْدُومَ وَتَقْرِي الضَّيْفَ وَتُعِينُ عَلَى نَوَائِبِ الْحَقِّ",
+        en: "So Allah's Messenger (peace be upon him) returned with it, his heart trembling, until he entered upon Khadijah bint Khuwaylid and said, 'Cover me, cover me!' So they covered him until the fear went away from him. Then he said to Khadijah, 'What is wrong with me, O Khadijah?' So he informed her of the news. Khadijah said, 'No, by Allah, Allah will never disgrace you. Indeed, you maintain the ties of kinship, carry the burden, earn for the destitute, honor the guest, and help in the calamities of truth.'",
+        ur: "تو اللہ کے رسول صلی اللہ علیہ وسلم اس کے ساتھ لوٹے ان کا دل کانپ رہا تھا یہاں تک کہ وہ خدیجہ بنت خویلد کے پاس داخل ہوئے اور کہا مجھے ڈھانپ دو مجھے ڈھانپ دو تو انہوں نے انہیں ڈھانپ دیا یہاں تک کہ ان سے خوف دور ہو گیا پھر انہوں نے خدیجہ سے کہا مجھے کیا ہوا ہے اے خدیجہ تو انہوں نے انہیں خبر بتائی تو خدیجہ نے کہا نہیں اللہ کی قسم اللہ آپ کو کبھی رسوا نہیں کرے گا بے شک آپ رشتے جوڑتے ہیں بوجھ اٹھاتے ہیں بے آسرا کے لیے کماتے ہیں مہمان کا احترام کرتے ہیں اور حق کی مصیبتوں میں مدد کرتے ہیں۔",
       }
-      // Add more hadiths as needed
     ];
-
-    let currentHadithIndex = 0;
 
     const readTab = document.getElementById('read-tab');
     const translateTab = document.getElementById('translate-tab');
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
-    const prevHadithLink = document.getElementById('prev-hadith');
-    const nextHadithLink = document.getElementById('next-hadith');
 
     function toggleFavorite(hadithId) {
       const index = favoritedHadiths.indexOf(hadithId);
@@ -799,7 +882,11 @@
         favoritedHadiths.push(hadithId);
       }
       localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
-      renderReadTab();
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
     }
 
     function toggleBookmark(hadithId) {
@@ -810,58 +897,63 @@
         bookmarkedHadiths.push(hadithId);
       }
       localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
-      renderReadTab();
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
     }
 
     function renderReadTab() {
       readTab.innerHTML = '';
-      const hadith = hadiths[currentHadithIndex];
-      const isFavorited = favoritedHadiths.includes(hadith.id);
-      const isBookmarked = bookmarkedHadiths.includes(hadith.id);
-      const div = document.createElement('div');
-      div.className = 'hadith';
-      div.innerHTML = `
-        <div class="hadith-number">Hadith ${hadith.id}</div>
-        <div class="arabic">${hadith.arabic}</div>
-        <div class="hadith-meta">
-          <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
-        </div>
-        <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
-        <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
-        <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-        </svg>
-      `;
-      readTab.appendChild(div);
-      updateNavigation();
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = 'hadith';
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="arabic">${hadith.arabic}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        readTab.appendChild(div);
+      });
     }
 
     function renderTranslation() {
       const lang = langSelect.value;
       translateTab.innerHTML = '';
-      const hadith = hadiths[currentHadithIndex];
-      const div = document.createElement('div');
-      div.className = `hadith translation ${lang}`;
-      div.innerHTML = `
-        <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-        </svg>
-        <div class="hadith-number">Hadith ${hadith.id}</div>
-        <div class="translation">${hadith[lang]}</div>
-        <div class="hadith-meta">
-          <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
-        </div>
-      `;
-      translateTab.appendChild(div);
-      updateNavigation();
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = `hadith translation ${lang}`;
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="translation">${hadith[lang]}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        translateTab.appendChild(div);
+      });
     }
 
-    function updateNavigation() {
-      prevHadithLink.classList.toggle('hidden', currentHadithIndex === 0);
-      nextHadithLink.classList.toggle('hidden', currentHadithIndex === hadiths.length - 1);
-      prevHadithLink.href = `#hadith${hadiths[Math.max(0, currentHadithIndex - 1)].id}`;
-      nextHadithLink.href = `#hadith${hadiths[Math.min(hadiths.length - 1, currentHadithIndex + 1)].id}`;
-    }
+
 
     function switchTab(tab) {
       document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
@@ -904,30 +996,6 @@
       navLinks.classList.toggle('active');
     }
 
-    prevHadithLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (currentHadithIndex > 0) {
-        currentHadithIndex--;
-        if (!translateTab.classList.contains('hidden')) {
-          renderTranslation();
-        } else {
-          renderReadTab();
-        }
-      }
-    });
-
-    nextHadithLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (currentHadithIndex < hadiths.length - 1) {
-        currentHadithIndex++;
-        if (!translateTab.classList.contains('hidden')) {
-          renderTranslation();
-        } else {
-          renderReadTab();
-        }
-      }
-    });
-
     function openShareModal(hadithId, tab) {
       const modal = document.getElementById('share-modal');
       modal.classList.remove('hidden');
@@ -939,6 +1007,28 @@
     function closeShareModal() {
       const modal = document.getElementById('share-modal');
       modal.classList.add('hidden');
+    }
+
+    function goToHadith() {
+      const hadithNumber = parseInt(document.getElementById('hadith-number').value);
+      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 7) {
+        alert('Please enter a valid hadith number between 1 and 7.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = translateTab.classList.contains('hidden') ? readTab : translateTab;
+      const hadithElements = activeTab.querySelectorAll('.hadith');
+
+      if (hadithElements[hadithNumber - 1]) {
+        hadithElements[hadithNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the hadith temporarily
+        hadithElements[hadithNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          hadithElements[hadithNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
     }
 
     function shareHadith() {
@@ -975,36 +1065,56 @@
       });
     }
 
-    function goToHadith() {
-      const input = document.getElementById('hadith-number');
-      const num = parseInt(input.value);
-      if (num >= 1 && num <= hadiths.length) {
-        currentHadithIndex = num - 1;
-        if (!translateTab.classList.contains('hidden')) {
-          renderTranslation();
-        } else {
-          renderReadTab();
-        }
-      } else {
-        alert('Please enter a valid hadith number between 1 and ' + hadiths.length);
-      }
-    }
+
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
+      renderReadTab();
+      // Scroll to the hadith if redirected with hash
       const hash = window.location.hash;
       if (hash.startsWith('#hadith')) {
-        const hadithId = parseInt(hash.substring(7));
-        const index = hadiths.findIndex(h => h.id === hadithId);
-        if (index !== -1) {
-          currentHadithIndex = index;
-        }
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Highlight the hadith temporarily
+            element.style.backgroundColor = '#005f4a';
+            setTimeout(() => {
+              element.style.backgroundColor = '';
+            }, 2000);
+          }
+        }, 100);
       }
-      renderReadTab();
     };
+  </script>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop">↑</button>
+
+  <script>
+    // Scroll to Top functionality
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 100) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
