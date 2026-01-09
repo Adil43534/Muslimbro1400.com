@@ -136,6 +136,36 @@
       gap: 1.5rem;
     }
 
+    .horizontal-cards {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f0f0f0;
+    }
+
+    .horizontal-cards::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
     .card {
       background-color: #fff;
       border-radius: 10px;
@@ -145,6 +175,8 @@
       transition: transform 0.2s ease, background-color 0.5s ease;
       text-decoration: none;
       color: inherit;
+      flex: 0 0 250px;
+      min-width: 250px;
     }
 
     .card:hover {
@@ -178,6 +210,37 @@
 
     .dark-mode .card p {
       color: #ccc;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .tab-button {
+      background-color: #f0f0f0;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
     }
 
     @media (max-width: 600px) {
@@ -218,6 +281,24 @@
       .menu-toggle {
         display: block;
       }
+
+      .horizontal-cards {
+        gap: 0.5rem;
+      }
+
+      .card {
+        flex: 0 0 200px;
+        min-width: 200px;
+        padding: 1rem;
+      }
+
+      .card h3 {
+        font-size: 1rem;
+      }
+
+      .card p {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -251,6 +332,10 @@
     <h1><hr>Sahih al-Bukhari (<span class="arabic">صحيح البخاري</span>)<hr></h1>
     <p class="description">
       Sahih al-Bukhari, compiled by Imam Muhammad al-Bukhari (<span class="arabic">رحمه الله</span>, d. 256 AH/870 CE), is widely regarded as the most authentic collection of hadith in Islamic scholarship. This esteemed work documents the <span class="arabic">Sunnah</span> of the Prophet Muhammad (<span class="arabic">ﷺ</span>), encompassing over 7,500 narrations across 97 books, serving as a cornerstone for Islamic guidance and practice.<hr></p><br>
+    <div class="tabs">
+      <button class="tab-button active" onclick="showAll()">All Hadiths</button>
+      <button class="tab-button" onclick="showMy()">My Hadiths</button>
+    </div>
     <div class="cards" id="chaptersGrid">
       <!-- Cards will be generated here -->
     </div>
@@ -264,6 +349,31 @@
       { id: 4, title: "Ablution", subtitle: "How to make Wudu", hadithCount: 50, file: "hadiths.html?book=bukhari&chapter=4" },
       { id: 5, title: "Prayer", subtitle: "Salah rules and rewards", hadithCount: 65, file: "hadiths.html?book=bukhari&chapter=5" },
       // Add more chapters here
+    ];
+
+    const hadiths = [
+      {
+        id: 1,
+        volume: 1,
+        arabic: "كَيْفَ كَانَ بَدْءُ الوَحْيِ إِلَى رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+        en: "How the Divine Revelation started being revealed to Allah's Messenger (peace be upon him).",
+        ur: "اللہ کے رسول صلی اللہ علیہ وسلم پر وحی کا آغاز کیسے ہوا۔",
+      },
+      {
+        id: 2,
+        volume: 1,
+        arabic: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+        en: "Actions are judged by intentions, and every person will get what they intended.",
+        ur: "عمل نیتوں پر مبنی ہیں، اور ہر شخص کو وہی ملے گا جو اس نے نیت کی۔",
+      },
+      {
+        id: 3,
+        volume: 1,
+        arabic: "أَوَّلُ مَا بُدِئَ بِهِ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مِنَ الوَحْيِ الرُّؤْيَا الصَّالِحَةُ",
+        en: "The first revelation to Allah's Messenger (peace be upon him) was a true dream.",
+        ur: "اللہ کے رسول صلی اللہ علیہ وسلم پر وحی کا آغاز سچے خواب سے ہوا۔",
+      }
+      // Add more hadiths as needed
     ];
 
     const grid = document.getElementById("chaptersGrid");
@@ -305,11 +415,148 @@
       navLinks.classList.toggle('active');
     }
 
+    function populateFavoriteSection() {
+      const favoriteSection = document.getElementById('favoriteSection');
+      favoriteSection.innerHTML = '';
+      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+      if (favoritedHadiths.length > 0) {
+        favoriteSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favorite Hadiths</h2>';
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        favoritedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        favoriteSection.appendChild(horizontalContainer);
+      }
+    }
+
+    function populateBookmarkedSection() {
+      const bookmarkedSection = document.getElementById('bookmarkedSection');
+      bookmarkedSection.innerHTML = '';
+      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+      if (bookmarkedHadiths.length > 0) {
+        bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        bookmarkedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        bookmarkedSection.appendChild(horizontalContainer);
+      }
+    }
+
+    function showAll() {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('button[onclick="showAll()"]').classList.add('active');
+      const grid = document.getElementById("chaptersGrid");
+      grid.innerHTML = '';
+      grid.style.display = 'grid';
+      chapters.forEach(chapter => {
+        const card = document.createElement("a");
+        card.className = "card";
+        card.href = chapter.file;
+        card.innerHTML = `
+          <h3>Book ${chapter.id}: ${chapter.title}:</h3>
+          <p class="arabic">${chapter.artitle || ""}</p>
+          <p>${chapter.subtitle}</p>
+          <p><strong>Hadiths:</strong> ${chapter.hadithCount}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function showMy() {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('button[onclick="showMy()"]').classList.add('active');
+      const grid = document.getElementById("chaptersGrid");
+      grid.innerHTML = '';
+      grid.style.display = 'block'; // Ensure vertical stacking for sections
+
+      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+
+      // Section for Favourited Hadiths
+      const favouritedSection = document.createElement("div");
+      favouritedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favourited Hadiths</h2>';
+      if (favoritedHadiths.length === 0) {
+        favouritedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited hadiths yet.</p>';
+      } else {
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        favoritedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        favouritedSection.appendChild(horizontalContainer);
+      }
+      grid.appendChild(favouritedSection);
+
+      // Section for Bookmarked Hadiths
+      const bookmarkedSection = document.createElement("div");
+      bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
+      if (bookmarkedHadiths.length === 0) {
+        bookmarkedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked hadiths yet.</p>';
+      } else {
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        bookmarkedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        bookmarkedSection.appendChild(horizontalContainer);
+      }
+      grid.appendChild(bookmarkedSection);
+    }
+
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
+      populateBookmarkedSection();
+      showAll(); // Initialize with All Hadiths active
     };
   </script>
 </body>
