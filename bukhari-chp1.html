@@ -995,6 +995,14 @@
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
+      const hash = window.location.hash;
+      if (hash.startsWith('#hadith')) {
+        const hadithId = parseInt(hash.substring(7));
+        const index = hadiths.findIndex(h => h.id === hadithId);
+        if (index !== -1) {
+          currentHadithIndex = index;
+        }
+      }
       renderReadTab();
     };
   </script>
