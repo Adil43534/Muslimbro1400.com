@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Muslimbro1400 - Sahih al-Bukhari - Chapter 1: Revelation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">  <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -210,12 +210,100 @@
       box-shadow: 0 0 8px rgba(0,204,136,0.3);
     }
 
+    .go-to-hadith {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-hadith label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-hadith label {
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-hadith input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-hadith input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-hadith input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-hadith button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-hadith button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
     .hadith {
       background-color: #fff;
-      padding: 1rem;
+      padding: 1rem 3rem 1rem 1rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
+      position: relative;
     }
 
     .dark-mode .hadith {
@@ -241,6 +329,7 @@
 
     .translation {
       margin-top: 0.5rem;
+      padding-top: 2rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
@@ -248,7 +337,7 @@
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Serif Devanagari', serif;
+      font-family: 'Noto Nastaliq Urdu', serif;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -271,6 +360,224 @@
 
     .hadith-meta a:hover {
       text-decoration: underline;
+    }
+
+    .share-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .share-icon:hover {
+      opacity: 1;
+    }
+
+    .favorite-btn, .bookmark-btn {
+      position: absolute;
+      top: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn {
+      right: 4rem;
+    }
+
+    .bookmark-btn {
+      right: 7rem;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover {
+      opacity: 1;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
     }
 
     .navigation {
@@ -350,18 +657,17 @@
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
+      <img src="menu.png" alt="Menu" />
     </button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/islamic-calendar.html">Islamic Calendar</a>
-      <a href="/about.html">About</a>
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadith</a>
+      <a href="islamic-books.html">Islamic Books</a>
+      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
     </div>
   </nav>
@@ -369,7 +675,7 @@
   <!-- Main Content -->
   <div class="container">
     <div class="hadith-info">
-      <h1>Sahih al-Bukhari - Book 1: Revelation</h1>
+      <h1>Book 1: Revelation <span class="arabic">(كتاب بدء الوحى)</span></h1>
       <p class="subtitle">Chapter: Start of Divine Revelation</p>
       <p class="meta">7 Hadiths</p>
 
@@ -377,6 +683,17 @@
       <div class="tabs">
         <button class="tab-button active" onclick="switchTab('read')">Read</button>
         <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <!-- Go to Hadith -->
+      <div class="go-to-hadith">
+        <label for="hadith-number">Go to Hadith:</label>
+        <input type="number" id="hadith-number" min="1" max="7" placeholder="1-7">
+        <button onclick="goToHadith()">Go</button>
+      </div>
+
+      <div class="navigation">
+        <a href="bukhari.html">← Back to Sahih Al-Bukhari</a>
       </div>
 
       <!-- Language Selector -->
@@ -398,12 +715,48 @@
     <!-- Navigation -->
     <div class="navigation">
       <a id="prev-hadith" href="#" class="hidden">← Previous Hadith</a>
-      <a href="/hadith.html">Back to Hadith</a>
+      <!-- <a href="hadith.html">Back to Hadith</a> -->
       <a id="next-hadith" href="#">Next Hadith →</a>
     </div>
   </div>
 
+  <!-- Share Modal -->
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Share Hadith</h2>
+      <div>
+        <label>
+          <input type="checkbox" id="include-arabic" checked> Include Arabic Text
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="include-translation" checked> Include Translation
+        </label>
+      </div>
+      <div>
+        <label for="share-language">Translation Language:</label>
+        <select id="share-language">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <button onclick="shareHadith()">Share</button>
+      <button onclick="closeShareModal()">Cancel</button>
+      <div id="copy-message" class="hidden" style="color: #0c8; margin-top: 1rem; font-weight: bold;">Text copied to clipboard!</div>
+    </div>
+  </div>
+
   <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    // Favorites and Bookmarks storage
+    let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+    let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+
     const hadiths = [
       {
         id: 1,
@@ -438,9 +791,33 @@
     const prevHadithLink = document.getElementById('prev-hadith');
     const nextHadithLink = document.getElementById('next-hadith');
 
+    function toggleFavorite(hadithId) {
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+      } else {
+        favoritedHadiths.push(hadithId);
+      }
+      localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+      renderReadTab();
+    }
+
+    function toggleBookmark(hadithId) {
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+      } else {
+        bookmarkedHadiths.push(hadithId);
+      }
+      localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+      renderReadTab();
+    }
+
     function renderReadTab() {
       readTab.innerHTML = '';
       const hadith = hadiths[currentHadithIndex];
+      const isFavorited = favoritedHadiths.includes(hadith.id);
+      const isBookmarked = bookmarkedHadiths.includes(hadith.id);
       const div = document.createElement('div');
       div.className = 'hadith';
       div.innerHTML = `
@@ -449,6 +826,11 @@
         <div class="hadith-meta">
           <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
         </div>
+        <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+        <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+        <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+        </svg>
       `;
       readTab.appendChild(div);
       updateNavigation();
@@ -461,6 +843,9 @@
       const div = document.createElement('div');
       div.className = `hadith translation ${lang}`;
       div.innerHTML = `
+        <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+        </svg>
         <div class="hadith-number">Hadith ${hadith.id}</div>
         <div class="translation">${hadith[lang]}</div>
         <div class="hadith-meta">
@@ -501,8 +886,8 @@
       void icon.offsetWidth;
       icon.classList.add('rotate');
       icon.src = document.body.classList.contains('dark-mode')
-        ? "/assets/icons/sun.png"
-        : "/assets/icons/moon.png";
+        ? "sun.png"
+        : "moon.png";
       icon.alt = document.body.classList.contains('dark-mode')
         ? "Switch to light mode"
         : "Switch to dark mode";
@@ -542,6 +927,68 @@
         }
       }
     });
+
+    function openShareModal(hadithId, tab) {
+      const modal = document.getElementById('share-modal');
+      modal.classList.remove('hidden');
+      // Store the current hadith and tab for sharing
+      modal.dataset.hadithId = hadithId;
+      modal.dataset.tab = tab;
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById('share-modal');
+      modal.classList.add('hidden');
+    }
+
+    function shareHadith() {
+      const modal = document.getElementById('share-modal');
+      const hadithId = parseInt(modal.dataset.hadithId);
+      const tab = modal.dataset.tab;
+      const hadith = hadiths.find(h => h.id === hadithId);
+
+      const includeArabic = document.getElementById('include-arabic').checked;
+      const includeTranslation = document.getElementById('include-translation').checked;
+      const shareLang = document.getElementById('share-language').value;
+
+      let shareText = `Hadith ${hadith.id}\n`;
+      shareText += `Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}\n\n`;
+
+      if (includeArabic) {
+        shareText += `${hadith.arabic}\n\n`;
+      }
+
+      if (includeTranslation) {
+        shareText += `${hadith[shareLang]}\n\n`;
+      }
+
+      shareText += `https://adil43534.github.io/Muslimbro1400.com/`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(shareText).then(() => {
+        const copyMessage = document.getElementById('copy-message');
+        copyMessage.classList.remove('hidden');
+        setTimeout(() => {
+          copyMessage.classList.add('hidden');
+          closeShareModal();
+        }, 3000); // Hide message and close modal after 3 seconds
+      });
+    }
+
+    function goToHadith() {
+      const input = document.getElementById('hadith-number');
+      const num = parseInt(input.value);
+      if (num >= 1 && num <= hadiths.length) {
+        currentHadithIndex = num - 1;
+        if (!translateTab.classList.contains('hidden')) {
+          renderTranslation();
+        } else {
+          renderReadTab();
+        }
+      } else {
+        alert('Please enter a valid hadith number between 1 and ' + hadiths.length);
+      }
+    }
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
