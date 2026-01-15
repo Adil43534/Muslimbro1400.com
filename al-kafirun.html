@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Al-Kafirun</title>
+  <title>109. Surah: Al-Kafirun 1-6 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,9 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +925,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="6">
+        <input type="number" id="verse-number" min="1" max="6" placeholder="1-6">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="al-kawthar.html">← Surah Al-Kawthar</a>
         <a href="an-nasr.html">Next: Surah An-Nasr →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -1015,6 +1042,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1056,7 +1084,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1080,6 +1108,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1087,10 +1116,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1109,7 +1143,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1232,6 +1266,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
