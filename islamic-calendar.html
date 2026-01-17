@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MuslimBro1400 - Islamic Calendar</title>
+  <title>Islamic Calendar - MuslimBro1400</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">
   <style>
     * {
       box-sizing: border-box;
@@ -116,171 +117,351 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    .welcome-box {
-      background-color: #dcfbff;
-      padding: 1.5rem;
-      border-left: 4px solid #30d7f4;
+    .date-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
       margin-bottom: 2rem;
+    }
+
+    .date-box {
+      background-color: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      min-width: 280px;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode .date-box {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .date-box h3 {
+      margin: 0 0 0.5rem 0;
+      color: #007b5e;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .date-box h3 {
+      color: #0c8;
+    }
+
+    .date-box .date {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .date-box .arabic-date {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem;
+      color: #666;
+      margin-top: 0.5rem;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .date-box .arabic-date {
+      color: #aaa;
+    }
+
+    .calendar-navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .calendar-navigation button {
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
       border-radius: 6px;
-      text-align: left;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    .dark-mode .welcome-box {
-      background-color: #3a3a3a;
-      border-left-color: #0c8;
-    }
-
-    .welcome-box h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .welcome-box p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .welcome-box p {
-      color: #ccc;
-    }
-
-    .calendar-month {
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background-color 0.5s ease, color 0.5s ease;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .dark-mode .calendar-month {
-      background-color: #2c2c2c;
-      color: #e0e0e0;
-    }
-
-    .calendar-month h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .calendar-month p.approx {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .calendar-month p.approx {
-      color: #ccc;
-    }
-
-    .calendar-month p.current-date {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .month-grid.headers {
-      display: grid;
-      grid-template-columns: repeat(7, 50px);
-      gap: 2px;
-      margin-bottom: 2px;
-    }
-
-    .month-grid.days {
-      display: grid;
-      grid-template-columns: repeat(7, 50px);
-      gap: 2px;
-    }
-
-    .day-header {
-      width: 50px;
-      height: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      background-color: #f7f7f7;
-      border: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .day-header {
-      background-color: #333;
-      border-color: #444;
-    }
-
-    .day {
-      width: 50px;
-      height: 50px;
-      font-size: 0.9rem;
-      border: 1px solid #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-color: #fff;
       cursor: pointer;
-      transition: all 0.2s ease;
-      overflow: hidden;
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      position: relative;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    .dark-mode .day {
+    .calendar-navigation button:hover {
+      background-color: #005f4a;
+      transform: scale(1.05);
+    }
+
+    .calendar-navigation .current-month {
+      font-size: 1.4rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      min-width: 200px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .calendar-grid {
       background-color: #2c2c2c;
+    }
+
+    .calendar-header {
+      background-color: #007b5e;
+      color: white;
+      padding: 1rem 0.5rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .calendar-day {
+      padding: 1rem 0.5rem;
+      min-height: 80px;
+      border: 1px solid #eee;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .dark-mode .calendar-day {
       border-color: #444;
     }
 
-    .day.empty {
-      background-color: #f0f0f0;
-      cursor: default;
+    .calendar-day.other-month {
+      color: #aaa;
+      background-color: #f5f5f5;
     }
 
-    .dark-mode .day.empty {
-      background-color: #333;
+    .dark-mode .calendar-day.other-month {
+      background-color: #222;
+      color: #666;
     }
 
-    .day.event, .day.current {
+    .calendar-day.today {
       background-color: #e6f5f0;
-      border-left: 3px solid #007b5e;
-      font-weight: 600;
+      border: 2px solid #007b5e;
     }
 
-    .dark-mode .day.event, .dark-mode .day.current {
+    .dark-mode .calendar-day.today {
       background-color: #244c3a;
-      border-left-color: #0c8;
+      border-color: #0c8;
     }
 
-    .day.expanded {
-      width: 60px;
-      height: 60px;
-      z-index: 10;
+    .calendar-day .day-number {
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    .day.expanded .event-text {
+    .calendar-day .hijri-day {
+      font-family: 'Amiri', serif;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.2rem;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .calendar-day .hijri-day {
+      color: #aaa;
+    }
+
+    .calendar-day .event-indicator {
       display: block;
-      font-size: 0.7rem;
+      background-color: #ffcc00;
       color: #333;
-      margin-top: 2px;
+      font-size: 0.65rem;
+      padding: 2px 4px;
+      border-radius: 3px;
+      margin-top: 0.3rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    .dark-mode .day.expanded .event-text {
+    .dark-mode .calendar-day .event-indicator {
+      background-color: #e6b800;
+      color: #fff;
+    }
+
+    .prayer-times {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .prayer-times {
+      background-color: #2c2c2c;
       color: #e0e0e0;
     }
 
-    .event-text {
-      display: none;
+    .prayer-times h2 {
+      color: #007b5e;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .dark-mode .prayer-times h2 {
+      color: #0c8;
+    }
+
+    .prayer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .prayer-item {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode .prayer-item {
+      background-color: #3a3a3a;
+    }
+
+    .prayer-item .prayer-name {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #007b5e;
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .prayer-item .prayer-name {
+      color: #0c8;
+    }
+
+    .prayer-item .prayer-time {
+      font-size: 1.3rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .prayer-item.current {
+      background-color: #e6f5f0;
+      border: 2px solid #007b5e;
+    }
+
+    .dark-mode .prayer-item.current {
+      background-color: #244c3a;
+      border-color: #0c8;
+    }
+
+    .events-section {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .events-section {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .events-section h2 {
+      color: #007b5e;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .dark-mode .events-section h2 {
+      color: #0c8;
+    }
+
+    .events-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .event-item {
+      display: flex;
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode .event-item {
+      background-color: #3a3a3a;
+    }
+
+    .event-item .event-date {
+      background-color: #007b5e;
+      color: white;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      text-align: center;
+      margin-right: 1rem;
+      min-width: 60px;
+    }
+
+    .dark-mode .event-item .event-date {
+      background-color: #0c8;
+      color: #1a1a1a;
+    }
+
+    .event-item .event-date .hijri {
+      font-family: 'Amiri', serif;
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    .event-item .event-date .gregorian {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    .event-item .event-info h4 {
+      margin: 0 0 0.3rem 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .event-item .event-info p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .event-item .event-info p {
+      color: #aaa;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .section-divider hr {
+      flex: 1;
+      border: none;
+      border-top: 2px solid #007b5e;
+      max-width: 150px;
+    }
+
+    .section-divider .divider-text {
+      padding: 0 1rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
     @media (max-width: 600px) {
@@ -326,43 +507,30 @@
         display: block;
       }
 
-      .welcome-box h2 {
-        font-size: 1.3rem;
+      .date-display {
+        gap: 1rem;
       }
 
-      .welcome-box p {
-        font-size: 0.95rem;
-      }
-
-      .calendar-month {
+      .date-box {
+        min-width: 100%;
         padding: 1rem;
       }
 
-      .calendar-month h3 {
-        font-size: 1.2rem;
+      .calendar-day {
+        padding: 0.5rem 0.2rem;
+        min-height: 60px;
       }
 
-      .calendar-month p.approx, .calendar-month p.current-date {
-        font-size: 0.95rem;
+      .calendar-day .day-number {
+        font-size: 1rem;
       }
 
-      .month-grid.headers, .month-grid.days {
-        grid-template-columns: repeat(7, 40px);
+      .calendar-day .hijri-day {
+        font-size: 0.75rem;
       }
 
-      .day, .day-header {
-        font-size: 0.8rem;
-        width: 40px;
-        height: 40px;
-      }
-
-      .day.expanded {
-        width: 50px;
-        height: 50px;
-      }
-
-      .day.expanded .event-text {
-        font-size: 0.6rem;
+      .prayer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -371,198 +539,1191 @@
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
+      <img src="menu.png" alt="Menu" />
     </button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/about.html">About</a>
-      <a href="/islamic-calendar.html">Islamic Calendar</a>
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Islamic Calendar</a>
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
     </div>
   </nav>
 
   <header class="banner">
-    <img src="/assets/banner.png" alt="Banner" class="banner-img">
+    <img src="banner.png" alt="Banner" class="banner-img">
   </header>
 
   <main class="container">
     <h1 class="main-title">Islamic Calendar</h1>
-    <section class="welcome-box">
-      <h2>Today’s Hijri Date</h2>
-      <p>The Islamic Calendar, or Hijri Calendar, began in 1 AH (622 CE) with the Hijra, the migration of Prophet Muhammad (<span class="arabic">ﷺ</span>) from Mecca to Medina. It is a lunar calendar, and dates may vary due to moon sightings. Below is the current Hijri month and date. Always verify exact dates with local authorities.</p>
-    </section>
 
-    <section class="calendar-year">
-      <div id="calendar-month"></div>
-    </section>
+    <!-- Current Date Display -->
+    <div class="date-display">
+      <div class="date-box">
+        <h3>Gregorian Date</h3>
+        <div class="date" id="gregorian-date">Loading...</div>
+        <div class="arabic-date" id="gregorian-arabic"></div>
+      </div>
+      <div class="date-box">
+        <h3>Islamic Date (Hijri)</h3>
+        <div class="date" id="hijri-date">Loading...</div>
+        <div class="arabic-date" id="hijri-arabic"></div>
+      </div>
+    </div>
+
+    <!-- Calendar Navigation -->
+    <div class="calendar-navigation">
+      <button onclick="changeMonth(-1)">← Previous</button>
+      <span class="current-month" id="current-month"></span>
+      <button onclick="changeMonth(1)">Next →</button>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar-grid" id="calendar-grid">
+      <!-- Calendar will be generated by JavaScript -->
+    </div>
+
+    <!-- Prayer Times Section -->
+    <!-- <div class="prayer-times">
+      <h2>Prayer Times</h2>
+      <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;" id="location-display">Loading location...</p> -->
+      
+      <!-- City Selector -->
+      <!-- <div style="margin-bottom: 1.5rem; padding: 1rem; background-color: #f0f0f0; border-radius: 8px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem;">
+          <label for="city-select" style="font-weight: 500; color: #333;">📍 Select Your City:</label>
+          <select id="city-select" onchange="onCityChange(this.value)" style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem; min-width: 200px; cursor: pointer;">
+            <option value="">-- Auto Detect --</option>
+          </select>
+          <button onclick="useAutoLocation()" id="auto-btn" style="display: none; padding: 0.5rem 1rem; background-color: #007b5e; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">Use My Location</button>
+        </div>
+      </div> -->
+      
+      <!-- <div class="prayer-grid" id="prayer-times"> -->
+        <!-- Prayer times will be generated by JavaScript -->
+      <!-- </div>
+    </div> -->
+
+    <!-- Important Islamic Events -->
+    <div class="section-divider">
+      <hr>
+      <span class="divider-text">Important Islamic Events</span>
+      <hr>
+    </div>
+
+    <div class="events-section">
+      <h2>Islamic Holidays & Observances</h2>
+      <div class="events-list" id="events-list">
+        <!-- Events will be generated by JavaScript -->
+      </div>
+    </div>
   </main>
 
   <script>
-    // Hijri month data
+    // Islamic month names
     const hijriMonths = [
-      { name: 'Muharram', days: 30 },
-      { name: 'Safar', days: 29 },
-      { name: 'Rabi’ al-Awwal', days: 30 },
-      { name: 'Rabi’ al-Thani', days: 29 },
-      { name: 'Jumada al-Ula', days: 30 },
-      { name: 'Jumada al-Thani', days: 29 },
-      { name: 'Rajab', days: 30 },
-      { name: 'Sha’ban', days: 29 },
-      { name: 'Ramadan', days: 30 },
-      { name: 'Shawwal', days: 29 },
-      { name: 'Dhul-Qa’da', days: 30 },
-      { name: 'Dhul-Hijjah', days: 29 }
+      'Muharram', 'Safar', 'Rabi\' al-Awwal', 'Rabi\' al-Thani',
+      'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Sha\'ban',
+      'Ramadan', 'Shawwal', 'Dhu al-Qadah', 'Dhu al-Hijjah'
     ];
 
-    // Key Islamic events
+    const hijriMonthsArabic = [
+      'محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
+      'جمادى الأول', 'جمادى الثاني', 'رجب', 'شعبان',
+      'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
+    ];
+
+    const gregorianMonths = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const gregorianMonthsArabic = [
+      'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+      'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+    ];
+
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    // Current calendar state
+    let currentGregorianDate = new Date();
+
+    // Important Islamic events (Hijri dates)
     const islamicEvents = [
-      { month: 'Muharram', day: 1, name: 'New Hijri Year' },
-      { month: 'Muharram', day: 10, name: 'Ashura' },
-      { month: 'Rabi’ al-Awwal', day: 12, name: 'Prophet’s Birthday' },
-      { month: 'Ramadan', day: 27, name: 'Laylat al-Qadr' },
-      { month: 'Shawwal', day: 1, name: 'Eid al-Fitr' },
-      { month: 'Dhul-Hijjah', day: 8, name: 'Hajj Begins' },
-      { month: 'Dhul-Hijjah', day: 10, name: 'Eid al-Adha' }
+      { hijriMonth: 0, hijriDay: 1, name: 'Islamic New Year', description: '1st of Muharram - Start of the Hijri year', arabic: 'رأس السنة الهجرية' },
+      { hijriMonth: 2, hijriDay: 12, name: 'Mawlid an-Nabi', description: 'Birth of Prophet Muhammad (ﷺ)', arabic: 'المولد النبوي' },
+      { hijriMonth: 7, hijriDay: 27, name: 'Isra and Mi\'raj', description: 'Night Journey and Ascension of Prophet Muhammad (ﷺ)', arabic: 'الإسراء والمعراج' },
+      { hijriMonth: 8, hijriDay: 15, name: 'Mid-Sha\'ban', description: 'Night of forgiveness', arabic: 'ليلة النصف من شعبان' },
+      { hijriMonth: 9, hijriDay: 1, name: 'Start of Ramadan', description: 'Beginning of the holy month of fasting', arabic: 'بداية رمضان' },
+      { hijriMonth: 9, hijriDay: 27, name: 'Night of Power', description: 'Laylat al-Qadr - The Night of Decree', arabic: 'ليلة القدر' },
+      { hijriMonth: 10, hijriDay: 1, name: 'Eid al-Fitr', description: 'Festival of Breaking the Fast', arabic: 'عيد الفطر' },
+      { hijriMonth: 11, hijriDay: 9, name: 'Day of Arafah', description: 'Day of standing at Arafah', arabic: 'يوم عرفة' },
+      { hijriMonth: 11, hijriDay: 10, name: 'Eid al-Adha', description: 'Festival of the Sacrifice', arabic: 'عيد الأضحى' },
+      { hijriMonth: 11, hijriDay: 12, name: 'Days of Tashriq', description: 'Days of celebration after Eid al-Adha', arabic: 'أيام التشريق' }
     ];
 
-    // Approximate Gregorian month names for display
-    const gregorianApprox = [
-      'July', 'August', 'September', 'October', 'November', 'December',
-      'January', 'February', 'March–April', 'April', 'May', 'June'
-    ];
 
-    // Day abbreviations
-    const dayNames = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-
-    // Calculate approximate Hijri date from Gregorian date
-    function getHijriDate(gregorianDate) {
-      const startDate = new Date('622-07-16'); // Approximate start of 1 AH
-      const msPerHijriYear = 354.367 * 24 * 60 * 60 * 1000;
-      const msDiff = gregorianDate.getTime() - startDate.getTime();
-      const hijriYear = Math.floor(msDiff / msPerHijriYear) + 1;
-      const daysSinceStart = Math.floor(msDiff / (24 * 60 * 60 * 1000)) % 354.367;
-
-      let totalDays = 0;
-      let currentMonthIndex = 0;
-      for (let i = 0; i < hijriMonths.length; i++) {
-        if (totalDays + hijriMonths[i].days > daysSinceStart) {
-          currentMonthIndex = i;
-          break;
-        }
-        totalDays += hijriMonths[i].days;
+    // =====================================================
+    // HIJRI DATE CALCULATION - BASED ON ANCHOR DATE
+    // Anchor: January 12, 2026 = 23 Rajab 1447 AH
+    // =====================================================
+    
+    // Anchor date for calculations
+    const ANCHOR_DATE = new Date(2026, 0, 12); // January 12, 2026
+    const ANCHOR_HIJRI = { year: 1447, month: 7, day: 23 }; // 23 Rajab 1447
+    
+    // Hijri month lengths (alternate 30/29)
+    const hijriMonthLengths = [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
+    
+    // Leap years in 30-year cycle (years: 2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29)
+    function isLeapYear(hijriYear) {
+      const cycleYear = ((hijriYear - 1) % 30) + 1;
+      return [2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29].includes(cycleYear);
+    }
+    
+    // Get days in a Hijri month
+    function getDaysInHijriMonth(year, month) {
+      if (month === 12 && isLeapYear(year)) {
+        return 30; // Dhu al-Hijjah has 30 days in leap years
       }
-      const currentDay = Math.floor(daysSinceStart - totalDays) + 1;
-
+      return hijriMonthLengths[month - 1];
+    }
+    
+    // Get total days since anchor date
+    function getDaysSinceAnchor(gregorianDate) {
+      const anchorTime = ANCHOR_DATE.getTime();
+      const targetTime = gregorianDate.getTime();
+      return Math.floor((targetTime - anchorTime) / (1000 * 60 * 60 * 24));
+    }
+    
+    // Calculate Hijri date from Gregorian
+    function calculateHijriDate(gregorianDate) {
+      const daysDiff = getDaysSinceAnchor(gregorianDate);
+      
+      let hijriYear = ANCHOR_HIJRI.year;
+      let hijriMonth = ANCHOR_HIJRI.month;
+      let hijriDay = ANCHOR_HIJRI.day;
+      
+      if (daysDiff === 0) {
+        return { year: hijriYear, month: hijriMonth, day: hijriDay };
+      }
+      
+      if (daysDiff > 0) {
+        // Go forward from anchor date
+        let remaining = daysDiff;
+        while (remaining > 0) {
+          const daysInMonth = getDaysInHijriMonth(hijriYear, hijriMonth);
+          const daysToMonthEnd = daysInMonth - hijriDay;
+          
+          if (remaining <= daysToMonthEnd) {
+            // Within current month
+            hijriDay += remaining;
+            remaining = 0;
+          } else {
+            // Move to next month
+            remaining -= (daysToMonthEnd + 1); // +1 for the first day of next month
+            hijriMonth++;
+            hijriDay = 1;
+            
+            if (hijriMonth > 12) {
+              hijriMonth = 1;
+              hijriYear++;
+            }
+          }
+        }
+      } else {
+        // Go backward from anchor date
+        let remaining = Math.abs(daysDiff);
+        while (remaining > 0) {
+          if (remaining < hijriDay) {
+            // Within current month
+            hijriDay -= remaining;
+            remaining = 0;
+          } else {
+            // Move to previous month
+            remaining -= hijriDay; // Move to first day of current month
+            hijriMonth--;
+            hijriDay = getDaysInHijriMonth(hijriYear, hijriMonth);
+            
+            if (hijriMonth < 1) {
+              hijriMonth = 12;
+              hijriYear--;
+            }
+          }
+        }
+      }
+      
       return {
         year: hijriYear,
-        month: hijriMonths[currentMonthIndex].name,
-        monthIndex: currentMonthIndex,
-        day: currentDay,
-        monthDays: hijriMonths[currentMonthIndex].days
+        month: hijriMonth,
+        day: hijriDay
       };
     }
 
+    // Get Hijri date display
+    function getHijriDateDisplay() {
+      const today = new Date();
+      const hijriDate = calculateHijriDate(today);
+      return {
+        date: `${hijriMonths[hijriDate.month - 1]} ${hijriDate.day}, ${hijriDate.year} AH`,
+        arabic: `${hijriMonthsArabic[hijriDate.month - 1]} ${hijriDate.day}، ${hijriDate.year}هـ`
+      };
+    }
+
+    // Get Gregorian date display
+    function getGregorianDateDisplay() {
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const gregorianDateStr = today.toLocaleDateString('en-US', options);
+      
+      // Arabic format
+      const arabicDate = `${today.getDate()} ${gregorianMonthsArabic[today.getMonth()]} ${today.getFullYear()}`;
+      
+      return {
+        date: gregorianDateStr,
+        arabic: arabicDate
+      };
+    }
+
+    // Render current dates
+    function renderCurrentDates() {
+      const gregorianDisplay = getGregorianDateDisplay();
+      const hijriDisplay = getHijriDateDisplay();
+      
+      document.getElementById('gregorian-date').textContent = gregorianDisplay.date;
+      document.getElementById('gregorian-arabic').textContent = gregorianDisplay.arabic;
+      document.getElementById('hijri-date').textContent = hijriDisplay.date;
+      document.getElementById('hijri-arabic').textContent = hijriDisplay.arabic;
+    }
+
+    // Current displayed Hijri month (used for filtering events)
+    let currentHijriMonth = null;
+
+    // Render calendar
     function renderCalendar() {
-      const today = new Date('2025-07-13'); // Fixed date for July 13, 2025
-      const hijriDate = getHijriDate(today);
-      const calendarMonth = document.getElementById('calendar-month');
-      calendarMonth.innerHTML = '';
-
-      const monthDiv = document.createElement('div');
-      monthDiv.className = 'calendar-month';
-
-      const monthTitle = document.createElement('h3');
-      monthTitle.textContent = `${hijriDate.month} ${hijriDate.year} AH`;
-      monthDiv.appendChild(monthTitle);
-
-      const approxP = document.createElement('p');
-      approxP.className = 'approx';
-      approxP.textContent = `Approx. ${gregorianApprox[hijriDate.monthIndex]} 2025`;
-      monthDiv.appendChild(approxP);
-
-      const currentDateP = document.createElement('p');
-      currentDateP.className = 'current-date';
-      currentDateP.textContent = `Today: ${hijriDate.day} ${hijriDate.month} ${hijriDate.year} AH`;
-      monthDiv.appendChild(currentDateP);
-
-      const headerRow = document.createElement('div');
-      headerRow.className = 'month-grid headers';
+      const grid = document.getElementById('calendar-grid');
+      const monthDisplay = document.getElementById('current-month');
+      
+      grid.innerHTML = '';
+      
       // Add day headers
       dayNames.forEach(day => {
-        const dayHeader = document.createElement('div');
-        dayHeader.className = 'day-header';
-        dayHeader.textContent = day;
-        headerRow.appendChild(dayHeader);
+        const header = document.createElement('div');
+        header.className = 'calendar-header';
+        header.textContent = day;
+        grid.appendChild(header);
       });
-      monthDiv.appendChild(headerRow);
-
-      const monthGrid = document.createElement('div');
-      monthGrid.className = 'month-grid days';
-
-      // Generate days
-      for (let day = 1; day <= 35; day++) { // Max 5 rows for consistency
-        const dayDiv = document.createElement('div');
-        dayDiv.className = 'day';
-        if (day > hijriDate.monthDays) {
-          dayDiv.className += ' empty';
-        } else {
-          const dayNumber = document.createElement('span');
-          dayNumber.textContent = day;
-          dayDiv.appendChild(dayNumber);
-          // Highlight current day
-          if (day === hijriDate.day) {
-            dayDiv.className += ' current';
-            const eventText = document.createElement('span');
-            eventText.className = 'event-text';
-            eventText.textContent = 'Today';
-            dayDiv.appendChild(eventText);
-            dayDiv.onclick = (e) => toggleExpanded(e, dayDiv);
-          }
-          // Check for events
-          const event = islamicEvents.find(e => e.month === hijriDate.month && e.day === day);
-          if (event && day !== hijriDate.day) {
-            dayDiv.className += ' event';
-            const eventText = document.createElement('span');
-            eventText.className = 'event-text';
-            eventText.textContent = event.name;
-            dayDiv.appendChild(eventText);
-            dayDiv.onclick = (e) => toggleExpanded(e, dayDiv);
-          }
+      
+      // Calculate first day of month
+      const firstDay = new Date(currentGregorianDate.getFullYear(), currentGregorianDate.getMonth(), 1);
+      const lastDay = new Date(currentGregorianDate.getFullYear(), currentGregorianDate.getMonth() + 1, 0);
+      
+      // Update month display and store current Hijri month for filtering events
+      const hijriDate = calculateHijriDate(currentGregorianDate);
+      currentHijriMonth = hijriDate.month - 1;
+      monthDisplay.textContent = `${gregorianMonths[currentGregorianDate.getMonth()]} ${currentGregorianDate.getFullYear()} - ${hijriMonths[hijriDate.month - 1]} ${hijriDate.year} AH`;
+      
+      // Add empty cells for days before first day
+      for (let i = 0; i < firstDay.getDay(); i++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day other-month';
+        grid.appendChild(dayCell);
+      }
+      
+      // Add days of the month
+      const today = new Date();
+      for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day';
+        
+        // Check if it's today
+        if (day === today.getDate() && 
+            currentGregorianDate.getMonth() === today.getMonth() && 
+            currentGregorianDate.getFullYear() === today.getFullYear()) {
+          dayCell.classList.add('today');
         }
-        monthGrid.appendChild(dayDiv);
+        
+        const dayDate = new Date(currentGregorianDate.getFullYear(), currentGregorianDate.getMonth(), day);
+        const hijriForDay = calculateHijriDate(dayDate);
+        
+        dayCell.innerHTML = `
+          <div class="day-number">${day}</div>
+          <div class="hijri-day">${hijriForDay.day}</div>
+        `;
+        
+        // Check for events
+        const events = islamicEvents.filter(e => 
+          e.hijriMonth === hijriForDay.month - 1 && e.hijriDay === hijriForDay.day
+        );
+        
+        if (events.length > 0) {
+          dayCell.innerHTML += `<span class="event-indicator">${events[0].name}</span>`;
+        }
+        
+        grid.appendChild(dayCell);
       }
-
-      monthDiv.appendChild(monthGrid);
-      calendarMonth.appendChild(monthDiv);
+      
+      // Fill remaining cells
+      const remainingCells = 42 - grid.children.length;
+      for (let i = 0; i < remainingCells; i++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day other-month';
+        grid.appendChild(dayCell);
+      }
+      
+      // Update events section to show only events for current Hijri month
+      renderFilteredEvents();
     }
 
-    function toggleExpanded(event, dayDiv) {
-      event.stopPropagation(); // Prevent event from bubbling to document
-      // Collapse all expanded cards
-      document.querySelectorAll('.day.expanded').forEach(expandedDay => {
-        expandedDay.classList.remove('expanded');
+    // Change month
+    function changeMonth(delta) {
+      currentGregorianDate.setMonth(currentGregorianDate.getMonth() + delta);
+      renderCalendar();
+    }
+
+    // Prayer Time Calculation Class - Improved Accuracy
+    class PrayerTimes {
+      constructor(latitude, longitude, timezone = null) {
+        this.lat = latitude;
+        this.lng = longitude;
+        this.timezone = timezone !== null ? timezone : -new Date().getTimezoneOffset() / 60;
+        
+        // Prayer time calculation parameters
+        // Fajr angle (usually 18° for most methods)
+        this.fajrAngle = 18;
+        // Isha angle (usually 18° for most methods)
+        this.ishaAngle = 18;
+        // Maghrib angle (0 for sunset, can be adjusted for high latitudes)
+        this.maghribAngle = 0;
+        // Sunrise angle (0.833° is standard for refraction)
+        this.sunriseAngle = -0.833;
+      }
+
+      // Convert degrees to radians
+      deg2rad(angle) {
+        return angle * (Math.PI / 180);
+      }
+
+      // Convert radians to degrees
+      rad2deg(angle) {
+        return angle * (180 / Math.PI);
+      }
+
+      // Calculate prayer times for a given date
+      calculate(date = new Date()) {
+        const times = this._calculatePrayerTimes(date);
+        
+        return {
+          Fajr: this._formatTime(times.fajr),
+          Sunrise: this._formatTime(times.sunrise),
+          Dhuhr: this._formatTime(times.dhuhr),
+          Asr: this._formatTime(times.asr),
+          Maghrib: this._formatTime(times.maghrib),
+          Isha: this._formatTime(times.isha)
+        };
+      }
+
+      // Main calculation function
+      _calculatePrayerTimes(date) {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        
+        // Calculate Julian date
+        const jd = this._julianDate(year, month, day);
+        
+        // Calculate solar parameters
+        const julianCentury = (jd - 2451545.0) / 36525.0;
+        
+        // Sun's geometric mean longitude
+        const sunL = this._normalizeAngle(280.46646 + julianCentury * (36000.76983 + 0.0003032 * julianCentury));
+        
+        // Sun's mean anomaly
+        const sunM = this._normalizeAngle(357.52911 + julianCentury * (35999.05029 - 0.0001537 * julianCentury));
+        
+        // Eccentricity of Earth's orbit
+        const earthE = 0.016708634 - julianCentury * (0.000042037 + 0.0000001267 * julianCentury);
+        
+        // Sun's equation of center
+        const sunC = Math.sin(this.deg2rad(sunM)) * (1.914602 - julianCentury * (0.004817 + 0.000014 * julianCentury)) +
+                    Math.sin(this.deg2rad(2 * sunM)) * (0.019993 - 0.000101 * julianCentury) +
+                    Math.sin(this.deg2rad(3 * sunM)) * 0.000289;
+        
+        // Sun's true longitude
+        const sunTL = sunL + sunC;
+        
+        // Sun's apparent longitude
+        const sunOmega = 125.04 - 1934.136 * julianCentury;
+        const sunAL = this._normalizeAngle(sunTL - 0.00569 - 0.00478 * Math.sin(this.deg2rad(sunOmega)));
+        
+        // Mean obliquity of the ecliptic
+        const meanObliq = 23 + (26 + ((21.448 - julianCentury * (46.8150 + julianCentury * (0.00059 - julianCentury * 0.001813))) / 60)) / 60;
+        
+        // Obliquity correction
+        const obliqCorr = meanObliq + 0.00256 * Math.cos(this.deg2rad(sunOmega));
+        
+        // Sun's declination
+        const sunDeclination = this.rad2deg(Math.asin(Math.sin(this.deg2rad(obliqCorr)) * Math.sin(this.deg2rad(sunAL))));
+        
+        // Variable Y for equation of time
+        const y = Math.tan(this.deg2rad(obliqCorr / 2)) * Math.tan(this.deg2rad(obliqCorr / 2));
+        
+        // Equation of time
+        const eqTime = 4 * this.rad2deg(
+          y * Math.sin(2 * this.deg2rad(sunL)) -
+          2 * earthE * Math.sin(this.deg2rad(sunM)) +
+          4 * earthE * y * Math.sin(this.deg2rad(sunM)) * Math.cos(2 * this.deg2rad(sunL)) -
+          0.5 * y * y * Math.sin(4 * this.deg2rad(sunL)) -
+          1.25 * earthE * earthE * Math.sin(2 * this.deg2rad(sunM))
+        );
+        
+        // Solar noon
+        const solarNoon = 720 - 4 * this.lng - eqTime;
+        
+        // Hour angle calculation helper
+        const cosHourAngle = (Math.cos(this.deg2rad(90 - this.sunriseAngle)) - 
+                             Math.sin(this.deg2rad(this.lat)) * Math.sin(this.deg2rad(sunDeclination))) / 
+                            (Math.cos(this.deg2rad(this.lat)) * Math.cos(this.deg2rad(sunDeclination)));
+        
+        // Clamp to valid range
+        const clampedCos = Math.max(-1, Math.min(1, cosHourAngle));
+        const hourAngle = this.rad2deg(Math.acos(clampedCos));
+        
+        // Sunrise
+        const sunrise = solarNoon - hourAngle;
+        
+        // Sunset
+        const sunset = solarNoon + hourAngle;
+        
+        // Sunrise (same as above)
+        const sunriseTime = sunrise;
+        
+        // Maghrib (sunset)
+        const maghrib = sunset;
+        
+        // Fajr: Calculate hour angle for Fajr angle
+        const cosFajrHourAngle = (Math.cos(this.deg2rad(90 - this.fajrAngle)) - 
+                                  Math.sin(this.deg2rad(this.lat)) * Math.sin(this.deg2rad(sunDeclination))) / 
+                                 (Math.cos(this.deg2rad(this.lat)) * Math.cos(this.deg2rad(sunDeclination)));
+        const clampedFajrCos = Math.max(-1, Math.min(1, cosFajrHourAngle));
+        const fajrHourAngle = this.rad2deg(Math.acos(clampedFajrCos));
+        const fajr = solarNoon - fajrHourAngle;
+        
+        // Isha: Calculate hour angle for Isha angle
+        const cosIshaHourAngle = (Math.cos(this.deg2rad(90 - this.ishaAngle)) - 
+                                  Math.sin(this.deg2rad(this.lat)) * Math.sin(this.deg2rad(sunDeclination))) / 
+                                 (Math.cos(this.deg2rad(this.lat)) * Math.cos(this.deg2rad(sunDeclination)));
+        const clampedIshaCos = Math.max(-1, Math.min(1, cosIshaHourAngle));
+        const ishaHourAngle = this.rad2deg(Math.acos(clampedIshaCos));
+        const isha = solarNoon + ishaHourAngle;
+        
+        // Dhuhr (midday)
+        const dhuhr = solarNoon;
+        
+        // Asr: Hanafi method (shadow ratio 2)
+        const shadowRatio = 2; // Hanafi
+        const asrAngle = this.rad2deg(Math.atan(1 / (shadowRatio + Math.tan(this.deg2rad(this.lat - sunDeclination)))));
+        const cosAsrHourAngle = (Math.cos(this.deg2rad(90 - asrAngle)) - 
+                                 Math.sin(this.deg2rad(this.lat)) * Math.sin(this.deg2rad(sunDeclination))) / 
+                                (Math.cos(this.deg2rad(this.lat)) * Math.cos(this.deg2rad(sunDeclination)));
+        const clampedAsrCos = Math.max(-1, Math.min(1, cosAsrHourAngle));
+        const asrHourAngle = this.rad2deg(Math.acos(clampedAsrCos));
+        const asr = solarNoon + asrHourAngle;
+        
+        // Convert from minutes past midnight to hours
+        return {
+          fajr: fajr / 60,
+          sunrise: sunriseTime / 60,
+          dhuhr: dhuhr / 60,
+          asr: asr / 60,
+          maghrib: maghrib / 60,
+          isha: isha / 60
+        };
+      }
+
+      // Calculate Julian Date
+      _julianDate(year, month, day) {
+        if (month <= 2) {
+          year -= 1;
+          month += 12;
+        }
+        const A = Math.floor(year / 100);
+        const B = 2 - A + Math.floor(A / 4);
+        return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+      }
+
+      // Normalize angle to 0-360
+      _normalizeAngle(angle) {
+        return angle - Math.floor(angle / 360) * 360;
+      }
+
+      // Format time to 12-hour format with AM/PM
+      _formatTime(time) {
+        let hours = Math.floor(time);
+        let minutes = Math.round((time - hours) * 60);
+        
+        // Handle rounding edge cases
+        if (minutes >= 60) {
+          minutes -= 60;
+          hours += 1;
+        }
+        
+        hours = (hours + 24) % 24;
+        
+        // Convert to 12-hour format
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const displayHours = hours % 12 || 12;
+        
+        const h = displayHours.toString();
+        const m = minutes.toString().padStart(2, '0');
+        return `${h}:${m} ${ampm}`;
+      }
+    }
+
+    // Global prayer times instance
+    let prayerTimesInstance = null;
+    let userLocation = { lat: 24.7136, lng: 46.6753 }; // Default: Riyadh, Saudi Arabia
+    let locationAccuracy = null;
+    let locationStatus = 'detecting'; // 'detecting', 'success', 'error', 'poor_accuracy'
+    let watchPositionId = null;
+    let locationMode = 'auto'; // 'auto' or 'manual'
+
+    // Major cities with coordinates
+    const cities = [
+      // Pakistan
+      { name: 'Karachi', country: 'Pakistan', lat: 24.8607, lng: 67.0011 },
+      { name: 'Lahore', country: 'Pakistan', lat: 31.5497, lng: 74.3436 },
+      { name: 'Islamabad', country: 'Pakistan', lat: 33.6844, lng: 73.0479 },
+      { name: 'Faisalabad', country: 'Pakistan', lat: 31.4181, lng: 73.0758 },
+      { name: 'Rawalpindi', country: 'Pakistan', lat: 33.5651, lng: 73.0169 },
+      { name: 'Multan', country: 'Pakistan', lat: 30.1978, lng: 71.3597 },
+      { name: 'Peshawar', country: 'Pakistan', lat: 34.0144, lng: 71.5788 },
+      { name: 'Quetta', country: 'Pakistan', lat: 30.1798, lng: 66.9750 },
+      // Saudi Arabia
+      { name: 'Riyadh', country: 'Saudi Arabia', lat: 24.7136, lng: 46.6753 },
+      { name: 'Jeddah', country: 'Saudi Arabia', lat: 21.4858, lng: 39.1925 },
+      { name: 'Makkah', country: 'Saudi Arabia', lat: 21.4225, lng: 39.8262 },
+      { name: 'Madinah', country: 'Saudi Arabia', lat: 24.4709, lng: 39.6142 },
+      { name: 'Dammam', country: 'Saudi Arabia', lat: 26.4207, lng: 50.1126 },
+      { name: 'Taif', country: 'Saudi Arabia', lat: 21.2703, lng: 40.4158 },
+      // UAE
+      { name: 'Dubai', country: 'UAE', lat: 25.2048, lng: 55.2708 },
+      { name: 'Abu Dhabi', country: 'UAE', lat: 24.4539, lng: 54.3773 },
+      { name: 'Sharjah', country: 'UAE', lat: 25.3463, lng: 55.4209 },
+      // Egypt
+      { name: 'Cairo', country: 'Egypt', lat: 30.0444, lng: 31.2357 },
+      { name: 'Alexandria', country: 'Egypt', lat: 31.2001, lng: 29.9187 },
+      { name: 'Giza', country: 'Egypt', lat: 29.9870, lng: 31.1348 },
+      // UK
+      { name: 'London', country: 'UK', lat: 51.5074, lng: -0.1278 },
+      { name: 'Birmingham', country: 'UK', lat: 52.4862, lng: -1.8904 },
+      { name: 'Manchester', country: 'UK', lat: 53.4808, lng: -2.2426 },
+      { name: 'Leeds', country: 'UK', lat: 53.8008, lng: -1.5491 },
+      { name: 'Glasgow', country: 'UK', lat: 55.8642, lng: -4.2518 },
+      { name: 'Edinburgh', country: 'UK', lat: 55.9533, lng: -3.1883 },
+      // USA
+      { name: 'New York', country: 'USA', lat: 40.7128, lng: -74.0060 },
+      { name: 'Los Angeles', country: 'USA', lat: 34.0522, lng: -118.2437 },
+      { name: 'Chicago', country: 'USA', lat: 41.8781, lng: -87.6298 },
+      { name: 'Houston', country: 'USA', lat: 29.7604, lng: -95.3698 },
+      { name: 'Phoenix', country: 'USA', lat: 33.4484, lng: -112.0740 },
+      { name: 'Philadelphia', country: 'USA', lat: 39.9526, lng: -75.1652 },
+      { name: 'San Antonio', country: 'USA', lat: 29.4241, lng: -98.4936 },
+      { name: 'San Diego', country: 'USA', lat: 32.7157, lng: -117.1611 },
+      { name: 'Dallas', country: 'USA', lat: 32.7767, lng: -96.7970 },
+      // Europe
+      { name: 'Paris', country: 'France', lat: 48.8566, lng: 2.3522 },
+      { name: 'Berlin', country: 'Germany', lat: 52.5200, lng: 13.4050 },
+      { name: 'Amsterdam', country: 'Netherlands', lat: 52.3676, lng: 4.9041 },
+      { name: 'Rome', country: 'Italy', lat: 41.9028, lng: 12.4964 },
+      { name: 'Madrid', country: 'Spain', lat: 40.4168, lng: -3.7038 },
+      { name: 'Vienna', country: 'Austria', lat: 48.2082, lng: 16.3738 },
+      { name: 'Athens', country: 'Greece', lat: 37.9838, lng: 23.7275 },
+      { name: 'Stockholm', country: 'Sweden', lat: 59.3293, lng: 18.0686 },
+      { name: 'Oslo', country: 'Norway', lat: 59.9139, lng: 10.7522 },
+      { name: 'Copenhagen', country: 'Denmark', lat: 55.6761, lng: 12.5683 },
+      { name: 'Brussels', country: 'Belgium', lat: 50.8503, lng: 4.3517 },
+      { name: 'Zurich', country: 'Switzerland', lat: 47.3769, lng: 8.5417 },
+      // Turkey
+      { name: 'Istanbul', country: 'Turkey', lat: 41.0082, lng: 28.9784 },
+      { name: 'Ankara', country: 'Turkey', lat: 39.9208, lng: 32.8541 },
+      { name: 'Izmir', country: 'Turkey', lat: 38.4192, lng: 27.1287 },
+      { name: 'Antalya', country: 'Turkey', lat: 36.8969, lng: 30.7133 },
+      // Indonesia & Malaysia
+      { name: 'Jakarta', country: 'Indonesia', lat: -6.2088, lng: 106.8456 },
+      { name: 'Surabaya', country: 'Indonesia', lat: -7.2575, lng: 112.7521 },
+      { name: 'Bandung', country: 'Indonesia', lat: -6.9175, lng: 107.6191 },
+      { name: 'Kuala Lumpur', country: 'Malaysia', lat: 3.1390, lng: 101.6869 },
+      { name: 'Penang', country: 'Malaysia', lat: 5.4164, lng: 100.3327 },
+      // India
+      { name: 'Mumbai', country: 'India', lat: 19.0760, lng: 72.8777 },
+      { name: 'Delhi', country: 'India', lat: 28.6139, lng: 77.2090 },
+      { name: 'Kolkata', country: 'India', lat: 22.5726, lng: 88.3639 },
+      { name: 'Bangalore', country: 'India', lat: 12.9716, lng: 77.5946 },
+      { name: 'Hyderabad', country: 'India', lat: 17.3850, lng: 78.4867 },
+      { name: 'Chennai', country: 'India', lat: 13.0827, lng: 80.2707 },
+      { name: 'Ahmedabad', country: 'India', lat: 23.0225, lng: 72.5714 },
+      { name: 'Pune', country: 'India', lat: 18.5204, lng: 73.8567 },
+      // Bangladesh
+      { name: 'Dhaka', country: 'Bangladesh', lat: 23.8103, lng: 90.4125 },
+      { name: 'Chittagong', country: 'Bangladesh', lat: 22.3569, lng: 91.7832 },
+      // Other Middle East
+      { name: 'Baghdad', country: 'Iraq', lat: 33.3152, lng: 44.3661 },
+      { name: 'Tehran', country: 'Iran', lat: 35.6892, lng: 51.3890 },
+      { name: 'Kabul', country: 'Afghanistan', lat: 34.5553, lng: 69.2075 },
+      { name: 'Kuwait City', country: 'Kuwait', lat: 29.3759, lng: 47.9774 },
+      { name: 'Doha', country: 'Qatar', lat: 25.2854, lng: 51.5310 },
+      { name: 'Manama', country: 'Bahrain', lat: 26.0667, lng: 50.5577 },
+      { name: 'Muscat', country: 'Oman', lat: 23.5880, lng: 58.3829 },
+      { name: 'Amman', country: 'Jordan', lat: 31.9454, lng: 35.9284 },
+      { name: 'Beirut', country: 'Lebanon', lat: 33.8886, lng: 35.4955 },
+      { name: 'Damascus', country: 'Syria', lat: 33.5138, lng: 36.2765 },
+      // Africa
+      { name: 'Nairobi', country: 'Kenya', lat: -1.2921, lng: 36.8219 },
+      { name: 'Lagos', country: 'Nigeria', lat: 6.5244, lng: 3.3792 },
+      { name: 'Johannesburg', country: 'South Africa', lat: -26.2041, lng: 28.0473 },
+      { name: 'Casablanca', country: 'Morocco', lat: 33.5731, lng: -7.5898 },
+      { name: 'Rabat', country: 'Morocco', lat: 33.5731, lng: -6.5898 },
+      { name: 'Marrakesh', country: 'Morocco', lat: 31.6295, lng: -7.9811 },
+      { name: 'Tripoli', country: 'Libya', lat: 32.8872, lng: 13.1913 },
+      { name: 'Khartoum', country: 'Sudan', lat: 15.5007, lng: 32.5599 },
+      // Australia
+      { name: 'Sydney', country: 'Australia', lat: -33.8688, lng: 151.2093 },
+      { name: 'Melbourne', country: 'Australia', lat: -37.8136, lng: 144.9631 },
+      { name: 'Brisbane', country: 'Australia', lat: -27.4698, lng: 153.0251 },
+      { name: 'Perth', country: 'Australia', lat: -31.9505, lng: 115.8605 },
+      { name: 'Adelaide', country: 'Australia', lat: -34.9285, lng: 138.6007 },
+      // Canada
+      { name: 'Toronto', country: 'Canada', lat: 43.6532, lng: -79.3832 },
+      { name: 'Vancouver', country: 'Canada', lat: 49.2827, lng: -123.1207 },
+      { name: 'Montreal', country: 'Canada', lat: 45.5017, lng: -73.5673 },
+      { name: 'Calgary', country: 'Canada', lat: 51.0447, lng: -114.0719 },
+      { name: 'Ottawa', country: 'Canada', lat: 45.4215, lng: -75.6972 },
+      // South America
+      { name: 'Sao Paulo', country: 'Brazil', lat: -23.5505, lng: -46.6333 },
+      { name: 'Rio de Janeiro', country: 'Brazil', lat: -22.9068, lng: -43.1729 },
+      { name: 'Buenos Aires', country: 'Argentina', lat: -34.6037, lng: -58.3816 },
+      { name: 'Lima', country: 'Peru', lat: -12.0464, lng: -77.0428 },
+      { name: 'Bogota', country: 'Colombia', lat: 4.7110, lng: -74.0721 },
+      { name: 'Santiago', country: 'Chile', lat: -33.4489, lng: -70.6693 },
+      // East Asia
+      { name: 'Tokyo', country: 'Japan', lat: 35.6762, lng: 139.6503 },
+      { name: 'Osaka', country: 'Japan', lat: 34.6937, lng: 135.5023 },
+      { name: 'Seoul', country: 'South Korea', lat: 37.5665, lng: 126.9780 },
+      { name: 'Beijing', country: 'China', lat: 39.9042, lng: 116.4074 },
+      { name: 'Shanghai', country: 'China', lat: 31.2304, lng: 121.4737 },
+      { name: 'Hong Kong', country: 'China', lat: 22.3193, lng: 114.1694 },
+      { name: 'Taipei', country: 'Taiwan', lat: 25.0330, lng: 121.5654 },
+      { name: 'Singapore', country: 'Singapore', lat: 1.3521, lng: 103.8198 },
+      { name: 'Bangkok', country: 'Thailand', lat: 13.7563, lng: 100.5018 },
+      { name: 'Hanoi', country: 'Vietnam', lat: 21.0285, lng: 105.8542 },
+      { name: 'Ho Chi Minh', country: 'Vietnam', lat: 10.8231, lng: 106.6297 },
+      { name: 'Manila', country: 'Philippines', lat: 14.5995, lng: 120.9842 },
+      { name: 'Seoul', country: 'South Korea', lat: 37.5665, lng: 126.9780 }
+    ];
+
+    // Cache location in localStorage
+    function cacheLocation(location) {
+      const cachedData = {
+        lat: location.lat,
+        lng: location.lng,
+        accuracy: location.accuracy,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('muslimbro_location', JSON.stringify(cachedData));
+    }
+
+    // Get cached location if recent and accurate
+    function getCachedLocation() {
+      const cached = localStorage.getItem('muslimbro_location');
+      if (cached) {
+        try {
+          const data = JSON.parse(cached);
+          const age = Date.now() - data.timestamp;
+          // Use cached position if less than 1 hour old
+          if (age < 3600000 && data.accuracy < 1000) {
+            return { lat: data.lat, lng: data.lng, accuracy: data.accuracy, cached: true };
+          }
+        } catch (e) {
+          console.log('Invalid cache data');
+        }
+      }
+      return null;
+    }
+
+    // Update location status display
+    function updateLocationStatus(message, status = locationStatus) {
+      const locationDisplay = document.getElementById('location-display');
+      if (!locationDisplay) return;
+
+      const statusIcons = {
+        'detecting': '🔍',
+        'success': '✅',
+        'error': '❌',
+        'poor_accuracy': '⚠️'
+      };
+
+      const statusText = {
+        'detecting': 'Detecting your location...',
+        'success': 'Location detected',
+        'error': 'Could not detect location',
+        'poor_accuracy': 'Low accuracy - using approximate location'
+      };
+
+      locationDisplay.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          <span>${statusIcons[status]}</span>
+          <span>${message}</span>
+        </div>
+        ${status === 'detecting' ? '<div style="margin-top: 0.3rem; font-size: 0.8rem; color: #888;">Getting GPS coordinates...</div>' : ''}
+      `;
+    }
+
+    // Get user location with high accuracy
+    function getUserLocation() {
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          console.log('Geolocation not supported');
+          updateLocationStatus('Geolocation not supported', 'error');
+          resolve(userLocation);
+          return;
+        }
+
+        // First check for cached location
+        const cached = getCachedLocation();
+        if (cached) {
+          userLocation = { lat: cached.lat, lng: cached.lng };
+          locationAccuracy = cached.accuracy;
+          updateLocationStatus(`📍 ${cached.lat.toFixed(4)}°N, ${cached.lng.toFixed(4)}°E (cached)`, 'success');
+          resolve(userLocation);
+          return;
+        }
+
+        let attempts = 0;
+        const maxAttempts = 3;
+
+        function tryGetPosition() {
+          attempts++;
+          updateLocationStatus(`Detecting location... (attempt ${attempts}/${maxAttempts})`, 'detecting');
+
+          // Use watchPosition for continuous updates to get best accuracy
+          watchPositionId = navigator.geolocation.watchPosition(
+            (position) => {
+              const accuracy = position.coords.accuracy;
+              const lat = position.coords.latitude;
+              const lng = position.coords.longitude;
+
+              console.log(`Location attempt ${attempts}: accuracy=${accuracy}m`);
+
+              // Accept if accuracy is good (< 100 meters) or we got a position on first try
+              if (accuracy < 100 || attempts === 1) {
+                // Clear watch
+                if (watchPositionId) {
+                  navigator.geolocation.clearWatch(watchPositionId);
+                  watchPositionId = null;
+                }
+
+                userLocation = { lat, lng };
+                locationAccuracy = accuracy;
+                locationStatus = 'success';
+
+                // Cache the location
+                cacheLocation({ lat, lng, accuracy });
+
+                updateLocationStatus(`📍 ${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E`, 'success');
+                resolve(userLocation);
+              } else if (attempts < maxAttempts) {
+                // Continue watching for better accuracy
+                console.log(`Poor accuracy (${accuracy}m), continuing to watch...`);
+              } else {
+                // Max attempts reached, use best position we have
+                if (watchPositionId) {
+                  navigator.geolocation.clearWatch(watchPositionId);
+                  watchPositionId = null;
+                }
+
+                userLocation = { lat, lng };
+                locationAccuracy = accuracy;
+
+                if (accuracy < 5000) {
+                  locationStatus = 'poor_accuracy';
+                  updateLocationStatus(`📍 ${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E (${Math.round(accuracy)}m accuracy)`, 'poor_accuracy');
+                } else {
+                  locationStatus = 'error';
+                  updateLocationStatus('Location accuracy too poor. Please enable GPS.', 'error');
+                }
+
+                resolve(userLocation);
+              }
+            },
+            (error) => {
+              console.log(`Geolocation error attempt ${attempts}:`, error.message);
+
+              if (attempts < maxAttempts) {
+                // Retry with different settings
+                setTimeout(tryGetPosition, 2000);
+              } else {
+                // All attempts failed
+                if (watchPositionId) {
+                  navigator.geolocation.clearWatch(watchPositionId);
+                  watchPositionId = null;
+                }
+
+                locationStatus = 'error';
+                updateLocationStatus('Could not detect location. Using default.', 'error');
+                resolve(userLocation);
+              }
+            },
+            {
+              enableHighAccuracy: true,
+              timeout: 15000,  // Increased timeout for better GPS lock
+              maximumAge: 0
+            }
+          );
+        }
+
+        // Start trying to get position
+        tryGetPosition();
       });
-      // Expand the clicked day if it has an event or is current
-      if (dayDiv.classList.contains('event') || dayDiv.classList.contains('current')) {
-        dayDiv.classList.add('expanded');
+    }
+
+    // Initialize prayer times
+    async function initPrayerTimes() {
+      console.log('Initializing prayer times...');
+      
+      // Populate city dropdown
+      populateCityDropdown();
+      
+      // Check for saved city preference
+      const savedCity = localStorage.getItem('muslimbro_city');
+      if (savedCity) {
+        try {
+          const cityData = JSON.parse(savedCity);
+          console.log('Found saved city:', cityData.name);
+          selectCityByName(cityData.name);
+          // Don't return here - let it continue to render initial prayer times
+        } catch (e) {
+          console.log('Invalid saved city');
+        }
+      }
+      
+      // If we don't have prayer times yet (either from saved city or auto), get location
+      if (!prayerTimesInstance) {
+        await getUserLocation();
+        prayerTimesInstance = new PrayerTimes(userLocation.lat, userLocation.lng);
+      }
+      
+      // Render prayer times
+      renderPrayerTimes();
+      console.log('Prayer times initialized successfully');
+    }
+
+    // Populate city dropdown with cities grouped by country
+    function populateCityDropdown() {
+      const select = document.getElementById('city-select');
+      if (!select) return;
+
+      // Group cities by country
+      const countries = {};
+      cities.forEach(city => {
+        if (!countries[city.country]) {
+          countries[city.country] = [];
+        }
+        countries[city.country].push(city);
+      });
+
+      // Create options grouped by country
+      const sortedCountries = Object.keys(countries).sort();
+      
+      sortedCountries.forEach(country => {
+        const group = document.createElement('optgroup');
+        group.label = country;
+        countries[country].forEach(city => {
+          const option = document.createElement('option');
+          option.value = JSON.stringify(city);
+          option.textContent = `${city.name}, ${city.country}`;
+          group.appendChild(option);
+        });
+        select.appendChild(group);
+      });
+    }
+
+    // Select city by name
+    function selectCityByName(cityName) {
+      console.log('selectCityByName called with:', cityName);
+      const select = document.getElementById('city-select');
+      if (!select) {
+        console.log('Select element not found');
+        return;
+      }
+
+      const city = cities.find(c => c.name === cityName);
+      console.log('Found city:', city);
+      if (city) {
+        select.value = JSON.stringify(city);
+        // Trigger change event
+        onCityChange(JSON.stringify(city));
       }
     }
 
-    // Collapse all expanded cards when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.day')) {
-        document.querySelectorAll('.day.expanded').forEach(expandedDay => {
-          expandedDay.classList.remove('expanded');
-        });
+    // Handle city selection change
+    function onCityChange(cityJson) {
+      console.log('City change triggered:', cityJson);
+      
+      if (!cityJson) {
+        // User selected "Auto Detect"
+        useAutoLocation();
+        return;
       }
-    });
 
+      try {
+        const city = JSON.parse(cityJson);
+        console.log('Selected city:', city.name, city.country);
+        
+        locationMode = 'manual';
+        userLocation = { lat: city.lat, lng: city.lng };
+        locationAccuracy = 100; // Assume good accuracy for predefined cities
+        locationStatus = 'success';
+
+        // Save city preference
+        localStorage.setItem('muslimbro_city', JSON.stringify({ name: city.name }));
+
+        // Update display
+        const locationDisplay = document.getElementById('location-display');
+        if (locationDisplay) {
+          locationDisplay.innerHTML = `<span style="color: #007b5e; font-weight: 500;">📍 ${city.name}, ${city.country}</span>`;
+        }
+
+        // Show auto button
+        const autoBtn = document.getElementById('auto-btn');
+        if (autoBtn) {
+          autoBtn.style.display = 'inline-block';
+        }
+
+        // Force update prayer times - create new instance and render
+        console.log('Updating prayer times for:', city.lat, city.lng);
+        prayerTimesInstance = new PrayerTimes(userLocation.lat, userLocation.lng);
+        
+        // Force a re-render
+        setTimeout(() => {
+          renderPrayerTimes();
+          console.log('Prayer times rendered successfully');
+        }, 50);
+        
+      } catch (e) {
+        console.error('Error parsing city data:', e);
+      }
+    }
+
+    // Manual refresh function for prayer times
+    function refreshPrayerTimes() {
+      if (prayerTimesInstance) {
+        renderPrayerTimes();
+      }
+    }
+
+    // Use automatic location detection
+    async function useAutoLocation() {
+      const select = document.getElementById('city-select');
+      if (select) {
+        select.value = '';
+      }
+      
+      const autoBtn = document.getElementById('auto-btn');
+      if (autoBtn) {
+        autoBtn.style.display = 'none';
+      }
+
+      // Clear saved city preference
+      localStorage.removeItem('muslimbro_city');
+
+      locationMode = 'auto';
+      await getUserLocation();
+      prayerTimesInstance = new PrayerTimes(userLocation.lat, userLocation.lng);
+      renderPrayerTimes();
+    }
+
+    // Render prayer times (now automatic)
+    function renderPrayerTimes() {
+      const prayerContainer = document.getElementById('prayer-times');
+      
+      if (!prayerTimesInstance) {
+        prayerTimesInstance = new PrayerTimes(userLocation.lat, userLocation.lng);
+      }
+      
+      const prayers = prayerTimesInstance.calculate();
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      
+      const prayerOrder = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+      const prayerArabic = {
+        'Fajr': 'الفجر',
+        'Sunrise': 'الشروق',
+        'Dhuhr': 'الظهر',
+        'Asr': 'العصر',
+        'Maghrib': 'المغرب',
+        'Isha': 'العشاء'
+      };
+      const prayerIcons = {
+        'Fajr': '🌅',
+        'Sunrise': '☀️',
+        'Dhuhr': '🌞',
+        'Asr': '🌤️',
+        'Maghrib': '🌅',
+        'Isha': '🌙'
+      };
+
+      // Find current prayer
+      let currentPrayerIndex = -1;
+      const prayerMinutes = {};
+      prayerOrder.forEach((name, index) => {
+        const [h, m] = prayers[name].split(':').map(Number);
+        prayerMinutes[name] = h * 60 + m;
+      });
+
+      // Determine current prayer
+      if (currentMinutes < prayerMinutes['Fajr']) {
+        currentPrayerIndex = 5; // Isha from previous day
+      } else if (currentMinutes < prayerMinutes['Sunrise']) {
+        currentPrayerIndex = 0; // Fajr
+      } else if (currentMinutes < prayerMinutes['Dhuhr']) {
+        currentPrayerIndex = 1; // Sunrise
+      } else if (currentMinutes < prayerMinutes['Asr']) {
+        currentPrayerIndex = 2; // Dhuhr
+      } else if (currentMinutes < prayerMinutes['Maghrib']) {
+        currentPrayerIndex = 3; // Asr
+      } else if (currentMinutes < prayerMinutes['Isha']) {
+        currentPrayerIndex = 4; // Maghrib
+      } else {
+        currentPrayerIndex = 5; // Isha
+      }
+
+      prayerContainer.innerHTML = prayerOrder.map((prayerName, index) => `
+        <div class="prayer-item ${index === currentPrayerIndex ? 'current' : ''}">
+          <div class="prayer-name">${prayerIcons[prayerName]} ${prayerArabic[prayerName]}</div>
+          <div class="prayer-time">${prayers[prayerName]}</div>
+          <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">${prayerName}</div>
+        </div>
+      `).join('');
+    }
+
+    // Calculate Gregorian date for a Hijri event
+    function getGregorianDateForEvent(hijriYear, hijriMonth, hijriDay) {
+      // Calculate days since Islamic epoch (July 16, 622 CE)
+      // Standard Hijri month lengths (alternating 30/29)
+      const monthLengths = [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
+      
+      // Check for leap year in 30-year cycle
+      const cycleYear = ((hijriYear - 1) % 30) + 1;
+      const isLeapYear = [2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29].includes(cycleYear);
+      
+      // In leap year, last month has 30 days
+      const adjustedLengths = isLeapYear 
+        ? [...monthLengths.slice(0, 11), 30] 
+        : monthLengths;
+      
+      // Calculate days from start of Hijri year to this event
+      let daysFromStart = hijriDay;
+      for (let i = 0; i < hijriMonth; i++) {
+        daysFromStart += adjustedLengths[i];
+      }
+      
+      // Calculate days since Islamic epoch (accounting for sighting adjustment)
+      const sightingAdjustment = 10;
+      const daysSinceEpoch = ((hijriYear - 1) * 354) + Math.floor((hijriYear - 1) / 30 * 11) + daysFromStart + sightingAdjustment;
+      
+      // Convert to Gregorian using average year length
+      const daysSince622 = Math.floor(daysSinceEpoch * 0.968225);
+      const gregorianDate = new Date(622, 6, 16 + daysSince622);
+      
+      return gregorianDate;
+    }
+
+    // Render filtered events based on current displayed Hijri month
+    function renderFilteredEvents() {
+      const eventsContainer = document.getElementById('events-list');
+      
+      // Get the current displayed Hijri year and month from calendar
+      const hijriDate = calculateHijriDate(currentGregorianDate);
+      const currentYear = hijriDate.year;
+      const filterMonth = currentHijriMonth !== null ? currentHijriMonth : hijriDate.month - 1;
+      
+      // Filter events for current month
+      const filteredEvents = islamicEvents.filter(event => event.hijriMonth === filterMonth);
+      
+      if (filteredEvents.length === 0) {
+        eventsContainer.innerHTML = `
+          <div class="event-item" style="grid-column: 1/-1; justify-content: center;">
+            <div class="event-info" style="text-align: center; width: 100%;">
+              <h4 style="color: #888;">No major events in ${hijriMonths[filterMonth]}</h4>
+              <p>There are no major Islamic holidays or observances in ${hijriMonths[filterMonth]} ${currentYear} AH.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      eventsContainer.innerHTML = filteredEvents.map(event => {
+        // Calculate Gregorian date for this event
+        const gregDate = getGregorianDateForEvent(currentYear, event.hijriMonth, event.hijriDay);
+        
+        const gregorianMonth = gregorianMonths[gregDate.getMonth()];
+        const gregorianDay = gregDate.getDate();
+        const gregorianYear = gregDate.getFullYear();
+        
+        return `
+          <div class="event-item">
+            <div class="event-date">
+              <span class="hijri">${event.hijriDay} ${hijriMonthsArabic[event.hijriMonth].slice(0, 4)}</span>
+              <span class="gregorian">${gregorianMonth.slice(0, 3)} ${gregorianDay}</span>
+            </div>
+            <div class="event-info">
+              <h4>${event.name}</h4>
+              <p>${event.description}</p>
+              <p style="font-family: 'Amiri', serif; margin-top: 0.3rem;">${event.arabic}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render all events (original function - kept for compatibility)
+    function renderEvents() {
+      const eventsContainer = document.getElementById('events-list');
+      
+      // Get current year for calculating Gregorian equivalents
+      const currentYear = new Date().getFullYear();
+      
+      eventsContainer.innerHTML = islamicEvents.map(event => {
+        // Calculate Gregorian date for this event
+        const hijriYear = calculateHijriDate(new Date()).year;
+        const gregDate = getGregorianDateForEvent(hijriYear, event.hijriMonth, event.hijriDay);
+        
+        const gregorianMonth = gregorianMonths[gregDate.getMonth()];
+        const gregorianDay = gregDate.getDate();
+        
+        return `
+          <div class="event-item">
+            <div class="event-date">
+              <span class="hijri">${event.hijriDay} ${hijriMonthsArabic[event.hijriMonth].slice(0, 4)}</span>
+              <span class="gregorian">${gregorianMonth.slice(0, 3)} ${gregorianDay}</span>
+            </div>
+            <div class="event-info">
+              <h4>${event.name}</h4>
+              <p>${event.description}</p>
+              <p style="font-family: 'Amiri', serif; margin-top: 0.3rem;">${event.arabic}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Theme toggle functions
     function setThemeIcon() {
       const icon = document.getElementById('theme-icon');
       icon.classList.remove('rotate');
@@ -570,10 +1731,10 @@
       icon.classList.add('rotate');
 
       if (document.body.classList.contains('dark-mode')) {
-        icon.src = "/assets/icons/sun.png";
+        icon.src = "sun.png";
         icon.alt = "Switch to light mode";
       } else {
-        icon.src = "/assets/icons/moon.png";
+        icon.src = "moon.png";
         icon.alt = "Switch to dark mode";
       }
     }
@@ -589,13 +1750,19 @@
       navLinks.classList.toggle('active');
     }
 
+    // Initialize
     window.onload = () => {
+      renderCurrentDates();
+      renderCalendar();
+      initPrayerTimes(); // Initialize automatic prayer times
+      renderEvents();
+      
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
-      renderCalendar();
-    };
+    }
   </script>
 </body>
 </html>
+
