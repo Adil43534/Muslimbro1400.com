@@ -464,13 +464,15 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    @media (max-width: 600px) {
-      .main-title {
-        font-size: 1.5rem;
-      }
+    /* ========================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ======================================== */
 
-      .navbar h1 {
-        font-size: 1.25rem;
+    /* Small Mobile - up to 480px */
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 0.75rem 1rem;
+        position: relative;
       }
 
       .nav-links {
@@ -479,7 +481,7 @@
         width: 100%;
         background-color: #f0f0f0;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -496,29 +498,205 @@
 
       .nav-links a {
         margin: 0.5rem 0;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .theme-toggle {
-        margin: 0;
+        margin: 0.5rem 0;
       }
 
       .menu-toggle {
         display: block;
+        padding: 0.4rem;
+      }
+
+      .menu-toggle img {
+        width: 28px;
+        height: 28px;
+      }
+
+      .navbar h1 {
+        font-size: 1.1rem;
+      }
+
+      .banner-img {
+        max-height: 180px;
+      }
+
+      .container {
+        padding: 1rem 0.75rem;
+      }
+
+      .main-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.25rem;
       }
 
       .date-display {
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
       }
 
       .date-box {
         min-width: 100%;
         padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .date-box h3 {
+        font-size: 0.9rem;
+      }
+
+      .date-box .date {
+        font-size: 1.3rem;
+      }
+
+      .date-box .arabic-date {
+        font-size: 1rem;
+      }
+
+      .calendar-navigation {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .calendar-navigation button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .calendar-navigation .current-month {
+        font-size: 1rem;
+        min-width: 140px;
+      }
+
+      .calendar-header {
+        padding: 0.6rem 0.2rem;
+        font-size: 0.75rem;
+      }
+
+      .calendar-grid {
+        gap: 2px;
+        border-radius: 8px;
       }
 
       .calendar-day {
-        padding: 0.5rem 0.2rem;
-        min-height: 60px;
+        padding: 0.4rem 0.15rem;
+        min-height: 55px;
+      }
+
+      .calendar-day .day-number {
+        font-size: 0.9rem;
+      }
+
+      .calendar-day .hijri-day {
+        font-size: 0.65rem;
+      }
+
+      .calendar-day .event-indicator {
+        font-size: 0.55rem;
+        padding: 1px 3px;
+      }
+
+      .prayer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .prayer-item {
+        padding: 0.75rem 0.5rem;
+      }
+
+      .prayer-item .prayer-name {
+        font-size: 1rem;
+      }
+
+      .prayer-item .prayer-time {
+        font-size: 1.1rem;
+      }
+
+      .events-list {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .event-item {
+        padding: 0.75rem;
+      }
+
+      .event-item .event-date {
+        padding: 0.4rem 0.6rem;
+        min-width: 50px;
+      }
+
+      .event-item .event-date .hijri {
+        font-size: 0.8rem;
+      }
+
+      .event-item .event-date .gregorian {
+        font-size: 0.65rem;
+      }
+
+      .section-divider {
+        margin: 1.5rem 0;
+      }
+
+      .section-divider hr {
+        max-width: 80px;
+      }
+
+      .section-divider .divider-text {
+        font-size: 0.85rem;
+        padding: 0 0.75rem;
+      }
+    }
+
+    /* Mobile - 481px to 600px */
+    @media (min-width: 481px) and (max-width: 600px) {
+      .navbar {
+        padding: 0.85rem 1.25rem;
+      }
+
+      .navbar h1 {
+        font-size: 1.2rem;
+      }
+
+      .banner-img {
+        max-height: 220px;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      .main-title {
+        font-size: 1.6rem;
+      }
+
+      .date-display {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .date-box {
+        min-width: 45%;
+        flex: 1;
+        padding: 1.25rem;
+      }
+
+      .date-box .date {
+        font-size: 1.5rem;
+      }
+
+      .calendar-navigation .current-month {
+        min-width: 180px;
+        font-size: 1.2rem;
+      }
+
+      .calendar-day {
+        padding: 0.5rem 0.3rem;
+        min-height: 70px;
       }
 
       .calendar-day .day-number {
@@ -526,11 +704,237 @@
       }
 
       .calendar-day .hijri-day {
+        font-size: 0.7rem;
+      }
+
+      .prayer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Tablet Portrait - 601px to 768px */
+    @media (min-width: 601px) and (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .banner-img {
+        max-height: 250px;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      .main-title {
+        font-size: 1.8rem;
+      }
+
+      .date-display {
+        gap: 1.5rem;
+      }
+
+      .date-box {
+        min-width: 300px;
+        padding: 1.5rem;
+      }
+
+      .date-box .date {
+        font-size: 1.6rem;
+      }
+
+      .calendar-navigation .current-month {
+        min-width: 220px;
+        font-size: 1.3rem;
+      }
+
+      .calendar-day {
+        min-height: 85px;
+      }
+
+      .calendar-day .day-number {
+        font-size: 1.15rem;
+      }
+
+      .prayer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .events-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Tablet Landscape / Small Desktop - 769px to 900px */
+    @media (min-width: 769px) and (max-width: 900px) {
+      .container {
+        max-width: 95%;
+        padding: 2rem 1rem;
+      }
+
+      .date-display {
+        gap: 2rem;
+      }
+
+      .date-box {
+        min-width: 320px;
+        padding: 1.75rem;
+      }
+
+      .calendar-day {
+        min-height: 90px;
+      }
+
+      .calendar-day .day-number {
+        font-size: 1.2rem;
+      }
+
+      .calendar-day .hijri-day {
+        font-size: 0.8rem;
+      }
+
+      .prayer-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .events-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    /* Desktop - 901px to 1200px */
+    @media (min-width: 901px) and (max-width: 1200px) {
+      .container {
+        max-width: 1000px;
+      }
+
+      .calendar-day {
+        min-height: 95px;
+      }
+
+      .calendar-day .hijri-day {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Large Desktop - 1201px and above */
+    @media (min-width: 1201px) {
+      .container {
+        max-width: 1400px;
+        padding: 3rem 2rem;
+      }
+
+      .main-title {
+        font-size: 2.5rem;
+      }
+
+      .date-box {
+        min-width: 350px;
+        padding: 2rem;
+      }
+
+      .date-box h3 {
+        font-size: 1.3rem;
+      }
+
+      .date-box .date {
+        font-size: 2rem;
+      }
+
+      .date-box .arabic-date {
+        font-size: 1.5rem;
+      }
+
+      .calendar-day {
+        min-height: 100px;
+        padding: 1rem;
+      }
+
+      .calendar-day .day-number {
+        font-size: 1.4rem;
+      }
+
+      .calendar-day .hijri-day {
+        font-size: 0.9rem;
+      }
+
+      .calendar-day .event-indicator {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+      }
+
+      .prayer-item {
+        padding: 1.25rem;
+      }
+
+      .prayer-item .prayer-name {
+        font-size: 1.3rem;
+      }
+
+      .prayer-item .prayer-time {
+        font-size: 1.4rem;
+      }
+
+      .events-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      .event-item {
+        padding: 1.25rem;
+      }
+    }
+
+    /* Very Small Devices - extra protection for very narrow screens */
+    @media (max-width: 360px) {
+      .navbar h1 {
+        font-size: 1rem;
+      }
+
+      .calendar-header {
+        font-size: 0.65rem;
+        padding: 0.5rem 0.1rem;
+      }
+
+      .calendar-navigation button {
+        padding: 0.4rem 0.6rem;
         font-size: 0.75rem;
+      }
+
+      .calendar-navigation .current-month {
+        min-width: 100px;
+        font-size: 0.85rem;
       }
 
       .prayer-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .navbar,
+      .banner,
+      .calendar-navigation,
+      .prayer-times,
+      .events-section,
+      .section-divider {
+        display: none;
+      }
+
+      .container {
+        padding: 0;
+      }
+
+      .calendar-grid {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+
+      .calendar-day {
+        border: 1px solid #ddd;
       }
     }
   </style>
@@ -547,7 +951,7 @@
       <a href="hadith.html">Hadiths</a>
       <a href="islamic-books.html">Books</a>
       <a href="quran-recitations.html">Recitations</a>
-      <a href="islamic-calendar.html">Islamic Calendar</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -1765,4 +2169,3 @@
   </script>
 </body>
 </html>
-
