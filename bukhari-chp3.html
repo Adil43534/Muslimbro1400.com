@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahih al-Bukhari - Chapter 3: Knowledge (كتاب العلم) - Muslimbro1400</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">  
+  <style>
+        /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .hadith-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hadith-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .subtitle { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-hadith label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-hadith label {
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-hadith input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-hadith input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-hadith input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-hadith button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-hadith button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .hadith {
+      background-color: #fff;
+      padding: 3rem 3rem 3rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .hadith {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .hadith-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.9rem;
+      color: #007b5e;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      padding-top: 2rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    /* Updated Urdu Translation Class */
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .hadith-meta {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-meta { color: #ccc; }
+
+    .hadith-meta a {
+      color: #007b5e;
+      text-decoration: none;
+    }
+
+    .dark-mode .hadith-meta a { color: #0c8; }
+
+    .hadith-meta a:hover {
+      text-decoration: underline;
+    }
+
+    .favorite-btn, .bookmark-btn, .share-icon {
+      position: absolute;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
+      opacity: 1;
+    }
+
+    .share-icon {
+      top: 1rem;
+    }
+
+    .favorite-btn {
+      top: 3rem;
+    }
+
+    .bookmark-btn {
+      top: 5rem;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .hadith-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
+
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+      transform: scale(1.1);
+    }
+
+    #scrollToTop.show {
+      display: block;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="hadith-info">
+      <h1>Book 3: Knowledge <span class="arabic">(كتاب العلم)</span></h1>
+      <p class="subtitle">Chapter: Importance Of Seeking Knowledge</p>
+      <p class="meta">76 Hadiths</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+
+      <!-- Go to Hadith -->
+      <div class="go-to-hadith">
+        <label for="hadith-number">Go to Hadith:</label>
+        <input type="number" id="hadith-number" min="1" max="76" placeholder="1-76">
+        <button onclick="goToHadith()">Go</button>
+      </div>
+    </div>
+
+    <!-- Navigation above hadith container -->
+    <div class="navigation">
+      <a href="bukhari-chp2.html">Previous Chapter 2</a>
+      <a href="bukhari-chp4.html">Next Chapter 4</a>
+    </div>
+
+    <br>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <!-- Navigation below hadith container -->    
+    <div class="navigation">
+      <a href="bukhari-chp2.html">Previous Chapter 2</a>
+      <a href="bukhari-chp4.html">Next Chapter 4</a>
+    </div>
+  </div>
+
+
+  <!-- Share Modal -->
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Share Hadith</h2>
+      <div>
+        <label>
+          <input type="checkbox" id="include-arabic" checked> Include Arabic Text
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="include-translation" checked> Include Translation
+        </label>
+      </div>
+      <div>
+        <label for="share-language">Translation Language:</label>
+        <select id="share-language">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <button onclick="shareHadith()">Copy</button>
+      <button onclick="closeShareModal()">Cancel</button>
+      <div id="copy-message" class="hidden" style="color: #0c8; margin-top: 1rem; font-weight: bold;">Text copied to clipboard!</div>
+    </div>
+  </div>
+
+  <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    // Favorites and Bookmarks storage
+    let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+    let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+
+    const hadiths = [
+      {
+        id: 1,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ سِنَانٍ، قَالَ حَدَّثَنَا فُلَيْحٌ، ح وَحَدَّثَنِي إِبْرَاهِيمُ بْنُ الْمُنْذِرِ، قَالَ حَدَّثَنَا مُحَمَّدُ بْنُ فُلَيْحٍ، قَالَ حَدَّثَنِي أَبِي قَالَ، حَدَّثَنِي هِلاَلُ بْنُ عَلِيٍّ، عَنْ عَطَاءِ بْنِ يَسَارٍ، عَنْ أَبِي هُرَيْرَةَ، قَالَ بَيْنَمَا النَّبِيُّ صلى الله عليه وسلم فِي مَجْلِسٍ يُحَدِّثُ الْقَوْمَ جَاءَهُ أَعْرَابِيٌّ فَقَالَ مَتَى السَّاعَةُ فَمَضَى رَسُولُ اللَّهِ صلى الله عليه وسلم يُحَدِّثُ، فَقَالَ بَعْضُ الْقَوْمِ سَمِعَ مَا قَالَ، فَكَرِهَ مَا قَالَ، وَقَالَ بَعْضُهُمْ بَلْ لَمْ يَسْمَعْ، حَتَّى إِذَا قَضَى حَدِيثَهُ قَالَ ‏\"‏ أَيْنَ ـ أُرَاهُ ـ السَّائِلُ عَنِ السَّاعَةِ ‏\"‏‏.‏ قَالَ هَا أَنَا يَا رَسُولَ اللَّهِ‏.‏ قَالَ ‏\"‏ فَإِذَا ضُيِّعَتِ الأَمَانَةُ فَانْتَظِرِ السَّاعَةَ ‏\"‏‏.‏ قَالَ كَيْفَ إِضَاعَتُهَا قَالَ ‏\"‏ إِذَا وُسِّدَ الأَمْرُ إِلَى غَيْرِ أَهْلِهِ فَانْتَظِرِ السَّاعَةَ ‏\"‏‏.‏",
+        en: "Narrated Abu Huraira: While the Prophet (ﷺ) was saying something in a gathering, a Bedouin came and asked him, \"When would the Hour (Doomsday) take place?\" Allah's Messenger (ﷺ) continued his talk, so some people said that Allah's Messenger (ﷺ) had heard the question, but did not like what that Bedouin had asked. Some of them said that Allah's Messenger (ﷺ) had not heard it. When the Prophet (ﷺ) finished his speech, he said, \"Where is the questioner, who inquired about the Hour (Doomsday)?\" The Bedouin said, \"I am here, O Allah's Apostle .\" Then the Prophet (ﷺ) said, \"When honesty is lost, then wait for the Hour (Doomsday).\" The Bedouin said, \"How will that be lost?\" The Prophet (ﷺ) said, \"When the power or authority comes in the hands of unfit persons, then wait for the Hour (Doomsday.)\"",
+        ur: "ہم سے محمد بن سنان نے بیان کیا ، کہا ہم سے فلیح نے بیان کیا ( دوسری سند ) اور مجھ سے ابراہیم بن المنذر نے بیان کیا ، کہا مجھ سے میرے باپ ( فلیح ) نے بیان کیا ، کہا ہلال بن علی نے ، انھوں نے عطاء بن یسار سے نقل کیا ، انھوں نے حضرت ابوہریرہ رضی اللہ عنہ سے کہ ایک بار آنحضرت صلی اللہ علیہ وسلم لوگوں میں بیٹھے ہوئے ان سے باتیں کر رہے تھے ۔ اتنے میں ایک دیہاتی آپ کے پاس آیا اور پوچھنے لگا کہ قیامت کب آئے گی ؟ آپ صلی اللہ علیہ وسلم اپنی گفتگو میں مصروف رہے ۔ بعض لوگ ( جو مجلس میں تھے ) کہنے لگے آپ صلی اللہ علیہ وسلم نے دیہاتی کی بات سنی لیکن پسند نہیں کی اور بعض کہنے لگے کہ نہیں بلکہ آپ نے اس کی بات سنی ہی نہیں ۔ جب آپ صلی اللہ علیہ وسلم اپنی باتیں پوری کر چکے تو میں سمجھتا ہوں کہ آپ صلی اللہ علیہ وسلم نے یوں فرمایا وہ قیامت کے بارے میں پوچھنے والا کہاں گیا اس ( دیہاتی ) نے کہا ( حضور ) میں موجود ہوں ۔ آپ صلی اللہ علیہ وسلم نے فرمایا کہ جب امانت ( ایمانداری دنیا سے ) اٹھ جائے تو قیامت قائم ہونے کا انتظار کر ۔ اس نے کہا ایمانداری اٹھنے کا کیا مطلب ہے ؟ آپ صلی اللہ علیہ وسلم نے فرمایا کہ جب ( حکومت کے کاروبار ) نالائق لوگوں کو سونپ دئیے جائیں تو قیامت کا انتظار کر ۔",
+      },
+      {
+        id: 2,
+        volume: 1,
+        arabic: "‏حَدَّثَنَا أَبُو النُّعْمَانِ، عَارِمُ بْنُ الْفَضْلِ قَالَ حَدَّثَنَا أَبُو عَوَانَةَ، عَنْ أَبِي بِشْرٍ، عَنْ يُوسُفَ بْنِ مَاهَكَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، قَالَ تَخَلَّفَ عَنَّا النَّبِيُّ صلى الله عليه وسلم فِي سَفْرَةٍ سَافَرْنَاهَا، فَأَدْرَكَنَا وَقَدْ أَرْهَقَتْنَا الصَّلاَةُ وَنَحْنُ نَتَوَضَّأُ، فَجَعَلْنَا نَمْسَحُ عَلَى أَرْجُلِنَا، فَنَادَى بِأَعْلَى صَوْتِهِ ‏ \"‏ وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ ‏\"‏‏.‏ مَرَّتَيْنِ أَوْ ثَلاَثًا‏.‏",
+        en: "Narrated `Abdullah bin `Amr: Once the Prophet (ﷺ) remained behind us in a journey. He joined us while we were performing ablution for the prayer which was over-due. We were just passing wet hands over our feet (and not washing them properly) so the Prophet (ﷺ) addressed us in a loud voice and said twice or thrice: \"Save your heels from the fire.\"",
+        ur: "ہم سے ابوالنعمان نے بیان کیا ، کہا ہم سے ابوعوانہ نے ابوبشر سے بیان کیا ، انھوں نے یوسف بن ماہک سے ، انھوں نے عبداللہ بن عمرو سے ، انھوں نے کہا ایک سفر میں جو ہم نے کیا تھا آنحضرت صلی اللہ علیہ وسلم ہم سے پیچھے رہ گئے اور آپ صلی اللہ علیہ وسلم ہم سے اس وقت ملے جب ( عصر کی ) نماز کا وقت آن پہنچا تھا ہم ( جلدی جلدی ) وضو کر رہے تھے ۔ پس پاؤں کو خوب دھونے کے بدل ہم یوں ہی سا دھو رہے تھے ۔ ( یہ حال دیکھ کر ) آپ صلی اللہ علیہ وسلم نے بلند آواز سے پکارا دیکھو ایڑیوں کی خرابی دوزخ سے ہونے والی ہے دو یا تین بار آپ صلی اللہ علیہ وسلم نے ( یوں ہی بلند آواز سے ) فرمایا ۔",
+      },
+      {
+        id: 3,
+        volume: 1,
+        arabic: "حَدَّثَنَا قُتَيْبَةُ، حَدَّثَنَا إِسْمَاعِيلُ بْنُ جَعْفَرٍ، عَنْ عَبْدِ اللَّهِ بْنِ دِينَارٍ، عَنِ ابْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏\"‏ إِنَّ مِنَ الشَّجَرِ شَجَرَةً لاَ يَسْقُطُ وَرَقُهَا، وَإِنَّهَا مَثَلُ الْمُسْلِمِ، فَحَدِّثُونِي مَا هِيَ ‏\"‏‏.‏ فَوَقَعَ النَّاسُ فِي شَجَرِ الْبَوَادِي‏.‏ قَالَ عَبْدُ اللَّهِ وَوَقَعَ فِي نَفْسِي أَنَّهَا النَّخْلَةُ، فَاسْتَحْيَيْتُ ثُمَّ قَالُوا حَدِّثْنَا مَا هِيَ يَا رَسُولَ اللَّهِ قَالَ ‏\"‏ هِيَ النَّخْلَةُ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Umar: Allah's Messenger (ﷺ) said, \"Amongst the trees, there is a tree, the leaves of which do not fall and is like a Muslim. Tell me the name of that tree.\" Everybody started thinking about the trees of the desert areas. And I thought of the date-palm tree but felt shy to answer the others then asked, \"What is that tree, O Allah's Messenger (ﷺ) ?\" He replied, \"It is the date-palm tree.\"",
+        ur: "ہم سے قتیبہ بن سعید نے بیان کیا ، کہا ہم سے اسماعیل بن جعفر نے بیان کیا ، انھوں نے عبداللہ بن دینار سے ، انھوں نے عبداللہ بن عمر رضی اللہ عنہما سے کہا کہ آنحضرت صلی اللہ علیہ وسلم نے فرمایا درختوں میں ایک درخت ایسا ہے کہ اس کے پتے نہیں جھڑتے اور مسلمان کی مثال اسی درخت کی سی ہے ۔ بتاؤ وہ کون سا درخت ہے ؟ یہ سن کر لوگوں کا خیال جنگل کے درختوں کی طرف دوڑا ۔ عبداللہ رضی اللہ عنہ نے کہا میرے دل میں آیا کہ وہ کھجور کا درخت ہے ۔ مگر میں اپنی ( کم سنی کی ) شرم سے نہ بولا ۔ آخر صحابہ نے آنحضرت صلی اللہ علیہ وسلم ہی سے پوچھا کہ وہ کون سا درخت ہے ؟ آپ صلی اللہ علیہ وسلم نے فرمایا وہ کھجور کا درخت ہے ۔",
+      },
+      {
+        id: 4,
+        volume: 1,
+        arabic: "حَدَّثَنَا خَالِدُ بْنُ مَخْلَدٍ، حَدَّثَنَا سُلَيْمَانُ، حَدَّثَنَا عَبْدُ اللَّهِ بْنُ دِينَارٍ، عَنِ ابْنِ عُمَرَ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏\"‏ إِنَّ مِنَ الشَّجَرِ شَجَرَةً لاَ يَسْقُطُ وَرَقُهَا، وَإِنَّهَا مَثَلُ الْمُسْلِمِ، حَدِّثُونِي مَا هِيَ ‏\"‏‏.‏ قَالَ فَوَقَعَ النَّاسُ فِي شَجَرِ الْبَوَادِي‏.‏ قَالَ عَبْدُ اللَّهِ فَوَقَعَ فِي نَفْسِي أَنَّهَا النَّخْلَةُ، ثُمَّ قَالُوا حَدِّثْنَا مَا هِيَ يَا رَسُولَ اللَّهِ قَالَ ‏\"‏ هِيَ النَّخْلَةُ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Umar: The Prophet (ﷺ) said, \"Amongst the trees, there is a tree, the leaves of which do not fall and is like a Muslim. Tell me the name of that tree.\" Everybody started thinking about the trees of the desert areas. And I thought of the date-palm tree. The others then asked, \"Please inform us what is that tree, O Allah's Messenger (ﷺ)?\" He replied, \"It is the date-palm tree.\"",
+        ur: "ہم سے خالد بن مخلد نے بیان کیا ، کہا ہم سے سلیمان بن بلال نے بیان کیا ، کہا ہم سے عبداللہ بن دینار نے بیان کیا ، انھوں نے عبداللہ بن عمر رضی اللہ عنہما سے انھوں نے آنحضرت صلی اللہ علیہ وسلم سے کہ ( ایک مرتبہ ) آپ صلی اللہ علیہ وسلم نے فرمایا درختوں میں سے ایک درخت ایسا ہے کہ اس کے پتے نہیں جھڑتے اور مسلمان کی بھی یہی مثال ہے بتلاؤ وہ کون سا درخت ہے ؟ یہ سن کر لوگوں کے خیالات جنگل کے درختوں میں چلے گئے ۔ عبداللہ نے کہا کہ میرے دل میں آیا کہ بتلا دوں کہ وہ کھجور کا درخت ہے لیکن ( وہاں بہت سے بزرگ موجود تھے اس لیے ) مجھ کو شرم آئی ۔ آخر صحابہ نے عرض کیا یا رسول اللہ ! آپ ہی بیان فرما دیجیئے ۔ آپ صلی اللہ علیہ وسلم نے بتلایا کہ وہ کھجور کا درخت ہے ۔",
+      },
+      {
+        id: 5,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ حَدَّثَنَا اللَّيْثُ، عَنْ سَعِيدٍ ـ هُوَ الْمَقْبُرِيُّ ـ عَنْ شَرِيكِ بْنِ عَبْدِ اللَّهِ بْنِ أَبِي نَمِرٍ، أَنَّهُ سَمِعَ أَنَسَ بْنَ مَالِكٍ، يَقُولُ بَيْنَمَا نَحْنُ جُلُوسٌ مَعَ النَّبِيِّ صلى الله عليه وسلم فِي الْمَسْجِدِ، دَخَلَ رَجُلٌ عَلَى جَمَلٍ فَأَنَاخَهُ فِي الْمَسْجِدِ، ثُمَّ عَقَلَهُ، ثُمَّ قَالَ لَهُمْ أَيُّكُمْ مُحَمَّدٌ وَالنَّبِيُّ صلى الله عليه وسلم مُتَّكِئٌ بَيْنَ ظَهْرَانَيْهِمْ‏.‏ فَقُلْنَا هَذَا الرَّجُلُ الأَبْيَضُ الْمُتَّكِئُ‏.‏ فَقَالَ لَهُ الرَّجُلُ ابْنَ عَبْدِ الْمُطَّلِبِ فَقَالَ لَهُ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ قَدْ أَجَبْتُكَ ‏\"‏‏.‏ فَقَالَ الرَّجُلُ لِلنَّبِيِّ صلى الله عليه وسلم إِنِّي سَائِلُكَ فَمُشَدِّدٌ عَلَيْكَ فِي الْمَسْأَلَةِ فَلاَ تَجِدْ عَلَىَّ فِي نَفْسِكَ‏.‏ فَقَالَ ‏\"‏ سَلْ عَمَّا بَدَا لَكَ ‏\"‏‏.‏ فَقَالَ أَسْأَلُكَ بِرَبِّكَ وَرَبِّ مَنْ قَبْلَكَ، آللَّهُ أَرْسَلَكَ إِلَى النَّاسِ كُلِّهِمْ فَقَالَ ‏\"‏ اللَّهُمَّ نَعَمْ ‏\"‏‏.‏ قَالَ أَنْشُدُكَ بِاللَّهِ، آللَّهُ أَمَرَكَ أَنْ نُصَلِّيَ الصَّلَوَاتِ الْخَمْسَ فِي الْيَوْمِ وَاللَّيْلَةِ قَالَ ‏\"‏ اللَّهُمَّ نَعَمْ ‏\"‏‏.‏ قَالَ أَنْشُدُكَ بِاللَّهِ، آللَّهُ أَمَرَكَ أَنْ نَصُومَ هَذَا الشَّهْرَ مِنَ السَّنَةِ قَالَ ‏\"‏ اللَّهُمَّ نَعَمْ ‏\"‏‏.‏ قَالَ أَنْشُدُكَ بِاللَّهِ، آللَّهُ أَمَرَكَ أَنْ تَأْخُذَ هَذِهِ الصَّدَقَةَ مِنْ أَغْنِيَائِنَا فَتَقْسِمَهَا عَلَى فُقَرَائِنَا فَقَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ اللَّهُمَّ نَعَمْ ‏\"‏‏.‏ فَقَالَ الرَّجُلُ آمَنْتُ بِمَا جِئْتَ بِهِ، وَأَنَا رَسُولُ مَنْ وَرَائِي مِنْ قَوْمِي، وَأَنَا ضِمَامُ بْنُ ثَعْلَبَةَ أَخُو بَنِي سَعْدِ بْنِ بَكْرٍ‏.‏ رَوَاهُ مُوسَى وَعَلِيُّ بْنُ عَبْدِ الْحَمِيدِ عَنْ سُلَيْمَانَ عَنْ ثَابِتٍ عَنْ أَنَسٍ عَنِ النَّبِيِّ صلى الله عليه وسلم بِهَذَا‏.‏",
+        en: "Narrated Anas bin Malik: While we were sitting with the Prophet (ﷺ) in the mosque, a man came riding on a camel. He made his camel kneel down in the mosque, tied its foreleg and then said: \"Who amongst you is Muhammad?\" At that time the Prophet (ﷺ) was sitting amongst us (his companions) leaning on his arm. We replied, \"This white man reclining on his arm.\" The man then addressed him, \"O Son of `Abdul Muttalib.\" The Prophet (ﷺ) said, \"I am here to answer your questions.\" The man said to the Prophet, \"I want to ask you something and will be hard in questioning. So do not get angry.\" The Prophet (ﷺ) said, \"Ask whatever you want.\" The man said, \"I ask you by your Lord, and the Lord of those who were before you, has Allah sent you as an Apostle to all the mankind?\" The Prophet (ﷺ) replied, \"By Allah, yes.\" The man further said, \"I ask you by Allah. Has Allah ordered you to offer five prayers in a day and night (24 hours).? He replied, \"By Allah, Yes.\" The man further said, \"I ask you by Allah! Has Allah ordered you to observe fasts during this month of the year (i.e. Ramadan)?\" He replied, \"By Allah, Yes.\" The man further said, \"I ask you by Allah. Has Allah ordered you to take Zakat (obligatory charity) from our rich people and distribute it amongst our poor people?\" The Prophet (ﷺ) replied, \"By Allah, yes.\" Thereupon that man said, \"I have believed in all that with which you have been sent, and I have been sent by my people as a messenger, and I am Dimam bin Tha`laba from the brothers of Bani Sa`d bin Bakr.\"",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، کہا ہم سے لیث نے بیان کیا ، انھوں نے سعید مقبری سے ، انھوں نے شریک بن عبداللہ بن ابی نمر سے ، انھوں نے انس بن مالک سے سنا کہ ایک بار ہم مسجد میں آنحضرت صلی اللہ علیہ وسلم کے ساتھ بیٹھے ہوئے تھے ، اتنے میں ایک شخص اونٹ پر سوار ہو کر آیا اور اونٹ کو مسجد میں بٹھا کر باندھ دیا ۔ پھر پوچھنے لگا ( بھائیو ) تم لوگوں میں محمد ( صلی اللہ علیہ وسلم ) کون سے ہیں ۔ آنحضرت صلی اللہ علیہ وسلم اس وقت لوگوں میں تکیہ لگائے بیٹھے ہوئے تھے ۔ ہم نے کہا ( حضرت ) محمد ( صلی اللہ علیہ وسلم ) یہ سفید رنگ والے بزرگ ہیں جو تکیہ لگائے ہوئے تشریف فرما ہیں ۔ تب وہ آپ سے مخاطب ہوا کہ اے عبدالمطلب کے فرزند ! آپ صلی اللہ علیہ وسلم نے فرمایا ۔ کہو میں آپ کی بات سن رہا ہوں ۔ وہ بولا میں آپ صلی اللہ علیہ وسلم سے کچھ دینی باتیں دریافت کرنا چاہتا ہوں اور ذرا سختی سے بھی پوچھوں گا تو آپ اپنے دل میں برا نہ مانئے گا ۔ آپ صلی اللہ علیہ وسلم نے فرمایا نہیں جو تمہارا دل چاہے پوچھو ۔ تب اس نے کہا کہ میں آپ کو آپ کے رب اور اگلے لوگوں کے رب تبارک وتعالیٰ کی قسم دے کر پوچھتا ہوں کیا آپ کو اللہ نے دنیا کے سب لوگوں کی طرف رسول بنا کر بھیجا ہے ۔ آپ صلی اللہ علیہ وسلم نے فرمایا ہاں یا میرے اللہ ! پھر اس نے کہا میں آپ صلی اللہ علیہ وسلم کو اللہ کی قسم دیتا ہوں کیا اللہ نے آپ صلی اللہ علیہ وسلم کو رات دن میں پانچ نمازیں پڑھنے کا حکم فرمایا ہے ۔ آپ صلی اللہ علیہ وسلم نے فرمایا ہاں یا میرے اللہ ! پھر کہنے لگا میں آپ کو اللہ کی قسم دے کر پوچھتا ہوں کہ کیا اللہ نے آپ کو یہ حکم دیا ہے کہ سال بھر میں اس مہینہ رمضان کے روزے رکھو ۔ آپ صلی اللہ علیہ وسلم نے فرمایا ہاں یا میرے اللہ ! پھر کہنے لگا میں آپ صلی اللہ علیہ وسلم کو اللہ کی قسم دے کر پوچھتا ہوں کہ کیا اللہ نے آپ کو یہ حکم دیا ہے کہ آپ ہم میں سے جو مالدار لوگ ہیں ان سے زکوٰۃ وصول کر کے ہمارے محتاجوں میں بانٹ دیا کریں ۔ آنحضرت صلی اللہ علیہ وسلم نے فرمایا ہاں یا میرے اللہ ! تب وہ شخص کہنے لگا جو حکم آپ صلی اللہ علیہ وسلم اللہ کے پاس سے لائے ہیں ، میں ان پر ایمان لایا اور میں اپنی قوم کے لوگوں کا جو یہاں نہیں آئے ہیں بھیجا ہوا ( تحقیق حال کے لیے ) آیا ہوں ۔ میرا نام ضمام بن ثعلبہ ہے ، میں بنی سعد بن بکر کے خاندان سے ہوں ۔ اس حدیث کو ( لیث کی طرح ) موسیٰ اور علی بن عبدالحمید نے سلیمان سے روایت کیا ، انھوں نے ثابت سے ، انھوں نے انس سے ، انھوں نے یہی مضمون آنحضرت صلی اللہ علیہ وسلم سے نقل کیا ہے ۔",
+      },
+      {
+        id: 6,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْمَاعِيلُ بْنُ عَبْدِ اللَّهِ، قَالَ حَدَّثَنِي إِبْرَاهِيمُ بْنُ سَعْدٍ، عَنْ صَالِحٍ، عَنِ ابْنِ شِهَابٍ، عَنْ عُبَيْدِ اللَّهِ بْنِ عَبْدِ اللَّهِ بْنِ عُتْبَةَ بْنِ مَسْعُودٍ، أَنَّ عَبْدَ اللَّهِ بْنَ عَبَّاسٍ، أَخْبَرَهُ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم بَعَثَ بِكِتَابِهِ رَجُلاً، وَأَمَرَهُ أَنْ يَدْفَعَهُ إِلَى عَظِيمِ الْبَحْرَيْنِ، فَدَفَعَهُ عَظِيمُ الْبَحْرَيْنِ إِلَى كِسْرَى، فَلَمَّا قَرَأَهُ مَزَّقَهُ‏.‏ فَحَسِبْتُ أَنَّ ابْنَ الْمُسَيَّبِ قَالَ فَدَعَا عَلَيْهِمْ رَسُولُ اللَّهِ صلى الله عليه وسلم أَنْ يُمَزَّقُوا كُلَّ مُمَزَّقٍ‏.‏",
+        en: "Narrated `Abdullah bin `Abbas: Once Allah's Messenger (ﷺ) gave a letter to a person and ordered him to go and deliver it to the Governor of Bahrain. (He did so) and the Governor of Bahrain sent it to Chousroes, who read that letter and then tore it to pieces. (The sub-narrator (Ibn Shihab) thinks that Ibn Al-Musaiyab said that Allah's Messenger (ﷺ) invoked Allah against them (saying), \"May Allah tear them into pieces, and disperse them all totally.)\"",
+        ur: "اسماعیل بن عبداللہ نے ہم سے بیان کیا ، ان سے ابراہیم بن سعد نے صالح کے واسطے سے روایت کی ، انھوں نے ابن شہاب سے ، انھوں نے عبیداللہ بن عبداللہ بن عتبہ بن مسعود رضی اللہ عنہ سے نقل کیا کہ ان سے عبداللہ بن عباس رضی اللہ عنہما نے بیان کیا کہ رسول اللہ صلی اللہ علیہ وسلم نے ایک شخص کو اپنا ایک خط دے کر بھیجا اور اسے یہ حکم دیا کہ اسے حاکم بحرین کے پاس لے جائے ۔ بحرین کے حاکم نے وہ خط کسریٰ ( شاہ ایران ) کے پاس بھیج دیا ۔ جس وقت اس نے وہ خط پڑھا تو چاک کر ڈالا ( راوی کہتے ہیں ) اور میرا خیال ہے کہ ابن مسیب نے ( اس کے بعد ) مجھ سے کہا کہ ( اس واقعہ کو سن کر ) رسول اللہ صلی اللہ علیہ وسلم نے اہل ایران کے لیے بددعا کی کہ وہ ( بھی چاک شدہ خط کی طرح ) ٹکڑے ٹکڑے ہو جائیں ۔",
+      },
+      {
+        id: 7,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ أَبُو الْحَسَنِ، أَخْبَرَنَا عَبْدُ اللَّهِ، قَالَ أَخْبَرَنَا شُعْبَةُ، عَنْ قَتَادَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ كَتَبَ النَّبِيُّ صلى الله عليه وسلم كِتَابًا ـ أَوْ أَرَادَ أَنْ يَكْتُبَ ـ فَقِيلَ لَهُ إِنَّهُمْ لاَ يَقْرَءُونَ كِتَابًا إِلاَّ مَخْتُومًا‏.‏ فَاتَّخَذَ خَاتَمًا مِنْ فِضَّةٍ نَقْشُهُ مُحَمَّدٌ رَسُولُ اللَّهِ‏.‏ كَأَنِّي أَنْظُرُ إِلَى بَيَاضِهِ فِي يَدِهِ‏.‏ فَقُلْتُ لِقَتَادَةَ مَنْ قَالَ نَقْشُهُ مُحَمَّدٌ رَسُولُ اللَّهِ قَالَ أَنَسٌ‏.‏",
+        en: "Narrated Anas bin Malik: Once the Prophet (ﷺ) wrote a letter or had an idea of writing a letter. The Prophet (ﷺ) was told that they (rulers) would not read letters unless they were sealed. So the Prophet (ﷺ) got a silver ring made with \"Muhammad Allah's Messenger (ﷺ)\" engraved on it. As if I were just observing its white glitter in the hand of the Prophet.",
+        ur: "ہم سے ابوالحسن محمد بن مقاتل نے بیان کیا ، ان سے عبداللہ نے ، انہیں شعبہ نے قتادہ سے خبر دی ، وہ حضرت انس بن مالک رضی اللہ عنہ سے روایت کرتے ہیں ، انھوں نے فرمایا کہ رسول اللہ صلی اللہ علیہ وسلم نے ( کسی بادشاہ کے نام دعوت اسلام دینے کے لیے ) ایک خط لکھا یا لکھنے کا ارادہ کیا تو آپ صلی اللہ علیہ وسلم سے کہا گیا کہ وہ بغیر مہر کے خط نہیں پڑھتے ( یعنی بے مہر کے خط کو مستند نہیں سمجھتے ) تب آپ صلی اللہ علیہ وسلم نے چاندی کی انگوٹھی بنوائی ۔ جس میں «محمد رسول الله‏» کندہ تھا ۔ گویا میں ( آج بھی ) آپ صلی اللہ علیہ وسلم کے ہاتھ میں اس کی سفیدی دیکھ رہا ہوں ۔ ( شعبہ راوی حدیث کہتے ہیں کہ ) میں نے قتادہ سے پوچھا کہ یہ کس نے کہا ( کہ ) اس پر «محمد رسول الله‏» کندہ تھا ؟ انھوں نے جواب دیا ، انس رضی اللہ عنہ نے ۔",
+      },
+      {
+        id: 8,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْمَاعِيلُ، قَالَ حَدَّثَنِي مَالِكٌ، عَنْ إِسْحَاقَ بْنِ عَبْدِ اللَّهِ بْنِ أَبِي طَلْحَةَ، أَنَّ أَبَا مُرَّةَ، مَوْلَى عَقِيلِ بْنِ أَبِي طَالِبٍ أَخْبَرَهُ عَنْ أَبِي وَاقِدٍ اللَّيْثِيِّ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم بَيْنَمَا هُوَ جَالِسٌ فِي الْمَسْجِدِ وَالنَّاسُ مَعَهُ، إِذْ أَقْبَلَ ثَلاَثَةُ نَفَرٍ، فَأَقْبَلَ اثْنَانِ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم وَذَهَبَ وَاحِدٌ، قَالَ فَوَقَفَا عَلَى رَسُولِ اللَّهِ صلى الله عليه وسلم فَأَمَّا أَحَدُهُمَا فَرَأَى فُرْجَةً فِي الْحَلْقَةِ فَجَلَسَ فِيهَا، وَأَمَّا الآخَرُ فَجَلَسَ خَلْفَهُمْ، وَأَمَّا الثَّالِثُ فَأَدْبَرَ ذَاهِبًا، فَلَمَّا فَرَغَ رَسُولُ اللَّهِ صلى الله عليه وسلم قَالَ ‏ \"‏ أَلاَ أُخْبِرُكُمْ عَنِ النَّفَرِ الثَّلاَثَةِ أَمَّا أَحَدُهُمْ فَأَوَى إِلَى اللَّهِ، فَآوَاهُ اللَّهُ، وَأَمَّا الآخَرُ فَاسْتَحْيَا، فَاسْتَحْيَا اللَّهُ مِنْهُ، وَأَمَّا الآخَرُ فَأَعْرَضَ، فَأَعْرَضَ اللَّهُ عَنْهُ ‏\"‏‏.‏",
+        en: "Narrated Abu Waqid Al-Laithi: While Allah's Messenger (ﷺ) was sitting in the mosque with some people, three men came. Two of them came in front of Allah's Messenger (ﷺ) and the third one went away. The two persons kept on standing before Allah's Messenger (ﷺ) for a while and then one of them found a place in the circle and sat there while the other sat behind the gathering, and the third one went away. When Allah's Messenger (ﷺ) finished his preaching, he said, \"Shall I tell you about these three persons? One of them betook himself to Allah, so Allah took him into His grace and mercy and accommodated him, the second felt shy from Allah, so Allah sheltered Him in His mercy (and did not punish him), while the third turned his face from Allah and went away, so Allah turned His face from him likewise. \"",
+        ur: "ہم سے اسماعیل نے بیان کیا ، کہا ان سے مالک نے اسحاق بن عبداللہ بن ابی طلحہ کے واسطے سے ذکر کیا ، بیشک ابومرہ مولیٰ عقیل بن ابی طالب نے انہیں ابوواقد اللیثی سے خبر دی کہ ( ایک مرتبہ ) رسول اللہ صلی اللہ علیہ وسلم مسجد میں تشریف فرما تھے اور لوگ آپ صلی اللہ علیہ وسلم کے اردگرد بیٹھے ہوئے تھے کہ تین آدمی وہاں آئے ( ان میں سے ) دو رسول اللہ صلی اللہ علیہ وسلم کے سامنے پہنچ گئے اور ایک واپس چلا گیا ۔ ( راوی کہتے ہیں کہ ) پھر وہ دونوں رسول اللہ صلی اللہ علیہ وسلم کے سامنے کھڑے ہو گئے ۔ اس کے بعد ان میں سے ایک نے ( جب ) مجلس میں ( ایک جگہ کچھ ) گنجائش دیکھی ، تو وہاں بیٹھ گیا اور دوسرا اہل مجلس کے پیچھے بیٹھ گیا اور تیسرا جو تھا وہ لوٹ گیا ۔ تو جب رسول اللہ صلی اللہ علیہ وسلم ( اپنی گفتگو سے ) فارغ ہوئے ( تو صحابہ رضی اللہ عنہم سے ) فرمایا کہ کیا میں تمہیں تین آدمیوں کے بارے میں نہ بتاؤں ؟ تو ( سنو ) ان میں سے ایک نے اللہ سے پناہ چاہی اللہ نے اسے پناہ دی اور دوسرے کو شرم آئی تو اللہ بھی اس سے شرمایا ( کہ اسے بھی بخش دیا ) اور تیسرے شخص نے منہ موڑا ، تو اللہ نے ( بھی ) اس سے منہ موڑ لیا ۔",
+      },
+      {
+        id: 9,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُسَدَّدٌ، قَالَ حَدَّثَنَا بِشْرٌ، قَالَ حَدَّثَنَا ابْنُ عَوْنٍ، عَنِ ابْنِ سِيرِينَ، عَنْ عَبْدِ الرَّحْمَنِ بْنِ أَبِي بَكْرَةَ، عَنْ أَبِيهِ، ذَكَرَ النَّبِيَّ صلى الله عليه وسلم قَعَدَ عَلَى بَعِيرِهِ، وَأَمْسَكَ إِنْسَانٌ بِخِطَامِهِ ـ أَوْ بِزِمَامِهِ ـ قَالَ ‏\"‏ أَىُّ يَوْمٍ هَذَا ‏\"‏‏.‏ فَسَكَتْنَا حَتَّى ظَنَنَّا أَنَّهُ سَيُسَمِّيهِ سِوَى اسْمِهِ‏.‏ قَالَ ‏\"‏ أَلَيْسَ يَوْمَ النَّحْرِ ‏\"‏‏.‏ قُلْنَا بَلَى‏.‏ قَالَ ‏\"‏ فَأَىُّ شَهْرٍ هَذَا ‏\"‏‏.‏ فَسَكَتْنَا حَتَّى ظَنَنَّا أَنَّهُ سَيُسَمِّيهِ بِغَيْرِ اسْمِهِ‏.‏ فَقَالَ ‏\"‏ أَلَيْسَ بِذِي الْحِجَّةِ ‏\"‏‏.‏ قُلْنَا بَلَى‏.‏ قَالَ ‏\"‏ فَإِنَّ دِمَاءَكُمْ وَأَمْوَالَكُمْ وَأَعْرَاضَكُمْ بَيْنَكُمْ حَرَامٌ كَحُرْمَةِ يَوْمِكُمْ هَذَا، فِي شَهْرِكُمْ هَذَا، فِي بَلَدِكُمْ هَذَا‏.‏ لِيُبَلِّغِ الشَّاهِدُ الْغَائِبَ، فَإِنَّ الشَّاهِدَ عَسَى أَنْ يُبَلِّغَ مَنْ هُوَ أَوْعَى لَهُ مِنْهُ ‏\"‏‏.‏",
+        en: "Narrated `Abdur-Rahman bin Abi Bakra's father: Once the Prophet (ﷺ) was riding his camel and a man was holding its rein. The Prophet (ﷺ) asked, \"What is the day today?\" We kept quiet, thinking that he might give that day another name. He said, \"Isn't it the day of Nahr (slaughtering of the animals of sacrifice)\" We replied, \"Yes.\" He further asked, \"Which month is this?\" We again kept quiet, thinking that he might give it another name. Then he said, \"Isn't it the month of Dhul-Hijja?\" We replied, \"Yes.\" He said, \"Verily! Your blood, property and honor are sacred to one another (i.e. Muslims) like the sanctity of this day of yours, in this month of yours and in this city of yours. It is incumbent upon those who are present to inform those who are absent because those who are absent might comprehend (what I have said) better than the present audience.\"",
+        ur: "ہم سے مسدد نے بیان کیا ، ان سے بشر نے ، ان سے ابن عون نے ابن سیرین کے واسطے سے ، انھوں نے عبدالرحمٰن بن ابی بکرہ سے نقل کیا ، انھوں نے اپنے باپ سے روایت کی کہ وہ ( ایک دفعہ ) رسول اللہ صلی اللہ علیہ وسلم کا تذکرہ کرتے ہوئے کہنے لگے کہ رسول اللہ صلی اللہ علیہ وسلم اپنے اونٹ پر بیٹھے ہوئے تھے اور ایک شخص نے اس کی نکیل تھام رکھی تھی ، آپ صلی اللہ علیہ وسلم نے پوچھا آج یہ کون سا دن ہے ؟ ہم خاموش رہے ، حتیٰ کہ ہم سمجھے کہ آج کے دن کا آپ کوئی دوسرا نام اس کے نام کے علاوہ تجویز فرمائیں گے ( پھر ) آپ صلی اللہ علیہ وسلم نے فرمایا ، کیا آج قربانی کا دن نہیں ہے ؟ ہم نے عرض کیا ، بیشک ۔ ( اس کے بعد ) آپ صلی اللہ علیہ وسلم نے فرمایا ، یہ کون سا مہینہ ہے ؟ ہم ( اس پر بھی ) خاموش رہے اور یہ ( ہی ) سمجھے کہ اس مہینے کا ( بھی ) آپ اس کے نام کے علاوہ کوئی دوسرا نام تجویز فرمائیں گے ۔ پھر آپ صلی اللہ علیہ وسلم نے فرمایا ، کیا یہ ذی الحجہ کا مہینہ نہیں ہے ؟ ہم نے عرض کیا ، بیشک ۔ آپ صلی اللہ علیہ وسلم نے فرمایا ، تو یقیناً تمہاری جانیں اور تمہارے مال اور تمہاری آبرو تمہارے درمیان اسی طرح حرام ہیں جس طرح آج کے دن کی حرمت تمہارے اس مہینے اور اس شہر میں ہے ۔ پس جو شخص حاضر ہے اسے چاہیے کہ غائب کو یہ ( بات ) پہنچا دے ، کیونکہ ایسا ممکن ہے کہ جو شخص یہاں موجود ہے وہ ایسے شخص کو یہ خبر پہنچائے ، جو اس سے زیادہ ( حدیث کا ) یاد رکھنے والا ہو ۔",
+      },
+      {
+        id: 10,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا سُفْيَانُ، عَنِ الأَعْمَشِ، عَنْ أَبِي وَائِلٍ، عَنِ ابْنِ مَسْعُودٍ، قَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم يَتَخَوَّلُنَا بِالْمَوْعِظَةِ فِي الأَيَّامِ، كَرَاهَةَ السَّآمَةِ عَلَيْنَا‏.‏",
+        en: "Narrated Ibn Mas`ud: The Prophet (ﷺ) used to take care of us in preaching by selecting a suitable time, so that we might not get bored. (He abstained from pestering us with sermons and knowledge all the time).",
+        ur: "ہم سے محمد بن یوسف نے بیان کیا ، انہیں سفیان نے اعمش سے خبر دی ، وہ ابووائل سے روایت کرتے ہیں ، وہ عبداللہ بن مسعود رضی اللہ عنہما سے کہ رسول اللہ صلی اللہ علیہ وسلم نے ہمیں نصیحت فرمانے کے لیے کچھ دن مقرر کر دیئے تھے اس ڈر سے کہ کہیں ہم کبیدہ خاطر نہ ہو جائیں ۔",
+      },
+      {
+        id: 11,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ، قَالَ حَدَّثَنَا شُعْبَةُ، قَالَ حَدَّثَنِي أَبُو التَّيَّاحِ، عَنْ أَنَسٍ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ يَسِّرُوا وَلاَ تُعَسِّرُوا، وَبَشِّرُوا وَلاَ تُنَفِّرُوا ‏\"‏‏.‏",
+        en: "Narrated Anas bin Malik: The Prophet (ﷺ) said, \"Facilitate things to people (concerning religious matters), and do not make it hard for them and give them good tidings and do not make them run away (from Islam).",
+        ur: "ہم سے محمد بن بشار نے بیان کیا ، ان سے یحییٰ بن سعید نے ، ان سے شعبہ نے ، ان سے ابوالتیاح نے ، انھوں نے حضرت انس بن مالک رضی اللہ عنہ سے نقل کیا ، وہ رسول اللہ صلی اللہ علیہ وسلم سے روایت کرتے ہیں کہ آپ صلی اللہ علیہ وسلم نے فرمایا ، آسانی کرو اور سختی نہ کرو اور خوش کرو اور نفرت نہ دلاؤ ۔",
+      },
+      {
+        id: 12,
+        volume: 1,
+        arabic: "حَدَّثَنَا عُثْمَانُ بْنُ أَبِي شَيْبَةَ، قَالَ حَدَّثَنَا جَرِيرٌ، عَنْ مَنْصُورٍ، عَنْ أَبِي وَائِلٍ، قَالَ كَانَ عَبْدُ اللَّهِ يُذَكِّرُ النَّاسَ فِي كُلِّ خَمِيسٍ، فَقَالَ لَهُ رَجُلٌ يَا أَبَا عَبْدِ الرَّحْمَنِ لَوَدِدْتُ أَنَّكَ ذَكَّرْتَنَا كُلَّ يَوْمٍ‏.‏ قَالَ أَمَا إِنَّهُ يَمْنَعُنِي مِنْ ذَلِكَ أَنِّي أَكْرَهُ أَنْ أُمِلَّكُمْ، وَإِنِّي أَتَخَوَّلُكُمْ بِالْمَوْعِظَةِ كَمَا كَانَ النَّبِيُّ صلى الله عليه وسلم يَتَخَوَّلُنَا بِهَا، مَخَافَةَ السَّآمَةِ عَلَيْنَا‏.‏",
+        en: "Narrated Abu Wail: `Abdullah used to give a religious talk to the people on every Thursday. Once a man said, \"O Aba `Abdur-Rahman! (By Allah) I wish if you could preach us daily.\" He replied, \"The only thing which prevents me from doing so, is that I hate to bore you, and no doubt I take care of you in preaching by selecting a suitable time just as the Prophet (ﷺ) used to do with us, for fear of making us bored.\"",
+        ur: "ہم سے عثمان بن ابی شیبہ نے بیان کیا ، ان سے جریر نے منصور کے واسطے سے نقل کیا ، وہ ابووائل سے روایت کرتے ہیں کہ عبداللہ ( ابن مسعود ) رضی اللہ عنہ ہر جمعرات کے دن لوگوں کو وعظ سنایا کرتے تھے ۔ ایک آدمی نے ان سے کہا اے ابوعبدالرحمن ! میں چاہتا ہوں کہ تم ہمیں ہر روز وعظ سنایا کرو ۔ انھوں نے فرمایا ، تو سن لو کہ مجھے اس امر سے کوئی چیز مانع ہے تو یہ کہ میں یہ بات پسند نہیں کرتا کہ کہیں تم تنگ نہ ہو جاؤ اور میں وعظ میں تمہاری فرصت کا وقت تلاش کیا کرتا ہوں جیسا کہ رسول اللہ صلی اللہ علیہ وسلم اس خیال سے کہ ہم کبیدہ خاطر نہ ہو جائیں ، وعظ کے لیے ہمارے اوقات فرصت کا خیال رکھتے تھے ۔",
+      },
+      {
+        id: 13,
+        volume: 1,
+        arabic: "حَدَّثَنَا سَعِيدُ بْنُ عُفَيْرٍ، قَالَ حَدَّثَنَا ابْنُ وَهْبٍ، عَنْ يُونُسَ، عَنِ ابْنِ شِهَابٍ، قَالَ قَالَ حُمَيْدُ بْنُ عَبْدِ الرَّحْمَنِ سَمِعْتُ مُعَاوِيَةَ، خَطِيبًا يَقُولُ سَمِعْتُ النَّبِيَّ صلى الله عليه وسلم يَقُولُ ‏ \"‏ مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ، وَإِنَّمَا أَنَا قَاسِمٌ وَاللَّهُ يُعْطِي، وَلَنْ تَزَالَ هَذِهِ الأُمَّةُ قَائِمَةً عَلَى أَمْرِ اللَّهِ لاَ يَضُرُّهُمْ مَنْ خَالَفَهُمْ حَتَّى يَأْتِيَ أَمْرُ اللَّهِ ‏\"‏‏.‏",
+        en: "Narrated Muawiya: I heard Allah's Messenger (ﷺ) saying, \"If Allah wants to do good to a person, He makes him comprehend the religion. I am just a distributor, but the grant is from Allah. (And remember) that this nation (true Muslims) will keep on following Allah's teachings strictly and they will not be harmed by any one going on a different path till Allah's order (Day of Judgment) is established.\"",
+        ur: "ہم سے سعید بن عفیر نے بیان کیا ، ان سے وہب نے یونس کے واسطے سے نقل کیا ، وہ ابن شہاب سے نقل کرتے ہیں ، ان سے حمید بن عبدالرحمٰن نے کہا کہ میں نے معاویہ سے سنا ۔ وہ خطبہ میں فرما رہے تھے کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو یہ فرماتے ہوئے سنا کہ جس شخص کے ساتھ اللہ تعالیٰ بھلائی کا ارادہ کرے اسے دین کی سمجھ عنایت فرما دیتا ہے اور میں تو محض تقسیم کرنے والا ہوں ، دینے والا تو اللہ ہی ہے اور یہ امت ہمیشہ اللہ کے حکم پر قائم رہے گی اور جو شخص ان کی مخالفت کرے گا ، انہیں نقصان نہیں پہنچا سکے گا ، یہاں تک کہ اللہ کا حکم ( قیامت ) آ جائے ( اور یہ عالم فنا ہو جائے ) ۔",
+      },
+      {
+        id: 14,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَلِيٌّ، حَدَّثَنَا سُفْيَانُ، قَالَ قَالَ لِي ابْنُ أَبِي نَجِيحٍ عَنْ مُجَاهِدٍ، قَالَ صَحِبْتُ ابْنَ عُمَرَ إِلَى الْمَدِينَةِ فَلَمْ أَسْمَعْهُ يُحَدِّثُ عَنْ رَسُولِ اللَّهِ صلى الله عليه وسلم إِلاَّ حَدِيثًا وَاحِدًا، قَالَ كُنَّا عِنْدَ النَّبِيِّ صلى الله عليه وسلم فَأُتِيَ بِجُمَّارٍ فَقَالَ ‏\"‏ إِنَّ مِنَ الشَّجَرِ شَجَرَةً مَثَلُهَا كَمَثَلِ الْمُسْلِمِ ‏\"‏‏.‏ فَأَرَدْتُ أَنْ أَقُولَ هِيَ النَّخْلَةُ، فَإِذَا أَنَا أَصْغَرُ الْقَوْمِ فَسَكَتُّ، قَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ هِيَ النَّخْلَةُ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Umar: We were with the Prophet (ﷺ) and fresh dates of a palm tree were brought to him. On that he said, \"Amongst the trees, there is a tree which resembles a Muslim.\" I wanted to say that it was the datepalm tree but as I was the youngest of all (of them) I kept quiet. And then the Prophet (ﷺ) said, \"It is the date-palm tree.\"",
+        ur: "ہم سے علی ( بن مدینی ) نے بیان کیا ، ان سے سفیان نے ، ان سے ابن ابی نجیح نے مجاہد کے واسطے سے نقل کیا ، وہ کہتے ہیں کہ میں عبداللہ بن عمر رضی اللہ عنہما کے ساتھ مدینے تک رہا ، میں نے ( اس ) ایک حدیث کے سوا ان سے رسول اللہ صلی اللہ علیہ وسلم کی کوئی اور حدیث نہیں سنی ، وہ کہتے تھے کہ ہم رسول اللہ صلی اللہ علیہ وسلم کی خدمت میں حاضر تھے کہ آپ صلی اللہ علیہ وسلم کے پاس کھجور کا ایک گابھا لایا گیا ۔ ( اسے دیکھ کر ) آپ صلی اللہ علیہ وسلم نے فرمایا کہ درختوں میں ایک درخت ایسا ہے اس کی مثال مسلمان کی طرح ہے ۔ ( ابن عمر رضی اللہ عنہما کہتے ہیں کہ یہ سن کر ) میں نے ارادہ کیا کہ عرض کروں کہ وہ ( درخت ) کھجور کا ہے مگر چونکہ میں سب میں چھوٹا تھا اس لیے خاموش رہا ۔ ( پھر ) رسول اللہ صلی اللہ علیہ وسلم نے خود ہی فرمایا کہ وہ کھجور ہے ۔",
+      },
+      {
+        id: 15,
+        volume: 1,
+        arabic: "حَدَّثَنَا الْحُمَيْدِيُّ، قَالَ حَدَّثَنَا سُفْيَانُ، قَالَ حَدَّثَنِي إِسْمَاعِيلُ بْنُ أَبِي خَالِدٍ، عَلَى غَيْرِ مَا حَدَّثَنَاهُ الزُّهْرِيُّ، قَالَ سَمِعْتُ قَيْسَ بْنَ أَبِي حَازِمٍ، قَالَ سَمِعْتُ عَبْدَ اللَّهِ بْنَ مَسْعُودٍ، قَالَ قَالَ النَّبِيُّ صلى الله عليه وسلم ‏ \"‏ لاَ حَسَدَ إِلاَّ فِي اثْنَتَيْنِ رَجُلٌ آتَاهُ اللَّهُ مَالاً فَسُلِّطَ عَلَى هَلَكَتِهِ فِي الْحَقِّ، وَرَجُلٌ آتَاهُ اللَّهُ الْحِكْمَةَ، فَهْوَ يَقْضِي بِهَا وَيُعَلِّمُهَا ‏\"‏‏.‏",
+        en: "Narrated `Abdullah bin Mas`ud: The Prophet (ﷺ) said, \"Do not wish to be like anyone except in two cases. (The first is) A person, whom Allah has given wealth and he spends it righteously; (the second is) the one whom Allah has given wisdom (the Holy Qur'an) and he acts according to it and teaches it to others.\"",
+        ur: "ہم سے حمیدی نے بیان کیا ، ان سے سفیان نے ، ان سے اسماعیل بن ابی خالد نے دوسرے لفظوں میں بیان کیا ، ان لفظوں کے علاوہ جو زہری نے ہم سے بیان کئے ، وہ کہتے ہیں میں نے قیس بن ابی حازم سے سنا ، انھوں نے عبداللہ بن مسعود رضی اللہ عنہما سے سنا ، وہ کہتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم کا ارشاد ہے کہ حسد صرف دو باتوں میں جائز ہے ۔ ایک تو اس شخص کے بارے میں جسے اللہ نے دولت دی ہو اور وہ اس دولت کو راہ حق میں خرچ کرنے پر بھی قدرت رکھتا ہو اور ایک اس شخص کے بارے میں جسے اللہ نے حکمت ( کی دولت ) سے نوازا ہو اور وہ اس کے ذریعہ سے فیصلہ کرتا ہو اور ( لوگوں کو ) اس حکمت کی تعلیم دیتا ہو ۔",
+      },
+      {
+        id: 16,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ غُرَيْرٍ الزُّهْرِيُّ، قَالَ حَدَّثَنَا يَعْقُوبُ بْنُ إِبْرَاهِيمَ، قَالَ حَدَّثَنِي أَبِي، عَنْ صَالِحٍ، عَنِ ابْنِ شِهَابٍ، حَدَّثَ أَنَّ عُبَيْدَ اللَّهِ بْنَ عَبْدِ اللَّهِ أَخْبَرَهُ عَنِ ابْنِ عَبَّاسٍ، أَنَّهُ تَمَارَى هُوَ وَالْحُرُّ بْنُ قَيْسِ بْنِ حِصْنٍ الْفَزَارِيُّ فِي صَاحِبِ مُوسَى قَالَ ابْنُ عَبَّاسٍ هُوَ خَضِرٌ‏.‏ فَمَرَّ بِهِمَا أُبَىُّ بْنُ كَعْبٍ، فَدَعَاهُ ابْنُ عَبَّاسٍ فَقَالَ إِنِّي تَمَارَيْتُ أَنَا وَصَاحِبِي، هَذَا فِي صَاحِبِ مُوسَى الَّذِي سَأَلَ مُوسَى السَّبِيلَ إِلَى لُقِيِّهِ، هَلْ سَمِعْتَ النَّبِيَّ صلى الله عليه وسلم يَذْكُرُ شَأْنَهُ قَالَ نَعَمْ سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقُولُ ‏ \"‏ بَيْنَمَا مُوسَى فِي مَلإٍ مِنْ بَنِي إِسْرَائِيلَ، جَاءَهُ رَجُلٌ فَقَالَ هَلْ تَعْلَمُ أَحَدًا أَعْلَمَ مِنْكَ قَالَ مُوسَى لاَ‏.‏ فَأَوْحَى اللَّهُ إِلَى مُوسَى بَلَى، عَبْدُنَا خَضِرٌ، فَسَأَلَ مُوسَى السَّبِيلَ إِلَيْهِ، فَجَعَلَ اللَّهُ لَهُ الْحُوتَ آيَةً، وَقِيلَ لَهُ إِذَا فَقَدْتَ الْحُوتَ فَارْجِعْ، فَإِنَّكَ سَتَلْقَاهُ، وَكَانَ يَتَّبِعُ أَثَرَ الْحُوتِ فِي الْبَحْرِ، فَقَالَ لِمُوسَى فَتَاهُ أَرَأَيْتَ إِذْ أَوَيْنَا إِلَى الصَّخْرَةِ فَإِنِّي نَسِيتُ الْحُوتَ، وَمَا أَنْسَانِيهِ إِلاَّ الشَّيْطَانُ أَنْ أَذْكُرَهُ‏.‏ قَالَ ذَلِكَ مَا كُنَّا نَبْغِي، فَارْتَدَّا عَلَى آثَارِهِمَا قَصَصًا، فَوَجَدَا خَضِرًا‏.‏ فَكَانَ مِنْ شَأْنِهِمَا الَّذِي قَصَّ اللَّهُ ـ عَزَّ وَجَلَّ ـ فِي كِتَابِهِ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Abbas: That he differed with Hur bin Qais bin Hisn Al-Fazari regarding the companion of (the Prophet) Moses. Ibn `Abbas said that he was Al Khadir. Meanwhile, Ubai bin Ka`b passed by them and Ibn `Abbas called him, saying \"My friend (Hur) and I have differed regarding Moses' companion, whom Moses asked the way to meet. Have you heard the Prophet (ﷺ) mentioning something about him? He said, \"Yes. I heard Allah's Messenger (ﷺ) saying, \"While Moses was sitting in the company of some Israelites, a man came and asked him. \"Do you know anyone who is more learned than you? Moses replied: \"No.\" So Allah sent the Divine Inspiration to Moses: 'Yes, Our slave Khadir (is more learned than you.)' Moses asked (Allah) how to meet him (Khadir). So Allah made the fish as a sign for him and he was told that when the fish was lost, he should return (to the place where he had lost it) and there he would meet him (Al-Khadir). So Moses went on looking for the sign of the fish in the sea. The servant-boy of Moses said to him: Do you remember when we betook ourselves to the rock, I indeed forgot the fish, none but Satan made me forget to remember it. On that Moses said: 'That is what we have been seeking? (18.64) So they went back retracing their footsteps, and found Khadir. (And) what happened further to them is narrated in the Holy Qur'an by Allah. (18.54 up to 18.82)",
+        ur: "ہم سے محمد بن غریر زہری نے بیان کیا ، ان سے یعقوب بن ابراہیم نے ، ان سے ان کے باپ ( ابراہیم ) نے ، انھوں نے صالح سے سنا ، انھوں نے ابن شہاب سے ، وہ بیان کرتے ہیں کہ انہیں عبیداللہ بن عبداللہ نے حضرت ابن عباس رضی اللہ عنہما کے واسطے سے خبر دی کہ وہ اور حر بن قیس بن حصن فزاری حضرت موسیٰ علیہ السلام کے ساتھی کے بارے میں بحثے ۔ حضرت ابن عباس رضی اللہ عنہما نے فرمایا کہ وہ خضر علیہ السلام تھے ۔ پھر ان کے پاس سے ابی بن کعب گزرے تو عبداللہ بن عباس رضی اللہ عنہما نے انہیں بلایا اور کہا کہ میں اور میرے یہ رفیق موسیٰ علیہ السلام کے اس ساتھی کے بارے میں بحث کر رہے ہیں جس سے انھوں نے ملاقات چاہی تھی ۔ کیا آپ نے رسول اللہ صلی اللہ علیہ وسلم سے اس کے بارے میں کچھ ذکر سنا ہے ۔ انھوں نے کہا ، ہاں میں نے رسول اللہ صلی اللہ علیہ وسلم کو یہ فرماتے ہوئے سنا ہے ۔ ایک دن حضرت موسیٰ بنی اسرائیل کی ایک جماعت میں بیٹھے ہوئے تھے کہ اتنے میں ایک شخص آیا اور اس نے آپ سے پوچھا کیا آپ جانتے ہیں کہ ( دنیا میں ) کوئی آپ سے بھی بڑھ کر عالم موجود ہے ؟ حضرت موسیٰ علیہ السلام نے فرمایا نہیں ۔ اس پر اللہ تعالیٰ نے حضرت موسیٰ علیہ اسلام کے پاس وحی بھیجی کہ ہاں ہمارا بندہ خضر ہے ( جس کا علم تم سے زیادہ ہے ) حضرت موسیٰ علیہ السلام نے اللہ سے دریافت کیا کہ خضر علیہ السلام سے ملنے کی کیا صورت ہے ؟ اللہ تعالیٰ نے ایک مچھلی کو ان سے ملاقات کی علامت قرار دیا اور ان سے کہہ دیا کہ جب تم اس مچھلی کو گم کر دو تو ( واپس ) لوٹ جاؤ ، تب خضر سے تمہاری ملاقات ہو گی ۔ تب موسیٰ ( چلے اور ) دریا میں مچھلی کی علامت تلاش کرتے رہے ۔ اس وقت ان کے ساتھی نے کہا جب ہم پتھر کے پاس تھے ، کیا آپ نے دیکھا تھا ، میں اس وقت مچھلی کا کہنا بھول گیا اور شیطان ہی نے مجھے اس کا ذکر بھلا دیا ۔ موسیٰ علیہ السلام نے کہا ، اسی مقام کی ہمیں تلاش تھی ۔ تب وہ اپنے نشانات قدم پر ( پچھلے پاؤں ) باتیں کرتے ہوئے لوٹے ( وہاں ) انھوں نے خضر علیہ السلام کو پایا ۔ پھر ان کا وہی قصہ ہے جو اللہ نے اپنی کتاب قرآن میں بیان کیا ہے ۔",
+      },
+      {
+        id: 17,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو مَعْمَرٍ، قَالَ حَدَّثَنَا عَبْدُ الْوَارِثِ، قَالَ حَدَّثَنَا خَالِدٌ، عَنْ عِكْرِمَةَ، عَنِ ابْنِ عَبَّاسٍ، قَالَ ضَمَّنِي رَسُولُ اللَّهِ صلى الله عليه وسلم وَقَالَ ‏ \"‏ اللَّهُمَّ عَلِّمْهُ الْكِتَابَ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Abbas: Once the Prophet (ﷺ) embraced me and said, \"O Allah! Bestow on him the knowledge of the Book (Qur'an).",
+        ur: "ہم سے ابومعمر نے بیان کیا ، ان سے عبدالوارث نے ، ان سے خالد نے عکرمہ کے واسطے سے بیان کیا ، وہ حضرت ابن عباس رضی اللہ عنہما سے روایت کرتے ہیں ۔ انھوں نے فرمایا کہ ( ایک مرتبہ ) رسول اللہ صلی اللہ علیہ وسلم نے مجھے ( سینے سے ) لگا لیا اور دعا دیتے ہوئے فرمایا کہ ’’ اے اللہ اسے علم کتاب ( قرآن ) عطا فرمائیو ‘‘ ۔",
+      },
+      {
+        id: 18,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْمَاعِيلُ بْنُ أَبِي أُوَيْسٍ، قَالَ حَدَّثَنِي مَالِكٌ، عَنِ ابْنِ شِهَابٍ، عَنْ عُبَيْدِ اللَّهِ بْنِ عَبْدِ اللَّهِ بْنِ عُتْبَةَ، عَنْ عَبْدِ اللَّهِ بْنِ عَبَّاسٍ، قَالَ أَقْبَلْتُ رَاكِبًا عَلَى حِمَارٍ أَتَانٍ، وَأَنَا يَوْمَئِذٍ قَدْ نَاهَزْتُ الاِحْتِلاَمَ، وَرَسُولُ اللَّهِ صلى الله عليه وسلم يُصَلِّي بِمِنًى إِلَى غَيْرِ جِدَارٍ، فَمَرَرْتُ بَيْنَ يَدَىْ بَعْضِ الصَّفِّ وَأَرْسَلْتُ الأَتَانَ تَرْتَعُ، فَدَخَلْتُ فِي الصَّفِّ، فَلَمْ يُنْكَرْ ذَلِكَ عَلَىَّ‏.‏",
+        en: "Narrated Ibn `Abbas: Once I came riding a she-ass and had (just) attained the age of puberty. Allah's Messenger (ﷺ) was offering the prayer at Mina. There was no wall in front of him and I passed in front of some of the row while they were offering their prayers. There I let the she-ass loose to graze and entered the row, and nobody objected to it.",
+        ur: "ہم سے اسماعیل نے بیان کیا ، ان سے مالک نے ، ان سے ابن شہاب نے ، ان سے عبیداللہ بن عبداللہ بن عتبہ نے ، وہ عبداللہ بن عباس رضی اللہ عنہما سے روایت کرتے ہیں کہ میں ( ایک مرتبہ ) گدھی پر سوار ہو کر چلا ، اس زمانے میں ، میں بلوغ کے قریب تھا ۔ رسول اللہ صلی اللہ علیہ وسلم منیٰ میں نماز پڑھ رہے تھے اور آپ کے سامنے دیوار ( کی آڑ ) نہ تھی ، تو میں بعض صفوں کے سامنے سے گزرا اور گدھی کو چھوڑ دیا ۔ وہ چرنے لگی ، جب کہ میں صف میں شامل ہو گیا ( مگر ) کسی نے مجھے اس بات پر ٹوکا نہیں ۔",
+      },
+      {
+        id: 19,
+        volume: 1,
+        arabic: "حَدَّثَنِي مُحَمَّدُ بْنُ يُوسُفَ، قَالَ حَدَّثَنَا أَبُو مُسْهِرٍ، قَالَ حَدَّثَنِي مُحَمَّدُ بْنُ حَرْبٍ، حَدَّثَنِي الزُّبَيْدِيُّ، عَنِ الزُّهْرِيِّ، عَنْ مَحْمُودِ بْنِ الرَّبِيعِ، قَالَ عَقَلْتُ مِنَ النَّبِيِّ صلى الله عليه وسلم مَجَّةً مَجَّهَا فِي وَجْهِي وَأَنَا ابْنُ خَمْسِ سِنِينَ مِنْ دَلْوٍ‏.‏",
+        en: "Narrated Mahmud bin Rabi`a: When I was a boy of five, I remember, the Prophet (ﷺ) took water from a bucket (used for getting water out of a well) with his mouth and threw it on my face.",
+        ur: "ہم سے محمد بن یوسف نے بیان کیا ، ان سے ابومسہر نے ، ان سے محمد بن حرب نے ، ان سے زبیدی نے زہری کے واسطے سے بیان کیا ، وہ محمود بن الربیع سے نقل کرتے ہیں ، انھوں نے کہا کہ مجھے یاد ہے کہ ( ایک مرتبہ ) رسول اللہ صلی اللہ علیہ وسلم نے ایک ڈول سے منہ میں پانی لے کر میرے چہرے پر کلی فرمائی ، اور میں اس وقت پانچ سال کا تھا ۔",
+      },
+      {
+        id: 20,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو الْقَاسِمِ، خَالِدُ بْنُ خَلِيٍّ قَالَ حَدَّثَنَا مُحَمَّدُ بْنُ حَرْبٍ، قَالَ قَالَ الأَوْزَاعِيُّ أَخْبَرَنَا الزُّهْرِيُّ، عَنْ عُبَيْدِ اللَّهِ بْنِ عَبْدِ اللَّهِ بْنِ عُتْبَةَ بْنِ مَسْعُودٍ، عَنِ ابْنِ عَبَّاسٍ، أَنَّهُ تَمَارَى هُوَ وَالْحُرُّ بْنُ قَيْسِ بْنِ حِصْنٍ الْفَزَارِيُّ فِي صَاحِبِ مُوسَى، فَمَرَّ بِهِمَا أُبَىُّ بْنُ كَعْبٍ، فَدَعَاهُ ابْنُ عَبَّاسٍ فَقَالَ إِنِّي تَمَارَيْتُ أَنَا وَصَاحِبِي هَذَا فِي صَاحِبِ مُوسَى الَّذِي سَأَلَ السَّبِيلَ إِلَى لُقِيِّهِ، هَلْ سَمِعْتَ رَسُولَ اللَّهِ صلى الله عليه وسلم يَذْكُرُ شَأْنَهُ فَقَالَ أُبَىٌّ نَعَمْ، سَمِعْتُ النَّبِيَّ صلى الله عليه وسلم يَذْكُرُ شَأْنَهُ يَقُولُ ‏ \"‏ بَيْنَمَا مُوسَى فِي مَلإٍ مِنْ بَنِي إِسْرَائِيلَ، إِذْ جَاءَهُ رَجُلٌ فَقَالَ أَتَعْلَمُ أَحَدًا أَعْلَمَ مِنْكَ قَالَ مُوسَى لاَ‏.‏ فَأَوْحَى اللَّهُ عَزَّ وَجَلَّ إِلَى مُوسَى بَلَى، عَبْدُنَا خَضِرٌ، فَسَأَلَ السَّبِيلَ إِلَى لُقِيِّهِ، فَجَعَلَ اللَّهُ لَهُ الْحُوتَ آيَةً، وَقِيلَ لَهُ إِذَا فَقَدْتَ الْحُوتَ فَارْجِعْ، فَإِنَّكَ سَتَلْقَاهُ، فَكَانَ مُوسَى صلى الله عليه وسلم يَتَّبِعُ أَثَرَ الْحُوتِ فِي الْبَحْرِ‏.‏ فَقَالَ فَتَى مُوسَى لِمُوسَى أَرَأَيْتَ إِذْ أَوَيْنَا إِلَى الصَّخْرَةِ فَإِنِّي نَسِيتُ الْحُوتَ، وَمَا أَنْسَانِيهِ إِلاَّ الشَّيْطَانُ أَنْ أَذْكُرَهُ‏.‏ قَالَ مُوسَى ذَلِكَ مَا كُنَّا نَبْغِي‏.‏ فَارْتَدَّا عَلَى آثَارِهِمَا قَصَصًا، فَوَجَدَا خَضِرًا، فَكَانَ مِنْ شَأْنِهِمَا مَا قَصَّ اللَّهُ فِي كِتَابِهِ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Abbas: that he differed with Hur bin Qais bin Hisn Al-Fazari regarding the companion of the Prophet (ﷺ) Moses. Meanwhile, Ubai bin Ka`b passed by them and Ibn `Abbas called him saying, \"My friend (Hur) and I have differed regarding Moses' companion whom Moses asked the way to meet. Have you heard Allah's Messenger (ﷺ) mentioning something about him? Ubai bin Ka`b said: \"Yes, I heard the Prophet (ﷺ) mentioning something about him (saying) while Moses was sitting in the company of some Israelites, a man came and asked him: \"Do you know anyone who is more learned than you? Moses replied: \"No.\" So Allah sent the Divine Inspiration to Moses: '--Yes, Our slave Khadir is more learned than you. Moses asked Allah how to meet him (Al-Khadir). So Allah made the fish a sign for him and he was told when the fish was lost, he should return (to the place where he had lost it) and there he would meet him (Al-Khadir). So Moses went on looking for the sign of the fish in the sea. The servant-boy of Moses said: 'Do you remember when we betook ourselves to the rock, I indeed forgot the fish, none but Satan made me forget to remember it. On that Moses said, 'That is what we have been seeking.' So they went back retracing their footsteps, and found Khadir. (and) what happened further about them is narrated in the Holy Qur'an by Allah.\" (18.54 up to 18.82)",
+        ur: "ہم سے ابوالقاسم خالد بن خلی قاضی حمص نے بیان کیا ، ان سے محمد بن حرب نے ، اوزاعی کہتے ہیں کہ ہمیں زہری نے عبیداللہ ابن عبداللہ بن عتبہ بن مسعود سے خبر دی ، وہ حضرت عبداللہ بن عباس رضی اللہ عنہما سے روایت کرتے ہیں کہ وہ اور حر بن قیس بن حصن فزاری حضرت موسیٰ علیہ السلام کے ساتھی کے بارے میں جھگڑے ۔ ( اس دوران میں ) ان کے پاس سے ابی بن کعب گزرے ، تو ابن عباس رضی اللہ عنہما نے انہیں بلا لیا اور کہا کہ میں اور میرے ( یہ ) ساتھی حضرت موسیٰ علیہ السلام کے ساتھی کے بارے میں بحث کر رہے ہیں جس سے ملنے کی حضرت موسیٰ علیہ السلام نے ( اللہ سے ) دعا کی تھی ۔ کیا آپ نے رسول اللہ صلی اللہ علیہ وسلم کو کچھ ان کا ذکر فرماتے ہوئے سنا ہے ؟ حضرت ابی نے کہا کہ ہاں ! میں نے رسول اللہ صلی اللہ علیہ وسلم کو ان کا حال بیان فرماتے ہوئے سنا ہے ۔ آپ فرما رہے تھے کہ ایک بار حضرت موسیٰ علیہ السلام بنی اسرائیل کی ایک جماعت میں تھے کہ اتنے میں ایک شخص آیا اور کہنے لگا کیا آپ جانتے ہیں کہ دنیا میں آپ سے بھی بڑھ کر کوئی عالم موجود ہے ۔ حضرت موسیٰ علیہ السلام نے فرمایا کہ نہیں ۔ تب اللہ تعالیٰ نے حضرت موسیٰ علیہ السلام پر وحی نازل کی کہ ہاں ہمارا بندہ خضر ( علم میں تم سے بڑھ کر ) ہے ۔ تو حضرت موسیٰ علیہ السلام نے ان سے ملنے کی راہ دریافت کی ، اس وقت اللہ تعالیٰ نے ( ان سے ملاقات کے لیے ) مچھلی کو نشانی قرار دیا اور ان سے کہہ دیا کہ جب تم مچھلی کو نہ پاؤ تو لوٹ جانا ، تب تم خضر علیہ السلام سے ملاقات کر لو گے ۔ حضرت موسیٰ علیہ السلام دریا میں مچھلی کے نشان کا انتظار کرتے رہے ۔ تب ان کے خادم نے ان سے کہا ۔ کیا آپ نے دیکھا تھا کہ جب ہم پتھر کے پاس تھے ، تو میں ( وہاں ) مچھلی بھول گیا ۔ اور مجھے شیطان ہی نے غافل کر دیا ۔ حضرت موسیٰ علیہ السلام نے کہا کہ ہم اسی ( مقام ) کے تو متلاشی تھے ، تب وہ اپنے ( قدموں کے ) نشانوں پر باتیں کرتے ہوئے واپس لوٹے ۔ ( وہاں ) خضر علیہ السلام کو انھوں نے پایا ۔ پھر ان کا قصہ وہی ہے جو اللہ تعالیٰ نے اپنی کتاب میں بیان فرمایا ہے ۔",
+      },
+      {
+        id: 21,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ الْعَلاَءِ، قَالَ حَدَّثَنَا حَمَّادُ بْنُ أُسَامَةَ، عَنْ بُرَيْدِ بْنِ عَبْدِ اللَّهِ، عَنْ أَبِي بُرْدَةَ، عَنْ أَبِي مُوسَى، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ مَثَلُ مَا بَعَثَنِي اللَّهُ بِهِ مِنَ الْهُدَى وَالْعِلْمِ كَمَثَلِ الْغَيْثِ الْكَثِيرِ أَصَابَ أَرْضًا، فَكَانَ مِنْهَا نَقِيَّةٌ قَبِلَتِ الْمَاءَ، فَأَنْبَتَتِ الْكَلأَ وَالْعُشْبَ الْكَثِيرَ، وَكَانَتْ مِنْهَا أَجَادِبُ أَمْسَكَتِ الْمَاءَ، فَنَفَعَ اللَّهُ بِهَا النَّاسَ، فَشَرِبُوا وَسَقَوْا وَزَرَعُوا، وَأَصَابَتْ مِنْهَا طَائِفَةً أُخْرَى، إِنَّمَا هِيَ قِيعَانٌ لاَ تُمْسِكُ مَاءً، وَلاَ تُنْبِتُ كَلأً، فَذَلِكَ مَثَلُ مَنْ فَقِهَ فِي دِينِ اللَّهِ وَنَفَعَهُ مَا بَعَثَنِي اللَّهُ بِهِ، فَعَلِمَ وَعَلَّمَ، وَمَثَلُ مَنْ لَمْ يَرْفَعْ بِذَلِكَ رَأْسًا، وَلَمْ يَقْبَلْ هُدَى اللَّهِ الَّذِي أُرْسِلْتُ بِهِ ‏\"‏‏.‏ قَالَ أَبُو عَبْدِ اللَّهِ قَالَ إِسْحَاقُ وَكَانَ مِنْهَا طَائِفَةٌ قَيَّلَتِ الْمَاءَ‏.‏ قَاعٌ يَعْلُوهُ الْمَاءُ، وَالصَّفْصَفُ الْمُسْتَوِي مِنَ الأَرْضِ‏.‏",
+        en: "Narrated Abu Musa: The Prophet (ﷺ) said, \"The example of guidance and knowledge with which Allah has sent me is like abundant rain falling on the earth, some of which was fertile soil that absorbed rain water and brought forth vegetation and grass in abundance. (And) another portion of it was hard and held the rain water and Allah benefited the people with it and they utilized it for drinking, making their animals drink from it and for irrigation of the land for cultivation. (And) a portion of it was barren which could neither hold the water nor bring forth vegetation (then that land gave no benefits). The first is the example of the person who comprehends Allah's religion and gets benefit (from the knowledge) which Allah has revealed through me (the Prophets and learns and then teaches others. The last example is that of a person who does not care for it and does not take Allah's guidance revealed through me (He is like that barren land.)\"",
+        ur: "ہم سے محمد بن علاء نے بیان کیا ، ان سے حماد بن اسامہ نے برید بن عبداللہ کے واسطے سے نقل کیا ، وہ ابی بردہ سے روایت کرتے ہیں ، وہ حضرت ابوموسیٰ سے اور وہ نبی کریم صلی اللہ علیہ وسلم سے روایت کرتے ہیں کہ آپ صلی اللہ علیہ وسلم نے فرمایا کہ اللہ تعالیٰ نے مجھے جس علم و ہدایت کے ساتھ بھیجا ہے اس کی مثال زبردست بارش کی سی ہے جو زمین پر ( خوب ) برسے ۔ بعض زمین جو صاف ہوتی ہے وہ پانی کو پی لیتی ہے اور بہت بہت سبزہ اور گھاس اگاتی ہے اور بعض زمین جو سخت ہوتی ہے وہ پانی کو روک لیتی ہے اس سے اللہ تعالیٰ لوگوں کو فائدہ پہنچاتا ہے ۔ وہ اس سے سیراب ہوتے ہیں اور سیراب کرتے ہیں ۔ اور کچھ زمین کے بعض خطوں پر پانی پڑتا ہے جو بالکل چٹیل میدان ہوتے ہیں ۔ نہ پانی روکتے ہیں اور نہ ہی سبزہ اگاتے ہیں ۔ تو یہ اس شخص کی مثال ہے جو دین میں سمجھ پیدا کرے اور نفع دے ، اس کو وہ چیز جس کے ساتھ میں مبعوث کیا گیا ہوں ۔ اس نے علم دین سیکھا اور سکھایا اور اس شخص کی مثال جس نے سر نہیں اٹھایا ( یعنی توجہ نہیں کی ) اور جو ہدایت دے کر میں بھیجا گیا ہوں اسے قبول نہیں کیا ۔ حضرت امام بخاری رحمہ اللہ فرماتے ہیں کہ ابن اسحاق نے ابواسامہ کی روایت سے «قبلت الماء» کا لفظ نقل کیا ہے ۔ قاعاس خطہٰ زمین کو کہتے ہیں جس پر پانی چڑھ جائے ( مگر ٹھہرے نہیں ) اور «صفصف» اس زمین کو کہتے ہیں جو بالکل ہموار ہو ۔",
+      },
+      {
+        id: 22,
+        volume: 1,
+        arabic: "حَدَّثَنَا عِمْرَانُ بْنُ مَيْسَرَةَ، قَالَ حَدَّثَنَا عَبْدُ الْوَارِثِ، عَنْ أَبِي التَّيَّاحِ، عَنْ أَنَسٍ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ إِنَّ مِنْ أَشْرَاطِ السَّاعَةِ أَنْ يُرْفَعَ الْعِلْمُ، وَيَثْبُتَ الْجَهْلُ، وَيُشْرَبَ الْخَمْرُ، وَيَظْهَرَ الزِّنَا ‏\"‏‏.‏",
+        en: "Narrated Anas: Allah's Messenger (ﷺ) said, \"From among the portents of the Hour are (the following): -1. Religious knowledge will be taken away (by the death of Religious learned men). -2. (Religious) ignorance will prevail. -3. Drinking of Alcoholic drinks (will be very common). -4. There will be prevalence of open illegal sexual intercourse.",
+        ur: "ہم سے عمران بن میسرہ نے بیان کیا ، ان سے عبدالوارث نے ابوالتیاح کے واسطے سے نقل کیا ، وہ حضرت انس سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا ۔ علامات قیامت میں سے یہ ہے کہ ( دینی ) علم اٹھ جائے گا اور جہل ہی جہل ظاہر ہو جائے گا ۔ اور ( علانیہ ) شراب پی جائے گی اور زنا پھیل جائے گا ۔",
+      },
+      {
+        id: 23,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُسَدَّدٌ، قَالَ حَدَّثَنَا يَحْيَى، عَنْ شُعْبَةَ، عَنْ قَتَادَةَ، عَنْ أَنَسٍ، قَالَ لأُحَدِّثَنَّكُمْ حَدِيثًا لاَ يُحَدِّثُكُمْ أَحَدٌ بَعْدِي سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقُولُ ‏ \"‏ مِنْ أَشْرَاطِ السَّاعَةِ أَنْ يَقِلَّ الْعِلْمُ، وَيَظْهَرَ الْجَهْلُ، وَيَظْهَرَ الزِّنَا، وَتَكْثُرَ النِّسَاءُ وَيَقِلَّ الرِّجَالُ، حَتَّى يَكُونَ لِخَمْسِينَ امْرَأَةً الْقَيِّمُ الْوَاحِدُ ",
+        en: "Narrated Anas: I will narrate to you a Hadith and none other than I will tell you about after it. I heard Allah's Messenger (ﷺ) saying: From among the portents of the Hour are (the following): -1. Religious knowledge will decrease [by the death of religious learned men]. -2. Religious ignorance will prevail. -3. There will be prevalence of open illegal sexual intercourse. -4. Women will increase in number and men will decrease in number so much so that fifty women will be looked after by one man.",
+        ur: "ہم سے مسدد نے بیان کیا ان سے یحییٰ نے شعبہ سے نقل کیا ، وہ قتادہ سے اور قتادہ حضرت انس سے روایت کرتے ہیں ، انھوں نے فرمایا کہ میں تم سے ایک ایسی حدیث بیان کرتا ہوں جو میرے بعد تم سے کوئی نہیں بیان کرے گا ، میں نے رسول اللہ صلی اللہ علیہ وسلم کو یہ فرماتے ہوئے سنا کہ علامات قیامت میں سے یہ ہے کہ علم ( دین ) کم ہو جائے گا ۔ جہل ظاہر ہو جائے گا ۔ زنا بکثرت ہو گا ۔ عورتیں بڑھ جائیں گی اور مرد کم ہو جائیں گے ۔ حتیٰ کہ 50 عورتوں کا نگراں صرف ایک مرد رہ جائے گا ۔",
+      },
+      // {
+      //   id: ,
+      //   volume: 1,
+      //   arabic: "",
+      //   en: "",
+      //   ur: "",
+      // },82
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    function toggleFavorite(hadithId) {
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+      } else {
+        favoritedHadiths.push(hadithId);
+      }
+      localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function toggleBookmark(hadithId) {
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+      } else {
+        bookmarkedHadiths.push(hadithId);
+      }
+      localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = 'hadith';
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="arabic">${hadith.arabic}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = `hadith translation ${lang}`;
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="translation ${lang}">${hadith[lang]}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "sun.png"
+        : "moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function openShareModal(hadithId, tab) {
+      const modal = document.getElementById('share-modal');
+      modal.classList.remove('hidden');
+      // Store the current hadith and tab for sharing
+      modal.dataset.hadithId = hadithId;
+      modal.dataset.tab = tab;
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById('share-modal');
+      modal.classList.add('hidden');
+    }
+
+    function goToHadith() {
+      const hadithNumber = parseInt(document.getElementById('hadith-number').value);
+      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 7) {
+        alert('Please enter a valid hadith number between 1 and 7.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = translateTab.classList.contains('hidden') ? readTab : translateTab;
+      const hadithElements = activeTab.querySelectorAll('.hadith');
+
+      if (hadithElements[hadithNumber - 1]) {
+        hadithElements[hadithNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the hadith temporarily
+        hadithElements[hadithNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          hadithElements[hadithNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
+    }
+
+    function shareHadith() {
+      const modal = document.getElementById('share-modal');
+      const hadithId = parseInt(modal.dataset.hadithId);
+      const tab = modal.dataset.tab;
+      const hadith = hadiths.find(h => h.id === hadithId);
+
+      const includeArabic = document.getElementById('include-arabic').checked;
+      const includeTranslation = document.getElementById('include-translation').checked;
+      const shareLang = document.getElementById('share-language').value;
+
+      let shareText = `Hadith ${hadith.id}\n`;
+      shareText += `Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}\n\n`;
+
+      if (includeArabic) {
+        shareText += `${hadith.arabic}\n\n`;
+      }
+
+      if (includeTranslation) {
+        shareText += `${hadith[shareLang]}\n\n`;
+      }
+
+      shareText += `https://adil43534.github.io/Muslimbro1400.com/`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(shareText).then(() => {
+        const copyMessage = document.getElementById('copy-message');
+        copyMessage.classList.remove('hidden');
+        setTimeout(() => {
+          copyMessage.classList.add('hidden');
+          closeShareModal();
+        }, 3000); // Hide message and close modal after 3 seconds
+      });
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+      // Scroll to the hadith if redirected with hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#hadith')) {
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Highlight the hadith temporarily
+            element.style.backgroundColor = '#005f4a';
+            setTimeout(() => {
+              element.style.backgroundColor = '';
+            }, 2000);
+          }
+        }, 100);
+      }
+    };
+  </script>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop">↑</button>
+
+  <script>
+    // Scroll to Top functionality
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 100) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
