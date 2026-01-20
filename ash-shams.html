@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Ash-Shams</title>
+  <title>91. Surah: Ash-Shams 1-15 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
@@ -867,9 +867,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +896,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="15">
+        <input type="number" id="verse-number" min="1" max="15" placeholder="1-15">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="al-balad.html">← Surah Al-Balad</a>
         <a href="al-lail.html">Next: Surah Al-Lail →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -980,77 +978,92 @@
       {
         arabic: "وَالشَّمسِ وَضُحاها",
         en: "By the sun and its brightness,",
-        ur: ""
+        ur: "قسم ہے سورج کی اور اس کی دھوپ کی۔",
+        trans: "Wash shamsi wa duhaa haa"
       },
       {
         arabic: "وَالقَمَرِ إِذا تَلاها",
         en: "and the moon as it follows it,",
-        ur: ""
+        ur: "اور قسم ہے چاند کی جبکہ وہ اس کے پیچھے آتا ہے۔",
+        trans: "Wal qamari izaa talaa haa"
       },
       {
         arabic: "وَالنَّهارِ إِذا جَلّاها",
         en: "and the day as it unveils it,",
-        ur: ""
+        ur: "اور قسم ہے دن کی جب وہ اس (سورج) کو روشن کردیتا ہے۔",
+        trans: "Wannahaari izaa jallaa haa"
       },
       {
         arabic: "وَاللَّيلِ إِذا يَغشاها",
         en: "and the night as it conceals it!",
-        ur: ""
+        ur: "اور قسم ہے رات کی جب وہ اس (سورج) کو ڈھانپ لیتی ہے۔",
+        trans: "Wallaili izaa yaghshaa haa"
       },
       {
         arabic: "وَالسَّماءِ وَما بَناها",
         en: "And by heaven and ˹the One˺ Who built it,",
-        ur: ""
+        ur: "اور قسم ہے آسمان کی اور جیسا کہ اسے بنایا۔",
+        trans: "Wassamaaa’i wa maa banaahaa"
       },
       {
         arabic: "وَالأَرضِ وَما طَحاها",
         en: "and the earth and ˹the One˺ Who spread it!",
-        ur: ""
+        ur: "اور قسم ہے زمین کی اور جیسا کہ اسے بچھا دیا۔",
+        trans: "Wal ardi wa maa tahaahaa"
       },
       {
         arabic: "وَنَفسٍ وَما سَوّاها",
         en: "And by the soul and ˹the One˺ Who fashioned it,",
-        ur: ""
+        ur: "اور قسم ہے نفس انسانی کی اور جیسا کہ اس کو سنوارا۔",
+        trans: "Wa nafsinw wa maa sawwaahaa"
       },  
       {
         arabic: "فَأَلهَمَها فُجورَها وَتَقواها",
         en: "then with ˹the knowledge of˺ right and wrong inspired it!",
-        ur: ""
+        ur: "پس اس کے اندر نیکی اور بدی کا علم الہام کردیا۔",
+        trans: "Fa-alhamahaa fujoorahaa wa taqwaahaa"
       },
       {
         arabic: "قَد أَفلَحَ مَن زَكّاها",
         en: "Successful indeed is the one who purifies their soul,",
-        ur: ""
+        ur: "یقینا کامیاب ہوگیا جس نے اس (نفس) کو پاک کرلیا۔",
+        trans: "Qad aflaha man zakkaahaa"
       },
       {
         arabic: "وَقَد خابَ مَن دَسّاها",
         en: "and doomed is the one who corrupts it!",
-        ur: ""
+        ur: "اور ناکام ہوگیا جس نے اسے مٹی میں دفن کردیا۔",
+        trans: "Wa qad khaaba man dassaahaa"
       },
       {
         arabic: "كَذَّبَت ثَمودُ بِطَغواها",
         en: "Thamûd rejected ˹the truth˺ out of arrogance,",
-        ur: ""
+        ur: "قومِ ثمود نے بھی جھٹلایا تھا اپنی سرکشی کے باعث۔",
+        trans: "Kazzabat Samoodu bi taghwaahaaa"
       },
       {
         arabic: "إِذِ انبَعَثَ أَشقاها",
         en: "when the most wicked of them was roused ˹to kill the she-camel˺.",
-        ur: ""
+        ur: "جب اٹھ کھڑا ہوا ان کا سب سے شقی انسان۔",
+        trans: "Izim ba’asa ashqaahaa"
       },
       {
         arabic: "فَقالَ لَهُم رَسولُ اللَّهِ ناقَةَ اللَّهِ وَسُقياها",
         en: "But the messenger of Allah warned them, “˹Do not disturb˺ Allah’s camel and her ˹turn to˺ drink!”",
-        ur: ""
+        ur: "تو اللہ کے رسول نے ان سے کہا کہ (خبردار !) یہ اللہ کی اونٹنی ہے اور یہ اس کے پانی پینے کا دن ہے۔",
+        trans: "Faqaala lahum Rasoolul laahi naaqatal laahi wa suqiyaahaa"
       },
       {
         arabic: "فَكَذَّبوهُ فَعَقَروها فَدَمدَمَ عَلَيهِم رَبُّهُم بِذَنبِهِم فَسَوّاها",
         en: "Still they defied him and slaughtered her. So their Lord crushed them for their crime, levelling all to the ground.",
-        ur: ""
+        ur: "تو انہوں نے اس کو جھٹلا دیا اور اونٹنی کی کونچیں کاٹ دیں۔ تو الٹ دیا ان پر عذاب ان کے رب نے ان کے گناہ کی پاداش میں اور سب کو برابر کردیا۔",
+        trans: "Fakazzaboohu fa’aqaroohaa fadamdama ‘alaihim Rabbuhum bizambihim fasaw waahaa"
       },
       {
         arabic: "وَلا يَخافُ عُقباها",
         en: "He has no fear of consequences.",
-        ur: ""
+        ur: "اور وہ اس کے انجام سے نہیں ڈرتا۔",
+        trans: "Wa laa yakhaafu’uqbaahaa"
       }
     ];
 
@@ -1059,6 +1072,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1100,7 +1114,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1124,6 +1138,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1131,10 +1146,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1153,7 +1173,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1276,6 +1296,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
