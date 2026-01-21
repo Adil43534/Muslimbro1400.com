@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Al-A'la</title>
+  <title>87. Surah: Al-A'la 1-29 -MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,19 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="19">
+        <input type="number" id="verse-number" min="1" max="19" placeholder="1-19">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="at-tariq.html">← Surah At-Tariq</a>
         <a href="al-ghashiyah.html">Next: Surah Al-Ghashiyah →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -980,97 +999,116 @@
       {
         arabic: "سَبِّحِ اسمَ رَبِّكَ الأَعلَى",
         en: "Glorify the Name of your Lord, the Most High,",
-        ur: ""
+        ur: "پاکی بیان کرو اپنے رب کے نام کی جو بہت بلند وبالا ہے۔",
+        trans: "Sabbihisma Rabbikal A’laa"
       },
       {
         arabic: "الَّذي خَلَقَ فَسَوّىٰ",
         en: "Who created and ˹perfectly˺ fashioned ˹all˺,",
-        ur: ""
+        ur: "جس نے (ہر چیز کو) پیدا کیا پھر تناسب قائم کیا۔",
+        trans: "Allazee khalaqa fasawwaa"
       },
       {
         arabic: "وَالَّذي قَدَّرَ فَهَدىٰ",
         en: "and Who ordained precisely and inspired accordingly,",
-        ur: ""
+        ur: "اور جس نے (ہر شے کا) اندازہ مقرر کیا پھر اسے (فطری) ہدایت عطا فرمائی۔",
+        trans: "Wallazee qaddara fahadaa"
       },
       {
         arabic: "وَالَّذي أَخرَجَ المَرعىٰ",
         en: "and Who brings forth ˹green˺ pasture,",
-        ur: ""
+        ur: "اور جس نے (زمین سے) چارہ نکالا۔",
+        trans: "Wallazeee akhrajal mar’aa"
       },
       {
         arabic: "فَجَعَلَهُ غُثاءً أَحوىٰ",
         en: "then reduces it to withered chaff.",
-        ur: ""
+        ur: "پھر اس کو کردیا سیاہ چورا۔",
+        trans: "Faja’alahoo ghusaaa’an ahwaa"
       },
       {
         arabic: "سَنُقرِئُكَ فَلا تَنسىٰ",
         en: "We will have you recite ˹the Quran, O  Prophet,˺ so you will not forget ˹any of it˺,",
-        ur: ""
+        ur: "(اے نبی ﷺ !) ہم آپ کو پڑھا دیں گے پھر آپ بھولیں گے نہیں۔",
+        trans: "Sanuqri’uka falaa tansaaa"
       },
       {
         arabic: "إِلّا ما شاءَ اللَّهُ ۚ إِنَّهُ يَعلَمُ الجَهرَ وَما يَخفىٰ",
         en: "unless Allah wills otherwise.1 He surely knows what is open and what is hidden.",
-        ur: ""
+        ur: "سوائے اس کے کہ جو اللہ چاہے۔ یقینا وہ جانتا ہے اونچی آواز میں کہی گئی بات کو بھی اور جو مخفی رکھی جائے اسے بھی۔",
+        trans: "Illaa maa shaaa’al laah; innahoo ya’lamul jahra wa maa yakhfaa"
       },  
       {
         arabic: "وَنُيَسِّرُكَ لِليُسرىٰ",
         en: "We will facilitate for you the Way of Ease.",
-        ur: ""
+        ur: "اور ہم رفتہ رفتہ پہنچائیں گے آپ کو آسانی تک۔",
+        trans: "Wa nu-yassiruka lilyusraa"
       },
       {
         arabic: "فَذَكِّر إِن نَفَعَتِ الذِّكرىٰ",
         en: "So ˹always˺ remind ˹with the Quran˺—˹even˺ if the reminder is beneficial ˹only to some˺.",
-        ur: ""
+        ur: "تو آپ ﷺ یاد دہانی کراتے رہیے اگر یاد دہانی فائدہ دے۔",
+        trans: "Fazakkir in nafa’atizzikraa"
       },
       {
         arabic: "سَيَذَّكَّرُ مَن يَخشىٰ",
         en: "Those in awe ˹of Allah˺ will be mindful ˹of it˺.",
-        ur: ""
+        ur: "وہ نصیحت حاصل کرلے گا جو ڈرتا ہے۔",
+        trans: "Sa yazzakkaru maiyakhshaa"
       },
       {
         arabic: "وَيَتَجَنَّبُهَا الأَشقَى",
         en: "But it will be shunned by the most wretched,",
-        ur: ""
+        ur: "البتہ جو شقی (بدبخت) ہے وہ اس سے پہلوتہی کرے گا۔",
+        trans: "Wa yatajannabuhal ashqaa"
       },
       {
         arabic: "الَّذي يَصلَى النّارَ الكُبرىٰ",
         en: "who will burn in the greatest Fire,",
-        ur: ""
+        ur: "جو (آخر کار) داخل ہوگا بڑی آگ میں۔",
+        trans: "Allazee yaslan Naaral kubraa"
       },
       {
         arabic: "ثُمَّ لا يَموتُ فيها وَلا يَحيىٰ",
         en: "where they will not ˹be able to˺ live or die.",
-        ur: ""
+        ur: "پھر نہ اس میں وہ مرے گا نہ زندہ رہے گا۔",
+        trans: "Summa laa yamootu feehaa wa laa yahyaa"
       },
       {
         arabic: "قَد أَفلَحَ مَن تَزَكّىٰ",
         en: "Successful indeed are those who purify themselves,",
-        ur: ""
+        ur: "یقینا وہ کامیاب ہوگیا جس نے خود کو پاک کرلیا۔",
+        trans: "Qad aflaha man tazakkaa"
       },
       {
         arabic: "وَذَكَرَ اسمَ رَبِّهِ فَصَلّىٰ",
         en: "remember the Name of their Lord, and pray.",
-        ur: ""
+        ur: "اور اس نے اپنے رب کا نام لیا اور نماز پڑھی۔",
+        trans: "Wa zakaras ma Rabbihee fasallaa"
       },
       {
         arabic: "بَل تُؤثِرونَ الحَياةَ الدُّنيا",
         en: "But you ˹deniers only˺ prefer the life of this world,",
-        ur: ""
+        ur: "بلکہ تم دنیا کی زندگی کو ترجیح دیتے ہو۔",
+        trans: "Bal tu’siroonal hayaatad dunyaa"
       },
       {
         arabic: "وَالآخِرَةُ خَيرٌ وَأَبقىٰ",
         en: "even though the Hereafter is far better and more lasting.",
-        ur: ""
+        ur: "جبکہ آخرت بہتر بھی ہے اور باقی رہنے والی بھی۔",
+        trans: "Wal Aakhiratu khairunw wa abqaa"
       },
       {
         arabic: "إِنَّ هٰذا لَفِي الصُّحُفِ الأولىٰ",
         en: "This is certainly ˹mentioned˺ in the earlier Scriptures—",
-        ur: ""
+        ur: "یقینا یہی بات اگلے صحیفوں میں بھی۔",
+        trans: "Inna haazaa lafis suhu fil oolaa"
       },
       {
         arabic: "صُحُفِ إِبراهيمَ وَموسىٰ",
         en: "the Scriptures of Abraham and Moses.",
-        ur: ""
+        ur: "(یعنی) ابراہیم اور موسیٰ (e) کے صحیفوں میں۔",
+        trans: "Suhufi Ibraaheema wa Moosaa"
       }
     ];
 
@@ -1079,6 +1117,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1120,7 +1159,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1144,6 +1183,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1151,10 +1191,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1173,7 +1218,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1296,6 +1341,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
