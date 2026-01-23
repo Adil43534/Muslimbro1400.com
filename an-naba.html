@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah An-Naba</title>
+  <title>78. Surah: An-Naba 1-40 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -491,7 +521,7 @@
       background-color: #0a6;
     }
 
-    .go-to-verse {
+        .go-to-verse {
       margin-top: 1rem;
       text-align: center;
     }
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
-               <!-- Go to Verse -->
-      <div class="go-to-verse">
-        <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="40">
-        <button onclick="goToVerse()">Go</button>
-      </div>
-
-    <div class="navigation">
-      <a href="al-mursalat.html">← Surah Al-Mursalat</a>
-      <a href="an-naziat.html">Next: Surah An-Nazi'at →</a>
-    </div>
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
 
       <!-- Language Selector -->
       <div class="lang-select hidden" id="languageSelector">
         <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
+               <!-- Go to Verse -->
+      <div class="go-to-verse">
+        <label for="verse-number">Go to Verse:</label>
+        <input type="number" id="verse-number" min="1" max="40" placeholder="1-40">
+        <button onclick="goToVerse()">Go</button>
+      </div>
+
+      <div class="navigation">
+        <a href="al-mursalat.html">← Surah Al-Mursalat</a>
+        <a href="an-naziat.html">Next: Surah An-Nazi'at →</a>
       </div>
     </div>
 
@@ -980,202 +1008,242 @@
       {
         arabic: "عَمَّ يَتَساءَلونَ",
         en: "What are they asking one another about?",
-        ur: ""
+        ur: "کس چیز کے بارے میں یہ لوگ آپس میں پوچھ گچھ کر رہے ہیں ؟",
+        trans: "‘Amma Yatasaa-aloon"
       },
       {
         arabic: "عَنِ النَّبَإِ العَظيمِ",
         en: "About the momentous news,",
-        ur: ""
+        ur: "اس بڑی خبر کے بارے میں۔",
+        trans: "‘Anin-nabaa-il ‘azeem"
       },
       {
         arabic: "الَّذي هُم فيهِ مُختَلِفونَ",
         en: "over which they disagree.",
-        ur: ""
+        ur: "جس کے بارے میں یہ اختلافِ رائے میں مبتلا ہوگئے ہیں۔",
+        trans: "Allazi hum feehi mukh talifoon"
       },
       {
         arabic: "كَلّا سَيَعلَمونَ",
         en: "But no! They will come to know.",
-        ur: ""
+        ur: "نہیں ! عنقریب یہ جان لیں گے۔",
+        trans: "Kallaa sa y’alamoon"
       },
       {
         arabic: "ثُمَّ كَلّا سَيَعلَمونَ",
         en: "Again, no! They will come to know.",
-        ur: ""
+        ur: "ہاں کوئی بات نہیں ! عنقریب یہ جان لیں گے۔",
+        trans: "Thumma kallaa sa y’alamoon"
       },
       {
         arabic: "أَلَم نَجعَلِ الأَرضَ مِهادًا",
         en: "Have We not smoothed out the earth ˹like a bed˺,",
-        ur: ""
+        ur: "کیا ہم نے نہیں بنا دیا زمین کو بچھونا ؟",
+        trans: "Alam naj’alil arda mihaa da"
       },
       {
         arabic: "وَالجِبالَ أَوتادًا",
         en: "and ˹made˺ the mountains as ˹its˺ pegs,",
-        ur: ""
+        ur: "اور پہاڑوں کو میخیں ؟",
+        trans: "Wal jibaala au taada"
       },  
       {
         arabic: "وَخَلَقناكُم أَزواجًا",
         en: "and created you in pairs,",
-        ur: ""
+        ur: "اور تمہیں ہم نے جوڑوں کی شکل میں پیدا کیا۔",
+        trans: "Wa khalaq naakum azwaaja"
       },
       {
         arabic: "وَجَعَلنا نَومَكُم سُباتًا",
         en: "and made your sleep for rest,",
-        ur: ""
+        ur: "اور تمہاری نیند کو بنا دیا ہم نے تھکان دور کرنے والی۔",
+        trans: "Waja’alna naumakum subata"
       },
       {
         arabic: "وَجَعَلنَا اللَّيلَ لِباسًا",
         en: "and made the night as a cover,",
-        ur: ""
+        ur: "اور رات کو ہم نے بنا دیا ڈھانپ لینے والی۔",
+        trans: "Waja’alnal laila libasa"
       },
       {
         arabic: "وَجَعَلنَا النَّهارَ مَعاشًا",
         en: "and made the day for livelihood,",
-        ur: ""
+        ur: "اور دن کو ہم نے بنا دیا معاش (کی جدوجہد) کے لیے۔",
+        trans: "Waja’alnan nahara ma ‘aasha"
       },
       {
         arabic: "وَبَنَينا فَوقَكُم سَبعًا شِدادًا",
         en: "and built above you seven mighty ˹heavens˺,",
-        ur: ""
+        ur: "اور تمہارے اوپر بنا دیے ہم نے سات مضبوط آسمان۔",
+        trans: "Wa banaina fauqakum sab ‘an shi daada"
       },
       {
         arabic: "وَجَعَلنا سِراجًا وَهّاجًا",
         en: "and placed ˹in them˺ a shining lamp,",
-        ur: ""
+        ur: "اور ہم نے (سورج کو) بنا دیا ایک روشن چراغ۔",
+        trans: "Waja’alna siraajaw wah haaja"
       },
       {
         arabic: "وَأَنزَلنا مِنَ المُعصِراتِ ماءً ثَجّاجًا",
         en: "and sent down from rainclouds pouring water,",
-        ur: ""
+        ur: "اور ہم نے اتار دیا نچڑنے والی بدلیوں سے چھاجوں پانی۔",
+        trans: "Wa anzalna minal m’usiraati maa-an thaj-jaaja"
       },
       {
         arabic: "لِنُخرِجَ بِهِ حَبًّا وَنَباتًا",
         en: "producing by it grain and ˹various˺ plants,",
-        ur: ""
+        ur: "تاکہ اس کے ذریعے سے ہم نکالیں اناج اور دوسرے نباتات۔",
+        trans: "Linukh rija bihee habbaw wana baata"
       },
       {
         arabic: "وَجَنّاتٍ أَلفافًا",
         en: "and dense orchards?",
-        ur: ""
+        ur: "اور بڑے گھنے باغات بھی۔",
+        trans: "Wa jan naatin alfafa"
       },
       {
         arabic: "إِنَّ يَومَ الفَصلِ كانَ ميقاتًا",
         en: "Indeed, the Day of ˹Final˺ Decision is an appointed time—",
-        ur: ""
+        ur: "یقینا فیصلے کا دن ایک معین وقت ہے۔",
+        trans: "Inna yaumal-fasli kana meeqaata"
       },
       {
         arabic: "يَومَ يُنفَخُ فِي الصّورِ فَتَأتونَ أَفواجًا",
         en: "˹it is˺ the Day the Trumpet will be blown, and you will ˹all˺ come forth in crowds.",
-        ur: ""
+        ur: "جس دن پھونکا جائے گا صور میں تو تم سب چلے آئو گے فوج در فوج۔",
+        trans: "Yauma yun fakhu fis-soori fataa toona afwaaja"
       },
       {
         arabic: "وَفُتِحَتِ السَّماءُ فَكانَت أَبوابًا",
         en: "The sky will be ˹split˺ open, becoming ˹many˺ gates,",
-        ur: ""
+        ur: "اور آسمان کھول دیا جائے گا تو اس میں دروازے ہی دروازے بن جائیں گے۔",
+        trans: "Wa futiha tis samaa-u fakaanat abwaaba"
       },
       {
         arabic: "وَسُيِّرَتِ الجِبالُ فَكانَت سَرابًا",
         en: "and the mountains will be blown away, becoming ˹like˺ a mirage.",
-        ur: ""
+        ur: "اور پہاڑ چلا دیے جائیں گے تو وہ ہوجائیں گے چمکتی ہوئی ریت۔",
+        trans: "Wa suyyi raatil jibaalu fa kaanat saraaba"
       },
       {
         arabic: "إِنَّ جَهَنَّمَ كانَت مِرصادًا",
         en: "Indeed, Hell is lying in ambush",
-        ur: ""
+        ur: "یقینا جہنم گھات میں ہے۔",
+        trans: "Inna jahan nama kaanat mirsaada"
       },
       {
         arabic: "لِلطّاغينَ مَآبًا",
         en: "as a home for the transgressors,",
-        ur: ""
+        ur: "وہ ٹھکانہ ہے سرکش لوگوں کا۔",
+        trans: "Lit taa gheena ma aaba"
       },
       {
         arabic: "لابِثينَ فيها أَحقابًا",
         en: "where they will remain for ˹endless˺ ages.",
-        ur: ""
+        ur: "وہ رہیں گے اس میں قرن ہا قرن۔",
+        trans: "Laa bitheena feehaa ahqaaba"
       },
       {
         arabic: "لا يَذوقونَ فيها بَردًا وَلا شَرابًا",
         en: "There they will not taste any coolness or drink,",
-        ur: ""
+        ur: "وہ نہیں چکھیں گے اس میں کوئی ٹھنڈی شے اور نہ کوئی مشروب۔",
+        trans: "Laa ya zooqoona feeha bar daw walaa sharaaba"
       },
       {
         arabic: "إِلّا حَميمًا وَغَسّاقًا",
         en: "except boiling water and ˹oozing˺ pus—",
-        ur: ""
+        ur: "سوائے کھولتے ہوئے پانی اور بہتی ہوئی پیپ کے۔",
+        trans: "Illa hamee maw-wa ghas saaqa"
       },
       {
         arabic: "جَزاءً وِفاقًا",
         en: "a fitting reward.",
-        ur: ""
+        ur: "بدلہ (ان کے اعمال کا) پورا پورا۔",
+        trans: "Jazaa-aw wi faaqa"
       },
       {
         arabic: "إِنَّهُم كانوا لا يَرجونَ حِسابًا",
         en: "For they never expected any reckoning,",
-        ur: ""
+        ur: "یہ لوگ کسی حساب کتاب کی کوئی توقع نہیں رکھتے تھے۔",
+        trans: "Innahum kaanu laa yarjoona hisaaba"
       },
       {
         arabic: "وَكَذَّبوا بِآياتِنا كِذّابًا",
         en: "and totally rejected Our signs.",
-        ur: ""
+        ur: "اور انہوں نے جھٹلا دیا تھا ہماری آیات کو دھڑلے ّکے ساتھ۔",
+        trans: "Wa kazzabu bi aayaa tina kizzaba"
       },
       {
         arabic: "وَكُلَّ شَيءٍ أَحصَيناهُ كِتابًا",
         en: "And We have everything recorded precisely.",
-        ur: ""
+        ur: "اور ہم نے تو ہرچیز کو گن گن کر لکھ رکھا ہے۔",
+        trans: "Wa kulla shai-in ahsai naahu kitaa ba"
       },
       {
         arabic: "فَذوقوا فَلَن نَزيدَكُم إِلّا عَذابًا",
         en: "˹So the deniers will be told,˺ “Taste ˹the punishment˺, for all you will get from Us is more torment.”",
-        ur: ""
+        ur: "تو اب چکھو ! ہم ہرگز اضافہ نہیں کریں گے تمہارے لیے مگر عذاب ہی میں۔",
+        trans: "Fa zooqoo falan-nazee dakum ill-laa azaaba"
       },
       {
         arabic: "إِنَّ لِلمُتَّقينَ مَفازًا",
         en: "Indeed, the righteous will have salvation—",
-        ur: ""
+        ur: "یقینا اہل ِتقویٰ کے لیے کامیابی ہوگی۔",
+        trans: "Inna lil mutta qeena mafaaza"
       },
       {
         arabic: "حَدائِقَ وَأَعنابًا",
         en: "Gardens, vineyards,",
-        ur: ""
+        ur: "(ان کے لیے) باغ اور انگور ہوں گے۔",
+        trans: "Hadaa-iqa wa a’anaa ba"
       },
       {
         arabic: "وَكَواعِبَ أَترابًا",
         en: "and full-bosomed maidens of equal age,",
-        ur: ""
+        ur: "اور نوجوان ہم عمر بیویاں۔",
+        trans: "Wa kaawa ‘iba at raaba"
       },
       {
         arabic: "وَكَأسًا دِهاقًا",
         en: "and full cups ˹of pure wine˺,",
-        ur: ""
+        ur: "اور جام چھلکتے ہوئے۔",
+        trans: "Wa ka’san di haaqa"
       },
       {
         arabic: "لا يَسمَعونَ فيها لَغوًا وَلا كِذّابًا",
         en: "never to hear any idle talk or lying therein—",
-        ur: ""
+        ur: "وہ نہیں سنیں گے اس میں کوئی لغو بات اور نہ جھوٹ۔",
+        trans: "Laa yasma’oona fiha lagh waw walaa kizzaba"
       },
       {
         arabic: "جَزاءً مِن رَبِّكَ عَطاءً حِسابًا",
         en: "a ˹fitting˺ reward as a generous gift from your Lord,",
-        ur: ""
+        ur: "یہ بدلہ ہوگا آپ کے رب کی طرف سے دیا ہوا حساب سے۔",
+        trans: "Jazaa-am mir-rabbika ataa-an hisaaba"
       },
       {
         arabic: "رَبِّ السَّماواتِ وَالأَرضِ وَما بَينَهُمَا الرَّحمٰنِ ۖ لا يَملِكونَ مِنهُ خِطابًا",
         en: "the Lord of the heavens and the earth and everything in between, the Most Compassionate. No one will dare speak to Him",
-        ur: ""
+        ur: "جو رب ہے آسمانوں کا اور زمین کا اور جو کچھ ان کے مابین ہے جو الرحمن ہے۔ ان (میں سے کسی) کو ہمت نہیں ہوگی اس سے بات کرنے کی۔",
+        trans: "Rabbis samaa waati wal ardi wa maa baina humar rahmaani laa yam likoona minhu khitaaba"
       },
       {
         arabic: "يَومَ يَقومُ الرّوحُ وَالمَلائِكَةُ صَفًّا ۖ لا يَتَكَلَّمونَ إِلّا مَن أَذِنَ لَهُ الرَّحمٰنُ وَقالَ صَوابًا",
         en: "on the Day the ˹holy˺ spirit and the angels will stand in ranks. None will talk, except those granted permission by the Most Compassionate and whose words are true.",
-        ur: ""
+        ur: "جس دن کھڑے ہوں گے جبرائیل اور تمام فرشتے صفیں باندھے۔ وہ کوئی بات نہ کرسکیں گے سوائے اس کے جسے رحمن کی طرف سے اجازت مل جائے اور وہ بات بھی درست کرے۔",
+        trans: "Yauma yaqoo mur roohu wal malaa-ikatu saf-fal laa yatakallamoona ill-laa man azina lahur rahmaanu wa qaala sawaaba"
       },
       {
         arabic: "ذٰلِكَ اليَومُ الحَقُّ ۖ فَمَن شاءَ اتَّخَذَ إِلىٰ رَبِّهِ مَآبًا",
         en: "That Day is the ˹ultimate˺ truth. So let whoever wills take the path leading back to their Lord.",
-        ur: ""
+        ur: "یہ دن حق ہے ! تو جو چاہے اپنے رب کی طرف اپنا ٹھکانہ بنا لے۔",
+        trans: "Zaalikal yaumul haqqu faman shaa-at ta khaaza ill-laa rabbihi ma-aaba"
       },
       {
         arabic: "إِنّا أَنذَرناكُم عَذابًا قَريبًا يَومَ يَنظُرُ المَرءُ ما قَدَّمَت يَداهُ وَيَقولُ الكافِرُ يا لَيتَني كُنتُ تُرابًا",
         en: "Indeed, We have warned you of an imminent punishment—the Day every person will see ˹the consequences of˺ what their hands have done, and the disbelievers will cry, “I wish I were dust.”",
-        ur: ""
+        ur: "دیکھو ! ہم نے تو تمہیں خبردار کردیا ہے اس عذاب سے جو بالکل قریب ہے۔ جس دن انسان دیکھ لے گا جو اس کے دونوں ہاتھوں نے آگے بھیجا تھا اور کافر کہے گا : کاش کہ میں مٹی ہوتا !",
+        trans: "In naa anzar naakum azaaban qareebaiy-yauma yan zurul marr-u maa qaddamat yadaahu wa ya qoolul-kaafiru yaa lai tanee kuntu turaaba"
       },
     ];
 
@@ -1184,6 +1252,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1225,7 +1294,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1249,6 +1318,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1256,10 +1326,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1278,7 +1353,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1401,6 +1476,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
