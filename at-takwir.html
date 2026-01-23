@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah At-Takwir</title>
+  <title>81. Surah: At-Takwir 1-29 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -894,32 +925,20 @@
       </div>
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
-
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
+      
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="29">
+        <input type="number" id="verse-number" min="1" max="29" placeholder="1-29">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="abasa.html">← Surah Abasa</a>
         <a href="al-infitar.html">Next: Surah Al-Infitar →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -980,147 +999,176 @@
       {
         arabic: "إِذَا الشَّمسُ كُوِّرَت",
         en: "When the sun is put out,",
-        ur: ""
+        ur: "جب سورج لپیٹ لیاجائے گا۔",
+        trans: "Izash shamsu kuwwirat"
       },
       {
         arabic: "وَإِذَا النُّجومُ انكَدَرَت",
         en: "and when the stars fall down,",
-        ur: ""
+        ur: "اور جب ستارے ماند پڑجائیں گے۔",
+        trans: "Wa izan nujoomun kadarat"
       },
       {
         arabic: "وَإِذَا الجِبالُ سُيِّرَت",
         en: "and when the mountains are blown away,",
-        ur: ""
+        ur: "اور جب پہاڑ چلادیے جائیں گے۔",
+        trans: "Wa izal jibaalu suyyirat"
       },
       {
         arabic: "وَإِذَا العِشارُ عُطِّلَت",
         en: "and when pregnant camels are left untended,",
-        ur: ""
+        ur: "اور جب گابھن اونٹنیاں چھٹی پھریں گی۔",
+        trans: "Wa izal ‘ishaaru ‘uttilat"
       },
       {
         arabic: "وَإِذَا الوُحوشُ حُشِرَت",
         en: "and when wild beasts are gathered together,",
-        ur: ""
+        ur: "اور جب وحشی جانور جمع کردیے جائیں گے۔",
+        trans: "Wa izal wuhooshu hushirat"
       },
       {
         arabic: "وَإِذَا البِحارُ سُجِّرَت",
         en: "and when the seas are set on fire,",
-        ur: ""
+        ur: "اور جب سمندر دہکا دیے جائیں گے۔",
+        trans: "Wa izal bihaaru sujjirat"
       },
       {
         arabic: "وَإِذَا النُّفوسُ زُوِّجَت",
         en: "and when the souls ˹and their bodies˺ are paired ˹once more˺,",
-        ur: ""
+        ur: "اور جب جانوں کے جوڑ ملائے جائیں گے۔",
+        trans: "Wa izan nufoosu zuwwijat"
       },  
       {
         arabic: "وَإِذَا المَوءودَةُ سُئِلَت",
         en: "and when baby girls, buried alive, are asked",
-        ur: ""
+        ur: "اور جب زندہ دفن کی گئی لڑکی سے پوچھا جائے گا۔",
+        trans: "Wa izal maw’oodatu su’ilat"
       },
       {
         arabic: "بِأَيِّ ذَنبٍ قُتِلَت",
         en: "for what crime they were put to death,",
-        ur: ""
+        ur: "کہ وہ کس گناہ کی پاداش میں قتل کی گئی تھی ؟",
+        trans: "Bi ayyi zambin qutilat"
       },
       {
         arabic: "وَإِذَا الصُّحُفُ نُشِرَت",
         en: "and when the records ˹of deeds˺ are laid open,",
-        ur: ""
+        ur: "اور جب اعمال نامے کھول دیے جائیں گے۔",
+        trans: "Wa izas suhufu nushirat"
       },
       {
         arabic: "وَإِذَا السَّماءُ كُشِطَت",
         en: "and when the sky is stripped away,",
-        ur: ""
+        ur: "اور جب آسمان کی کھال اتار لی جائے گی۔",
+        trans: "Wa izas samaaa’u kushitat"
       },
       {
         arabic: "وَإِذَا الجَحيمُ سُعِّرَت",
         en: "and when the Hellfire is fiercely flared up,",
-        ur: ""
+        ur: "اور جب جہنم دہکائی جائے گی۔",
+        trans: "Wa izal jaheemu su’-‘irat"
       },
       {
         arabic: "وَإِذَا الجَنَّةُ أُزلِفَت",
         en: "and when Paradise is brought near—",
-        ur: ""
+        ur: "اور جب جنت قریب لے آئی جائے گی۔",
+        trans: "Wa izal jannatu uzlifat"
       },
       {
         arabic: "عَلِمَت نَفسٌ ما أَحضَرَت",
         en: "˹on that Day˺ each soul will know what ˹deeds˺ it has brought along.",
-        ur: ""
+        ur: "(اُس دن) ہر جان جان لے گی کہ اس نے کیا کچھ حاضر کیا ہے۔",
+        trans: "‘Alimat nafsum maaa ahdarat"
       },
       {
         arabic: "فَلا أُقسِمُ بِالخُنَّسِ",
         en: "I do swear by the receding stars",
-        ur: ""
+        ur: "تو نہیں ! میں قسم کھاتا ہوں پیچھے ہٹنے والے چلنے والے",
+        trans: "Falaaa uqsimu bil khunnas"
       },
       {
         arabic: "الجَوارِ الكُنَّسِ",
         en: "which travel and hide,",
-        ur: ""
+        ur: "اور چھپ جانے والے ستاروں کی۔",
+        trans: "Al jawaaril kunnas"
       },
       {
         arabic: "وَاللَّيلِ إِذا عَسعَسَ",
         en: "and the night as it falls",
-        ur: ""
+        ur: "قسم ہے رات کی جب وہ روانہ ہونے لگے۔",
+        trans: "Wallaili izaa ‘as’as"
       },
       {
         arabic: "وَالصُّبحِ إِذا تَنَفَّسَ",
         en: "and the day as it breaks!",
-        ur: ""
+        ur: "اور صبح کی جب وہ سانس لے۔",
+        trans: "Wassubhi izaa tanaffas"
       },
       {
         arabic: "إِنَّهُ لَقَولُ رَسولٍ كَريمٍ",
         en: "Indeed, this ˹Quran˺ is the Word of ˹Allah delivered by Gabriel,˺ a noble messenger-angel,",
-        ur: ""
+        ur: "یقینا یہ (قرآن) ایک بہت باعزت پیغامبر کا قول ہے۔",
+        trans: "Innahoo laqawlu rasoolin kareem"
       },
       {
         arabic: "ذي قُوَّةٍ عِندَ ذِي العَرشِ مَكينٍ",
         en: "full of power, held in honour by the Lord of the Throne,",
-        ur: ""
+        ur: "جو (جبرائیل) بہت قوت والا ہے صاحب ِعرش کے نزدیک بلند مرتبہ ہے۔",
+        trans: "Zee quwwatin ‘inda zil ‘arshi makeen"
       },
       {
         arabic: "مُطاعٍ ثَمَّ أَمينٍ",
         en: "obeyed there ˹in heaven˺, and trustworthy.",
-        ur: ""
+        ur: "جس کی اطاعت کی جاتی ہے اور وہ امانت دار بھی ہے۔",
+        trans: "Mutaa’in samma ameen"
       },
       {
         arabic: "وَما صاحِبُكُم بِمَجنونٍ",
-        en: "And your fellow man1 is not insane.",
-        ur: ""
+        en: "And your fellow man is not insane.",
+        ur: "اور تمہارے یہ ساتھی (محمد ﷺ کوئی مجنون نہیں ہیں۔",
+        trans: "Wa maa saahibukum bimajnoon"
       },
       {
         arabic: "وَلَقَد رَآهُ بِالأُفُقِ المُبينِ",
         en: "And he did see that ˹angel˺ on the clear horizon,",
-        ur: ""
+        ur: "اور انہوں نے دیکھا ہے اس کو کھلے افق پر۔",
+        trans: "Wa laqad ra aahu bilufuqil mubeen"
       },
       {
         arabic: "وَما هُوَ عَلَى الغَيبِ بِضَنينٍ",
         en: "and he does not withhold ˹what is revealed to him of˺ the unseen.",
-        ur: ""
+        ur: "اور وہ غیب کے معاملے میں حریص یا بخیل نہیں ہیں۔",
+        trans: "Wa maa huwa ‘alal ghaibi bidaneen"
       },
       {
         arabic: "وَما هُوَ بِقَولِ شَيطانٍ رَجيمٍ",
         en: "And this ˹Quran˺ is not the word of an outcast devil.",
-        ur: ""
+        ur: "اور یہ کسی شیطانِ مردود کا قول نہیں ہے۔",
+        trans: "Wa maa huwa biqawli shaitaanir rajeem"
       },
       {
         arabic: "فَأَينَ تَذهَبونَ",
         en: "So what ˹other˺ path would you take?",
-        ur: ""
+        ur: "تو تم کدھر چلے جا رہے ہو ؟",
+        trans: "Fa ayna tazhaboon"
       },
       {
         arabic: "إِن هُوَ إِلّا ذِكرٌ لِلعالَمينَ",
         en: "Surely this ˹Quran˺ is only a reminder to the whole world—",
-        ur: ""
+        ur: "نہیں ہے یہ مگر تمام جہان والوں کے لیے ایک یاد دہانی۔",
+        trans: "In huwa illaa zikrul lil’aalameen"
       },
       {
         arabic: "لِمَن شاءَ مِنكُم أَن يَستَقيمَ ۙ",
         en: "to whoever of you wills to take the Straight Way.",
-        ur: ""
+        ur: "ہر اس شخص کے لیے جو تم میں سے سیدھے راستے پر چلنا چاہے۔",
+        trans: "Liman shaaa’a minkum ai yastaqeem"
       },
       {
         arabic: "وَما تَشاءونَ إِلّا أَن يَشاءَ اللَّهُ رَبُّ العالَمينَ",
         en: "But you cannot will ˹to do so˺, except by the Will of Allah, the Lord of all worlds.",
-        ur: ""
+        ur: "اور تمہارے چاہے بھی کچھ نہیں ہوسکتا جب تک کہ اللہ نہ چاہے جو تمام جہانوں کا ربّ ہے۔",
+        trans: "Wa maa tashaaa’oona illaaa ai yashaaa ‘al laahu Rabbul ‘Aalameen"
       },
     ];
 
@@ -1129,6 +1177,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1170,7 +1219,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1194,6 +1243,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1201,10 +1251,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1223,7 +1278,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1346,6 +1401,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
