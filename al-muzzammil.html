@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Al-Muzzammil</title>
+  <title>73. Surah: Al-Muzzammil 1-20 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="20">
+        <input type="number" id="verse-number" min="1" max="20" placeholder="1-20">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="al-jinn.html">← Surah Al-Jinn</a>
         <a href="al-muddaththir.html">Next: Surah Al-Muddaththir →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -981,102 +1009,122 @@
       {
         arabic: "يا أَيُّهَا المُزَّمِّلُ",
         en: "O you wrapped ˹in your clothes˺!",
-        ur: ""
+        ur: "!اے کمبل میں لپٹ کر لیٹنے والے ﷺ",
+        trans: "Ya aiyuhal muzzammil"
       },
       {
         arabic: "قُمِ اللَّيلَ إِلّا قَليلًا",
         en: "Stand all night ˹in prayer˺ except a little—",
-        ur: ""
+        ur: "آپ کھڑے رہا کریں رات کو (نماز میں) سوائے اس کے تھوڑے سے حصے کے۔",
+        trans: "Qumil laila illaa qaleelaa"
       },
       {
         arabic: "نِصفَهُ أَوِ انقُص مِنهُ قَليلًا",
         en: "˹pray˺ half the night, or a little less,",
-        ur: ""
+        ur: "(یعنی) اس کا آدھا یا اس سے تھوڑا کم کر لیجیے۔",
+        trans: "Nisfahooo awinqus minhu qaleelaa"
       },
       {
         arabic: "أَو زِد عَلَيهِ وَرَتِّلِ القُرآنَ تَرتيلًا",
         en: "or a little more—and recite the Quran ˹properly˺ in a measured way.",
-        ur: ""
+        ur: "یا اس پر تھوڑا بڑھا لیں اور ٹھہر ٹھہر کر قرآن پڑھتے جایئے۔",
+        trans: "Aw zid ‘alaihi wa rattilil Qur’aana tarteela"
       },
       {
         arabic: "إِنّا سَنُلقي عَلَيكَ قَولًا ثَقيلًا",
         en: "˹For˺ We will soon send upon you a weighty revelation.",
-        ur: ""
+        ur: "ہم عنقریب آپ ﷺ پر ایک بھاری بات ڈالنے والے ہیں۔",
+        trans: "Innaa sanulqee ‘alaika qawlan saqeelaa"
       },
       {
         arabic: "إِنَّ ناشِئَةَ اللَّيلِ هِيَ أَشَدُّ وَطئًا وَأَقوَمُ قيلًا",
         en: "Indeed, worship in the night is more impactful and suitable for recitation.",
-        ur: ""
+        ur: "یقینا رات کا جاگنا بہت موثر ہے نفس کو زیر کرنے کے لیے اور بات کو زیادہ درست رکھنے والا ہے۔",
+        trans: "Inn naashi’atal laili hiya ashadddu wat anw wa aqwamu qeelaa"
       },
       {
         arabic: "إِنَّ لَكَ فِي النَّهارِ سَبحًا طَويلًا",
         en: "For during the day you are over-occupied ˹with worldly duties˺.",
-        ur: ""
+        ur: "یقینا دن کے اوقات میں تو آپ ﷺ کے لیے بڑی مصروفیات ہیں۔",
+        trans: "Inna laka fin nahaari sabhan taweelaa"
       },  
       {
         arabic: "وَاذكُرِ اسمَ رَبِّكَ وَتَبَتَّل إِلَيهِ تَبتيلًا",
         en: "˹Always˺ remember the Name of your Lord, and devote yourself to Him wholeheartedly.",
-        ur: ""
+        ur: "اور آپ ﷺ اپنے رب کے نام کا ذکر کیا کریں اور ہر طرف سے کٹ کر بس اسی کے ہو رہیں۔",
+        trans: "Wazkuris ma rabbika wa tabattal ilaihi tabteelaa"
       },
       {
         arabic: "رَبُّ المَشرِقِ وَالمَغرِبِ لا إِلٰهَ إِلّا هُوَ فَاتَّخِذهُ وَكيلًا",
         en: "˹He is the˺ Lord of the east and the west. There is no god ˹worthy of worship˺ except Him, so take Him ˹alone˺ as a Trustee of Affairs.",
-        ur: ""
+        ur: "وہ رب ہے مشرق کا بھی اور مغرب کا بھی اس کے سوا کوئی معبود نہیں بس آپ اسی کو بنا لیجیے اپناکارساز۔",
+        trans: "Rabbul mashriqi wal maghriibi laaa ilaaha illaa Huwa fattakhizhu wakeelaa"
       },
       {
         arabic: "وَاصبِر عَلىٰ ما يَقولونَ وَاهجُرهُم هَجرًا جَميلًا",
         en: "Be patient ˹O Prophet˺ with what they say, and depart from them courteously.",
-        ur: ""
+        ur: "اور جو کچھ یہ لوگ کہہ رہے ہیں اس پر صبر کیجیے اور ان کو چھوڑ دیجیے بڑی خوبصورتی سے کنارہ کشی کرتے ہوئے۔",
+        trans: "Wasbir ‘alaa maa yaqoo loona wahjurhum hajran jameelaa"
       },
       {
         arabic: "وَذَرني وَالمُكَذِّبينَ أُولِي النَّعمَةِ وَمَهِّلهُم قَليلًا",
         en: "And leave to Me the deniers—the people of luxury—and bear with them for a little while.",
-        ur: ""
+        ur: "آپ مجھے اور ان جھٹلانے والوں کو چھوڑ دیں جو بڑی نعمتوں سے نوازے گئے ہیں اور ابھی آپ انہیں تھوڑی سی مہلت دیں۔",
+        trans: "Wa zarnee walmukaz zibeena ulin na’mati wa mahhilhum qaleelaa"
       },
       {
         arabic: "إِنَّ لَدَينا أَنكالًا وَجَحيمًا",
         en: "˹For˺ We certainly have shackles, a ˹raging˺ Fire,",
-        ur: ""
+        ur: "ہمارے پاس ان کے لیے بھاری بیڑیاں اور بھڑکتی آگ ہے۔",
+        trans: "Inna ladainaaa ankaalanw wa jaheemaa"
       },
       {
         arabic: "وَطَعامًا ذا غُصَّةٍ وَعَذابًا أَليمًا",
         en: "choking food, and a painful punishment ˹in store for them˺",
-        ur: ""
+        ur: "اور وہ کھانا جو حلق میں اٹک جائے گا اور دردناک عذاب ہے۔",
+        trans: "Wa ta’aaman zaa ghussa tinw wa’azaaban aleemaa"
       },
       {
         arabic: "يَومَ تَرجُفُ الأَرضُ وَالجِبالُ وَكانَتِ الجِبالُ كَثيبًا مَهيلًا",
         en: "on the Day the earth and mountains will shake ˹violently˺, and mountains will be ˹reduced to˺ dunes of shifting sand.",
-        ur: ""
+        ur: "جس دن کہ زمین اور پہاڑ لرزنے لگیں گے اور پہاڑ ریت کے بکھرتے تودے بن جائیں گے۔",
+        trans: "Yawma tarjuful ardu waljibaalu wa kaanatil jibaalu kaseebam maheelaa"
       },
       {
         arabic: "إِنّا أَرسَلنا إِلَيكُم رَسولًا شاهِدًا عَلَيكُم كَما أَرسَلنا إِلىٰ فِرعَونَ رَسولًا",
         en: "Indeed, We have sent to you a messenger as a witness over you, just as We sent a messenger to Pharaoh.",
-        ur: ""
+        ur: "(اے لوگو !) ہم نے تمہاری طرف ایک رسول ﷺ بھیج دیا ہے تم پر گواہ بنا کر۔ جیسے کہ ہم نے بھیجا تھا فرعون کی طرف بھی ایک رسول۔",
+        trans: "Innaa arsalnaaa ilaikum rasoolan shaahidan ‘aleykum kamaaa arsalnaaa ilaa Fir’awna rasoolaa"
       },
       {
         arabic: "فَعَصىٰ فِرعَونُ الرَّسولَ فَأَخَذناهُ أَخذًا وَبيلًا",
         en: "But Pharaoh disobeyed the messenger, so We seized him with a stern grip.",
-        ur: ""
+        ur: "پس فرعون نے نافرمانی کی ہمارے رسول ؑ کی تو ہم نے پکڑ لیا اس کو بڑے وبال والی پکڑ۔",
+        trans: "Fa’asaa Fir’awnur Rasoola fa akhaznaahu akhzanw wabeelaa"
       },
       {
         arabic: "فَكَيفَ تَتَّقونَ إِن كَفَرتُم يَومًا يَجعَلُ الوِلدانَ شيبًا",
         en: "If you ˹pagans˺ persist in disbelief, then how will you guard yourselves against ˹the horrors of˺ a Day which will turn children’s hair grey?",
-        ur: ""
+        ur: "اب اگر تم کفر کرو گے تو تم کیسے بچ جائو گے اس دن جو بچوں کو بوڑھا کر دے گا",
+        trans: "Fakaifa tattaqoona in kafartum yawmany yaj’alul wildaana sheeba"
       },
       {
         arabic: "السَّماءُ مُنفَطِرٌ بِهِ ۚ كانَ وَعدُهُ مَفعولًا",
         en: "It will ˹even˺ cause the sky to split apart. His promise ˹of judgment˺ must be fulfilled.",
-        ur: ""
+        ur: "آسمان اس سے پھٹ پڑنے والا ہے اس کا وعدہ پورا ہو کر رہے گا۔",
+        trans: "Assamaaa’u munfatirum bih; kaana wa’duhoo maf’oola"
       },
       {
         arabic: "إِنَّ هٰذِهِ تَذكِرَةٌ ۖ فَمَن شاءَ اتَّخَذَ إِلىٰ رَبِّهِ سَبيلًا",
         en: "Surely this is a reminder. So let whoever wills take the ˹Right˺ Way to their Lord.",
-        ur: ""
+        ur: "یقینا یہ ایک یاددہانی ہے۔ تو جو کوئی بھی چاہے وہ اپنے رب کی طرف راستہ اختیار کرلے۔",
+        trans: "Inna haazihee tazkiratun fa man shaaa’at takhaza ilaa Rabbihee sabeelaa"
       },
       {
         arabic: "۞ إِنَّ رَبَّكَ يَعلَمُ أَنَّكَ تَقومُ أَدنىٰ مِن ثُلُثَيِ اللَّيلِ وَنِصفَهُ وَثُلُثَهُ وَطائِفَةٌ مِنَ الَّذينَ مَعَكَ ۚ وَاللَّهُ يُقَدِّرُ اللَّيلَ وَالنَّهارَ ۚ عَلِمَ أَن لَن تُحصوهُ فَتابَ عَلَيكُم ۖ فَاقرَءوا ما تَيَسَّرَ مِنَ القُرآنِ ۚ عَلِمَ أَن سَيَكونُ مِنكُم مَرضىٰ ۙ وَآخَرونَ يَضرِبونَ فِي الأَرضِ يَبتَغونَ مِن فَضلِ اللَّهِ ۙ وَآخَرونَ يُقاتِلونَ في سَبيلِ اللَّهِ ۖ فَاقرَءوا ما تَيَسَّرَ مِنهُ ۚ وَأَقيمُوا الصَّلاةَ وَآتُوا الزَّكاةَ وَأَقرِضُوا اللَّهَ قَرضًا حَسَنًا ۚ وَما تُقَدِّموا لِأَنفُسِكُم مِن خَيرٍ تَجِدوهُ عِندَ اللَّهِ هُوَ خَيرًا وَأَعظَمَ أَجرًا ۚ وَاستَغفِرُوا اللَّهَ ۖ إِنَّ اللَّهَ غَفورٌ رَحيمٌ",
         en: "Surely your Lord knows that you ˹O Prophet˺ stand ˹in prayer˺ for nearly two-thirds of the night, or ˹sometimes˺ half of it, or a third, as do some of those with you. Allah ˹alone˺ keeps a ˹precise˺ measure of the day and night. He knows that you ˹believers˺ are unable to endure this, and has turned to you in mercy. So recite ˹in prayer˺ whatever you can from the Quran. He knows that some of you will be sick, some will be travelling throughout the land seeking Allah’s bounty, and some fighting in the cause of Allah. So recite whatever you can from it. And ˹continue to˺ perform ˹regular˺ prayers, pay alms-tax, and lend to Allah a good loan. Whatever good you send forth for yourselves, you will find it with Allah far better and more rewarding. And seek Allah’s forgiveness. Surely Allah is All-Forgiving, Most Merciful.",
-        ur: ""
+        ur: "(اے نبی ﷺ !) یقینا آپ کا رب جانتا ہے کہ آپ قیام کرتے ہیں کبھی دو تہائی رات کے قریب کبھی نصف رات اور کبھی ایک تہائی رات اور جو لوگ آپ کے ساتھ ہیں ان میں سے بھی ایک جماعت آپ کے ساتھ (کھڑی) ہوتی ہے۔ اور اللہ ہی رات اور دن کا اندازہ کرتا ہے۔ اللہ جانتا ہے کہ تم اس کی پابندی نہیں کرسکو گے تو اس نے تم پر مہربانی فرمائی ہے تو اب قرآن سے جتنا بآسانی پڑھ سکتے ہو پڑھ لیا کرو۔ اللہ کے علم میں ہے کہ تم میں کچھ لوگ مریض ہوں گے اور بعض دوسرے زمین میں سفر کریں گے اللہ کے فضل کو تلاش کرتے ہوں گے اور کچھ اللہ کی راہ میں قتال کر رہے ہوں گے چناچہ جس قدر تمہارے لیے آسان ہو اس میں سے پڑھ لیا کرو اور نماز قائم کرو اور زکوٰۃ ادا کرو اور اللہ کو قرض حسنہ دو۔ اور جو بھلائی بھی تم آگے بھیجو گے اپنی جانوں کے لیے اسے موجود پائو گے اللہ کے پاس بہتر اور اجر میں بڑھ کر۔ اور اللہ سے مغفرت طلب کرتے رہو۔ اور اللہ سے مغفرت طلب کرتے رہو۔ یقینا اللہ تعالیٰ بہت بخشنے والا رحمت فرمانے والا ہے۔",
+        trans: "Inna Rabbaka ya’lamu annaka taqoomu adnaa min sulusa yil laili wa nisfahoo wa sulusahoo wa taaa’ifatum minal lazeena ma’ak; wal laahu yuqaddirul laila wanna haar; ‘alima al lan tuhsoohu fataaba ‘alaikum faqra’oo maa tayassara minal quraan; ‘alima an sa yakoonu minkum mardaa wa aakharoona yadriboona fil ardi yabtaghoona min fadlil laahi wa aakharoona yuqaatiloona fee sabeelil laahi faqra’oo ma tayassara minhu wa aqeemus salaata wa aatuz zakaata wa aqridul laaha qardan hasanaa; wa maa tuqadimoo li anfusikum min khairin tajidoohu ‘indal laahi huwa khayranw wa a’zama ajraa; wastaghfirul laahaa innal laaha ghafoorur raheem."
       },
     ];
 
@@ -1085,6 +1133,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1126,7 +1175,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1150,6 +1199,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1157,10 +1207,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1179,7 +1234,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1302,6 +1357,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
