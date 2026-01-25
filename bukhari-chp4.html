@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahih al-Bukhari - Chapter 4: Ablutions (Wudu') (كتاب الوضوء) - Muslimbro1400</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">  
+  <style>
+        /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .hadith-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hadith-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .subtitle { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-hadith label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-hadith label {
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-hadith input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-hadith input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-hadith input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-hadith button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-hadith button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .hadith {
+      background-color: #fff;
+      padding: 3rem 3rem 3rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .hadith {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .hadith-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.9rem;
+      color: #007b5e;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      padding-top: 2rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    /* Updated Urdu Translation Class */
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .hadith-meta {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-meta { color: #ccc; }
+
+    .hadith-meta a {
+      color: #007b5e;
+      text-decoration: none;
+    }
+
+    .dark-mode .hadith-meta a { color: #0c8; }
+
+    .hadith-meta a:hover {
+      text-decoration: underline;
+    }
+
+    .favorite-btn, .bookmark-btn, .share-icon {
+      position: absolute;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
+      opacity: 1;
+    }
+
+    .share-icon {
+      top: 1rem;
+    }
+
+    .favorite-btn {
+      top: 3rem;
+    }
+
+    .bookmark-btn {
+      top: 5rem;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .hadith-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
+
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+      transform: scale(1.1);
+    }
+
+    #scrollToTop.show {
+      display: block;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="hadith-info">
+      <h1>Book 1: Ablutons <span class="arabic">(كتاب الوضوء)</span></h1>
+      <p class="subtitle">Chapter: How To Make Wudu'</p>
+      <p class="meta">113 Hadiths</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+
+      <!-- Go to Hadith -->
+      <div class="go-to-hadith">
+        <label for="hadith-number">Go to Hadith:</label>
+        <input type="number" id="hadith-number" min="1" max="7" placeholder="1-7">
+        <button onclick="goToHadith()">Go</button>
+      </div>
+    </div>
+
+    <!-- Navigation above hadith container -->
+    <div class="navigation">
+      <a href="bukhari-chp3.html">Previous Chapter 3 </a>
+      <a href="bukhari-chp5.html">Next Chapter 5</a>
+    </div>
+
+    <br>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <!-- Navigation below hadith container -->
+    <div class="navigation">
+      <a href="bukhari-chp3.html">Previous Chapter 3 </a>
+      <a href="bukhari-chp5.html">Next Chapter 5</a>
+    </div>
+  </div>
+
+
+  <!-- Share Modal -->
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Share Hadith</h2>
+      <div>
+        <label>
+          <input type="checkbox" id="include-arabic" checked> Include Arabic Text
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="include-translation" checked> Include Translation
+        </label>
+      </div>
+      <div>
+        <label for="share-language">Translation Language:</label>
+        <select id="share-language">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <button onclick="shareHadith()">Copy</button>
+      <button onclick="closeShareModal()">Cancel</button>
+      <div id="copy-message" class="hidden" style="color: #0c8; margin-top: 1rem; font-weight: bold;">Text copied to clipboard!</div>
+    </div>
+  </div>
+
+  <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    // Favorites and Bookmarks storage
+    let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+    let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+
+    const hadiths = [
+      {
+        id: 1,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْحَاقُ بْنُ إِبْرَاهِيمَ الْحَنْظَلِيُّ، قَالَ أَخْبَرَنَا عَبْدُ الرَّزَّاقِ، قَالَ أَخْبَرَنَا مَعْمَرٌ، عَنْ هَمَّامِ بْنِ مُنَبِّهٍ، أَنَّهُ سَمِعَ أَبَا هُرَيْرَةَ، يَقُولُ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ لاَ تُقْبَلُ صَلاَةُ مَنْ أَحْدَثَ حَتَّى يَتَوَضَّأَ ‏\"‏‏.‏ قَالَ رَجُلٌ مِنْ حَضْرَمَوْتَ مَا الْحَدَثُ يَا أَبَا هُرَيْرَةَ قَالَ فُسَاءٌ أَوْ ضُرَاطٌ‏.‏",
+        en: "Narrated Abu Huraira: <br> Allah's Messenger (ﷺ) said, \"The prayer of a person who does Hadath (passes urine, stool or wind) is not accepted till he performs the ablution.\" A person from Hadaramout asked Abu Huraira, \"What is 'Hadath'?\" Abu Huraira replied, \" 'Hadath' means the passing of wind.\"",
+        ur: "ہم سے اسحاق بن ابراہیم الحنظلی نے بیان کیا ۔ انہیں عبدالرزاق نے خبر دی ، انہیں معمر نے ہمام بن منبہ کے واسطے سے بتلایا کہ انھوں نے ابوہریرہ رضی اللہ عنہ سے سنا ، وہ کہہ رہے تھے کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا کہ جو شخص حدث کرے اس کی نماز قبول نہیں ہوتی جب تک کہ وہ ( دوبارہ ) وضو نہ کر لے ۔ حضرموت کے ایک شخص نے پوچھا کہ حدث ہونا کیا ہے ؟ آپ صلی اللہ علیہ وسلم نے فرمایا کہ ( پاخانہ کے مقام سے نکلنے والی ) آواز والی یا بےآواز والی ہوا ۔",
+      },
+      {
+        id: 2,
+        volume: 1,
+        arabic: "حَدَّثَنَا يَحْيَى بْنُ بُكَيْرٍ، قَالَ حَدَّثَنَا اللَّيْثُ، عَنْ خَالِدٍ، عَنْ سَعِيدِ بْنِ أَبِي هِلاَلٍ، عَنْ نُعَيْمٍ الْمُجْمِرِ، قَالَ رَقِيتُ مَعَ أَبِي هُرَيْرَةَ عَلَى ظَهْرِ الْمَسْجِدِ، فَتَوَضَّأَ فَقَالَ إِنِّي سَمِعْتُ النَّبِيَّ صلى الله عليه وسلم يَقُولُ ‏ \"‏ إِنَّ أُمَّتِي يُدْعَوْنَ يَوْمَ الْقِيَامَةِ غُرًّا مُحَجَّلِينَ مِنْ آثَارِ الْوُضُوءِ، فَمَنِ اسْتَطَاعَ مِنْكُمْ أَنْ يُطِيلَ غُرَّتَهُ فَلْيَفْعَلْ ‏\"‏‏.‏",
+        en: "Narrated Nu`am Al-Mujmir: <br> Once I went up the roof of the mosque, along with Abu Huraira. He perform ablution and said, \"I heard the Prophet (ﷺ) saying, \"On the Day of Resurrection, my followers will be called \"Al-Ghurr-ul- Muhajjalun\" from the trace of ablution and whoever can increase the area of his radiance should do so (i.e. by performing ablution regularly).' \"",
+        ur: "ہم سے یحییٰ بن بکیر نے بیان کیا ، ان سے لیث نے خالد کے واسطے سے نقل کیا ، وہ سعید بن ابی ہلال سے نقل کرتے ہیں ، وہ نعیم المجمر سے ، وہ کہتے ہیں کہ میں ( ایک مرتبہ ) ابوہریرہ رضی اللہ عنہ کے ساتھ مسجد کی چھت پر چڑھا ۔ تو آپ نے وضو کیا اور کہا کہ میں نے رسول اللہ صلی اللہ علیہ وسلم سے سنا تھا کہ آپ صلی اللہ علیہ وسلم فرما رہے تھے کہ میری امت کے لوگ وضو کے نشانات کی وجہ سے قیامت کے دن سفید پیشانی اور سفید ہاتھ پاؤں والوں کی شکل میں بلائے جائیں گے ۔ تو تم میں سے جو کوئی اپنی چمک بڑھانا چاہتا ہے تو وہ بڑھا لے ( یعنی وضو اچھی طرح کرے ) ۔",
+      },
+      {
+        id: 3,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَلِيٌّ، قَالَ حَدَّثَنَا سُفْيَانُ، قَالَ حَدَّثَنَا الزُّهْرِيُّ، عَنْ سَعِيدِ بْنِ الْمُسَيَّبِ، وَعَنْ عَبَّادِ بْنِ تَمِيمٍ، عَنْ عَمِّهِ، أَنَّهُ شَكَا إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم الرَّجُلُ الَّذِي يُخَيَّلُ إِلَيْهِ أَنَّهُ يَجِدُ الشَّىْءَ فِي الصَّلاَةِ‏.‏ فَقَالَ ‏ \"‏ لاَ يَنْفَتِلْ ـ أَوْ لاَ يَنْصَرِفْ ـ حَتَّى يَسْمَعَ صَوْتًا أَوْ يَجِدَ رِيحًا ‏\"‏‏.‏‏",
+        en: "Narrated `Abbad bin Tamim: <br> My uncle asked Allah's Messenger (ﷺ) about a person who imagined to have passed wind during the prayer. Allah' Apostle replied: \"He should not leave his prayers unless he hears sound or smells something.\"",
+        ur: "ہم سے علی نے بیان کیا ، ان سے سفیان نے ، ان سے زہری نے سعید بن المسیب کے واسطے سے نقل کیا ، وہ عبادہ بن تمیم سے روایت کرتے ہیں ، وہ اپنے چچا ( عبداللہ بن زید ) سے روایت کرتے ہیں کہ انھوں نے رسول کریم صلی اللہ علیہ وسلم سے شکایت کی کہ ایک شخص ہے جسے یہ خیال ہوتا ہے کہ نماز میں کوئی چیز ( یعنی ہوا نکلتی ) معلوم ہوئی ہے ۔ آپ صلی اللہ علیہ وسلم نے فرمایا کہ ( نماز سے ) نہ پھرے یا نہ مڑے ، جب تک آواز نہ سنے یا بو نہ پائے ۔",
+      },
+      {
+        id: 4,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَلِيُّ بْنُ عَبْدِ اللَّهِ، قَالَ حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرٍو، قَالَ أَخْبَرَنِي كُرَيْبٌ، عَنِ ابْنِ عَبَّاسٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم نَامَ حَتَّى نَفَخَ ثُمَّ صَلَّى ـ وَرُبَّمَا قَالَ اضْطَجَعَ حَتَّى نَفَخَ ـ ثُمَّ قَامَ فَصَلَّى‏.‏ ثُمَّ حَدَّثَنَا بِهِ سُفْيَانُ مَرَّةً بَعْدَ مَرَّةٍ عَنْ عَمْرٍو عَنْ كُرَيْبٍ عَنِ ابْنِ عَبَّاسٍ قَالَ بِتُّ عِنْدَ خَالَتِي مَيْمُونَةَ لَيْلَةً، فَقَامَ النَّبِيُّ صلى الله عليه وسلم مِنَ اللَّيْلِ، فَلَمَّا كَانَ فِي بَعْضِ اللَّيْلِ قَامَ النَّبِيُّ صلى الله عليه وسلم فَتَوَضَّأَ مِنْ شَنٍّ مُعَلَّقٍ وُضُوءًا خَفِيفًا ـ يُخَفِّفُهُ عَمْرٌو وَيُقَلِّلُهُ ـ وَقَامَ يُصَلِّي فَتَوَضَّأْتُ نَحْوًا مِمَّا تَوَضَّأَ، ثُمَّ جِئْتُ فَقُمْتُ عَنْ يَسَارِهِ ـ وَرُبَّمَا قَالَ سُفْيَانُ عَنْ شِمَالِهِ ـ فَحَوَّلَنِي فَجَعَلَنِي عَنْ يَمِينِهِ، ثُمَّ صَلَّى مَا شَاءَ اللَّهُ، ثُمَّ اضْطَجَعَ، فَنَامَ حَتَّى نَفَخَ، ثُمَّ أَتَاهُ الْمُنَادِي فَآذَنَهُ بِالصَّلاَةِ، فَقَامَ مَعَهُ إِلَى الصَّلاَةِ، فَصَلَّى وَلَمْ يَتَوَضَّأْ‏.‏ قُلْنَا لِعَمْرٍو إِنَّ نَاسًا يَقُولُونَ إِنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم تَنَامُ عَيْنُهُ وَلاَ يَنَامُ قَلْبُهُ‏.‏ قَالَ عَمْرٌو سَمِعْتُ عُبَيْدَ بْنَ عُمَيْرٍ يَقُولُ رُؤْيَا الأَنْبِيَاءِ وَحْىٌ، ثُمَّ قَرَأَ ‏{‏إِنِّي أَرَى فِي الْمَنَامِ أَنِّي أَذْبَحُكَ‏}‏‏.‏",
+        en: "Narrated Kuraib: <br> Ibn `Abbas said, \"The Prophet (ﷺ) slept till he snored and then prayed (or probably lay till his breath sounds were heard and then got up and prayed).\" Ibn `Abbas added: \"I stayed overnight in the house of my aunt, Maimuna, the Prophet (ﷺ) slept for a part of the night, (See Fath-al-Bari page 249, Vol. 1), and late in the night, he got up and performed ablution from a hanging water skin, a light (perfect) ablution and stood up for the prayer. I, too, performed a similar ablution, then I went and stood on his left. He drew me to his right and prayed as much as Allah wished, and again lay and slept till his breath sounds were heard. Later on the Mu'adh-dhin (call maker for the prayer) came to him and informed him that it was time for Prayer. The Prophet (ﷺ) went with him for the prayer without performing a new ablution.\" (Sufyan said to `Amr that some people said, \"The eyes of Allah's Messenger (ﷺ) sleep but his heart does not sleep.\" `Amr replied, \"I heard `Ubaid bin `Umar saying that the dreams of Prophets were Divine Inspiration, and then he recited the verse: 'I (Abraham) see in a dream, (O my son) that I offer you in sacrifice (to Allah).\" (37.102)",
+        ur: "ہم سے علی بن عبداللہ نے بیان کیا ، ان سے سفیان نے عمرو کے واسطے سے نقل کیا ، انہیں کریب نے ابن عباس رضی اللہ عنہما سے خبر دی کہ نبی کریم صلی اللہ علیہ وسلم سوئے یہاں تک کہ آپ صلی اللہ علیہ وسلم خراٹے لینے لگے ۔ پھر آپ صلی اللہ علیہ وسلم نے نماز پڑھی اور کبھی ( راوی نے یوں ) کہا کہ آپ صلی اللہ علیہ وسلم لیٹ گئے ۔ پھر خراٹے لینے لگے ۔ پھر آپ صلی اللہ علیہ وسلم کھڑے ہوئے اس کے بعد نماز پڑھی ۔ پھر سفیان نے ہم سے دوسری مرتبہ یہی حدیث بیان کی عمرو سے ، انھوں نے کریب سے ، انھوں نے ابن عباس رضی اللہ عنہما سے نقل کیا کہ وہ کہتے تھے کہ ( ایک مرتبہ ) میں نے اپنی خالہ ( ام المؤمنین ) حضرت میمونہ رضی اللہ عنہا کے گھر رات گزاری ، تو ( میں نے دیکھا کہ ) رسول اللہ صلی اللہ علیہ وسلم رات کو اٹھے ۔ جب تھوڑی رات باقی رہ گئی ۔ تو آپ صلی اللہ علیہ وسلم نے اٹھ کر ایک لٹکے ہوئے مشکیزے سے ہلکا سا وضو کیا ۔ عمرو اس کا ہلکا پن اور معمولی ہونا بیان کرتے تھے اور آپ کھڑے ہو کر نماز پڑھنے لگے ، تو میں نے بھی اسی طرح وضو کیا ۔ جس طرح آپ صلی اللہ علیہ وسلم نے کیا تھا ۔ پھر آ کر آپ کے بائیں طرف کھڑا ہو گیا اور کبھی سفیان نے «عن يساره» کی بجائے «عن شماله» کا لفظ کہا ( مطلب دونوں کا ایک ہی ہے ) پھر آپ صلی اللہ علیہ وسلم نے مجھے پھیر لیا اور اپنی داہنی جانب کر لیا ۔ پھر نماز پڑھی جس قدر اللہ کو منظور تھا ۔ پھر آپ لیٹ گئے اور سو گئے ۔ حتیٰ کہ خراٹوں کی آواز آنے لگی ۔ پھر آپ کی خدمت میں مؤذن حاضر ہوا اور اس نے آپ کو نماز کی اطلاع دی ۔ آپ صلی اللہ علیہ وسلم اس کے ساتھ نماز کے لیے تشریف لے گئے ۔ پھر آپ نے نماز پڑھی اور وضو نہیں کیا ۔ ( سفیان کہتے ہیں کہ ) ہم نے عمرو سے کہا ، کچھ لوگ کہتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم کی آنکھیں سوتی تھیں ، دل نہیں سوتا تھا ۔ عمرو نے کہا میں نے عبید بن عمیر سے سنا ، وہ کہتے تھے کہ انبیاء علیہم السلام کے خواب بھی وحی ہوتے ہیں ۔ پھر ( قرآن کی یہ ) آیت پڑھی ۔ ” میں خواب میں دیکھتا ہوں کہ میں تجھے ذبح کر رہا ہوں ۔ “",
+      },
+      {
+        id: 5,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ، عَنْ مَالِكٍ، عَنْ مُوسَى بْنِ عُقْبَةَ، عَنْ كُرَيْبٍ، مَوْلَى ابْنِ عَبَّاسٍ عَنْ أُسَامَةَ بْنِ زَيْدٍ، أَنَّهُ سَمِعَهُ يَقُولُ دَفَعَ رَسُولُ اللَّهِ صلى الله عليه وسلم مِنْ عَرَفَةَ حَتَّى إِذَا كَانَ بِالشِّعْبِ نَزَلَ فَبَالَ، ثُمَّ تَوَضَّأَ وَلَمْ يُسْبِغِ الْوُضُوءَ‏.‏ فَقُلْتُ الصَّلاَةَ يَا رَسُولَ اللَّهِ‏.‏ فَقَالَ ‏ \"‏ الصَّلاَةُ أَمَامَكَ ‏\"‏‏.‏ فَرَكِبَ، فَلَمَّا جَاءَ الْمُزْدَلِفَةَ نَزَلَ فَتَوَضَّأَ، فَأَسْبَغَ الْوُضُوءَ، ثُمَّ أُقِيمَتِ الصَّلاَةُ فَصَلَّى الْمَغْرِبَ، ثُمَّ أَنَاخَ كُلُّ إِنْسَانٍ بَعِيرَهُ فِي مَنْزِلِهِ، ثُمَّ أُقِيمَتِ الْعِشَاءُ فَصَلَّى وَلَمْ يُصَلِّ بَيْنَهُمَا‏.‏",
+        en: "Narrated Usama bin Zaid: <br> Allah's Messenger (ﷺ) proceeded from `Arafat till when he reached the mountain pass, he dismounted, urinated and then performed ablution but not a perfect one. I said to him, (\"Is it the time for) the prayer, O Allah's Messenger (ﷺ)?\" He said, \"The (place of) prayer is ahead of you.\" He rode till when he reached Al-Muzdalifa, he dismounted and performed ablution and a perfect one, The (call for) Iqama was pronounced and he led the Maghrib prayer. Then everybody made his camel kneel down at its place. Then the Iqama was pronounced for the `Isha' prayer which the Prophet (ﷺ) led and no prayer was offered in between the two . prayers (`Isha' and Maghrib).",
+        ur: "ہم سے عبداللہ بن مسلمہ نے بیان کیا ، ان سے امام مالک رحمہ اللہ نے موسیٰ بن عقبہ کے واسطے سے بیان کیا ، انھوں نے کریب مولیٰ ابن عباس سے ، انھوں نے اسامہ بن زید رضی اللہ عنہما سے سنا ، وہ کہتے تھے کہ رسول اللہ صلی اللہ علیہ وسلم میدان عرفات سے واپس ہوئے ۔ جب گھاٹی میں پہنچے تو آپ صلی اللہ علیہ وسلم اتر گئے ۔ آپ صلی اللہ علیہ وسلم نے ( پہلے ) پیشاب کیا ، پھر وضو کیا اور خوب اچھی طرح نہیں کیا ۔ تب میں نے کہا ، یا رسول اللہ ! نماز کا وقت ( آ گیا ) آپ صلی اللہ علیہ وسلم نے فرمایا : نماز ، تمہارے آگے ہے ( یعنی مزدلفہ چل کر پڑھیں گے ) جب مزدلفہ میں پہنچے تو آپ نے خوب اچھی طرح وضو کیا ، پھر جماعت کھڑی کی گئی ، آپ صلی اللہ علیہ وسلم نے مغرب کی نماز پڑھی ، پھر ہر شخص نے اپنے اونٹ کو اپنی جگہ بٹھلایا ، پھر عشاء کی جماعت کھڑی کی گئی اور آپ صلی اللہ علیہ وسلم نے نماز پڑھی اور ان دونوں نمازوں کے درمیان کوئی نماز نہیں پڑھی ۔",
+      },
+      {
+        id: 6,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ عَبْدِ الرَّحِيمِ، قَالَ أَخْبَرَنَا أَبُو سَلَمَةَ الْخُزَاعِيُّ، مَنْصُورُ بْنُ سَلَمَةَ قَالَ أَخْبَرَنَا ابْنُ بِلاَلٍ ـ يَعْنِي سُلَيْمَانَ ـ عَنْ زَيْدِ بْنِ أَسْلَمَ، عَنْ عَطَاءِ بْنِ يَسَارٍ، عَنِ ابْنِ عَبَّاسٍ، أَنَّهُ تَوَضَّأَ فَغَسَلَ وَجْهَهُ، ثُمَّ أَخَذَ غَرْفَةً مِنْ مَاءٍ، فَمَضْمَضَ بِهَا وَاسْتَنْشَقَ، ثُمَّ أَخَذَ غَرْفَةً مِنْ مَاءٍ، فَجَعَلَ بِهَا هَكَذَا، أَضَافَهَا إِلَى يَدِهِ الأُخْرَى، فَغَسَلَ بِهِمَا وَجْهَهُ، ثُمَّ أَخَذَ غَرْفَةً مِنْ مَاءٍ، فَغَسَلَ بِهَا يَدَهُ الْيُمْنَى، ثُمَّ أَخَذَ غَرْفَةً مِنْ مَاءٍ، فَغَسَلَ بِهَا يَدَهُ الْيُسْرَى، ثُمَّ مَسَحَ بِرَأْسِهِ، ثُمَّ أَخَذَ غَرْفَةً مِنْ مَاءٍ فَرَشَّ عَلَى رِجْلِهِ الْيُمْنَى حَتَّى غَسَلَهَا، ثُمَّ أَخَذَ غَرْفَةً أُخْرَى، فَغَسَلَ بِهَا رِجْلَهُ ـ يَعْنِي الْيُسْرَى ـ ثُمَّ قَالَ هَكَذَا رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَتَوَضَّأُ‏.‏",
+        en: "Narrated `Ata' bin Yasar: <br> Ibn `Abbas performed ablution and washed his face (in the following way): He ladled out a handful of water, rinsed his mouth and washed his nose with it by putting in water and then blowing it out. He then, took another handful (of water) and did like this (gesturing) joining both hands, and washed his face, took another handful of water and washed his right forearm. He again took another handful of water and washed his left forearm, and passed wet hands over his head and took another handful of water and poured it over his right foot (up to his ankles) and washed it thoroughly and similarly took another handful of water and washed thoroughly his left foot (up to the ankles) and said, \"I saw Allah's Messenger (ﷺ) performing ablution in this way.\"",
+        ur: "ہم سے محمد بن عبدالرحیم نے روایت کیا ، انھوں نے کہا مجھ کو ابوسلمہ الخزاعی منصور بن سلمہ نے خبر دی ، انھوں نے کہا ہم کو ابن بلال یعنی سلیمان نے زید بن اسلم کے واسطے سے خبر دی ، انھوں نے عطاء بن یسار سے سنا ، انھوں نے حضرت عبداللہ بن عباس رضی اللہ عنہما سے نقل کیا کہ ( ایک مرتبہ ) انھوں نے ( یعنی ابن عباس رضی اللہ عنہما نے ) وضو کیا تو اپنا چہرہ دھویا ( اس طرح کہ پہلے ) پانی کے ایک چلو سے کلی کی اور ناک میں پانی دیا ۔ پھر پانی کا ایک اور چلو لیا ، پھر اس کو اس طرح کیا ( یعنی ) دوسرے ہاتھ کو ملایا ۔ پھر اس سے اپنا چہرہ دھویا ۔ پھر پانی کا دوسرا چلو لیا اور اس سے اپنا داہنا ہاتھ دھویا ۔ پھر پانی کا ایک اور چلو لے کر اس سے اپنا بایاں ہاتھ دھویا ۔ اس کے بعد اپنے سر کا مسح کیا ۔ پھر پانی کا چلو لے کر داہنے پاؤں پر ڈالا اور اسے دھویا ۔ پھر دوسرے چلو سے اپنا پاؤں دھویا ۔ یعنی بایاں پاؤں اس کے بعد کہا کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو اسی طرح وضو کرتے ہوئے دیکھا ہے ۔",
+      },
+      {
+        id: 7,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَلِيُّ بْنُ عَبْدِ اللَّهِ، قَالَ حَدَّثَنَا جَرِيرٌ، عَنْ مَنْصُورٍ، عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ، عَنْ كُرَيْبٍ، عَنِ ابْنِ عَبَّاسٍ، يَبْلُغُ بِهِ النَّبِيَّ صلى الله عليه وسلم قَالَ ‏ \"‏ لَوْ أَنَّ أَحَدَكُمْ إِذَا أَتَى أَهْلَهُ قَالَ بِسْمِ اللَّهِ اللَّهُمَّ جَنِّبْنَا الشَّيْطَانَ وَجَنِّبِ الشَّيْطَانَ مَا رَزَقْتَنَا‏.‏ فَقُضِيَ بَيْنَهُمَا وَلَدٌ، لَمْ يَضُرَّهُ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Abbas: <br> The Prophet (ﷺ) said, \"If anyone of you on having sexual relations with his wife said (and he must say it before starting) 'In the name of Allah. O Allah! Protect us from Satan and also protect what you bestow upon us (i.e. the coming offspring) from Satan, and if it is destined that they should have a child then, Satan will never be able to harm that offspring.\"",
+        ur: "ہم سے علی بن عبداللہ نے بیان کیا ، کہا ہم سے جریر نے منصور کے واسطے سے روایت کیا ، انھوں نے سالم ابن ابی الجعد سے نقل کیا ، وہ کریب سے ، وہ ابن عباس رضی اللہ عنہما سے روایت کرتے ہیں ، وہ اس حدیث کو نبی کریم صلی اللہ علیہ وسلم تک پہنچاتے تھے کہ آپ صلی اللہ علیہ وسلم نے فرمایا ” جب تم میں سے کوئی اپنی بیوی سے جماع کرے تو کہے «بسم الله اللهم جنبنا الشيطان وجنب الشيطان ما رزقتنا‏» ” اللہ کے نام کے ساتھ شروع کرتا ہوں ۔ اے اللہ ! ہمیں شیطان سے بچا اور شیطان کو اس چیز سے دور رکھ جو تو ( اس جماع کے نتیجے میں ) ہمیں عطا فرمائے ۔ “ یہ دعا پڑھنے کے بعد ( جماع کرنے سے ) میاں بیوی کو جو اولاد ملے گی اسے شیطان نقصان نہیں پہنچا سکتا ۔",
+      },
+      {
+        id: 8,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ، قَالَ حَدَّثَنَا شُعْبَةُ، عَنْ عَبْدِ الْعَزِيزِ بْنِ صُهَيْبٍ، قَالَ سَمِعْتُ أَنَسًا، يَقُولُ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا دَخَلَ الْخَلاَءَ قَالَ ‏ \"‏ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ ‏\"‏‏.‏ تَابَعَهُ ابْنُ عَرْعَرَةَ عَنْ شُعْبَةَ‏.‏ وَقَالَ غُنْدَرٌ عَنْ شُعْبَةَ إِذَا أَتَى الْخَلاَءَ‏.‏ وَقَالَ مُوسَى عَنْ حَمَّادٍ إِذَا دَخَلَ‏.‏ وَقَالَ سَعِيدُ بْنُ زَيْدٍ حَدَّثَنَا عَبْدُ الْعَزِيزِ إِذَا أَرَادَ أَنْ يَدْخُلَ‏.‏",
+        en: "Narrated Anas: <br> Whenever the Prophet (ﷺ) went to answer the call of nature, he used to say, \"Allah-umma inni a`udhu bika minal khubuthi wal khaba'ith i.e. O Allah, I seek Refuge with You from all offensive and wicked things (evil deeds and evil spirits).",
+        ur: "ہم سے آدم نے بیان کیا ، ان سے شعبہ نے عبدالعزیز بن صہیب کے واسطے سے بیان کیا ، انھوں نے حضرت انس رضی اللہ عنہ سے سنا ، وہ کہتے تھے کہ رسول کریم صلی اللہ علیہ وسلم جب ( قضائے حاجت کے لیے ) بیت الخلاء میں داخل ہوتے تو یہ ( دعا ) پڑھتے «اللهم إني أعوذ بك من الخبث والخبائث» اے اللہ ! میں ناپاک جنوں اور ناپاک جنیوں سے تیری پناہ مانگتا ہوں ۔",
+      },
+      {
+        id: 9,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مُحَمَّدٍ، قَالَ حَدَّثَنَا هَاشِمُ بْنُ الْقَاسِمِ، قَالَ حَدَّثَنَا وَرْقَاءُ، عَنْ عُبَيْدِ اللَّهِ بْنِ أَبِي يَزِيدَ، عَنِ ابْنِ عَبَّاسٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم دَخَلَ الْخَلاَءَ، فَوَضَعْتُ لَهُ وَضُوءًا قَالَ ‏\"‏ مَنْ وَضَعَ هَذَا ‏\"‏‏.‏ فَأُخْبِرَ فَقَالَ ‏\"‏ اللَّهُمَّ فَقِّهْهُ فِي الدِّينِ ‏\"‏‏.‏",
+        en: "Narrated Ibn `Abbas: <br> Once the Prophet (ﷺ) entered a lavatory and I placed water for his ablution. He asked, \"Who placed it?\" He was informed accordingly and so he said, \"O Allah! Make him (Ibn `Abbas) a learned scholar in religion (Islam).",
+        ur: "ہم سے عبداللہ بن محمد نے بیان کیا ، کہا کہ ہم سے ہاشم ابن القاسم نے ، کہا کہ ان سے ورقاء بن یشکری نے عبیداللہ بن ابی یزید سے نقل کیا ، وہ ابن عباس رضی اللہ عنہما سے روایت کرتے ہیں کہ نبی کریم صلی اللہ علیہ وسلم بیت الخلاء میں تشریف لے گئے ۔ میں نے ( بیت الخلاء کے قریب ) آپ صلی اللہ علیہ وسلم کے لیے وضو کا پانی رکھ دیا ۔ ( باہر نکل کر ) آپ صلی اللہ علیہ وسلم نے پوچھا یہ کس نے رکھا ؟ جب آپ صلی اللہ علیہ وسلم کو بتلایا گیا تو آپ نے ( میرے لیے دعا کی اور ) فرمایا «اللهم فقهه في الدين» اے اللہ ! اس کو دین کی سمجھ عطا فرمائیو ۔",
+      },
+      {
+        id: 10,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ، قَالَ حَدَّثَنَا ابْنُ أَبِي ذِئْبٍ، قَالَ حَدَّثَنَا الزُّهْرِيُّ، عَنْ عَطَاءِ بْنِ يَزِيدَ اللَّيْثِيِّ، عَنْ أَبِي أَيُّوبَ الأَنْصَارِيِّ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ إِذَا أَتَى أَحَدُكُمُ الْغَائِطَ فَلاَ يَسْتَقْبِلِ الْقِبْلَةَ وَلاَ يُوَلِّهَا ظَهْرَهُ، شَرِّقُوا أَوْ غَرِّبُوا ‏\"‏‏.‏",
+        en: "Narrated Abu Aiyub Al-Ansari: <br> Allah's Messenger (ﷺ) said, \"If anyone of you goes to an open space for answering the call of nature he should neither face nor turn his back towards the Qibla; he should either face the east or the west.\"",
+        ur: "ہم سے آدم نے بیان کیا ، کہا کہ ہم سے ابن ابی ذئب نے ، کہا کہ ہم سے زہری نے عطاء بن یزید اللیثی کے واسطے سے نقل کیا ، وہ حضرت ابوایوب انصاری رضی اللہ عنہ سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا کہ جب تم میں سے کوئی بیت الخلاء میں جائے تو قبلہ کی طرف منہ کرے نہ اس کی طرف پشت کرے ( بلکہ ) مشرق کی طرف منہ کر لو یا مغرب کی طرف ۔",
+      },
+      {
+        id: 11,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ يَحْيَى بْنِ حَبَّانَ، عَنْ عَمِّهِ، وَاسِعِ بْنِ حَبَّانَ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، أَنَّهُ كَانَ يَقُولُ إِنَّ نَاسًا يَقُولُونَ إِذَا قَعَدْتَ عَلَى حَاجَتِكَ، فَلاَ تَسْتَقْبِلِ الْقِبْلَةَ وَلاَ بَيْتَ الْمَقْدِسِ‏.‏ فَقَالَ عَبْدُ اللَّهِ بْنُ عُمَرَ لَقَدِ ارْتَقَيْتُ يَوْمًا عَلَى ظَهْرِ بَيْتٍ لَنَا، فَرَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم عَلَى لَبِنَتَيْنِ مُسْتَقْبِلاً بَيْتَ الْمَقْدِسِ لِحَاجَتِهِ‏.‏ وَقَالَ لَعَلَّكَ مِنَ الَّذِينَ يُصَلُّونَ عَلَى أَوْرَاكِهِمْ، فَقُلْتُ لاَ أَدْرِي وَاللَّهِ‏.‏ قَالَ مَالِكٌ يَعْنِي الَّذِي يُصَلِّي وَلاَ يَرْتَفِعُ عَنِ الأَرْضِ، يَسْجُدُ وَهُوَ لاَصِقٌ بِالأَرْضِ‏.‏",
+        en: "Narrated `Abdullah bin `Umar: <br> People say, \"Whenever you sit for answering the call of nature, you should not face the Qibla or Baitul-Maqdis (Jerusalem).\" I told them. \"Once I went up the roof of our house and I saw Allah's Apostle answering the call of nature while sitting on two bricks facing Baitul-Maqdis (Jerusalem) (but there was a screen covering him. '",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، انھوں نے کہا کہ ہم کو امام مالک نے یحییٰ بن سعید سے خبر دی ۔ وہ محمد بن یحییٰ بن حبان سے ، وہ اپنے چچا واسع بن حبان سے روایت کرتے ہیں ، وہ عبداللہ بن عمر رضی اللہ عنہما سے روایت کرتے ہیں ۔ وہ فرماتے تھے کہ لوگ کہتے تھے کہ جب قضاء حاجت کے لیے بیٹھو تو نہ قبلہ کی طرف منہ کرو نہ بیت المقدس کی طرف ( یہ سن کر ) عبداللہ بن عمر رضی اللہ عنہما نے فرمایا کہ ایک دن میں اپنے گھر کی چھت پر چڑھا تو میں نے آنحضرت صلی اللہ علیہ وسلم کو دیکھا کہ آپ بیت المقدس کی طرف منہ کر کے دو اینٹوں پر قضاء حاجت کے لیے بیٹھے ہیں ۔ پھر عبداللہ بن عمر رضی اللہ عنہما نے ( واسع سے ) کہا کہ شاید تم ان لوگوں میں سے ہو جو اپنے چوتڑوں کے بل نماز پڑھتے ہیں ۔ تب میں نے کہا خدا کی قسم ! میں نہیں جانتا ( کہ آپ کا مطلب کیا ہے ) امام مالک رحمہ اللہ نے کہا کہ عبداللہ بن عمر رضی اللہ عنہما نے اس سے وہ شخص مراد لیا جو نماز میں زمین سے اونچا نہ رہے ، سجدہ میں زمین سے چمٹ جائے ۔",
+      },
+      {
+        id: 12,
+        volume: 1,
+        arabic: "حَدَّثَنَا يَحْيَى بْنُ بُكَيْرٍ، قَالَ حَدَّثَنَا اللَّيْثُ، قَالَ حَدَّثَنِي عُقَيْلٌ، عَنِ ابْنِ شِهَابٍ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ، أَنَّ أَزْوَاجَ النَّبِيِّ، صلى الله عليه وسلم كُنَّ يَخْرُجْنَ بِاللَّيْلِ إِذَا تَبَرَّزْنَ إِلَى الْمَنَاصِعِ ـ وَهُوَ صَعِيدٌ أَفْيَحُ ـ فَكَانَ عُمَرُ يَقُولُ لِلنَّبِيِّ صلى الله عليه وسلم احْجُبْ نِسَاءَكَ‏.‏ فَلَمْ يَكُنْ رَسُولُ اللَّهِ صلى الله عليه وسلم يَفْعَلُ، فَخَرَجَتْ سَوْدَةُ بِنْتُ زَمْعَةَ زَوْجُ النَّبِيِّ صلى الله عليه وسلم لَيْلَةً مِنَ اللَّيَالِي عِشَاءً، وَكَانَتِ امْرَأَةً طَوِيلَةً، فَنَادَاهَا عُمَرُ أَلاَ قَدْ عَرَفْنَاكِ يَا سَوْدَةُ‏.‏ حِرْصًا عَلَى أَنْ يَنْزِلَ الْحِجَابُ، فَأَنْزَلَ اللَّهُ آيَةَ الْحِجَابِ‏.‏",
+        en: "Narrated `Aisha: The wives of the Prophet (ﷺ) used to go to Al-Manasi, a vast open place (near Baqi` at Medina) to answer the call of nature at night. `Umar used to say to the Prophet (ﷺ) \"Let your wives be veiled,\" but Allah's Apostle did not do so. One night Sauda bint Zam`a the wife of the Prophet (ﷺ) went out at `Isha' time and she was a tall lady. `Umar addressed her and said, \"I have recognized you, O Sauda.\" He said so, as he desired eagerly that the verses of Al-Hijab (the observing of veils by the Muslim women) may be revealed. So Allah revealed the verses of \"Al-Hijab\" (A complete body cover excluding the eyes).",
+        ur: "ہم سے یحییٰ بن بکیر نے بیان کیا ، انھوں نے کہا ہم سے لیث نے بیان کیا ، ان سے عقیل نے ابن شہاب کے واسطے سے نقل کیا ، وہ عروہ بن زبیر سے ، وہ حضرت عائشہ رضی اللہ عنہا سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم کی بیویاں رات میں مناصع کی طرف قضاء حاجت کے لیے جاتیں اور مناصع ایک کھلا میدان ہے ۔ تو حضرت عمر رضی اللہ عنہ رسول اللہ صلی اللہ علیہ وسلم سے کہا کرتے تھے کہ اپنی بیویوں کو پردہ کرائیے ۔ مگر رسول اللہ صلی اللہ علیہ وسلم نے اس پر عمل نہیں کیا ۔ ایک روز رات کو عشاء کے وقت حضرت سودہ بنت زمعہ رضی اللہ عنہا ، رسول اللہ صلی اللہ علیہ وسلم کی اہلیہ جو دراز قد عورت تھیں ، ( باہر ) گئیں ۔ حضرت عمر رضی اللہ عنہ نے انہیں آواز دی ( اور کہا ) ہم نے تمہیں پہچان لیا اور ان کی خواہش یہ تھی کہ پردہ ( کا حکم ) نازل ہو جائے ۔ چنانچہ ( اس کے بعد ) اللہ نے پردہ ( کا حکم ) نازل فرما دیا ۔",
+      },
+      {
+        id: 13,
+        volume: 1,
+        arabic: "حَدَّثَنَا زَكَرِيَّاءُ، قَالَ حَدَّثَنَا أَبُو أُسَامَةَ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ قَدْ أُذِنَ أَنْ تَخْرُجْنَ فِي حَاجَتِكُنَّ ‏\"‏‏.‏ قَالَ هِشَامٌ يَعْنِي الْبَرَازَ‏.‏",
+        en: "Narrated `Aisha: <br> The Prophet (ﷺ) said to his wives, \"You are allowed to go out to answer the call of nature. \"",
+        ur: "ہم سے زکریا نے بیان کیا ، کہا کہ ہم سے ابواسامہ نے ہشام بن عروہ کے واسطے سے بیان کیا ، وہ اپنے باپ سے ، وہ عائشہ رضی اللہ عنہا سے ، وہ رسول اللہ صلی اللہ علیہ وسلم سے نقل کرتی ہیں کہ آپ صلی اللہ علیہ وسلم نے ( اپنی بیویوں سے ) فرمایا کہ تمہیں قضاء حاجت کے لیے باہر نکلنے کی اجازت ہے ۔ ہشام کہتے ہیں کہ حاجت سے مراد پاخانے کے لیے ( باہر ) جانا ہے ۔",
+      },
+      {
+        id: 14,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِبْرَاهِيمُ بْنُ الْمُنْذِرِ، قَالَ حَدَّثَنَا أَنَسُ بْنُ عِيَاضٍ، عَنْ عُبَيْدِ اللَّهِ، عَنْ مُحَمَّدِ بْنِ يَحْيَى بْنِ حَبَّانَ، عَنْ وَاسِعِ بْنِ حَبَّانَ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ ارْتَقَيْتُ فَوْقَ ظَهْرِ بَيْتِ حَفْصَةَ لِبَعْضِ حَاجَتِي، فَرَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقْضِي حَاجَتَهُ مُسْتَدْبِرَ الْقِبْلَةِ مُسْتَقْبِلَ الشَّأْمِ‏.‏",
+        en: "Narrated `Abdullah bin `Umar: <br> I went up to the roof of Hafsa's house for some job and I saw Allah's Messenger (ﷺ) answering the call of nature facing Sham (Syria, Jordan, Palestine and Lebanon regarded as one country) with his back towards the Qibla.",
+        ur: "ہم سے ابراہیم بن المنذر نے بیان کیا ، انھوں نے کہا کہ ہم سے انس بن عیاض نے عبیداللہ بن عمر کے واسطے سے بیان کیا ، وہ محمد بن یحییٰ بن حبان سے نقل کرتے ہیں ، وہ واسع بن حبان سے ، وہ عبداللہ بن عمر رضی اللہ عنہما سے روایت کرتے ہیں کہ ( ایک دن میں اپنی بہن اور رسول اللہ صلی اللہ علیہ وسلم کی اہلیہ محترمہ ) حفصہ رضی اللہ عنہا کے مکان کی چھت پر اپنی کسی ضرورت سے چڑھا ، تو مجھے رسول اللہ صلی اللہ علیہ وسلم قضاء حاجت کرتے وقت قبلہ کی طرف پشت اور شام کی طرف منہ کئے ہوئے نظر آئے ۔",
+      },
+      {
+        id: 15,
+        volume: 1,
+        arabic: "حَدَّثَنَا يَعْقُوبُ بْنُ إِبْرَاهِيمَ، قَالَ حَدَّثَنَا يَزِيدُ بْنُ هَارُونَ، قَالَ أَخْبَرَنَا يَحْيَى، عَنْ مُحَمَّدِ بْنِ يَحْيَى بْنِ حَبَّانَ، أَنَّ عَمَّهُ، وَاسِعَ بْنَ حَبَّانَ، أَخْبَرَهُ أَنَّ عَبْدَ اللَّهِ بْنَ عُمَرَ أَخْبَرَهُ قَالَ لَقَدْ ظَهَرْتُ ذَاتَ يَوْمٍ عَلَى ظَهْرِ بَيْتِنَا، فَرَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم قَاعِدًا عَلَى لَبِنَتَيْنِ مُسْتَقْبِلَ بَيْتِ الْمَقْدِسِ‏.‏",
+        en: "Narrated `Abdullah bin `Umar: <br> Once I went up the roof of our house and saw Allah's Messenger (ﷺ) answering the call of nature while sitting over two bricks facing Baitul-Maqdis (Jerusalem).",
+        ur: "ہم سے یعقوب بن ابراہیم نے بیان کیا ، انھوں نے کہا کہ ہم سے یزید بن ہارون نے بیان کیا ، انھوں نے کہا ، ہمیں یحییٰ نے محمد بن یحییٰ بن حبان سے خبر دی ، انہیں ان کے چچا واسع بن حبان نے بتلایا ، انہیں عبداللہ بن عمر رضی اللہ عنہما نے خبر دی ، وہ کہتے ہیں کہ ایک دن میں اپنے گھر کی چھت پر چڑھا ، تو مجھے رسول اللہ صلی اللہ علیہ وسلم دو اینٹوں پر ( قضاء حاجت کے وقت ) بیت المقدس کی طرف منہ کئے ہوئے نظر آئے ۔",
+      },
+      {
+        id: 16,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو الْوَلِيدِ، هِشَامُ بْنُ عَبْدِ الْمَلِكِ قَالَ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي مُعَاذٍ ـ وَاسْمُهُ عَطَاءُ بْنُ أَبِي مَيْمُونَةَ ـ قَالَ سَمِعْتُ أَنَسَ بْنَ مَالِكٍ، يَقُولُ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا خَرَجَ لِحَاجَتِهِ أَجِيءُ أَنَا وَغُلاَمٌ مَعَنَا إِدَاوَةٌ مِنْ مَاءٍ‏.‏ يَعْنِي يَسْتَنْجِي بِهِ‏.‏",
+        en: "Narrated Anas bin Malik: <br> Whenever Allah's Messenger (ﷺ) went to answer the call of nature, I along with another boy used to accompany him with a tumbler full of water. (Hisham commented, \"So that he might wash his private parts with it.)\"",
+        ur: "ہم سے ابوالولید ہشام بن عبدالملک نے بیان کیا ، ان سے شعبہ نے ابومعاذ سے جن کا نام عطاء بن ابی میمونہ تھا نقل کیا ، انھوں نے انس بن مالک رضی اللہ عنہ سے سنا ، وہ کہتے تھے کہ جب رسول اللہ صلی اللہ علیہ وسلم رفع حاجت کے لیے نکلتے تو میں اور ایک لڑکا اپنے ساتھ پانی کا برتن لے آتے تھے ۔ مطلب یہ ہے کہ اس پانی سے رسول اللہ صلی اللہ علیہ وسلم طہارت کیا کرتے تھے ۔",
+      },
+      {
+        id: 17,
+        volume: 1,
+        arabic: "حَدَّثَنَا سُلَيْمَانُ بْنُ حَرْبٍ، قَالَ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي مُعَاذٍ ـ هُوَ عَطَاءُ بْنُ أَبِي مَيْمُونَةَ ـ قَالَ سَمِعْتُ أَنَسًا، يَقُولُ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم إِذَا خَرَجَ لِحَاجَتِهِ تَبِعْتُهُ أَنَا وَغُلاَمٌ مِنَّا مَعَنَا إِدَاوَةٌ مِنْ مَاءٍ‏.‏",
+        en: "Narrated Anas: <br> Whenever Allah's Messenger (ﷺ) went to answer the call of nature, I along with another boy from us used to go behind him with a tumbler full of water.",
+        ur: "ہم سے سلیمان بن حرب نے بیان کیا ، انھوں نے کہا ہم سے شعبہ نے بیان کیا ، وہ عطاء بن ابی میمونہ سے نقل کرتے ہیں ، انھوں نے انس رضی اللہ عنہ سے سنا ، وہ کہتے ہیں کہ جب نبی کریم صلی اللہ علیہ وسلم قضاء حاجت کے لیے نکلتے ، میں اور ایک لڑکا دونوں آپ صلی اللہ علیہ وسلم کے پیچھے جاتے تھے اور ہمارے ساتھ پانی کا ایک برتن ہوتا تھا ۔",
+      },
+      {
+        id: 18,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ حَدَّثَنَا شُعْبَةُ، عَنْ عَطَاءِ بْنِ أَبِي مَيْمُونَةَ، سَمِعَ أَنَسَ بْنَ مَالِكٍ، يَقُولُ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يَدْخُلُ الْخَلاَءَ، فَأَحْمِلُ أَنَا وَغُلاَمٌ إِدَاوَةً مِنْ مَاءٍ، وَعَنَزَةً، يَسْتَنْجِي بِالْمَاءِ‏.‏ تَابَعَهُ النَّضْرُ وَشَاذَانُ عَنْ شُعْبَةَ‏.‏ الْعَنَزَةُ عَصًا عَلَيْهِ زُجٌّ‏.‏",
+        en: "Narrated Anas bin Malik: <br> Whenever Allah's Messenger (ﷺ) went to answer the call of nature, I along with another boy used to carry a tumbler full of water (for cleaning the private parts) and a short spear (or stick).",
+        ur: "ہم سے محمد بن بشار نے بیان کیا ، ان سے محمد بن جعفر نے ، ان سے شعبہ نے عطاء بن ابی میمونہ کے واسطے سے بیان کیا ، انھوں نے انس بن مالک سے سنا ، وہ کہتے تھے کہ رسول اللہ صلی اللہ علیہ وسلم بیت الخلاء میں جاتے تو میں اور ایک لڑکا پانی کا برتن اور نیزہ لے کر چلتے تھے ۔ پانی سے آپ طہارت کرتے تھے ، ( دوسری سند سے ) نضر اور شاذان نے اس حدیث کی شعبہ سے متابعت کی ہے ۔ عنزہ لاٹھی کو کہتے ہیں جس پر پھلکا لگا ہوا ہو ۔",
+      },
+      {
+        id: 19,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُعَاذُ بْنُ فَضَالَةَ، قَالَ حَدَّثَنَا هِشَامٌ ـ هُوَ الدَّسْتَوَائِيُّ ـ عَنْ يَحْيَى بْنِ أَبِي كَثِيرٍ، عَنْ عَبْدِ اللَّهِ بْنِ أَبِي قَتَادَةَ، عَنْ أَبِيهِ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ إِذَا شَرِبَ أَحَدُكُمْ فَلاَ يَتَنَفَّسْ فِي الإِنَاءِ، وَإِذَا أَتَى الْخَلاَءَ فَلاَ يَمَسَّ ذَكَرَهُ بِيَمِينِهِ، وَلاَ يَتَمَسَّحْ بِيَمِينِهِ ‏\"‏‏.‏",
+        en: "Narrated Abu Qatada: <br> Allah's Messenger (ﷺ) said, \"Whenever anyone of you drinks water, he should not breathe in the drinking utensil, and whenever anyone of you goes to a lavatory, he should neither touch his penis nor clean his private parts with his right hand.\"",
+        ur: "ہم سے معاذ بن فضالہ نے بیان کیا ، انھوں نے کہا کہ ہم سے ہشام دستوائی نے یحییٰ بن ابی کثیر کے واسطے سے بیان کیا ، وہ عبداللہ بن ابی قتادہ سے ، وہ اپنے باپ ابوقتادہ رضی اللہ عنہ سے روایت کرتے ہیں ۔ وہ کہتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا ، جب تم میں سے کوئی پانی پئے تو برتن میں سانس نہ لے اور جب بیت الخلاء میں جائے تو اپنی شرمگاہ کو داہنے ہاتھ سے نہ چھوئے اور نہ داہنے ہاتھ سے استنجاء کرے ۔",
+      },
+      {
+        id: 20,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ يُوسُفَ، قَالَ حَدَّثَنَا الأَوْزَاعِيُّ، عَنْ يَحْيَى بْنِ أَبِي كَثِيرٍ، عَنْ عَبْدِ اللَّهِ بْنِ أَبِي قَتَادَةَ، عَنْ أَبِيهِ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ إِذَا بَالَ أَحَدُكُمْ فَلاَ يَأْخُذَنَّ ذَكَرَهُ بِيَمِينِهِ، وَلاَ يَسْتَنْجِي بِيَمِينِهِ، وَلاَ يَتَنَفَّسْ فِي الإِنَاءِ ‏\"‏‏.‏",
+        en: "Narrated Abu Qatada: <br> The Prophet (ﷺ) said, \"Whenever anyone of you makes water he should not hold his penis or clean his private parts with his right hand. (And while drinking) one should not breathe in the drinking utensil .\"",
+        ur: "ہم سے محمد بن یوسف نے بیان کیا ، کہا ہم سے اوزاعی نے یحییٰ بن کثیر کے واسطے سے بیان کیا ، وہ عبداللہ بن ابی قتادہ کے واسطے سے بیان کرتے ہیں ، وہ اپنے باپ سے روایت کرتے ہیں ، وہ نبی کریم صلی اللہ علیہ وسلم سے کہ آپ صلی اللہ علیہ وسلم نے فرمایا جب تم میں سے کوئی پیشاب کرے تو اپنا عضو اپنے داہنے ہاتھ سے نہ پکڑے ، نہ داہنے ہاتھ سے طہارت کرے ، نہ ( پانی پیتے وقت ) برتن میں سانس لے ۔",
+      },
+      {
+        id: 21,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَحْمَدُ بْنُ مُحَمَّدٍ الْمَكِّيُّ، قَالَ حَدَّثَنَا عَمْرُو بْنُ يَحْيَى بْنِ سَعِيدِ بْنِ عَمْرٍو الْمَكِّيُّ، عَنْ جَدِّهِ، عَنْ أَبِي هُرَيْرَةَ، قَالَ اتَّبَعْتُ النَّبِيَّ صلى الله عليه وسلم وَخَرَجَ لِحَاجَتِهِ، فَكَانَ لاَ يَلْتَفِتُ فَدَنَوْتُ مِنْهُ فَقَالَ ‏ \"‏ ابْغِنِي أَحْجَارًا أَسْتَنْفِضْ بِهَا ـ أَوْ نَحْوَهُ ـ وَلاَ تَأْتِنِي بِعَظْمٍ وَلاَ رَوْثٍ ‏\"‏‏.‏ فَأَتَيْتُهُ بِأَحْجَارٍ بِطَرَفِ ثِيَابِي فَوَضَعْتُهَا إِلَى جَنْبِهِ وَأَعْرَضْتُ عَنْهُ، فَلَمَّا قَضَى أَتْبَعَهُ بِهِنَّ‏.‏",
+        en: "Narrated Abu Huraira: <br> I followed the Prophet (ﷺ) while he was going out to answer the call of nature. He used not to look this way or that. So, when I approached near him he said to me, \"Fetch for me some stones for ' cleaning the privates parts (or said something similar), and do not bring a bone or a piece of dung.\" So I brought the stones in the corner of my garment and placed them by his side and I then went away from him. When he finished (from answering the call of nature) he used, them .",
+        ur: "ہم سے احمد بن محمد المکی نے بیان کیا ، کہا کہ ہم سے عمرو بن یحییٰ بن سعید بن عمرو المکی نے اپنے دادا کے واسطے سے بیان کیا ۔ وہ ابوہریرہ رضی اللہ عنہ سے نقل کرتے ہیں ، وہ کہتے ہیں کہ رسول کریم صلی اللہ علیہ وسلم ( ایک مرتبہ ) رفع حاجت کے لیے تشریف لے گئے ۔ آپ صلی اللہ علیہ وسلم کی عادت مبارکہ تھی کہ آپ صلی اللہ علیہ وسلم ( چلتے وقت ) ادھر ادھر نہیں دیکھا کرتے تھے ۔ تو میں بھی آپ صلی اللہ علیہ وسلم کے پیچھے پیچھے آپ صلی اللہ علیہ وسلم کے قریب پہنچ گیا ۔ ( مجھے دیکھ کر ) آپ صلی اللہ علیہ وسلم نے فرمایا کہ مجھے پتھر ڈھونڈ دو ، تاکہ میں ان سے پاکی حاصل کروں ، یا اسی جیسا ( کوئی لفظ ) فرمایا اور فرمایا کہ ہڈی اور گوبر نہ لانا ۔ چنانچہ میں اپنے دامن میں پتھر ( بھر کر ) آپ صلی اللہ علیہ وسلم کے پاس لے گیا اور آپ صلی اللہ علیہ وسلم کے پہلو میں رکھ دئیے اور آپ صلی اللہ علیہ وسلم کے پاس سے ہٹ گیا ، جب آپ صلی اللہ علیہ وسلم ( قضاء حاجت سے ) فارغ ہوئے تو آپ صلی اللہ علیہ وسلم نے پتھروں سے استنجاء کیا ۔",
+      },
+      {
+        id: 22,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو نُعَيْمٍ، قَالَ حَدَّثَنَا زُهَيْرٌ، عَنْ أَبِي إِسْحَاقَ، قَالَ لَيْسَ أَبُو عُبَيْدَةَ ذَكَرَهُ وَلَكِنْ عَبْدُ الرَّحْمَنِ بْنُ الأَسْوَدِ عَنْ أَبِيهِ، أَنَّهُ سَمِعَ عَبْدَ اللَّهِ، يَقُولُ أَتَى النَّبِيُّ صلى الله عليه وسلم الْغَائِطَ، فَأَمَرَنِي أَنْ آتِيَهُ بِثَلاَثَةِ أَحْجَارٍ، فَوَجَدْتُ حَجَرَيْنِ، وَالْتَمَسْتُ الثَّالِثَ فَلَمْ أَجِدْهُ، فَأَخَذْتُ رَوْثَةً، فَأَتَيْتُهُ بِهَا، فَأَخَذَ الْحَجَرَيْنِ وَأَلْقَى الرَّوْثَةَ وَقَالَ ‏ \"‏ هَذَا رِكْسٌ ‏\"‏‏.‏ وَقَالَ إِبْرَاهِيمُ بْنُ يُوسُفَ عَنْ أَبِيهِ عَنْ أَبِي إِسْحَاقَ حَدَّثَنِي عَبْدُ الرَّحْمَنِ‏.‏",
+        en: "Narrated `Abdullah: <br> The Prophet (ﷺ) went out to answer the call of nature and asked me to bring three stones. I found two stones and searched for the third but could not find it. So took a dried piece of dung and brought it to him. He took the two stones and threw away the dung and said, \"This is a filthy thing.\"",
+        ur: "ہم سے ابونعیم نے بیان کیا ، کہا ہم سے زہیر نے ابواسحاق کے واسطے سے نقل کیا ، ابواسحاق کہتے ہیں کہ اس حدیث کو ابوعبیدہ نے ذکر نہیں کیا ۔ لیکن عبدالرحمٰن بن الاسود نے اپنے باپ سے ذکر کیا ، انھوں نے عبداللہ بن مسعود رضی اللہ عنہما سے سنا ، وہ کہتے تھے کہ نبی کریم صلی اللہ علیہ وسلم رفع حاجت کے لیے گئے ۔ تو آپ صلی اللہ علیہ وسلم نے مجھے فرمایا کہ میں تین پتھر تلاش کر کے آپ کے پاس لاؤں ۔ لیکن مجھے دو پتھر ملے ۔ تیسرا ڈھونڈا مگر مل نہ سکا ۔ تو میں نے خشک گوبر اٹھا لیا ۔ اس کو لے کر آپ صلی اللہ علیہ وسلم کے پاس آ گیا ۔ آپ صلی اللہ علیہ وسلم نے پتھر ( تو ) لے لیے ( مگر ) گوبر پھینک دیا اور فرمایا یہ خود ناپاک ہے ۔ ( اور یہ حدیث ) ابراہم بن یوسف نے اپنے باپ سے بیان کی ۔ انھوں نے ابواسحاق سے سنا ، ان سے عبدالرحمٰن نے بیان کیا ۔",
+      },
+      {
+        id: 23,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ يُوسُفَ، قَالَ حَدَّثَنَا سُفْيَانُ، عَنْ زَيْدِ بْنِ أَسْلَمَ، عَنْ عَطَاءِ بْنِ يَسَارٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ تَوَضَّأَ النَّبِيُّ صلى الله عليه وسلم مَرَّةً مَرَّةً‏.‏",
+        en: "Narrated Ibn `Abbas: <br> The Prophet (ﷺ) performed ablution by washing the body parts only once.",
+        ur: "ہم سے محمد بن یوسف نے بیان کیا ، ان سے سفیان نے زید بن اسلم کے واسطے سے بیان کیا ، وہ عطاء بن یسار سے ، وہ ابن عباس رضی اللہ عنہما سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے وضو میں ہر عضو کو ایک ایک مرتبہ دھویا ۔",
+      },
+      {
+        id: 24,
+        volume: 1,
+        arabic: "حَدَّثَنَا حُسَيْنُ بْنُ عِيسَى، قَالَ حَدَّثَنَا يُونُسُ بْنُ مُحَمَّدٍ، قَالَ حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ، عَنْ عَبْدِ اللَّهِ بْنِ أَبِي بَكْرِ بْنِ عَمْرِو بْنِ حَزْمٍ، عَنْ عَبَّادِ بْنِ تَمِيمٍ، عَنْ عَبْدِ اللَّهِ بْنِ زَيْدٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم تَوَضَّأَ مَرَّتَيْنِ مَرَّتَيْنِ‏.‏",
+        en: "Narrated `Abdullah bin Zaid: <br> The Prophet (ﷺ) performed ablution by washing the body parts twice.",
+        ur: "ہم سے حسین بن عیسیٰ نے بیان کیا ، انھوں نے کہا ہم سے یونس بن محمد نے بیان کیا ، انھوں نے کہا ہم سے فلیح بن سلیمان نے عبداللہ بن ابی بکر بن محمد بن عمرو بن حزم کے واسطے سے بیان کیا ، وہ عباد بن تمیم سے نقل کرتے ہیں ، وہ عبداللہ بن زید رضی اللہ عنہ کے واسطے سے بیان کرتے ہیں کہ نبی کریم صلی اللہ علیہ وسلم نے وضو میں اعضاء کو دو دو بار دھویا ۔",
+      },
+      {
+        id: 25,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ عَبْدِ اللَّهِ الأُوَيْسِيُّ، قَالَ حَدَّثَنِي إِبْرَاهِيمُ بْنُ سَعْدٍ، عَنِ ابْنِ شِهَابٍ، أَنَّ عَطَاءَ بْنَ يَزِيدَ، أَخْبَرَهُ أَنَّ حُمْرَانَ مَوْلَى عُثْمَانَ أَخْبَرَهُ أَنَّهُ، رَأَى عُثْمَانَ بْنَ عَفَّانَ دَعَا بِإِنَاءٍ، فَأَفْرَغَ عَلَى كَفَّيْهِ ثَلاَثَ مِرَارٍ فَغَسَلَهُمَا، ثُمَّ أَدْخَلَ يَمِينَهُ فِي الإِنَاءِ فَمَضْمَضَ، وَاسْتَنْشَقَ، ثُمَّ غَسَلَ وَجْهَهُ ثَلاَثًا، وَيَدَيْهِ إِلَى الْمِرْفَقَيْنِ ثَلاَثَ مِرَارٍ، ثُمَّ مَسَحَ بِرَأْسِهِ، ثُمَّ غَسَلَ رِجْلَيْهِ ثَلاَثَ مِرَارٍ إِلَى الْكَعْبَيْنِ، ثُمَّ قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ مَنْ تَوَضَّأَ نَحْوَ وُضُوئِي هَذَا، ثُمَّ صَلَّى رَكْعَتَيْنِ، لاَ يُحَدِّثُ فِيهِمَا نَفْسَهُ، غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ ‏\"‏‏.‏",
+        en: "Narrated Humran: <br> (the slave of 'Uthman) I saw 'Uthman bin 'Affan asking for a tumbler of water (and when it was brought) he poured water over his hands and washed them thrice and then put his right hand in the water container and rinsed his mouth, washed his nose by putting water in it and then blowing it out. then he washed his face and forearms up to the elbows thrice, passed his wet hands over his head and washed his feet up to the ankles thrice. Then he said, \"Allah's Messenger (ﷺ) said 'If anyone performs ablution like that of mine and offers a two-rak'at prayer during which he does not think of anything else (not related to the present prayer) then his past sins will be forgiven.' \"",
+        ur: "ہم سے عبدالعزیز بن عبداللہ الاویسی نے بیان کیا ، انھوں نے کہا مجھ سے ابراہیم بن سعد نے بیان کیا ، وہ ابن شہاب سے نقل کرتے ہیں ، انہیں عطاء بن یزید نے خبر دی ، انہیں حمران حضرت عثمان کے مولیٰ نے خبر دی کہ انھوں نے حضرت عثمان بن عفان رضی اللہ عنہ کو دیکھا ، انھوں نے ( حمران سے ) پانی کا برتن مانگا ۔ ( اور لے کر پہلے ) اپنی ہتھیلیوں پر تین مرتبہ پانی ڈالا پھر انہیں دھویا ۔ اس کے بعد اپنا داہنا ہاتھ برتن میں ڈالا ۔ اور ( پانی لے کر ) کلی کی اور ناک صاف کی ، پھر تین بار اپنا چہرہ دھویا اور کہنیوں تک تین بار دونوں ہاتھ دھوئے پھر اپنے سر کا مسح کیا پھر ( پانی لے کر ) ٹخنوں تک تین مرتبہ اپنے دونوں پاؤں دھوئے ۔ پھر کہا کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا ہے کہ جو شخص میری طرح ایسا وضو کرے ، پھر دو رکعت پڑھے ، جس میں اپنے نفس سے کوئی بات نہ کرے ۔ تو اس کے گذشتہ گناہ معاف کر دئیے جاتے ہیں ۔",
+      },
+      {
+        id: 26,
+        volume: 1,
+        arabic: "وَعَنْ إِبْرَاهِيمَ، قَالَ قَالَ صَالِحُ بْنُ كَيْسَانَ قَالَ ابْنُ شِهَابٍ وَلَكِنْ عُرْوَةُ يُحَدِّثُ عَنْ حُمْرَانَ،، فَلَمَّا تَوَضَّأَ عُثْمَانُ قَالَ أَلاَ أُحَدِّثُكُمْ حَدِيثًا لَوْلاَ آيَةٌ مَا حَدَّثْتُكُمُوهُ، سَمِعْتُ النَّبِيَّ صلى الله عليه وسلم يَقُولُ ‏\"‏ لاَ يَتَوَضَّأُ رَجُلٌ فَيُحْسِنُ وُضُوءَهُ، وَيُصَلِّي الصَّلاَةَ إِلاَّ غُفِرَ لَهُ مَا بَيْنَهُ وَبَيْنَ الصَّلاَةِ حَتَّى يُصَلِّيَهَا \"‏‏.‏ قَالَ عُرْوَةُ الآيَةُ ‏{‏إِنَّ الَّذِينَ يَكْتُمُونَ مَا أَنْزَلْنَا مِنَ الْبَيِّنَاتِ‏}‏‏.‏",
+        en: "After performing the ablution 'Uthman said, \"I am going to tell you a Hadith which I would not have told you, had I not been compelled by a certain Holy Verse (the sub narrator 'Urwa said: <br> This verse is: \"Verily, those who conceal the clear signs and the guidance which we have sent down...)\" (2:159). I heard the Prophet (ﷺ) saying, 'If a man performs ablution perfectly and then offers the compulsory congregational prayer, Allah will forgive his sins committed between that (prayer) and the (next) prayer till he offers it.",
+        ur: "اور روایت کی عبدالعزیز نے ابراہیم سے ، انھوں نے صالح بن کیسان سے ، انھوں نے ابن شہاب سے ، لیکن عروہ حمران سے روایت کرتے ہیں کہ جب حضرت عثمان رضی اللہ عنہ نے وضو کیا تو فرمایا میں تم کو ایک حدیث سناتا ہوں ، اگر قرآن پاک کی ایک آیت ( نازل ) نہ ہوتی تو میں یہ حدیث تم کو نہ سناتا ۔ میں نے رسول اللہ صلی اللہ علیہ وسلم سے سنا ہے کہ آپ صلی اللہ علیہ وسلم فرماتے تھے کہ جب بھی کوئی شخص اچھی طرح وضو کرتا ہے اور ( خلوص کے ساتھ ) نماز پڑھتا ہے تو اس کے ایک نماز سے دوسری نماز کے پڑھنے تک کے گناہ معاف کر دئیے جاتے ہیں ۔ عروہ کہتے ہیں وہ آیت یہ ہے «إن الذين يكتمون ما أنزلنا من البينات‏» ( جس کا ترجمہ یہ ہے کہ ) جو لوگ اللہ کی اس نازل کی ہوئی ہدایت کو چھپاتے ہیں جو اس نے لوگوں کے لیے اپنی کتاب میں بیان کی ہے ۔ ان پر اللہ کی لعنت ہے اور ( دوسرے ) لعنت کرنے والوں کی لعنت ہے ۔",
+      },
+      {
+        id: 27,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدَانُ، قَالَ أَخْبَرَنَا عَبْدُ اللَّهِ، قَالَ أَخْبَرَنَا يُونُسُ، عَنِ الزُّهْرِيِّ، قَالَ أَخْبَرَنِي أَبُو إِدْرِيسَ، أَنَّهُ سَمِعَ أَبَا هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم أَنَّهُ قَالَ ‏ \"‏ مَنْ تَوَضَّأَ فَلْيَسْتَنْثِرْ، وَمَنِ اسْتَجْمَرَ فَلْيُوتِرْ ‏\"‏‏.‏",
+        en: "Narrated Abu Huraira: <br> The Prophet (ﷺ) said, \"Whoever performs ablution should clean his nose with water by putting the water in it and then blowing it out, and whoever cleans his private parts with stones should do it with odd number of stones.\"",
+        ur: "ہم سے عبدان نے بیان کیا ، کہا انہیں یونس نے زہری کے واسطے سے خبر دی ، کہا انہیں ابوادریس نے بتایا ، انھوں نے ابوہریرہ رضی اللہ عنہ سے سنا ، وہ نبی کریم صلی اللہ علیہ وسلم سے نقل کرتے ہیں کہ آپ صلی اللہ علیہ وسلم نے فرمایا جو شخص وضو کرے اسے چاہیے کہ ناک صاف کرے اور جو پتھر سے استنجاء کرے اسے چاہیے کہ طاق عدد ( یعنی ایک یا تین یا پانچ ہی ) سے کرے ۔",
+      },
+      {
+        id: 28,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ أَبِي الزِّنَادِ، عَنِ الأَعْرَجِ، عَنْ أَبِي هُرَيْرَةَ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ ‏ \"‏ إِذَا تَوَضَّأَ أَحَدُكُمْ فَلْيَجْعَلْ فِي أَنْفِهِ ثُمَّ لِيَنْثُرْ، وَمَنِ اسْتَجْمَرَ فَلْيُوتِرْ، وَإِذَا اسْتَيْقَظَ أَحَدُكُمْ مِنْ نَوْمِهِ فَلْيَغْسِلْ يَدَهُ قَبْلَ أَنْ يُدْخِلَهَا فِي وَضُوئِهِ، فَإِنَّ أَحَدَكُمْ لاَ يَدْرِي أَيْنَ بَاتَتْ يَدُهُ ‏\"‏‏.‏",
+        en: "Narrated Abu Huraira: <br> Allah's Messenger (ﷺ) said, \"If anyone of you performs ablution he should put water in his nose and then blow it out and whoever cleans his private parts with stones should do so with odd numbers. And whoever wakes up from his sleep should wash his hands before putting them in the water for ablution, because nobody knows where his hands were during sleep.\"",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، کہا ہم کو مالک نے ابوالزناد کے واسطے سے خبر دی ، وہ اعرج سے ، وہ ابوہریرہ رضی اللہ عنہ سے نقل کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا کہ جب تم میں سے کوئی وضو کرے تو اسے چاہیے کہ اپنی ناک میں پانی دے پھر ( اسے ) صاف کرے اور جو شخص پتھروں سے استنجاء کرے اسے چاہیے کہ بے جوڑ عدد ( یعنی ایک یا تین ) سے استنجاء کرے اور جب تم میں سے کوئی سو کر اٹھے ، تو وضو کے پانی میں ہاتھ ڈالنے سے پہلے اسے دھو لے ۔ کیونکہ تم میں سے کوئی نہیں جانتا کہ رات کو اس کا ہاتھ کہاں رہا ہے ۔",
+      },
+      {
+        id: 29,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُوسَى، قَالَ حَدَّثَنَا أَبُو عَوَانَةَ، عَنْ أَبِي بِشْرٍ، عَنْ يُوسُفَ بْنِ مَاهَكَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، قَالَ تَخَلَّفَ النَّبِيُّ صلى الله عليه وسلم عَنَّا فِي سَفْرَةٍ سَافَرْنَاهَا، فَأَدْرَكَنَا وَقَدْ أَرْهَقْنَا الْعَصْرَ، فَجَعَلْنَا نَتَوَضَّأُ وَنَمْسَحُ عَلَى أَرْجُلِنَا، فَنَادَى بِأَعْلَى صَوْتِهِ ‏ \"‏ وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ ‏\"‏‏.‏ مَرَّتَيْنِ أَوْ ثَلاَثًا‏.‏",
+        en: "Narrated `Abdullah bin `Amr: <br> The Prophet (ﷺ) remained behind us on a journey. He joined us while we were performing ablution for the `Asr prayer which was overdue and we were just passing wet hands over our feet (not washing them thoroughly) so he addressed us in a loud voice saying twice , \"Save your heels from the fire.\"",
+        ur: "ہم سے موسیٰ نے بیان کیا ، ان سے ابوعوانہ نے ، وہ ابوبشر سے ، وہ یوسف بن ماہک سے ، وہ عبداللہ بن عمرو رضی اللہ عنہما سے روایت کرتے ہیں ، وہ کہتے ہیں کہ ( ایک مرتبہ ) رسول اللہ صلی اللہ علیہ وسلم ایک سفر میں ہم سے پیچھے رہ گئے ۔ پھر ( تھوڑی دیر بعد ) آپ صلی اللہ علیہ وسلم نے ہم کو پا لیا اور عصر کا وقت آ پہنچا تھا ۔ ہم وضو کرنے لگے اور ( اچھی طرح پاؤں دھونے کی بجائے جلدی میں ) ہم پاؤں پر مسح کرنے لگے ۔ آپ صلی اللہ علیہ وسلم نے فرمایا «ويل للأعقاب من النار» ’’ ایڑیوں کے لیے آگ کا عذاب ہے ‘‘ دو مرتبہ یا تین مرتبہ فرمایا ۔",
+      },
+      {
+        id: 30,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو الْيَمَانِ، قَالَ أَخْبَرَنَا شُعَيْبٌ، عَنِ الزُّهْرِيِّ، قَالَ أَخْبَرَنِي عَطَاءُ بْنُ يَزِيدَ، عَنْ حُمْرَانَ، مَوْلَى عُثْمَانَ بْنِ عَفَّانَ أَنَّهُ رَأَى عُثْمَانَ دَعَا بِوَضُوءٍ، فَأَفْرَغَ عَلَى يَدَيْهِ مِنْ إِنَائِهِ، فَغَسَلَهُمَا ثَلاَثَ مَرَّاتٍ، ثُمَّ أَدْخَلَ يَمِينَهُ فِي الْوَضُوءِ، ثُمَّ تَمَضْمَضَ، وَاسْتَنْشَقَ، وَاسْتَنْثَرَ، ثُمَّ غَسَلَ وَجْهَهُ ثَلاَثًا وَيَدَيْهِ إِلَى الْمِرْفَقَيْنِ ثَلاَثًا، ثُمَّ مَسَحَ بِرَأْسِهِ، ثُمَّ غَسَلَ كُلَّ رِجْلٍ ثَلاَثًا، ثُمَّ قَالَ رَأَيْتُ النَّبِيَّ صلى الله عليه وسلم يَتَوَضَّأُ نَحْوَ وُضُوئِي هَذَا وَقَالَ ‏ \"‏ مَنْ تَوَضَّأَ نَحْوَ وُضُوئِي هَذَا ثُمَّ صَلَّى رَكْعَتَيْنِ، لاَ يُحَدِّثُ فِيهِمَا نَفْسَهُ، غَفَرَ اللَّهُ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ ‏\"‏‏.‏",
+        en: "Narrated Humran: <br> (the freed slave of `Uthman bin `Affan) I saw `Uthman bin `Affan asking (for a tumbler of water) to perform ablution (and when it was brought) he poured water from it over his hands and washed them thrice and then put his right hand in the water container and rinsed his mouth and washed his nose by putting water in it and then blowing it out. Then he washed his face thrice and (then) forearms up to the elbows thrice, then passed his wet hands over his head and then washed each foot thrice. After that `Uthman said, \"I saw the Prophet (ﷺ) performing ablution like this of mine, and he said, 'If anyone performs ablution like that of mine and offers a two-rak`at prayer during which he does not think of anything else (not related to the present prayer) then his past sins will be forgiven. '",
+        ur: "ہم سے ابوالیمان نے بیان کیا ، کہا ہم کو شعیب نے زہری کے واسطے سے خبر دی ، کہا ہم کو عطاء بن یزید نے حمران مولیٰ عثمان بن عفان رضی اللہ عنہ کے واسطے سے خبر دی ، انھوں نے حضرت عثمان رضی اللہ عنہ کو دیکھا کہ انھوں نے وضو کا پانی منگوایا اور اپنے دونوں ہاتھوں پر برتن سے پانی ( لے کر ) ڈالا ۔ پھر دونوں ہاتھوں کو تین دفعہ دھویا ۔ پھر اپنا داہنا ہاتھ وضو کر کے پانی میں ڈالا ۔ پھر کلی کی ، پھر ناک میں پانی دیا ، پھر ناک صاف کی ۔ پھر تین دفعہ اپنا منہ دھویا اور کہنیوں تک تین دفعہ ہاتھ دھوئے ، پھر اپنے سر کا مسح کیا ۔ پھر ہر ایک پاؤں تین دفعہ دھویا ۔ پھر فرمایا میں نے رسول اللہ صلی اللہ علیہ وسلم کو دیکھا کہ آپ میرے اس وضو جیسا وضو فرمایا کرتے تھے اور آپ صلی اللہ علیہ وسلم نے فرمایا کہ جو شخص میرے اس وضو جیسا وضو کرے اور ( حضور قلب سے ) دو رکعت پڑھے جس میں اپنے دل سے باتیں نہ کرے ۔ تو اللہ تعالیٰ اس کے پچھلے گناہ معاف کر دیتا ہے ۔",
+      },
+      {
+        id: 31,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ بْنُ أَبِي إِيَاسٍ، قَالَ حَدَّثَنَا شُعْبَةُ، قَالَ حَدَّثَنَا مُحَمَّدُ بْنُ زِيَادٍ، قَالَ سَمِعْتُ أَبَا هُرَيْرَةَ ـ وَكَانَ يَمُرُّ بِنَا وَالنَّاسُ يَتَوَضَّئُونَ مِنَ الْمِطْهَرَةِ ـ قَالَ أَسْبِغُوا الْوُضُوءَ فَإِنَّ أَبَا الْقَاسِمِ صلى الله عليه وسلم قَالَ ‏ \"‏ وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ ‏\"‏‏.‏",
+        en: "Narrated Muhammad Ibn Ziyad: <br> I heard Abu Huraira saying as he passed by us while the people were performing ablution from a utensil containing water, \"Perform ablution perfectly and thoroughly for Abul-Qasim (the Prophet) said, 'Save your heels from the Hell-fire.' \"",
+        ur: "ہم سے آدم بن ابی ایاس نے بیان کیا ، انھوں نے کہا ہم سے شعبہ نے بیان کیا ، انھوں نے کہا ہم سے محمد بن زیاد نے بیان کیا ، وہ کہتے ہیں کہ میں نے ابوہریرہ رضی اللہ عنہ سے سنا وہ ہمارے پاس سے گزرے اور لوگ لوٹے سے وضو کر رہے تھے ۔ آپ نے کہا اچھی طرح وضو کرو کیونکہ ابوالقاسم صلی اللہ علیہ وسلم نے فرمایا ( خشک ) ایڑیوں کے لیے آگ کا عذاب ہے ۔",
+      },
+      {
+        id: 32,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ سَعِيدٍ الْمَقْبُرِيِّ، عَنْ عُبَيْدِ بْنِ جُرَيْجٍ، أَنَّهُ قَالَ لِعَبْدِ اللَّهِ بْنِ عُمَرَ يَا أَبَا عَبْدِ الرَّحْمَنِ، رَأَيْتُكَ تَصْنَعُ أَرْبَعًا لَمْ أَرَ أَحَدًا مِنْ أَصْحَابِكَ يَصْنَعُهَا‏.‏ قَالَ وَمَا هِيَ يَا ابْنَ جُرَيْجٍ قَالَ رَأَيْتُكَ لاَ تَمَسُّ مِنَ الأَرْكَانِ إِلاَّ الْيَمَانِيَيْنِ، وَرَأَيْتُكَ تَلْبَسُ النِّعَالَ السِّبْتِيَّةَ، وَرَأَيْتُكَ تَصْبُغُ بِالصُّفْرَةِ، وَرَأَيْتُكَ إِذَا كُنْتَ بِمَكَّةَ أَهَلَّ النَّاسُ إِذَا رَأَوُا الْهِلاَلَ وَلَمْ تُهِلَّ أَنْتَ حَتَّى كَانَ يَوْمُ التَّرْوِيَةِ‏.‏ قَالَ عَبْدُ اللَّهِ أَمَّا الأَرْكَانُ فَإِنِّي لَمْ أَرَ رَسُولَ اللَّهِ صلى الله عليه وسلم يَمَسُّ إِلاَّ الْيَمَانِيَيْنِ، وَأَمَّا النِّعَالُ السِّبْتِيَّةُ فَإِنِّي رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَلْبَسُ النَّعْلَ الَّتِي لَيْسَ فِيهَا شَعَرٌ وَيَتَوَضَّأُ فِيهَا، فَأَنَا أُحِبُّ أَنْ أَلْبَسَهَا، وَأَمَّا الصُّفْرَةُ فَإِنِّي رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَصْبُغُ بِهَا، فَأَنَا أُحِبُّ أَنْ أَصْبُغَ بِهَا، وَأَمَّا الإِهْلاَلُ فَإِنِّي لَمْ أَرَ رَسُولَ اللَّهِ صلى الله عليه وسلم يُهِلُّ حَتَّى تَنْبَعِثَ بِهِ رَاحِلَتُهُ‏.‏",
+        en: "Narrated `Ubaid Ibn Juraij: <br> I asked `Abdullah bin `Umar, \"O Abu `Abdur-Rahman! I saw you doing four things which I never saw being done by anyone of you companions?\" `Abdullah bin `Umar said, \"What are those, O Ibn Juraij?\" I said, \"I never saw you touching any corner of the Ka`ba except these (two) facing south (Yemen) and I saw you wearing shoes made of tanned leather and dyeing your hair with Hinna (a kind of red dye). I also noticed that whenever you were in Mecca, the people assume Ihram on seeing the new moon crescent (1st of Dhul-Hijja) while you did not assume the Ihlal (Ihram) -(Ihram is also called Ihlal which means 'Loud calling' because a Muhrim has to recite Talbiya aloud when assuming the state of Ihram) - till the 8th of Dhul-Hijja (Day of Tarwiya). `Abdullah replied, \"Regarding the corners of Ka`ba, I never saw Allah's Messenger (ﷺ) touching except those facing south (Yemen) and regarding the tanned leather shoes, no doubt I saw Allah's Messenger (ﷺ) wearing non-hairy shoes and he used to perform ablution while wearing the shoes (i.e. wash his feet and then put on the shoes). So I love to wear similar shoes. And about the dyeing of hair with Hinna; no doubt I saw Allah's Messenger (ﷺ) dyeing his hair with it and that is why I like to dye (my hair with it). Regarding Ihlal, I did not see Allah's Messenger (ﷺ) assuming Ihlal till he set out for Hajj (on the 8th of Dhul-Hijja).",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، کہا ہم کو مالک نے سعید المقبری کے واسطے سے خبر دی ، وہ عبیداللہ بن جریج سے نقل کرتے ہیں کہ انھوں نے عبداللہ بن عمر سے کہا اے ابوعبدالرحمن ! میں نے تمہیں چار ایسے کام کرتے ہوئے دیکھا ہے جنھیں تمہارے ساتھیوں کو کرتے ہوئے نہیں دیکھا ۔ وہ کہنے لگے ، اے ابن جریج ! وہ کیا ہیں ؟ ابن جریج نے کہا کہ میں نے طواف کے وقت آپ کو دیکھا کہ دو یمانی رکنوں کے سوا کسی اور رکن کو آپ نہیں چھوتے ہو ۔ ( دوسرے ) میں نے آپ کو بستی جوتے پہنے ہوئے دیکھا اور ( تیسرے ) میں نے دیکھا کہ آپ زرد رنگ استعمال کرتے ہو اور ( چوتھی بات ) میں نے یہ دیکھی کہ جب آپ مکہ میں تھے ، لوگ ( ذی الحجہ کا ) چاند دیکھ کر لبیک پکارنے لگتے ہیں ۔ ( اور ) حج کا احرام باندھ لیتے ہیں اور آپ آٹھویں تاریخ تک احرام نہیں باندھتے ۔ حضرت عبداللہ بن عمر رضی اللہ عنہما نے جواب دیا کہ ( دوسرے ) ارکان کو تو میں یوں نہیں چھوتا کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو یمانی رکنوں کے علاوہ کسی اور رکن کو چھوتے ہوئے نہیں دیکھا اور رہے جوتے ، تو میں نے رسول اللہ صلی اللہ علیہ وسلم کو ایسے جوتے پہنے ہوئے دیکھا کہ جن کے چمڑے پر بال نہیں تھے اور آپ انہیں کو پہنے پہنے وضو فرمایا کرتے تھے ، تو میں بھی انہی کو پہننا پسند کرتا ہوں اور زرد رنگ کی بات یہ ہے کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو زرد رنگ رنگتے ہوئے دیکھا ہے ۔ تو میں بھی اسی رنگ سے رنگنا پسند کرتا ہوں اور احرام باندھنے کا معاملہ یہ ہے کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو اس وقت تک احرام باندھتے ہوئے نہیں دیکھا جب تک آپ کی اونٹنی آپ کو لے کر نہ چل پڑتی ۔",
+      },
+      {
+        id: 33,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُسَدَّدٌ، قَالَ حَدَّثَنَا إِسْمَاعِيلُ، قَالَ حَدَّثَنَا خَالِدٌ، عَنْ حَفْصَةَ بِنْتِ سِيرِينَ، عَنْ أُمِّ عَطِيَّةَ، قَالَتْ قَالَ النَّبِيُّ صلى الله عليه وسلم لَهُنَّ فِي غُسْلِ ابْنَتِهِ ‏ \"‏ ابْدَأْنَ بِمَيَامِنِهَا وَمَوَاضِعِ الْوُضُوءِ مِنْهَا ‏\"‏‏.‏",
+        en: "Narrated Um-`Atiya: <br> That the Prophet (ﷺ) at the time of washing his deceased daughter had said to them, \"Start from the right side beginning with those parts which are washed in ablution.\"",
+        ur: "ہم سے مسدد نے بیان کیا ، ان سے اسماعیل نے ، ان سے خالد نے حفصہ بنت سیرین کے واسطے سے نقل کیا ، وہ ام عطیہ سے روایت کرتی ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے اپنی ( مرحومہ ) صاحبزادی ( حضرت زینب رضی اللہ عنہا ) کو غسل دینے کے وقت فرمایا تھا کہ غسل داہنی طرف سے دو ، اور اعضاء وضو سے غسل کی ابتداء کرو ۔",
+      },
+      {
+        id: 34,
+        volume: 1,
+        arabic: "حَدَّثَنَا حَفْصُ بْنُ عُمَرَ، قَالَ حَدَّثَنَا شُعْبَةُ، قَالَ أَخْبَرَنِي أَشْعَثُ بْنُ سُلَيْمٍ، قَالَ سَمِعْتُ أَبِي، عَنْ مَسْرُوقٍ، عَنْ عَائِشَةَ، قَالَتْ كَانَ النَّبِيُّ صلى الله عليه وسلم يُعْجِبُهُ التَّيَمُّنُ فِي تَنَعُّلِهِ وَتَرَجُّلِهِ وَطُهُورِهِ وَفِي شَأْنِهِ كُلِّهِ‏.‏",
+        en: "Narrated `Aisha: <br> The Prophet (ﷺ) used to like to start from the right side on wearing shoes, combing his hair and cleaning or washing himself and on doing anything else.",
+        ur: "ہم سے حفص بن عمر نے بیان کیا ، ان سے شعبہ نے بیان کیا ، انہیں اشعث بن سلیم نے خبر دی ، ان کے باپ نے مسروق سے سنا ، وہ ام المؤمنین حضرت عائشہ صدیقہ رضی اللہ عنہا سے روایت کرتے ہیں کہ وہ فرماتی ہیں کہ رسول اللہ صلی اللہ علیہ وسلم جوتا پہننے ، کنگھی کرنے ، وضو کرنے اور اپنے ہر کام میں داہنی طرف سے کام کی ابتداء کرنے کو پسند فرمایا کرتے تھے ۔",
+      },
+      {
+        id: 35,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ إِسْحَاقَ بْنِ عَبْدِ اللَّهِ بْنِ أَبِي طَلْحَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ قَالَ رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم وَحَانَتْ صَلاَةُ الْعَصْرِ، فَالْتَمَسَ النَّاسُ الْوَضُوءَ فَلَمْ يَجِدُوهُ، فَأُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِوَضُوءٍ، فَوَضَعَ رَسُولُ اللَّهِ صلى الله عليه وسلم فِي ذَلِكَ الإِنَاءِ يَدَهُ، وَأَمَرَ النَّاسَ أَنْ يَتَوَضَّئُوا مِنْهُ‏.‏ قَالَ فَرَأَيْتُ الْمَاءَ يَنْبُعُ مِنْ تَحْتِ أَصَابِعِهِ حَتَّى تَوَضَّئُوا مِنْ عِنْدِ آخِرِهِمْ‏.‏",
+        en: "Narrated Anas bin Malik: <br> saw Allah's Messenger (ﷺ) when the `Asr prayer was due and the people searched for water to perform ablution but they could not find it. Later on (a pot full of) water for ablution was brought to Allah's Apostle . He put his hand in that pot and ordered the people to perform ablution from it. I saw the water springing out from underneath his fingers till all of them performed the ablution (it was one of the miracles of the Prophet).",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، انھوں نے کہا کہ ہم کو مالک نے اسحاق بن عبداللہ بن ابی طلحہ سے خبر دی ، وہ انس بن مالک رضی اللہ عنہ سے نقل کرتے ہیں ، وہ فرماتے ہیں کہ میں نے رسول اللہ صلی اللہ علیہ وسلم کو دیکھا کہ نماز عصر کا وقت آ گیا ، لوگوں نے پانی تلاش کیا ، جب انہیں پانی نہ ملا ، تو رسول اللہ صلی اللہ علیہ وسلم کے پاس ( ایک برتن میں ) وضو کے لیے پانی لایا گیا ۔ رسول اللہ صلی اللہ علیہ وسلم نے اس میں اپنا ہاتھ ڈال دیا اور لوگوں کو حکم دیا کہ اسی ( برتن ) سے وضو کریں ۔ حضرت انس رضی اللہ عنہ کہتے ہیں کہ میں نے دیکھا آپ کی انگلیوں کے نیچے سے پانی ( چشمے کی طرح ) ابل رہا تھا ۔ یہاں تک کہ ( قافلے کے ) آخری آدمی نے بھی وضو کر لیا ۔",
+      },
+      {
+        id: 36,
+        volume: 1,
+        arabic: "حَدَّثَنَا مَالِكُ بْنُ إِسْمَاعِيلَ، قَالَ حَدَّثَنَا إِسْرَائِيلُ، عَنْ عَاصِمٍ، عَنِ ابْنِ سِيرِينَ، قَالَ قُلْتُ لِعَبِيدَةَ عِنْدَنَا مِنْ شَعَرِ النَّبِيِّ صلى الله عليه وسلم أَصَبْنَاهُ مِنْ قِبَلِ أَنَسٍ، أَوْ مِنْ قِبَلِ أَهْلِ أَنَسٍ فَقَالَ لأَنْ تَكُونَ عِنْدِي شَعَرَةٌ مِنْهُ أَحَبُّ إِلَىَّ مِنَ الدُّنْيَا وَمَا فِيهَا‏.‏",
+        en: "Narrated Ibn Seereen: <br> I said to `Abida, \"I have some of the hair of the Prophet (ﷺ) which I got from Anas or from his family.\" `Abida replied. \"No doubt if I had a single hair of that it would have been dearer to me than the whole world and whatever is in it.\"",
+        ur: "ہم سے مالک بن اسماعیل نے بیان کیا ، کہا ہم سے اسرائیل نے عاصم کے واسطے سے بیان کیا ، وہ ابن سیرین سے نقل کرتے ہیں ، وہ کہتے ہیں کہ میں نے عبیدہ رضی اللہ عنہ سے کہا کہ ہمارے پاس رسول اللہ صلی اللہ علیہ وسلم کے کچھ بال ( مبارک ) ہیں ، جو ہمیں حضرت انس رضی اللہ عنہ سے یا انس رضی اللہ عنہ کے گھر والوں کی طرف سے ملے ہیں ۔ ( یہ سن کر ) عبیدہ نے کہا کہ اگر میرے پاس ان بالوں میں سے ایک بال بھی ہو تو وہ میرے لیے ساری دنیا اور اس کی ہر چیز سے زیادہ عزیز ہے ۔",
+      },
+      {
+        id: 37,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ عَبْدِ الرَّحِيمِ، قَالَ أَخْبَرَنَا سَعِيدُ بْنُ سُلَيْمَانَ، قَالَ حَدَّثَنَا عَبَّادٌ، عَنِ ابْنِ عَوْنٍ، عَنِ ابْنِ سِيرِينَ، عَنْ أَنَسٍ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم لَمَّا حَلَقَ رَأْسَهُ كَانَ أَبُو طَلْحَةَ أَوَّلَ مَنْ أَخَذَ مِنْ شَعَرِهِ‏.‏",
+        en: "Narrated Anas: <br> When Allah's Messenger (ﷺ) got his head shaved, Abu- Talha was the first to take some of his hair.",
+        ur: "ہم سے محمد بن عبدالرحیم نے بیان کیا ، انھوں نے کہا ہم کو سعید بن سلیمان نے خبر دی انھوں نے ، کہا ہم سے عباد نے ابن عون کے واسطے سے بیان کیا ۔ وہ ابن سیرین سے ، وہ حضرت انس بن مالک رضی اللہ عنہ سے نقل کرتے ہیں کہ رسول کریم صلی اللہ علیہ وسلم نے ( حجۃ الوداع میں ) جب سر کے بال منڈوائے تو سب سے پہلے ابوطلحہ رضی اللہ عنہ نے آپ صلی اللہ علیہ وسلم کے بال لیے تھے ۔",
+      },
+      {
+        id: 38,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، عَنْ مَالِكٍ، عَنْ أَبِي الزِّنَادِ، عَنِ الأَعْرَجِ، عَنْ أَبِي هُرَيْرَةَ، قَالَ إِنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ ‏ \"‏ إِذَا شَرِبَ الْكَلْبُ فِي إِنَاءِ أَحَدِكُمْ فَلْيَغْسِلْهُ سَبْعًا ‏\"‏‏.‏",
+        en: "Narrated Abu Huraira: <br> Allah's Messenger (ﷺ) said, \"If a dog drinks from the utensil of anyone of you it is essential to wash it seven times.\"",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، انہیں امام مالک نے ابوالزناد سے خبر دی ، وہ اعرج سے ، وہ ابوہریرہ رضی اللہ عنہ سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے فرمایا کہ جب کتا تم میں سے کسی کے برتن میں سے ( کچھ ) پی لے تو اس کو سات مرتبہ دھو لو ( تو پاک ہو جائے گا ) ۔",
+      },
+      {
+        id: 39,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْحَاقُ، أَخْبَرَنَا عَبْدُ الصَّمَدِ، حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ عَبْدِ اللَّهِ بْنِ دِينَارٍ، سَمِعْتُ أَبِي، عَنْ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم ‏ \"‏ أَنَّ رَجُلاً رَأَى كَلْبًا يَأْكُلُ الثَّرَى مِنَ الْعَطَشِ، فَأَخَذَ الرَّجُلُ خُفَّهُ فَجَعَلَ يَغْرِفُ لَهُ بِهِ حَتَّى أَرْوَاهُ، فَشَكَرَ اللَّهُ لَهُ فَأَدْخَلَهُ الْجَنَّةَ ‏\"‏‏.‏",
+        en: "Narrated Abu Huraira: <br> The Prophet (ﷺ) said, \"A man saw a dog eating mud from (the severity of) thirst. So, that man took a shoe (and filled it) with water and kept on pouring the water for the dog till it quenched its thirst. So Allah approved of his deed and made him to enter Paradise.\"",
+        ur: "ہم سے اسحاق نے بیان کیا ، کہا ہم کو عبدالصمد نے خبر دی ، کہا ہم کو عبدالرحمٰن بن عبداللہ بن دینار نے بیان کیا ، انھوں نے اپنے باپ سے سنا ، وہ ابوصالح سے ، وہ ابوہریرہ رضی اللہ عنہ سے ، وہ رسول کریم صلی اللہ علیہ وسلم سے نقل کرتے ہیں آپ صلی اللہ علیہ وسلم نے فرمایا کہ ایک شخص نے ایک کتے کو دیکھا ، جو پیاس کی وجہ سے گیلی مٹی کھا رہا تھا ۔ تو اس شخص نے اپنا موزہ لیا اور اس سے پانی بھر کر پلانے لگا ، حتیٰ کہ اس کو خوب سیراب کر دیا ۔ اللہ نے اس شخص کے اس کام کی قدر کی اور اسے جنت میں داخل کر دیا ۔",
+      },
+      {
+        id: 40,
+        volume: 1,
+        arabic: "وَقَالَ أَحْمَدُ بْنُ شَبِيبٍ حَدَّثَنَا أَبِي، عَنْ يُونُسَ، عَنِ ابْنِ شِهَابٍ، قَالَ حَدَّثَنِي حَمْزَةُ بْنُ عَبْدِ اللَّهِ، عَنْ أَبِيهِ، قَالَ كَانَتِ الْكِلاَبُ تَبُولُ وَتُقْبِلُ وَتُدْبِرُ فِي الْمَسْجِدِ فِي زَمَانِ رَسُولِ اللَّهِ صلى الله عليه وسلم فَلَمْ يَكُونُوا يَرُشُّونَ شَيْئًا مِنْ ذَلِكَ‏.‏",
+        en: "And narrated Hamza bin 'Abdullah: <br> My father said. \"During the lifetime of Allah's Apostle, the dogs used to urinate, and pass through the mosques (come and go), nevertheless they never used to sprinkle water on it (urine of the dog.)\"",
+        ur: "احمد بن شبیب نے کہا کہ ہم سے میرے والد نے یونس کے واسطے سے بیان کیا ، وہ ابن شہاب سے نقل کرتے ہیں ، انھوں نے کہا مجھ سے حمزہ بن عبداللہ نے اپنے باپ ( یعنی حضرت عبداللہ بن عمر رضی اللہ عنہما ) کے واسطے سے بیان کیا ۔ وہ کہتے تھے کہ رسول اللہ صلی اللہ علیہ وسلم کے زمانے میں کتے مسجد میں آتے جاتے تھے لیکن لوگ ان جگہوں پر پانی نہیں چھڑکتے تھے ۔",
+      },
+      {
+        id: 41,
+        volume: 1,
+        arabic: "حَدَّثَنَا حَفْصُ بْنُ عُمَرَ، قَالَ حَدَّثَنَا شُعْبَةُ، عَنِ ابْنِ أَبِي السَّفَرِ، عَنِ الشَّعْبِيِّ، عَنْ عَدِيِّ بْنِ حَاتِمٍ، قَالَ سَأَلْتُ النَّبِيَّ صلى الله عليه وسلم فَقَالَ ‏\"‏ إِذَا أَرْسَلْتَ كَلْبَكَ الْمُعَلَّمَ فَقَتَلَ فَكُلْ، وَإِذَا أَكَلَ فَلاَ تَأْكُلْ، فَإِنَّمَا أَمْسَكَهُ عَلَى نَفْسِهِ ‏\"‏‏.‏ قُلْتُ أُرْسِلُ كَلْبِي فَأَجِدُ مَعَهُ كَلْبًا آخَرَ قَالَ ‏\"‏ فَلاَ تَأْكُلْ، فَإِنَّمَا سَمَّيْتَ عَلَى كَلْبِكَ، وَلَمْ تُسَمِّ عَلَى كَلْبٍ آخَرَ ‏\"‏‏.‏",
+        en: "Narrated `Adi bin Hatim: <br> I asked the Prophet (about the hunting dogs) and he replied, \"If you let loose (with Allah's name) your tamed dog after a game and it hunts it, you may eat it, but if the dog eats of (that game) then do not eat it because the dog has hunted it for itself.\" I further said, \"Sometimes I send my dog for hunting and find another dog with it. He said, \"Do not eat the game for you have mentioned Allah's name only on sending your dog and not the other dog.\"",
+        ur: "ہم سے حفص بن عمر نے بیان کیا ، کہا کہ ہم سے شعبہ نے ابن ابی السفر کے واسطے سے بیان کیا ، وہ شعبی سے نقل فرماتے ہیں ، وہ عدی بن حاتم سے روایت کرتے ہیں کہ میں نے رسول اللہ صلی اللہ علیہ وسلم سے ( کتے کے شکار کے متعلق ) دریافت کیا ۔ تو آپ صلی اللہ علیہ وسلم نے فرمایا کہ جب تو اپنے سدھائے ہوئے کتے کو چھوڑے اور وہ شکار کر لے تو ، تو اس ( شکار ) کو کھا اور اگر وہ کتا اس شکار میں سے خود ( کچھ ) کھا لے تو ، تو ( اس کو ) نہ کھائیو ۔ کیونکہ اب اس نے شکار اپنے لیے پکڑا ہے ۔ میں نے کہا کہ بعض دفعہ میں ( شکار کے لیے ) اپنے کتے چھوڑتا ہوں ، پھر اس کے ساتھ دوسرے کتے کو بھی پاتا ہوں ۔ آپ صلی اللہ علیہ وسلم نے فرمایا ۔ پھر مت کھا ۔ کیونکہ تم نے «بسم الله» اپنے کتے پر پڑھی تھی ۔ دوسرے کتے پر نہیں پڑھی ۔",
+      },
+      {
+        id: 42,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ بْنُ أَبِي إِيَاسٍ، قَالَ حَدَّثَنَا ابْنُ أَبِي ذِئْبٍ، عَنْ سَعِيدٍ الْمَقْبُرِيِّ، عَنْ أَبِي هُرَيْرَةَ، قَالَ قَالَ النَّبِيُّ صلى الله عليه وسلم ‏ \"‏ لاَ يَزَالُ الْعَبْدُ فِي صَلاَةٍ مَا كَانَ فِي الْمَسْجِدِ يَنْتَظِرُ الصَّلاَةَ، مَا لَمْ يُحْدِثْ ‏\"‏‏.‏ فَقَالَ رَجُلٌ أَعْجَمِيٌّ مَا الْحَدَثُ يَا أَبَا هُرَيْرَةَ قَالَ الصَّوْتُ‏.‏ يَعْنِي الضَّرْطَةَ‏.‏",
+        en: "Narrated Abu Huraira: <br> Allah's Messenger (ﷺ) said, \"A person is considered in prayer as long as he is waiting for the prayer in the mosque as long as he does not do Hadath.\" A non-Arab man asked, \"O Abu Huraira! What is Hadath?\" I replied, \"It is the passing of wind (from the anus) (that is one of the types of Hadath).",
+        ur: "ہم سے آدم بن ابی ایاس نے بیان کیا ، انھوں نے کہا ہم سے ابن ابی ذئب نے بیان کیا ، انھوں نے کہا ہم سے سعید المقبری نے بیان کیا ، وہ حضرت ابوہریرہ سے روایت کرتے ہیں ، وہ کہتے ہیں کہ رسول کریم صلی اللہ علیہ وسلم نے فرمایا کہ بندہ اس وقت تک نماز ہی میں رہتا ہے جب تک وہ مسجد میں نماز کا انتظار کرتا ہے ۔ تاوقیتکہ وہ حدث نہ کرے ۔ ایک عجمی آدمی نے پوچھا کہ اے ابوہریرہ ! حدث کیا چیز ہے ؟ انھوں نے فرمایا کہ ہوا جو پیچھے سے خارج ہو ۔ ( جسے عرف عام میں گوز مارنا کہتے ہیں ) ۔",
+      },
+      {
+        id: 43,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو الْوَلِيدِ، قَالَ حَدَّثَنَا ابْنُ عُيَيْنَةَ، عَنِ الزُّهْرِيِّ، عَنْ عَبَّادِ بْنِ تَمِيمٍ، عَنْ عَمِّهِ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ لاَ يَنْصَرِفْ حَتَّى يَسْمَعَ صَوْتًا أَوْ يَجِدَ رِيحًا ‏\"‏‏.‏",
+        en: "Narrated `Abbad bin Tamim: <br> My uncle said: The Prophet (ﷺ) said, \"One should not leave his prayer unless he hears sound or smells something.\"",
+        ur: "ہم سے ابوالولید نے بیان کیا ، کہا ہم سے ابن عیینہ نے ، وہ زہری سے ، وہ عباد بن تمیم سے ، وہ اپنے چچا سے ، وہ رسول اللہ صلی اللہ علیہ وسلم سے روایت کرتے ہیں کہ آپ صلی اللہ علیہ وسلم نے فرمایا کہ ( نمازی نماز سے ) اس وقت تک نہ پھرے جب تک ( ریح کی ) آواز نہ سن لے یا اس کی بو نہ پا لے ۔",
+      },
+      {
+        id: 44,
+        volume: 1,
+        arabic: "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ حَدَّثَنَا جَرِيرٌ، عَنِ الأَعْمَشِ، عَنْ مُنْذِرٍ أَبِي يَعْلَى الثَّوْرِيِّ، عَنْ مُحَمَّدٍ ابْنِ الْحَنَفِيَّةِ، قَالَ قَالَ عَلِيٌّ كُنْتُ رَجُلاً مَذَّاءً، فَاسْتَحْيَيْتُ أَنْ أَسْأَلَ رَسُولَ اللَّهِ صلى الله عليه وسلم فَأَمَرْتُ الْمِقْدَادَ بْنَ الأَسْوَدِ فَسَأَلَهُ فَقَالَ ‏ \"‏ فِيهِ الْوُضُوءُ ‏\"‏‏.‏ وَرَوَاهُ شُعْبَةُ عَنِ الأَعْمَشِ‏.‏",
+        en: "Narrated `Ali: <br> I used to get emotional urethral discharges frequently and felt shy to ask Allah's Messenger (ﷺ) about it. So I requested Al-Miqdad bin Al-Aswad to ask (the Prophet (ﷺ) ) about it. Al-Miqdad asked him and he replied, \"One has to perform ablution (after it).\"",
+        ur: "ہم سے قتیبہ نے بیان کیا ، کہا ہم سے جریر نے اعمش کے واسطے سے بیان کیا ، وہ منذر سے ، وہ ابویعلیٰ ثوری سے ، وہ محمد ابن الحنفیہ سے نقل کرتے ہیں کہ حضرت علی رضی اللہ عنہ نے فرمایا کہ میں ایسا آدمی تھا جس کو سیلان مذی کی شکایت تھی ، مگر رسول اللہ صلی اللہ علیہ وسلم سے دریافت کرتے ہوئے مجھے شرم آئی ۔ تو میں نے ابن الاسود کو حکم دیا ، انھوں نے آپ صلی اللہ علیہ وسلم سے پوچھا ، آپ صلی اللہ علیہ وسلم نے فرمایا کہ اس میں وضو کرنا فرض ہے ۔ اس روایت کو شعبہ نے بھی اعمش سے روایت کیا ۔",
+      },
+      {
+        id: 45,
+        volume: 1,
+        arabic: "حَدَّثَنَا سَعْدُ بْنُ حَفْصٍ، حَدَّثَنَا شَيْبَانُ، عَنْ يَحْيَى، عَنْ أَبِي سَلَمَةَ، أَنَّ عَطَاءَ بْنَ يَسَارٍ، أَخْبَرَهُ أَنْ زَيْدَ بْنَ خَالِدٍ أَخْبَرَهُ أَنَّهُ، سَأَلَ عُثْمَانَ بْنَ عَفَّانَ ـ رضى الله عنه ـ قُلْتُ أَرَأَيْتَ إِذَا جَامَعَ فَلَمْ يُمْنِ قَالَ عُثْمَانُ يَتَوَضَّأُ كَمَا يَتَوَضَّأُ لِلصَّلاَةِ، وَيَغْسِلُ ذَكَرَهُ‏.‏ قَالَ عُثْمَانُ سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ صلى الله عليه وسلم‏.‏ فَسَأَلْتُ عَنْ ذَلِكَ عَلِيًّا، وَالزُّبَيْرَ، وَطَلْحَةَ، وَأُبَىَّ بْنَ كَعْبٍ ـ رضى الله عنهم ـ فَأَمَرُوهُ بِذَلِكَ‏.‏",
+        en: "Narrated Zaid bin Khalid: <br> I asked `Uthman bin `Affan about a person who engaged in intercourse but did no discharge. `Uthman replied, \"He should perform ablution like the one for an ordinary prayer but he must wash his penis.\" `Uthman added, \"I heard it from Allah's Messenger (ﷺ).\" I asked `Ali Az-Zubair, Talha and Ubai bin Ka`b about it and they, too, gave the same reply. (This order was canceled later on and taking a bath became necessary for such cases).",
+        ur: "ہم سے سعد بن حفص نے بیان کیا ، انھوں نے کہا ہم سے شیبان نے یحییٰ کے واسطے سے نقل کیا ، وہ عطاء بن یسار سے نقل کرتے ہیں ، انہیں زید بن خالد نے خبر دی کہ انھوں نے حضرت عثمان بن عفان رضی اللہ عنہ سے پوچھا کہ اگر کوئی شخص صحبت کرے اور منی نہ نکلے ۔ فرمایا کہ وضو کرے جس طرح نماز کے لیے وضو کرتا ہے اور اپنے عضو کو دھولے ۔ حضرت عثمان رضی اللہ عنہ کہتے ہیں کہ ( یہ ) میں نے رسول اللہ صلی اللہ علیہ وسلم سے سنا ہے ۔ ( زید بن خالد کہتے ہیں کہ ) پھر میں نے اس کے بارے میں حضرت علی ، زبیر ، طلحہ اور ابی بن کعب رضی اللہ عنہم سے دریافت کیا ۔ سب نے اس شخص کے بارے میں یہی حکم دیا ۔",
+      },
+      {
+        id: 46,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْحَاقُ، قَالَ أَخْبَرَنَا النَّضْرُ، قَالَ أَخْبَرَنَا شُعْبَةُ، عَنِ الْحَكَمِ، عَنْ ذَكْوَانَ أَبِي صَالِحٍ، عَنْ أَبِي سَعِيدٍ الْخُدْرِيِّ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم أَرْسَلَ إِلَى رَجُلٍ مِنَ الأَنْصَارِ فَجَاءَ وَرَأْسُهُ يَقْطُرُ، فَقَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ لَعَلَّنَا أَعْجَلْنَاكَ ‏\"‏‏.‏ فَقَالَ نَعَمْ‏.‏ فَقَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏\"‏ إِذَا أُعْجِلْتَ أَوْ قُحِطْتَ، فَعَلَيْكَ الْوُضُوءُ ‏\"‏‏.‏ تَابَعَهُ وَهْبٌ قَالَ حَدَّثَنَا شُعْبَةُ‏.‏ قَالَ أَبُو عَبْدِ اللَّهِ وَلَمْ يَقُلْ غُنْدَرٌ وَيَحْيَى عَنْ شُعْبَةَ الْوُضُوءُ‏.‏",
+        en: "Narrated Abu Sa`id Al-Khudri: <br> Allah's Messenger (ﷺ) sent for a Ansari man who came with water dropping from his head. The Prophet (ﷺ) said, \"Perhaps we have forced you to hurry up, haven't we?\" The Ansari replied, \"Yes.\" Allah's Messenger (ﷺ) further said, \"If you are forced to hurry up (during intercourse) or you do not discharge then ablution is due on you (This order was canceled later on, i.e. one has to take a bath).",
+        ur: "ہم سے اسحاق بن منصور نے بیان کیا ، کہا ہمیں نضر نے خبر دی ، کہا ہم کو شعبہ نے حکم کے واسطے سے بتلایا ، وہ ذکوان سے ، وہ ابوصالح سے ، وہ ابو سعید خدری سے روایت کرتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے ایک انصاری کو بلایا ۔ وہ آئے تو ان کے سر سے پانی ٹپک رہا تھا ۔ رسول کریم صلی اللہ علیہ وسلم نے فرمایا ، شاید ہم نے تمہیں جلدی میں ڈال دیا ۔ انھوں نے کہا ، جی ہاں ۔ تب رسول اللہ صلی اللہ علیہ وسلم نے فرمایا کہ جب کوئی جلدی ( کا کام ) آ پڑے یا تمہیں انزال نہ ہو تو تم پر وضو ہے ( غسل ضروری نہیں ) ۔",
+      },
+      {
+        id: 47,
+        volume: 1,
+        arabic: "حَدَّثَنِي مُحَمَّدُ بْنُ سَلاَمٍ، قَالَ أَخْبَرَنَا يَزِيدُ بْنُ هَارُونَ، عَنْ يَحْيَى، عَنْ مُوسَى بْنِ عُقْبَةَ، عَنْ كُرَيْبٍ، مَوْلَى ابْنِ عَبَّاسٍ عَنْ أُسَامَةَ بْنِ زَيْدٍ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم لَمَّا أَفَاضَ مِنْ عَرَفَةَ عَدَلَ إِلَى الشِّعْبِ، فَقَضَى حَاجَتَهُ‏.‏ قَالَ أُسَامَةُ بْنُ زَيْدٍ فَجَعَلْتُ أَصُبُّ عَلَيْهِ وَيَتَوَضَّأُ فَقُلْتُ يَا رَسُولَ اللَّهِ أَتُصَلِّي فَقَالَ ‏ \"‏ الْمُصَلَّى أَمَامَكَ ‏\"‏‏.‏",
+        en: "Narrated Usama bin Zaid: <br> \"When Allah's Messenger (ﷺ) departed from `Arafat, he turned towards a mountain pass where he answered the call of nature. (After he had finished) I poured water and he performed ablution and then I said to him, \"O Allah's Messenger (ﷺ)! Will you offer the prayer?\" He replied, \"The Musalla (place of the prayer) is ahead of you (in Al-Muzdalifa).",
+        ur: "ہم سے محمد بن سلام نے بیان کیا ، کہا ہم کو یزید بن ہارون نے یحییٰ سے خبر دی ، وہ موسیٰ بن عقبہ سے ، وہ کریب ابن عباس کے آزاد کردہ غلام سے ، وہ اسامہ بن زید سے نقل کرتے ہیں کہ رسول کریم صلی اللہ علیہ وسلم جب عرفہ سے لوٹے ، تو ( پہاڑ کی ) گھاٹی کی جانب مڑ گئے ، اور رفع حاجت کی ۔ اسامہ کہتے ہیں کہ پھر ( آپ صلی اللہ علیہ وسلم نے وضو کیا اور ) میں آپ صلی اللہ علیہ وسلم کے ( اعضاء ) پر پانی ڈالنے لگا اور آپ صلی اللہ علیہ وسلم وضو فرماتے رہے ۔ میں نے کہا یا رسول اللہ ! آپ ( اب ) نماز پڑھیں گے ؟ آپ صلی اللہ علیہ وسلم نے فرمایا نماز کا مقام تمہارے سامنے ( یعنی مزدلفہ میں ) ہے ۔ وہاں نماز پڑھی جائے گی ۔",
+      },
+      {
+        id: 48,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَمْرُو بْنُ عَلِيٍّ، قَالَ حَدَّثَنَا عَبْدُ الْوَهَّابِ، قَالَ سَمِعْتُ يَحْيَى بْنَ سَعِيدٍ، قَالَ أَخْبَرَنِي سَعْدُ بْنُ إِبْرَاهِيمَ، أَنَّ نَافِعَ بْنَ جُبَيْرِ بْنِ مُطْعِمٍ، أَخْبَرَهُ أَنَّهُ، سَمِعَ عُرْوَةَ بْنَ الْمُغِيرَةِ بْنِ شُعْبَةَ، يُحَدِّثُ عَنِ الْمُغِيرَةِ بْنِ شُعْبَةَ، أَنَّهُ كَانَ مَعَ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي سَفَرٍ، وَأَنَّهُ ذَهَبَ لِحَاجَةٍ لَهُ، وَأَنَّ مُغِيرَةَ جَعَلَ يَصُبُّ الْمَاءَ عَلَيْهِ، وَهُوَ يَتَوَضَّأُ، فَغَسَلَ وَجْهَهُ وَيَدَيْهِ وَمَسَحَ بِرَأْسِهِ وَمَسَحَ عَلَى الْخُفَّيْنِ‏.‏",
+        en: "Narrated Al-Mughira bin Shu`ba: <br> I was in the company of Allah's Messenger (ﷺ) on one of the journeys and he went out to answer the call of nature (and after he finished) I poured water and he performed ablution; he washed his face, forearms and passed his wet hand over his head and over the two Khuff (socks made from thick fabric or leather).",
+        ur: "ہم سے عمرو بن علی نے بیان کیا ، انھوں نے کہا ہم سے عبدالوہاب نے بیان کیا ، انھوں نے کہا میں نے یحییٰ بن سعید سے سنا ، انھوں نے کہا مجھے سعد بن ابراہیم نے نافع بن جبیر بن مطعم سے بتلایا ۔ انھوں نے عروہ بن مغیرہ بن شعبہ سے سنا ، وہ مغیرہ بن شعبہ رضی اللہ عنہ سے نقل کرتے ہیں کہ وہ ایک سفر میں رسول کریم صلی اللہ علیہ وسلم کے ساتھ تھے ۔ ( وہاں ) آپ رفع حاجت کے لیے تشریف لے گئے ( جب آپ واپس آئے ، آپ صلی اللہ علیہ وسلم نے وضو شروع کیا ) تو مغیرہ بن شعبہ آپ کے ( اعضاء وضو ) پر پانی ڈالنے لگے ۔ آپ صلی اللہ علیہ وسلم وضو کر رہے تھے آپ نے اپنے منہ اور ہاتھوں کو دھویا ، سر کا مسح کیا اور موزوں پر مسح کیا ۔",
+      },
+      {
+        id: 49,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْمَاعِيلُ، قَالَ حَدَّثَنِي مَالِكٌ، عَنْ مَخْرَمَةَ بْنِ سُلَيْمَانَ، عَنْ كُرَيْبٍ، مَوْلَى ابْنِ عَبَّاسٍ أَنَّ عَبْدَ اللَّهِ بْنَ عَبَّاسٍ، أَخْبَرَهُ أَنَّهُ، بَاتَ لَيْلَةً عِنْدَ مَيْمُونَةَ زَوْجِ النَّبِيِّ صلى الله عليه وسلم وَهِيَ خَالَتُهُ فَاضْطَجَعْتُ فِي عَرْضِ الْوِسَادَةِ، وَاضْطَجَعَ رَسُولُ اللَّهِ صلى الله عليه وسلم وَأَهْلُهُ فِي طُولِهَا، فَنَامَ رَسُولُ اللَّهِ صلى الله عليه وسلم حَتَّى إِذَا انْتَصَفَ اللَّيْلُ، أَوْ قَبْلَهُ بِقَلِيلٍ أَوْ بَعْدَهُ بِقَلِيلٍ، اسْتَيْقَظَ رَسُولُ اللَّهِ صلى الله عليه وسلم فَجَلَسَ يَمْسَحُ النَّوْمَ عَنْ وَجْهِهِ بِيَدِهِ، ثُمَّ قَرَأَ الْعَشْرَ الآيَاتِ الْخَوَاتِمَ مِنْ سُورَةِ آلِ عِمْرَانَ، ثُمَّ قَامَ إِلَى شَنٍّ مُعَلَّقَةٍ، فَتَوَضَّأَ مِنْهَا فَأَحْسَنَ وُضُوءَهُ، ثُمَّ قَامَ يُصَلِّي‏.‏ قَالَ ابْنُ عَبَّاسٍ فَقُمْتُ فَصَنَعْتُ مِثْلَ مَا صَنَعَ، ثُمَّ ذَهَبْتُ، فَقُمْتُ إِلَى جَنْبِهِ، فَوَضَعَ يَدَهُ الْيُمْنَى عَلَى رَأْسِي، وَأَخَذَ بِأُذُنِي الْيُمْنَى، يَفْتِلُهَا، فَصَلَّى رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ أَوْتَرَ، ثُمَّ اضْطَجَعَ، حَتَّى أَتَاهُ الْمُؤَذِّنُ، فَقَامَ، فَصَلَّى رَكْعَتَيْنِ خَفِيفَتَيْنِ، ثُمَّ خَرَجَ فَصَلَّى الصُّبْحَ‏.‏",
+        en: "Narrated `Abdullah bin `Abbas: <br> That he stayed overnight in the house of Maimuna the wife of the Prophet, his aunt. He added : I lay on the bed (cushion transversally) while Allah's Messenger (ﷺ) and his wife lay in the lengthwise direction of the cushion. Allah's Messenger (ﷺ) slept till the middle of the night, either a bit before or a bit after it and then woke up, rubbing the traces of sleep off his face with his hands. He then, recited the last ten verses of Sura Al-`Imran, got up and went to a hanging water-skin. He then Performed the ablution from it and it was a perfect ablution, and then stood up to offer the prayer. I, too, got up and did as the Prophet had done. Then I went and stood by his side. He placed his right hand on my head and caught my right ear and twisted it. He prayed two rak`at then two rak`at and two rak`at and then two rak`at and then two rak`at and then two rak`at (separately six times), and finally one rak`a (the witr). Then he lay down again in the bed till the Mu'adh-dhin came to him where upon the Prophet (ﷺ) got up, offered a two light rak`at prayer and went out and led the Fajr prayer.",
+        ur: "ہم سے اسماعیل نے بیان کیا ، کہا مجھ سے امام مالک نے مخرمہ بن سلیمان کے واسطے سے نقل کیا ، وہ کریب ابن عباس رضی اللہ عنہما کے آزاد کردہ غلام سے نقل کرتے ہیں کہ عبداللہ بن عباس رضی اللہ عنہما نے انہیں خبر دی کہ انھوں نے ایک رات رسول کریم صلی اللہ علیہ وسلم کی زوجہ مطہرہ اور اپنی خالہ حضرت میمونہ رضی اللہ عنہا کے گھر میں گزاری ۔ ( وہ فرماتے ہیں کہ ) میں تکیہ کے عرض ( یعنی گوشہ ) کی طرف لیٹ گیا اور رسول کریم صلی اللہ علیہ وسلم اور آپ کی اہلیہ نے ( معمول کے مطابق ) تکیہ کی لمبائی پر ( سر رکھ کر ) آرام فرمایا ۔ رسول اللہ صلی اللہ علیہ وسلم سوتے رہے اور جب آدھی رات ہو گئی یا اس سے کچھ پہلے یا اس کے کچھ بعد آپ بیدار ہوئے اور اپنے ہاتھوں سے اپنی نیند کو دور کرنے کے لیے آنکھیں ملنے لگے ۔ پھر آپ نے سورۃ آل عمران کی آخری دس آیتیں پڑھیں ، پھر ایک مشکیزہ کے پاس جو ( چھت میں ) لٹکا ہوا تھا آپ کھڑے ہو گئے اور اس سے وضو کیا ، خوب اچھی طرح ، پھر کھڑے ہو کر نماز پڑھنے لگے ۔ ابن عباس رضی اللہ عنہما کہتے ہیں میں نے بھی کھڑے ہو کر اسی طرح کیا ، جس طرح آپ صلی اللہ علیہ وسلم نے وضو کیا تھا ۔ پھر جا کر میں بھی آپ کے پہلوئے مبارک میں کھڑا ہو گیا ۔ آپ نے اپنا داہنا ہاتھ میرے سر پر رکھا اور میرا دایاں کان پکڑ کر اسے مروڑنے لگے ۔ پھر آپ نے دو رکعتیں پڑھیں ۔ اس کے بعد پھر دو رکعتیں پڑھیں ۔ پھر دو رکعتیں پڑھیں ۔ پھر دو رکعتیں ، پھر دو رکعتیں ، پھر دو رکعتیں پڑھ کر اس کے بعد آپ نے وتر پڑھا اور لیٹ گئے ، پھر جب مؤذن آپ صلی اللہ علیہ وسلم کے پاس آیا ، تو آپ نے اٹھ کر دو رکعت معمولی ( طور پر ) پڑھیں ۔ پھر باہر تشریف لا کر صبح کی نماز پڑھی ۔",
+      },
+      {
+        id: 50,
+        volume: 1,
+        arabic: "حَدَّثَنَا إِسْمَاعِيلُ، قَالَ حَدَّثَنِي مَالِكٌ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنِ امْرَأَتِهِ، فَاطِمَةَ عَنْ جَدَّتِهَا، أَسْمَاءَ بِنْتِ أَبِي بَكْرٍ أَنَّهَا قَالَتْ أَتَيْتُ عَائِشَةَ زَوْجَ النَّبِيِّ صلى الله عليه وسلم حِينَ خَسَفَتِ الشَّمْسُ، فَإِذَا النَّاسُ قِيَامٌ يُصَلُّونَ، وَإِذَا هِيَ قَائِمَةٌ تُصَلِّي فَقُلْتُ مَا لِلنَّاسِ فَأَشَارَتْ بِيَدِهَا نَحْوَ السَّمَاءِ وَقَالَتْ سُبْحَانَ اللَّهِ‏.‏ فَقُلْتُ آيَةٌ فَأَشَارَتْ أَىْ نَعَمْ‏.‏ فَقُمْتُ حَتَّى تَجَلاَّنِي الْغَشْىُ، وَجَعَلْتُ أَصُبُّ فَوْقَ رَأْسِي مَاءً، فَلَمَّا انْصَرَفَ رَسُولُ اللَّهِ صلى الله عليه وسلم حَمِدَ اللَّهَ وَأَثْنَى عَلَيْهِ، ثُمَّ قَالَ ‏ \"‏ مَا مِنْ شَىْءٍ كُنْتُ لَمْ أَرَهُ إِلاَّ قَدْ رَأَيْتُهُ فِي مَقَامِي هَذَا حَتَّى الْجَنَّةِ وَالنَّارِ، وَلَقَدْ أُوحِيَ إِلَىَّ أَنَّكُمْ تُفْتَنُونَ فِي الْقُبُورِ مِثْلَ أَوْ قَرِيبًا مِنْ فِتْنَةِ الدَّجَّالِ ـ لاَ أَدْرِي أَىَّ ذَلِكَ قَالَتْ أَسْمَاءُ ـ يُؤْتَى أَحَدُكُمْ فَيُقَالُ مَا عِلْمُكَ بِهَذَا الرَّجُلِ فَأَمَّا الْمُؤْمِنُ ـ أَوِ الْمُوقِنُ لاَ أَدْرِي أَىَّ ذَلِكَ قَالَتْ أَسْمَاءُ ـ فَيَقُولُ هُوَ مُحَمَّدٌ رَسُولُ اللَّهِ، جَاءَنَا بِالْبَيِّنَاتِ وَالْهُدَى، فَأَجَبْنَا وَآمَنَّا وَاتَّبَعْنَا، فَيُقَالُ نَمْ صَالِحًا، فَقَدْ عَلِمْنَا إِنْ كُنْتَ لَمُؤْمِنًا، وَأَمَّا الْمُنَافِقُ ـ أَوِ الْمُرْتَابُ لاَ أَدْرِي أَىَّ ذَلِكَ قَالَتْ أَسْمَاءُ ـ فَيَقُولُ لاَ أَدْرِي، سَمِعْتُ النَّاسَ يَقُولُونَ شَيْئًا فَقُلْتُهُ ‏\"‏‏.‏",
+        en: "Narrated Asma' bint Abu Bakr: <br> I came to `Aisha the wife of the Prophet (ﷺ) during the solar eclipse. The people were standing and offering the prayer and she was also praying. I asked her, \"What is wrong with the people?\" She beckoned with her hand towards the sky and said, \"Subhan Allah.\" I asked her, \"Is there a sign?\" She pointed out, \"Yes.\" So I, too, stood for the prayer till I fell unconscious and later on I poured water on my head. After the prayer, Allah's Messenger (ﷺ) praised and glorified Allah and said, \"Just now I have seen something which I never saw before at this place of mine, including Paradise and Hell. I have been inspired (and have understood) that you will be put to trials in your graves and these trials will be like the trials of Ad-Dajjal, or nearly like it (the sub narrator is not sure of what Asma' said). Angels will come to every one of you and ask, 'What do you know about this man?' A believer will reply, 'He is Muhammad, Allah's Messenger (ﷺ) , and he came to us with self-evident truth and guidance. So we accepted his teaching, believed and followed him.' Then the angels will say to him to sleep in peace as they have come to know that he was a believer. On the other hand a hypocrite or a doubtful person will reply, 'I do not know but heard the people saying something and so I said the same.' \"",
+        ur: "ہم سے اسماعیل نے بیان کیا ، کہا مجھ سے مالک نے ہشام بن عروہ کے واسطے سے نقل کیا ، وہ اپنی بیوی فاطمہ سے ، وہ اپنی دادی اسماء بنت ابی بکر سے روایت کرتی ہیں ، وہ کہتی ہیں کہ میں رسول اللہ صلی اللہ علیہ وسلم کی زوجہ محترمہ عائشہ رضی اللہ عنہا کے پاس ایسے وقت آئی جب کہ سورج کو گہن لگ رہا تھا اور لوگ کھڑے ہو کر نماز پڑھ رہے تھے ، کیا دیکھتی ہوں وہ بھی کھڑے ہو کر نماز پڑھ رہی ہیں ۔ میں نے کہا کہ لوگوں کو کیا ہو گیا ہے ؟ تو انھوں نے اپنے ہاتھ سے آسمان کی طرف اشارہ کر کے کہا ، سبحان اللہ ! میں نے کہا ( کیا یہ ) کوئی ( خاص ) نشانی ہے ؟ تو انھوں نے اشارے سے کہا کہ ہاں ۔ تو میں بھی آپ کے ساتھ نماز کے لیے کھڑی ہو گئی ۔ ( آپ نے اتنا فرمایا کہ ) مجھ پر غشی طاری ہونے لگی اور میں اپنے سر پر پانی ڈالنے لگی ۔ جب رسول اللہ صلی اللہ علیہ وسلم نماز سے فارغ ہوئے تو آپ نے اللہ کی حمد و ثنا بیان کی اور فرمایا ، آج کوئی چیز ایسی نہیں رہی جس کو میں نے اپنی اسی جگہ نہ دیکھ لیا ہو حتیٰ کہ جنت اور دوزخ کو بھی دیکھ لیا ۔ اور مجھ پر یہ وحی کی گئی ہے کہ تم لوگوں کو قبروں میں آزمایا جائے گا ۔ دجال جیسی آزمائش یا اس کے قریب قریب ۔ ( راوی کا بیان ہے کہ ) میں نہیں جانتی کہ اسماء نے کون سا لفظ کہا ۔ تم میں سے ہر ایک کے پاس ( اللہ کے فرشتے ) بھیجے جائیں گے اور اس سے کہا جائے گا کہ تمہارا اس شخص ( یعنی محمد صلی اللہ علیہ وسلم ) کے بارے میں کیا خیال ہے ؟ پھر اسماء نے لفظ ایماندار کہا یا یقین رکھنے والا کہا ۔ مجھے یاد نہیں ۔ ( بہرحال وہ شخص ) کہے گا کہ محمد صلی اللہ علیہ وسلم اللہ کے سچے رسول ہیں ۔ وہ ہمارے پاس نشانیاں اور ہدایت کی روشنی لے کر آئے ۔ ہم نے ( اسے ) قبول کیا ، ایمان لائے ، اور ( آپ کا ) اتباع کیا ۔ پھر ( اس سے ) کہہ دیا جائے گا تو سو جا درحالیکہ تو مرد صالح ہے اور ہم جانتے تھے کہ تو مومن ہے ۔ اور بہرحال منافق یا شکی آدمی ، اسماء نے کون سا لفظ کہا مجھے یاد نہیں ۔ ( جب اس سے پوچھا جائے گا ) کہے گا کہ میں ( کچھ ) نہیں جانتا ، میں نے لوگوں کو جو کہتے سنا ، وہی میں نے بھی کہہ دیا ۔",
+      },
+      {
+        id: 51,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ عَمْرِو بْنِ يَحْيَى الْمَازِنِيِّ، عَنْ أَبِيهِ، أَنَّ رَجُلاً، قَالَ لِعَبْدِ اللَّهِ بْنِ زَيْدٍ ـ وَهُوَ جَدُّ عَمْرِو بْنِ يَحْيَى ـ أَتَسْتَطِيعُ أَنْ تُرِيَنِي، كَيْفَ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يَتَوَضَّأُ فَقَالَ عَبْدُ اللَّهِ بْنُ زَيْدٍ نَعَمْ‏.‏ فَدَعَا بِمَاءٍ، فَأَفْرَغَ عَلَى يَدَيْهِ فَغَسَلَ يَدَهُ مَرَّتَيْنِ، ثُمَّ مَضْمَضَ وَاسْتَنْثَرَ ثَلاَثًا، ثُمَّ غَسَلَ وَجْهَهُ ثَلاَثًا، ثُمَّ غَسَلَ يَدَيْهِ مَرَّتَيْنِ مَرَّتَيْنِ إِلَى الْمِرْفَقَيْنِ، ثُمَّ مَسَحَ رَأْسَهُ بِيَدَيْهِ، فَأَقْبَلَ بِهِمَا وَأَدْبَرَ، بَدَأَ بِمُقَدَّمِ رَأْسِهِ، حَتَّى ذَهَبَ بِهِمَا إِلَى قَفَاهُ، ثُمَّ رَدَّهُمَا إِلَى الْمَكَانِ الَّذِي بَدَأَ مِنْهُ، ثُمَّ غَسَلَ رِجْلَيْهِ‏.‏",
+        en: "Narrated Yahya Al-Mazini: <br> A person asked `Abdullah bin Zaid who was the grandfather of `Amr bin Yahya, \"Can you show me how Allah's Messenger (ﷺ) used to perform ablution?\" `Abdullah bin Zaid replied in the affirmative and asked for water. He poured it on his hands and washed them twice, then he rinsed his mouth thrice and washed his nose with water thrice by putting water in it and blowing it out. He washed his face thrice and after that he washed his forearms up to the elbows twice and then passed his wet hands over his head from its front to its back and vice versa (beginning from the front and taking them to the back of his head up to the nape of the neck and then brought them to the front again from where he had started) and washed his feet (up to the ankles).",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، انھوں نے کہا ہم کو امام مالک نے عمرو بن یحییٰ المازنی سے خبر دی ، وہ اپنے باپ سے نقل کرتے ہیں کہ ایک آدمی نے عبداللہ بن زید رضی اللہ عنہ جو عمرو بن یحییٰ کے دادا ہیں ، سے پوچھا کہ کیا آپ مجھے دکھا سکتے ہیں کہ رسول اللہ صلی اللہ علیہ وسلم نے کس طرح وضو کیا ہے ؟ عبداللہ بن زید رضی اللہ عنہ نے کہا کہ ہاں ! پھر انھوں نے پانی کا برتن منگوایا پہلے پانی اپنے ہاتھوں پر ڈالا اور دو مرتبہ ہاتھ دھوئے ۔ پھر تین مرتبہ کلی کی ، تین بار ناک صاف کی ، پھر تین دفعہ اپنا چہرہ دھویا ۔ پھر کہنیوں تک اپنے دونوں ہاتھ دو دو مرتبہ دھوئے ۔ پھر اپنے دونوں ہاتھوں سے اپنے سر کا مسح کیا ۔ اس طور پر اپنے ہاتھ ( پہلے ) آگے لائے پھر پیچھے لے گئے ۔ ( مسح ) سر کے ابتدائی حصے سے شروع کیا ۔ پھر دونوں ہاتھ گدی تک لے جا کر وہیں واپس لائے جہاں سے ( مسح ) شروع کیا تھا ، پھر اپنے پیر دھوئے ۔",
+      },
+      {
+        id: 52,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُوسَى، قَالَ حَدَّثَنَا وُهَيْبٌ، عَنْ عَمْرٍو، عَنْ أَبِيهِ، شَهِدْتُ عَمْرَو بْنَ أَبِي حَسَنٍ سَأَلَ عَبْدَ اللَّهِ بْنَ زَيْدٍ عَنْ وُضُوءِ النَّبِيِّ، صلى الله عليه وسلم فَدَعَا بِتَوْرٍ مِنْ مَاءٍ، فَتَوَضَّأَ لَهُمْ وُضُوءَ النَّبِيِّ صلى الله عليه وسلم فَأَكْفَأَ عَلَى يَدِهِ مِنَ التَّوْرِ، فَغَسَلَ يَدَيْهِ ثَلاَثًا، ثُمَّ أَدْخَلَ يَدَهُ فِي التَّوْرِ، فَمَضْمَضَ وَاسْتَنْشَقَ وَاسْتَنْثَرَ ثَلاَثَ غَرَفَاتٍ، ثُمَّ أَدْخَلَ يَدَهُ فَغَسَلَ وَجْهَهُ ثَلاَثًا، ثُمَّ أَدْخَلَ يَدَهُ فَغَسَلَ يَدَيْهِ مَرَّتَيْنِ إِلَى الْمِرْفَقَيْنِ مَرَّتَيْنِ، ثُمَّ أَدْخَلَ يَدَهُ فَمَسَحَ رَأْسَهُ، فَأَقْبَلَ بِهِمَا وَأَدْبَرَ مَرَّةً وَاحِدَةً، ثُمَّ غَسَلَ رِجْلَيْهِ إِلَى الْكَعْبَيْنِ‏.‏",
+        en: "Narrated `Amr: <br> My father saw `Amr bin Abi Hasan asking `Abdullah bin Zaid about the ablution of the Prophet. `Abdullah bin Zaid asked for earthenware pot containing water and in front of them performed ablution like that of the Prophet (ﷺ) . He poured water from the pot over his hand and washed his hands thrice and then he put his hands in the pot and rinsed his mouth and washed his nose by putting water in it and then blowing it out with three handfuls of water. Again he put his hand in the water and washed his face thrice and washed his forearms up to the elbows twice; and then put his hands in the water and then passed them over his head by bringing them to the front and then to the rear of the head once, and then he washed his feet up to the ankles.",
+        ur: "ہم سے موسیٰ نے بیان کیا ، انھوں نے کہا ہم سے وہیب نے بیان کیا ، انھوں نے عمرو سے ، انھوں نے اپنے باپ ( یحییٰ ) سے خبر دی ، انھوں نے کہا کہ میری موجودگی میں عمرو بن حسن نے عبداللہ بن زید رضی اللہ عنہ سے رسول اللہ صلی اللہ علیہ وسلم کے وضو کے بارے میں پوچھا تو انھوں نے پانی کا طشت منگوایا اور ان ( پوچھنے والوں ) کے لیے رسول اللہ صلی اللہ علیہ وسلم کا سا وضو کیا ۔ ( پہلے طشت سے ) اپنے ہاتھوں پر پانی گرایا ۔ پھر تین بار ہاتھ دھوئے ، پھر اپنا ہاتھ طشت میں ڈالا ( اور پانی لیا ) پھر کلی کی ، ناک میں پانی ڈالا ، ناک صاف کی ، تین چلوؤں سے ، پھر اپنا ہاتھ طشت میں ڈالا اور تین مرتبہ منہ دھویا ۔ پھر اپنے دونوں ہاتھ کہنیوں تک دو بار دھوئے ۔ پھر اپنا ہاتھ طشت میں ڈالا اور سر کا مسح کیا ۔ ( پہلے ) آگے لائے پھر پیچھے لے گئے ، ایک بار ۔ پھر ٹخنوں تک اپنے دونوں پاؤں دھوئے ۔",
+      },
+      {
+        id: 53,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ، قَالَ حَدَّثَنَا شُعْبَةُ، قَالَ حَدَّثَنَا الْحَكَمُ، قَالَ سَمِعْتُ أَبَا جُحَيْفَةَ، يَقُولُ خَرَجَ عَلَيْنَا رَسُولُ اللَّهِ صلى الله عليه وسلم بِالْهَاجِرَةِ، فَأُتِيَ بِوَضُوءٍ فَتَوَضَّأَ، فَجَعَلَ النَّاسُ يَأْخُذُونَ مِنْ فَضْلِ وَضُوئِهِ فَيَتَمَسَّحُونَ بِهِ، فَصَلَّى النَّبِيُّ صلى الله عليه وسلم الظُّهْرَ رَكْعَتَيْنِ وَالْعَصْرَ رَكْعَتَيْنِ، وَبَيْنَ يَدَيْهِ عَنَزَةٌ‏.‏",
+        en: "Narrated Abu Juhaifa: <br> Allah's Messenger (ﷺ) came to us at noon and water for ablution was brought to him. After he had performed ablution, the remaining water was taken by the people and they started smearing their bodies with it (as a blessed thing). The Prophet (ﷺ) offered two rak`at of the Zuhr prayer and then two rak`at of the `Asr prayer while a short spear (or stick) was there (as a Sutra) in front of him.",
+        ur: "ہم سے آدم نے بیان کیا ، انھوں نے کہا ہم سے شعبہ نے بیان کیا ، انھوں نے کہا ہم سے حکم نے بیان کیا ، انھوں نے ابوحجیفہ رضی اللہ عنہ سے سنا ، وہ کہتے تھے کہ ( ایک دن ) رسول اللہ صلی اللہ علیہ وسلم ہمارے پاس دوپہر کے وقت تشریف لائے تو آپ صلی اللہ علیہ وسلم کے لیے وضو کا پانی حاضر کیا گیا جس سے آپ صلی اللہ علیہ وسلم نے وضو فرمایا ۔ لوگ آپ صلی اللہ علیہ وسلم کے وضو کا بچا ہوا پانی لے کر اسے ( اپنے بدن پر ) پھیرنے لگے ۔ آپ صلی اللہ علیہ وسلم نے ظہر کی دو رکعتیں ادا کیں اور عصر کی بھی دو رکعتیں اور آپ صلی اللہ علیہ وسلم کے سامنے ( آڑ کے لیے ) ایک نیزہ تھا ۔",
+      },
+      {
+        id: 54,
+        volume: 1,
+        arabic: "وَقَالَ أَبُو مُوسَى دَعَا النَّبِيُّ صلى الله عليه وسلم بِقَدَحٍ فِيهِ مَاءٌ، فَغَسَلَ يَدَيْهِ وَوَجْهَهُ فِيهِ، وَمَجَّ فِيهِ ثُمَّ قَالَ لَهُمَا اشْرَبَا مِنْهُ، وَأَفْرِغَا عَلَى وُجُوهِكُمَا وَنُحُورِكُمَا‏.‏",
+        en: "Abu Musa said: <br> The Prophet asked for a tumbler containing water and washed both his hands and face in it and then threw a mouthful of water in the tumbler and said to both of us (Abu Musa and Bilal), \"Drink from the tumbler and pour some of its water on your faces and chests.\"",
+        ur: "( اور ایک دوسری حدیث میں ) ابوموسیٰ اشعری رضی اللہ عنہ کہتے ہیں کہ نبی اکرم صلی اللہ علیہ وسلم نے ایک پیالہ منگوایا ۔ جس میں پانی تھا ۔ اس سے آپ صلی اللہ علیہ وسلم نے اپنے ہاتھ دھوئے اور اسی پیالہ میں منہ دھویا اور اس میں کلی فرمائی ، پھر فرمایا ، تو تم لوگ اس کو پی لو اور اپنے چہروں اور سینوں پر ڈال لو ۔",
+      },
+      {
+        id: 55,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَلِيُّ بْنُ عَبْدِ اللَّهِ، قَالَ حَدَّثَنَا يَعْقُوبُ بْنُ إِبْرَاهِيمَ بْنِ سَعْدٍ، قَالَ حَدَّثَنَا أَبِي، عَنْ صَالِحٍ، عَنِ ابْنِ شِهَابٍ، قَالَ أَخْبَرَنِي مَحْمُودُ بْنُ الرَّبِيعِ، قَالَ وَهُوَ الَّذِي مَجَّ رَسُولُ اللَّهِ صلى الله عليه وسلم فِي وَجْهِهِ وَهْوَ غُلاَمٌ مِنْ بِئْرِهِمْ‏.‏ وَقَالَ عُرْوَةُ عَنِ الْمِسْوَرِ وَغَيْرِهِ يُصَدِّقُ كُلُّ وَاحِدٍ مِنْهُمَا صَاحِبَهُ وَإِذَا تَوَضَّأَ النَّبِيُّ صلى الله عليه وسلم كَادُوا يَقْتَتِلُونَ عَلَى وَضُوئِهِ‏.‏",
+        en: "Narrated Ibn Shihab: <br> Mahmud bin Ar-Rabi` who was the person on whose face the Prophet (ﷺ) had ejected a mouthful of water from his family's well while he was a boy, and `Urwa (on the authority of Al-Miswar and others) who testified each other, said, \"Whenever the Prophet (ﷺ) , performed ablution, his companions were nearly fighting for the remains of the water.\"",
+        ur: "ہم سے علی بن عبداللہ نے بیان کیا ، کہا ہم سے یعقوب بن ابراہیم بن سعد نے ، کہا ہم سے میرے باپ نے ، انھوں نے صالح سے سنا ۔ انھوں نے ابن شہاب سے ، کہا انہیں محمود بن الربیع نے خبر دی ، ابن شہاب کہتے ہیں محمود وہی ہیں کہ جب وہ چھوٹے تھے تو رسول کریم صلی اللہ علیہ وسلم نے ان ہی کے کنویں ( کے پانی ) سے ان کے منہ میں کلی ڈالی تھی اور عروہ نے اسی حدیث کو مسور وغیرہ سے بھی روایت کیا ہے اور ہر ایک ( راوی ) ان دونوں میں سے ایک دوسرے کی تصدیق کرتے ہیں کہ جب رسول کریم صلی اللہ علیہ وسلم وضو فرماتے تو آپ صلی اللہ علیہ وسلم کے بچے ہوئے وضو کے پانی پر صحابہ رضی اللہ عنہم جھگڑنے کے قریب ہو جاتے تھے ۔",
+      },
+      {
+        id: 56,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ يُونُسَ، قَالَ حَدَّثَنَا حَاتِمُ بْنُ إِسْمَاعِيلَ، عَنِ الْجَعْدِ، قَالَ سَمِعْتُ السَّائِبَ بْنَ يَزِيدَ، يَقُولُ ذَهَبَتْ بِي خَالَتِي إِلَى النَّبِيِّ صلى الله عليه وسلم فَقَالَتْ يَا رَسُولَ اللَّهِ، إِنَّ ابْنَ أُخْتِي وَجِعٌ‏.‏ فَمَسَحَ رَأْسِي وَدَعَا لِي بِالْبَرَكَةِ، ثُمَّ تَوَضَّأَ فَشَرِبْتُ مِنْ وَضُوئِهِ، ثُمَّ قُمْتُ خَلْفَ ظَهْرِهِ، فَنَظَرْتُ إِلَى خَاتَمِ النُّبُوَّةِ بَيْنَ كَتِفَيْهِ مِثْلِ زِرِّ الْحَجَلَةِ‏.‏",
+        en: "Narrated As-Sa'ib bin Yazid: <br> My aunt took me to the Prophet (ﷺ) and said, \"O Allah's Messenger (ﷺ)! This son of my sister has got a disease in his legs.\" So he passed his hands on my head and prayed for Allah's blessings for me; then he performed ablution and I drank from the remaining water. I stood behind him and saw the seal of Prophethood between his shoulders, and it was like the \"Zir-al-Hijla\" (means the button of a small tent, but some said 'egg of a partridge.' etc.)",
+        ur: "ہم سے عبدالرحمٰن بن یونس نے بیان کیا ، انھوں نے کہا ہم سے حاتم بن اسماعیل نے جعد کے واسطے سے بیان کیا ، کہا انھوں نے سائب بن یزید سے سنا ، وہ کہتے تھے کہ میری خالہ مجھے نبی کریم صلی اللہ علیہ وسلم کی خدمت میں لے گئیں اور عرض کیا کہ یا رسول اللہ ! میرا یہ بھانجا بیمار ہے ، آپ صلی اللہ علیہ وسلم نے میرے سر پر اپنا ہاتھ پھیرا اور میرے لیے برکت کی دعا فرمائی ، پھر آپ صلی اللہ علیہ وسلم نے وضو کیا اور میں نے آپ صلی اللہ علیہ وسلم کے وضو کا بچا ہوا پانی پیا ۔ پھر میں آپ صلی اللہ علیہ وسلم کی کمر کے پیچھے کھڑا ہو گیا اور میں نے مہر نبوت دیکھی جو آپ صلی اللہ علیہ وسلم کے مونڈھوں کے درمیان ایسی تھی جیسے چھپر کھٹ کی گھنڈی ۔ ( یا کبوتر کا انڈا ) ۔",
+      },
+      {
+        id: 57,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُسَدَّدٌ، قَالَ حَدَّثَنَا خَالِدُ بْنُ عَبْدِ اللَّهِ، قَالَ حَدَّثَنَا عَمْرُو بْنُ يَحْيَى، عَنْ أَبِيهِ، عَنْ عَبْدِ اللَّهِ بْنِ زَيْدٍ، أَنَّهُ أَفْرَغَ مِنَ الإِنَاءِ عَلَى يَدَيْهِ فَغَسَلَهُمَا، ثُمَّ غَسَلَ أَوْ مَضْمَضَ، وَاسْتَنْشَقَ مِنْ كَفَّةٍ وَاحِدَةٍ، فَفَعَلَ ذَلِكَ ثَلاَثًا، فَغَسَلَ يَدَيْهِ إِلَى الْمِرْفَقَيْنِ مَرَّتَيْنِ مَرَّتَيْنِ، وَمَسَحَ بِرَأْسِهِ مَا أَقْبَلَ وَمَا أَدْبَرَ، وَغَسَلَ رِجْلَيْهِ إِلَى الْكَعْبَيْنِ، ثُمَّ قَالَ هَكَذَا وُضُوءُ رَسُولِ اللَّهِ صلى الله عليه وسلم‏.‏",
+        en: "Narrated `Amr bin Yahya: <br> (on the authority of his father) `Abdullah bin Zaid poured water on his hands from a utensil containing water and washed them and then with one handful of water he rinsed his mouth and cleaned his nose by putting water in it and then blowing it out. He repeated it thrice. He, then, washed his hands and forearms up to the elbows twice and passed wet hands over his head, both forwards and backwards, and washed his feet up to the ankles and said, \"This is the ablution of Allah's Messenger (ﷺ).\"",
+        ur: "ہم سے مسدد نے بیان کیا ، انھوں نے کہا ہم سے خالد بن عبداللہ نے بیان کیا ، ان سے عمرو بن یحییٰ نے اپنے باپ ( یحییٰ ) کے واسطے سے بیان کیا ، وہ عبداللہ بن زید رضی اللہ عنہ سے نقل کرتے ہیں کہ ( وضو کرتے وقت ) انھوں نے برتن سے ( پہلے ) اپنے دونوں ہاتھوں پر پانی ڈالا ۔ پھر انہیں دھویا ۔ پھر دھویا ۔ ( یا یوں کہا کہ ) کلی کی اور ناک میں ایک چلو سے پانی ڈالا ۔ اور تین مرتبہ اسی طرح کیا ۔ پھر تین مرتبہ اپنا چہرہ دھویا پھر کہنیوں تک اپنے دونوں ہاتھ دو دو بار دھوئے ۔ پھر سر کا مسح کیا ۔ اگلی جانب اور پچھلی جانب کا اور ٹخنوں تک اپنے دونوں پاؤں دھوئے ، پھر کہا کہ رسول اللہ صلی اللہ علیہ وسلم کا وضو اسی طرح ہوا کرتا تھا ۔",
+      },
+      {
+        id: 58,
+        volume: 1,
+        arabic: "حَدَّثَنَا سُلَيْمَانُ بْنُ حَرْبٍ، قَالَ حَدَّثَنَا وُهَيْبٌ، قَالَ حَدَّثَنَا عَمْرُو بْنُ يَحْيَى، عَنْ أَبِيهِ، قَالَ شَهِدْتُ عَمْرَو بْنَ أَبِي حَسَنٍ سَأَلَ عَبْدَ اللَّهِ بْنَ زَيْدٍ عَنْ وُضُوءِ النَّبِيِّ، صلى الله عليه وسلم فَدَعَا بِتَوْرٍ مِنْ مَاءٍ، فَتَوَضَّأَ لَهُمْ، فَكَفَأَ عَلَى يَدَيْهِ فَغَسَلَهُمَا ثَلاَثًا، ثُمَّ أَدْخَلَ يَدَهُ فِي الإِنَاءِ، فَمَضْمَضَ وَاسْتَنْشَقَ، وَاسْتَنْثَرَ ثَلاَثًا بِثَلاَثِ غَرَفَاتٍ مِنْ مَاءٍ، ثُمَّ أَدْخَلَ يَدَهُ فِي الإِنَاءِ، فَغَسَلَ وَجْهَهُ ثَلاَثًا، ثُمَّ أَدْخَلَ يَدَهُ فِي الإِنَاءِ، فَغَسَلَ يَدَيْهِ إِلَى الْمِرْفَقَيْنِ مَرَّتَيْنِ مَرَّتَيْنِ، ثُمَّ أَدْخَلَ يَدَهُ فِي الإِنَاءِ، فَمَسَحَ بِرَأْسِهِ فَأَقْبَلَ بِيَدَيْهِ وَأَدْبَرَ بِهِمَا، ثُمَّ أَدْخَلَ يَدَهُ فِي الإِنَاءِ فَغَسَلَ رِجْلَيْهِ‏.‏ وَحَدَّثَنَا مُوسَى قَالَ حَدَّثَنَا وُهَيْبٌ قَالَ مَسَحَ رَأْسَهُ مَرَّةً‏.‏",
+        en: "Narrated `Amr bin Yahya: <br> My father said, \"I saw `Amr bin Abi Hasan asking `Abdullah bin Zaid about the ablution of the Prophet. `Abdullah bin Zaid asked for an earthenware pot containing water and performed ablution in front of them. He poured water over his hands and washed them thrice. Then he put his (right) hand in the pot and rinsed his mouth and washed his nose by putting water in it and then blowing it out thrice with three handfuls of water Again he put his hand in the water and washed his face thrice. After that he put his hand in the pot and washed his forearms up to the elbows twice and then again put his hand in the water and passed wet hands over his head by bringing them to the front and then to the back and once more he put his hand in the pot and washed his feet (up to the ankles.)\" <br> Narrated Wuhaib: <br> That he (the Prophet (ﷺ) in narration 191 above) had passed his wet hands on the head once only.",
+        ur: "ہم سے سلیمان بن حرب نے بیان کیا ، انھوں نے کہا ہم سے وہیب نے بیان کیا ، ان سے عمرو بن یحییٰ نے اپنے باپ ( یحییٰ ) کے واسطے سے بیان کیا ، وہ کہتے ہیں کہ میری موجودگی میں عمرو بن حسن نے عبداللہ بن زید رضی اللہ عنہ سے رسول کریم صلی اللہ علیہ وسلم کے وضو کے بارے میں پوچھا ۔ تو عبداللہ بن زید رضی اللہ عنہ نے پانی کا ایک طشت منگوایا ، پھر ان ( لوگوں ) کے دکھانے کے لیے وضو ( شروع ) کیا ۔ ( پہلے ) طشت سے اپنے ہاتھوں پر پانی گرایا ۔ پھر انہیں تین بار دھویا ۔ پھر اپنا ہاتھ برتن کے اندر ڈالا ، پھر کلی کی اور ناک میں پانی ڈال کر ناک صاف کی ، تین چلوؤں سے تین دفعہ ۔ پھر اپنا ہاتھ برتن کے اندر ڈالا اور اپنے منہ کو تین بار دھویا ۔ پھر اپنا ہاتھ برتن کے اندر ڈالا اور دونوں ہاتھ کہنیوں تک دو دو بار دھوئے ( پھر ) سر پر مسح کیا اس طرح کہ ( پہلے ) آگے کی طرف اپنا ہاتھ لائے پھر پیچھے کی طرف لے گئے ۔ پھر برتن میں اپنا ہاتھ ڈالا اور اپنے دونوں پاؤں دھوئے ( دوسری روایت میں ) ہم سے موسیٰ نے ، ان سے وہیب نے بیان کیا کہ آپ نے سر کا مسح ایک دفعہ کیا ۔",
+      },
+      {
+        id: 59,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ نَافِعٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، أَنَّهُ قَالَ كَانَ الرِّجَالُ وَالنِّسَاءُ يَتَوَضَّئُونَ فِي زَمَانِ رَسُولِ اللَّهِ صلى الله عليه وسلم جَمِيعًا‏.‏",
+        en: "Narrated 'Abdullah bin 'Umar: <br> \"During the lifetime of Allah's Messenger (ﷺ) men and women used to perform ablution together.\"",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، کہا ہم کو مالک نے نافع سے خبر دی ، وہ عبداللہ بن عمر رضی اللہ عنہما سے روایت کرتے ہیں ۔ وہ فرماتے ہیں کہ رسول کریم صلی اللہ علیہ وسلم کے زمانے میں عورت اور مرد سب ایک ساتھ ( ایک ہی برتن سے ) وضو کیا کرتے تھے ۔ ( یعنی وہ مرد اور عورتیں جو ایک دوسرے کے محرم ہوتے ) ۔",
+      },
+      {
+        id: 60,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو الْوَلِيدِ، قَالَ حَدَّثَنَا شُعْبَةُ، عَنْ مُحَمَّدِ بْنِ الْمُنْكَدِرِ، قَالَ سَمِعْتُ جَابِرًا، يَقُولُ جَاءَ رَسُولُ اللَّهِ صلى الله عليه وسلم يَعُودُنِي، وَأَنَا مَرِيضٌ لاَ أَعْقِلُ، فَتَوَضَّأَ وَصَبَّ عَلَىَّ مِنْ وَضُوئِهِ، فَعَقَلْتُ فَقُلْتُ يَا رَسُولَ اللَّهِ لِمَنِ الْمِيرَاثُ إِنَّمَا يَرِثُنِي كَلاَلَةٌ‏.‏ فَنَزَلَتْ آيَةُ الْفَرَائِضِ‏.‏",
+        en: "Narrated Jabir: <br> Allah's Messenger (ﷺ) came to visit me while I was sick and unconscious. He performed ablution and sprinkled the remaining water on me and I became conscious and said, \"O Allah's Messenger (ﷺ)! To whom will my inheritance go as I have neither ascendants nor descendants?\" Then the Divine verses regarding Fara'id (inheritance) were revealed.",
+        ur: "ہم سے ابوالولید نے بیان کیا ، انھوں نے کہا ہم سے شعبہ نے محمد بن المنکدر کے واسطے سے ، انھوں نے حضرت جابر رضی اللہ عنہ سے سنا ، وہ کہتے تھے کہ رسول کریم صلی اللہ علیہ وسلم میری مزاج پرسی کے لیے تشریف لائے ۔ میں بیمار تھا ایسا کہ مجھے ہوش تک نہیں تھا ۔ آپ صلی اللہ علیہ وسلم نے وضو کیا اور اپنے وضو کا پانی مجھ پر چھڑکا ، تو مجھے ہوش آ گیا ۔ میں نے عرض کیا ، یا رسول اللہ ! میرا وارث کون ہو گا ؟ میرا تو صرف ایک کلالہ وارث ہے ۔ اس پر آیت میراث نازل ہوئی ۔",
+      },
+      // {
+      //   id: ,
+      //   volume: 1,
+      //   arabic: "",
+      //   en: "",
+      //   ur: "",
+      // }, 195
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    function toggleFavorite(hadithId) {
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+      } else {
+        favoritedHadiths.push(hadithId);
+      }
+      localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function toggleBookmark(hadithId) {
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+      } else {
+        bookmarkedHadiths.push(hadithId);
+      }
+      localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = 'hadith';
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="arabic">${hadith.arabic}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = `hadith translation ${lang}`;
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="translation ${lang}">${hadith[lang]}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "sun.png"
+        : "moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function openShareModal(hadithId, tab) {
+      const modal = document.getElementById('share-modal');
+      modal.classList.remove('hidden');
+      // Store the current hadith and tab for sharing
+      modal.dataset.hadithId = hadithId;
+      modal.dataset.tab = tab;
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById('share-modal');
+      modal.classList.add('hidden');
+    }
+
+    function goToHadith() {
+      const hadithNumber = parseInt(document.getElementById('hadith-number').value);
+      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 7) {
+        alert('Please enter a valid hadith number between 1 and 7.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = translateTab.classList.contains('hidden') ? readTab : translateTab;
+      const hadithElements = activeTab.querySelectorAll('.hadith');
+
+      if (hadithElements[hadithNumber - 1]) {
+        hadithElements[hadithNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the hadith temporarily
+        hadithElements[hadithNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          hadithElements[hadithNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
+    }
+
+    function shareHadith() {
+      const modal = document.getElementById('share-modal');
+      const hadithId = parseInt(modal.dataset.hadithId);
+      const tab = modal.dataset.tab;
+      const hadith = hadiths.find(h => h.id === hadithId);
+
+      const includeArabic = document.getElementById('include-arabic').checked;
+      const includeTranslation = document.getElementById('include-translation').checked;
+      const shareLang = document.getElementById('share-language').value;
+
+      let shareText = `Hadith ${hadith.id}\n`;
+      shareText += `Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}\n\n`;
+
+      if (includeArabic) {
+        shareText += `${hadith.arabic}\n\n`;
+      }
+
+      if (includeTranslation) {
+        shareText += `${hadith[shareLang]}\n\n`;
+      }
+
+      shareText += `https://adil43534.github.io/Muslimbro1400.com/`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(shareText).then(() => {
+        const copyMessage = document.getElementById('copy-message');
+        copyMessage.classList.remove('hidden');
+        setTimeout(() => {
+          copyMessage.classList.add('hidden');
+          closeShareModal();
+        }, 3000); // Hide message and close modal after 3 seconds
+      });
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+      // Scroll to the hadith if redirected with hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#hadith')) {
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Highlight the hadith temporarily
+            element.style.backgroundColor = '#005f4a';
+            setTimeout(() => {
+              element.style.backgroundColor = '';
+            }, 2000);
+          }
+        }, 100);
+      }
+    };
+  </script>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop">↑</button>
+
+  <script>
+    // Scroll to Top functionality
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 100) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
