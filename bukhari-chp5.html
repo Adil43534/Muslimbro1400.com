@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahih al-Bukhari - Chapter 5: Bathing (Ghusl) (كتاب الغسل) - Muslimbro1400</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">  
+  <style>
+        /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .dark-mode .navbar { background-color: #2c2c2c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a { color: #e0e0e0; }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .hadith-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hadith-info h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .subtitle { color: #bbb; }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .dark-mode .meta { color: #aaa; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
+    .lang-select {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .lang-select label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .lang-select label {
+      color: #e0e0e0;
+    }
+
+    .lang-select select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .dark-mode .lang-select select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .lang-select select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .lang-select select:hover {
+      border-color: #0a6;
+    }
+
+    .lang-select select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .lang-select select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .go-to-hadith label {
+      margin-right: 0.5rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .go-to-hadith label {
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      width: 80px;
+      text-align: center;
+    }
+
+    .dark-mode .go-to-hadith input {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+    }
+
+    .go-to-hadith input:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith input:hover {
+      border-color: #0a6;
+    }
+
+    .go-to-hadith input:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .go-to-hadith input:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .go-to-hadith button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .go-to-hadith button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .go-to-hadith button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .go-to-hadith button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .hadith {
+      background-color: #fff;
+      padding: 3rem 3rem 3rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007b5e;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .dark-mode .hadith {
+      background-color: #2c2c2c;
+      border-left-color: #0c8;
+    }
+
+    .hadith-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.9rem;
+      color: #007b5e;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-number { color: #0c8; }
+
+    .arabic {
+      font-size: 1.8rem;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+    }
+
+    .translation {
+      margin-top: 0.5rem;
+      padding-top: 2rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    /* Updated Urdu Translation Class */
+    .translation.ur {
+      text-align: right;
+      direction: rtl;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .dark-mode .translation { color: #ccc; }
+
+    .hadith-meta {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .hadith-meta { color: #ccc; }
+
+    .hadith-meta a {
+      color: #007b5e;
+      text-decoration: none;
+    }
+
+    .dark-mode .hadith-meta a { color: #0c8; }
+
+    .hadith-meta a:hover {
+      text-decoration: underline;
+    }
+
+    .favorite-btn, .bookmark-btn, .share-icon {
+      position: absolute;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
+      opacity: 1;
+    }
+
+    .share-icon {
+      top: 1rem;
+    }
+
+    .favorite-btn {
+      top: 3rem;
+    }
+
+    .bookmark-btn {
+      top: 5rem;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dark-mode .modal-content {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .modal-content h2 {
+      color: #e0e0e0;
+    }
+
+    .modal-content div {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dark-mode .modal-content label {
+      color: #e0e0e0;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #007b5e;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content input[type="checkbox"]:checked {
+      background-color: #007b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"] {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content input[type="checkbox"]:checked {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .modal-content select {
+      padding: 0.6rem 2rem 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #fff;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .modal-content select:hover {
+      border-color: #005f4a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content select {
+      background-color: #2c2c2c;
+      border-color: #0c8;
+      color: #e0e0e0;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .dark-mode .modal-content select:hover {
+      border-color: #0a6;
+    }
+
+    .modal-content select:focus {
+      outline: none;
+      border-color: #005f4a;
+      box-shadow: 0 0 8px rgba(0,123,94,0.3);
+    }
+
+    .dark-mode .modal-content select:focus {
+      border-color: #0a6;
+      box-shadow: 0 0 8px rgba(0,204,136,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      border: 2px solid #007b5e;
+      border-radius: 6px;
+      background-color: #007b5e;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #005f4a;
+      border-color: #005f4a;
+      transform: scale(1.02);
+    }
+
+    .dark-mode .modal-content button {
+      background-color: #0c8;
+      border-color: #0c8;
+    }
+
+    .dark-mode .modal-content button:hover {
+      background-color: #0a6;
+      border-color: #0a6;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .navigation a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .navigation a { color: #0c8; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .lang-select select {
+        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        background-size: 16px;
+      }
+
+      .hadith-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .arabic {
+        font-size: 1.5rem;
+      }
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #007b5e;
+      z-index: 1001;
+      transition: width 0.25s ease;
+    }
+
+    .dark-mode #progress-bar {
+      background-color: #0c8;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #scrollToTop:hover {
+      background-color: #005f4a;
+      transform: scale(1.1);
+    }
+
+    #scrollToTop.show {
+      display: block;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    .dark-mode #scrollToTop:hover {
+      background-color: #0a6;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="hadith-info">
+      <h1>Book 5: Bathing (Ghusl) <span class="arabic">(كتاب الغسل)</span></h1>
+      <p class="subtitle">Chapter: Performing Ghusl</p>
+      <p class="meta">46 Hadiths</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('read')">Read</button>
+        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="renderTranslation()">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+
+      <!-- Go to Hadith -->
+      <div class="go-to-hadith">
+        <label for="hadith-number">Go to Hadith:</label>
+        <input type="number" id="hadith-number" min="1" max="46" placeholder="1-46">
+        <button onclick="goToHadith()">Go</button>
+      </div>
+    </div>
+
+    <!-- Navigation above hadith container -->
+    <div class="navigation">
+      <a href="bukhari-chp4.html">Previous Chapter 4</a>
+      <a href="bukhari-chp6.html">Next Chapter 6</a>
+    </div>
+
+    <br>
+
+    <!-- Arabic Tab -->
+    <div id="read-tab"></div>
+
+    <!-- Translation Tab -->
+    <div id="translate-tab" class="hidden"></div>
+
+    <!-- Navigation below hadith container -->
+    <div class="navigation">
+      <a href="bukhari-chp4.html">Previous Chapter 4</a>
+      <a href="bukhari-chp6.html">Next Chapter 6</a>
+    </div>
+  </div>
+
+
+  <!-- Share Modal -->
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Share Hadith</h2>
+      <div>
+        <label>
+          <input type="checkbox" id="include-arabic" checked> Include Arabic Text
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="include-translation" checked> Include Translation
+        </label>
+      </div>
+      <div>
+        <label for="share-language">Translation Language:</label>
+        <select id="share-language">
+          <option value="en">English</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </div>
+      <button onclick="shareHadith()">Copy</button>
+      <button onclick="closeShareModal()">Cancel</button>
+      <div id="copy-message" class="hidden" style="color: #0c8; margin-top: 1rem; font-weight: bold;">Text copied to clipboard!</div>
+    </div>
+  </div>
+
+  <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    // Favorites and Bookmarks storage
+    let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+    let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+
+    const hadiths = [
+      {
+        id: 1,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ هِشَامٍ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، زَوْجِ النَّبِيِّ صلى الله عليه وسلم أَنَّ النَّبِيَّ صلى الله عليه وسلم كَانَ إِذَا اغْتَسَلَ مِنَ الْجَنَابَةِ بَدَأَ فَغَسَلَ يَدَيْهِ، ثُمَّ يَتَوَضَّأُ كَمَا يَتَوَضَّأُ لِلصَّلاَةِ، ثُمَّ يُدْخِلُ أَصَابِعَهُ فِي الْمَاءِ، فَيُخَلِّلُ بِهَا أُصُولَ شَعَرِهِ ثُمَّ يَصُبُّ عَلَى رَأْسِهِ ثَلاَثَ غُرَفٍ بِيَدَيْهِ، ثُمَّ يُفِيضُ الْمَاءَ عَلَى جِلْدِهِ كُلِّهِ‏.‏",
+        en: "Narrated `Aisha: <br> Whenever the Prophet (ﷺ) took a bath after Janaba he started by washing his hands and then performed ablution like that for the prayer. After that he would put his fingers in water and move the roots of his hair with them, and then pour three handfuls of water over his head and then pour water all over his body.",
+        ur: "ہم سے عبداللہ بن یوسف نے بیان کیا ، انھوں نے کہا ہمیں مالک نے ہشام سے خبر دی ، وہ اپنے والد سے ، وہ نبی کریم صلی اللہ علیہ وسلم کی زوجہ مطہرہ حضرت عائشہ رضی اللہ عنہا سے روایت کرتے ہیں کہ نبی کریم صلی اللہ علیہ وسلم جب غسل فرماتے تو آپ صلی اللہ علیہ وسلم پہلے اپنے دونوں ہاتھ دھوتے پھر اسی طرح وضو کرتے جیسا نماز کے لیے آپ صلی اللہ علیہ وسلم وضو کیا کرتے تھے ۔ پھر پانی میں اپنی انگلیاں داخل فرماتے اور ان سے بالوں کی جڑوں کا خلال کرتے ۔ پھر اپنے ہاتھوں سے تین چلو سر پر ڈالتے پھر تمام بدن پر پانی بہا لیتے ۔",
+      },
+      {
+        id: 2,
+        volume: 1,
+        arabic: "حَدَّثَنَا مُحَمَّدُ بْنُ يُوسُفَ، قَالَ حَدَّثَنَا سُفْيَانُ، عَنِ الأَعْمَشِ، عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ، عَنْ كُرَيْبٍ، عَنِ ابْنِ عَبَّاسٍ، عَنْ مَيْمُونَةَ، زَوْجِ النَّبِيِّ صلى الله عليه وسلم قَالَتْ تَوَضَّأَ رَسُولُ اللَّهِ صلى الله عليه وسلم وُضُوءَهُ لِلصَّلاَةِ غَيْرَ رِجْلَيْهِ، وَغَسَلَ فَرْجَهُ، وَمَا أَصَابَهُ مِنَ الأَذَى، ثُمَّ أَفَاضَ عَلَيْهِ الْمَاءَ، ثُمَّ نَحَّى رِجْلَيْهِ فَغَسَلَهُمَا، هَذِهِ غُسْلُهُ مِنَ الْجَنَابَةِ‏.‏",
+        en: "Narrated Maimuna: <br> (the wife of the Prophet) Allah's Messenger (ﷺ) performed ablution like that for the prayer but did not wash his feet. He washed off the discharge from his private parts and then poured water over his body. He withdrew his feet from that place (the place where he took the bath) and then washed them. And that was his way of taking the bath of Janaba.",
+        ur: "ہم سے محمد بن یوسف نے حدیث بیان کی ، انھوں نے کہا کہ ہم سے سفیان نے بیان کیا اعمش سے روایت کر کے ، وہ سالم ابن ابی الجعد سے ، وہ کریب سے ، وہ ابن عباس رضی اللہ عنہما سے ، وہ میمونہ رضی اللہ عنہا نبی کریم صلی اللہ علیہ وسلم کی زوجہ مطہرہ سے روایت کرتے ہیں ، انھوں نے بتلایا کہ نبی کریم صلی اللہ علیہ وسلم نے نماز کے وضو کی طرح ایک مرتبہ وضو کیا ، البتہ پاؤں نہیں دھوئے ۔ پھر اپنی شرمگاہ کو دھویا اور جہاں کہیں بھی نجاست لگ گئی تھی ، اس کو دھویا ۔ پھر اپنے اوپر پانی بہا لیا ۔ پھر پہلی جگہ سے ہٹ کر اپنے دونوں پاؤں کو دھویا ۔ آپ کا غسل جنابت اسی طرح ہوا کرتا تھا ۔",
+      },
+      {
+        id: 3,
+        volume: 1,
+        arabic: "حَدَّثَنَا آدَمُ بْنُ أَبِي إِيَاسٍ، قَالَ حَدَّثَنَا ابْنُ أَبِي ذِئْبٍ، عَنِ الزُّهْرِيِّ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ، قَالَتْ كُنْتُ أَغْتَسِلُ أَنَا وَالنَّبِيُّ، صلى الله عليه وسلم مِنْ إِنَاءٍ وَاحِدٍ مِنْ قَدَحٍ يُقَالُ لَهُ الْفَرَقُ‏.‏",
+        en: "Narrated `Aisha: <br> The Prophet (ﷺ) and I used to take a bath from a single pot called 'Faraq'.",
+        ur: "ہم سے آدم بن ابی ایاس نے حدیث بیان کی ، انھوں نے کہا کہ ہم سے ابن ابی ذئب نے حدیث بیان کی ۔ انھوں نے زہری سے ، انھوں نے عروہ سے ، انھوں نے حضرت عائشہ رضی اللہ عنہا سے کہ آپ نے بتلایا کہ میں اور نبی کریم صلی اللہ علیہ وسلم ایک ہی برتن میں غسل کیا کرتے تھے اس برتن کو فرق کہا جاتا تھا ۔ ( نوٹ : فرق کے اندر 6.298 کلو گرام ہوتا ہے ۔ )",
+      },
+      {
+        id: 4,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مُحَمَّدٍ، قَالَ حَدَّثَنِي عَبْدُ الصَّمَدِ، قَالَ حَدَّثَنِي شُعْبَةُ، قَالَ حَدَّثَنِي أَبُو بَكْرِ بْنُ حَفْصٍ، قَالَ سَمِعْتُ أَبَا سَلَمَةَ، يَقُولُ دَخَلْتُ أَنَا وَأَخُو، عَائِشَةَ عَلَى عَائِشَةَ فَسَأَلَهَا أَخُوهَا عَنْ غُسْلِ النَّبِيِّ، صلى الله عليه وسلم فَدَعَتْ بِإِنَاءٍ نَحْوًا مِنْ صَاعٍ، فَاغْتَسَلَتْ وَأَفَاضَتْ عَلَى رَأْسِهَا، وَبَيْنَنَا وَبَيْنَهَا حِجَابٌ‏.‏ قَالَ أَبُو عَبْدِ اللَّهِ قَالَ يَزِيدُ بْنُ هَارُونَ وَبَهْزٌ وَالْجُدِّيُّ عَنْ شُعْبَةَ قَدْرِ صَاعٍ‏.‏",
+        en: "Narrated Abu Salama: <br> `Aisha's brother and I went to `Aisha and he asked her about the bath of the Prophet. She brought a pot containing about a Sa` of water and took a bath and poured it over her head and at that time there was a screen between her and us.",
+        ur: "ہم سے عبداللہ بن محمد نے حدیث بیان کی ، انھوں نے کہا کہ ہم سے عبدالصمد نے ، انھوں نے کہا ہم سے شعبہ نے ، انھوں نے کہا ہم سے ابوبکر بن حفص نے ، انھوں نے کہا کہ میں نے ابوسلمہ سے یہ حدیث سنی کہ میں ( ابوسلمہ ) اور حضرت عائشہ رضی اللہ عنہا کے بھائی حضرت عائشہ رضی اللہ عنہا کی خدمت میں گئے ۔ ان کے بھائی نے نبی کریم صلی اللہ علیہ وسلم کے غسل کے بارے میں سوال کیا ۔ تو آپ نے صاع جیسا ایک برتن منگوایا ۔ پھر غسل کیا اور اپنے اوپر پانی بہایا ۔ اس وقت ہمارے درمیان اور ان کے درمیان پردہ حائل تھا ۔ امام ابوعبداللہ ( بخاری ) کہتے ہیں کہ یزید بن ہارون ، بہز اور جدی نے شعبہ سے قدر صاع کے الفاظ روایت کئے ہیں ۔ ( نوٹ : صاع کے اندر 2.488 کلو گرام ہوتا ہے ۔ )",
+      },
+      {
+        id: 5,
+        volume: 1,
+        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مُحَمَّدٍ، قَالَ حَدَّثَنَا يَحْيَى بْنُ آدَمَ، قَالَ حَدَّثَنَا زُهَيْرٌ، عَنْ أَبِي إِسْحَاقَ، قَالَ حَدَّثَنَا أَبُو جَعْفَرٍ، أَنَّهُ كَانَ عِنْدَ جَابِرِ بْنِ عَبْدِ اللَّهِ هُوَ وَأَبُوهُ، وَعِنْدَهُ قَوْمٌ فَسَأَلُوهُ عَنِ الْغُسْلِ،‏.‏ فَقَالَ يَكْفِيكَ صَاعٌ‏.‏ فَقَالَ رَجُلٌ مَا يَكْفِينِي‏.‏ فَقَالَ جَابِرٌ كَانَ يَكْفِي مَنْ هُوَ أَوْفَى مِنْكَ شَعَرًا، وَخَيْرٌ مِنْكَ، ثُمَّ أَمَّنَا فِي ثَوْبٍ‏.‏",
+        en: "Narrated Abu Ja`far: <br> While I and my father were with Jabir bin `Abdullah, some people asked him about taking a bath. He replied, \"A Sa` of water is sufficient for you.\" A man said, \"A Sa` is not sufficient for me.\" Jabir said, \"A Sa` was sufficient for one who had more hair than you and was better than you (meaning the Prophet).\" And then Jabir (put on) his garment and led the prayer.",
+        ur: "ہم سے عبداللہ بن محمد نے حدیث بیان کی ، انھوں نے کہا کہ ہم سے یحییٰ بن آدم نے حدیث بیان کی ، انھوں نے کہا ہم سے زہیر نے ابواسحاق کے واسطے سے ، انھوں نے کہا ہم سے ابوجعفر ( محمد باقر ) نے بیان کیا کہ وہ اور ان کے والد ( جناب زین العابدین ) جابر بن عبداللہ رضی اللہ عنہ کے پاس تھے اور کچھ اور لوگ بھی بیٹھے ہوئے تھے ۔ ان لوگوں نے آپ سے غسل کے بارے میں پوچھا تو آپ نے فرمایا کہ ایک صاع کافی ہے ۔ اس پر ایک شخص بولا یہ مجھے تو کافی نہ ہو گا ۔ حضرت جابر رضی اللہ عنہ نے فرمایا کہ یہ ان کے لیے کافی ہوتا تھا جن کے بال تم سے زیادہ تھے اور جو تم سے بہتر تھے ( یعنی رسول اللہ صلی اللہ علیہ وسلم ) پھر حضرت جابر رضی اللہ عنہ نے صرف ایک کپڑا پہن کر ہمیں نماز پڑھائی ۔ ( نوٹ : صاع کے اندر 2.488 کلو گرام ہوتا ہے ۔ )",
+      },
+      {
+        id: 6,
+        volume: 1,
+        arabic: "حَدَّثَنَا أَبُو نُعَيْمٍ، قَالَ حَدَّثَنَا ابْنُ عُيَيْنَةَ، عَنْ عَمْرٍو، عَنْ جَابِرِ بْنِ زَيْدٍ، عَنِ ابْنِ عَبَّاسٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم وَمَيْمُونَةَ كَانَا يَغْتَسِلاَنِ مِنْ إِنَاءٍ وَاحِدٍ‏.‏ قَالَ أَبُو عَبْدِ اللَّهِ كَانَ ابْنُ عُيَيْنَةَ يَقُولُ أَخِيرًا عَنِ ابْنِ عَبَّاسٍ عَنْ مَيْمُونَةَ، وَالصَّحِيحُ مَا رَوَى أَبُو نُعَيْمٍ‏.‏",
+        en: "Narrated Ibn `Abbas: <br> The Prophet (ﷺ) and Maimuna used to take a bath from a single pot.",
+        ur: "ہم سے ابونعیم نے روایت کی ، انھوں نے کہا کہ ہم سے سفیان بن عیینہ نے عمرو کے واسطہ سے بیان کیا ، وہ جابر بن زید سے ، وہ حضرت عبداللہ بن عباس سے کہ نبی کریم صلی اللہ علیہ وسلم اور حضرت میمونہ رضی اللہ عنہا ایک برتن میں غسل کر لیتے تھے ۔ ابوعبداللہ ( امام بخاری ) فرماتے ہیں کہ ابن عیینہ اخیر عمر میں اس حدیث کو یوں روایت کرتے تھے ابن عباس رضی اللہ عنہما سے انھوں نے میمونہ رضی اللہ عنہا سے اور صحیح وہی روایت ہے جو ابونعیم نے کی ہے ۔",
+      },
+      {
+        id: 7,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+      {
+        id: ,
+        volume: 1,
+        arabic: "",
+        en: "",
+        ur: "",
+      },
+    ];
+
+    const readTab = document.getElementById('read-tab');
+    const translateTab = document.getElementById('translate-tab');
+    const langSelect = document.getElementById('language');
+    const langWrapper = document.getElementById('languageSelector');
+
+    function toggleFavorite(hadithId) {
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+      } else {
+        favoritedHadiths.push(hadithId);
+      }
+      localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function toggleBookmark(hadithId) {
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+      } else {
+        bookmarkedHadiths.push(hadithId);
+      }
+      localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+      if (!translateTab.classList.contains('hidden')) {
+        renderTranslation();
+      } else {
+        renderReadTab();
+      }
+    }
+
+    function renderReadTab() {
+      readTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = 'hadith';
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="arabic">${hadith.arabic}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'read')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        readTab.appendChild(div);
+      });
+    }
+
+    function renderTranslation() {
+      const lang = langSelect.value;
+      translateTab.innerHTML = '';
+      hadiths.forEach(hadith => {
+        const isFavorited = favoritedHadiths.includes(hadith.id);
+        const isBookmarked = bookmarkedHadiths.includes(hadith.id);
+        const div = document.createElement('div');
+        div.className = `hadith translation ${lang}`;
+        div.id = `hadith${hadith.id}`;
+        div.innerHTML = `
+          <div class="hadith-number">Hadith ${hadith.id}</div>
+          <div class="translation ${lang}">${hadith[lang]}</div>
+          <div class="hadith-meta">
+            <p>Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}</p>
+          </div>
+          <button class="favorite-btn" onclick="toggleFavorite(${hadith.id})">${isFavorited ? favoriteSVG : unfavoriteSVG}</button>
+          <button class="bookmark-btn" onclick="toggleBookmark(${hadith.id})">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</button>
+          <svg class="share-icon" onclick="openShareModal(${hadith.id}, 'translate')" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+          </svg>
+        `;
+        translateTab.appendChild(div);
+      });
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'read' ? 0 : 1].classList.add('active');
+
+      if (tab === 'read') {
+        readTab.classList.remove('hidden');
+        translateTab.classList.add('hidden');
+        langWrapper.classList.add('hidden');
+        renderReadTab();
+      } else {
+        readTab.classList.add('hidden');
+        translateTab.classList.remove('hidden');
+        langWrapper.classList.remove('hidden');
+        renderTranslation();
+      }
+    }
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "sun.png"
+        : "moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function openShareModal(hadithId, tab) {
+      const modal = document.getElementById('share-modal');
+      modal.classList.remove('hidden');
+      // Store the current hadith and tab for sharing
+      modal.dataset.hadithId = hadithId;
+      modal.dataset.tab = tab;
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById('share-modal');
+      modal.classList.add('hidden');
+    }
+
+    function goToHadith() {
+      const hadithNumber = parseInt(document.getElementById('hadith-number').value);
+      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 46) {
+        alert('Please enter a valid hadith number between 1 and 46.');
+        return;
+      }
+
+      // Determine which tab is active
+      const activeTab = translateTab.classList.contains('hidden') ? readTab : translateTab;
+      const hadithElements = activeTab.querySelectorAll('.hadith');
+
+      if (hadithElements[hadithNumber - 1]) {
+        hadithElements[hadithNumber - 1].scrollIntoView({ behavior: 'smooth' });
+
+        // Highlight the hadith temporarily
+        hadithElements[hadithNumber - 1].style.backgroundColor = '#005f4a';
+        setTimeout(() => {
+          hadithElements[hadithNumber - 1].style.backgroundColor = '';
+        }, 2000);
+      }
+    }
+
+    function shareHadith() {
+      const modal = document.getElementById('share-modal');
+      const hadithId = parseInt(modal.dataset.hadithId);
+      const tab = modal.dataset.tab;
+      const hadith = hadiths.find(h => h.id === hadithId);
+
+      const includeArabic = document.getElementById('include-arabic').checked;
+      const includeTranslation = document.getElementById('include-translation').checked;
+      const shareLang = document.getElementById('share-language').value;
+
+      let shareText = `Hadith ${hadith.id}\n`;
+      shareText += `Book: Sahih al-Bukhari | Volume: ${hadith.volume} | Hadith: ${hadith.id}\n\n`;
+
+      if (includeArabic) {
+        shareText += `${hadith.arabic}\n\n`;
+      }
+
+      if (includeTranslation) {
+        shareText += `${hadith[shareLang]}\n\n`;
+      }
+
+      shareText += `https://adil43534.github.io/Muslimbro1400.com/`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(shareText).then(() => {
+        const copyMessage = document.getElementById('copy-message');
+        copyMessage.classList.remove('hidden');
+        setTimeout(() => {
+          copyMessage.classList.add('hidden');
+          closeShareModal();
+        }, 3000); // Hide message and close modal after 3 seconds
+      });
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      renderReadTab();
+      // Scroll to the hadith if redirected with hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#hadith')) {
+        setTimeout(() => {
+          const element = document.getElementById(hash.substring(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Highlight the hadith temporarily
+            element.style.backgroundColor = '#005f4a';
+            setTimeout(() => {
+              element.style.backgroundColor = '';
+            }, 2000);
+          }
+        }, 100);
+      }
+    };
+  </script>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop">↑</button>
+
+  <script>
+    // Scroll to Top functionality
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 100) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
+      // Update progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
