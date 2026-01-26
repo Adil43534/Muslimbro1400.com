@@ -755,7 +755,7 @@
       <!-- Go to Hadith -->
       <div class="go-to-hadith">
         <label for="hadith-number">Go to Hadith:</label>
-        <input type="number" id="hadith-number" min="1" max="7" placeholder="1-7">
+        <input type="number" id="hadith-number" min="1" max="113" placeholder="1-7">
         <button onclick="goToHadith()">Go</button>
       </div>
     </div>
@@ -1753,8 +1753,8 @@
 
     function goToHadith() {
       const hadithNumber = parseInt(document.getElementById('hadith-number').value);
-      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 7) {
-        alert('Please enter a valid hadith number between 1 and 7.');
+      if (isNaN(hadithNumber) || hadithNumber < 1 || hadithNumber > 113) {
+        alert('Please enter a valid hadith number between 1 and 113.');
         return;
       }
 
