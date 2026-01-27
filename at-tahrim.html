@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah At-Tahrim</title>
+  <title>66. Surah: At-Tahrim 1-12 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="12">
+        <input type="number" id="verse-number" min="1" max="12" placeholder="1-12">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="at-talaq.html">← Surah At-Talaq</a>
         <a href="al-mulk.html">Next: Surah Al-Mulk →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -981,62 +1009,74 @@
       {
         arabic: "يا أَيُّهَا النَّبِيُّ لِمَ تُحَرِّمُ ما أَحَلَّ اللَّهُ لَكَ ۖ تَبتَغي مَرضاتَ أَزواجِكَ ۚ وَاللَّهُ غَفورٌ رَحيمٌ",
         en: "O Prophet! Why do you prohibit ˹yourself˺ from what Allah has made lawful to you, seeking to please your wives? And Allah is All-Forgiving, Most Merciful.",
-        ur: ""
+        ur: "اے نبی ﷺ !) آپ کیوں حرام ٹھہرا رہے ہیں (اپنے اوپر) وہ شے جو اللہ نے آپ کے لیے حلال کی ہے ؟ آپ ﷺ چاہتے ہیں اپنی بیویوں کی رضا جوئی ! اور اللہ بہت معاف کرنے والا بہت رحم کرنے والا ہے۔",
+        trans: "Yaaa ayyuhan nabiyyu lima tuharrimu maaa ahallal laahu laka tabtaghee mardaata azwaajik; wallaahu ghafoorur raheem"
       },
       {
         arabic: "قَد فَرَضَ اللَّهُ لَكُم تَحِلَّةَ أَيمانِكُم ۚ وَاللَّهُ مَولاكُم ۖ وَهُوَ العَليمُ الحَكيمُ",
         en: "Allah has already ordained for you ˹believers˺ the way to absolve yourselves from your oaths. For Allah is your Guardian. And He is the All-Knowing, All-Wise.",
-        ur: ""
+        ur: "اللہ نے تمہارے لیے اپنی قسموں کو کھولنے کا طریقہ مقرر کردیا ہے۔ اور اللہ تمہارا مددگار ہے اور وہ سب کچھ جاننے والا کمال حکمت والا ہے۔",
+        trans: "Qad faradal laahu lakum tahillata aymaanikum; wallaahu mawlaakum wa huwal ‘aleemul hakeem"
       },
       {
         arabic: "وَإِذ أَسَرَّ النَّبِيُّ إِلىٰ بَعضِ أَزواجِهِ حَديثًا فَلَمّا نَبَّأَت بِهِ وَأَظهَرَهُ اللَّهُ عَلَيهِ عَرَّفَ بَعضَهُ وَأَعرَضَ عَن بَعضٍ ۖ فَلَمّا نَبَّأَها بِهِ قالَت مَن أَنبَأَكَ هٰذا ۖ قالَ نَبَّأَنِيَ العَليمُ الخَبيرُ",
         en: "˹Remember˺ when the Prophet had ˹once˺ confided something to one of his wives, then when she disclosed it ˹to another wife˺ and Allah made it known to him, he presented ˹to her˺ part of what was disclosed and overlooked a part. So when he informed her of it, she exclaimed, “Who told you this?” He replied, “I was informed by the All-Knowing, All-Aware.”",
-        ur: ""
+        ur: "اور جب نبی ﷺ نے رازداری سے اپنی کسی زوجہ کو ایک بات بتائی۔ تو جب اس نے اس کو ظاہر کردیا اور اللہ نے اس بارے میں ان ﷺ کو مطلع کردیا تو نبی ﷺ نے اس پر کسی حد تک (اس بیوی کو) خبردار کیا اور کسی حد تک اس سے چشم پوشی کی۔ تو جب آپ ﷺ نے اسے یہ خبر دی اس نے کہا کہ آپ ﷺ کو یہ کس نے بتایا ؟ آپ ﷺ نے کہا : مجھے اس نے بتایا ہے جو العلیم ہے اور الخبیر ہے۔",
+        trans: "Wa iz asarran nabiyyu ilaa ba’di azwaajihee hadeesan falammaa nabba at bihee wa azharahul laahu ‘alaihi ‘arrafa ba’dahoo wa a’rada ‘am ba’din falammaa nabba ahaa bihee qaalat man amba aka haaza qaala nabba aniyal ‘aleemul khabeer"
       },
       {
         arabic: "إِن تَتوبا إِلَى اللَّهِ فَقَد صَغَت قُلوبُكُما ۖ وَإِن تَظاهَرا عَلَيهِ فَإِنَّ اللَّهَ هُوَ مَولاهُ وَجِبريلُ وَصالِحُ المُؤمِنينَ ۖ وَالمَلائِكَةُ بَعدَ ذٰلِكَ ظَهيرٌ",
         en: "˹It will be better˺ if you ˹wives˺ both turn to Allah in repentance, for your hearts have certainly faltered. But if you ˹continue to˺ collaborate against him, then ˹know that˺ Allah Himself is his Guardian. And Gabriel, the righteous believers, and the angels are ˹all˺ his supporters as well.",
-        ur: ""
+        ur: "اگر تم دونوں اللہ کی جناب میں توبہ کرو تو (یہی تمہارے لیے بہتر ہے کیونکہ) تمہارے دل تو مائل ہو ہی چکے ہیں۔ اور اگر تم دونوں نے ان کے خلاف گٹھ جوڑ کرلیا ہے ان ﷺ کا پشت پناہ تو خود اللہ ہے اور جبریل اور تمام صالح مومنین اور مزید برآں تمام فرشتے بھی ان ﷺ کے مددگار ہیں۔",
+        trans: "In tatoobaaa ilal laahi faqad saghat quloobukumaa wa in tazaaharaa ‘alaihi fa innal laaha huwa mawlaahu wa jibreelu wa saalihul mu’mineen; wal malaaa’ikatu ba’dazaalika zaheer"
       },
       {
         arabic: "عَسىٰ رَبُّهُ إِن طَلَّقَكُنَّ أَن يُبدِلَهُ أَزواجًا خَيرًا مِنكُنَّ مُسلِماتٍ مُؤمِناتٍ قانِتاتٍ تائِباتٍ عابِداتٍ سائِحاتٍ ثَيِّباتٍ وَأَبكارًا",
         en: "Perhaps, if he were to divorce you ˹all˺, his Lord would replace you with better wives who are submissive ˹to Allah˺, faithful ˹to Him˺, devout, repentant, dedicated to worship and fasting—previously married or virgins.",
-        ur: ""
+        ur: "بعید نہیں کہ اگر وہ تم سب کو طلاق دے دیں تو ان کا رب انہیں تم سے کہیں بہتر بیویاں عطا کردے اطاعت شعار ایمان والیاں فرمانبردار توبہ کرنے والیاں عبادت گزار لذاتِ دنیوی سے بیگانہ شوہر دیدہ بھی اور کنواری بھی۔",
+        trans: "‘Asaa rabbuhooo in tallaqakunna anyyubdilahooo azwaajan khairam minkunna muslimaatim mu’minaatin qaanitaatin taaa’ibaatin ‘aabidaatin saaa’ihaatin saiyibaatinw wa abkaaraa"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا قوا أَنفُسَكُم وَأَهليكُم نارًا وَقودُهَا النّاسُ وَالحِجارَةُ عَلَيها مَلائِكَةٌ غِلاظٌ شِدادٌ لا يَعصونَ اللَّهَ ما أَمَرَهُم وَيَفعَلونَ ما يُؤمَرونَ",
         en: "O believers! Protect yourselves and your families from a Fire whose fuel is people and stones, overseen by formidable and severe angels, who never disobey whatever Allah orders—always doing as commanded.",
-        ur: ""
+        ur: "اے اہل ایمان ! بچائو اپنے آپ کو اور اپنے اہل و عیال کو اس آگ سے جس کا ایندھن بنیں گے انسان اور پتھر اس پر بڑے تند خو بہت سخت دل فرشتے مامور ہیں اللہ ان کو جو حکم دے گا وہ فرشتے اس کی نافرمانی نہیں کریں گے اور وہ وہی کریں گے جس کا انہیں حکم دیا جائے گا۔",
+        trans: "Yaaa ayyuhal lazeena aamanoo qooo anfusakum wa ahleekum naaranw waqoodu han naasu wal hijaaratu ‘alaihaa malaaa’ikatun ghilaazun shidaadul laa ya’soonal laaha maa amarahum wa yaf’aloona maa yu’maroon"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ كَفَروا لا تَعتَذِرُوا اليَومَ ۖ إِنَّما تُجزَونَ ما كُنتُم تَعمَلونَ",
         en: "˹The deniers will then be told,˺ “O disbelievers! Make no excuses this Day! You are only rewarded for what you used to do.”",
-        ur: ""
+        ur: "(اُس دن کہہ دیا جائے گا :) اے کافرو ! آج تم عذر مت پیش کرو۔ آج تمہیں بدلے میں وہی کچھ دیا جا رہا ہے جو تم عمل کرکے لائے ہو۔",
+        trans: "Yaaa ayyuhal lazeena kafaroo la ta’tazirul yawma innamaa tujzawna maa kuntum ta’maloon"
       },  
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا توبوا إِلَى اللَّهِ تَوبَةً نَصوحًا عَسىٰ رَبُّكُم أَن يُكَفِّرَ عَنكُم سَيِّئَاتِكُم وَيُدخِلَكُم جَنّاتٍ تَجري مِن تَحتِهَا الأَنهارُ يَومَ لا يُخزِي اللَّهُ النَّبِيَّ وَالَّذينَ آمَنوا مَعَهُ ۖ نورُهُم يَسعىٰ بَينَ أَيديهِم وَبِأَيمانِهِم يَقولونَ رَبَّنا أَتمِم لَنا نورَنا وَاغفِر لَنا ۖ إِنَّكَ عَلىٰ كُلِّ شَيءٍ قَديرٌ",
         en: "O believers! Turn to Allah in sincere repentance, so your Lord may absolve you of your sins and admit you into Gardens, under which rivers flow, on the Day Allah will not disgrace the Prophet or the believers with him. Their light will shine ahead of them and on their right. They will say, “Our Lord! Perfect our light for us, and forgive us. ˹For˺ You are truly Most Capable of everything.”",
-        ur: ""
+        ur: "اے اہل ایمان ! توبہ کرو اللہ کی جناب میں خالص توبہ۔ امید ہے تمہارا رب تم سے تمہاری برائیوں کو دور کردے گا اور تمہیں داخل کرے گا ایسے باغات میں جن کے دامن میں ندیاں بہتی ہوں گی جس دن اللہ اپنے نبی ﷺ کو اور ان کے ساتھ ایمان لانے والوں کو رسوا نہیں کرے گا۔ (اُس دن) ان کا نور دوڑتا ہوگا ان کے سامنے اور ان کے داہنی طرفوہ کہتے ہوں گے : اے ہمارے رب ! ہمارے لیے ہمارے نور کو کامل کر دے اور تو ہمیں بخش دے یقینا تو ہر شے پر قادر ہے۔",
+        trans: "Yaaa ayyuhal lazeena aamanoo toobooo ilal laahi tawbatan nasoohan ‘asaa rabbukum any-yukaffira ‘ankum sayyi aatikum wa yudkhilakum jannaatin tajree min tahtihal anhaaru yawma laa yukhzil laahun nabiyya wallazeena aamanoo ma’ahoo nooruhum yas’aa baina aydeehim wa bi aymaanihim yaqooloona rabbanaaa atmim lanaa nooranaa waghfir lana innaka ‘alaa kulli shai’in qadeer"
       },
       {
         arabic: "يا أَيُّهَا النَّبِيُّ جاهِدِ الكُفّارَ وَالمُنافِقينَ وَاغلُظ عَلَيهِم ۚ وَمَأواهُم جَهَنَّمُ ۖ وَبِئسَ المَصيرُ",
         en: "O Prophet! Struggle against the disbelievers and the hypocrites, and be firm with them. Hell will be their home. What an evil destination!",
-        ur: ""
+        ur: "اے نبی ﷺ !) جہاد کیجیے کافروں سے بھی اور منافقوں سے بھی اور ان پر سختی کیجیے۔ ان کا ٹھکانہ جہنم ہے اور وہ بہت برا ٹھکانہ ہے۔",
+        trans: "Yaaa ayyuhan nabiyyu jaahidil kuffaara walmunaa-fiqeena waghluz ‘alaihim; wa ma’waahum jahannamu wa bi’sal maseer"
       },
       {
         arabic: "ضَرَبَ اللَّهُ مَثَلًا لِلَّذينَ كَفَرُوا امرَأَتَ نوحٍ وَامرَأَتَ لوطٍ ۖ كانَتا تَحتَ عَبدَينِ مِن عِبادِنا صالِحَينِ فَخانَتاهُما فَلَم يُغنِيا عَنهُما مِنَ اللَّهِ شَيئًا وَقيلَ ادخُلَا النّارَ مَعَ الدّاخِلينَ",
         en: "Allah sets forth an example for the disbelievers: the wife of Noah and the wife of Lot. Each was married to one of Our righteous servants, yet betrayed them. So their husbands were of no benefit to them against Allah whatsoever. Both were told, “Enter the Fire, along with the others!”",
-        ur: ""
+        ur: "اللہ نے مثال بیان کی ہے کافروں کے لیے نوح ؑ کی بیوی اور لوط ؑ کی بیوی کی۔ وہ دونوں ہمارے دو بہت صالح بندوں کے عقد میں تھیں تو انہوں نے ان سے خیانت کی تو وہ دونوں اللہ کے مقابل میں ان کے کچھ بھی کام نہ آسکے اور (آخرت میں) کہہ دیاجائے گا کہ تم دونوں داخل ہوجائو آگ میں دوسرے سب داخل ہونے والوں کے ساتھ۔",
+        trans: "Darabal laahu masalal lillazeena kafarum ra ata Noohinw wamra ata Loot, kaanataa tahta ‘abdaini min ‘ibaadinaa saalihaini fakhaanataahumaa falam yughniyaa ‘anhumaa minal laahi shai anw-wa qeelad khulan naara ma’ad Daakhileen"
       },
       {
         arabic: "وَضَرَبَ اللَّهُ مَثَلًا لِلَّذينَ آمَنُوا امرَأَتَ فِرعَونَ إِذ قالَت رَبِّ ابنِ لي عِندَكَ بَيتًا فِي الجَنَّةِ وَنَجِّني مِن فِرعَونَ وَعَمَلِهِ وَنَجِّني مِنَ القَومِ الظّالِمينَ",
         en: "And Allah sets forth an example for the believers: the wife of Pharaoh, who prayed, “My Lord! Build me a house in Paradise near You, deliver me from Pharaoh and his ˹evil˺ doing, and save me from the wrongdoing people.”",
-        ur: ""
+        ur: "اور اہل ِا یمان (خواتین) کے لیے اللہ نے مثال بیان کی ہے فرعون کی بیوی کی۔ جب اس نے کہا : اے میرے پروردگار ! ُ تو میرے لیے بنا دے اپنے پاس ایک گھر جنت میں اور مجھے نجات دے دے فرعون سے بھی اور اس کے عمل سے بھی اور مجھے اس ظالم قوم سے (جلد از جلد) چھٹکارا دلا دے۔",
+        trans: "Wa darabal laahu masalal lil lezeena aamanumra ata Fir’awn; iz qaalat rab bibni lee ‘indaka baitan fil jannati wa najjinee min Fir’awna wa ‘amalihee wa najjinee minal qawmiz zaalimeen"
       },
       {
         arabic: "وَمَريَمَ ابنَتَ عِمرانَ الَّتي أَحصَنَت فَرجَها فَنَفَخنا فيهِ مِن روحِنا وَصَدَّقَت بِكَلِماتِ رَبِّها وَكُتُبِهِ وَكانَت مِنَ القانِتينَ",
         en: "˹There is˺ also ˹the example of˺ Mary, the daughter of ’Imrân, who guarded her chastity, so We breathed into her ˹womb˺ through Our angel ˹Gabriel˺. She testified to the words of her Lord and His Scriptures, and was one of the ˹sincerely˺ devout.",
-        ur: ""
+        ur: "اور عمران کی بیٹی مریم ؑ جس نے اپنی عصمت کی حفاظت کی تو ہم نے اس میں اپنی روح میں سے پھونکا اور اس نے تصدیق کی اپنے رب کی تمام باتوں کی اور اس کی کتابوں کی اور وہ بہت ہی فرمانبرداروں میں سے تھیں۔",
+        trans: "Wa Maryamab nata ‘Imraanal lateee ahsanat farjahaa fanafakhnaa feehee mir roohinaa wa saddaqat bi kalimaati Rabhihaa wa Kutubihee wakaanat minal qaaniteen"
       },
     ];
 
@@ -1045,6 +1085,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1086,7 +1127,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1110,6 +1151,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1117,10 +1159,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1139,7 +1186,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1262,6 +1309,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
