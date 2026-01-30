@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Al-Qamar</title>
+  <title>54. Surah: Al-Qamar 1-55 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="55">
+        <input type="number" id="verse-number" min="1" max="55" placeholder="1-55">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="an-najm.html">← Surah An-Najm</a>
         <a href="ar-rahman.html">Next: Surah Ar-Rahman →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -981,277 +1009,332 @@
       {
         arabic: "اقتَرَبَتِ السّاعَةُ وَانشَقَّ القَمَرُ",
         en: "The Hour has drawn near and the moon was split ˹in two˺.",
-        ur: ""
+        ur: "قیامت کی گھڑی قریب آچکی اور چاند شق ہوگیا۔",
+        trans: "Iqtarabatis Saa’atu wan shaqqal qamar"
       },
       {
         arabic: "وَإِن يَرَوا آيَةً يُعرِضوا وَيَقولوا سِحرٌ مُستَمِرٌّ",
         en: "Yet, whenever they see a sign, they turn away, saying, “Same old magic!”",
-        ur: ""
+        ur: "اور اگر وہ دیکھیں گے کوئی نشانی تب بھی وہ اعراض ہی کریں گے اور کہیں گے یہ تو جادو ہے جو پہلے سے چلا آ رہا ہے۔",
+        trans: "Wa iny yaraw aayatany yu’ridoo wa yaqooloo sihrun mustamirr"
       },
       {
         arabic: "وَكَذَّبوا وَاتَّبَعوا أَهواءَهُم ۚ وَكُلُّ أَمرٍ مُستَقِرٌّ",
         en: "They rejected ˹the truth˺ and followed their own desires—and every matter will be settled—",
-        ur: ""
+        ur: "اور انہوں نے تکذیب کی اور اپنی خواہشات کی پیروی کی",
+        trans: "Wa kazzaboo wattaba’ooo ahwaaa’ahum; wa kullu amrin mustaqirr"
       },
       {
         arabic: "وَلَقَد جاءَهُم مِنَ الأَنباءِ ما فيهِ مُزدَجَرٌ",
         en: "even though the stories ˹of destroyed nations˺ that have already come to them are a sufficient deterrent.",
-        ur: ""
+        ur: "اور ان کے پاس وہ خبریں آچکی ہیں جن میں تنبیہہ ہے۔",
+        trans: "Wa laqad jaaa’ahum minal anbaaa’i maa feehi muzdajar"
       },
       {
         arabic: "حِكمَةٌ بالِغَةٌ ۖ فَما تُغنِ النُّذُرُ",
         en: "˹This Quran is˺ profound ˹in˺ wisdom, but warnings are of no benefit ˹to them˺.",
-        ur: ""
+        ur: "کامل دانائی (کی باتیں) لیکن ان خبردار کرنے والوں سے انہیں کوئی فائدہ نہ پہنچا۔",
+        trans: "Hikmatun baalighatun famaa tughnin nuzur"
       },
       {
         arabic: "فَتَوَلَّ عَنهُم ۘ يَومَ يَدعُ الدّاعِ إِلىٰ شَيءٍ نُكُرٍ",
         en: "So turn away from them ˹O Prophet˺. ˹And wait for˺ the Day ˹when˺ the caller will summon ˹them˺ for something horrifying.",
-        ur: ""
+        ur: "تو (اے نبی ﷺ !) آپ ان سے صرفِ نظر کر لیجیے۔",
+        trans: "Fatawalla ‘anhum; yawma yad’ud daa’i ilaa shai ‘in nukur"
       },
       {
         arabic: "خُشَّعًا أَبصارُهُم يَخرُجونَ مِنَ الأَجداثِ كَأَنَّهُم جَرادٌ مُنتَشِرٌ",
         en: "With eyes downcast, they will come forth from the graves as if they were swarming locusts,",
-        ur: ""
+        ur: "(اس وقت) ان کی نگاہیں زمین میں گڑی ہوں گی۔ یہ اپنی قبروں سے ایسے نکل کر آئیں گے جیسے ٹڈی ّدَل پھیلا ہوا ہو۔",
+        trans: "Khushsha’an absaaruhum yakhrujoona minal ajdaasi ka annahum jaraadum muntashir"
       },  
       {
         arabic: "مُهطِعينَ إِلَى الدّاعِ ۖ يَقولُ الكافِرونَ هٰذا يَومٌ عَسِرٌ",
         en: "rushing towards the caller. The disbelievers will cry, “This is a difficult Day!”",
-        ur: ""
+        ur: "دوڑتے ہوئے آئیں گے پکارنے والے کی طرف۔ کافر کہیں گے کہ یہ تو بڑا سخت دن ہے۔",
+        trans: "Muhti’eena ilad daa’i yaqoolul kaafiroona haazaa yawmun ‘asir"
       },
       {
         arabic: "۞ كَذَّبَت قَبلَهُم قَومُ نوحٍ فَكَذَّبوا عَبدَنا وَقالوا مَجنونٌ وَازدُجِرَ",
         en: "Before them, the people of Noah denied ˹the truth˺ and rejected Our servant, calling ˹him˺ insane. And he was intimidated.",
-        ur: ""
+        ur: "جھٹلایا تھا ان سے پہلے نوح کی قوم نے تو انہوں نے ہمارے بندے کو جھٹلایا اور کہا کہ یہ تو مجنون ہے اور اسے جھڑک دیا گیا۔",
+        trans: "Kazzabat qablahum qawmu Noohin fakazzaboo ‘abdanaa wa qaaloo majnoonunw wazdujir"
       },
       {
         arabic: "فَدَعا رَبَّهُ أَنّي مَغلوبٌ فَانتَصِر",
         en: "So he cried out to his Lord, “I am helpless, so help ˹me˺!”",
-        ur: ""
+        ur: "تو اس نے پکارا اپنے رب کو کہ میں مغلوب ہوچکا ہوں اب تو ُ ان سے انتقام لے۔",
+        trans: "Fada’aa Rabbahooo annee maghloobun fantasir"
       },
       {
         arabic: "فَفَتَحنا أَبوابَ السَّماءِ بِماءٍ مُنهَمِرٍ",
         en: "So We opened the gates of the sky with pouring rain,",
-        ur: ""
+        ur: "تو ہم نے کھول دیے آسمان کے دروازے اس پانی کے ساتھ جو مسلسل چھاجوں برستا رہا۔",
+        trans: "Fafatahnaaa abwaabas samaaa’i bi maaa’in munhamir"
       },
       {
         arabic: "وَفَجَّرنَا الأَرضَ عُيونًا فَالتَقَى الماءُ عَلىٰ أَمرٍ قَد قُدِرَ",
         en: "and caused the earth to burst with springs, so the waters met for a fate already set.",
-        ur: ""
+        ur: "اور ہم نے زمین کو پھاڑ کر چشمے ہی چشمے کردیا تو وہ سارا پانی مل گیا ایک ایسے کام کے لیے جس کا فیصلہ ہوچکا تھا۔",
+        trans: "Wa fajjarnal arda ‘uyoonan faltaqal maaa’u ‘alaaa amrin qad qudir"
       },
       {
         arabic: "وَحَمَلناهُ عَلىٰ ذاتِ أَلواحٍ وَدُسُرٍ",
         en: "We carried him on that ˹Ark made˺ of planks and nails,",
-        ur: ""
+        ur: "اور ہم نے اسے سوار کردیا اس (کشتی) پر جو تختوں اور کیلوں سے بنی تھی۔",
+        trans: "Wa hamalnaahu ‘alaa zaati alwaahinw wa dusur"
       },
       {
         arabic: "تَجري بِأَعيُنِنا جَزاءً لِمَن كانَ كُفِرَ",
         en: "sailing under Our ˹watchful˺ Eyes—a ˹fair˺ punishment on behalf of the one ˹they˺ denied.",
-        ur: ""
+        ur: "جو چل رہی تھی ہماری نگاہوں کے سامنے یہ بدلہ تھا اس شخص کے لیے جس کی ناقدری کی گئی تھی۔",
+        trans: "Tajree bi a’yuninaa jazaaa’an liman kaana kufir"
       },
       {
         arabic: "وَلَقَد تَرَكناها آيَةً فَهَل مِن مُدَّكِرٍ",
         en: "We certainly left this as a sign. So is there anyone who will be mindful?",
-        ur: ""
+        ur: "اور ہم نے اسے چھوڑ دیا ایک نشانی کے طور پر تو ہے کوئی نصیحت حاصل کرنے والا",
+        trans: "Wa laqat taraknaahaa aayatan fahal min muddakir"
       },
       {
         arabic: "فَكَيفَ كانَ عَذابي وَنُذُرِ",
         en: "Then how ˹dreadful˺ were My punishment and warnings!",
-        ur: ""
+        ur: "تو کیسا رہا میرا عذاب اور میرا خبردار کرنا",
+        trans: "Fakaifa kaana ‘azaabee wa nuzur"
       },
       {
         arabic: "وَلَقَد يَسَّرنَا القُرآنَ لِلذِّكرِ فَهَل مِن مُدَّكِرٍ",
         en: "And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?",
-        ur: ""
+        ur: "اور ہم نے قرآن کو آسان کردیا ہے نصیحت اخذ کرنے کے لیے تو ہے کوئی نصیحت حاصل کرنے والا",
+        trans: "Wa laqad yassarnal Qur’aana liz zikri fahal min muddakir"
       },
       {
         arabic: "كَذَّبَت عادٌ فَكَيفَ كانَ عَذابي وَنُذُرِ",
         en: "’Ȃd ˹also˺ rejected ˹the truth˺. Then how ˹dreadful˺ were My punishment and warnings!",
-        ur: ""
+        ur: "جھٹلایا تھا قوم عاد نے بھی تو کیسا رہا میرا عذاب اور میرا خبردار کرنا ؟",
+        trans: "Kazzabat ‘Aadun fakaifa kaana ‘azaabee wa nuzur"
       },
       {
         arabic: "إِنّا أَرسَلنا عَلَيهِم ريحًا صَرصَرًا في يَومِ نَحسٍ مُستَمِرٍّ",
         en: "Indeed, We sent against them a furious wind, on a day of unrelenting misery,",
-        ur: ""
+        ur: "ہم نے ان پر مسلط کردی ایک ُ تند و تیز ہوا ایک مسلسل نحوست کے دن میں۔",
+        trans: "Innaa arsalnaa ‘alaihim reehan sarsaran fee Yawmi nahsin mustamirr"
       },
       {
         arabic: "تَنزِعُ النّاسَ كَأَنَّهُم أَعجازُ نَخلٍ مُنقَعِرٍ",
         en: "that snatched people up, leaving them like trunks of uprooted palm trees.",
-        ur: ""
+        ur: "وہ لوگوں کو یوں اکھاڑ پھینکتی تھی جیسے وہ کھجور کے تنے ہوں اکھڑی ہوئی جڑوں والے",
+        trans: "Tanzi’un naasa ka annahum a’jaazu nakhlin munqa’ir"
       },
       {
         arabic: "فَكَيفَ كانَ عَذابي وَنُذُرِ",
         en: "Then how ˹dreadful˺ were My punishment and warnings!",
-        ur: ""
+        ur: "تو کیسا رہا میرا عذاب اور میرا خبردار کرنا ؟",
+        trans: "Fakaifa kaana ‘azaabee wa nuzur"
       },
       {
         arabic: "وَلَقَد يَسَّرنَا القُرآنَ لِلذِّكرِ فَهَل مِن مُدَّكِرٍ",
         en: "And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?",
-        ur: ""
+        ur: "اور ہم نے اس قرآن کو آسان کردیا ہے نصیحت حاصل کرنے کے لیے تو ہے کوئی اس سے نصیحت حاصل کرنے والا",
+        trans: "Wa laqad yassarnal Qur’aana liz zikri fahal min muddakir"
       },
       {
         arabic: "كَذَّبَت ثَمودُ بِالنُّذُرِ",
         en: "Thamûd rejected the warnings ˹as well˺,",
-        ur: ""
+        ur: "قومِ ثمود نے بھی جھٹلایا خبردار کرنے والوں کو",
+        trans: "Kazzabat Samoodu binnuzur"
       },
       {
         arabic: "فَقالوا أَبَشَرًا مِنّا واحِدًا نَتَّبِعُهُ إِنّا إِذًا لَفي ضَلالٍ وَسُعُرٍ",
         en: "arguing, “How can we follow one ˹average˺ human being from among us? We would then truly be misguided and insane.",
-        ur: ""
+        ur: "انہوں نے کہا : کیا ہم اپنے میں سے ہی ایک بشر کی پیروی کریں ؟ پھر تو یقیناہم پڑجائیں گے گمراہی میں اور آگ میں۔",
+        trans: "Faqaalooo a’ basharan minnaa waahidan nattabi’uhooo innaa izal lafee dalaalinw wa su’ur"
       },
       {
         arabic: "أَأُلقِيَ الذِّكرُ عَلَيهِ مِن بَينِنا بَل هُوَ كَذّابٌ أَشِرٌ",
         en: "Has the revelation been sent down ˹only˺ to him out of ˹all of˺ us? In fact, he is a boastful liar.”",
-        ur: ""
+        ur: "کیا یہ ذکر ہمارے مابین اسی پر القا کیا گیا ہے ؟ بلکہ یہ انتہائی جھوٹا اور شیخی خورا ہے۔",
+        trans: "‘A ulqiyaz zikru ‘alaihi min baininaa bal huwa kazzaabun ashir"
       },
       {
         arabic: "سَيَعلَمونَ غَدًا مَنِ الكَذّابُ الأَشِرُ",
         en: "˹It was revealed to Ṣâliḥ,˺ “They will soon know who the boastful liar is.",
-        ur: ""
+        ur: "جلد ہی انہیں معلوم ہوجائے گا کہ کون انتہائی جھوٹا اور شیخی خورا ہے",
+        trans: "Sa-ya’lamoona ghadan manil kazzaabul ashir"
       },
       {
         arabic: "إِنّا مُرسِلُو النّاقَةِ فِتنَةً لَهُم فَارتَقِبهُم وَاصطَبِر",
         en: "We are sending the she-camel as a test for them. So watch them ˹closely˺, and have patience.",
-        ur: ""
+        ur: "ہم بھیجے دیتے ہیں اونٹنی کو ان کی آزمائش کے لیے تو آپ ؑ انتظار کیجیے ان کے بارے میں اور صبر کیجیے۔",
+        trans: "Innaa mursilun naaqati fitnatan lahum fartaqibhum wastabir"
       },
       {
         arabic: "وَنَبِّئهُم أَنَّ الماءَ قِسمَةٌ بَينَهُم ۖ كُلُّ شِربٍ مُحتَضَرٌ",
         en: "And tell them that the ˹drinking˺ water must be divided between them ˹and her˺, each taking a turn to drink ˹every other day˺.”",
-        ur: ""
+        ur: "اور انہیں بتا دیجیے کہ اب پانی ان کے مابین تقسیم ہوگا ہر پینے کی باری پر حاضری ہوگی۔",
+        trans: "Wa nabbi’hum annal maaa’a qismatun bainahum kullu shirbin muhtadar"
       },
       {
         arabic: "فَنادَوا صاحِبَهُم فَتَعاطىٰ فَعَقَرَ",
         en: "But they roused a companion of theirs, so he dared to kill ˹her˺.",
-        ur: ""
+        ur: "تو انہوں نے پکارا اپنے ایک ساتھی کو پس اس نے ہاتھ بڑھایا اور اس کی کونچیں کاٹ دیں۔",
+        trans: "Fa naadaw saahibahum fa ta’aataa fa ‘aqar"
       },
       {
         arabic: "فَكَيفَ كانَ عَذابي وَنُذُرِ",
         en: "Then how ˹dreadful˺ were My punishment and warnings!",
-        ur: ""
+        ur: "پھر کیسا رہا میرا عذاب اور میرا خبردار کرنا ؟",
+        trans: "Fakaifa kaana ‘azaabee wa nuzur"
       },
       {
         arabic: "إِنّا أَرسَلنا عَلَيهِم صَيحَةً واحِدَةً فَكانوا كَهَشيمِ المُحتَظِرِ",
         en: "Indeed, We sent against them ˹only˺ one ˹mighty˺ blast, leaving them like the twigs of fence-builders.",
-        ur: ""
+        ur: "ہم نے ان پر بس ایک ہی چنگھاڑ بھیجی تو وہ باڑھ لگانے والے کی روندی ہوئی باڑھ کی طرح چورا ہو کر رہ گئے",
+        trans: "Innaaa arsalnaa ‘alaihim saihatanw waahidatan fakaanoo kahasheemil muhtazir"
       },
       {
         arabic: "وَلَقَد يَسَّرنَا القُرآنَ لِلذِّكرِ فَهَل مِن مُدَّكِرٍ",
         en: "And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?",
-        ur: ""
+        ur: "اور ہم نے تو اس قرآن کو آسان کردیا ہے سمجھنے کے لیے تو ہے کوئی سوچنے سمجھنے والا ؟",
+        trans: "Wa laqad yassarnal Qur’aana liz zikri fahal min muddakir"
       },
       {
         arabic: "كَذَّبَت قَومُ لوطٍ بِالنُّذُرِ",
         en: "The people of Lot ˹also˺ rejected the warnings.",
-        ur: ""
+        ur: "لوط ؑ کی قوم نے بھی خبردار کرنے والوں کو جھٹلایا۔",
+        trans: "Kazzabat qawmu lootin binnuzur"
       },
       {
         arabic: "إِنّا أَرسَلنا عَلَيهِم حاصِبًا إِلّا آلَ لوطٍ ۖ نَجَّيناهُم بِسَحَرٍ",
         en: "We unleashed upon them a storm of stones. As for ˹the believers of˺ Lot’s family, We delivered them before dawn",
-        ur: ""
+        ur: "ہم نے ان پر بھیج دی ایک ایسی تیز آندھی جس میں پتھر تھے سوائے لوط کے گھر والوں کے۔ ان کو ہم نے نجات دے دی صبح کے وقت۔",
+        trans: "Innaa arsalnaa ‘alaihim haasiban illaaa aala Lootin najjainaahum bisahar"
       },
       {
         arabic: "نِعمَةً مِن عِندِنا ۚ كَذٰلِكَ نَجزي مَن شَكَرَ",
         en: "as a blessing from Us. This is how We reward whoever gives thanks.",
-        ur: ""
+        ur: "وہ نعمت تھی ہمارے پاس سے۔ اسی طرح ہم بدلہ دیتے ہیں اس کو جو شکر کرتا ہے۔",
+        trans: "Ni’matan min ‘indinaa; kazaalika najzee man shakar"
       },
       {
         arabic: "وَلَقَد أَنذَرَهُم بَطشَتَنا فَتَمارَوا بِالنُّذُرِ",
         en: "He had already warned them of Our ˹crushing˺ blow but they disputed the warnings.",
-        ur: ""
+        ur: "اور لوط ؑ نے ان کو خبردار کردیا تھا ہماری پکڑ سے لیکن انہوں نے شک کیا ان چیزوں پر جن کے بارے میں انہیں خبردار کیا گیا تھا۔",
+        trans: "Wa laqad anzarahum batshatanaa fatamaaraw binnuzur"
       },
       {
         arabic: "وَلَقَد راوَدوهُ عَن ضَيفِهِ فَطَمَسنا أَعيُنَهُم فَذوقوا عَذابي وَنُذُرِ",
         en: "And they even demanded his angel-guests from him, so We blinded their eyes. ˹And they were told,˺ “Taste then My punishment and warnings!”",
-        ur: ""
+        ur: "اور انہوں نے اس سے اس کے مہمانوں کو لے جانا چاہا تو ہم نے ان کی آنکھوں کو مٹا دیا تو مزا چکھو اب میرے عذاب کا اور میرے خبردار کرنے کا۔",
+        trans: "Wa laqad raawadoohu ‘andaifeehee fatamasnaaa a’yunahum fazooqoo ‘azaabee wa nuzur"
       },
       {
         arabic: "وَلَقَد صَبَّحَهُم بُكرَةً عَذابٌ مُستَقِرٌّ",
         en: "And indeed, by the early morning they were overwhelmed by an unrelenting torment.",
-        ur: ""
+        ur: "اور ان پر صبح ہی صبح آ دھمکا ایک عذاب جو کہ ٹھہر چکا تھا۔",
+        trans: "Wa laqad sabbahahum bukratan ‘azaabun mustaqirr"
       },
       {
         arabic: "فَذوقوا عَذابي وَنُذُرِ",
         en: "˹Again they were told,˺ “Taste now My punishment and warnings!”",
-        ur: ""
+        ur: "تو چکھو مزا اب میرے عذاب کا اور میرے خبردار کرنے کا۔",
+        trans: "Fazooqoo ‘azaabee wa nuzur"
       },
       {
         arabic: "وَلَقَد يَسَّرنَا القُرآنَ لِلذِّكرِ فَهَل مِن مُدَّكِرٍ",
         en: "And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?",
-        ur: ""
+        ur: "اور ہم نے آسان کردیا ہے قرآن سمجھنے کو تو ہے کوئی سوچنے سمجھنے والا ؟",
+        trans: "Wa laqad yassarnal Qur’aana liz zikri fahal min muddakir"
       },
       {
         arabic: "وَلَقَد جاءَ آلَ فِرعَونَ النُّذُرُ",
         en: "And indeed, the warnings ˹also˺ came to the people of Pharaoh.",
-        ur: ""
+        ur: "اسی طرح قوم فرعون کے پاس بھی آئے تھے خبردار کرنے والے۔",
+        trans: "Wa laqad jaaa’a Aala Fir’awnan nuzur"
       },
       {
         arabic: "كَذَّبوا بِآياتِنا كُلِّها فَأَخَذناهُم أَخذَ عَزيزٍ مُقتَدِرٍ",
         en: "˹But˺ they rejected all of Our signs, so We seized them with the ˹crushing˺ grip of the Almighty, Most Powerful.",
-        ur: ""
+        ur: "انہوں نے ہماری تمام نشانیوں کو جھٹلا دیا پھر ہم نے انہیں پکڑا ایک زبردست صاحب قدرت کا پکڑنا۔",
+        trans: "Kazzaboo bi Aayaatinaa kullihaa fa akhaznaahum akhza ‘azeezim muqtadir"
       },
       {
         arabic: "أَكُفّارُكُم خَيرٌ مِن أُولٰئِكُم أَم لَكُم بَراءَةٌ فِي الزُّبُرِ",
         en: "Now, are you ˹Meccan˺ disbelievers superior to those ˹destroyed peoples˺? Or have you ˹been granted˺ immunity ˹from punishment˺ in divine Books?",
-        ur: ""
+        ur: "(تو اے قریش !) کیا تمہارے کفار اُن (کفار) سے کچھ بہتر ہیں ؟ یا تمہارے لیے سابقہ الہامی کتب میں کوئی فارغ خطی آچکی ہے ؟",
+        trans: "‘A kuffaarukum khairun min ulaaa’ikum am lakum baraaa’atun fiz Zubur"
       },
       {
         arabic: "أَم يَقولونَ نَحنُ جَميعٌ مُنتَصِرٌ",
         en: "Or do they say, “We are all ˹a˺ united ˹front˺, bound to prevail.”?",
-        ur: ""
+        ur: "یا یہ کہتے ہیں کہ ہم ایک طاقتور جمعیت ہیں اور بدلہ لینے پر قادر ہیں ؟",
+        trans: "Am yaqooloona nahnu jamee’un muntasir"
       },
       {
         arabic: "سَيُهزَمُ الجَمعُ وَيُوَلّونَ الدُّبُرَ",
         en: "˹Soon˺ their united front will be defeated and ˹forced to˺ flee.",
-        ur: ""
+        ur: "عنقریب ان کی جمعیت شکست کھاجائے گی اور وہ پیٹھ پھیر کر بھاگیں گے۔",
+        trans: "Sa yuhzamul jam’u wa yuwalloonad dubur"
       },
       {
         arabic: "بَلِ السّاعَةُ مَوعِدُهُم وَالسّاعَةُ أَدهىٰ وَأَمَرُّ",
         en: "Better yet, the Hour is their appointed time—and the Hour will be most catastrophic and most bitter.",
-        ur: ""
+        ur: "بلکہ ان کے اصل وعدے کا وقت تو قیامت ہے اور قیامت بہت بڑی آفت ہے اور بہت زیادہ کڑوی ہے۔",
+        trans: "Balis Saa’atu maw’iduhum was Saa’atu adhaa wa amarr"
       },
       {
         arabic: "إِنَّ المُجرِمينَ في ضَلالٍ وَسُعُرٍ",
         en: "Indeed, the wicked are ˹entrenched˺ in misguidance, and ˹are bound for˺ blazes.",
-        ur: ""
+        ur: "یقینا یہ مجرمین گمراہی میں ہیں اور یہ آگ (کے مختلف طبقات) میں ہوں گے۔",
+        trans: "Innal mujrimeena fee dalaalinw wa su’ur"
       },
       {
         arabic: "يَومَ يُسحَبونَ فِي النّارِ عَلىٰ وُجوهِهِم ذوقوا مَسَّ سَقَرَ",
         en: "On the Day they will be dragged into the Fire on their faces, ˹they will be told,˺ “Taste the touch of Hell!”",
-        ur: ""
+        ur: "جس دن یہ گھسیٹے جائیں گے آگ میں اپنے چہروں کے بل۔ ان سے کہا جائے گا اب چکھوآگ کی لپٹ کا مزا",
+        trans: "Yawma yus-haboona fin Naari ‘alaa wujoohihim zooqoo massa saqar"
       },
       {
         arabic: "إِنّا كُلَّ شَيءٍ خَلَقناهُ بِقَدَرٍ",
         en: "Indeed, We have created everything, perfectly preordained.",
-        ur: ""
+        ur: "یقینا ہم نے ہرچیز ایک اندازے کے مطابق پیدا کی ہے۔",
+        trans: "Innaa kulla shai’in khalaqnaahu bi qadar"
       },
       {
         arabic: "وَما أَمرُنا إِلّا واحِدَةٌ كَلَمحٍ بِالبَصَرِ",
         en: "Our command is but a single word, done in the blink of an eye.",
-        ur: ""
+        ur: "اور ہمارا امر تویکبارگی ہوتا ہے جیسے نگاہ کا لپک جانا۔",
+        trans: "Wa maaa amrunaaa illaa waahidatun ka lamhin bil basar"
       },
       {
         arabic: "وَلَقَد أَهلَكنا أَشياعَكُم فَهَل مِن مُدَّكِرٍ",
         en: "We have already destroyed the likes of you. So will any ˹of you˺ be mindful?",
-        ur: ""
+        ur: "تو (اے قریش ِمکہ) ہم نے تم جیسے بہت سے لوگوں کو ہلاک کیا ہے تو کوئی ہے اس سے سبق حاصل کرنے والا ؟",
+        trans: "Wa laqad ahlaknaaa ashyaa’akum fahal min muddakir"
       },
       {
         arabic: "وَكُلُّ شَيءٍ فَعَلوهُ فِي الزُّبُرِ",
         en: "Everything they have done is ˹listed˺ in ˹their˺ records.",
-        ur: ""
+        ur: "اور وہ تمام اعمال جو ان لوگوں نے کیے ہیں وہ صحیفوں میں محفوظ ہیں۔",
+        trans: "Wa kullu shai’in fa’aloohu fiz Zubur"
       },
       {
         arabic: "وَكُلُّ صَغيرٍ وَكَبيرٍ مُستَطَرٌ",
         en: "Every matter, small and large, is written ˹precisely˺.",
-        ur: ""
+        ur: "اور ہر ایک چھوٹی اور بڑی چیز لکھی ہوئی ہے۔",
+        trans: "Wa kullu sagheerinw wa kabeerin mustatar"
       },
       {
         arabic: "إِنَّ المُتَّقينَ في جَنّاتٍ وَنَهَرٍ",
         en: "Indeed, the righteous will be amid Gardens and rivers,",
-        ur: ""
+        ur: "یقینا متقین باغات اور نہروں (کے ماحول) میں ہوں گے۔",
+        trans: "Innal muttaqeena fee jannaatinw wa nahar"
       },
       {
         arabic: "في مَقعَدِ صِدقٍ عِندَ مَليكٍ مُقتَدِرٍ",
         en: "at the Seat of Honour in the presence of the Most Powerful Sovereign.",
-        ur: ""
+        ur: "بہت اعلیٰ راستی کے مقام میں اس بادشاہ کے پاس جو اقتدارِ مطلق کا مالک ہے۔",
+        trans: "Fee maq’adi sidqin ‘inda Maleekin Muqtadir"
       },
     ];
 
@@ -1260,6 +1343,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1301,7 +1385,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1325,6 +1409,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1332,10 +1417,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1354,7 +1444,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1477,6 +1567,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
