@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Al-Hujurat</title>
+  <title>49. Surah: Al-Hujurat 1-18 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="18">
+        <input type="number" id="verse-number" min="1" max="18" placeholder="1-18">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="al-fath.html">← Surah Al-Fath</a>
         <a href="qaf.html">Next: Surah Qaf →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -981,92 +1009,110 @@
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تُقَدِّموا بَينَ يَدَيِ اللَّهِ وَرَسولِهِ ۖ وَاتَّقُوا اللَّهَ ۚ إِنَّ اللَّهَ سَميعٌ عَليمٌ",
         en: "O believers! Do not proceed ˹in any matter˺ before ˹a decree from˺ Allah and His Messenger. And fear Allah. Surely Allah is All-Hearing, All-Knowing.",
-        ur: ""
+        ur: "اے اہل ِایمان مت آگے بڑھو اللہ اور اس کے رسول سے اور اللہ کا تقویٰ اختیار کرو۔ یقینا اللہ سب کچھ سننے والا سب کچھ جاننے والا ہے۔",
+        trans: "Yaa ayyuhal lazeena aamanoo la tuqaddimoo baina yada yil laahi wa Rasoolihee wattaqul laah; innal laaha samee’un ‘Aleem"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا تَرفَعوا أَصواتَكُم فَوقَ صَوتِ النَّبِيِّ وَلا تَجهَروا لَهُ بِالقَولِ كَجَهرِ بَعضِكُم لِبَعضٍ أَن تَحبَطَ أَعمالُكُم وَأَنتُم لا تَشعُرونَ",
         en: "O believers! Do not raise your voices above the voice of the Prophet, nor speak loudly to him as you do to one another, or your deeds will become void while you are unaware.",
-        ur: ""
+        ur: "اے اہل ِایمان ! اپنی آواز کبھی بلند نہ کرنا نبی ﷺ کی آواز پر اور نہ انہیں اس طرح آواز دے کر پکارنا جس طرح تم آپس میں ایک دوسرے کو بلند آواز سے پکارتے ہو } مبادا تمہارے سارے اعمال ضائع ہوجائیں اور تمہیں خبر بھی نہ ہو۔",
+        trans: "Yaa ayyuhal lazeena aamanoo laa tarfa’ooo aswaatakum fawqa sawtin Nabiyi wa laa tajharoo lahoo bilqawli kajahri ba’dikum liba ‘din an tahbata a ‘maalukum wa antum laa tash’uroon"
       },
       {
         arabic: "إِنَّ الَّذينَ يَغُضّونَ أَصواتَهُم عِندَ رَسولِ اللَّهِ أُولٰئِكَ الَّذينَ امتَحَنَ اللَّهُ قُلوبَهُم لِلتَّقوىٰ ۚ لَهُم مَغفِرَةٌ وَأَجرٌ عَظيمٌ",
         en: "Indeed, those who lower their voices in the presence of Allah’s Messenger are the ones whose hearts Allah has refined for righteousness. They will have forgiveness and a great reward.",
-        ur: ""
+        ur: "بیشک وہ لوگ جو اپنی آوازوں کو پست رکھتے ہیں اللہ کے رسول ﷺ کے سامنے یہی لوگ ہیں جن کے دلوں کو اللہ نے جانچ پرکھ کر ُ چن لیا ہے تقویٰ کے لیے۔ } ان کے لیے مغفرت بھی ہے اور بہت بڑا اجر بھی۔",
+        trans: "Innal lazeena yaghud doona aswaatahum ‘inda Rasoolil laahi ulaaa’ikal lazeenam tah anal laahu quloobahum littaqwaa; lahum maghfiratunw wa’ajrun ‘azeem"
       },
       {
         arabic: "إِنَّ الَّذينَ يُنادونَكَ مِن وَراءِ الحُجُراتِ أَكثَرُهُم لا يَعقِلونَ",
         en: "Indeed, most of those who call out to you ˹O Prophet˺ from outside ˹your˺ private quarters have no understanding ˹of manners˺.",
-        ur: ""
+        ur: "بیشک وہ لوگ جو آپ ﷺ کو پکارتے ہیں حجروں کے پیچھے سے ان میں سے اکثر وہ ہیں جو عقل نہیں رکھتے۔",
+        trans: "Innal lazeena yunaadoo naka minw waraaa’il hujuraati aksaruhum laa ya’qiloon"
       },
       {
         arabic: "وَلَو أَنَّهُم صَبَروا حَتّىٰ تَخرُجَ إِلَيهِم لَكانَ خَيرًا لَهُم ۚ وَاللَّهُ غَفورٌ رَحيمٌ",
         en: "Had they been patient until you could come out to them, it would have certainly been better for them. And Allah is All-Forgiving, Most Merciful.",
-        ur: ""
+        ur: "اور اگر وہ صبر کرتے یہاں تک کہ آپ خود ان کے پاس نکل کر آجاتے تو یہ ان کے حق میں بہتر ہوتا۔ بہرحال اللہ بہت بخشنے والا بہت رحم کرنے والا ہے۔",
+        trans: "Wa law annahum sabaroo hatta takhruja ilaihim lakaana khairal lahum; wallaahu Ghafoorur Raheem"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِن جاءَكُم فاسِقٌ بِنَبَإٍ فَتَبَيَّنوا أَن تُصيبوا قَومًا بِجَهالَةٍ فَتُصبِحوا عَلىٰ ما فَعَلتُم نادِمينَ",
         en: "O believers, if an evildoer brings you any news, verify ˹it˺ so you do not harm people unknowingly, becoming regretful for what you have done.",
-        ur: ""
+        ur: "اے اہل ِایمان ! اگر تمہارے پاس کوئی فاسق شخص کوئی بڑی خبر لے کر آئے تو تم تحقیق کرلیا کرو مبادا کہ تم جا پڑو کسی قوم پر نادانی میں اور پھر تمہیں اپنے کیے پر نادم ہونا پڑے۔",
+        trans: "Yaaa ayyuhal lazeena aamanoo in jaaa’akum faasiqum binaba in fatabaiyanooo an tuseeboo qawmam bijahalatin fatusbihoo ‘alaa maa fa’altum naadimeen"
       },
       {
         arabic: "وَاعلَموا أَنَّ فيكُم رَسولَ اللَّهِ ۚ لَو يُطيعُكُم في كَثيرٍ مِنَ الأَمرِ لَعَنِتُّم وَلٰكِنَّ اللَّهَ حَبَّبَ إِلَيكُمُ الإيمانَ وَزَيَّنَهُ في قُلوبِكُم وَكَرَّهَ إِلَيكُمُ الكُفرَ وَالفُسوقَ وَالعِصيانَ ۚ أُولٰئِكَ هُمُ الرّاشِدونَ",
         en: "And keep in mind that Allah’s Messenger is ˹still˺ in your midst. If he were to yield to you in many matters, you would surely suffer ˹the consequences˺. But Allah has endeared faith to you, making it appealing in your hearts. And He has made disbelief, rebelliousness, and disobedience detestable to you. Those are the ones rightly guided.",
-        ur: ""
+        ur: "اور جان لو کہ تمہارے مابین اللہ کا رسول موجود ہے۔ اگر وہ تمہارا کہنا مانا کریں اکثر معاملات میں تو تم لوگ مشکل میں پڑ جائو لیکن (اے نبی ﷺ کے ساتھیو !) اللہ نے تمہارے نزدیک ایمان کو بہت محبوب بنا دیا ہے اور اسے تمہارے دلوں کے اندر کھبا دیا ہے اور اس نے تمہارے نزدیک بہت ناپسندیدہ بنا دیا ہے کفر فسق اور نافرمانی کو۔ یہی لوگ ہیں جو صحیح راستے پر ہیں۔",
+        trans: "Wa’lamooo anna feekum Rasoolal laah; law yutee’ukum fee kaseerim minal amrila’anittum wa laakinnal laaha habbaba ilaikumul eemaana wa zaiyanahoo fee quloobikum wa karraha ilaikumul kufra walfusooqa wal’isyaan; ulaaaika humur raashidoon"
       },  
       {
         arabic: "فَضلًا مِنَ اللَّهِ وَنِعمَةً ۚ وَاللَّهُ عَليمٌ حَكيمٌ",
         en: "˹This is˺ a bounty and a blessing from Allah. And Allah is All-Knowing, All-Wise.",
-        ur: ""
+        ur: "اللہ کی طرف سے بہت بڑے فضل اور انعام کی بنا پر۔ اور اللہ ہرچیز کا علم رکھنے والا کمال حکمت والا ہے۔",
+        trans: "Fadlam minal laahi wa ni’mah; wallaahu ‘Aleemun Hakeem"
       },
       {
         arabic: "وَإِن طائِفَتانِ مِنَ المُؤمِنينَ اقتَتَلوا فَأَصلِحوا بَينَهُما ۖ فَإِن بَغَت إِحداهُما عَلَى الأُخرىٰ فَقاتِلُوا الَّتي تَبغي حَتّىٰ تَفيءَ إِلىٰ أَمرِ اللَّهِ ۚ فَإِن فاءَت فَأَصلِحوا بَينَهُما بِالعَدلِ وَأَقسِطوا ۖ إِنَّ اللَّهَ يُحِبُّ المُقسِطينَ",
         en: "And if two groups of believers fight each other, then make peace between them. But if one of them transgresses against the other, then fight against the transgressing group until they ˹are willing to˺ submit to the rule of Allah. If they do so, then make peace between both ˹groups˺ in all fairness and act justly. Surely Allah loves those who uphold justice.",
-        ur: ""
+        ur: "اور اگر اہل ِایمان میں سے دو گروہ آپس میں لڑ پڑیں تو ان کے درمیان صلح کرا دیا کرو۔ پھر اگر ان میں سے ایک فریق دوسرے پر زیادتی کر رہا ہو تو تم جنگ کرو اس کے ساتھ جو زیادتی کر رہا ہے یہاں تک کہ وہ لوٹ آئے اللہ کے حکم کی طرف } پھر اگر وہ لوٹ آئے تو ان دونوں کے درمیان صلح کرا دو عدل کے ساتھ اور دیکھو ! انصاف کرنا۔ بیشک اللہ انصاف کرنے والوں کو محبوب رکھتا ہے۔",
+        trans: "Wa in taaa’ifataani minal mu’mineena naqtataloo fa aslihoo bainahumaa; fa-im baghat ihdaahumaa ‘alal ukhraa faqaatilul latee tabghee hattaa tafeee’a ilaaa amril laah; fa-in faaa’at fa aslihoo bainahumaa bil’adli wa aqsitoo, innal laaha yuhibbul muqsiteen"
       },
       {
         arabic: "إِنَّمَا المُؤمِنونَ إِخوَةٌ فَأَصلِحوا بَينَ أَخَوَيكُم ۚ وَاتَّقُوا اللَّهَ لَعَلَّكُم تُرحَمونَ",
         en: "The believers are but one brotherhood, so make peace between your brothers. And be mindful of Allah so you may be shown mercy.",
-        ur: ""
+        ur: "یقینا تمام اہل ِایمان آپس میں بھائی بھائی ہیں پس اپنے دو بھائیوں کے درمیان صلح کر ادیا کرو اور اللہ کا تقویٰ اختیار کرو تاکہ تم پر رحم کیا جائے۔",
+        trans: "Innamal mu’minoona ikhwatun fa aslihoo baina akhawaykum wattaqul laaha la’allakum turhamoon"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا لا يَسخَر قَومٌ مِن قَومٍ عَسىٰ أَن يَكونوا خَيرًا مِنهُم وَلا نِساءٌ مِن نِساءٍ عَسىٰ أَن يَكُنَّ خَيرًا مِنهُنَّ ۖ وَلا تَلمِزوا أَنفُسَكُم وَلا تَنابَزوا بِالأَلقابِ ۖ بِئسَ الِاسمُ الفُسوقُ بَعدَ الإيمانِ ۚ وَمَن لَم يَتُب فَأُولٰئِكَ هُمُ الظّالِمونَ",
         en: "O believers! Do not let some ˹men˺ ridicule others, they may be better than them, nor let ˹some˺ women ridicule other women, they may be better than them. Do not defame one another, nor call each other by offensive nicknames. How evil it is to act rebelliously after having faith! And whoever does not repent, it is they who are the ˹true˺ wrongdoers.",
-        ur: ""
+        ur: "اے اہل ایمان ! تم میں سے کوئی گروہ دوسرے گروہ کا مذاق نہ اڑائے ہوسکتا ہے کہ وہ ان سے بہتر ہوں (اسی طرح) عورتیں بھی دوسری عورتوں کا مذاق نہ اڑائیں ہوسکتا ہے وہ ان سے بہتر ہوں اور اپنے آپ کو عیب مت لگائو اور نہ آپس میں ایک دوسرے کے چڑانے والے نام رکھا کرو۔ ایمان کے بعد تو برائی کا نام بھی برا ہے۔ اور جو باز نہیں آئیں گے وہی تو ظالم ہیں۔",
+        trans: "Yaaa ayyuhal lazeena aamanoo laa yaskhar qawmum min qawmin ‘asaaa anyyakoonoo khairam minhum wa laa nisaaa’um min nisaaa’in ‘Asaaa ay yakunna khairam minhunna wa laa talmizooo anfusakum wa laa tanaabazoo bil alqaab; bi’sal ismul fusooqu ba’dal eemaan; wa mal-lam yatub fa-ulaaa’ika humuz zaalimoon"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنُوا اجتَنِبوا كَثيرًا مِنَ الظَّنِّ إِنَّ بَعضَ الظَّنِّ إِثمٌ ۖ وَلا تَجَسَّسوا وَلا يَغتَب بَعضُكُم بَعضًا ۚ أَيُحِبُّ أَحَدُكُم أَن يَأكُلَ لَحمَ أَخيهِ مَيتًا فَكَرِهتُموهُ ۚ وَاتَّقُوا اللَّهَ ۚ إِنَّ اللَّهَ تَوّابٌ رَحيمٌ",
         en: "O  believers! Avoid many suspicions, ˹for˺ indeed, some suspicions are sinful. And do not spy, nor backbite one another. Would any of you like to eat the flesh of their dead brother? You would despise that! And fear Allah. Surely Allah is ˹the˺ Accepter of Repentance, Most Merciful.",
-        ur: ""
+        ur: "اے اہل ِایمان ! زیادہ گمان کرنے سے بچو بیشک بعض گمان گناہ ہوتے ہیں اور ایک دوسرے کے حالات کی ٹوہ میں نہ رہا کرو اور تم میں سے کوئی دوسرے کی غیبت نہ کرے۔ کیا تم میں سے کوئی شخص پسند کرے گا کہ اپنے ُ مردہ بھائی کا گوشت کھائے ؟ یہ تو تمہیں بہت ناگوار لگا اور اللہ کا تقویٰ اختیار کرو اللہ تو بہ کا بہت قبول فرمانے والا اور بہت رحم فرمانے والا ہے۔",
+        trans: "Yaaa ayyuhal lazeena aamanuj taniboo kaseeram minaz zanni inna ba’daz zanniismunw wa laa tajassasoo wa la yaghtab ba’dukum ba’daa; a yuhibbu ahadukum any yaakula lahma akheehi maitan fakarih tumooh; wattaqul laa; innal laaha tawwaabur Raheem"
       },
       {
         arabic: "يا أَيُّهَا النّاسُ إِنّا خَلَقناكُم مِن ذَكَرٍ وَأُنثىٰ وَجَعَلناكُم شُعوبًا وَقَبائِلَ لِتَعارَفوا ۚ إِنَّ أَكرَمَكُم عِندَ اللَّهِ أَتقاكُم ۚ إِنَّ اللَّهَ عَليمٌ خَبيرٌ",
         en: "O humanity! Indeed, We created you from a male and a female, and made you into peoples and tribes so that you may ˹get to˺ know one another. Surely the most noble of you in the sight of Allah is the most righteous among you. Allah is truly All-Knowing, All-Aware.",
-        ur: ""
+        ur: "اے لوگو ! ہم نے تمہیں پیدا کیا ہے ایک مرد اور ایک عورت سے اور ہم نے تمہیں مختلف قوموں اور قبیلوں میں تقسیم کردیا ہے تاکہ تم ایک دوسرے کو پہچان سکو۔ یقینا تم میں سب سے زیادہ با عزت اللہ کے ہاں وہ ہے جو تم میں سب سے بڑھ کر متقی ہے۔ یقینا اللہ سب کچھ جاننے والا ہرچیز سے باخبر ہے۔",
+        trans: "Yaaa ayyuhan naasu innaa khalaqnaakum min zakarinw wa unsaa wa ja’alnaakum shu’oobanw wa qabaaa’ila lita’aarafoo inna akramakum ‘indal laahi atqaakum innal laaha ‘Aleemun khabeer"
       },
       {
         arabic: "۞ قالَتِ الأَعرابُ آمَنّا ۖ قُل لَم تُؤمِنوا وَلٰكِن قولوا أَسلَمنا وَلَمّا يَدخُلِ الإيمانُ في قُلوبِكُم ۖ وَإِن تُطيعُوا اللَّهَ وَرَسولَهُ لا يَلِتكُم مِن أَعمالِكُم شَيئًا ۚ إِنَّ اللَّهَ غَفورٌ رَحيمٌ",
         en: "˹Some of˺ the nomadic Arabs say, “We believe.” Say, ˹O Prophet,˺ “You have not believed. But say, ‘We have submitted,’ for faith has not yet entered your hearts. But if you obey Allah and His Messenger ˹wholeheartedly˺, He will not discount anything from ˹the reward of˺ your deeds. Allah is truly All-Forgiving, Most Merciful.”",
-        ur: ""
+        ur: "یہ بدو کہہ رہے ہیں کہ ہم ایمان لے آئے ہیں۔ (اے نبی ﷺ ان سے) کہہ دیجیے : تم ہرگز ایمان نہیں لائے ہو بلکہ تم یوں کہو کہ ہم مسلمان (اطاعت گزار) ہوگئے ہیں اور ایمان ابھی تمہارے دلوں میں داخل نہیں ہوا۔ لیکن اگر تم اللہ اور اس کے رسول کی اطاعت کرتے رہو گے تو وہ تمہارے اعمال میں سے کوئی کمی نہیں کرے گا۔ یقینا اللہ بہت بخشنے والا بہت مہربان ہے۔",
+        trans: "Qaalatil-A ‘raabu aamannaa qul lam tu’minoo wa laakin qoolooo aslamnaa wa lamma yadkhulil eemaanu fee quloobikum wa in tutee’ul laaha wa Rasoolahoo laa yalitkum min a’maalikum shai’aa; innal laaha Ghafoorur Raheem"
       },
       {
         arabic: "إِنَّمَا المُؤمِنونَ الَّذينَ آمَنوا بِاللَّهِ وَرَسولِهِ ثُمَّ لَم يَرتابوا وَجاهَدوا بِأَموالِهِم وَأَنفُسِهِم في سَبيلِ اللَّهِ ۚ أُولٰئِكَ هُمُ الصّادِقونَ",
         en: "The ˹true˺ believers are only those who believe in Allah and His Messenger—never doubting—and strive with their wealth and their lives in the cause of Allah. They are the ones true in faith.",
-        ur: ""
+        ur: "مومن تو بس وہی ہیں جو ایمان لائے اللہ اور اس کے رسول ﷺ پر پھر شک میں ہرگز نہیں پڑے اور انہوں نے جہاد کیا اپنے مالوں اور اپنی جانوں کے ساتھ اللہ کی راہ میں۔ یہی لوگ ہیں جو (اپنے دعوائے ایمان میں) سچے ہیں۔",
+        trans: "Innamal muu’minoonal lazeena aamanoo billaahi wa Rasoolihee summa lam yartaaboo wa jaahadoo biamwaalihim wa anfusihim fee sabeelil laah; ulaaaika humus saadiqoon"
       },
       {
         arabic: "قُل أَتُعَلِّمونَ اللَّهَ بِدينِكُم وَاللَّهُ يَعلَمُ ما فِي السَّماواتِ وَما فِي الأَرضِ ۚ وَاللَّهُ بِكُلِّ شَيءٍ عَليمٌ",
         en: "Say, “Do you inform Allah of your faith, when Allah ˹already˺ knows whatever is in the heavens and whatever is on the earth? And Allah has ˹perfect˺ knowledge of all things.”",
-        ur: ""
+        ur: "(اے نبی ﷺ !) ان سے کہیے : کیا تم اللہ کو جتلانا چاہتے ہو اپنادین ؟ اور اللہ جانتا ہے جو کچھ آسمانوں میں ہے اور جو کچھ زمین میں ہے۔ اللہ تو ہرچیز کا علم رکھنے والا ہے۔",
+        trans: "Qul atu’allimoonal laaha bideenikum wallaahu ya’lamu maa fis samaawaati wa maa fil ard; wallaahu bikulli shai’in ‘Aleem"
       },
       {
         arabic: "يَمُنّونَ عَلَيكَ أَن أَسلَموا ۖ قُل لا تَمُنّوا عَلَيَّ إِسلامَكُم ۖ بَلِ اللَّهُ يَمُنُّ عَلَيكُم أَن هَداكُم لِلإيمانِ إِن كُنتُم صادِقينَ",
         en: "They regard their acceptance of Islam as a favour to you. Tell ˹them, O  Prophet˺, “Do not regard your Islam as a favour to me. Rather, it is Allah Who has done you a favour by guiding you to the faith, if ˹indeed˺ you are faithful.",
-        ur: ""
+        ur: "(اے نبی ﷺ !) یہ لوگ آپ پر احسان دھر رہے ہیں کہ وہ اسلام لے آئے ہیں ان سے کہیے کہ مجھ پر اپنے اسلام کا احسان نہ دھرو } بلکہ اللہ تم پر احسان دھرتا ہے کہ اس نے تمہیں ایمان کے راستے پر ڈال دیا ہے اگر تم سچے ہو۔",
+        trans: "Yamunnoona ‘alaika an aslamoo qul laa tamunnoo ‘alaiya Islaamakum balillaahu yamunnu ‘alaikum an hadaakum lil eemaani in kuntum saadiqeen"
       },
       {
         arabic: "إِنَّ اللَّهَ يَعلَمُ غَيبَ السَّماواتِ وَالأَرضِ ۚ وَاللَّهُ بَصيرٌ بِما تَعمَلونَ",
         en: "Surely Allah knows the unseen of the heavens and earth. And Allah is All-Seeing of what you do.”",
-        ur: ""
+        ur: "یقینا اللہ جانتا ہے آسمانوں اور زمین کی چھپی ہوئی چیزیں۔ اور جو کچھ تم کر رہے ہو اللہ اسے بھی دیکھ رہا ہے۔",
+        trans: "Innal laaha ya’lamu ghaibas samaawaati wal ard; wallaahu baseerum bimaa ta’maloon"
       },
     ];
 
@@ -1075,6 +1121,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1116,7 +1163,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1140,6 +1187,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1147,10 +1195,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1169,7 +1222,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1292,6 +1345,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
