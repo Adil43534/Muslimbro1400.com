@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Muhammad</title>
+  <title>47. Surah: Muhammad 1-38 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,31 +926,28 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="38">
+        <input type="number" id="verse-number" min="1" max="38" placeholder="1-38">
         <button onclick="goToVerse()">Go</button>
       </div>
 
       <div class="navigation">
         <a href="al-ahqaf.html">← Surah Al-Ahqaf</a>
         <a href="al-fath.html">Next: Surah Al-Fath →</a>
-      </div>
-
-      <!-- Language Selector -->
-      <div class="lang-select hidden" id="languageSelector">
-        <label for="language">Translation Language:</label>
-        <select id="language" onchange="renderTranslation()"></select>
       </div>
     </div>
 
@@ -981,192 +1009,230 @@
       {
         arabic: "الَّذينَ كَفَروا وَصَدّوا عَن سَبيلِ اللَّهِ أَضَلَّ أَعمالَهُم",
         en: "Those who disbelieve and hinder ˹others˺ from the Way of Allah, He will render their deeds void.",
-        ur: ""
+        ur: "جن لوگوں نے کفر کیا اور اللہ کے راستے سے روکا (اور خود بھی رکے) اللہ نے ان کی ساری جدوجہد کو رائیگاں کردیا۔",
+        trans: "Allazeena kafaroo wa saddoo’an sabeelil laahi adalla a’maalahum"
       },
       {
         arabic: "وَالَّذينَ آمَنوا وَعَمِلُوا الصّالِحاتِ وَآمَنوا بِما نُزِّلَ عَلىٰ مُحَمَّدٍ وَهُوَ الحَقُّ مِن رَبِّهِم ۙ كَفَّرَ عَنهُم سَيِّئَاتِهِم وَأَصلَحَ بالَهُم",
         en: "As for those who believe, do good, and have faith in what has been revealed to Muḥammad—which is the truth from their Lord—He will absolve them of their sins and improve their condition.",
-        ur: ""
+        ur: "اور جو لوگ ایمان لائے اور جنہوں نے نیک اعمال کیے اور جو ایمان لائے اس شے پر جو نازل کی گئی محمد ﷺ پر اور وہ حق ہے ان کے رب کی طرف سے } اللہ نے دور کردیں ان سے ان کی خطائیں اور ان کے حال کو سنوار دیا۔",
+        trans: "Wallazeena aamanoo wa ‘amilus saalihaati wa aamanoo bimaa nuzzila ‘alaa Muhammadinw-wa huwal haqqu mir Rabbihim kaffara ‘anhum saiyiaatihim wa aslaha baalahum"
       },
       {
         arabic: "ذٰلِكَ بِأَنَّ الَّذينَ كَفَرُوا اتَّبَعُوا الباطِلَ وَأَنَّ الَّذينَ آمَنُوا اتَّبَعُوا الحَقَّ مِن رَبِّهِم ۚ كَذٰلِكَ يَضرِبُ اللَّهُ لِلنّاسِ أَمثالَهُم",
         en: "This is because the disbelievers follow falsehood, while the believers follow the truth from their Lord. This is how Allah shows people their true state ˹of faith˺.",
-        ur: ""
+        ur: "یہ اس لیے کہ جن لوگوں نے کفر کیا انہوں نے باطل کی پیروی کی اور جو لوگ ایمان لائے انہوں نے حق کی پیروی کی جو ان کے رب کی طرف سے آیا ہے اسی طرح اللہ لوگوں کے لیے ان کی مثالیں بیان کرتا ہے۔",
+        trans: "Zaalika bi annal lazeena kafarut taba’ul baatila wa annal lazeena aamanut taba’ul haqqa mir Rabbihim; kazaalika yadribul laahu linnaasi amsaalahum"
       },
       {
         arabic: "فَإِذا لَقيتُمُ الَّذينَ كَفَروا فَضَربَ الرِّقابِ حَتّىٰ إِذا أَثخَنتُموهُم فَشُدُّوا الوَثاقَ فَإِمّا مَنًّا بَعدُ وَإِمّا فِداءً حَتّىٰ تَضَعَ الحَربُ أَوزارَها ۚ ذٰلِكَ وَلَو يَشاءُ اللَّهُ لَانتَصَرَ مِنهُم وَلٰكِن لِيَبلُوَ بَعضَكُم بِبَعضٍ ۗ وَالَّذينَ قُتِلوا في سَبيلِ اللَّهِ فَلَن يُضِلَّ أَعمالَهُم",
         en: "So when you meet the disbelievers ˹in battle˺, strike ˹their˺ necks until you have thoroughly subdued them, then bind them firmly. Later ˹free them either as˺ an act of grace or by ransom until the war comes to an end. So will it be. Had Allah willed, He ˹Himself˺ could have inflicted punishment on them. But He does ˹this only to˺ test some of you by means of others. And those who are martyred in the cause of Allah, He will never render their deeds void.",
-        ur: ""
+        ur: "تو (اے مسلمانو !) جب تمہاری مڈ بھیڑ ہو کافروں سے تو ان کی گردنیں مارنا ہے یہاں تک کہ جب تم انہیں اچھی طرح سے ُ کچل دو تب انہیں مضبوطی کے ساتھ باندھو پھر اس کے بعد (تم انہیں چھوڑ سکتے ہو) احسان کر کے یا فدیہ لے کر یہاں تک کہ جنگ اپنے ہتھیار ڈال دے یہ ہے (اس بارے میں حکم) اور اگر اللہ چاہتا تو خود ہی ان سے بدلہ لے لیتا لیکن اللہ آزماتا ہے تمہارے بعض لوگوں کو بعض دوسروں کے ذریعے سے } اور جو لوگ اللہ کی راہ میں قتل ہوگئے تو اللہ ان کے اعمال کو ہرگز ضائع نہیں کرے گا۔",
+        trans: "Fa-izaa laqeetumul lazeena kafaroo fadarbar riqaabi, hattaaa izaa askhan tumoohum fashuddul wasaaqa, fa immaa mannnam ba’du wa immaa fidaaa’an hattaa tada’al harbu awzaarahaa; zaalika wa law yashaaa’ul laahu lantasara minhum wa laakin li yabluwa ba’dakum bi ba’d; wallazeena qutiloo fee sabeelil laahi falany yudilla a’maalahum"
       },
       {
         arabic: "سَيَهديهِم وَيُصلِحُ بالَهُم",
         en: "He will guide them ˹to their reward˺, improve their condition,",
-        ur: ""
+        ur: "وہ ان کی راہنمائی کرے گا اور ان کے احوال کو سنوار دے گا۔",
+        trans: "Sa-yahdeehim wa yuslihu baalahum"
       },
       {
         arabic: "وَيُدخِلُهُمُ الجَنَّةَ عَرَّفَها لَهُم",
         en: "and admit them into Paradise, having made it known to them.",
-        ur: ""
+        ur: "اور داخل کرے گا انہیں جنت میں جس کی ان کو پہچان کرا دی ہے۔",
+        trans: "Wa yudkhiluhumul jannata ‘arrafahaa lahum"
       },
       {
         arabic: "يا أَيُّهَا الَّذينَ آمَنوا إِن تَنصُرُوا اللَّهَ يَنصُركُم وَيُثَبِّت أَقدامَكُم",
         en: "O believers! If you stand up for Allah, He will help you and make your steps firm.",
-        ur: ""
+        ur: "اے اہل ِایمان ! اگر تم اللہ کی مدد کرو گے تو اللہ تمہاری مدد کرے گا اور وہ تمہارے قدموں کو جما دے گا۔",
+        trans: "Yaaa ayyuhal lazeena aamanooo in tansurul laaha yansurkum wa yusabbit aqdaamakum"
       },  
       {
         arabic: "وَالَّذينَ كَفَروا فَتَعسًا لَهُم وَأَضَلَّ أَعمالَهُم",
         en: "As for the disbelievers, may they be doomed and may He render their deeds void.",
-        ur: ""
+        ur: "اور وہ لوگ جنہوں نے کفر کیا تو ان کے لیے نا کامی ہے اور وہ ان کے تمام اعمال کو برباد کر دے گا۔",
+        trans: "Wallazeena kafaroo fata’ sal lahum wa adalla a’maalahum"
       },
       {
         arabic: "ذٰلِكَ بِأَنَّهُم كَرِهوا ما أَنزَلَ اللَّهُ فَأَحبَطَ أَعمالَهُم",
         en: "That is because they detest what Allah has revealed, so He has rendered their deeds void.",
-        ur: ""
+        ur: "یہ اس لیے کہ انہوں نے اس چیز کو ناپسند کیا جو اللہ نے نازل کی تو اس نے ان کے تمام اعمال کو ضائع کردیا۔",
+        trans: "Zaalika bi annahum karihoo maaa anzal allaahu fa ahbata a’maalahum"
       },
       {
         arabic: "۞ أَفَلَم يَسيروا فِي الأَرضِ فَيَنظُروا كَيفَ كانَ عاقِبَةُ الَّذينَ مِن قَبلِهِم ۚ دَمَّرَ اللَّهُ عَلَيهِم ۖ وَلِلكافِرينَ أَمثالُها",
         en: "Have they not travelled throughout the land to see what was the end of those before them? Allah annihilated them, and a similar fate awaits the disbelievers.",
-        ur: ""
+        ur: "تو کیا یہ زمین میں گھومے پھرے نہیں کہ وہ دیکھتے کہ کیا انجام ہوا ان لوگوں کا جو ان سے پہلے تھے اللہ نے ان پر ہلاکت کو مسلط کردیا اور ان کافروں کے لیے بھی ان ہی کی مثالیں ہوں گی۔",
+        trans: "Afalam yaseeroo fil ardi fayanzuroo kaifa kaana ‘aaqibatul lazeena min qablihim; dammaral laahu ‘alaihim wa lilkaafireena amsaaluhaa"
       },
       {
         arabic: "ذٰلِكَ بِأَنَّ اللَّهَ مَولَى الَّذينَ آمَنوا وَأَنَّ الكافِرينَ لا مَولىٰ لَهُم",
         en: "This is because Allah is the Patron of the believers while the disbelievers have no patron.",
-        ur: ""
+        ur: "یہ اس لیے کہ اللہ مولیٰ (پشت پناہ) ہے اہل ایمان کا اور یہ کہ کافروں کا کوئی مولیٰ ہے ہی نہیں۔",
+        trans: "Zaalika bi annal laaha mawlal lazeena aamanoo wa annal kaafireena laa mawlaa lahum"
       },
       {
         arabic: "إِنَّ اللَّهَ يُدخِلُ الَّذينَ آمَنوا وَعَمِلُوا الصّالِحاتِ جَنّاتٍ تَجري مِن تَحتِهَا الأَنهارُ ۖ وَالَّذينَ كَفَروا يَتَمَتَّعونَ وَيَأكُلونَ كَما تَأكُلُ الأَنعامُ وَالنّارُ مَثوًى لَهُم",
-        en: "Surely Allah will admit those who believe and do good into Gardens under which rivers flow. As for the disbelievers, they enjoy themselves and feed like cattle.1 But the Fire will be their home.",
-        ur: ""
+        en: "Surely Allah will admit those who believe and do good into Gardens under which rivers flow. As for the disbelievers, they enjoy themselves and feed like cattle. But the Fire will be their home.",
+        ur: "یقینا اللہ داخل کرے گا ان لوگوں کو جو ایمان لائے اور جنہوں نے نیک اعمال کیے ان باغات میں جن کے دامن میں نہریں بہتی ہوں گی۔ اور جو کافر ہیں وہ (دنیا میں) عیش کر رہے ہیں اور ایسے کھا رہے ہیں جیسے حیوانات کھاتے ہیں اور ان کا ٹھکانہ آگ ہے۔",
+        trans: "Innal-laaha yudkhilul lazeena aamanoo wa ‘amilus saalihaati Jannaatin tajree min tahtihal anhaaru wallazeena kafaroo yatamatta’oona wa ya’kuloona kamaa ta’kulul an’aamu wan Naaru maswan lahum"
       },
       {
         arabic: "وَكَأَيِّن مِن قَريَةٍ هِيَ أَشَدُّ قُوَّةً مِن قَريَتِكَ الَّتي أَخرَجَتكَ أَهلَكناهُم فَلا ناصِرَ لَهُم",
         en: "˹Imagine, O  Prophet,˺ how many societies We destroyed that were far superior in might than your society—which drove you out—and there was none to help them!",
-        ur: ""
+        ur: "اور (اے نبی ﷺ !) کتنی ہی ایسی بستیاں تھیں جو کہیں زیادہ قوت کی حامل تھیں آپ کی اس بستی سے جس نے آپ کو نکالا ہے۔ انہیں ہم نے ہلاک کردیا پس ان کا کوئی مد دگارنہ ہوا۔",
+        trans: "Wa ka ayyim min qaryatin hiya ashaddu quwwatam min qaryatikal lateee akhrajatka ahlaknaahum falaa naasira lahum"
       },
       {
         arabic: "أَفَمَن كانَ عَلىٰ بَيِّنَةٍ مِن رَبِّهِ كَمَن زُيِّنَ لَهُ سوءُ عَمَلِهِ وَاتَّبَعوا أَهواءَهُم",
         en: "Can those ˹believers˺ who stand on clear proof from their Lord be like those whose evil deeds are made appealing to them and ˹only˺ follow their desires?",
-        ur: ""
+        ur: "تو بھلا وہ شخص جو اپنے رب کی طرف سے ایک روشن دلیل پر ہے وہ اس شخص جیسا ہوجائے گا جس کے لیے اس کے ُ برے اعمال مزین ّکر دیے گئے ہیں اور انہوں نے اپنی خواہشات کی پیروی کی ہے۔",
+        trans: "Afaman kaana ‘alaa baiyinatim mir Rabbihee kaman zuyyina lahoo sooo’u ‘amalihee wattaba’ooo ahwaaa’ahum"
       },
       {
         arabic: "مَثَلُ الجَنَّةِ الَّتي وُعِدَ المُتَّقونَ ۖ فيها أَنهارٌ مِن ماءٍ غَيرِ آسِنٍ وَأَنهارٌ مِن لَبَنٍ لَم يَتَغَيَّر طَعمُهُ وَأَنهارٌ مِن خَمرٍ لَذَّةٍ لِلشّارِبينَ وَأَنهارٌ مِن عَسَلٍ مُصَفًّى ۖ وَلَهُم فيها مِن كُلِّ الثَّمَراتِ وَمَغفِرَةٌ مِن رَبِّهِم ۖ كَمَن هُوَ خالِدٌ فِي النّارِ وَسُقوا ماءً حَميمًا فَقَطَّعَ أَمعاءَهُم",
         en: "The description of the Paradise promised to the righteous is that in it are rivers of fresh water, rivers of milk that never changes in taste, rivers of wine delicious to drink, and rivers of pure honey. There they will ˹also˺ have all kinds of fruit, and forgiveness from their Lord. ˹Can they be˺ like those who will stay in the Fire forever, left to drink boiling water that will tear apart their insides?",
-        ur: ""
+        ur: "مثال اس جنت کی جس کا وعدہ کیا گیا ہے متقین سے۔ اس میں نہریں ہیں پانی کی جس میں کوئی ُ بو نہیں۔ اور دودھ کی نہریں ہیں جس کا ذائقہ تبدیل نہیں ہوتا۔ اور ایسی شراب کی نہریں ہیں جو سراپالذت ہے پینے والوں کے لیے۔ اور نہریں ہیں صاف شفاف شہد کی۔ اور (مزید برآں) ان کے لیے ہوں گے اس میں ہر قسم کے پھل اور مغفرت ہوگی ان کے رب کی طرف سے } اُن جیسے ہوسکتے ہیں جو ہمیشہ آگ میں رہنے والے ہیں اور انہیں پلایا جائے گا کھولتا ہوا پانی جو ان کی انتڑیوں کو کاٹ کر رکھ دے گا۔",
+        trans: "Masalul jannatil latee wu’idal muttaqoona feehaaa anhaarum min maaa’in ghayri aasininw wa anhaarum mil labanil lam yataghaiyar ta’muhoo wa anhaarum min khamril lazzatin li shaaribeena wa anhaarum min ‘asalim musaffanw wa lahum feeha min kullis samaraati wa maghfiratum mir Rabbihim kaman huwa khaalidun fin naari wa suqoo maaa’an hameeman faqatta’a am’aaa’ahum"
       },
       {
         arabic: "وَمِنهُم مَن يَستَمِعُ إِلَيكَ حَتّىٰ إِذا خَرَجوا مِن عِندِكَ قالوا لِلَّذينَ أوتُوا العِلمَ ماذا قالَ آنِفًا ۚ أُولٰئِكَ الَّذينَ طَبَعَ اللَّهُ عَلىٰ قُلوبِهِم وَاتَّبَعوا أَهواءَهُم",
         en: "There are some of them who listen to you ˹O Prophet˺, but when they depart from you, they say ˹mockingly˺ to those ˹believers˺ gifted with knowledge, “What did he just say?” These are the ones whose hearts Allah has sealed and who ˹only˺ follow their desires.",
-        ur: ""
+        ur: "اور (اے نبی ﷺ !) ان میں کچھ لوگ ایسے بھی ہیں جو آپ کی بات کو بڑی توجہ سے سنتے ہیں۔ یہاں تک کہ جب وہ آپ کے پاس سے نکل کر باہر جاتے ہیں تو ان لوگوں سے پوچھتے ہیں جنہیں علم دیا گیا ہے کہ ابھی انہوں (محمد ﷺ نے کیا کہا تھا ؟ } یہ وہ لوگ ہیں جن کے دلوں پر اللہ نے مہر لگا دی ہے اور وہ اپنی خواہشات کی پیروی کر رہے ہیں۔",
+        trans: "Wa minhum mai yastami’u ilaika hattaaa izaa kharajoo min ‘indika qaaloo lil lazeena ootul ‘ilma maazaa qaala aanifaa; ulaaa’ikal lazeena taba’al laahu ‘alaa quloobihim wattaba’ooo ahwaaa’ahum"
       },
       {
         arabic: "وَالَّذينَ اهتَدَوا زادَهُم هُدًى وَآتاهُم تَقواهُم",
         en: "As for those who are ˹rightly˺ guided, He increases them in guidance and blesses them with righteousness.",
-        ur: ""
+        ur: "اور وہ لوگ جو ہدایت پر ہیں اللہ نے ان کی ہدایت میں اور اضافہ کردیا ہے اور انہیں ان کے حصے کا تقویٰ عطا فرمایا ہے۔",
+        trans: "Wallazeenah tadaw zaadahum hudanw wa aataahum taqwaahum"
       },
       {
         arabic: "فَهَل يَنظُرونَ إِلَّا السّاعَةَ أَن تَأتِيَهُم بَغتَةً ۖ فَقَد جاءَ أَشراطُها ۚ فَأَنّىٰ لَهُم إِذا جاءَتهُم ذِكراهُم",
         en: "Are they only waiting for the Hour to take them by surprise? Yet ˹some of˺ its signs have already come. Once it actually befalls them, will it not be too late to be mindful?",
-        ur: ""
+        ur: "تو یہ لوگ اب کس چیز کے منتظر ہیں سوائے قیامت کے کہ وہ آدھمکے ان پر اچانک ؟ پس اس کی علامات تو ظاہر ہو ہی چکی ہیں تو جب وہ ان پر آدھمکے گی تو اس وقت ان کا نصیحت حاصل کرنا کس کام کا ہوگا ؟",
+        trans: "Fahal yanzuroona illas Saa’ata an ta’tiyahum baghtatan faqad jaaa’a ashraatuhaa; fa annaa lahum izaa jaaa’at hum zikraahum"
       },
       {
         arabic: "فَاعلَم أَنَّهُ لا إِلٰهَ إِلَّا اللَّهُ وَاستَغفِر لِذَنبِكَ وَلِلمُؤمِنينَ وَالمُؤمِناتِ ۗ وَاللَّهُ يَعلَمُ مُتَقَلَّبَكُم وَمَثواكُم",
         en: "So, know ˹well, O  Prophet,˺ that there is no god ˹worthy of worship˺ except Allah. And seek forgiveness for your shortcomings and for ˹the sins of˺ the believing men and women. For Allah ˹fully˺ knows your movements and places of rest ˹O people˺.",
-        ur: ""
+        ur: "بس جان لو کہ اللہ کے سوا کوئی معبود نہیں اور اپنی خطائوں کے لیے (اللہ سے) استغفار کرو اور اہل ِایمان مردوں اور عورتوں کے لیے بھی (استغفار کریں) اور اللہ خوب جانتا ہے تمہارے لوٹنے کی جگہ کو اور تمہارے مستقل ٹھکانے کو۔",
+        trans: "Fa’lam annahoo laaa ilaaha illal laahu wastaghfir lizambika wa lilmu’mineena walmu’minaat; wallaahu ya’lamu mutaqallabakum wa maswaakum"
       },
       {
         arabic: "وَيَقولُ الَّذينَ آمَنوا لَولا نُزِّلَت سورَةٌ ۖ فَإِذا أُنزِلَت سورَةٌ مُحكَمَةٌ وَذُكِرَ فيهَا القِتالُ ۙ رَأَيتَ الَّذينَ في قُلوبِهِم مَرَضٌ يَنظُرونَ إِلَيكَ نَظَرَ المَغشِيِّ عَلَيهِ مِنَ المَوتِ ۖ فَأَولىٰ لَهُم",
         en: "And the believers say, “If only a sûrah was revealed ˹allowing self-defence˺!” Yet when a precise sûrah is revealed, in which fighting is ˹explicitly˺ mentioned, you see those with sickness in their hearts staring at you like someone in the throes of death. It would have been better for them",
-        ur: ""
+        ur: "اور یہ لوگ جو ایمان کے دعویدار ہیں کہتے ہیں کہ (قتال کے بارے میں) کوئی سورت کیوں نازل نہیں ہوئی ؟ پھر جب ایک محکم سورت نازل کردی گئی اور اس میں قتال کا حکم آگیا تو اب آپ دیکھیں گے ان لوگوں کو جن کے دلوں میں روگ ہے کہ یہ لوگ آپ ﷺ کی طرف ایسے دیکھیں گے جیسے وہ شخص دیکھتا ہے جس پر موت کی غشی طاری ہو رہی ہوتی ہے تو بربادی ہے ان کے لیے۔",
+        trans: "Wa yaqoolul lazeena aamanoo law laa nuzzilat Sooratun fa izaaa unzilat Sooratum Muhkamatunw wa zukira feehal qitaalu ra aytal lazeena fee quloobihim maraduny yanzuroona ilaika nazaral maghshiyyi ‘alaihi minal mawti fa’awlaa lahum"
       },
       {
         arabic: "طاعَةٌ وَقَولٌ مَعروفٌ ۚ فَإِذا عَزَمَ الأَمرُ فَلَو صَدَقُوا اللَّهَ لَكانَ خَيرًا لَهُم",
         en: "to obey and speak rightly. Then when fighting was ordained, it surely would have been better for them if they were true to Allah.",
-        ur: ""
+        ur: "اطاعت لازم ہے اور کوئی بھلی بات کہی جاسکتی ہے تو جب کوئی فیصلہ طے پا جائے تو پھر اگر وہ اللہ سے (اپنے ایمان کے وعدے میں) سچے ثابت ہوں تبھی ان کے لیے بہتری ہے۔",
+        trans: "Taa’atunw wa qawlum ma’roof; fa izaa ‘azamal amru falaw sadaqul laaha lakaana khairal lahum"
       },
       {
         arabic: "فَهَل عَسَيتُم إِن تَوَلَّيتُم أَن تُفسِدوا فِي الأَرضِ وَتُقَطِّعوا أَرحامَكُم",
         en: "Now if you ˹hypocrites˺ turn away, perhaps you would then spread corruption throughout the land and sever your ˹ties of˺ kinship!",
-        ur: ""
+        ur: "پس تم سے اس کے سوا کچھ متوقع نہیں ہے کہ اگر تم لوگوں کو حکومت مل جائے تو تم زمین میں فساد مچائو گے اور اپنے رحمی رشتے کاٹو گے۔",
+        trans: "Fahal ‘asaitum in tawallaitum an tufsidoo fil ardi wa tuqatti’ooo arhaamakum"
       },
       {
         arabic: "أُولٰئِكَ الَّذينَ لَعَنَهُمُ اللَّهُ فَأَصَمَّهُم وَأَعمىٰ أَبصارَهُم",
         en: "These are the ones who Allah has condemned, deafening them and blinding their eyes.",
-        ur: ""
+        ur: "یہ وہ لوگ ہیں جن پر اللہ نے لعنت کی ہے پس ان کے کانوں کو بہرا اور ان کی نگاہوں کو اندھا کردیا ہے۔",
+        trans: "Ulaaa’ikal lazeena la’anahumul laahu fa asammahum wa a’maaa absaarahum"
       },
       {
         arabic: "أَفَلا يَتَدَبَّرونَ القُرآنَ أَم عَلىٰ قُلوبٍ أَقفالُها",
         en: "Do they not then reflect on the Quran? Or are there locks upon their hearts?",
-        ur: ""
+        ur: "کیا یہ لوگ قرآن پر تدبر ّنہیں کرتے یا ان کے دلوں پر قفل پڑچکے ہیں۔",
+        trans: "Afalaa yatadabbaroonal Qur-aana am ‘alaa quloobin aqfaaluhaa"
       },
       {
         arabic: "إِنَّ الَّذينَ ارتَدّوا عَلىٰ أَدبارِهِم مِن بَعدِ ما تَبَيَّنَ لَهُمُ الهُدَى ۙ الشَّيطانُ سَوَّلَ لَهُم وَأَملىٰ لَهُم",
         en: "Indeed, those who relapse ˹into disbelief˺ after ˹true˺ guidance has become clear to them, ˹it is˺ Satan ˹that˺ has tempted them, luring them with false hopes.",
-        ur: ""
+        ur: "یقینا وہ لوگ جو پھرگئے اپنی پیٹھوں کے َبل اس کے بعد کہ ان پر ہدایت واضح ہوچکی شیطان نے ان کے لیے (ارتداد کا یہ مرحلہ) آسان کردیا ہے اور انہیں لمبی لمبی امیدیں دلائی ہیں۔",
+        trans: "Innal lazeenar taddoo ‘alaaa adbaarihim min ba’di maa tabaiyana lahumul hudash Shaitaanu sawwala lahum wa amlaa lahum"
       },
       {
         arabic: "ذٰلِكَ بِأَنَّهُم قالوا لِلَّذينَ كَرِهوا ما نَزَّلَ اللَّهُ سَنُطيعُكُم في بَعضِ الأَمرِ ۖ وَاللَّهُ يَعلَمُ إِسرارَهُم",
         en: "That is because they said ˹privately˺ to those who ˹also˺ detest what Allah has revealed, “We will obey you in some matters.” But Allah ˹fully˺ knows what they are hiding.",
-        ur: ""
+        ur: "یہ اس لیے ہوا کہ انہوں نے ان لوگوں سے جنہیں اللہ کا نازل کیا ہوا (قرآن) ناپسند ہے کہا کہ ہم بعض امور میں تمہاری اطاعت جاری رکھیں گے۔ اور اللہ کو ان کی خفیہ باتوں کا خوب علم ہے۔",
+        trans: "Zaalika bi annahum qaaloo lillazeena karihoo maa nazzalal laahu sanutee’ukum fee ba’dil amri wallaahu ya’lamu israarahum"
       },
       {
         arabic: "فَكَيفَ إِذا تَوَفَّتهُمُ المَلائِكَةُ يَضرِبونَ وُجوهَهُم وَأَدبارَهُم",
         en: "Then how ˹horrible˺ will it be when the angels take their souls, beating their faces and backs!",
-        ur: ""
+        ur: "تو کیا حال ہوگا (ان کا اس وقت) جب فرشتے ان کی جانیں قبض کریں گے ضربیں لگاتے ہوئے ان کے چہروں پر اور ان کی پیٹھوں پر",
+        trans: "Fakaifa izaa tawaffat humul malaaa’ikatu yadriboona wujoohahum wa adbaa rahum"
       },
       {
         arabic: "ذٰلِكَ بِأَنَّهُمُ اتَّبَعوا ما أَسخَطَ اللَّهَ وَكَرِهوا رِضوانَهُ فَأَحبَطَ أَعمالَهُم ",
         en: "This is because they follow whatever displeases Allah and hate whatever pleases Him, so He has rendered their deeds void.",
-        ur: ""
+        ur: "یہ اس لیے کہ انہوں نے پیروی کی اس چیز کی جو اللہ کو ناراض کرنے والی ہے اور انہوں نے ناپسند کیا اس کی رضا کو تو اس نے ان کے تمام اعمال اکارت کردیے۔",
+        trans: "Zaalika bi annahumut taba’oo maaa askhatal laaha wa karihoo ridwaanahoo fa ahbata a’maalahum"
       },
       {
         arabic: "أَم حَسِبَ الَّذينَ في قُلوبِهِم مَرَضٌ أَن لَن يُخرِجَ اللَّهُ أَضغانَهُم",
         en: "Or do those with sickness in their hearts think that Allah will not ˹be able to˺ expose their malice?",
-        ur: ""
+        ur: "کیا سمجھ رکھا تھا ان لوگوں نے جن کے دلوں میں روگ ہے کہ اللہ ان کے کھوٹ کو ظاہر نہیں کرے گا ؟ اور یقینا اللہ ظاہر کر کے رہے گا سچے اہل ایمان کو اور ظاہر کر کے رہے گا منافقین کو بھی۔",
+        trans: "Am hasibal lazeena fee quloobihim maradun al lany yukhrijal laahu adghaanahum"
       },
       {
         arabic: "وَلَو نَشاءُ لَأَرَيناكَهُم فَلَعَرَفتَهُم بِسيماهُم ۚ وَلَتَعرِفَنَّهُم في لَحنِ القَولِ ۚ وَاللَّهُ يَعلَمُ أَعمالَكُم",
         en: "Had We willed, We could have truly shown them to you ˹O Prophet˺, and you would have certainly recognized them by their appearance. But you will surely recognize them by their tone of speech. And Allah ˹fully˺ knows your doings ˹O people˺.",
-        ur: ""
+        ur: "اور اگر ہم چاہیں تو آپ کو یہ لوگ دکھا دیں اس طرح کہ آپ ان کے چہروں سے انہیں پہچان لیں گے۔ اور آپ انہیں لازماً پہچان لیں گے (ان کی) گفتگو کے انداز سے۔ اور اللہ تمہارے اعمال کو خوب جانتا ہے۔",
+        trans: "Wa law nashaaa’u la-arainaakahum fala ‘araftahum bi seemaahum; wa lata’rifan nahum fee lahnil qawl; wallaahu ya’lamu a’maalakum"
       },
       {
         arabic: "وَلَنَبلُوَنَّكُم حَتّىٰ نَعلَمَ المُجاهِدينَ مِنكُم وَالصّابِرينَ وَنَبلُوَ أَخبارَكُم",
         en: "We will certainly test you ˹believers˺ until We prove those of you who ˹truly˺ struggle ˹in Allah’s cause˺ and remain steadfast, and reveal how you conduct yourselves.",
-        ur: ""
+        ur: "اور ہم تمہیں لازماً آزمائیں گے یہاں تک کہ ہم ظاہر کردیں انہیں جو تم میں سے جہاد کرنے والے اور صبر کرنے والے ہیں اور ہم پوری تحقیق کرلیں تمہارے حالات کی۔",
+        trans: "Wa lanabluwannakum hattaa na’lamal mujaahideena minkum wassaabireena wa nabluwa akhbaarakum"
       },
       {
         arabic: "إِنَّ الَّذينَ كَفَروا وَصَدّوا عَن سَبيلِ اللَّهِ وَشاقُّوا الرَّسولَ مِن بَعدِ ما تَبَيَّنَ لَهُمُ الهُدىٰ لَن يَضُرُّوا اللَّهَ شَيئًا وَسَيُحبِطُ أَعمالَهُم",
         en: "Indeed, those who disbelieve, hinder ˹others˺ from the Way of Allah, and defy the Messenger after ˹true˺ guidance has become clear to them; they will not harm Allah in the least, but He will render their deeds void.",
-        ur: ""
+        ur: "یقینا وہ لوگ جنہوں نے کفر کیا اور جو روکتے رہے دوسروں کو اللہ کے راستے سے اور وہ رسول ﷺ کی مخالفت میں سرگرم رہے اس کے بعد کہ ان کے لیے ہدایت واضح ہوچکی تھی وہ اللہ کا کچھ نہیں بگاڑ سکیں گے۔ اور وہ ان کے اعمال کو اکارت کر دے گا۔",
+        trans: "Innal lazeena kafaroo wa saddoo ‘an sabeelil laahi wa shaaaqqur Rasoola min ba’di maa tabaiyana lahumul hudaa lany yadurrul laaha shai’anw wa sa yuhbitu a’maalahum"
       },
       {
         arabic: "۞ يا أَيُّهَا الَّذينَ آمَنوا أَطيعُوا اللَّهَ وَأَطيعُوا الرَّسولَ وَلا تُبطِلوا أَعمالَكُم",
         en: "O believers! Obey Allah and obey the Messenger, and do not let your deeds be in vain.",
-        ur: ""
+        ur: "اے اہل ِایمان ! تم لوگ اللہ کی اطاعت کرو اور رسول کی اطاعت کرو اور کہیں اپنے اعمال ضائع نہ کر بیٹھنا۔",
+        trans: "Yaaa ayyuhal lazeena aamanoo atee’ul laaha wa atee’ur Rasoola wa laa tubtilooo a’maalakum"
       },
       {
         arabic: "إِنَّ الَّذينَ كَفَروا وَصَدّوا عَن سَبيلِ اللَّهِ ثُمَّ ماتوا وَهُم كُفّارٌ فَلَن يَغفِرَ اللَّهُ لَهُم",
         en: "Surely those who disbelieve, hinder ˹others˺ from the Way of Allah, and then die as disbelievers; Allah will never forgive them.",
-        ur: ""
+        ur: "یقینا وہ لوگ جنہوں نے کفر کیا اور وہ اللہ کے راستے سے رکے رہے (اور دوسروں کو بھی روکتے رہے) پھر وہ مرگئے اس حالت میں کہ کافر ہی رہے تو ایسے لوگوں کو اللہ ہرگز نہیں بخشے گا۔",
+        trans: "Innal lazeena kafaroo wa saddoo ‘an sabeelil laahi summa maatoo wa hum kuffaarun falany yaghfirallaahu lahum"
       },
       {
         arabic: "فَلا تَهِنوا وَتَدعوا إِلَى السَّلمِ وَأَنتُمُ الأَعلَونَ وَاللَّهُ مَعَكُم وَلَن يَتِرَكُم أَعمالَكُم",
         en: "So do not falter or cry for peace, for you will have the upper hand and Allah is with you. And He will never let your deeds go to waste.",
-        ur: ""
+        ur: "تو (اے مسلمانو !) تم لوگ ڈھیلے نہ پڑو اور صلح و سلامتی کی دعوت مت دو } اور تم لوگ ہی غالب ہو گے اللہ تمہارے ساتھ ہے اور وہ تمہارے اعمال کو ہرگز ضائع نہیں کرے گا۔",
+        trans: "Falaa tahinoo wa tad’ooo ilas salmi wa antumul a’lawna wallaahu ma’akum wa lany yatirakum a’maalakum"
       },
       {
         arabic: "إِنَّمَا الحَياةُ الدُّنيا لَعِبٌ وَلَهوٌ ۚ وَإِن تُؤمِنوا وَتَتَّقوا يُؤتِكُم أُجورَكُم وَلا يَسأَلكُم أَموالَكُم",
         en: "This worldly life is no more than play and amusement. But if you are faithful and mindful ˹of Allah˺, He will grant you your ˹full˺ reward, and will not ask you ˹to donate all˺ your wealth.",
-        ur: ""
+        ur: "یہ دنیا کی زندگی تو محض کھیل ہے اور کچھ جی کا بہلانا ہے۔ اور اگر تم لوگ ایمان لائو اور تقویٰ اختیار کیے رہو تو وہ تمہیں تمہارے اجر عطا کرے گا اور تم سے تمہارے اموال نہیں مانگے گا۔",
+        trans: "Innamal hayaatud dunyaa la’ibunw wa lahw; wa in tu’minoo wa tattaqoo yu’tikum ujoorakum wa laa yas’alkum amwaalakum"
       },
       {
         arabic: "إِن يَسأَلكُموها فَيُحفِكُم تَبخَلوا وَيُخرِج أَضغانَكُم",
         en: "If He were to do so and pressure you, you would withhold and He would bring out your resentment.",
-        ur: ""
+        ur: "اگر وہ تم سے ان (اموال) کے بارے میں مطالبہ کرے اور اس معاملے میں تم پر تنگی کرے تو تم بخل سے کام لو گے اور وہ ظاہر کر دے گا تمہارے (دلوں کے) کھوٹ کو۔",
+        trans: "Iny yas’alkumoohaa fa yuhfikum tabkhaloo wa yukhrij adghaanakum"
       },
       {
         arabic: "ها أَنتُم هٰؤُلاءِ تُدعَونَ لِتُنفِقوا في سَبيلِ اللَّهِ فَمِنكُم مَن يَبخَلُ ۖ وَمَن يَبخَل فَإِنَّما يَبخَلُ عَن نَفسِهِ ۚ وَاللَّهُ الغَنِيُّ وَأَنتُمُ الفُقَراءُ ۚ وَإِن تَتَوَلَّوا يَستَبدِل قَومًا غَيرَكُم ثُمَّ لا يَكونوا أَمثالَكُم",
         en: "Here you are, being invited to donate ˹a little˺ in the cause of Allah. Still some of you withhold. And whoever does so, it is only to their own loss. For Allah is the Self-Sufficient, whereas you stand in need ˹of Him˺. If you ˹still˺ turn away, He will replace you with another people. And they will not be like you.",
-        ur: ""
+        ur: "تم وہ لوگ ہو کہ تمہیں بلایا جا رہا ہے کہ تم اللہ کی راہ میں خرچ کرو۔ پس تم میں سے کوئی وہ بھی ہے جو بخل سے کام لیتا ہے اور جو کوئی بھی بخل کرتا ہے وہ اپنے آپ ہی سے بخل کرتا ہے۔ اور اللہ غنی ہے اور محتاج تو تم ہی ہو۔ } اور اگر تم پیٹھ پھیر لو گے تو وہ تمہیں ہٹا کر کسی اور قوم کو لے آئے گا پھر وہ تمہاری طرح نہیں ہوں گے۔",
+        trans: "Haaa antum haaa’ulaaa’i tud’awna litunfiqoo fee sabeelillaahi faminkum many yabkhalu wa many yabkhal fa innamaa yabkhalu ‘an nafsih; wallaahu Ghaniyyu wa antumul fuqaraaa’; wa in tatawallaw yastabdil qawman ghairakum summa laa yakoonooo amsaalakum"
       },
     ];
 
@@ -1175,6 +1241,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1216,7 +1283,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1240,6 +1307,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1247,10 +1315,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1269,7 +1342,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1392,6 +1465,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
