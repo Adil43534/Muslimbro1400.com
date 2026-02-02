@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Surah Az-Zukhruf</title>
+  <title>43. Surah: Az-Zukhruf 1-89 - MuslimBro1400</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+    /* Jameel Noori Nastaleeq Custom Font Face */
+    @font-face {
+      font-family: 'Jameel Noori Nastaleeq';
+      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
+           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -143,7 +152,7 @@
 
     .ayah {
       background-color: #fff;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 3rem 3rem 3rem 3rem;
       margin-bottom: 1rem;
       border-left: 4px solid #007b5e;
       border-radius: 6px;
@@ -156,9 +165,12 @@
     }
 
     .ayah-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       font-size: 0.9rem;
       color: #007b5e;
-      margin-bottom: 0.4rem;
+      text-align: left;
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
@@ -175,12 +187,19 @@
       margin-top: 0.5rem;
       color: #666;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.2rem
     }
 
+    /* Updated Urdu Translation Class */
     .translation.ur {
       text-align: right;
       direction: rtl;
-      font-family: 'Noto Nastaliq Urdu', serif;
+      /* Prioritizing Jameel Noori */
+      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+      font-size: 1.5rem;
+      line-height: 2.2; /* Increased line-height for Nastaliq script */
+      margin-top: 10px;
+      color: #444;
     }
 
     .dark-mode .translation { color: #ccc; }
@@ -207,24 +226,9 @@
       color: #0c8;
     }
 
-    .share-icon {
+    .favorite-btn, .bookmark-btn, .share-icon {
       position: absolute;
-      top: 1rem;
       right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .share-icon:hover {
-      opacity: 1;
-    }
-
-    .favorite-btn, .bookmark-btn {
-      position: absolute;
-      top: 1rem;
       width: 24px;
       height: 24px;
       background: none;
@@ -234,20 +238,20 @@
       transition: opacity 0.3s ease;
     }
 
-    .favorite-btn:hover, .bookmark-btn:hover {
+    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
       opacity: 1;
     }
 
+    .share-icon {
+      top: 1rem;
+    }
+
     .favorite-btn {
-      right: 4rem;
+      top: 3rem;
     }
 
     .bookmark-btn {
-      right: 7rem;
-    }
-
-    .share-icon {
-      right: 1rem;
+      top: 5rem;
     }
 
     .navigation {
@@ -320,6 +324,32 @@
     }
 
     .dark-mode .transliteration-toggle.active {
+      background-color: #0c8;
+    }
+
+    .translation-toggle {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .translation-toggle.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .translation-toggle {
+      background-color: #444;
+      color: #eee;
+    }
+
+    .dark-mode .translation-toggle.active {
       background-color: #0c8;
     }
 
@@ -867,9 +897,10 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
@@ -895,19 +926,22 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
-        <input type="number" id="verse-number" min="1" max="89">
+        <input type="number" id="verse-number" min="1" max="89" placeholder="1-89">
         <button onclick="goToVerse()">Go</button>
       </div>
 
@@ -981,447 +1015,536 @@
       {
         arabic: "حم",
         en: "Ḥâ-Mĩm.",
-        ur: ""
+        ur: "ح م۔",
+        trans: "Haa-Meeem"
       },
       {
         arabic: "وَالكِتابِ المُبينِ",
         en: "By the clear Book!",
-        ur: ""
+        ur: "قسم ہے اس کتاب کی جو بالکل واضح ہے",
+        trans: "Wal Kitaabil Mubeen"
       },
       {
         arabic: "إِنّا جَعَلناهُ قُرآنًا عَرَبِيًّا لَعَلَّكُم تَعقِلونَ",
         en: "Certainly, We have made it a Quran in Arabic so perhaps you will understand.",
-        ur: ""
+        ur: "ہم نے اس کو بنا یا ہے قرآن عربی تاکہ تم سمجھ سکو",
+        trans: "Innaa ja’alnaahu Quraanan ‘Arabiyyal la’allakum ta’qiloon"
       },
       {
         arabic: "وَإِنَّهُ في أُمِّ الكِتابِ لَدَينا لَعَلِيٌّ حَكيمٌ",
         en: "And indeed, it is—in the Master Record with Us—highly esteemed, rich in wisdom.",
-        ur: ""
+        ur: "اور یہ اُمّ الکتاب میں ہے ہمارے پاس بہت بلند وبالا بہت حکمت والی",
+        trans: "Wa innahoo feee Ummil Kitaabi Ladainaa la’aliyyun hakeem"
       },
       {
         arabic: "أَفَنَضرِبُ عَنكُمُ الذِّكرَ صَفحًا أَن كُنتُم قَومًا مُسرِفينَ",
         en: "Should We then turn the ˹Quranic˺ Reminder away from you ˹simply˺ because you have been a transgressing people?",
-        ur: ""
+        ur: "کیا ہم اس ذکر کا رخ تمہاری طرف سے اس لیے پھیر دیں کہ تم حد سے بڑھنے والے لوگ ہو",
+        trans: "Afa nadribu ‘ankumuz Zikra safhan an kuntum qawman musrifeen"
       },
       {
         arabic: "وَكَم أَرسَلنا مِن نَبِيٍّ فِي الأَوَّلينَ",
         en: "˹Imagine˺ how many prophets We sent to those ˹destroyed˺ before!",
-        ur: ""
+        ur: "اور ہم نے کتنے ہی نبی بھیجے پہلوں میں بھی",
+        trans: "Wa kam arsalnaa min Nabiyyin fil awwaleen"
       },
       {
         arabic: "وَما يَأتيهِم مِن نَبِيٍّ إِلّا كانوا بِهِ يَستَهزِئونَ",
         en: "But no prophet ever came to them without being mocked.",
-        ur: ""
+        ur: "اور نہیں آیا کوئی بھی نبی ان کے پاس مگر وہ اس کا مذاق ہی اڑاتے رہے",
+        trans: "Wa maa yaateehim min Nabiyyin illaa kaanoo bihee yastahzi’oon"
       },  
       {
         arabic: "فَأَهلَكنا أَشَدَّ مِنهُم بَطشًا وَمَضىٰ مَثَلُ الأَوَّلينَ",
         en: "So We destroyed those who were far mightier than these ˹Meccans˺. The examples of ˹their˺ predecessors have ˹already˺ been related.",
-        ur: ""
+        ur: "پھر ہم نے انہیں ہلاک کردیا جو ان سے بہت زیادہ بڑھ کر تھے قوت میں اور پہلے لوگوں کی مثالیں گزر چکی ہیں",
+        trans: "Fa ahlaknaaa ashadda minhum batshanw wa madaa masalul awwaleen"
       },
       {
         arabic: "وَلَئِن سَأَلتَهُم مَن خَلَقَ السَّماواتِ وَالأَرضَ لَيَقولُنَّ خَلَقَهُنَّ العَزيزُ العَليمُ",
         en: "If you ask them ˹O Prophet˺ who created the heavens and the earth, they will certainly say, “The Almighty, All-Knowing did.”",
-        ur: ""
+        ur: "اور اگر آپ ﷺ ان سے پوچھیں گے کہ کس نے پیدا کیا آسمانوں اور زمین کو تو وہ لازماً یہی کہیں گے کہ انہیں بنایا ہے اس ہستی نے جو العزیز اور العلیم ہے",
+        trans: "Wa la’in sa altahum man khalaqas samaawaati wal arda la yaqoolunna khalaqa hunnal ‘Azeezul ‘Aleem"
       },
       {
         arabic: "الَّذي جَعَلَ لَكُمُ الأَرضَ مَهدًا وَجَعَلَ لَكُم فيها سُبُلًا لَعَلَّكُم تَهتَدونَ",
         en: "˹He is the One˺ Who has laid out the earth for you, and set in it pathways for you so that you may find your way.",
-        ur: ""
+        ur: "جس نے تمہارے لیے زمین کو بچھونا بنا دیا اور پھر اس میں تمہارے لیے راستے بنا دیے تاکہ تم منزل تک پہنچ سکو",
+        trans: "Allazee ja’ala lakumul arda mahdanw wa ja’ala lakum feehaa subulan la’allakum tahtadoon"
       },
       {
         arabic: "وَالَّذي نَزَّلَ مِنَ السَّماءِ ماءً بِقَدَرٍ فَأَنشَرنا بِهِ بَلدَةً مَيتًا ۚ كَذٰلِكَ تُخرَجونَ",
         en: "And ˹He is the One˺ Who sends down rain from the sky in perfect measure, with which We give life to a lifeless land. And so will you be brought forth ˹from the grave˺.",
-        ur: ""
+        ur: "اور وہ جس نے اتارا آسمان سے پانی ایک اندازے کے مطابق تو اس سے ہم نے ُ مردہ زمین کو اٹھا کھڑا کیا اسی طرح (ایک روز) تمہیں بھی نکال لیا جائے گا",
+        trans: "Wallazee nazzala minas samaaa’i maaa’am biqadarin fa ansharnaa bihee baldatam maitaa’ kazaalika tukhrajoon"
       },
       {
         arabic: "وَالَّذي خَلَقَ الأَزواجَ كُلَّها وَجَعَلَ لَكُم مِنَ الفُلكِ وَالأَنعامِ ما تَركَبونَ",
         en: "And ˹He is the One˺ Who created all ˹things in˺ pairs, and made for you ships and animals to ride",
-        ur: ""
+        ur: "اور وہ کہ جس نے بنائے ہیں تمام مخلوقات کے جوڑے اور تمہارے لیے بنائی ہیں کشتیاں بھی اور چوپائے بھی جن پر تم سواری کرتے ہو",
+        trans: "Wallazee khalaqal azwaaja kullahaa wa ja’ala lakum minal fulki wal-an’aami maa tarkaboon"
       },
       {
         arabic: "لِتَستَووا عَلىٰ ظُهورِهِ ثُمَّ تَذكُروا نِعمَةَ رَبِّكُم إِذَا استَوَيتُم عَلَيهِ وَتَقولوا سُبحانَ الَّذي سَخَّرَ لَنا هٰذا وَما كُنّا لَهُ مُقرِنينَ",
         en: "so that you may sit firmly on their backs, and remember your Lord’s blessings once you are settled on them, saying, “Glory be to the One Who has subjected these for us, for we could have never done so ˹on our own˺.",
-        ur: ""
+        ur: "تا کہ تم جم کر بیٹھو ان کی پیٹھوں پر پھر اپنے رب کے انعام کا ذکر کرو جب کہ تم ان کے اوپر جم کر بیٹھ جائو اور تم کہو کہ پاک ہے وہ ذات جس نے ان (سواریوں) کو ہمارے بس میں کردیا ہے اور ہم تو انہیں قابو میں لانے والے نہیں تھے",
+        trans: "Litastawoo ‘alaa zuhoorihee summa tazkuroo ni’mata Rabbikum izastawaitum ‘alaihi wa taqooloo Subhaanal lazee sakhkhara lana haaza wa maa kunnaa lahoo muqrineen"
       },
       {
         arabic: "وَإِنّا إِلىٰ رَبِّنا لَمُنقَلِبونَ",
         en: "And surely to our Lord we will ˹all˺ return.”",
-        ur: ""
+        ur: "اور یقینا ہم اپنے ربّ ہی کی طرف لوٹ کر جانے والے ہیں",
+        trans: "Wa innaaa ilaa Rabbinaa lamunqaliboon"
       },
       {
         arabic: "وَجَعَلوا لَهُ مِن عِبادِهِ جُزءًا ۚ إِنَّ الإِنسانَ لَكَفورٌ مُبينٌ",
         en: "Still the pagans have made some of His creation out to be a part of Him. Indeed, humankind is clearly ungrateful.",
-        ur: ""
+        ur: "اور انہوں نے اس کے بندوں میں سے اس کا ایک ُ جزوٹھہرایا یقینا انسان بہت کھلا نا شکرا ہے",
+        trans: "Wa ja’aloo lahoo min ‘ibaadihee juz’aa; innal insaana la kafoorun mubeen"
       },
       {
         arabic: "أَمِ اتَّخَذَ مِمّا يَخلُقُ بَناتٍ وَأَصفاكُم بِالبَنينَ",
         en: "Has He taken ˹angels as His˺ daughters from what He created, and favoured you ˹O pagans˺ with sons?",
-        ur: ""
+        ur: "کیا اس نے بنا لی ہیں اپنی مخلوق میں سے بیٹیاں اور تمہیں پسند کرلیا ہے بیٹوں کے ساتھ",
+        trans: "Amit takhaza mimmaa yakhluqu banaatinw wa asfaakum bilbaneen"
       },
       {
         arabic: "وَإِذا بُشِّرَ أَحَدُهُم بِما ضَرَبَ لِلرَّحمٰنِ مَثَلًا ظَلَّ وَجهُهُ مُسوَدًّا وَهُوَ كَظيمٌ",
         en: "Whenever one of them is given the good news of what they attribute to the Most Compassionate, his face grows gloomy, as he suppresses his rage.",
-        ur: ""
+        ur: "اور جب ان میں سے کسی کو اس کی بشارت دی جاتی ہے جس کی مثال وہ رحمان کے لیے بیان کرتا ہے تو اس کے چہرے پر سیاہی چھا جاتی ہے اور وہ غم کے گھونٹ پی رہا ہوتا ہے",
+        trans: "Wa izaa bushshira ahaduhum bimaa daraba lir Rahmaani masalan zalla wajhuhoo muswaddanw wa huwa kazeem"
       },
       {
         arabic: "أَوَمَن يُنَشَّأُ فِي الحِليَةِ وَهُوَ فِي الخِصامِ غَيرُ مُبينٍ",
         en: "˹Do they attribute to Him˺ those who are brought up in fineries and are not commanding in disputes?",
-        ur: ""
+        ur: "کیا وہ جو پرورش پاتی ہے زیور میں اور بحث میں اپنا موقف واضح نہیں کرسکتی",
+        trans: "Awa mai yunashsha’u fil hilyati wa huwa fil khisaami ghairu mubeen"
       },
       {
         arabic: "وَجَعَلُوا المَلائِكَةَ الَّذينَ هُم عِبادُ الرَّحمٰنِ إِناثًا ۚ أَشَهِدوا خَلقَهُم ۚ سَتُكتَبُ شَهادَتُهُم وَيُسأَلونَ",
         en: "Still they have labelled the angels, who are servants of the Most Compassionate, as female. Did they witness their creation? Their statement will be recorded, and they will be questioned!",
-        ur: ""
+        ur: "اور انہوں نے فرشتوں کو جو کہ رحمان کے مقرب ّبندے ہیں (اس کی) بیٹیاں قرار دے دیا ہے کیا یہ لوگ موجود تھے ان کی تخلیق کے وقت ؟ ان کی یہ گواہی (کہ فرشتے مونث ہیں) لکھ لی جائے گی اور پھر ان سے باز پرس ہوگی",
+        trans: "Wa ja’alul malaaa’ikatal lazeena hum ‘ibaadur Rahmaani inaasaa; ‘a shahidoo khalqahum; satuktabu shahaadatuhum wa yus’aloon"
       },
       {
         arabic: "وَقالوا لَو شاءَ الرَّحمٰنُ ما عَبَدناهُم ۗ ما لَهُم بِذٰلِكَ مِن عِلمٍ ۖ إِن هُم إِلّا يَخرُصونَ",
         en: "And they argue, “Had the Most Compassionate willed, we would have never worshipped them.” They have no knowledge ˹in support˺ of this ˹claim˺. They do nothing but lie.",
-        ur: ""
+        ur: "اور وہ کہتے ہیں کہ اگر رحمان چاہتا تو ہم ان کی بندگی نہ کرتے ان کے پاس اس کے لیے کوئی علمی سند نہیں ہے وہ تو محض اٹکل کے تیر چلا رہے ہیں",
+        trans: "Wa qaaloo law shaaa’ar Rahmaanu maa ‘abadnaahum; maa lahum bizaalika min ‘ilmin in hum illaa yakhrusoon"
       },
       {
         arabic: "أَم آتَيناهُم كِتابًا مِن قَبلِهِ فَهُم بِهِ مُستَمسِكونَ",
         en: "Or have We given them a Book ˹for proof˺, before this ˹Quran˺, to which they are holding firm?",
-        ur: ""
+        ur: "کیا ہم نے انہیں اس سے پہلے کوئی کتاب دی ہے جسے وہ مضبوطی سے تھامے ہوئے ہیں ؟",
+        trans: "Am aatainaahum Kitaaban min qablihee fahum bihee mustamsikoon"
       },
       {
         arabic: "بَل قالوا إِنّا وَجَدنا آباءَنا عَلىٰ أُمَّةٍ وَإِنّا عَلىٰ آثارِهِم مُهتَدونَ",
         en: "In fact, they say, “We found our forefathers following a ˹particular˺ way, and we are following in their footsteps.”",
-        ur: ""
+        ur: "بلکہ وہ کہتے ہیں کہ ہم نے تو اپنے آباء و اَجداد کو پایا ایک راستے پر اور اب ہم ان ہی کے نقش ِقدم پر ہدایت یافتہ ہیں",
+        trans: "Bal qaalooo innaa wajadnaaa aabaaa’anaa ‘alaaa ummatinw wa innaa ‘alaaa aasaarihim muhtadoon"
       },
       {
         arabic: "وَكَذٰلِكَ ما أَرسَلنا مِن قَبلِكَ في قَريَةٍ مِن نَذيرٍ إِلّا قالَ مُترَفوها إِنّا وَجَدنا آباءَنا عَلىٰ أُمَّةٍ وَإِنّا عَلىٰ آثارِهِم مُقتَدونَ",
         en: "Similarly, whenever We sent a warner to a society before you ˹O Prophet˺, its ˹spoiled˺ elite would say, “We found our forefathers following a ˹particular˺ way, and we are walking in their footsteps.”",
-        ur: ""
+        ur: "اور (اے نبی ﷺ !) اسی طرح ہم نے نہیں بھیجا آپ سے پہلے کسی بستی میں کسی خبردار کرنے والے کو مگر اس کے خوشحال لوگوں نے یہی کہا کہ ہم نے پایا ہے اپنے آباء و اَجداد کو ایک راستے پر اور اب ہم ان ہی کے نقش ِقدم کی اقتدا کر رہے ہیں",
+        trans: "Wa kazaalika maaa arsalnaa min qablika fee qaryatim min nazeerin illaa qaala mutrafoohaaa innaa wajadnaaa aabaaa’anaa ‘alaaa ummatinw wa innaa ‘alaaa aasaarihim muqtadoon"
       },
       {
         arabic: "۞ قالَ أَوَلَو جِئتُكُم بِأَهدىٰ مِمّا وَجَدتُم عَلَيهِ آباءَكُم ۖ قالوا إِنّا بِما أُرسِلتُم بِهِ كافِرونَ",
         en: "Each ˹warner˺ asked, “Even if what I brought you is better guidance than what you found your forefathers practicing?” They replied, “We totally reject whatever you have been sent with.”",
-        ur: ""
+        ur: "اس (خبردار کرنے والے) نے کہا کہ خواہ میں لایا ہوں تمہارے پاس زیادہ ہدایت والی چیز اس کے مقابلے میں جس پر تم نے اپنے آباء و اَجداد کو پایا انہوں نے کہا کہ ہم اس کے جس کے ساتھ آپ بھیجے گئے ہیں منکر ہیں",
+        trans: "Qaala awa law ji’tukum bi ahdaa mimmaa wajatdtum ‘alaihi aabaaa’akum qaalooo innaa bimaaa ursiltum bihee kaafiroon"
       },
       {
         arabic: "فَانتَقَمنا مِنهُم ۖ فَانظُر كَيفَ كانَ عاقِبَةُ المُكَذِّبينَ",
         en: "So We inflicted punishment upon them. See then what was the fate of the deniers!",
-        ur: ""
+        ur: "تو ہم نے ان سے انتقام لیا تو دیکھ لو پھر کیسا انجام ہوا جھٹلانے والوں کا",
+        trans: "Fantaqamnaa minhum fanzur kaifa kaana ‘aaqibatul mukazzibeen"
       },
       {
         arabic: "وَإِذ قالَ إِبراهيمُ لِأَبيهِ وَقَومِهِ إِنَّني بَراءٌ مِمّا تَعبُدونَ",
         en: "˹Remember, O  Prophet˺ when Abraham declared to his father and his people, “I am totally free of whatever ˹gods˺ you worship,",
-        ur: ""
+        ur: "اور یاد کرو جب ابراہیم ؑ نے کہا تھا اپنے والد اور اپنی قوم سے کہ یقینا میں بیزار ہوں ان سے جنہیں تم پوجتے ہو",
+        trans: "Wa iz qaala Ibraaheemu liabeehi wa qawmiheee innane baraaa’um mimmaa ta’budoon"
       },
       {
         arabic: "إِلَّا الَّذي فَطَرَني فَإِنَّهُ سَيَهدينِ",
         en: "except the One Who originated me, and He will surely guide me.”",
-        ur: ""
+        ur: "سوائے اس ہستی کے جس نے مجھے پیدا کیا ہے تو یقینا وہی مجھے راستہ دکھائے گا",
+        trans: "Illal lazee fataranee fa innahoo sa yahdeen"
       },
       {
         arabic: "وَجَعَلَها كَلِمَةً باقِيَةً في عَقِبِهِ لَعَلَّهُم يَرجِعونَ",
         en: "And he left this enduring declaration among his descendants, so they may ˹always˺ turn back ˹to Allah˺.",
-        ur: ""
+        ur: "اور اس نے اسی بات کو باقی رکھا اپنے پیچھے (اپنی اولاد میں) بھی تاکہ وہ (اللہ ہی کی جناب میں) رجوع کیے رہیں",
+        trans: "Wa ja’alahaa kalimatan baaqiyatan fee ‘aqibihee la ‘allahum yarji’oon"
       },
       {
         arabic: "بَل مَتَّعتُ هٰؤُلاءِ وَآباءَهُم حَتّىٰ جاءَهُمُ الحَقُّ وَرَسولٌ مُبينٌ",
         en: "In fact, I had allowed enjoyment for these ˹Meccans˺ and their forefathers, until the truth came to them along with a messenger making things clear.",
-        ur: ""
+        ur: "لیکن میں نے ان لوگوں کو اور ان کے آباء و اَجداد کو کچھ سازو سامان دے دیا یہاں تک کہ ان کے پاس آگیا حق اور ایک واضح کردینے والا رسول",
+        trans: "Bal matta’tu haaa’ulaaa’i wa aabaaa’ahum hattaa jaaa’a humul haqqu wa Rasoolun mubeen"
       },
       {
         arabic: "وَلَمّا جاءَهُمُ الحَقُّ قالوا هٰذا سِحرٌ وَإِنّا بِهِ كافِرونَ",
         en: "˹But˺ when the truth came to them, they said, “This is magic, and we totally reject it.”",
-        ur: ""
+        ur: "اور جب حق ان کے پاس آیا تو انہوں نے کہا کہ یہ تو جادو ہے اور ہم اس کا انکار کرتے ہیں",
+        trans: "Wa lammaa jaaa’ahumul haqqu qaaloo haazaa sihrunw wa innaa bihee kaafiroon"
       },
       {
         arabic: "وَقالوا لَولا نُزِّلَ هٰذَا القُرآنُ عَلىٰ رَجُلٍ مِنَ القَريَتَينِ عَظيمٍ",
         en: "And they exclaimed, “If only this Quran was revealed to a great man from ˹one of˺ the two cities!”",
-        ur: ""
+        ur: "اور کہنے لگے کہ کیوں نہیں اتارا گیا یہ قرآن ان دو بستیوں میں سے کسی عظیم شخص پر ؟",
+        trans: "Wa qaaloo law laa nuzzila haazal Quraanu ‘alaa rajulin minal qaryataini ‘azeem"
       },
       {
         arabic: "أَهُم يَقسِمونَ رَحمَتَ رَبِّكَ ۚ نَحنُ قَسَمنا بَينَهُم مَعيشَتَهُم فِي الحَياةِ الدُّنيا ۚ وَرَفَعنا بَعضَهُم فَوقَ بَعضٍ دَرَجاتٍ لِيَتَّخِذَ بَعضُهُم بَعضًا سُخرِيًّا ۗ وَرَحمَتُ رَبِّكَ خَيرٌ مِمّا يَجمَعونَ",
         en: "Is it they who distribute your Lord’s mercy? We ˹alone˺ have distributed their ˹very˺ livelihood among them in this worldly life and raised some of them in rank above others so that some may employ others in service. ˹But˺ your Lord’s mercy is far better than whatever ˹wealth˺ they amass.",
-        ur: ""
+        ur: "کیا آپ کے رب کی رحمت کو یہ لوگ تقسیم کریں گے ؟ ہم نے ان کے درمیان ان کی معیشت کا سامان دنیا کی زندگی میں تقسیم کردیا ہے اور ان میں سے بعض کو بعض پر ہم نے درجات میں فوقیت دے دی ہے تاکہ بعض لوگ دوسروں کو خدمت گار بنا سکیں اور آپ کے رب کی رحمت کہیں بہتر ہے ان چیزوں سے جو یہ لوگ جمع کر رہے ہیں",
+        trans: "‘A hum yaqsimoona rahmata Rabbik; Nahnu qasamnaa bainahum ma’eeshatahum fil hayaatid dunyaa wa rafa’naa ba’dahum fawqa ba’din darajaatin li yattakhiza ba’duhum ba’dan sukhriyyaa; wa rahmatu Rabbika khairun mimmaa yajma’oon"
       },
       {
         arabic: "وَلَولا أَن يَكونَ النّاسُ أُمَّةً واحِدَةً لَجَعَلنا لِمَن يَكفُرُ بِالرَّحمٰنِ لِبُيوتِهِم سُقُفًا مِن فِضَّةٍ وَمَعارِجَ عَلَيها يَظهَرونَ",
         en: "Were it not that people might ˹be tempted to˺ become one community ˹of disbelievers˺, We would have supplied the homes of ˹only˺ those who disbelieve in the Most Compassionate with silver roofs and ˹silver˺ stairways to ascend,",
-        ur: ""
+        ur: "اور اگر یہ (اندیشہ) نہ ہوتا کہ تمام لوگ ایک ہی امت بن جائیں گے تو جو لوگ رحمن کا کفر کرتے ہم ان کے لیے بنا دیتے ان کے گھروں کی چھتیں چاندی کی اور سیڑھیاں بھی جن پر وہ چڑھتے",
+        trans: "Wa law laaa any yakoonan naasu ummatanw waahidatan laja’alnaa limany yakfuru bir Rahmaani li buyootihim suqufan min fiddatinw wa ma’aarija ‘alaihaa yazharoon"
       },
       {
         arabic: "وَلِبُيوتِهِم أَبوابًا وَسُرُرًا عَلَيها يَتَّكِئونَ",
         en: "as well as ˹silver˺ gates and thrones to recline on,",
-        ur: ""
+        ur: "اور ان کے گھروں کے دروازے اور وہ تخت بھی (چاندی کے ہوتے) جن پر وہ تکیے لگا کر بیٹھتے",
+        trans: "Wa li buyootihim abwaabanw wa sururan ‘alaihaa yattaki’oon"
       },
       {
         arabic: "وَزُخرُفًا ۚ وَإِن كُلُّ ذٰلِكَ لَمّا مَتاعُ الحَياةِ الدُّنيا ۚ وَالآخِرَةُ عِندَ رَبِّكَ لِلمُتَّقينَ",
         en: "and ornaments ˹of gold˺. Yet all this is no more than a ˹fleeting˺ enjoyment in this worldly life. ˹But˺ the Hereafter with your Lord is ˹only˺ for those mindful ˹of Him˺.",
-        ur: ""
+        ur: "اور سونے کی بھی (بنا دیتے) اور یہ سب کچھ تو بس دنیا کی زندگی کا سازو سامان ہے اور آخرت (کی کامیابی) آپ کے رب کے نزدیک صرف اہل ِتقویٰ کے لیے ہے",
+        trans: "Wa zukhrufaa; wa in kullu zaalika lammaa mataa’ul hayaatid dunyaa; wal aakhiratu ‘inda Rabbika lilmuttaqeen"
       },
       {
         arabic: "وَمَن يَعشُ عَن ذِكرِ الرَّحمٰنِ نُقَيِّض لَهُ شَيطانًا فَهُوَ لَهُ قَرينٌ",
         en: "And whoever turns a blind eye to the Reminder of the Most Compassionate, We place at the disposal of each a devilish one as their close associate,",
-        ur: ""
+        ur: "اور جو کوئی ُ منہ پھیر لے رحمان کے ذکر سے اس پر ہم ایک شیطان مسلط کردیتے ہیں تو وہ اس کا ساتھی بنا رہتا ہے",
+        trans: "Wa mai ya’shu ‘an zikrir Rahmaani nuqaiyid lahoo Shaitaanan fahuwa lahoo qareen"
       },
       {
         arabic: "وَإِنَّهُم لَيَصُدّونَهُم عَنِ السَّبيلِ وَيَحسَبونَ أَنَّهُم مُهتَدونَ",
         en: "who will certainly hinder them from the ˹Right˺ Way while they think they are ˹rightly˺ guided.",
-        ur: ""
+        ur: "اور وہ (شیاطین) ان کو روکتے ہیں سیدھے راستے سے اور وہ سمجھتے ہیں کہ وہ ہدایت یافتہ ہیں",
+        trans: "Wa innahum la yasuddoo nahum ‘anis sabeeli wa yahsaboona annahum muhtadoon"
       },
       {
         arabic: "حَتّىٰ إِذا جاءَنا قالَ يا لَيتَ بَيني وَبَينَكَ بُعدَ المَشرِقَينِ فَبِئسَ القَرينُ",
         en: "But when such a person comes to Us, one will say ˹to their associate˺, “I wish you were as distant from me as the east is from the west! What an evil associate ˹you were˺!”",
-        ur: ""
+        ur: "یہاں تک کہ جب وہ ہمارے پاس آئے گا تو (اپنے ساتھی شیطان سے) کہے گا کہ کاش میرے اور تمہارے درمیان مشرق و مغرب کا فاصلہ ہوتا ُ تو تو بہت ہی برا ساتھی ہے",
+        trans: "Hattaaa izaa jaaa’anaa qaala yaa laita bainee wa bainaka bu’dal mashriqaini fabi’sal qareen"
       },
       {
         arabic: "وَلَن يَنفَعَكُمُ اليَومَ إِذ ظَلَمتُم أَنَّكُم فِي العَذابِ مُشتَرِكونَ",
         en: "˹It will be said to both,˺ “Since you all did wrong, sharing in the punishment will be of no benefit to you this Day.”",
-        ur: ""
+        ur: "اور جب کہ تم ظلم کرتے رہے ہو تو آج کے دن یہ بات تمہیں کچھ فائدہ نہیں دے گی کہ تم سب عذاب میں شریک ہو",
+        trans: "Wa lai yanfa’akumul Yawma iz zalamtum annakum fil ‘azaabi mushtarikoon"
       },
       {
         arabic: "أَفَأَنتَ تُسمِعُ الصُّمَّ أَو تَهدِي العُميَ وَمَن كانَ في ضَلالٍ مُبينٍ",
         en: "Can you make the deaf hear, or guide the blind or those clearly astray?",
-        ur: ""
+        ur: "تو (اے نبی ﷺ !) کیا آپ بہروں کو سنائیں گے یا آپ اندھوں کو راہ دکھائیں گے اور ان کو جو کھلی گمراہی میں مبتلا ہیں",
+        trans: "Afa anta tusmi’us summa aw tahdil ‘umya wa man kaana fee dalaalin mubeen"
       },
       {
         arabic: "فَإِمّا نَذهَبَنَّ بِكَ فَإِنّا مِنهُم مُنتَقِمونَ",
         en: "Even if We take you away ˹from this world˺, We will surely inflict punishment upon them.",
-        ur: ""
+        ur: "تو اگر ہم آپ کو لے بھی جائیں تب بھی ان سے تو ہم انتقام لے کر ہی رہیں گے",
+        trans: "Fa immaa nazhabanna bika fa innaa minhum muntaqimoon"
       },
       {
         arabic: "أَو نُرِيَنَّكَ الَّذي وَعَدناهُم فَإِنّا عَلَيهِم مُقتَدِرونَ",
         en: "Or if We show you what We threaten them with, We certainly have full power over them.",
-        ur: ""
+        ur: "یا (یہ بھی ہوسکتا ہے کہ) ہم آپ ﷺ کو دکھا دیں وہ کچھ جس کا ہم نے ان سے وعدہ کیا ہے ہمیں یقینا ان پر پوری قدرت حاصل ہے",
+        trans: "Aw nuriyannakal lazee wa’adnaahum fa innaa ‘alaihim muqtadiroon"
       },
       {
         arabic: "فَاستَمسِك بِالَّذي أوحِيَ إِلَيكَ ۖ إِنَّكَ عَلىٰ صِراطٍ مُستَقيمٍ",
         en: "So hold firmly to what has been revealed to you ˹O Prophet˺. You are truly on the Straight Path.",
-        ur: ""
+        ur: "تو (اے نبی ﷺ !) آپ مضبوطی سے تھام لیجیے اس کو جو آپ کی طرف وحی کیا گیا ہے یقینا آپ سیدھے راستے پر ہیں",
+        trans: "Fastamsik billazeee oohiya ilaika innaka ‘alaa Siraatin Mustaqeem"
       },
       {
         arabic: "وَإِنَّهُ لَذِكرٌ لَكَ وَلِقَومِكَ ۖ وَسَوفَ تُسأَلونَ",
         en: "Surely this ˹Quran˺ is a glory for you and your people. And you will ˹all˺ be questioned ˹about it˺.",
-        ur: ""
+        ur: "اور یہ (قرآن) آپ کے لیے بھی یاد دہانی ہے اور آپ کی قوم کے لیے بھی اور عنقریب آپ سب سے پوچھ گچھ ہوگی",
+        trans: "Wa innahoo la zikrun laka wa liqawmika wa sawfa tus’aloon"
       },
       {
         arabic: "وَاسأَل مَن أَرسَلنا مِن قَبلِكَ مِن رُسُلِنا أَجَعَلنا مِن دونِ الرَّحمٰنِ آلِهَةً يُعبَدونَ",
         en: "Ask ˹the followers of˺ the messengers that We already sent before you if We ˹ever˺ appointed ˹other˺ gods to be worshipped besides the Most Compassionate.",
-        ur: ""
+        ur: "اور آپ پوچھ لیجیے ان سے جن کو ہم نے آپ سے پہلے بھیجا تھا اپنے رسولوں میں سے کیا ہم نے رحمان کے سوا کوئی اور بھی ایسے معبود بنائے ہیں کہ جن کی پوجا کی جائے ؟",
+        trans: "Was’al man arsalnaa min qablika mir Rusulinaaa ‘a ja’alnaa min doonir Rahmaani aalihatany yu’badoon"
       },
       {
         arabic: "وَلَقَد أَرسَلنا موسىٰ بِآياتِنا إِلىٰ فِرعَونَ وَمَلَئِهِ فَقالَ إِنّي رَسولُ رَبِّ العالَمينَ",
         en: "Indeed, We sent Moses with Our signs to Pharaoh and his chiefs, and he said: “I am a messenger of the Lord of all worlds.”",
-        ur: ""
+        ur: "اور ہم نے بھیجا تھا موسیٰ ؑ کو اپنی نشانیوں کے ساتھ فرعون اور اس کے سرداروں کی طرف تو اس نے کہا کہ (دیکھو) میں تمام جہانوں کے پروردگار کا بھیجا ہوا ہوں",
+        trans: "Wa laqad arsalnaa Moosaa bi aayaatinaaa ilaa Fir’awna wa mala’ihee faqaala innee Rasoolu Rabbil ‘aalameen"
       },
       {
         arabic: "فَلَمّا جاءَهُم بِآياتِنا إِذا هُم مِنها يَضحَكونَ",
         en: "But as soon as he came to them with Our signs, they laughed at them,",
-        ur: ""
+        ur: "تو جب وہ آیا ان کے پاس ہماری نشانیاں لے کر تو وہ ان (نشانیوں) پر ہنسنے لگے",
+        trans: "Falamma jaaa’ahum bi aayaatinaaa izaa hum minhaa yadhakoon"
       },
       {
         arabic: "وَما نُريهِم مِن آيَةٍ إِلّا هِيَ أَكبَرُ مِن أُختِها ۖ وَأَخَذناهُم بِالعَذابِ لَعَلَّهُم يَرجِعونَ",
         en: "although every sign We showed them was greater than the one before. Ultimately, We seized them with torments so that they might return ˹to the Right Path˺.",
-        ur: ""
+        ur: "اور نہیں دکھاتے تھے ہم انہیں کوئی نشانی مگر وہ اپنی بہن (اپنے جیسی پہلی نشانی) سے زیادہ بڑی ہوتی تھی اور ہم انہیں پکڑتے رہے اس عذاب کے ذریعے شاید کہ وہ باز آجائیں",
+        trans: "Wa maa nureehim min aayatin illaa hiya akbaru min ukhtihaa wa akhaznaahum bil’azaabi la’allahum yarji’oon"
       },
       {
         arabic: "وَقالوا يا أَيُّهَ السّاحِرُ ادعُ لَنا رَبَّكَ بِما عَهِدَ عِندَكَ إِنَّنا لَمُهتَدونَ",
         en: "˹Then˺ they pleaded, “O ˹mighty˺ magician! Pray to your Lord on our behalf, by virtue of the covenant He made with you. We will certainly accept guidance.”",
-        ur: ""
+        ur: "اور (ہر عذاب کے موقع پر) وہ کہتے : اے جادوگر ! تم اپنے رب سے ہمارے لیے دعا کرو اس عہد کی بنا پر جو اس نے تم سے کر رکھا ہے ہم ضرور ہدایت پر آجائیں گے",
+        trans: "Wa qaaloo yaaa ayyuhas saahirud’u lanaa Rabbaka bimaa ‘ahida ‘indaka innanaa lamuhtadoon"
       },
       {
         arabic: "فَلَمّا كَشَفنا عَنهُمُ العَذابَ إِذا هُم يَنكُثونَ",
         en: "But as soon as We removed the torments from them, they broke their promise.",
-        ur: ""
+        ur: "پھر جب ہم دور کردیتے تھے ان سے وہ عذاب تو اسی وقت وہ وعدے سے پھرجاتے تھے",
+        trans: "Falammaa kashafnaa ‘anhumul ‘azaaba izaa hum yankusoon"
       },
       {
         arabic: "وَنادىٰ فِرعَونُ في قَومِهِ قالَ يا قَومِ أَلَيسَ لي مُلكُ مِصرَ وَهٰذِهِ الأَنهارُ تَجري مِن تَحتي ۖ أَفَلا تُبصِرونَ",
         en: "And Pharaoh called out to his people, boasting, “O my people! Am I not sovereign over Egypt as well as ˹all˺ these streams flowing at my feet? Can you not see?",
-        ur: ""
+        ur: "اور فرعون نے اپنی قوم میں ڈھنڈورا پٹوا دیا اس نے کہا کہ اے میری قوم کے لوگو ! کیا مصر کی حکومت میری نہیں ہے ؟ اور یہ نہریں میرے نیچے نہیں بہہ رہی ہیں ؟ تو کیا تم دیکھتے نہیں ؟",
+        trans: "Wa naadaa Fir’awnu fee qawmihee qaala yaa qawmi alaisa lee mulku Misra wa haazihil anhaaru tajree min tahtee afalaa tubsiroon"
       },
       {
         arabic: "أَم أَنا خَيرٌ مِن هٰذَا الَّذي هُوَ مَهينٌ وَلا يَكادُ يُبينُ",
         en: "Am I not better than this nobody who can hardly express himself?",
-        ur: ""
+        ur: "کیا میں بہتر نہیں ہوں اس سے جو ایک بےعزت آدمی ہے ؟ اور صاف بات بھی نہیں کرسکتا",
+        trans: "Am ana khairun min haazal lazee huwa maheenunw wa laa yakaadu yubeen"
       },
       {
         arabic: "فَلَولا أُلقِيَ عَلَيهِ أَسوِرَةٌ مِن ذَهَبٍ أَو جاءَ مَعَهُ المَلائِكَةُ مُقتَرِنينَ",
         en: "Why then have no golden bracelets ˹of kingship˺ been granted to him or angels come with him as escorts!”",
-        ur: ""
+        ur: "تو کیوں نہیں اتارے گئے اس پر سونے کے کنگن ؟ یا اس کے ساتھ فرشتے چلے آ رہے ہوتے صفیں باندھے ہوئے",
+        trans: "Falaw laa ulqiya ‘alaihi aswiratun min zahabin aw jaaa’a ma’ahul malaaa’ikatu muqtarineen"
       },
       {
         arabic: "فَاستَخَفَّ قَومَهُ فَأَطاعوهُ ۚ إِنَّهُم كانوا قَومًا فاسِقينَ",
         en: "And so he fooled his people, and they obeyed him. They were truly a rebellious people.",
-        ur: ""
+        ur: "تو (اس طرح) اس نے اپنی قوم کی مت مار دی اور انہوں نے اسی کا کہنا مانا یقینا وہ لوگ خود بھی نافرمان ہی تھے",
+        trans: "Fastakhaffa qawmahoo fa ataa’ooh; innahum kaanoo qawman faasiqeen"
       },
       {
         arabic: "فَلَمّا آسَفونَا انتَقَمنا مِنهُم فَأَغرَقناهُم أَجمَعينَ",
         en: "So when they enraged Us, We inflicted punishment upon them, drowning them all.",
-        ur: ""
+        ur: "توجب انہوں نے ہمیں غصہ دلایا تو ہم نے ان سے انتقام لیا پس ہم نے ان سب کو غرق کردیا",
+        trans: "Falammaaa aasafoonan taqamnaa minhum fa aghraqnaahum ajma’een"
       },
       {
         arabic: "فَجَعَلناهُم سَلَفًا وَمَثَلًا لِلآخِرينَ",
         en: "And We made them an example and a lesson for those after them.",
-        ur: ""
+        ur: "چناچہ ہم نے انہیں بنا دیا ماضی کی داستان اور بعد والوں کے لیے ایک نشان عبرت",
+        trans: "Faja’alnaahum salafanw wa masalan lil aakhireen"
       },
       {
         arabic: "۞ وَلَمّا ضُرِبَ ابنُ مَريَمَ مَثَلًا إِذا قَومُكَ مِنهُ يَصِدّونَ",
         en: "When the son of Mary was cited as an example ˹in argument˺, your people ˹O Prophet˺ broke into ˹joyful˺ applause.",
-        ur: ""
+        ur: "اور جب (قرآن میں) ابن ِمریم کی مثال بیان کی جاتی ہے تو اس پر آپ کی قوم چلانے ّلگتی ہے",
+        trans: "Wa lammaa duribab nu Maryama masalan izaa qawmuka minhu yasiddoon"
       },
       {
         arabic: "وَقالوا أَآلِهَتُنا خَيرٌ أَم هُوَ ۚ ما ضَرَبوهُ لَكَ إِلّا جَدَلًا ۚ بَل هُم قَومٌ خَصِمونَ",
         en: "They exclaimed, “Which is better: our gods or Jesus?” They cite him only to argue. In fact, they are a people prone to dispute.",
-        ur: ""
+        ur: "اور وہ کہتے ہیں کہ ہمارے معبود بہتر ہیں یا وہ ؟ یہ باتیں وہ آپ سے نہیں کرتے مگر صرف جھگڑنے کو۔ حقیقت یہ ہے کہ یہ ہیں ہی جھگڑالو لوگ",
+        trans: "Wa qaalooo ‘a-aalihatunaa khairun am hoo; maa daraboohu laka illaa jadalaa; balhum qawmun khasimoon"
       },
       {
         arabic: "إِن هُوَ إِلّا عَبدٌ أَنعَمنا عَلَيهِ وَجَعَلناهُ مَثَلًا لِبَني إِسرائيلَ",
         en: "He was only a servant We showed favour to, and made as an example for the Children of Israel.",
-        ur: ""
+        ur: "وہ تو بس ہمارا ایک بندہ تھا جس پر ہم نے خاص انعام فرمایا اور ہم نے اس کو ایک نشانی بنا دیا بنی اسرائیل کے لیے",
+        trans: "In huwa illaa ‘abdun an’amnaa ‘alaihi wa ja’alnaahu masalan li Baneee Israaa’eel"
       },
       {
         arabic: "وَلَو نَشاءُ لَجَعَلنا مِنكُم مَلائِكَةً فِي الأَرضِ يَخلُفونَ",
         en: "Had We willed, We could have easily replaced you ˹all˺ with angels, succeeding one another on earth.",
-        ur: ""
+        ur: "اور اگر ہم چاہیں تو تم میں سے فرشتے بنا دیں جو زمین میں تمہارے جانشین ہوں",
+        trans: "Wa law nashaaa’u laja’alnaa minkum malaaa’ikatan fil ardi yakhlufoon"
       },
       {
         arabic: "وَإِنَّهُ لَعِلمٌ لِلسّاعَةِ فَلا تَمتَرُنَّ بِها وَاتَّبِعونِ ۚ هٰذا صِراطٌ مُستَقيمٌ",
         en: "And his ˹second˺ coming is truly a sign for the Hour. So have no doubt about it, and follow me. This is the Straight Path.",
-        ur: ""
+        ur: "اور یقینا وہ قیامت کی ایک علامت ہے تو اس (قیامت) کے بارے میں تم ہرگز شک نہ کرو اور میری پیروی کرو۔ یہی سیدھا راستہ ہے",
+        trans: "Wa innahoo la ‘ilmun lis Saa’ati fa laa tamtarunna bihaa wattabi’oon; haazaa Siraatun Mustaqeem"
       },
       {
         arabic: "وَلا يَصُدَّنَّكُمُ الشَّيطانُ ۖ إِنَّهُ لَكُم عَدُوٌّ مُبينٌ",
         en: "And do not let Satan hinder you, ˹for˺ he is certainly your sworn enemy.",
-        ur: ""
+        ur: "اور (دیکھو) شیطان تمہیں روک نہ دے بیشک وہ تمہارا کھلا دشمن ہے",
+        trans: "Wa laa yasuddan nakumush Shaitaanu innahoo lakum ‘aduwwun mubeen"
       },
       {
         arabic: "وَلَمّا جاءَ عيسىٰ بِالبَيِّناتِ قالَ قَد جِئتُكُم بِالحِكمَةِ وَلِأُبَيِّنَ لَكُم بَعضَ الَّذي تَختَلِفونَ فيهِ ۖ فَاتَّقُوا اللَّهَ وَأَطيعونِ",
         en: "When Jesus came with clear proofs, he declared, “I have come to you with wisdom, and to clarify to you some of what you differ about. So fear Allah, and obey me.",
-        ur: ""
+        ur: "اور جب آئے عیسیٰ ؑ ٰ واضح نشانیاں لے کر تو انہوں نے کہا کہ میں تمہارے پاس حکمت لے کر آیا ہوں اور تاکہ میں واضح کردوں تمہارے لیے بعض وہ چیزیں جن میں تم اختلاف کر رہے ہو پس تم اللہ کا تقویٰ اختیار کرو اور میری اطاعت کرو",
+        trans: "Wa lammaa jaaa’a ‘Eesaa bilbaiyinaati qaala qad ji’tukum bil Hikmati wa li-ubaiyina lakum ba’dal lazee takhtalifoona feehi fattaqul laaha wa atee’oon"
       },
       {
         arabic: "إِنَّ اللَّهَ هُوَ رَبّي وَرَبُّكُم فَاعبُدوهُ ۚ هٰذا صِراطٌ مُستَقيمٌ",
         en: "Surely Allah ˹alone˺ is my Lord and your Lord, so worship Him ˹alone˺. This is the Straight Path.”",
-        ur: ""
+        ur: "یقینا اللہ ہی ہے جو میرا بھی رب ہے اور تمہارا بھی رب ہے پس تم اسی کی بندگی کرو۔ یہی سیدھا راستہ ہے",
+        trans: "Innal laaha Huwa Rabbee wa Rabbukum fa’budooh; haaza Siraatum Mustaqeem"
       },
       {
         arabic: "فَاختَلَفَ الأَحزابُ مِن بَينِهِم ۖ فَوَيلٌ لِلَّذينَ ظَلَموا مِن عَذابِ يَومٍ أَليمٍ",
         en: "Yet their ˹various˺ groups have differed among themselves ˹about him˺, so woe to the wrongdoers when they face the torment of a painful Day!",
-        ur: ""
+        ur: "پھر ان میں سے کئی گروہ باہم اختلافات میں مبتلا ہوگئے پس تباہی اور بربادی ہے ان ظالموں کے لیے ایک دردناک دن کے عذاب سے",
+        trans: "Fakhtalafal ahzaabu min bainihim fa wailun lil lazeena zalamoo min ‘azaabi Yawmin aleem"
       },
       {
         arabic: "هَل يَنظُرونَ إِلَّا السّاعَةَ أَن تَأتِيَهُم بَغتَةً وَهُم لا يَشعُرونَ",
         en: "Are they waiting for the Hour to take them by surprise when they least expect ˹it˺?",
-        ur: ""
+        ur: "یہ لوگ کس چیز کا انتظار کر رہے ہیں سوائے قیامت کے کہ وہ آجائے ان پر اچانک اور انہیں خبر بھی نہ ہو",
+        trans: "Hal yanzuroona illas Saa’ata an ta’tiyahum baghtatanw wa hum laa yash’uroon"
       },
       {
         arabic: "الأَخِلّاءُ يَومَئِذٍ بَعضُهُم لِبَعضٍ عَدُوٌّ إِلَّا المُتَّقينَ",
         en: "Close friends will be enemies to one another on that Day, except the righteous,",
-        ur: ""
+        ur: "بہت گہرے دوست اس دن ایک دوسرے کے دشمن بن جائیں گے سوائے متقین کے",
+        trans: "Al akhillaaa’u Yawma’izin ba’duhum liba’din ‘aduwwun illal muttaqeen"
       },
       {
         arabic: "يا عِبادِ لا خَوفٌ عَلَيكُمُ اليَومَ وَلا أَنتُم تَحزَنونَ",
         en: "˹who will be told,˺ “O My servants! There is no fear for you Today, nor will you grieve—",
-        ur: ""
+        ur: "ان سے کہا جائے گا اے میرے بندو ! آج تم پر نہ تو کوئی خوف ہے اور نہ ہی تم رنجیدہ ہوگے",
+        trans: "Yaa ‘ibaadi laa khawfun ‘alaikumul Yawma wa laaa antum tahzanoon"
       },
       {
         arabic: "الَّذينَ آمَنوا بِآياتِنا وَكانوا مُسلِمينَ",
         en: "˹those˺ who believed in Our signs and ˹fully˺ submitted ˹to Us˺.",
-        ur: ""
+        ur: "یعنی وہ لوگ جو ہماری آیات پر ایمان لائے اور فرماں بردار تھے",
+        trans: "Allazeena aamanoo bi Aayaatinaa wa kaanoo muslimeen"
       },
       {
         arabic: "ادخُلُوا الجَنَّةَ أَنتُم وَأَزواجُكُم تُحبَرونَ",
         en: "Enter Paradise, you and your spouses, rejoicing.”",
-        ur: ""
+        ur: "داخل ہو جائو جنت میں تم بھی اور تمہاری بیویاں بھی تمہارا اعزازو اکرام کیا جائے گا",
+        trans: "Udkhulul Jannata antum wa azwaajukum tuhbaroon"
       },
       {
         arabic: "يُطافُ عَلَيهِم بِصِحافٍ مِن ذَهَبٍ وَأَكوابٍ ۖ وَفيها ما تَشتَهيهِ الأَنفُسُ وَتَلَذُّ الأَعيُنُ ۖ وَأَنتُم فيها خالِدونَ",
         en: "Golden trays and cups will be passed around to them. There will be whatever the souls desire and the eyes delight in. And you will be there forever.",
-        ur: ""
+        ur: "گردش کرائے جائیں گے ان پر سونے کی طشتریاں اور پیالے اور وہاں ہوگا وہ سب کچھ جس کی طلب ہوگی انسان کے نفس کو اور جس سے نگاہیں لذت حاصل کریں گی اور تم اب اس میں ہمیشہ ہمیش رہو گے",
+        trans: "Yutaafu ‘alaihim bisihaa fim min zahabinw wa akwaab, wa feehaa maatashtaheehil anfusu wa talazzul a’yunu wa antum feehaa khaalidoon"
       },
       {
         arabic: "وَتِلكَ الجَنَّةُ الَّتي أورِثتُموها بِما كُنتُم تَعمَلونَ",
         en: "That is the Paradise which you will be awarded for what you used to do.",
-        ur: ""
+        ur: "اور یہ وہ جنت ہے جس کے تم وارث بنائے گئے ہو اُن اَعمال کی بنا پر جو تم کرتے تھے",
+        trans: "Wa tilkal jannatul lateee ooristumoohaa bimaa kuntum ta’maloon"
       },
       {
         arabic: "لَكُم فيها فاكِهَةٌ كَثيرَةٌ مِنها تَأكُلونَ",
         en: "There you will have abundant fruit to eat from.",
-        ur: ""
+        ur: "اس میں تمہارے لیے بکثرت پھل موجود ہیں جن میں سے تم کھاتے ہو",
+        trans: "Lakum feehaa faakihatun kaseeratun minhaa ta’kuloon"
       },
       {
         arabic: "إِنَّ المُجرِمينَ في عَذابِ جَهَنَّمَ خالِدونَ",
         en: "Indeed, the wicked will be in the torment of Hell forever.",
-        ur: ""
+        ur: "(اس کے برعکس) جو مجرم ہوں گے وہ جہنم کے عذاب میں ہمیشہ رہیں گے",
+        trans: "Innal mujrimeena fee ‘azaabi jahannama khaalidoon"
       },
       {
         arabic: "لا يُفَتَّرُ عَنهُم وَهُم فيهِ مُبلِسونَ",
         en: "It will never be lightened for them, and there they will be overwhelmed with despair.",
-        ur: ""
+        ur: "وہ ان سے ہلکا نہ کیا جائے گا اور وہ اسی میں پڑے رہیں گے بالکل ناامیدہو کر",
+        trans: "Laa yufattaru ‘anhum wa hum feehi mublisoon"
       },
       {
         arabic: "وَما ظَلَمناهُم وَلٰكِن كانوا هُمُ الظّالِمينَ",
         en: "We did not wrong them, but it was they who were the wrongdoers.",
-        ur: ""
+        ur: "اور ہم نے ان پر ظلم نہیں کیا بلکہ وہ خود ہی اپنی جانوں پر ظلم کرتے تھے",
+        trans: "Wa maa zalamnaahum wa laakin kaanoo humuz zaalimeen"
       },
       {
         arabic: "وَنادَوا يا مالِكُ لِيَقضِ عَلَينا رَبُّكَ ۖ قالَ إِنَّكُم ماكِثونَ",
         en: "They will cry, “O Mâlik! Let your Lord finish us off.” He will answer, “You are definitely here to stay.”",
-        ur: ""
+        ur: "اور وہ ندا کریں گے کہ اے مالک ! اب تو آپ کا رب ہمارا کام ہی تمام کر دے وہ جواب دے گا کہ تمہیں تو اب ہمیشہ (یہیں) رہنا ہے",
+        trans: "Wa naadaw yaa Maaliku liyaqdi ‘alainaa Rabbuka qaala innakum maakithoon"
       },  
       {
         arabic: "لَقَد جِئناكُم بِالحَقِّ وَلٰكِنَّ أَكثَرَكُم لِلحَقِّ كارِهونَ",
         en: "We certainly brought the truth to you, but most of you were resentful of the truth.",
-        ur: ""
+        ur: "ہم تو تمہارے پاس حق لے کر آئے تھے لیکن تمہاری اکثریت حق کو ناپسند کرتی ہے۔",
+        trans: "Laqad ji’naakum bilhaqqi wa laakinna aksarakum lil haqqi kaarihoon"
       },
       {
         arabic: "أَم أَبرَموا أَمرًا فَإِنّا مُبرِمونَ",
         en: "Or have they mastered some ˹evil˺ plan? Then We ˹too˺ are surely planning.",
-        ur: ""
+        ur: "کیا انہوں نے کوئی قطعی فیصلہ کرلیا ہے ؟ تو ہم بھی ایک قطعی فیصلہ کیے لیتے ہیں",
+        trans: "Am abramooo amran fainnaa mubrimoon"
       },
       {
         arabic: "أَم يَحسَبونَ أَنّا لا نَسمَعُ سِرَّهُم وَنَجواهُم ۚ بَلىٰ وَرُسُلُنا لَدَيهِم يَكتُبونَ",
         en: "Or do they think that We do not hear their ˹evil˺ thoughts and secret talks? Yes ˹We do˺! And Our messenger-angels are in their presence, recording ˹it all˺.",
-        ur: ""
+        ur: "کیا وہ سمجھتے ہیں کہ ہم ان کی خفیہ باتوں اور راز دارانہ مشوروں کو سنتے نہیں ہیں کیوں نہیں (ہم سب کچھ سن رہے ہیں) اور ہمارے ایلچی ان کے پاس ہی لکھ رہے ہوتے ہیں",
+        trans: "Am yahsaboona annaa laa nasma’u sirrahum wa najwaahum; balaa wa Rusulunaa ladaihim yaktuboon"
       },
       {
         arabic: "قُل إِن كانَ لِلرَّحمٰنِ وَلَدٌ فَأَنا أَوَّلُ العابِدينَ",
         en: "Say, ˹O Prophet,˺ “If the Most Compassionate ˹really˺ had offspring, I would be the first worshipper.”",
-        ur: ""
+        ur: "(اے نبی ﷺ !) آپ ان سے کہیے کہ اگر رحمن کا کوئی بیٹا ہوتا تو سب سے پہلا اس کی عبادت کرنے والا میں ہوتا",
+        trans: "Qul in kaana lir Rahmaani walad; fa-ana awwalul ‘aabideen"
       },
       {
         arabic: "سُبحانَ رَبِّ السَّماواتِ وَالأَرضِ رَبِّ العَرشِ عَمّا يَصِفونَ",
         en: "Glorified is the Lord of the heavens and the earth, the Lord of the Throne, far above what they claim.",
-        ur: ""
+        ur: "پاک ہے آسمانوں اور زمین کا رب عرش کا مالک ان تمام چیزوں سے جو یہ بیان کرتے ہیں",
+        trans: "Subhaana Rabbis samaawaati wal ardi Rabbil Arshi ‘ammaa yasifoon"
       },
       {
         arabic: "فَذَرهُم يَخوضوا وَيَلعَبوا حَتّىٰ يُلاقوا يَومَهُمُ الَّذي يوعَدونَ",
         en: "So let them indulge ˹in falsehood˺ and amuse ˹themselves˺ until they face their Day, which they have been warned of.",
-        ur: ""
+        ur: "تو (اے نبی ﷺ !) آپ ان کو چھوڑ دیجئے یہ میں میخ نکالتے رہیں اور لہو و لعب میں پڑے رہیں یہاں تک کہ یہ ملاقات کرلیں اپنے اس دن سے جس کا ان سے وعدہ کیا جا رہا ہے",
+        trans: "Fazarhum yakhoodoo wa yal’aboo hattaa yulaaqoo Yawmahumul lazee yoo’adoon"
       },
       {
         arabic: "وَهُوَ الَّذي فِي السَّماءِ إِلٰهٌ وَفِي الأَرضِ إِلٰهٌ ۚ وَهُوَ الحَكيمُ العَليمُ",
         en: "It is He Who is ˹the only˺ God in the heavens and ˹the only˺ God on the earth. For He is the All-Wise, All-Knowing.",
-        ur: ""
+        ur: "اور وہی ہے جو آسمان میں بھی الٰہ ہے اور زمین میں بھی اِلٰہ ہے۔ اور وہ بہت حکمت والا ہرچیز کا علم رکھنے والا ہے",
+        trans: "Wa Huwal lazee fissamaaa’i ilaahunw wa fil ardi ilaah; wa Huwal Hakeemul ‘Aleem"
       },
       {
         arabic: "وَتَبارَكَ الَّذي لَهُ مُلكُ السَّماواتِ وَالأَرضِ وَما بَينَهُما وَعِندَهُ عِلمُ السّاعَةِ وَإِلَيهِ تُرجَعونَ",
         en: "And Blessed is the One to Whom belongs the kingdom of the heavens and the earth and everything in between! With Him ˹alone˺ is the knowledge of the Hour. And to Him you will ˹all˺ be returned.",
-        ur: ""
+        ur: "اور بہت بابرکت ہے وہ ذات جس کے اختیار میں ہے بادشاہی آسمانوں کی اور زمین کی اور ان دونوں کے درمیان کی ساری چیزوں کی اور اسی کے پاس ہے قیامت کا علم اور اسی کی طرف تم لوٹا دیے جائو گے",
+        trans: "Wa tabaarakal lazee lahoo mulkus samaawaati wal ardi wa maa bainahumaa wa ‘indahoo ‘ilmus Saa’ati wa ilaihi turja’oon"
       },
       {
         arabic: "وَلا يَملِكُ الَّذينَ يَدعونَ مِن دونِهِ الشَّفاعَةَ إِلّا مَن شَهِدَ بِالحَقِّ وَهُم يَعلَمونَ",
         en: "˹But˺ those ˹objects of worship˺ they invoke besides Him have no power to intercede, except those who testify to the truth knowingly.",
-        ur: ""
+        ur: "اور کوئی اختیار نہیں رکھتے کسی بھی شفاعت کا جن کو یہ پکار رہے ہیں اللہ کے سوا سوائے اس کے کہ جو حق کی گواہی دیں اور وہ جانتے ہوں",
+        trans: "Wa laa yamlikul lazeena yad’oona min doonihish shafaa’ata illaa man shahida bilhaqqi wa hum ya’lamoon"
       },
       {
         arabic: "وَلَئِن سَأَلتَهُم مَن خَلَقَهُم لَيَقولُنَّ اللَّهُ ۖ فَأَنّىٰ يُؤفَكونَ",
         en: "If you ask them ˹O Prophet˺ who created them, they will certainly say, “Allah!” How can they then be deluded ˹from the truth˺?",
-        ur: ""
+        ur: "اور اگر آپ ان سے پوچھیں کہ ان کو کس نے پیدا کیا تو کہیں گے اللہ نے تو پھر یہ کہاں سے پھیر دیے جاتے ہیں",
+        trans: "Wa la’in sa altahum man khalaqahum la yaqoolun nallaahu fa annaa yu’fakoon"
       },
       {
         arabic: "وَقيلِهِ يا رَبِّ إِنَّ هٰؤُلاءِ قَومٌ لا يُؤمِنونَ",
         en: "˹Allah is Aware of˺ the Prophet’s cry: “O my Lord! Indeed, these are a people who persist in disbelief.”",
-        ur: ""
+        ur: "اور قسم ہے نبی ﷺ کے اس قول کی کہ اے میرے رب ! یہ وہ لوگ ہیں جو ایمان نہیں لا رہے",
+        trans: "Wa qeelihee yaa Rabbi inna haaa’ulaaa’i qawmul laa yu’minoon"
       },
       {
         arabic: "فَاصفَح عَنهُم وَقُل سَلامٌ ۚ فَسَوفَ يَعلَمونَ",
         en: "So bear with them and respond with peace. They will soon come to know.",
-        ur: ""
+        ur: "تو (اے نبی ﷺ !) آپ ان سے در گزر کیجیے اور کہیے سلام ہے تو بہت جلد یہ لوگ جان جائیں گے",
+        trans: "Fasfah ‘anhum wa qul salaam; fasawfa ya’lamoon"
       },
     ];
 
@@ -1430,6 +1553,7 @@
     const langSelect = document.getElementById('language');
     const langWrapper = document.getElementById('languageSelector');
     let showTransliteration = false;
+    let showTranslation = false;
     let currentAyahIndex = 0;
 
     // Favorites and Bookmarks storage
@@ -1471,7 +1595,7 @@
     // Language options with display names
     const languages = [
       { value: 'en', name: 'English: Dr. Mustafa Khattab' },
-      { value: 'ur', name: 'Urdu' }
+      { value: 'ur', name: 'Urdu: Dr. Israr Ahmed' }
       // Add more languages here in the future, e.g., { value: 'ar', name: 'Arabic' }
     ];
 
@@ -1495,6 +1619,7 @@
     // Load Arabic verses
     function renderReadTab() {
       readTab.innerHTML = '';
+      const lang = langSelect.value;
       ayahs.forEach((ayah, index) => {
         const div = document.createElement('div');
         div.className = 'ayah';
@@ -1502,10 +1627,15 @@
         if (showTransliteration && ayah.trans) {
           transliterationHTML = `<div class="transliteration">${ayah.trans}</div>`;
         }
+        let translationHTML = '';
+        if (showTranslation) {
+          translationHTML = `<div class="translation ${lang}">${ayah[lang]}</div>`;
+        }
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
           <div class="arabic">${ayah.arabic}<span class="verse-icon">۝</span></div>
           ${transliterationHTML}
+          ${translationHTML}
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1524,7 +1654,7 @@
         div.className = `ayah translation ${lang}`;
         div.innerHTML = `
           <div class="ayah-number">Verse ${index + 1}</div>
-          <div class="translation">${ayah[lang]}<span class="verse-icon">۝</span></div>
+          <div class="translation ${lang}">${ayah[lang]}<span class="verse-icon">۝</span></div>
           <button class="favorite-btn" onclick="toggleFavorite(${index})">${isFavorite(index) ? favoriteSVG : unfavoriteSVG}</button>
           <button class="bookmark-btn" onclick="toggleBookmark(${index})">${isBookmarked(index) ? bookmarkedSVG : unbookmarkedSVG}</button>
           <svg class="share-icon" onclick="openShareModal(${index})" viewBox="0 0 24 24" fill="currentColor">
@@ -1647,6 +1777,26 @@
         toggleButton.classList.remove('active');
       }
       renderReadTab();
+    }
+
+    function toggleTranslation() {
+      showTranslation = !showTranslation;
+      const toggleButton = document.getElementById('translation-toggle');
+      if (showTranslation) {
+        toggleButton.textContent = 'Hide Translation';
+        toggleButton.classList.add('active');
+        langWrapper.classList.remove('hidden');
+      } else {
+        toggleButton.textContent = 'Show Translation';
+        toggleButton.classList.remove('active');
+        langWrapper.classList.add('hidden');
+      }
+      renderReadTab();
+    }
+
+    function changeLanguage() {
+      renderReadTab();
+      renderTranslation();
     }
 
         // Scroll to Top functionality
