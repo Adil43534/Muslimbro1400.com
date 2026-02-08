@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MuslimBro1400 - Quran</title>
+  <title>Quran - MuslimBro1400</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <style>
@@ -33,6 +33,9 @@
       background-color: #f0f0f0;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: background-color 0.5s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .dark-mode .navbar {
@@ -76,10 +79,6 @@
       width: 24px;
       height: 24px;
       transition: transform 0.3s ease;
-    }
-
-    .theme-toggle img.rotate {
-      transform: rotate(180deg);
     }
 
     .menu-toggle {
@@ -136,20 +135,82 @@
       color: #fff;
     }
 
-    .dark-mode .tab-button {
-      background-color: #444;
-      color: #eee;
-    }
-
     .dark-mode .tab-button.active {
       background-color: #0c8;
     }
 
     .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 1.5rem;
+      gap: 0.6rem;
+      border-radius: 15px;
       margin-top: 1rem;
+    }
+
+    .cards::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
+    /* Vertical cards grid for surahs and revelation order */
+    .cards-vertical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      overflow-y: auto;
+      max-height: 70vh;
+      padding: 1rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
+    .card-vertical {
+      display: flex;
+      flex-direction: row;
+      min-height: 90px;
+      background-color: #333;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .card-vertical img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .card-vertical .overlay {
+      padding: 0.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
     }
 
     .juz-group {
@@ -163,17 +224,16 @@
       background-color: #f1f1f1;
       border-radius: 10px;
       padding: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       transition: background-color 0.5s ease, transform 0.2s;
-    }
-
-    .juz:hover {
-      transform: translateY(-5px);
     }
 
     .dark-mode .juz {
       background-color: #2c2c2c;
       color: #e0e0e0;
+    }
+
+    .juz:hover {
+      transform: translateY(-5px);
     }
 
     .juz h3 {
@@ -189,96 +249,238 @@
 
     .juz .cards {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      flex-wrap: nowrap;
+      gap: 0.8rem;
     }
 
+    /* Enhanced card styling with hover effects */
     .card {
-      background-color: #fff;
-      padding: 2rem 1rem 1rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s, background-color 0.5s ease;
+      flex: 0 0 auto;
+      width: 180px;
+      background-color: #333;
+      border-radius: 12px;
+      overflow: hidden;
       position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      background-color: #e6f5f0;
-      border-left: 5px solid #007b5e;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      z-index: 10;
     }
 
-    .dark-mode .card:hover {
-      background-color: #244c3a;
-      border-left: 5px solid #0c8;
+    .card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      transition: all 0.3s ease;
     }
 
-    .dark-mode .card {
-      background-color: #2c2c2c;
-      color: #e0e0e0;
+    .card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.7);
     }
 
-    .card-content {
+    .card .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+      padding: 1.5rem 1rem 1rem;
+      color: #fff;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 123, 94, 0.95) 0%, rgba(0, 123, 94, 0.8) 50%, rgba(0, 123, 94, 0) 100%);
+      padding-bottom: 1.5rem;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      justify-content: flex-end;
+      backdrop-filter: blur(2px);
     }
 
-    .card-content .surah-number {
-      font-weight: bold;
-      font-size: 1.1rem;
+    .dark-mode .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 200, 136, 0.95) 0%, rgba(0, 200, 136, 0.8) 50%, rgba(0, 200, 136, 0) 100%);
     }
 
-    .card-content .surah-name {
+    .card .overlay .surah-number {
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
     }
 
-    .card-content .surah-meaning {
+    .card:hover .overlay .surah-number {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .overlay .surah-meaning {
       font-size: 0.9rem;
-      color: #555;
+      color: #ccc;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
     }
 
-    .dark-mode .card-content .surah-meaning {
-      color: #bbb;
+    .card:hover .overlay .surah-meaning {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
     }
 
-    .card-content .verse-count {
+    .card .overlay .verse-count {
       font-size: 0.85rem;
-      color: #777;
+      color: #aaa;
+      display: block;
+      transition: all 0.3s ease;
     }
 
-    .dark-mode .card-content .verse-count {
-      color: #999;
+    .card:hover .overlay .verse-count {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
     }
 
-    .icons {
+    /* Additional details that appear on hover */
+    .card .additional-details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      margin-top: 0;
+    }
+
+    .card:hover .additional-details {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .card .additional-details .detail-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .card .additional-details .detail-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card .additional-details .detail-value {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .card .quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease 0.1s;
+    }
+
+    .card:hover .quick-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #007b5e;
+    }
+
+    .dark-mode .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0c8;
+    }
+
+    .card .quick-actions button:hover {
+      background: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card .icons {
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
       display: flex;
       gap: 0.5rem;
+      z-index: 2;
+      opacity: 0.8;
+      transition: all 0.3s ease;
     }
 
-    .favorite-icon, .bookmark-icon {
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .favorite-icon:hover, .bookmark-icon:hover {
+    .card:hover .icons {
+      opacity: 1;
       transform: scale(1.1);
     }
 
-    @media (max-width: 600px) {
-      .icons {
-        top: 0.3rem;
-        right: 0.3rem;
-        font-size: 1rem;
-      }
+    .favorite-icon, .bookmark-icon {
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .favorite-icon:hover, .bookmark-icon:hover {
+      transform: scale(1.2);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .revelation-index {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      background: rgba(0, 123, 94, 0.9);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .revelation-index {
+      transform: scale(1.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-mode .revelation-index {
+      background: rgba(0, 200, 136, 0.9);
     }
 
     .hidden {
@@ -296,7 +498,7 @@
     }
 
     .recent-card {
-      width: 100%;
+      width: 200px;
     }
 
     .myquran-sections {
@@ -322,6 +524,241 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
+    .footer {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      padding: 3rem 1rem 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .dark-mode .footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #e0e0e0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-section {
+      padding: 1.5rem;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .dark-mode .footer-section {
+      background-color: rgba(45, 45, 45, 0.7);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-logo h2 {
+      margin: 1rem 0 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark-mode .footer-logo h2 {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .dark-mode .footer-tagline {
+      color: #aaa;
+    }
+
+    .footer-section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .dark-mode .footer-section-title {
+      color: #e0e0e0;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin: 0.6rem 0;
+    }
+
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #007b5e;
+      background-color: rgba(0, 123, 94, 0.1);
+    }
+
+    .dark-mode .footer-links a:hover {
+      color: #0c8;
+      background-color: rgba(0, 200, 136, 0.1);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info {
+      width: 100%;
+    }
+
+    .email-box {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.25);
+      margin-top: 1rem;
+    }
+
+    .email-box a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 2px dashed rgba(0, 123, 94, 0.2);
+      font-size: 0.95rem;
+      color: #666;
+      transition: all 0.5s ease;
+    }
+
+    .dark-mode .footer-bottom {
+      color: #aaa;
+      border-top-color: rgba(0, 200, 136, 0.2);
+    }
+
+    .footer-bottom a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .dark-mode .footer-bottom a {
+      color: #0c8;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #007b5e;
+      margin-bottom: 1rem;
+    }
+
+    .dark-mode .bismillah {
+      color: #0c8;
+    }
+
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .footer-logo-section {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.2rem;
+      }
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+
     @media (max-width: 600px) {
       .navbar h1 {
         font-size: 1.25rem;
@@ -337,7 +774,6 @@
         left: 0;
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
       }
 
       .dark-mode .nav-links {
@@ -350,56 +786,29 @@
 
       .nav-links a {
         margin: 0.5rem 0;
-        font-size: 1.1rem;
-      }
-
-      .theme-toggle {
-        margin: 0;
       }
 
       .menu-toggle {
         display: block;
       }
-    }
-
-    /* Scroll to Top Button */
-    #scrollToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    #scrollToTop:hover {
-      background-color: #005f4a;
-    }
-
-    #scrollToTop.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .dark-mode #scrollToTop {
-      background-color: #0c8;
-    }
-
-    .dark-mode #scrollToTop:hover {
-      background-color: #0a6;
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
+      }
+      
+      .card {
+        width: 130px;
+      }
+      
+      .card .additional-details {
+        font-size: 0.75rem;
+      }
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+      }
     }
 
     .search-container {
@@ -417,12 +826,6 @@
       max-width: 400px;
       background-color: #fff;
       color: #333;
-      transition: border-color 0.3s ease, background-color 0.5s ease, color 0.5s ease;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: #007b5e;
     }
 
     .dark-mode .search-input {
@@ -431,131 +834,969 @@
       border-color: #444;
     }
 
+    .search-input:focus {
+      outline: none;
+      border-color: #007b5e;
+    }
+
     .dark-mode .search-input:focus {
       border-color: #0c8;
     }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      padding: 3rem 1rem 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #007b5e, #00a884, #007b5e);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .dark-mode .footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #e0e0e0;
+    }
+
+    .footer-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007b5e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .dark-mode .footer-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300a884' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-section {
+      padding: 1.5rem;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .dark-mode .footer-section {
+      background-color: rgba(45, 45, 45, 0.7);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo h2 {
+      margin: 1rem 0 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark-mode .footer-logo h2 {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .footer-tagline {
+      color: #aaa;
+    }
+
+    .footer-section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .dark-mode .footer-section-title {
+      color: #e0e0e0;
+    }
+
+    .footer-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin: 0.6rem 0;
+      position: relative;
+    }
+
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .footer-links a::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #007b5e;
+      font-size: 0.7rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007b5e;
+      background-color: rgba(0, 123, 94, 0.1);
+      padding-left: 2rem;
+    }
+
+    .footer-links a:hover::before {
+      opacity: 1;
+      left: 0.5rem;
+    }
+
+    .dark-mode .footer-links a:hover {
+      color: #0c8;
+      background-color: rgba(0, 200, 136, 0.1);
+    }
+
+    .dark-mode .footer-links a::before {
+      color: #0c8;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info {
+      width: 100%;
+    }
+
+    .email-box {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.25);
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .email-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 123, 94, 0.35);
+    }
+
+    .email-box a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+
+    .email-box a::before {
+      content: '✉';
+      font-size: 1.1rem;
+    }
+
+    .email-box a:hover {
+      color: #f0f0f0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-link.facebook:hover {
+      border-color: #1877f2;
+      color: #1877f2;
+    }
+
+    .social-link.twitter:hover {
+      border-color: #1da1f2;
+      color: #1da1f2;
+    }
+
+    .social-link.instagram:hover {
+      border-color: #e4405f;
+      color: #e4405f;
+    }
+
+    .social-link.youtube:hover {
+      border-color: #ff0000;
+      color: #ff0000;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 2px dashed rgba(0, 123, 94, 0.2);
+      font-size: 0.95rem;
+      color: #666;
+      transition: all 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark-mode .footer-bottom {
+      color: #aaa;
+      border-top-color: rgba(0, 200, 136, 0.2);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+    }
+
+    .footer-bottom a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: #00a884;
+      text-decoration: underline;
+    }
+
+    .dark-mode .footer-bottom a {
+      color: #0c8;
+    }
+
+    .dark-mode .footer-bottom a:hover {
+      color: #00d9a5;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #007b5e;
+      margin-bottom: 1rem;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .bismillah {
+      color: #0c8;
+    }
+
+    /* Footer Responsive Styles */
+    
+    /* Desktop (992px - 1199px) */
+    @media (max-width: 1199px) {
+      .footer-content {
+        gap: 2rem;
+      }
+      
+      .footer-section {
+        padding: 1.5rem;
+      }
+      
+      .footer-logo img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Tablet Landscape (992px - 1199px) */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .footer-section {
+        padding: 1.3rem;
+      }
+
+      .footer-logo-section {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .footer-bottom {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* Tablet Portrait (768px - 991px) */
+    @media (max-width: 991px) {
+      .footer {
+        padding: 2.5rem 1.5rem 1.5rem;
+      }
+
+      .footer-content {
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.25rem;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.7rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Tablet (768px) */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.2rem;
+      }
+
+      .footer-logo-section {
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .email-box {
+        padding: 1rem 1.2rem;
+      }
+
+      .email-box a {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Large Mobile (576px - 767px) */
+    @media (max-width: 576px) {
+      .footer {
+        padding: 2rem 1rem 1rem;
+      }
+
+      .footer-content {
+        gap: 1rem;
+      }
+
+      .footer-section {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+
+      .footer-logo img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.9rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+      }
+
+      .footer-section-title::after {
+        width: 40px;
+        height: 2px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links li {
+        margin: 0.4rem 0;
+      }
+
+      .footer-links a {
+        padding: 0.4rem 1rem 0.4rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .social-links {
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+      }
+
+      .email-box {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .email-box a {
+        font-size: 0.85rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .email-box a::before {
+        font-size: 1rem;
+      }
+
+      .footer-bottom {
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Medium Mobile (480px) */
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.75rem 0.75rem 0.75rem;
+      }
+
+      .footer-section {
+        padding: 0.9rem;
+        border-radius: 10px;
+      }
+
+      .footer-logo img {
+        width: 65px;
+        height: 65px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.4rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.85rem;
+      }
+
+      .bismillah {
+        font-size: 1.1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.1rem;
+      }
+
+      .footer-links a {
+        padding: 0.35rem 0.8rem 0.35rem 1.3rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        padding-left: 1.5rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .footer-bottom {
+        padding-top: 1rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Small Mobile (375px) */
+    @media (max-width: 400px) {
+      .footer {
+        padding: 1.5rem 0.5rem 0.5rem;
+      }
+
+      .footer-section {
+        padding: 0.8rem;
+        border-radius: 8px;
+      }
+
+      .footer-logo img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.3rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.8rem;
+      }
+
+      .bismillah {
+        font-size: 1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-links a {
+        padding: 0.3rem 0.6rem 0.3rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+
+      .email-box {
+        padding: 0.8rem;
+      }
+
+      .email-box a {
+        font-size: 0.8rem;
+      }
+
+      .footer-bottom {
+        padding-top: 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+      }
+
+      .footer-bottom p {
+        margin: 0.4rem 0;
+      }
+    }
   </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <header class="banner">
+    <img src="banner.png" alt="Banner" class="banner-img">
+  </header>
+
+  <main class="container">
+    <div class="search-container">
+      <input type="text" id="surah-search" placeholder="Search for Surahs..." class="search-input">
+    </div>
+    <div class="tabs">
+      <button id="surah-tab" class="tab-button active" onclick="switchTab('surah')">Surahs</button>
+      <button id="juz-tab" class="tab-button" onclick="switchTab('juz')">Juz</button>
+      <button id="reveal-tab" class="tab-button" onclick="switchTab('reveal')">Revelation Order</button>
+      <button id="myquran-tab" class="tab-button" onclick="switchTab('myquran')">My Quran</button>
+    </div>
+
+    <section id="surah-content" class="tab-content">
+      <div id="recent-surah-section" class="recent-surah-section hidden">
+        <h2><hr> Recently Visited Surah<hr></h2>
+        <div class="recent-card-container"></div>
+      </div>
+      <h2><hr> All Surahs<hr></h2>
+      <div class="cards-vertical-grid" id="all-surahs-grid"></div>
+    </section>
+
+    <section id="juz-content" class="tab-content hidden">
+      <h2><hr>Read Juz<hr></h2>
+      <div class="juz-group"></div>
+    </section>
+
+    <section id="reveal-content" class="tab-content hidden">
+      <h2><hr>Revelation Order<hr></h2>
+      <div class="cards-vertical-grid" id="revelation-order-grid"></div>
+    </section>
+
+    <section id="myquran-content" class="tab-content hidden">
+      <h2><hr>My Quran<hr></h2>
+      <div class="myquran-sections">
+        <div class="myquran-section">
+          <h3>Favorited Ayahs</h3>
+          <div id="favorited-ayahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Favorited Surahs</h3>
+          <div id="favorited-surahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Bookmarked Ayahs</h3>
+          <div id="bookmarked-ayahs" class="cards"></div>
+        </div>
+        <div class="myquran-section">
+          <h3>Bookmarked Surahs</h3>
+          <div id="bookmarked-surahs" class="cards"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+  <footer class="footer">
+    <div class="footer-pattern"></div>
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+        <div class="footer-logo">
+          <img src="favicon.png" alt="MuslimBro1400 Logo" />
+        </div>
+        <h2>MuslimBro1400</h2>
+        <p class="footer-tagline">Your Trusted Islamic Resource</p>
+        <div class="social-links">
+          <a href="#" class="social-link facebook" title="Facebook">f</a>
+          <a href="#" class="social-link twitter" title="Twitter">𝕏</a>
+          <a href="#" class="social-link instagram" title="Instagram">📷</a>
+          <a href="#" class="social-link youtube" title="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section footer-links-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quran.html">Quran with Translations</a></li>
+          <li><a href="hadith.html">Hadiths and Sunnah</a></li>
+          <li><a href="islamic-books.html">Islamic Books</a></li>
+          <li><a href="quran-recitations.html">Quran Recitations</a></li>
+          <li><a href="islamic-calendar.html">Islamic Calendar</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section footer-contact">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="email-box">
+            <a href="mailto:muhammadadil43534@gmail.com" target="_blank">muhammadadil43534@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-link facebook" title="Facebook">f</a>
+          <a href="#" class="social-link twitter" title="Twitter">𝕏</a>
+          <a href="#" class="social-link instagram" title="Instagram">📷</a>
+          <a href="#" class="social-link youtube" title="YouTube">▶</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <!-- <p>🌙 "Indeed, this Quran guides to that which is most just" — Surah Al-Isra 17:9</p> -->
+      <p>&copy; 2024 <a href="index.html">MuslimBro1400</a>. All rights reserved.</p>
+      <p>Made with ❤️ for the Ummah</p>
+    </div>
+  </footer>
+
   <script>
     const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
     const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
     const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
     const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
 
+    // Array of placeholder image names - currently all using pic1.jpeg
+    // You can later change this to use different images like ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg", ...]
+    const surahPlaceholders = Array(114).fill("pic1.jpeg");
+
     const surahData = [
-      { number: 1, name: "Al-Fatiha", meaning: "The Opening", verses: 7, file: "al-fatiha" },
-      { number: 2, name: "Al-Baqarah", meaning: "The Cow", verses: 286, file: "al-baqarah" },
-      { number: 3, name: "Al-Imran", meaning: "The Family of Imran", verses: 200, file: "al-imran" },
-      { number: 4, name: "An-Nisa", meaning: "The Women", verses: 176, file: "an-nisa" },
-      { number: 5, name: "Al-Maidah", meaning: "The Table Spread", verses: 120, file: "al-maidah" },
-      { number: 6, name: "Al-An'am", meaning: "The Cattle", verses: 165, file: "al-anam" },
-      { number: 7, name: "Al-A'raf", meaning: "The Heights", verses: 206, file: "al-araf" },
-      { number: 8, name: "Al-Anfal", meaning: "The Spoils of War", verses: 75, file: "al-anfal" },
-      { number: 9, name: "At-Tawbah", meaning: "The Repentance", verses: 129, file: "at-tawbah" },
-      { number: 10, name: "Yunus", meaning: "Jonah", verses: 109, file: "yunus" },
-      { number: 11, name: "Hud", meaning: "Hud", verses: 123, file: "hud" },
-      { number: 12, name: "Yusuf", meaning: "Joseph", verses: 111, file: "yusuf" },
-      { number: 13, name: "Ar-Ra'd", meaning: "The Thunder", verses: 43, file: "ar-rad" },
-      { number: 14, name: "Ibrahim", meaning: "Abraham", verses: 52, file: "ibrahim" },
-      { number: 15, name: "Al-Hijr", meaning: "The Rocky Tract", verses: 99, file: "al-hijr" },
-      { number: 16, name: "An-Nahl", meaning: "The Bee", verses: 128, file: "an-nahl" },
-      { number: 17, name: "Al-Isra", meaning: "The Night Journey", verses: 111, file: "al-isra" },
-      { number: 18, name: "Al-Kahf", meaning: "The Cave", verses: 110, file: "al-kahf" },
-      { number: 19, name: "Maryam", meaning: "Mary", verses: 98, file: "maryam" },
-      { number: 20, name: "Ta-Ha", meaning: "Ta-Ha", verses: 135, file: "taha" },
-      { number: 21, name: "Al-Anbiya", meaning: "The Prophets", verses: 112, file: "al-anbiya" },
-      { number: 22, name: "Al-Hajj", meaning: "The Pilgrimage", verses: 78, file: "al-hajj" },
-      { number: 23, name: "Al-Mu'minun", meaning: "The Believers", verses: 118, file: "al-muminun" },
-      { number: 24, name: "An-Nur", meaning: "The Light", verses: 64, file: "an-nur" },
-      { number: 25, name: "Al-Furqan", meaning: "The Criterion", verses: 77, file: "al-furqan" },
-      { number: 26, name: "Ash-Shu'ara", meaning: "The Poets", verses: 227, file: "ash-shuara" },
-      { number: 27, name: "An-Naml", meaning: "The Ant", verses: 93, file: "an-naml" },
-      { number: 28, name: "Al-Qasas", meaning: "The Stories", verses: 88, file: "al-qasas" },
-      { number: 29, name: "Al-Ankabut", meaning: "The Spider", verses: 69, file: "al-ankabut" },
-      { number: 30, name: "Ar-Rum", meaning: "The Romans", verses: 60, file: "ar-rum" },
-      { number: 31, name: "Luqman", meaning: "Luqman", verses: 34, file: "luqman" },
-      { number: 32, name: "As-Sajda", meaning: "The Prostration", verses: 30, file: "as-sajda" },
-      { number: 33, name: "Al-Ahzab", meaning: "The Combined Forces", verses: 73, file: "al-ahzab" },
-      { number: 34, name: "Saba", meaning: "Sheba", verses: 54, file: "saba" },
-      { number: 35, name: "Fatir", meaning: "The Originator", verses: 45, file: "fatir" },
-      { number: 36, name: "Ya-Sin", meaning: "Ya-Sin", verses: 83, file: "ya-sin" },
-      { number: 37, name: "As-Saffat", meaning: "Those who set the Ranks", verses: 182, file: "as-saffat" },
-      { number: 38, name: "Sad", meaning: "The Letter Sad", verses: 88, file: "sad" },
-      { number: 39, name: "Az-Zumar", meaning: "The Troops", verses: 75, file: "az-zumar" },
-      { number: 40, name: "Ghafir", meaning: "The Forgiver", verses: 85, file: "ghafir" },
-      { number: 41, name: "Fussilat", meaning: "Explained in Detail", verses: 54, file: "fussilat" },
-      { number: 42, name: "Ash-Shura", meaning: "The Consultation", verses: 53, file: "ash-shura" },
-      { number: 43, name: "Az-Zukhruf", meaning: "The Ornaments of Gold", verses: 89, file: "az-zukhruf" },
-      { number: 44, name: "Ad-Dukhan", meaning: "The Smoke", verses: 59, file: "ad-dukhan" },
-      { number: 45, name: "Al-Jathiya", meaning: "The Crouching", verses: 37, file: "al-jathiya" },
-      { number: 46, name: "Al-Ahqaf", meaning: "The Wind-Curved Sandhills", verses: 35, file: "al-ahqaf" },
-      { number: 47, name: "Muhammad", meaning: "Muhammad", verses: 38, file: "muhammad" },
-      { number: 48, name: "Al-Fath", meaning: "The Victory", verses: 29, file: "al-fath" },
-      { number: 49, name: "Al-Hujurat", meaning: "The Rooms", verses: 18, file: "al-hujurat" },
-      { number: 50, name: "Qaf", meaning: "The Letter Qaf", verses: 45, file: "qaf" },
-      { number: 51, name: "Adh-Dhariyat", meaning: "The Winnowing Winds", verses: 60, file: "adh-dhariyat" },
-      { number: 52, name: "At-Tur", meaning: "The Mount", verses: 49, file: "at-tur" },
-      { number: 53, name: "An-Najm", meaning: "The Star", verses: 62, file: "an-najm" },
-      { number: 54, name: "Al-Qamar", meaning: "The Moon", verses: 55, file: "al-qamar" },
-      { number: 55, name: "Ar-Rahman", meaning: "The Beneficent", verses: 78, file: "ar-rahman" },
-      { number: 56, name: "Al-Waqi'a", meaning: "The Inevitable", verses: 96, file: "al-waqia" },
-      { number: 57, name: "Al-Hadid", meaning: "The Iron", verses: 29, file: "al-hadid" },
-      { number: 58, name: "Al-Mujadila", meaning: "The Pleading Woman", verses: 22, file: "al-mujadila" },
-      { number: 59, name: "Al-Hashr", meaning: "The Exile", verses: 24, file: "al-hashr" },
-      { number: 60, name: "Al-Mumtahana", meaning: "She that is to be Examined", verses: 13, file: "al-mumtahana" },
-      { number: 61, name: "As-Saff", meaning: "The Ranks", verses: 14, file: "as-saff" },
-      { number: 62, name: "Al-Jumu'a", meaning: "The Congregation", verses: 11, file: "al-jumua" },
-      { number: 63, name: "Al-Munafiqun", meaning: "The Hypocrites", verses: 11, file: "al-munafiqun" },
-      { number: 64, name: "At-Taghabun", meaning: "The Mutual Disillusion", verses: 18, file: "at-taghabun" },
-      { number: 65, name: "At-Talaq", meaning: "The Divorce", verses: 12, file: "at-talaq" },
-      { number: 66, name: "At-Tahrim", meaning: "The Prohibition", verses: 12, file: "at-tahrim" },
-      { number: 67, name: "Al-Mulk", meaning: "The Sovereignty", verses: 30, file: "al-mulk" },
-      { number: 68, name: "Al-Qalam", meaning: "The Pen", verses: 52, file: "al-qalam" },
-      { number: 69, name: "Al-Haqqah", meaning: "The Reality", verses: 52, file: "al-haqqah" },
-      { number: 70, name: "Al-Ma'arij", meaning: "The Ascending Stairways", verses: 44, file: "al-maarij" },
-      { number: 71, name: "Nuh", meaning: "Noah", verses: 28, file: "nuh" },
-      { number: 72, name: "Al-Jinn", meaning: "The Jinn", verses: 28, file: "al-jinn" },
-      { number: 73, name: "Al-Muzzammil", meaning: "The Enshrouded One", verses: 20, file: "al-muzzammil" },
-      { number: 74, name: "Al-Muddaththir", meaning: "The Cloaked One", verses: 56, file: "al-muddaththir" },
-      { number: 75, name: "Al-Qiyamah", meaning: "The Resurrection", verses: 40, file: "al-qiyamah" },
-      { number: 76, name: "Al-Insan", meaning: "The Man", verses: 31, file: "al-insan" },
-      { number: 77, name: "Al-Mursalat", meaning: "The Emissaries", verses: 50, file: "al-mursalat" },
-      { number: 78, name: "An-Naba", meaning: "The Announcement", verses: 40, file: "an-naba" },
-      { number: 79, name: "An-Nazi'at", meaning: "Those who Pull Out", verses: 46, file: "an-naziat" },
-      { number: 80, name: "Abasa", meaning: "He Frowned", verses: 42, file: "abasa" },
-      { number: 81, name: "At-Takwir", meaning: "The Overthrowing", verses: 29, file: "at-takwir" },
-      { number: 82, name: "Al-Infitar", meaning: "The Cleaving", verses: 19, file: "al-infitar" },
-      { number: 83, name: "Al-Mutaffifin", meaning: "The Defrauding", verses: 36, file: "al-mutaffifin" },
-      { number: 84, name: "Al-Inshiqaq", meaning: "The Splitting Open", verses: 25, file: "al-inshiqaq" },
-      { number: 85, name: "Al-Buruj", meaning: "The Mansions of the Stars", verses: 22, file: "al-buruj" },
-      { number: 86, name: "At-Tariq", meaning: "The Morning Star", verses: 17, file: "at-tariq" },
-      { number: 87, name: "Al-A'la", meaning: "The Most High", verses: 19, file: "al-ala" },
-      { number: 88, name: "Al-Ghashiyah", meaning: "The Overwhelming", verses: 26, file: "al-ghashiyah" },
-      { number: 89, name: "Al-Fajr", meaning: "The Dawn", verses: 30, file: "al-fajr" },
-      { number: 90, name: "Al-Balad", meaning: "The City", verses: 20, file: "al-balad" },
-      { number: 91, name: "Ash-Shams", meaning: "The Sun", verses: 15, file: "ash-shams" },
-      { number: 92, name: "Al-Lail", meaning: "The Night", verses: 21, file: "al-lail" },
-      { number: 93, name: "Ad-Duhaa", meaning: "The Morning Hours", verses: 11, file: "ad-duhaa" },
-      { number: 94, name: "Ash-Sharh", meaning: "The Relief", verses: 8, file: "ash-sharh" },
-      { number: 95, name: "At-Tin", meaning: "The Fig", verses: 8, file: "at-tin" },
-      { number: 96, name: "Al-Alaq", meaning: "The Clot", verses: 19, file: "al-alaq" },
-      { number: 97, name: "Al-Qadr", meaning: "The Power", verses: 5, file: "al-qadr" },
-      { number: 98, name: "Al-Bayyinah", meaning: "The Clear Proof", verses: 8, file: "al-bayyinah" },
-      { number: 99, name: "Az-Zalzala", meaning: "The Earthquake", verses: 8, file: "az-zalzalah" },
-      { number: 100, name: "Al-Adiyat", meaning: "The Courser", verses: 11, file: "al-adiyat" },
-      { number: 101, name: "Al-Qari'ah", meaning: "The Calamity", verses: 11, file: "al-qariah" },
-      { number: 102, name: "At-Takathur", meaning: "The Rivalry", verses: 8, file: "at-takathur" },
-      { number: 103, name: "Al-Asr", meaning: "The Declining Day", verses: 3, file: "al-asr" },
-      { number: 104, name: "Al-Humazah", meaning: "The Traducer", verses: 9, file: "al-humazah" },
-      { number: 105, name: "Al-Fil", meaning: "The Elephant", verses: 5, file: "al-fil" },
-      { number: 106, name: "Quraysh", meaning: "Quraysh", verses: 4, file: "quraysh" },
-      { number: 107, name: "Al-Ma'un", meaning: "The Small Kindnesses", verses: 7, file: "al-maun" },
-      { number: 108, name: "Al-Kawthar", meaning: "The Abundance", verses: 3, file: "al-kawthar" },
-      { number: 109, name: "Al-Kafirun", meaning: "The Disbelievers", verses: 6, file: "al-kafirun" },
-      { number: 110, name: "An-Nasr", meaning: "The Divine Support", verses: 3, file: "an-nasr" },
-      { number: 111, name: "Al-Masad", meaning: "The Palm Fiber", verses: 5, file: "al-masad" },
-      { number: 112, name: "Al-Ikhlas", meaning: "The Sincerity", verses: 4, file: "al-ikhlas" },
-      { number: 113, name: "Al-Falaq", meaning: "The Daybreak", verses: 5, file: "al-falaq" },
-      { number: 114, name: "An-Nas", meaning: "The Mankind", verses: 6, file: "an-nas" }
+      { number: 1, name: "Al-Fatiha", meaning: "The Opening", verses: 7, file: "al-fatiha", revelation: "Meccan", pages: 1 },
+      { number: 2, name: "Al-Baqarah", meaning: "The Cow", verses: 286, file: "al-baqarah", revelation: "Medinan", pages: 2 },
+      { number: 3, name: "Al-Imran", meaning: "The Family of Imran", verses: 200, file: "al-imran", revelation: "Medinan", pages: 50 },
+      { number: 4, name: "An-Nisa", meaning: "The Women", verses: 176, file: "an-nisa", revelation: "Medinan", pages: 77 },
+      { number: 5, name: "Al-Maidah", meaning: "The Table Spread", verses: 120, file: "al-maidah", revelation: "Medinan", pages: 106 },
+      { number: 6, name: "Al-An'am", meaning: "The Cattle", verses: 165, file: "al-anam", revelation: "Meccan", pages: 128 },
+      { number: 7, name: "Al-A'raf", meaning: "The Heights", verses: 206, file: "al-araf", revelation: "Meccan", pages: 151 },
+      { number: 8, name: "Al-Anfal", meaning: "The Spoils of War", verses: 75, file: "al-anfal", revelation: "Medinan", pages: 177 },
+      { number: 9, name: "At-Tawbah", meaning: "The Repentance", verses: 129, file: "at-tawbah", revelation: "Medinan", pages: 187 },
+      { number: 10, name: "Yunus", meaning: "Jonah", verses: 109, file: "yunus", revelation: "Meccan", pages: 208 },
+      { number: 11, name: "Hud", meaning: "Hud", verses: 123, file: "hud", revelation: "Meccan", pages: 221 },
+      { number: 12, name: "Yusuf", meaning: "Joseph", verses: 111, file: "yusuf", revelation: "Meccan", pages: 235 },
+      { number: 13, name: "Ar-Ra'd", meaning: "The Thunder", verses: 43, file: "ar-rad", revelation: "Medinan", pages: 249 },
+      { number: 14, name: "Ibrahim", meaning: "Abraham", verses: 52, file: "ibrahim", revelation: "Meccan", pages: 255 },
+      { number: 15, name: "Al-Hijr", meaning: "The Rocky Tract", verses: 99, file: "al-hijr", revelation: "Meccan", pages: 262 },
+      { number: 16, name: "An-Nahl", meaning: "The Bee", verses: 128, file: "an-nahl", revelation: "Meccan", pages: 267 },
+      { number: 17, name: "Al-Isra", meaning: "The Night Journey", verses: 111, file: "al-isra", revelation: "Meccan", pages: 282 },
+      { number: 18, name: "Al-Kahf", meaning: "The Cave", verses: 110, file: "al-kahf", revelation: "Meccan", pages: 293 },
+      { number: 19, name: "Maryam", meaning: "Mary", verses: 98, file: "maryam", revelation: "Meccan", pages: 305 },
+      { number: 20, name: "Ta-Ha", meaning: "Ta-Ha", verses: 135, file: "taha", revelation: "Meccan", pages: 312 },
+      { number: 21, name: "Al-Anbiya", meaning: "The Prophets", verses: 112, file: "al-anbiya", revelation: "Meccan", pages: 322 },
+      { number: 22, name: "Al-Hajj", meaning: "The Pilgrimage", verses: 78, file: "al-hajj", revelation: "Medinan", pages: 332 },
+      { number: 23, name: "Al-Mu'minun", meaning: "The Believers", verses: 118, file: "al-muminun", revelation: "Meccan", pages: 342 },
+      { number: 24, name: "An-Nur", meaning: "The Light", verses: 64, file: "an-nur", revelation: "Medinan", pages: 350 },
+      { number: 25, name: "Al-Furqan", meaning: "The Criterion", verses: 77, file: "al-furqan", revelation: "Meccan", pages: 359 },
+      { number: 26, name: "Ash-Shu'ara", meaning: "The Poets", verses: 227, file: "ash-shuara", revelation: "Meccan", pages: 367 },
+      { number: 27, name: "An-Naml", meaning: "The Ant", verses: 93, file: "an-naml", revelation: "Meccan", pages: 377 },
+      { number: 28, name: "Al-Qasas", meaning: "The Stories", verses: 88, file: "al-qasas", revelation: "Meccan", pages: 385 },
+      { number: 29, name: "Al-Ankabut", meaning: "The Spider", verses: 69, file: "al-ankabut", revelation: "Meccan", pages: 396 },
+      { number: 30, name: "Ar-Rum", meaning: "The Romans", verses: 60, file: "ar-rum", revelation: "Meccan", pages: 404 },
+      { number: 31, name: "Luqman", meaning: "Luqman", verses: 34, file: "luqman", revelation: "Meccan", pages: 411 },
+      { number: 32, name: "As-Sajda", meaning: "The Prostration", verses: 30, file: "as-sajda", revelation: "Meccan", pages: 415 },
+      { number: 33, name: "Al-Ahzab", meaning: "The Combined Forces", verses: 73, file: "al-ahzab", revelation: "Medinan", pages: 418 },
+      { number: 34, name: "Saba", meaning: "Sheba", verses: 54, file: "saba", revelation: "Meccan", pages: 428 },
+      { number: 35, name: "Fatir", meaning: "The Originator", verses: 45, file: "fatir", revelation: "Meccan", pages: 434 },
+      { number: 36, name: "Ya-Sin", meaning: "Ya-Sin", verses: 83, file: "ya-sin", revelation: "Meccan", pages: 440 },
+      { number: 37, name: "As-Saffat", meaning: "Those who set the Ranks", verses: 182, file: "as-saffat", revelation: "Meccan", pages: 446 },
+      { number: 38, name: "Sad", meaning: "The Letter Sad", verses: 88, file: "sad", revelation: "Meccan", pages: 453 },
+      { number: 39, name: "Az-Zumar", meaning: "The Troops", verses: 75, file: "az-zumar", revelation: "Meccan", pages: 458 },
+      { number: 40, name: "Ghafir", meaning: "The Forgiver", verses: 85, file: "ghafir", revelation: "Meccan", pages: 467 },
+      { number: 41, name: "Fussilat", meaning: "Explained in Detail", verses: 54, file: "fussilat", revelation: "Meccan", pages: 477 },
+      { number: 42, name: "Ash-Shura", meaning: "The Consultation", verses: 53, file: "ash-shura", revelation: "Meccan", pages: 483 },
+      { number: 43, name: "Az-Zukhruf", meaning: "The Ornaments of Gold", verses: 89, file: "az-zukhruf", revelation: "Meccan", pages: 489 },
+      { number: 44, name: "Ad-Dukhan", meaning: "The Smoke", verses: 59, file: "ad-dukhan", revelation: "Meccan", pages: 496 },
+      { number: 45, name: "Al-Jathiya", meaning: "The Crouching", verses: 37, file: "al-jathiya", revelation: "Meccan", pages: 499 },
+      { number: 46, name: "Al-Ahqaf", meaning: "The Wind-Curved Sandhills", verses: 35, file: "al-ahqaf", revelation: "Meccan", pages: 502 },
+      { number: 47, name: "Muhammad", meaning: "Muhammad", verses: 38, file: "muhammad", revelation: "Medinan", pages: 507 },
+      { number: 48, name: "Al-Fath", meaning: "The Victory", verses: 29, file: "al-fath", revelation: "Medinan", pages: 511 },
+      { number: 49, name: "Al-Hujurat", meaning: "The Rooms", verses: 18, file: "al-hujurat", revelation: "Medinan", pages: 515 },
+      { number: 50, name: "Qaf", meaning: "The Letter Qaf", verses: 45, file: "qaf", revelation: "Meccan", pages: 518 },
+      { number: 51, name: "Adh-Dhariyat", meaning: "The Winnowing Winds", verses: 60, file: "adh-dhariyat", revelation: "Meccan", pages: 520 },
+      { number: 52, name: "At-Tur", meaning: "The Mount", verses: 49, file: "at-tur", revelation: "Meccan", pages: 523 },
+      { number: 53, name: "An-Najm", meaning: "The Star", verses: 62, file: "an-najm", revelation: "Meccan", pages: 526 },
+      { number: 54, name: "Al-Qamar", meaning: "The Moon", verses: 55, file: "al-qamar", revelation: "Meccan", pages: 528 },
+      { number: 55, name: "Ar-Rahman", meaning: "The Beneficent", verses: 78, file: "ar-rahman", revelation: "Medinan", pages: 531 },
+      { number: 56, name: "Al-Waqi'a", meaning: "The Inevitable", verses: 96, file: "al-waqia", revelation: "Meccan", pages: 534 },
+      { number: 57, name: "Al-Hadid", meaning: "The Iron", verses: 29, file: "al-hadid", revelation: "Medinan", pages: 537 },
+      { number: 58, name: "Al-Mujadila", meaning: "The Pleading Woman", verses: 22, file: "al-mujadila", revelation: "Medinan", pages: 542 },
+      { number: 59, name: "Al-Hashr", meaning: "The Exile", verses: 24, file: "al-hashr", revelation: "Medinan", pages: 545 },
+      { number: 60, name: "Al-Mumtahana", meaning: "She that is to be Examined", verses: 13, file: "al-mumtahana", revelation: "Medinan", pages: 549 },
+      { number: 61, name: "As-Saff", meaning: "The Ranks", verses: 14, file: "as-saff", revelation: "Medinan", pages: 551 },
+      { number: 62, name: "Al-Jumu'a", meaning: "The Congregation", verses: 11, file: "al-jumua", revelation: "Medinan", pages: 553 },
+      { number: 63, name: "Al-Munafiqun", meaning: "The Hypocrites", verses: 11, file: "al-munafiqun", revelation: "Medinan", pages: 554 },
+      { number: 64, name: "At-Taghabun", meaning: "The Mutual Disillusion", verses: 18, file: "at-taghabun", revelation: "Medinan", pages: 556 },
+      { number: 65, name: "At-Talaq", meaning: "The Divorce", verses: 12, file: "at-talaq", revelation: "Medinan", pages: 558 },
+      { number: 66, name: "At-Tahrim", meaning: "The Prohibition", verses: 12, file: "at-tahrim", revelation: "Medinan", pages: 560 },
+      { number: 67, name: "Al-Mulk", meaning: "The Sovereignty", verses: 30, file: "al-mulk", revelation: "Meccan", pages: 562 },
+      { number: 68, name: "Al-Qalam", meaning: "The Pen", verses: 52, file: "al-qalam", revelation: "Meccan", pages: 564 },
+      { number: 69, name: "Al-Haqqah", meaning: "The Reality", verses: 52, file: "al-haqqah", revelation: "Meccan", pages: 566 },
+      { number: 70, name: "Al-Ma'arij", meaning: "The Ascending Stairways", verses: 44, file: "al-maarij", revelation: "Meccan", pages: 568 },
+      { number: 71, name: "Nuh", meaning: "Noah", verses: 28, file: "nuh", revelation: "Meccan", pages: 570 },
+      { number: 72, name: "Al-Jinn", meaning: "The Jinn", verses: 28, file: "al-jinn", revelation: "Meccan", pages: 572 },
+      { number: 73, name: "Al-Muzzammil", meaning: "The Enshrouded One", verses: 20, file: "al-muzzammil", revelation: "Meccan", pages: 574 },
+      { number: 74, name: "Al-Muddaththir", meaning: "The Cloaked One", verses: 56, file: "al-muddaththir", revelation: "Meccan", pages: 575 },
+      { number: 75, name: "Al-Qiyamah", meaning: "The Resurrection", verses: 40, file: "al-qiyamah", revelation: "Meccan", pages: 577 },
+      { number: 76, name: "Al-Insan", meaning: "The Man", verses: 31, file: "al-insan", revelation: "Medinan", pages: 578 },
+      { number: 77, name: "Al-Mursalat", meaning: "The Emissaries", verses: 50, file: "al-mursalat", revelation: "Meccan", pages: 580 },
+      { number: 78, name: "An-Naba", meaning: "The Announcement", verses: 40, file: "an-naba", revelation: "Meccan", pages: 582 },
+      { number: 79, name: "An-Nazi'at", meaning: "Those who Pull Out", verses: 46, file: "an-naziat", revelation: "Meccan", pages: 583 },
+      { number: 80, name: "Abasa", meaning: "He Frowned", verses: 42, file: "abasa", revelation: "Meccan", pages: 585 },
+      { number: 81, name: "At-Takwir", meaning: "The Overthrowing", verses: 29, file: "at-takwir", revelation: "Meccan", pages: 586 },
+      { number: 82, name: "Al-Infitar", meaning: "The Cleaving", verses: 19, file: "al-infitar", revelation: "Meccan", pages: 587 },
+      { number: 83, name: "Al-Mutaffifin", meaning: "The Defrauding", verses: 36, file: "al-mutaffifin", revelation: "Meccan", pages: 587 },
+      { number: 84, name: "Al-Inshiqaq", meaning: "The Splitting Open", verses: 25, file: "al-inshiqaq", revelation: "Meccan", pages: 589 },
+      { number: 85, name: "Al-Buruj", meaning: "The Mansions of the Stars", verses: 22, file: "al-buruj", revelation: "Meccan", pages: 590 },
+      { number: 86, name: "At-Tariq", meaning: "The Morning Star", verses: 17, file: "at-tariq", revelation: "Meccan", pages: 591 },
+      { number: 87, name: "Al-A'la", meaning: "The Most High", verses: 19, file: "al-ala", revelation: "Meccan", pages: 591 },
+      { number: 88, name: "Al-Ghashiyah", meaning: "The Overwhelming", verses: 26, file: "al-ghashiyah", revelation: "Meccan", pages: 592 },
+      { number: 89, name: "Al-Fajr", meaning: "The Dawn", verses: 30, file: "al-fajr", revelation: "Meccan", pages: 593 },
+      { number: 90, name: "Al-Balad", meaning: "The City", verses: 20, file: "al-balad", revelation: "Meccan", pages: 594 },
+      { number: 91, name: "Ash-Shams", meaning: "The Sun", verses: 15, file: "ash-shams", revelation: "Meccan", pages: 595 },
+      { number: 92, name: "Al-Lail", meaning: "The Night", verses: 21, file: "al-lail", revelation: "Meccan", pages: 595 },
+      { number: 93, name: "Ad-Duhaa", meaning: "The Morning Hours", verses: 11, file: "ad-duhaa", revelation: "Meccan", pages: 596 },
+      { number: 94, name: "Ash-Sharh", meaning: "The Relief", verses: 8, file: "ash-sharh", revelation: "Meccan", pages: 596 },
+      { number: 95, name: "At-Tin", meaning: "The Fig", verses: 8, file: "at-tin", revelation: "Meccan", pages: 597 },
+      { number: 96, name: "Al-Alaq", meaning: "The Clot", verses: 19, file: "al-alaq", revelation: "Meccan", pages: 597 },
+      { number: 97, name: "Al-Qadr", meaning: "The Power", verses: 5, file: "al-qadr", revelation: "Meccan", pages: 598 },
+      { number: 98, name: "Al-Bayyinah", meaning: "The Clear Proof", verses: 8, file: "al-bayyinah", revelation: "Medinan", pages: 598 },
+      { number: 99, name: "Az-Zalzala", meaning: "The Earthquake", verses: 8, file: "az-zalzalah", revelation: "Medinan", pages: 599 },
+      { number: 100, name: "Al-Adiyat", meaning: "The Courser", verses: 11, file: "al-adiyat", revelation: "Meccan", pages: 599 },
+      { number: 101, name: "Al-Qari'ah", meaning: "The Calamity", verses: 11, file: "al-qariah", revelation: "Meccan", pages: 600 },
+      { number: 102, name: "At-Takathur", meaning: "The Rivalry", verses: 8, file: "at-takathur", revelation: "Meccan", pages: 600 },
+      { number: 103, name: "Al-Asr", meaning: "The Declining Day", verses: 3, file: "al-asr", revelation: "Meccan", pages: 601 },
+      { number: 104, name: "Al-Humazah", meaning: "The Traducer", verses: 9, file: "al-humazah", revelation: "Meccan", pages: 601 },
+      { number: 105, name: "Al-Fil", meaning: "The Elephant", verses: 5, file: "al-fil", revelation: "Meccan", pages: 601 },
+      { number: 106, name: "Quraysh", meaning: "Quraysh", verses: 4, file: "quraysh", revelation: "Meccan", pages: 602 },
+      { number: 107, name: "Al-Ma'un", meaning: "The Small Kindnesses", verses: 7, file: "al-maun", revelation: "Meccan", pages: 602 },
+      { number: 108, name: "Al-Kawthar", meaning: "The Abundance", verses: 3, file: "al-kawthar", revelation: "Meccan", pages: 602 },
+      { number: 109, name: "Al-Kafirun", meaning: "The Disbelievers", verses: 6, file: "al-kafirun", revelation: "Meccan", pages: 603 },
+      { number: 110, name: "An-Nasr", meaning: "The Divine Support", verses: 3, file: "an-nasr", revelation: "Medinan", pages: 603 },
+      { number: 111, name: "Al-Masad", meaning: "The Palm Fiber", verses: 5, file: "al-masad", revelation: "Meccan", pages: 603 },
+      { number: 112, name: "Al-Ikhlas", meaning: "The Sincerity", verses: 4, file: "al-ikhlas", revelation: "Meccan", pages: 604 },
+      { number: 113, name: "Al-Falaq", meaning: "The Daybreak", verses: 5, file: "al-falaq", revelation: "Meccan", pages: 604 },
+      { number: 114, name: "An-Nas", meaning: "The Mankind", verses: 6, file: "an-nas", revelation: "Meccan", pages: 604 }
     ];
 
     function setThemeIcon() {
@@ -591,17 +1832,21 @@
       document.getElementById(tab + '-tab').classList.add('active');
       document.getElementById(tab + '-content').classList.remove('hidden');
 
-      if (tab === 'myquran') {
+      if (tab === 'surah') {
+        populateSurahs();
+      } else if (tab === 'reveal') {
+        populateRevelationOrder();
+      } else if (tab === 'myquran') {
         populateMyQuran();
       }
     }
 
-    function createSurahCard(surah) {
+    function createSurahCard(surah, options = {}) {
       const card = document.createElement('a');
       card.href = `${surah.file}.html`;
       card.className = 'card';
       card.setAttribute('data-surah', surah.number);
-      card.onclick = () => {
+      card.onclick = (e) => {
         localStorage.setItem('recentSurah', surah.number);
       };
 
@@ -609,19 +1854,91 @@
       const bookmarkedSurahs = JSON.parse(localStorage.getItem('bookmarkedSurahs') || '[]');
       const isFavorited = favoritedSurahs.includes(surah.number);
       const isBookmarked = bookmarkedSurahs.includes(surah.number);
+      
+      // Get placeholder image for this surah - currently all using pic1.jpeg
+      // You can later change this to use different images for each surah
+      const placeholderImage = surahPlaceholders[surah.number - 1];
 
-      card.innerHTML = `
-        <div class="icons">
-          <span class="favorite-icon" onclick="event.preventDefault(); toggleFavoriteSurah(${surah.number});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
-          <span class="bookmark-icon" onclick="event.preventDefault(); toggleBookmarkSurah(${surah.number});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
-        </div>
-        <div class="card-content">
+      let cardHTML = `
+        <img src="${placeholderImage}" alt="${surah.name}">
+        <div class="overlay">
           <span class="surah-number">${surah.number}. ${surah.name}</span>
-          <span class="surah-meaning">${surah.meaning}</span>
-          <span class="verse-count">${surah.verses} verses</span>
+          <div class="additional-details">
+            <div class="icons">
+              <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteSurah(${surah.number});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+              <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkSurah(${surah.number});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
+            </div>
+            <span class="surah-meaning">${surah.meaning}</span>
+            <div class="detail-item">
+              <span class="detail-label">Revelation:</span>
+              <span class="detail-value">${surah.revelation}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Verses:</span>
+              <span class="detail-value">${surah.verses}</span>
+            </div>
+          </div>
+          <div class="quick-actions">
+            <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${surah.file}.html', '_blank');">Read</button>
+            <button onclick="event.preventDefault(); event.stopPropagation(); playSurahAudio(${surah.number});">Listen</button>
+          </div>
         </div>
       `;
+
+      if (options.revelationIndex) {
+        cardHTML = `<span class="revelation-index">#${options.revelationIndex}</span>` + cardHTML;
+      }
+
+      card.innerHTML = cardHTML;
       return card;
+    }
+
+    function getJuzForSurah(surahName) {
+      // Simplified juz mapping
+      const juzData = [
+        { juz: 1, surahs: ["Al-Fatiha", "Al-Baqarah"] },
+        { juz: 2, surahs: ["Al-Baqarah"] },
+        { juz: 3, surahs: ["Al-Baqarah", "Al-Imran"] },
+        { juz: 4, surahs: ["Al-Imran", "An-Nisa"] },
+        { juz: 5, surahs: ["An-Nisa"] },
+        { juz: 6, surahs: ["An-Nisa", "Al-Maidah"] },
+        { juz: 7, surahs: ["Al-Maidah", "Al-An'am"] },
+        { juz: 8, surahs: ["Al-An'am", "Al-A'raf"] },
+        { juz: 9, surahs: ["Al-A'raf"] },
+        { juz: 10, surahs: ["Al-A'raf", "Al-Anfal"] },
+        { juz: 11, surahs: ["At-Tawbah", "Yunus"] },
+        { juz: 12, surahs: ["Yunus", "Hud"] },
+        { juz: 13, surahs: ["Yusuf"] },
+        { juz: 14, surahs: ["Ar-Ra'd", "Ibrahim"] },
+        { juz: 15, surahs: ["Al-Hijr", "An-Nahl"] },
+        { juz: 16, surahs: ["An-Nahl", "Al-Isra"] },
+        { juz: 17, surahs: ["Al-Isra", "Al-Kahf"] },
+        { juz: 18, surahs: ["Al-Kahf", "Maryam"] },
+        { juz: 19, surahs: ["Maryam", "Taha"] },
+        { juz: 20, surahs: ["Ta-Ha", "Al-Anbiya"] },
+        { juz: 21, surahs: ["Al-Hajj", "Al-Mu'minun"] },
+        { juz: 22, surahs: ["An-Nur", "Al-Furqan"] },
+        { juz: 23, surahs: ["Ash-Shu'ara", "An-Naml"] },
+        { juz: 24, surahs: ["An-Naml", "Al-Qasas"] },
+        { juz: 25, surahs: ["Al-Qasas", "Al-Ankabut"] },
+        { juz: 26, surahs: ["Al-Ankabut", "Al-Ahzab"] },
+        { juz: 27, surahs: ["Saba", "Fatir", "Ya-Sin"] },
+        { juz: 28, surahs: ["Al-Mujadila", "Al-Hashr", "Al-Mumtahana", "As-Saff", "Al-Jumu'a", "Al-Munafiqun"] },
+        { juz: 29, surahs: ["Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij", "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddathir", "Al-Qiyama", "Al-Insan", "Al-Mursalat"] },
+        { juz: 30, surahs: ["An-Naba", "An-Nazi'at", "Abasa", "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad", "Ash-Shams", "Al-Lail", "Ad-Duhaa", "Ash-Sharh", "At-Tin", "Al-Alaq", "Al-Qadr", "Al-Bayyina", "Az-Zalzala", "Al-Adiyat", "Al-Qari'a", "At-Takathur", "Al-Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr", "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"] }
+      ];
+      
+      for (const juz of juzData) {
+        if (juz.surahs.includes(surahName)) {
+          return juz.juz;
+        }
+      }
+      return "Multiple";
+    }
+
+    function playSurahAudio(surahNumber) {
+      alert(`Playing audio for Surah ${surahNumber}`);
+      // In a real implementation, you would play actual audio here
     }
 
     function toggleFavoriteSurah(surahNumber) {
@@ -657,14 +1974,17 @@
     }
 
     function populateSurahs(filter = '') {
-      const surahContainer = document.querySelector('#surah-content .cards');
+      const surahContainer = document.getElementById('all-surahs-grid');
       surahContainer.innerHTML = '';
+      
       const filteredSurahs = filter ? surahData.filter(surah =>
         surah.name.toLowerCase().includes(filter.toLowerCase()) ||
         surah.meaning.toLowerCase().includes(filter.toLowerCase())
       ) : surahData;
-      filteredSurahs.forEach(surah => {
-        surahContainer.appendChild(createSurahCard(surah));
+
+      filteredSurahs.forEach((surah) => {
+        const card = createSurahCard(surah);
+        surahContainer.appendChild(card);
       });
     }
 
@@ -720,8 +2040,9 @@
     }
 
     function populateRevelationOrder() {
-      const revealContainer = document.querySelector('#reveal-content .cards');
+      const revealContainer = document.getElementById('revelation-order-grid');
       revealContainer.innerHTML = '';
+      
       const revelationOrder = [
         "Al-Alaq", "Al-Qalam", "Al-Muzzammil", "Al-Muddathir", "Al-Fatiha", "Al-Masad", "At-Takwir", "Al-A'la",
         "Al-Lail", "Al-Fajr", "Ad-Duhaa", "Ash-Sharh", "Al-Asr", "Al-Adiyat", "Al-Kawthar", "At-Takathur",
@@ -743,8 +2064,9 @@
       revelationOrder.forEach((surahName, index) => {
         const surah = surahData.find(s => s.name === surahName);
         if (surah) {
-          const card = createSurahCard(surah);
-          card.querySelector('.surah-number').textContent = `${index + 1}. ${surah.name}`;
+          const card = createSurahCard(surah, {
+            revelationIndex: index + 1
+          });
           revealContainer.appendChild(card);
         }
       });
@@ -851,83 +2173,5 @@
       });
     };
   </script>
-</head>
-<body>
-  <nav class="navbar">
-    <h1>MuslimBro1400</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="menu.png" alt="Menu" />
-    </button>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="quran.html">Quran</a>
-      <a href="hadith.html">Hadith</a>
-      <a href="islamic-books.html">Islamic Books</a>
-      <a href="quran-recitations.html">Quran Recitations</a>
-      <a href="about.html">About</a>
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
-      </button>
-    </div>
-  </nav>
-
-  <header class="banner">
-    <img src="banner.png" alt="Banner" class="banner-img">
-  </header>
-
-  <main class="container">
-    <div class="search-container">
-      <input type="text" id="surah-search" placeholder="Search for Surahs..." class="search-input">
-    </div>
-    <div class="tabs">
-      <button id="surah-tab" class="tab-button active" onclick="switchTab('surah')">Surahs</button>
-      <button id="juz-tab" class="tab-button" onclick="switchTab('juz')">Juz</button>
-      <button id="reveal-tab" class="tab-button" onclick="switchTab('reveal')">Revelation Order</button>
-      <button id="myquran-tab" class="tab-button" onclick="switchTab('myquran')">My Quran</button>
-    </div>
-
-    <section id="surah-content" class="tab-content">
-      <div id="recent-surah-section" class="recent-surah-section hidden">
-        <h2><hr> Recently Visited Surah<hr></h2>
-        <div class="recent-card-container"></div>
-      </div>
-      <h2><hr> All Surahs<hr></h2>
-      <div class="cards"></div>
-    </section>
-
-    <section id="juz-content" class="tab-content hidden">
-      <h2><hr>Read Juz<hr></h2>
-      <div class="juz-group"></div>
-    </section>
-
-    <section id="reveal-content" class="tab-content hidden">
-      <h2><hr>Read in Revelation Order<hr></h2>
-      <div class="cards"></div>
-    </section>
-
-    <section id="myquran-content" class="tab-content hidden">
-      <h2><hr>My Quran<hr></h2>
-      <div class="myquran-sections">
-        <div class="myquran-section">
-          <h3>Favorited Ayahs</h3>
-          <div id="favorited-ayahs" class="cards"></div>
-        </div>
-        <div class="myquran-section">
-          <h3>Favorited Surahs</h3>
-          <div id="favorited-surahs" class="cards"></div>
-        </div>
-        <div class="myquran-section">
-          <h3>Bookmarked Ayahs</h3>
-          <div id="bookmarked-ayahs" class="cards"></div>
-        </div>
-        <div class="myquran-section">
-          <h3>Bookmarked Surahs</h3>
-          <div id="bookmarked-surahs" class="cards"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 </body>
 </html>
