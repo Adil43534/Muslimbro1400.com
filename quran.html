@@ -524,353 +524,352 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    .footer {
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-      padding: 3rem 1rem 1.5rem;
-      margin-top: 3rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s ease;
-    }
-
-    .dark-mode .footer {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-      color: #e0e0e0;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-section {
-      padding: 1.5rem;
+    /* Enhanced Ayah Card Styling */
+    .ayah-card {
+      flex: 0 0 auto;
+      width: 300px;
+      background: linear-gradient(135deg, #333333 0%, #2a2a2a 100%);
       border-radius: 16px;
-      background-color: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .dark-mode .footer-section {
-      background-color: rgba(45, 45, 45, 0.7);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-logo-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-logo img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-logo h2 {
-      margin: 1rem 0 0.5rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #007b5e, #00a884);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .dark-mode .footer-logo h2 {
-      background: linear-gradient(135deg, #0c8, #00d9a5);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-
-    .footer-tagline {
-      font-size: 0.95rem;
-      color: #666;
-      margin-top: 0.5rem;
-      font-style: italic;
-    }
-
-    .dark-mode .footer-tagline {
-      color: #aaa;
-    }
-
-    .footer-section-title {
-      font-size: 1.3rem;
-      margin-bottom: 1.2rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .dark-mode .footer-section-title {
-      color: #e0e0e0;
-    }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links li {
-      margin: 0.6rem 0;
-    }
-
-    .footer-links a {
-      color: inherit;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      display: inline-block;
-      font-weight: 500;
-    }
-
-    .footer-links a:hover {
-      color: #007b5e;
-      background-color: rgba(0, 123, 94, 0.1);
-    }
-
-    .dark-mode .footer-links a:hover {
-      color: #0c8;
-      background-color: rgba(0, 200, 136, 0.1);
-    }
-
-    .footer-contact {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .contact-info {
-      width: 100%;
-    }
-
-    .email-box {
-      background: linear-gradient(135deg, #007b5e, #00a884);
-      padding: 1.2rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.25);
-      margin-top: 1rem;
-    }
-
-    .email-box a {
       color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ayah-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      border-color: rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #222222 100%);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .ayah-card:hover {
+      border-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid rgba(0, 123, 94, 0.3);
+      position: relative;
+    }
+
+    .dark-mode .ayah-header {
+      border-bottom-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 1px;
+    }
+
+    .dark-mode .ayah-header::after {
+      background: linear-gradient(90deg, #0c8, #00d9a5);
+    }
+
+    .surah-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
     }
 
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
+    .surah-name::before {
+      /* content: '📖'; */
+      font-size: 0.9rem;
     }
 
-    .social-link {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background-color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.2rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      border-top: 2px dashed rgba(0, 123, 94, 0.2);
-      font-size: 0.95rem;
-      color: #666;
-      transition: all 0.5s ease;
-    }
-
-    .dark-mode .footer-bottom {
-      color: #aaa;
-      border-top-color: rgba(0, 200, 136, 0.2);
-    }
-
-    .footer-bottom a {
-      color: #007b5e;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .dark-mode .footer-bottom a {
-      color: #0c8;
-    }
-
-    .bismillah {
-      font-family: 'Amiri', serif;
-      font-size: 1.2rem;
-      color: #007b5e;
-      margin-bottom: 1rem;
-    }
-
-    .dark-mode .bismillah {
-      color: #0c8;
-    }
-
-    @media (max-width: 992px) {
-      .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .footer-logo-section {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
-
-      .footer-section {
-        padding: 1.2rem;
-      }
-      
-      .cards-vertical-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-    }
-
-    @media (max-width: 600px) {
-      .navbar h1 {
-        font-size: 1.25rem;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #f0f0f0;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-
-      .dark-mode .nav-links {
-        background-color: #2c2c2c;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        margin: 0.5rem 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-      
-      .cards-vertical-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 0.8rem;
-      }
-      
-      .card {
-        width: 130px;
-      }
-      
-      .card .additional-details {
-        font-size: 0.75rem;
-      }
-      
-      .card .quick-actions button {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.7rem;
-      }
-    }
-
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .search-input {
-      padding: 0.5rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 400px;
-      background-color: #fff;
-      color: #333;
-    }
-
-    .dark-mode .search-input {
-      background-color: #2c2c2c;
-      color: #e0e0e0;
-      border-color: #444;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: #007b5e;
-    }
-
-    .dark-mode .search-input:focus {
-      border-color: #0c8;
-    }
-
-    #scrollToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: #007b5e;
+    .revelation-badge {
+      background: linear-gradient(135deg, #007b5e, #00a884);
       color: white;
-      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 123, 94, 0.2);
+    }
+
+    .dark-mode .revelation-badge {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      box-shadow: 0 2px 4px rgba(0, 200, 136, 0.2);
+    }
+
+    .ayah-text-container {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .ayah-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 123, 94, 0.15);
+      color: #007b5e;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border: 2px solid rgba(0, 123, 94, 0.3);
     }
 
-    #scrollToTop.show {
-      opacity: 1;
-      visibility: visible;
+    .dark-mode .ayah-number {
+      background: rgba(0, 200, 136, 0.15);
+      color: #0c8;
+      border-color: rgba(0, 200, 136, 0.3);
     }
 
-    .dark-mode #scrollToTop {
-      background-color: #0c8;
+    .ayah-text {
+      padding-left: 2.5rem;
+      line-height: 1.5;
+      font-size: 1rem;
+      font-family: 'Amiri', serif;
+      text-align: right;
+      direction: rtl;
+      color: #fff;
+      max-height: 70px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-text::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 2.5rem;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, rgba(42, 42, 42, 0.95));
+    }
+
+    .dark-mode .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(34, 34, 34, 0.95));
+    }
+
+    .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 123, 94, 0.1));
+    }
+
+    .dark-mode .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 200, 136, 0.1));
+    }
+
+    .ayah-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .verse-info {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .verse-info::before {
+      /* content: '🔢'; */
+      font-size: 0.8rem;
+    }
+
+    .surah-meaning {
+      font-style: italic;
+      color: #bbb;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .surah-meaning::before {
+      /* content: '💡'; */
+      font-size: 0.8rem;
+    }
+
+    .ayah-card-actions {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .ayah-card-actions button {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      letter-spacing: 0.3px;
+      min-width: 100px;
+    }
+
+    .ayah-card-actions button.remove-btn {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      box-shadow: 0 3px 6px rgba(220, 53, 69, 0.2);
+    }
+
+    .ayah-card-actions button.remove-btn:hover {
+      background: linear-gradient(135deg, #c82333, #bd2130);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    /* .ayah-card-actions button.remove-btn::before {
+      content: '🗑️';
+    } */
+
+    .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #007b5e, #005a45);
+      color: white;
+      box-shadow: 0 3px 6px rgba(0, 123, 94, 0.2);
+    }
+
+    .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #005a45, #004535);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0, 123, 94, 0.3);
+    }
+
+    /* .ayah-card-actions button.view-btn::before {
+      content: '👁️';
+    } */
+
+    .dark-mode .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #0c8, #00a884);
+      box-shadow: 0 3px 6px rgba(0, 200, 136, 0.2);
+    }
+
+    .dark-mode .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #00a884, #008c6d);
+      box-shadow: 0 5px 12px rgba(0, 200, 136, 0.3);
+    }
+
+    /* Card type indicators */
+    .card-type-indicator {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    /* .favorite-card .card-type-indicator {
+      background: linear-gradient(135deg, #ff6b6b, #ff5252);
+      color: white;
+    }
+
+    .bookmark-card .card-type-indicator {
+      background: linear-gradient(135deg, #4ecdc4, #44a08d);
+      color: white;
+    } */
+
+
+    /* Hover effect gradients */
+    .favorite-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .bookmark-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .dark-mode .favorite-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    .dark-mode .bookmark-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    /* For the My Quran sections */
+    #favorited-ayahs .cards,
+    #bookmarked-ayahs .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      overflow-y: auto;
+      max-height: 500px;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .dark-mode #favorited-ayahs .cards,
+    .dark-mode #bookmarked-ayahs .cards {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    #favorited-ayahs .cards::-webkit-scrollbar,
+    #bookmarked-ayahs .cards::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #favorited-ayahs .cards::-webkit-scrollbar-thumb,
+    #bookmarked-ayahs .cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode #favorited-ayahs .cards::-webkit-scrollbar-thumb,
+    .dark-mode #bookmarked-ayahs .cards::-webkit-scrollbar-thumb {
+      background: #0c8;
     }
 
     /* Footer Styles */
@@ -1231,78 +1230,92 @@
       color: #0c8;
     }
 
-    /* Footer Responsive Styles */
-    
-    /* Desktop (992px - 1199px) */
-    @media (max-width: 1199px) {
-      .footer-content {
-        gap: 2rem;
-      }
-      
-      .footer-section {
-        padding: 1.5rem;
-      }
-      
-      .footer-logo img {
-        width: 80px;
-        height: 80px;
-      }
+    /* Search Container */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
 
-    /* Tablet Landscape (992px - 1199px) */
+    .search-input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .dark-mode .search-input {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+      border-color: #444;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #007b5e;
+    }
+
+    .dark-mode .search-input:focus {
+      border-color: #0c8;
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 992px) {
       .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
 
-      .footer-section {
-        padding: 1.3rem;
-      }
-
       .footer-logo-section {
         grid-column: 1 / -1;
         order: -1;
       }
-
-      .footer-links-section {
-        order: 1;
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
-
-      .footer-contact {
-        order: 2;
-      }
-
-      .footer-bottom {
-        padding-top: 1.5rem;
-        margin-top: 1.5rem;
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       }
     }
 
-    /* Tablet Portrait (768px - 991px) */
-    @media (max-width: 991px) {
-      .footer {
-        padding: 2.5rem 1.5rem 1.5rem;
-      }
-
-      .footer-content {
-        gap: 1.25rem;
-      }
-
-      .footer-section {
-        padding: 1.25rem;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.7rem;
-      }
-
-      .footer-section-title {
-        font-size: 1.2rem;
-      }
-    }
-
-    /* Tablet (768px) */
     @media (max-width: 768px) {
       .footer-content {
         grid-template-columns: 1fr;
@@ -1312,115 +1325,101 @@
       .footer-section {
         padding: 1.2rem;
       }
-
-      .footer-logo-section {
-        order: -1;
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
-
-      .footer-links-section {
-        order: 1;
+      
+      .ayah-card {
+        width: 260px;
+        height: 190px;
       }
-
-      .footer-contact {
-        order: 2;
-      }
-
-      .email-box {
-        padding: 1rem 1.2rem;
-      }
-
-      .email-box a {
-        font-size: 0.9rem;
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       }
     }
 
-    /* Large Mobile (576px - 767px) */
-    @media (max-width: 576px) {
-      .footer {
-        padding: 2rem 1rem 1rem;
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
       }
 
-      .footer-content {
-        gap: 1rem;
-      }
-
-      .footer-section {
-        padding: 1rem;
-        border-radius: 12px;
-      }
-
-      .footer-logo img {
-        width: 70px;
-        height: 70px;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-tagline {
-        font-size: 0.9rem;
-      }
-
-      .footer-section-title {
-        font-size: 1.15rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.6rem;
-      }
-
-      .footer-section-title::after {
-        width: 40px;
-        height: 2px;
-      }
-
-      .footer-links {
-        display: flex;
+      .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
 
-      .footer-links li {
-        margin: 0.4rem 0;
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
       }
 
-      .footer-links a {
-        padding: 0.4rem 1rem 0.4rem 1.5rem;
-        font-size: 0.95rem;
+      .nav-links.active {
+        display: flex;
       }
 
-      .social-links {
+      .nav-links a {
+        margin: 0.5rem 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 0.8rem;
       }
-
-      .social-link {
-        width: 42px;
-        height: 42px;
-        font-size: 1.1rem;
+      
+      .card {
+        width: 130px;
       }
-
-      .email-box {
+      
+      .card .additional-details {
+        font-size: 0.75rem;
+      }
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+      }
+      
+      .ayah-card {
+        width: 220px;
+        height: 180px;
+      }
+      
+      .ayah-text {
+        font-size: 0.9rem;
+        max-height: 60px;
+      }
+      
+      .ayah-header {
+        font-size: 0.9rem;
+      }
+      
+      .ayah-card-actions button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 80px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
         padding: 1rem;
-        border-radius: 10px;
-      }
-
-      .email-box a {
-        font-size: 0.85rem;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-
-      .email-box a::before {
-        font-size: 1rem;
-      }
-
-      .footer-bottom {
-        padding-top: 1.25rem;
-        margin-top: 1.25rem;
-        font-size: 0.85rem;
       }
     }
 
-    /* Medium Mobile (480px) */
     @media (max-width: 480px) {
       .footer {
         padding: 1.75rem 0.75rem 0.75rem;
@@ -1472,69 +1471,17 @@
         margin-top: 1rem;
         font-size: 0.8rem;
       }
-    }
-
-    /* Small Mobile (375px) */
-    @media (max-width: 400px) {
-      .footer {
-        padding: 1.5rem 0.5rem 0.5rem;
+      
+      .ayah-card {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
       }
-
-      .footer-section {
-        padding: 0.8rem;
-        border-radius: 8px;
-      }
-
-      .footer-logo img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.3rem;
-      }
-
-      .footer-tagline {
-        font-size: 0.8rem;
-      }
-
-      .bismillah {
-        font-size: 1rem;
-      }
-
-      .footer-section-title {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .footer-links a {
-        padding: 0.3rem 0.6rem 0.3rem 1.2rem;
-        font-size: 0.85rem;
-      }
-
-      .social-link {
-        width: 38px;
-        height: 38px;
-        font-size: 0.9rem;
-      }
-
-      .email-box {
-        padding: 0.8rem;
-      }
-
-      .email-box a {
-        font-size: 0.8rem;
-      }
-
-      .footer-bottom {
-        padding-top: 0.8rem;
-        margin-top: 0.8rem;
-        font-size: 0.75rem;
-      }
-
-      .footer-bottom p {
-        margin: 0.4rem 0;
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: 1fr;
+        justify-items: center;
       }
     }
   </style>
@@ -1679,7 +1626,6 @@
     const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
 
     // Array of placeholder image names - currently all using pic1.jpeg
-    // You can later change this to use different images like ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg", ...]
     const surahPlaceholders = Array(114).fill("pic1.jpeg");
 
     const surahData = [
@@ -1855,8 +1801,6 @@
       const isFavorited = favoritedSurahs.includes(surah.number);
       const isBookmarked = bookmarkedSurahs.includes(surah.number);
       
-      // Get placeholder image for this surah - currently all using pic1.jpeg
-      // You can later change this to use different images for each surah
       const placeholderImage = surahPlaceholders[surah.number - 1];
 
       let cardHTML = `
@@ -1893,8 +1837,81 @@
       return card;
     }
 
+    function createFavoritedAyahCard(ayah) {
+      const surah = surahData.find(s => s.number === ayah.surah);
+      const card = document.createElement('a');
+      card.href = `${surah.file}.html?ayah=${ayah.ayah}`;
+      card.className = 'ayah-card favorite-card';
+      card.setAttribute('data-surah', ayah.surah);
+      card.setAttribute('data-ayah', ayah.ayah);
+      
+      const ayahReference = `Surah ${surah.name} (${surah.number}:${ayah.ayah})`;
+      
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">${surah.name}</span>
+            <span class="revelation-badge">${surah.revelation}</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${ayah.ayah}</div>
+            <div class="ayah-text">
+              ${ayahReference}
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Verse ${ayah.ayah} of ${surah.verses}</span>
+            <span class="surah-meaning">${surah.meaning}</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('${surah.file}.html?ayah=${ayah.ayah}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeFavoritedAyah(${ayah.surah}, ${ayah.ayah})">Remove</button>
+          </div>
+        </div>
+      `;
+      
+      return card;
+    }
+
+    function createBookmarkedAyahCard(ayah) {
+      const surah = surahData.find(s => s.number === ayah.surah);
+      const card = document.createElement('a');
+      card.href = `${surah.file}.html?ayah=${ayah.ayah}`;
+      card.className = 'ayah-card bookmark-card';
+      card.setAttribute('data-surah', ayah.surah);
+      card.setAttribute('data-ayah', ayah.ayah);
+      
+      const ayahReference = `Surah ${surah.name} (${surah.number}:${ayah.ayah})`;
+      
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">${surah.name}</span>
+            <span class="revelation-badge">${surah.revelation}</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${ayah.ayah}</div>
+            <div class="ayah-text">
+              ${ayahReference}
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Verse ${ayah.ayah} of ${surah.verses}</span>
+            <span class="surah-meaning">${surah.meaning}</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('${surah.file}.html?ayah=${ayah.ayah}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeBookmarkedAyah(${ayah.surah}, ${ayah.ayah})">Remove</button>
+          </div>
+        </div>
+      `;
+      
+      return card;
+    }
+
     function getJuzForSurah(surahName) {
-      // Simplified juz mapping
       const juzData = [
         { juz: 1, surahs: ["Al-Fatiha", "Al-Baqarah"] },
         { juz: 2, surahs: ["Al-Baqarah"] },
@@ -1938,7 +1955,6 @@
 
     function playSurahAudio(surahNumber) {
       alert(`Playing audio for Surah ${surahNumber}`);
-      // In a real implementation, you would play actual audio here
     }
 
     function toggleFavoriteSurah(surahNumber) {
@@ -1949,12 +1965,16 @@
         favoritedSurahs.push(surahNumber);
       }
       localStorage.setItem('favoritedSurahs', JSON.stringify(favoritedSurahs));
-      // Update all icons for this surah across the page
       const isFavorited = favoritedSurahs.includes(surahNumber);
       const cards = document.querySelectorAll(`[data-surah="${surahNumber}"] .favorite-icon`);
       cards.forEach(icon => {
         icon.innerHTML = isFavorited ? favoriteSVG : unfavoriteSVG;
       });
+      
+      // Refresh My Quran section if it's active
+      if (document.getElementById('myquran-tab').classList.contains('active')) {
+        populateMyQuran();
+      }
     }
 
     function toggleBookmarkSurah(surahNumber) {
@@ -1965,12 +1985,38 @@
         bookmarkedSurahs.push(surahNumber);
       }
       localStorage.setItem('bookmarkedSurahs', JSON.stringify(bookmarkedSurahs));
-      // Update all icons for this surah across the page
       const isBookmarked = bookmarkedSurahs.includes(surahNumber);
       const cards = document.querySelectorAll(`[data-surah="${surahNumber}"] .bookmark-icon`);
       cards.forEach(icon => {
         icon.innerHTML = isBookmarked ? bookmarkedSVG : unbookmarkedSVG;
       });
+      
+      // Refresh My Quran section if it's active
+      if (document.getElementById('myquran-tab').classList.contains('active')) {
+        populateMyQuran();
+      }
+    }
+
+    function removeFavoritedAyah(surahNumber, ayahNumber) {
+      let favoritedAyahs = JSON.parse(localStorage.getItem('favoritedAyahs') || '[]');
+      const ayahIndex = favoritedAyahs.findIndex(a => a.surah === surahNumber && a.ayah === ayahNumber);
+      
+      if (ayahIndex > -1) {
+        favoritedAyahs.splice(ayahIndex, 1);
+        localStorage.setItem('favoritedAyahs', JSON.stringify(favoritedAyahs));
+        populateMyQuran();
+      }
+    }
+
+    function removeBookmarkedAyah(surahNumber, ayahNumber) {
+      let bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs') || '[]');
+      const ayahIndex = bookmarkedAyahs.findIndex(a => a.surah === surahNumber && a.ayah === ayahNumber);
+      
+      if (ayahIndex > -1) {
+        bookmarkedAyahs.splice(ayahIndex, 1);
+        localStorage.setItem('bookmarkedAyahs', JSON.stringify(bookmarkedAyahs));
+        populateMyQuran();
+      }
     }
 
     function populateSurahs(filter = '') {
@@ -2087,58 +2133,60 @@
       }
     }
 
-    function createAyahCard(ayah) {
-      const surah = surahData.find(s => s.number === ayah.surah);
-      const card = document.createElement('a');
-      card.href = `${surah.file}.html?ayah=${ayah.ayah}`;
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="card-content">
-          <span class="surah-number">${surah.name} - Ayah ${ayah.ayah}</span>
-          <span class="surah-meaning">${surah.meaning}</span>
-        </div>
-      `;
-      return card;
-    }
-
     function populateMyQuran() {
       // Favorited Surahs
       const favoritedSurahs = JSON.parse(localStorage.getItem('favoritedSurahs') || '[]');
       const favoritedSurahsContainer = document.getElementById('favorited-surahs');
       favoritedSurahsContainer.innerHTML = '';
-      favoritedSurahs.forEach(surahNum => {
-        const surah = surahData.find(s => s.number === surahNum);
-        if (surah) {
-          favoritedSurahsContainer.appendChild(createSurahCard(surah));
-        }
-      });
+      if (favoritedSurahs.length === 0) {
+        favoritedSurahsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666; font-style: italic;">No favorited surahs yet. Click the heart icon on any surah to add it here.</p>';
+      } else {
+        favoritedSurahs.forEach(surahNum => {
+          const surah = surahData.find(s => s.number === surahNum);
+          if (surah) {
+            favoritedSurahsContainer.appendChild(createSurahCard(surah));
+          }
+        });
+      }
 
       // Favorited Ayahs
       const favoritedAyahs = JSON.parse(localStorage.getItem('favoritedAyahs') || '[]');
       const favoritedAyahsContainer = document.getElementById('favorited-ayahs');
       favoritedAyahsContainer.innerHTML = '';
-      favoritedAyahs.forEach(ayah => {
-        favoritedAyahsContainer.appendChild(createAyahCard(ayah));
-      });
+      if (favoritedAyahs.length === 0) {
+        favoritedAyahsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666; font-style: italic;">No favorited ayahs yet. When viewing ayahs, use the favorite feature to add them here.</p>';
+      } else {
+        favoritedAyahs.forEach(ayah => {
+          favoritedAyahsContainer.appendChild(createFavoritedAyahCard(ayah));
+        });
+      }
 
       // Bookmarked Surahs
       const bookmarkedSurahs = JSON.parse(localStorage.getItem('bookmarkedSurahs') || '[]');
       const bookmarkedSurahsContainer = document.getElementById('bookmarked-surahs');
       bookmarkedSurahsContainer.innerHTML = '';
-      bookmarkedSurahs.forEach(surahNum => {
-        const surah = surahData.find(s => s.number === surahNum);
-        if (surah) {
-          bookmarkedSurahsContainer.appendChild(createSurahCard(surah));
-        }
-      });
+      if (bookmarkedSurahs.length === 0) {
+        bookmarkedSurahsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666; font-style: italic;">No bookmarked surahs yet. Click the bookmark icon on any surah to add it here.</p>';
+      } else {
+        bookmarkedSurahs.forEach(surahNum => {
+          const surah = surahData.find(s => s.number === surahNum);
+          if (surah) {
+            bookmarkedSurahsContainer.appendChild(createSurahCard(surah));
+          }
+        });
+      }
 
       // Bookmarked Ayahs
       const bookmarkedAyahs = JSON.parse(localStorage.getItem('bookmarkedAyahs') || '[]');
       const bookmarkedAyahsContainer = document.getElementById('bookmarked-ayahs');
       bookmarkedAyahsContainer.innerHTML = '';
-      bookmarkedAyahs.forEach(ayah => {
-        bookmarkedAyahsContainer.appendChild(createAyahCard(ayah));
-      });
+      if (bookmarkedAyahs.length === 0) {
+        bookmarkedAyahsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666; font-style: italic;">No bookmarked ayahs yet. When viewing ayahs, use the bookmark feature to add them here.</p>';
+      } else {
+        bookmarkedAyahs.forEach(ayah => {
+          bookmarkedAyahsContainer.appendChild(createBookmarkedAyahCard(ayah));
+        });
+      }
     }
 
     function scrollToTop() {
