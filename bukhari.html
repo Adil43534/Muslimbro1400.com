@@ -29,6 +29,9 @@
       background-color: #f0f0f0;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: background-color 0.5s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .dark-mode .navbar { background-color: #2c2c2c; }
@@ -130,19 +133,39 @@
       color: #ccc;
     }
 
-    .cards {
+    .cards-vertical-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding: 1rem;
+      gap: 0.6rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+      max-height: 70vh;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #0c8;
     }
 
     .horizontal-cards {
       display: flex;
       overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem 0;
-      scrollbar-width: thin;
-      scrollbar-color: #007b5e #f0f0f0;
+      scroll-behavior: smooth;
+      padding-bottom: 1.5rem;
+      gap: 0.6rem;
+      border-radius: 15px;
+      margin-top: 1rem;
     }
 
     .horizontal-cards::-webkit-scrollbar {
@@ -166,34 +189,211 @@
       background: #0c8;
     }
 
+    /* Enhanced card styling with hover effects */
     .card {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, background-color 0.5s ease;
+      flex: 0 0 auto;
+      width: 180px;
+      background-color: #333;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
       text-decoration: none;
-      color: inherit;
-      flex: 0 0 250px;
-      min-width: 250px;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      background-color: #e6f5f0;
-      border-left: 5px solid #007b5e;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      z-index: 10;
     }
 
-    .dark-mode .card:hover {
-      background-color: #244c3a;
-      border-left: 5px solid #0c8;
+    .card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      transition: all 0.3s ease;
     }
 
-    .dark-mode .card {
-      background-color: #2c2c2c;
-      color: #eee;
+    .card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.7);
+    }
+
+    .card .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+      padding: 1.5rem 1rem 1rem;
+      color: #fff;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 123, 94, 0.95) 0%, rgba(0, 123, 94, 0.8) 50%, rgba(0, 123, 94, 0) 100%);
+      padding-bottom: 1.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      backdrop-filter: blur(2px);
+    }
+
+    .dark-mode .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 200, 136, 0.95) 0%, rgba(0, 200, 136, 0.8) 50%, rgba(0, 200, 136, 0) 100%);
+    }
+
+    .card .overlay .surah-number {
+      font-size: 1rem;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .overlay .surah-number {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .overlay .surah-meaning {
+      font-size: 0.9rem;
+      color: #ccc;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .overlay .surah-meaning {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .overlay .verse-count {
+      font-size: 0.85rem;
+      color: #aaa;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .overlay .verse-count {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Additional details that appear on hover */
+    .card .additional-details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      margin-top: 0;
+    }
+
+    .card:hover .additional-details {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .card .additional-details .detail-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .card .additional-details .detail-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card .additional-details .detail-value {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .card .icons {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 2;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .icons {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .favorite-icon, .bookmark-icon {
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .favorite-icon:hover, .bookmark-icon:hover {
+      transform: scale(1.2);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .card .quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease 0.1s;
+    }
+
+    .card:hover .quick-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #007b5e;
+    }
+
+    .dark-mode .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0c8;
+    }
+
+    .card .quick-actions button:hover {
+      background: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .card h3 {
@@ -258,7 +458,6 @@
         left: 0;
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
       }
 
       .dark-mode .nav-links {
@@ -271,33 +470,1290 @@
 
       .nav-links a {
         margin: 0.5rem 0;
-        font-size: 1.1rem;
-      }
-
-      .theme-toggle {
-        margin: 0;
       }
 
       .menu-toggle {
         display: block;
       }
-
-      .horizontal-cards {
-        gap: 0.5rem;
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
       }
-
+      
       .card {
-        flex: 0 0 200px;
-        min-width: 200px;
+        width: 130px;
+      }
+      
+      .card .additional-details {
+        font-size: 0.75rem;
+      }
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+      }
+      
+      .ayah-card {
+        width: 220px;
+        height: 180px;
+      }
+      
+      .ayah-text {
+        font-size: 0.9rem;
+        max-height: 60px;
+      }
+      
+      .ayah-header {
+        font-size: 0.9rem;
+      }
+      
+      .ayah-card-actions button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 80px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
         padding: 1rem;
       }
+    }
 
-      .card h3 {
+    /* Enhanced Ayah Card Styling */
+    .ayah-card {
+      flex: 0 0 auto;
+      width: 300px;
+      background: linear-gradient(135deg, #333333 0%, #2a2a2a 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ayah-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      border-color: rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #222222 100%);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .ayah-card:hover {
+      border-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid rgba(0, 123, 94, 0.3);
+      position: relative;
+    }
+
+    .dark-mode .ayah-header {
+      border-bottom-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 1px;
+    }
+
+    .dark-mode .ayah-header::after {
+      background: linear-gradient(90deg, #0c8, #00d9a5);
+    }
+
+    .surah-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .surah-name::before {
+      /* content: '📖'; */
+      font-size: 0.9rem;
+    }
+
+    .revelation-badge {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 123, 94, 0.2);
+    }
+
+    .dark-mode .revelation-badge {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      box-shadow: 0 2px 4px rgba(0, 200, 136, 0.2);
+    }
+
+    .ayah-text-container {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .ayah-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 123, 94, 0.15);
+      color: #007b5e;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border: 2px solid rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-number {
+      background: rgba(0, 200, 136, 0.15);
+      color: #0c8;
+      border-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-text {
+      padding-left: 2.5rem;
+      line-height: 1.5;
+      font-size: 1rem;
+      font-family: 'Amiri', serif;
+      text-align: right;
+      direction: rtl;
+      color: #fff;
+      max-height: 70px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-text::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 2.5rem;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, rgba(42, 42, 42, 0.95));
+    }
+
+    .dark-mode .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(34, 34, 34, 0.95));
+    }
+
+    .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 123, 94, 0.1));
+    }
+
+    .dark-mode .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 200, 136, 0.1));
+    }
+
+    .ayah-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .verse-info {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .verse-info::before {
+      /* content: '🔢'; */
+      font-size: 0.8rem;
+    }
+
+    .surah-meaning {
+      font-style: italic;
+      color: #bbb;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .surah-meaning::before {
+      /* content: '💡'; */
+      font-size: 0.8rem;
+    }
+
+    .ayah-card-actions {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .ayah-card-actions button {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      letter-spacing: 0.3px;
+      min-width: 100px;
+    }
+
+    .ayah-card-actions button.remove-btn {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      box-shadow: 0 3px 6px rgba(220, 53, 69, 0.2);
+    }
+
+    .ayah-card-actions button.remove-btn:hover {
+      background: linear-gradient(135deg, #c82333, #bd2130);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #007b5e, #005a45);
+      color: white;
+      box-shadow: 0 3px 6px rgba(0, 123, 94, 0.2);
+    }
+
+    .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #005a45, #004535);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #0c8, #00a884);
+      box-shadow: 0 3px 6px rgba(0, 200, 136, 0.2);
+    }
+
+    .dark-mode .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #00a884, #008c6d);
+      box-shadow: 0 5px 12px rgba(0, 200, 136, 0.3);
+    }
+
+    /* Hover effect gradients */
+    .favorite-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .bookmark-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .dark-mode .favorite-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    .dark-mode .bookmark-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    /* For the My Hadiths sections */
+    #favorited-hadiths .horizontal-cards,
+    #bookmarked-hadiths .horizontal-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      overflow-y: auto;
+      max-height: 500px;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .dark-mode #favorited-hadiths .horizontal-cards,
+    .dark-mode #bookmarked-hadiths .horizontal-cards {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    #favorited-hadiths .horizontal-cards::-webkit-scrollbar,
+    #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #favorited-hadiths .horizontal-cards::-webkit-scrollbar-thumb,
+    #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode #favorited-hadiths .horizontal-cards::-webkit-scrollbar-thumb,
+    .dark-mode #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .ayah-card {
+        width: 260px;
+        height: 190px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
+      }
+      
+      .card {
+        width: 130px;
+      }
+      
+      .card .additional-details {
+        font-size: 0.75rem;
+      }
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+      }
+      
+      .ayah-card {
+        width: 220px;
+        height: 180px;
+      }
+      
+      .ayah-text {
+        font-size: 0.9rem;
+        max-height: 60px;
+      }
+      
+      .ayah-header {
+        font-size: 0.9rem;
+      }
+      
+      .ayah-card-actions button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 80px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      
+      .ayah-card {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      padding: 3rem 1rem 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #007b5e, #00a884, #007b5e);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .dark-mode .footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #e0e0e0;
+    }
+
+    .footer-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007b5e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .dark-mode .footer-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300a884' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-section {
+      padding: 1.5rem;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .dark-mode .footer-section {
+      background-color: rgba(45, 45, 45, 0.7);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo h2 {
+      margin: 1rem 0 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark-mode .footer-logo h2 {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .footer-tagline {
+      color: #aaa;
+    }
+
+    .footer-section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .dark-mode .footer-section-title {
+      color: #e0e0e0;
+    }
+
+    .footer-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin: 0.6rem 0;
+      position: relative;
+    }
+
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .footer-links a::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #007b5e;
+      font-size: 0.7rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007b5e;
+      background-color: rgba(0, 123, 94, 0.1);
+      padding-left: 2rem;
+    }
+
+    .footer-links a:hover::before {
+      opacity: 1;
+      left: 0.5rem;
+    }
+
+    .dark-mode .footer-links a:hover {
+      color: #0c8;
+      background-color: rgba(0, 200, 136, 0.1);
+    }
+
+    .dark-mode .footer-links a::before {
+      color: #0c8;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info {
+      width: 100%;
+    }
+
+    .email-box {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.25);
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .email-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 123, 94, 0.35);
+    }
+
+    .email-box a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+
+    .email-box a::before {
+      content: '✉';
+      font-size: 1.1rem;
+    }
+
+    .email-box a:hover {
+      color: #f0f0f0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Social Links Styles */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-link svg {
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
+    }
+
+    /* Facebook specific styles */
+    .social-link.facebook {
+      background-color: #fff;
+    }
+
+    .social-link.facebook:hover {
+      background-color: #395398;
+    }
+
+    .social-link.facebook:hover svg .cls-2 {
+      fill: #fff;
+    }
+
+    /* Twitter specific styles */
+    .social-link.twitter {
+      background-color: #fff;
+    }
+
+    .social-link.twitter:hover {
+      background-color: #111;
+    }
+
+    /* Instagram specific styles - FIXED: Pink background fill on hover, white camera icon */
+    .social-link.instagram {
+      background-color: #fff;
+    }
+
+    .social-link.instagram:hover {
+      background-color: #e4405f; /* Instagram pink background on hover */
+    }
+
+    /* Only change the fill of the camera icon paths, not the gradient background */
+    .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
+      fill: #fff; /* Make only camera icon paths white on hover */
+    }
+
+    /* YouTube specific styles */
+    .social-link.youtube {
+      background-color: #fff;
+    }
+
+    .social-link.youtube:hover {
+      background-color: #e52929;
+    }
+
+    /* For dark mode */
+    .dark-mode .social-link {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.facebook {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.facebook:hover {
+      background-color: #395398;
+    }
+
+    .dark-mode .social-link.twitter {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.twitter:hover {
+      background-color: #111;
+    }
+
+    /* For dark mode */
+    .dark-mode .social-link.instagram {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.instagram:hover {
+      background-color: #e4405f; /* Instagram pink background on hover */
+    }
+
+    .dark-mode .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
+      fill: #fff; /* Make only camera icon paths white on hover */
+    }
+
+    .dark-mode .social-link.youtube {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.youtube:hover {
+      background-color: #e52929;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 2px dashed rgba(0, 123, 94, 0.2);
+      font-size: 0.95rem;
+      color: #666;
+      transition: all 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark-mode .footer-bottom {
+      color: #aaa;
+      border-top-color: rgba(0, 200, 136, 0.2);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+    }
+
+    .footer-bottom a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: #00a884;
+      text-decoration: underline;
+    }
+
+    .dark-mode .footer-bottom a {
+      color: #0c8;
+    }
+
+    .dark-mode .footer-bottom a:hover {
+      color: #00d9a5;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #007b5e;
+      margin-bottom: 1rem;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .bismillah {
+      color: #0c8;
+    }
+
+    /* Footer Responsive Styles */
+    
+    /* Large Desktop (1200px and up) */
+    @media (min-width: 1200px) {
+      .footer-content {
+        gap: 3rem;
+      }
+      
+      .footer-section {
+        padding: 2rem;
+      }
+      
+      .footer-logo img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    /* Desktop (992px - 1199px) */
+    @media (max-width: 1199px) {
+      .footer-content {
+        gap: 2rem;
+      }
+      
+      .footer-section {
+        padding: 1.5rem;
+      }
+      
+      .footer-logo img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Tablet Landscape (992px - 1199px) */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .footer-section {
+        padding: 1.3rem;
+      }
+
+      .footer-logo-section {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .footer-bottom {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* Tablet Portrait (768px - 991px) */
+    @media (max-width: 991px) {
+      .footer {
+        padding: 2.5rem 1.5rem 1.5rem;
+      }
+
+      .footer-content {
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.25rem;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.7rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Tablet (768px) */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.2rem;
+      }
+
+      .footer-logo-section {
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .email-box {
+        padding: 1rem 1.2rem;
+      }
+
+      .email-box a {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Large Mobile (576px - 767px) */
+    @media (max-width: 576px) {
+      .footer {
+        padding: 2rem 1rem 1rem;
+      }
+
+      .footer-content {
+        gap: 1rem;
+      }
+
+      .footer-section {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+
+      .footer-logo img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.9rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+      }
+
+      .footer-section-title::after {
+        width: 40px;
+        height: 2px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links li {
+        margin: 0.4rem 0;
+      }
+
+      .footer-links a {
+        padding: 0.4rem 1rem 0.4rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .social-links {
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        width: 42px;
+        height: 42px;
+      }
+
+      .social-link svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .email-box {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .email-box a {
+        font-size: 0.85rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .email-box a::before {
         font-size: 1rem;
       }
 
-      .card p {
+      .footer-bottom {
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Medium Mobile (480px) */
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.75rem 0.75rem 0.75rem;
+      }
+
+      .footer-section {
+        padding: 0.9rem;
+        border-radius: 10px;
+      }
+
+      .footer-logo img {
+        width: 65px;
+        height: 65px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.4rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.85rem;
+      }
+
+      .bismillah {
+        font-size: 1.1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.1rem;
+      }
+
+      .footer-links a {
+        padding: 0.35rem 0.8rem 0.35rem 1.3rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        padding-left: 1.5rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-bottom {
+        padding-top: 1rem;
+        margin-top: 1rem;
         font-size: 0.8rem;
+      }
+    }
+
+    /* Small Mobile (375px) */
+    @media (max-width: 400px) {
+      .footer {
+        padding: 1.5rem 0.5rem 0.5rem;
+      }
+
+      .footer-section {
+        padding: 0.8rem;
+        border-radius: 8px;
+      }
+
+      .footer-logo img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.3rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.8rem;
+      }
+
+      .bismillah {
+        font-size: 1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-links a {
+        padding: 0.3rem 0.6rem 0.3rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .social-link {
+        width: 38px;
+        height: 38px;
+      }
+
+      .social-link svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .email-box {
+        padding: 0.8rem;
+      }
+
+      .email-box a {
+        font-size: 0.8rem;
+      }
+
+      .footer-bottom {
+        padding-top: 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+      }
+
+      .footer-bottom p {
+        margin: 0.4rem 0;
       }
     }
   </style>
@@ -337,12 +1793,169 @@
       <button class="tab-button active" onclick="showAll()">All Hadiths</button>
       <button class="tab-button" onclick="showMy()">My Hadiths</button>
     </div>
-    <div class="cards" id="chaptersGrid">
+    <div class="cards-vertical-grid" id="chaptersGrid">
       <!-- Cards will be generated here -->
     </div>
   </div>
 
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+  <footer class="footer">
+    <div class="footer-pattern"></div>
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+        <div class="footer-logo">
+          <img src="favicon.png" alt="MuslimBro1400 Logo" />
+        </div>
+        <h2>MuslimBro1400</h2>
+        <p class="footer-tagline">Your Trusted Islamic Resource</p>
+        <div class="social-links">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section footer-links-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quran.html">Quran with Translations</a></li>
+          <li><a href="hadith.html">Hadiths and Sunnah</a></li>
+          <li><a href="islamic-books.html">Islamic Books</a></li>
+          <li><a href="quran-recitations.html">Quran Recitations</a></li>
+          <li><a href="islamic-calendar.html">Islamic Calendar</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section footer-contact">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="email-box">
+            <a href="mailto:muhammadadil43534@gmail.com" target="_blank">muhammadadil43534@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient2" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient2)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 <a href="index.html">MuslimBro1400</a>. All rights reserved.</p>
+      <p>Made with ❤️ for the Ummah</p>
+    </div>
+  </footer>
+
   <script>
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+
+    // Array of placeholder image names - currently all using pic1.jpeg
+    const chapterPlaceholders = Array(97).fill("pic1.jpeg");
+
     const chapters = [
       { id: 1, title: "Revelation", artitle: "(<span class=\"arabic\">كتاب بدء الوحى</span>)", subtitle: "Start of Divine Revelation", hadithCount: 7, file: "bukhari-chp1.html" },
       { id: 2, title: "Belief", artitle: "(<span class=\"arabic\">كتاب الإيمان</span>)", subtitle: "Faith And Its Branches", hadithCount: 51, file: "bukhari-chp2.html" },
@@ -352,17 +1965,44 @@
       // Add more chapters here
     ];
 
+    // Sample hadiths array - in a real app, this would be loaded from the chapter files or API
+    const hadiths = [
+      { id: 1, arabic: "حديث عربي 1", en: "English translation 1" },
+      { id: 2, arabic: "حديث عربي 2", en: "English translation 2" },
+      { id: 3, arabic: "حديث عربي 3", en: "English translation 3" },
+      // Add more hadiths as needed
+    ];
+
     const grid = document.getElementById("chaptersGrid");
 
     chapters.forEach(chapter => {
       const card = document.createElement("a");
       card.className = "card";
       card.href = chapter.file;
+      card.setAttribute('data-chapter', chapter.id);
+      const placeholderImage = chapterPlaceholders[chapter.id - 1];
+      const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+      const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+      const isFavorited = favoritedChapters.includes(chapter.id);
+      const isBookmarked = bookmarkedChapters.includes(chapter.id);
       card.innerHTML = `
-        <h3>Book ${chapter.id}: ${chapter.title}</h3>
-        <p class="arabic">${chapter.artitle || ""}</p>
-        <p>${chapter.subtitle}</p>
-        <p><strong>Hadiths:</strong> ${chapter.hadithCount}</p>
+        <img src="${placeholderImage}" alt="${chapter.title}">
+        <div class="icons">
+          <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+          <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
+        </div>
+        <div class="overlay">
+          <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+          <div class="additional-details">
+            <div class="detail-item">
+              <span class="detail-label">Hadiths:</span>
+              <span class="detail-value">${chapter.hadithCount}</span>
+            </div>
+          </div>
+          <div class="quick-actions">
+            <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+          </div>
+        </div>
       `;
       grid.appendChild(card);
     });
@@ -389,6 +2029,40 @@
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
+    }
+
+    function toggleFavoriteChapter(chapterId) {
+      let favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+      if (favoritedChapters.includes(chapterId)) {
+        favoritedChapters = favoritedChapters.filter(id => id !== chapterId);
+      } else {
+        favoritedChapters.push(chapterId);
+      }
+      localStorage.setItem('favoritedChapters', JSON.stringify(favoritedChapters));
+      // Update the icon immediately
+      const card = document.querySelector(`[data-chapter="${chapterId}"]`);
+      if (card) {
+        const favoriteIcon = card.querySelector('.favorite-icon');
+        const isFavorited = favoritedChapters.includes(chapterId);
+        favoriteIcon.innerHTML = isFavorited ? favoriteSVG : unfavoriteSVG;
+      }
+    }
+
+    function toggleBookmarkChapter(chapterId) {
+      let bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+      if (bookmarkedChapters.includes(chapterId)) {
+        bookmarkedChapters = bookmarkedChapters.filter(id => id !== chapterId);
+      } else {
+        bookmarkedChapters.push(chapterId);
+      }
+      localStorage.setItem('bookmarkedChapters', JSON.stringify(bookmarkedChapters));
+      // Update the icon immediately
+      const card = document.querySelector(`[data-chapter="${chapterId}"]`);
+      if (card) {
+        const bookmarkIcon = card.querySelector('.bookmark-icon');
+        const isBookmarked = bookmarkedChapters.includes(chapterId);
+        bookmarkIcon.innerHTML = isBookmarked ? bookmarkedSVG : unbookmarkedSVG;
+      }
     }
 
     function populateFavoriteSection() {
@@ -453,11 +2127,34 @@
         const card = document.createElement("a");
         card.className = "card";
         card.href = chapter.file;
+        card.setAttribute('data-chapter', chapter.id);
+        const placeholderImage = chapterPlaceholders[chapter.id - 1];
+        const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+        const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+        const isFavorited = favoritedChapters.includes(chapter.id);
+        const isBookmarked = bookmarkedChapters.includes(chapter.id);
         card.innerHTML = `
-          <h3>Book ${chapter.id}: ${chapter.title}:</h3>
-          <p class="arabic">${chapter.artitle || ""}</p>
-          <p>${chapter.subtitle}</p>
-          <p><strong>Hadiths:</strong> ${chapter.hadithCount}</p>
+          <img src="${placeholderImage}" alt="${chapter.title}">
+          <div class="icons">
+            <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+            <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
+          </div>
+          <div class="overlay">
+            <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+            <div class="additional-details">
+              <div class="detail-item">
+                <span class="detail-label">Subtitle:</span>
+                <span class="detail-value">${chapter.subtitle}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Hadiths:</span>
+                <span class="detail-value">${chapter.hadithCount}</span>
+              </div>
+            </div>
+            <div class="quick-actions">
+              <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+            </div>
+          </div>
         `;
         grid.appendChild(card);
       });
@@ -470,27 +2167,43 @@
       grid.innerHTML = '';
       grid.style.display = 'block'; // Ensure vertical stacking for sections
 
-      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
-      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+      const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters')) || [];
+      const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters')) || [];
 
-      // Section for Favourited Hadiths
+      // Section for Favourited Chapters
       const favouritedSection = document.createElement("div");
-      favouritedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favourited Hadiths</h2>';
-      if (favoritedHadiths.length === 0) {
-        favouritedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited hadiths yet.</p>';
+      favouritedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favourited Chapters</h2>';
+      if (favoritedChapters.length === 0) {
+        favouritedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited chapters yet.</p>';
       } else {
         const horizontalContainer = document.createElement("div");
         horizontalContainer.className = "horizontal-cards";
-        favoritedHadiths.forEach(hadithId => {
-          const hadith = hadiths.find(h => h.id === hadithId);
-          if (hadith) {
-            const card = document.createElement("div");
+        favoritedChapters.forEach(chapterId => {
+          const chapter = chapters.find(c => c.id === chapterId);
+          if (chapter) {
+            const card = document.createElement("a");
             card.className = "card";
-            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.href = chapter.file;
+            card.setAttribute('data-chapter', chapter.id);
+            const placeholderImage = chapterPlaceholders[chapter.id - 1];
             card.innerHTML = `
-              <h3>Hadith ${hadith.id}</h3>
-              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
-              <p>${hadith.en.substring(0, 100)}...</p>
+              <img src="${placeholderImage}" alt="${chapter.title}">
+              <div class="icons">
+                <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${favoriteSVG}</span>
+                <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${bookmarkedSVG}</span>
+              </div>
+              <div class="overlay">
+                <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+                <div class="additional-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Hadiths:</span>
+                    <span class="detail-value">${chapter.hadithCount}</span>
+                  </div>
+                </div>
+                <div class="quick-actions">
+                  <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+                </div>
+              </div>
             `;
             horizontalContainer.appendChild(card);
           }
@@ -499,24 +2212,40 @@
       }
       grid.appendChild(favouritedSection);
 
-      // Section for Bookmarked Hadiths
+      // Section for Bookmarked Chapters
       const bookmarkedSection = document.createElement("div");
-      bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
-      if (bookmarkedHadiths.length === 0) {
-        bookmarkedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked hadiths yet.</p>';
+      bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Chapters</h2>';
+      if (bookmarkedChapters.length === 0) {
+        bookmarkedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked chapters yet.</p>';
       } else {
         const horizontalContainer = document.createElement("div");
         horizontalContainer.className = "horizontal-cards";
-        bookmarkedHadiths.forEach(hadithId => {
-          const hadith = hadiths.find(h => h.id === hadithId);
-          if (hadith) {
-            const card = document.createElement("div");
+        bookmarkedChapters.forEach(chapterId => {
+          const chapter = chapters.find(c => c.id === chapterId);
+          if (chapter) {
+            const card = document.createElement("a");
             card.className = "card";
-            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.href = chapter.file;
+            card.setAttribute('data-chapter', chapter.id);
+            const placeholderImage = chapterPlaceholders[chapter.id - 1];
             card.innerHTML = `
-              <h3>Hadith ${hadith.id}</h3>
-              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
-              <p>${hadith.en.substring(0, 100)}...</p>
+              <img src="${placeholderImage}" alt="${chapter.title}">
+              <div class="icons">
+                <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${favoriteSVG}</span>
+                <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${bookmarkedSVG}</span>
+              </div>
+              <div class="overlay">
+                <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+                <div class="additional-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Hadiths:</span>
+                    <span class="detail-value">${chapter.hadithCount}</span>
+                  </div>
+                </div>
+                <div class="quick-actions">
+                  <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+                </div>
+              </div>
             `;
             horizontalContainer.appendChild(card);
           }
@@ -524,7 +2253,142 @@
         bookmarkedSection.appendChild(horizontalContainer);
       }
       grid.appendChild(bookmarkedSection);
+
+      // Section for Favourited Hadiths
+      const favouritedHadithsSection = document.createElement("div");
+      favouritedHadithsSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Favourited Hadiths</h2>';
+      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths') || '[]');
+      if (favoritedHadiths.length === 0) {
+        favouritedHadithsSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited hadiths yet.</p>';
+      } else {
+        const container = document.createElement("div");
+        container.id = "favorited-hadiths";
+        container.className = "horizontal-cards";
+        favoritedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            container.appendChild(createFavoritedHadithCard(hadith));
+          }
+        });
+        favouritedHadithsSection.appendChild(container);
+      }
+      grid.appendChild(favouritedHadithsSection);
+
+      // Section for Bookmarked Hadiths
+      const bookmarkedHadithsSection = document.createElement("div");
+      bookmarkedHadithsSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
+      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths') || '[]');
+      if (bookmarkedHadiths.length === 0) {
+        bookmarkedHadithsSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked hadiths yet.</p>';
+      } else {
+        const container = document.createElement("div");
+        container.id = "bookmarked-hadiths";
+        container.className = "horizontal-cards";
+        bookmarkedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            container.appendChild(createBookmarkedHadithCard(hadith));
+          }
+        });
+        bookmarkedHadithsSection.appendChild(container);
+      }
+      grid.appendChild(bookmarkedHadithsSection);
     }
+
+    function createFavoritedHadithCard(hadith) {
+      const card = document.createElement('a');
+      card.href = `bukhari-chp1.html#hadith${hadith.id}`;
+      card.className = 'ayah-card favorite-card';
+      card.setAttribute('data-hadith', hadith.id);
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">Hadith ${hadith.id}</span>
+            <span class="revelation-badge">Sahih al-Bukhari</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${hadith.id}</div>
+            <div class="ayah-text">
+              ${hadith.arabic.substring(0, 100)}...
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Hadith ${hadith.id}</span>
+            <span class="surah-meaning">${hadith.en.substring(0, 50)}...</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('bukhari-chp1.html#hadith${hadith.id}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeFavoritedHadith(${hadith.id})">Remove</button>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function createBookmarkedHadithCard(hadith) {
+      const card = document.createElement('a');
+      card.href = `bukhari-chp1.html#hadith${hadith.id}`;
+      card.className = 'ayah-card bookmark-card';
+      card.setAttribute('data-hadith', hadith.id);
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">Hadith ${hadith.id}</span>
+            <span class="revelation-badge">Sahih al-Bukhari</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${hadith.id}</div>
+            <div class="ayah-text">
+              ${hadith.arabic.substring(0, 100)}...
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Hadith ${hadith.id}</span>
+            <span class="surah-meaning">${hadith.en.substring(0, 50)}...</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('bukhari-chp1.html#hadith${hadith.id}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeBookmarkedHadith(${hadith.id})">Remove</button>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function removeFavoritedHadith(hadithId) {
+      let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths') || '[]');
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+        localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+        showMy();
+      }
+    }
+
+    function removeBookmarkedHadith(hadithId) {
+      let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths') || '[]');
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+        localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+        showMy();
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
 
     window.onload = () => {
       if (localStorage.getItem('theme') === 'dark') {
