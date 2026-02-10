@@ -1805,11 +1805,11 @@
 
       let cardHTML = `
         <img src="${placeholderImage}" alt="${surah.name}">
-        <div class="overlay">
             <div class="icons">
               <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteSurah(${surah.number});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
               <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkSurah(${surah.number});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
             </div>
+        <div class="overlay">
           <span class="surah-number">${surah.number}. ${surah.name}</span>
           <div class="additional-details">
             <span class="surah-meaning">${surah.meaning}</span>
