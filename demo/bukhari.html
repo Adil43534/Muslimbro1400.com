@@ -43,16 +43,35 @@
       top: 0;
       z-index: 1000;
     }
-    .dark-mode .navbar { background-color: #2c2c2c; }
-    .nav-links { display: flex; align-items: center; }
+
+    .dark-mode .navbar {
+      background-color: #2c2c2c;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
     .nav-links a {
       margin-left: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
-    .dark-mode .nav-links a { color: #e0e0e0; }
-    .nav-links a:hover { color: #007b5e; }
+
+    .dark-mode .nav-links a {
+      color: #e0e0e0;
+    }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .dark-mode .nav-links a:hover {
+      color: #0c8;
+    }
+    
     .theme-toggle {
       cursor: pointer;
       margin-left: 1rem;
@@ -261,6 +280,9 @@
       font-weight: 600;
       cursor: pointer;
     }
+    .ayah-card:hover {
+      cursor: pointer;
+    }
 
     /* ---------- MODAL & CAROUSEL (fully styled) ---------- */
     .modal {
@@ -332,9 +354,13 @@
       border-radius: 40px;
       font-weight: 700;
     }
+
+    .arabic {
+      font-family: 'Noto Naskh Arabic', serif;
+    }
     .dark-mode .carousel-hadith .hadith-number { background: #0c82; color: #8ff; }
     .carousel-hadith .arabic {
-      font-family: 'Amiri', serif;
+      font-family: 'Noto Naskh Arabic', serif;
       font-size: 1.5rem;
       direction: rtl;
       text-align: right;
@@ -410,7 +436,7 @@
     .action-button.bookmarked svg { fill: #007b5e; stroke: #007b5e; }
     .dark-mode .action-button.bookmarked svg { fill: #0c8; stroke: #0c8; }
 
-    .nav-buttons {
+    /* .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -431,7 +457,7 @@
     .nav-buttons button:hover:not(:disabled) { background: #005f4a; transform: scale(1.02); }
     .nav-buttons button:disabled { background: #aaa; cursor: default; }
     .dark-mode .nav-buttons button { background: #0c8; }
-    .dark-mode .nav-buttons button:hover:not(:disabled) { background: #0a6; }
+    .dark-mode .nav-buttons button:hover:not(:disabled) { background: #0a6; } */
     .carousel-counter {
       font-weight: 700;
       color: #007b5e;
@@ -593,13 +619,13 @@
 
     /* Tablet Styles (max-width: 992px) */
     @media (max-width: 992px) {
-      .navbar {
+      /* .navbar {
         padding: 0.8rem 1rem;
       }
       .nav-links a {
         margin-left: 0.5rem;
         font-size: 0.9rem;
-      }
+      } */
       .container {
         padding: 1.5rem 0.8rem;
       }
@@ -621,48 +647,84 @@
         width: 48px;
         height: 48px;
       }
-      .nav-buttons button {
+      /* .nav-buttons button {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
-      }
+      } */
     }
 
-    /* Large Mobile Styles (max-width: 768px) */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-wrap: wrap;
-        padding: 0.6rem;
+    /* Mobile Styles (max-width: 600px) */
+    @media (max-width: 600px) {
+      .main-title {
+        font-size: 1.5rem;
       }
+
       .navbar h1 {
-        font-size: 1.2rem;
-        margin: 0;
+        font-size: 1.25rem;
       }
-      .menu-toggle {
-        display: block;
-        order: 3;
-        margin-left: auto;
-      }
+
       .nav-links {
         display: none;
-        width: 100%;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 0;
-        border-top: 1px solid rgba(0,0,0,0.1);
-        margin-top: 0.5rem;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
+
       .dark-mode .nav-links {
-        border-top-color: rgba(255,255,255,0.1);
+        background-color: #2c2c2c;
       }
+
       .nav-links.active {
         display: flex;
       }
+
       .nav-links a {
-        display: block;
-        padding: 0.5rem 0;
-        margin-left: 0;
-        width: 100%;
+        margin: 0.5rem 0;
       }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Tablet Styles (max-width: 768px) */
+    @media (max-width: 768px) {
+      /* .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+      } */
       .theme-toggle {
         margin-left: 0;
         margin-top: 0.5rem;
@@ -682,14 +744,6 @@
       .description {
         font-size: 0.9rem;
         padding: 0 0.5rem;
-      }
-      .tabs {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      .tab-button {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
       }
       /* Cards Grid - Remove fixed height for mobile */
       .cards-vertical-grid {
@@ -832,21 +886,6 @@
         padding: 0.5rem 1rem;
         font-size: 0.85rem;
       }
-      /* Share modal */
-      #share-modal .modal-content {
-        padding: 1.5rem;
-        margin: 0.5rem;
-      }
-      #share-modal h2 {
-        font-size: 1.3rem;
-      }
-      #share-modal div {
-        margin-bottom: 0.8rem;
-      }
-      #share-modal button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-      }
       /* Footer */
       .footer {
         padding: 1.5rem 0.5rem;
@@ -875,11 +914,6 @@
       .ayah-card .hadith-text {
         font-size: 1rem;
         max-height: 80px;
-      }
-      /* My Hadiths section */
-      .showMy-section h2 {
-        font-size: 1.2rem;
-        margin: 1.5rem 0 0.5rem;
       }
     }
 
@@ -924,13 +958,6 @@
         padding: 0.8rem 0.6rem 0.6rem;
       }
       .card .surah-number {
-        font-size: 0.8rem;
-      }
-      .card .additional-details {
-        font-size: 0.75rem;
-      }
-      .quick-actions button {
-        padding: 0.3rem 0.8rem;
         font-size: 0.8rem;
       }
       /* Modal */
@@ -983,9 +1010,9 @@
 
     /* Extra Small Mobile (max-width: 360px) */
     @media (max-width: 360px) {
-      .navbar h1 {
+      /* .navbar h1 {
         font-size: 0.9rem;
-      }
+      } */
       .cards-vertical-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
       }
@@ -995,66 +1022,6 @@
       .card .overlay {
         padding: 0.6rem;
       }
-      .carousel-hadith .arabic {
-        font-size: 0.9rem;
-      }
-      .carousel-hadith .translation {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Landscape orientation adjustments */
-    @media (max-height: 500px) and (orientation: landscape) {
-      .modal-content {
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-      .carousel-hadith {
-        padding: 1rem;
-        padding-top: 2rem;
-      }
-      .carousel-hadith .arabic {
-        font-size: 1rem;
-        max-height: 60px;
-        overflow-y: auto;
-      }
-      .carousel-hadith .translation {
-        font-size: 0.85rem;
-        max-height: 50px;
-        overflow-y: auto;
-      }
-      .hadith-actions {
-        margin-top: 0.8rem;
-        padding-top: 0.8rem;
-      }
-    }
-
-    /* High DPI / Retina displays */
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      .card img {
-        image-rendering: -webkit-optimize-contrast;
-      }
-    }
-
-    /* Print styles */
-    @media print {
-      .navbar, .banner, .theme-toggle, #scrollToTop, .hadith-actions, .nav-buttons, .carousel-lang-select {
-        display: none !important;
-      }
-      .modal-content {
-        position: static;
-        width: 100%;
-        max-height: none;
-        box-shadow: none;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-      .dark-mode {
-        background: white;
-        color: black;
-      }
     }
   </style>
 </head>
@@ -1063,9 +1030,13 @@
     <h1>MuslimBro1400</h1>
     <button class="menu-toggle" onclick="toggleMenu()"><img src="menu.png" alt="Menu"></button>
     <div class="nav-links">
-      <a href="index.html">Home</a> <a href="quran.html">Quran</a> <a href="hadith.html">Hadiths</a>
-      <a href="islamic-books.html">Books</a> <a href="quran-recitations.html">Recitations</a>
-      <a href="islamic-calendar.html">Calendar</a> <a href="about.html">About</a>
+      <a href="index.html">Home</a> 
+      <a href="quran.html">Quran</a> 
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a> 
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a> 
+      <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()"><img id="theme-icon" src="moon.png" alt="Toggle Theme"></button>
     </div>
   </nav>
@@ -1210,10 +1181,14 @@
     let currentChapterHadiths = [];
     let currentCarouselIndex = 0;
 
-    window.openHadithModal = (chapter) => {
+    window.openHadithModal = (chapter, hadithId = null) => {
       currentChapterHadiths = hadiths.filter(h => h.chp === chapter.id);
       if (!currentChapterHadiths.length) return alert('No hadiths');
       currentCarouselIndex = 0;
+      if (hadithId !== null) {
+        const idx = currentChapterHadiths.findIndex(h => h.id === hadithId);
+        if (idx > -1) currentCarouselIndex = idx;
+      }
       document.getElementById('modal-chapter-title').innerText = `Book ${chapter.id}: ${chapter.title}`;
       document.getElementById('modal-chapter-subtitle').innerText = chapter.subtitle || '';
       document.getElementById('modal-chapter-meta').innerText = `Hadiths: ${currentChapterHadiths.length}`;
@@ -1236,6 +1211,12 @@
           <option value="ur">اردو</option>
         </select>`;
       tab.appendChild(langDiv);
+      // Go to Hadith
+      const goToDiv = document.createElement('div');
+      goToDiv.className = 'go-to-hadith';
+      goToDiv.innerHTML = `<input type="number" id="go-to-hadith-input" placeholder="Go" min="1" max="${currentChapterHadiths.length}" onkeypress="if(event.key==='Enter')goToHadith()">
+        <button onclick="goToHadith()">Go</button>`;
+      tab.appendChild(goToDiv);
       const carouselDiv = document.createElement('div');
       carouselDiv.id = 'carousel-container';
       carouselDiv.className = 'carousel-container';
@@ -1248,6 +1229,19 @@
       tab.appendChild(nav);
       renderCarouselHadith();
     }
+
+    window.goToHadith = function() {
+      const input = document.getElementById('go-to-hadith-input');
+      if (!input || !currentChapterHadiths.length) return;
+      const hadithNum = parseInt(input.value);
+      if (isNaN(hadithNum) || hadithNum < 1 || hadithNum > currentChapterHadiths.length) {
+        alert(`Please enter a number between 1 and ${currentChapterHadiths.length}`);
+        return;
+      }
+      currentCarouselIndex = hadithNum - 1;
+      renderCarouselHadith();
+      input.value = '';
+    };
 
     window.renderCarouselHadith = function() {
       const carouselDiv = document.getElementById('carousel-container');
@@ -1362,14 +1356,14 @@
         <div class="horizontal-cards">${
           favoritedHadiths.map(obj => {
             let h = hadiths.find(h=>h.chp===obj.chp && h.id===obj.id);
-            return h? `<div class="ayah-card"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="toggleFavoriteHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
+return h? `<div class="ayah-card" onclick="let ch=chapters.find(c=>c.id===${h.chp});if(ch)openHadithModal(ch,${h.id});"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="event.stopPropagation();toggleFavoriteHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
           }).join('') || '<p style="padding:1rem;">No favourited hadiths</p>'
         }</div>
         <h2 style="margin:2rem 0 0.5rem; text-align:center;">🔖 Bookmarked Hadiths</h2>
         <div class="horizontal-cards">${
           bookmarkedHadiths.map(obj => {
             let h = hadiths.find(h=>h.chp===obj.chp && h.id===obj.id);
-            return h? `<div class="ayah-card"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="toggleBookmarkHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
+return h? `<div class="ayah-card" onclick="let ch=chapters.find(c=>c.id===${h.chp});if(ch)openHadithModal(ch,${h.id});"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="event.stopPropagation();toggleBookmarkHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
           }).join('') || '<p style="padding:1rem;">No bookmarked hadiths</p>'
         }</div>
       `;
