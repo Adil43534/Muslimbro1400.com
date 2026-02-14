@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - MuslimBro1400</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .dark-mode .navbar {
+      background-color: #2c2c2c;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dark-mode .nav-links a {
+      color: #e0e0e0;
+    }
+
+    .nav-links a:hover {
+      color: #007b5e;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .theme-toggle img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .banner {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .salam {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: #007b5e;
+      font-weight: bold;
+      font-family: 'Amiri', serif;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .main-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      display: block;
+      background-color: #fff;
+      padding: 1rem;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s ease, color 0.5s ease;
+      text-align: center;
+    }
+
+    .dark-mode .card {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      background-color: #e6f5f0;
+      border-left: 5px solid #007b5e;
+    }
+
+    .dark-mode .card:hover {
+      background-color: #244c3a;
+      border-left: 5px solid #0c8;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .card .arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.5rem;
+      transition: color 0.5s ease;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .card p {
+      color: #ccc;
+    }
+
+    .welcome-box {
+      background-color: #dcfbff;
+      padding: 1rem;
+      border-left: 4px solid #30d7f4;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+      text-align: center;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode .welcome-box {
+      background-color: #3a3a3a;
+      border-left-color: #0c8;
+    }
+
+    .welcome-box .arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 600px) {
+      .main-title {
+        font-size: 1.5rem;
+      }
+
+      .navbar h1 {
+        font-size: 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .dark-mode .nav-links {
+        background-color: #2c2c2c;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        margin: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      padding: 3rem 1rem 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #007b5e, #00a884, #007b5e);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .dark-mode .footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #e0e0e0;
+    }
+
+    .footer-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007b5e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .dark-mode .footer-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300a884' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-section {
+      padding: 1.5rem;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .dark-mode .footer-section {
+      background-color: rgba(45, 45, 45, 0.7);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo h2 {
+      margin: 1rem 0 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark-mode .footer-logo h2 {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .footer-tagline {
+      color: #aaa;
+    }
+
+    .footer-section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .dark-mode .footer-section-title {
+      color: #e0e0e0;
+    }
+
+    .footer-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin: 0.6rem 0;
+      position: relative;
+    }
+
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .footer-links a::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #007b5e;
+      font-size: 0.7rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007b5e;
+      background-color: rgba(0, 123, 94, 0.1);
+      padding-left: 2rem;
+    }
+
+    .footer-links a:hover::before {
+      opacity: 1;
+      left: 0.5rem;
+    }
+
+    .dark-mode .footer-links a:hover {
+      color: #0c8;
+      background-color: rgba(0, 200, 136, 0.1);
+    }
+
+    .dark-mode .footer-links a::before {
+      color: #0c8;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info {
+      width: 100%;
+    }
+
+    .email-box {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.25);
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .email-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 123, 94, 0.35);
+    }
+
+    .email-box a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+
+    .email-box a::before {
+      content: '✉';
+      font-size: 1.1rem;
+    }
+
+    .email-box a:hover {
+      color: #f0f0f0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Social Links Styles */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-link svg {
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
+    }
+
+    /* Facebook specific styles */
+    .social-link.facebook {
+      background-color: #fff;
+    }
+
+    .social-link.facebook:hover {
+      background-color: #395398;
+    }
+
+    .social-link.facebook:hover svg .cls-2 {
+      fill: #fff;
+    }
+
+    /* Twitter specific styles */
+    .social-link.twitter {
+      background-color: #fff;
+    }
+
+    .social-link.twitter:hover {
+      background-color: #111;
+    }
+
+    /* Instagram specific styles - FIXED: Pink background fill on hover, white camera icon */
+    .social-link.instagram {
+      background-color: #fff;
+    }
+
+    .social-link.instagram:hover {
+      background-color: #e4405f; /* Instagram pink background on hover */
+    }
+
+    /* Only change the fill of the camera icon paths, not the gradient background */
+    .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
+      fill: #fff; /* Make only camera icon paths white on hover */
+    }
+
+    /* YouTube specific styles */
+    .social-link.youtube {
+      background-color: #fff;
+    }
+
+    .social-link.youtube:hover {
+      background-color: #e52929;
+    }
+
+    /* For dark mode */
+    .dark-mode .social-link {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.facebook {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.facebook:hover {
+      background-color: #395398;
+    }
+
+    .dark-mode .social-link.twitter {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.twitter:hover {
+      background-color: #111;
+    }
+
+    /* For dark mode */
+    .dark-mode .social-link.instagram {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.instagram:hover {
+      background-color: #e4405f; /* Instagram pink background on hover */
+    }
+
+    .dark-mode .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
+      fill: #fff; /* Make only camera icon paths white on hover */
+    }
+
+    .dark-mode .social-link.youtube {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .social-link.youtube:hover {
+      background-color: #e52929;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 2px dashed rgba(0, 123, 94, 0.2);
+      font-size: 0.95rem;
+      color: #666;
+      transition: all 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark-mode .footer-bottom {
+      color: #aaa;
+      border-top-color: rgba(0, 200, 136, 0.2);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+    }
+
+    .footer-bottom a {
+      color: #007b5e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: #00a884;
+      text-decoration: underline;
+    }
+
+    .dark-mode .footer-bottom a {
+      color: #0c8;
+    }
+
+    .dark-mode .footer-bottom a:hover {
+      color: #00d9a5;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #007b5e;
+      margin-bottom: 1rem;
+      transition: color 0.5s ease;
+    }
+
+    .dark-mode .bismillah {
+      color: #0c8;
+    }
+
+    /* Footer Responsive Styles */
+    
+    /* Large Desktop (1200px and up) */
+    @media (min-width: 1200px) {
+      .footer-content {
+        gap: 3rem;
+      }
+      
+      .footer-section {
+        padding: 2rem;
+      }
+      
+      .footer-logo img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    /* Desktop (992px - 1199px) */
+    @media (max-width: 1199px) {
+      .footer-content {
+        gap: 2rem;
+      }
+      
+      .footer-section {
+        padding: 1.5rem;
+      }
+      
+      .footer-logo img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Tablet Landscape (992px - 1199px) */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .footer-section {
+        padding: 1.3rem;
+      }
+
+      .footer-logo-section {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .footer-bottom {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* Tablet Portrait (768px - 991px) */
+    @media (max-width: 991px) {
+      .footer {
+        padding: 2.5rem 1.5rem 1.5rem;
+      }
+
+      .footer-content {
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.25rem;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.7rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Tablet (768px) */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding: 1.2rem;
+      }
+
+      .footer-logo-section {
+        order: -1;
+      }
+
+      .footer-links-section {
+        order: 1;
+      }
+
+      .footer-contact {
+        order: 2;
+      }
+
+      .email-box {
+        padding: 1rem 1.2rem;
+      }
+
+      .email-box a {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Large Mobile (576px - 767px) */
+    @media (max-width: 576px) {
+      .footer {
+        padding: 2rem 1rem 1rem;
+      }
+
+      .footer-content {
+        gap: 1rem;
+      }
+
+      .footer-section {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+
+      .footer-logo img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.9rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+      }
+
+      .footer-section-title::after {
+        width: 40px;
+        height: 2px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links li {
+        margin: 0.4rem 0;
+      }
+
+      .footer-links a {
+        padding: 0.4rem 1rem 0.4rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .social-links {
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        width: 42px;
+        height: 42px;
+      }
+
+      .social-link svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .email-box {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .email-box a {
+        font-size: 0.85rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .email-box a::before {
+        font-size: 1rem;
+      }
+
+      .footer-bottom {
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Medium Mobile (480px) */
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.75rem 0.75rem 0.75rem;
+      }
+
+      .footer-section {
+        padding: 0.9rem;
+        border-radius: 10px;
+      }
+
+      .footer-logo img {
+        width: 65px;
+        height: 65px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.4rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.85rem;
+      }
+
+      .bismillah {
+        font-size: 1.1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1.1rem;
+      }
+
+      .footer-links a {
+        padding: 0.35rem 0.8rem 0.35rem 1.3rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        padding-left: 1.5rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-bottom {
+        padding-top: 1rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Small Mobile (375px) */
+    @media (max-width: 400px) {
+      .footer {
+        padding: 1.5rem 0.5rem 0.5rem;
+      }
+
+      .footer-section {
+        padding: 0.8rem;
+        border-radius: 8px;
+      }
+
+      .footer-logo img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.3rem;
+      }
+
+      .footer-tagline {
+        font-size: 0.8rem;
+      }
+
+      .bismillah {
+        font-size: 1rem;
+      }
+
+      .footer-section-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-links a {
+        padding: 0.3rem 0.6rem 0.3rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .social-link {
+        width: 38px;
+        height: 38px;
+      }
+
+      .social-link svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .email-box {
+        padding: 0.8rem;
+      }
+
+      .email-box a {
+        font-size: 0.8rem;
+      }
+
+      .footer-bottom {
+        padding-top: 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+      }
+
+      .footer-bottom p {
+        margin: 0.4rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>MuslimBro1400</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a>
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
+    </div>
+  </nav>
+
+  <header class="banner">
+    <img src="banner.png" alt="Banner" class="banner-img">
+  </header>
+
+  <main class="container">
+    <div class="welcome-box">
+      <h2><span class="arabic"><span class="salam"> السلام عليكم ورحمة الله وبركاته</span></span></h2>
+      <p>Welcome to MuslimBro1400, your trusted resource for Islamic knowledge and spiritual growth. Engage daily with the Holy Quran, the authentic Hadith of Prophet Muhammad (<span class="arabic">ﷺ</span>), and insightful Islamic literature to deepen your faith.</p>
+      <p>Experience the beauty of Quranic recitations by renowned reciters and explore our collection of Islamic books to enrich your understanding of Islam.</p>
+      <p>Share this platform with others to spread the light of Islamic teachings and earn blessings for the Hereafter.</p>
+      <p>May Allah (SWT) guide and bless you and your loved ones. <span class="arabic">آمين</span></p>
+    </div>
+
+    <h1 class="main-title"><hr>Our Contents <hr></h1>
+    <section class="cards">
+      <a href="quran.html" class="card">
+        <h3>Quran</h3>
+        <p>The Holy Quran is the final revelation from Allah, a complete guide for all of humanity.</p>
+      </a>
+      <a href="hadith.html" class="card">
+        <h3>Hadith</h3>
+        <p>The Hadith are the sayings, actions, and approvals of Prophet Muhammad (<span class="arabic">ﷺ</span>), offering insights into his life and teachings.</p>
+      </a>
+      <a href="islamic-books.html" class="card">
+        <h3>Islamic Books</h3>
+        <p>Explore a collection of authentic Islamic books to deepen your knowledge and understanding of Islam.</p>
+      </a>
+      <a href="quran-recitations.html" class="card">
+        <h3>Quran Recitations</h3>
+        <p>Listen to beautiful recitations of the Holy Quran by renowned reciters to enhance your spiritual connection.</p>
+      </a>
+      <a href="islamic-calendar.html" class="card">
+        <h3>Islamic Calendar</h3>
+        <p>Discover important Islamic dates and events to stay connected with the Hijri calendar.</p>
+      </a>
+      <a href="about.html" class="card">
+        <h3>About</h3>
+        <p>Learn more about MuslimBro1400, our mission, and the sources behind our content.</p>
+      </a>
+    </section>
+  </main>
+
+  <script>
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+
+      if (document.body.classList.contains('dark-mode')) {
+        icon.src = "sun.png";
+        icon.alt = "Switch to light mode";
+      } else {
+        icon.src = "moon.png";
+        icon.alt = "Switch to dark mode";
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+    }
+  </script>
+
+  <footer class="footer">
+    <div class="footer-pattern"></div>
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+        <div class="footer-logo">
+          <img src="favicon.png" alt="MuslimBro1400 Logo" />
+        </div>
+        <h2>MuslimBro1400</h2>
+        <p class="footer-tagline">Your Trusted Islamic Resource</p>
+        <div class="social-links">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section footer-links-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quran.html">Quran with Translations</a></li>
+          <li><a href="hadith.html">Hadiths and Sunnah</a></li>
+          <li><a href="islamic-books.html">Islamic Books</a></li>
+          <li><a href="quran-recitations.html">Quran Recitations</a></li>
+          <li><a href="islamic-calendar.html">Islamic Calendar</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section footer-contact">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="email-box">
+            <a href="mailto:muhammadadil43534@gmail.com" target="_blank">muhammadadil43534@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient2" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient2)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 <a href="index.html">MuslimBro1400</a>. All rights reserved.</p>
+      <p>Made with ❤️ for the Ummah</p>
+    </div>
+  </footer>
+</body>
+</html>
