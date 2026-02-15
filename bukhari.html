@@ -94,8 +94,17 @@
       padding: 0.4rem 0.6rem;
     }
     .menu-toggle img { width: 24px; height: 24px; }
-    .banner-img { width: 100%; max-height: 300px; object-fit: cover; }
-
+    
+    .banner {
+      width: 100%;
+      overflow: hidden;
+    }
+    .banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
     /* ---------- CONTAINER & CARDS ---------- */
     .container { max-width: 1200px; margin: auto; padding: 2rem 1rem; }
     h1 { text-align: center; margin-bottom: 1rem; }
@@ -822,9 +831,9 @@
         margin-left: 0;
         margin-top: 0.5rem;
       }
-      .banner-img {
+      /* .banner-img {
         max-height: 150px;
-      }
+      } */
       .container {
         padding: 1rem 0.5rem;
       }
@@ -1018,9 +1027,9 @@
         width: 20px;
         height: 20px;
       }
-      .banner-img {
+      /* .banner-img {
         max-height: 100px;
-      }
+      } */
       h1 {
         font-size: 1.3rem;
       }
