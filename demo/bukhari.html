@@ -6,17 +6,8 @@
   <title>Sahih al-Bukhari - MuslimBro1400</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.png" type="image/x-icon">
-  <style>
-    /* ---------- COMPLETE STYLESHEET (merged + enhanced) ---------- */
-    @font-face {
-      font-family: 'Jameel Noori Nastaleeq';
-      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
-           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
-           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
-      font-display: swap;
-    }
-
-    * { box-sizing: border-box; margin:0; padding:0; }
+<style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -29,7 +20,6 @@
       color: #e0e0e0;
     }
 
-    /* ---------- NAVBAR ---------- */
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -44,9 +34,7 @@
       z-index: 1000;
     }
 
-    .dark-mode .navbar {
-      background-color: #2c2c2c;
-    }
+    .dark-mode .navbar { background-color: #2c2c2c; }
 
     .nav-links {
       display: flex;
@@ -60,129 +48,181 @@
       font-weight: 500;
     }
 
-    .dark-mode .nav-links a {
-      color: #e0e0e0;
-    }
+    .dark-mode .nav-links a { color: #e0e0e0; }
 
     .nav-links a:hover {
       color: #007b5e;
     }
 
-    .dark-mode .nav-links a:hover {
-      color: #0c8;
-    }
-    
     .theme-toggle {
       cursor: pointer;
       margin-left: 1rem;
-      background: transparent;
+      background-color: transparent;
       border: none;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
     }
+
     .theme-toggle img {
       width: 24px;
       height: 24px;
       transition: transform 0.3s ease;
     }
-    .theme-toggle img.rotate { transform: rotate(180deg); }
+
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
     .menu-toggle {
       display: none;
       cursor: pointer;
-      background: transparent;
+      background-color: transparent;
       border: none;
       padding: 0.4rem 0.6rem;
     }
-    .menu-toggle img { width: 24px; height: 24px; }
-    .banner-img { width: 100%; max-height: 300px; object-fit: cover; }
 
-    /* ---------- CONTAINER & CARDS ---------- */
-    .container { max-width: 1200px; margin: auto; padding: 2rem 1rem; }
-    h1 { text-align: center; margin-bottom: 1rem; }
-    .description { text-align: center; margin-bottom: 2rem; color: #666; max-width:800px; margin-left:auto; margin-right:auto; }
-    .dark-mode .description { color: #ccc; }
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
 
-    /* ------- FLUID CARD GRID (responsive across all screens) ------- */
+    .banner {
+      width: 100%;
+      overflow: hidden;
+    }
+    .banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .description {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.1rem;
+    }
+
+    h1 .arabic {
+      font-size: 1.5rem;
+    }
+
+    .dark-mode .description {
+      color: #ccc;
+    }
+
     .cards-vertical-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 22vw, 200px), 1fr));
-      gap: 1.2rem;
-      padding: 1rem;
-      max-height: 70vh;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       overflow-y: auto;
       scroll-behavior: smooth;
+      padding: 1rem;
+      gap: 0.6rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+      max-height: 70vh;
     }
+
+    .cards-vertical-grid::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
     .horizontal-cards {
       display: flex;
       overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-bottom: 1.5rem;
+      gap: 0.6rem;
+      border-radius: 15px;
+      margin-top: 1rem;
     }
+
+    .horizontal-cards::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
+    /* Enhanced card styling with hover effects */
     .card {
       flex: 0 0 auto;
-      min-width: clamp(140px, 22vw, 200px);
-      width: clamp(140px, 22vw, 200px);
-      background: #333;
-      border-radius: 16px;
+      width: 180px;
+      background-color: #333;
+      border-radius: 12px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
+      text-decoration: none;
       color: #fff;
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       transform-origin: center;
-      border: 1px solid rgba(255,255,255,0.1);
-      aspect-ratio: 2/3;
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.25);
-      border-color: rgba(0,123,94,0.3);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      z-index: 10;
     }
+
     .card img {
       width: 100%;
-      height: 70%;
+      height: auto;
+      aspect-ratio: 2/3;
       object-fit: cover;
-      transition: transform 0.4s;
+      display: block;
+      transition: all 0.3s ease;
     }
-    .card:hover img { transform: scale(1.08); filter: brightness(0.6); }
 
-    .card .icons {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.6rem;
-      display: flex;
-      gap: 0.6rem;
-      z-index: 10;
-      opacity: 0.9;
-    }
-    .favorite-icon, .bookmark-icon {
-      width: 32px;
-      height: 32px;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(2px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.2s;
-      padding: 6px;
-    }
-    .favorite-icon svg, .bookmark-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-    .favorite-icon:hover, .bookmark-icon:hover {
-      transform: scale(1.2);
-      background: rgba(0,123,94,0.8);
-    }
-    .dark-mode .favorite-icon:hover, .dark-mode .bookmark-icon:hover {
-      background: #0c8c;
+    .card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.7);
     }
 
     .card .overlay {
@@ -190,567 +230,220 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
       padding: 1.5rem 1rem 1rem;
       color: #fff;
-      transition: 0.3s;
-      height: 40%;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 123, 94, 0.95) 0%, rgba(0, 123, 94, 0.8) 50%, rgba(0, 123, 94, 0) 100%);
+      padding-bottom: 1.5rem;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      backdrop-filter: blur(2px);
     }
-    .card:hover .overlay {
-      background: linear-gradient(to top, rgba(0,123,94,0.98), rgba(0,123,94,0.8), transparent);
-      height: 60%;
-    }
+
     .dark-mode .card:hover .overlay {
-      background: linear-gradient(to top, #0c8e, #0c8c, transparent);
+      background: linear-gradient(to top, rgba(0, 200, 136, 0.95) 0%, rgba(0, 200, 136, 0.8) 50%, rgba(0, 200, 136, 0) 100%);
     }
+
     .card .overlay .surah-number {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
     }
-    .additional-details {
+
+    .card:hover .overlay .surah-number {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .overlay .surah-meaning {
+      font-size: 0.9rem;
+      color: #ccc;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .overlay .surah-meaning {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .overlay .verse-count {
+      font-size: 0.85rem;
+      color: #aaa;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .overlay .verse-count {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Additional details that appear on hover */
+    .card .additional-details {
       max-height: 0;
       opacity: 0;
       overflow: hidden;
-      transition: 0.3s;
+      transition: all 0.4s ease;
+      margin-top: 0;
     }
+
     .card:hover .additional-details {
-      max-height: 80px;
-      opacity: 1;
-      margin-top: 0.6rem;
-      border-top: 1px solid rgba(255,255,255,0.3);
-    }
-    .quick-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0.8rem;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: 0.3s;
-    }
-    .card:hover .quick-actions { opacity: 1; transform: translateY(0); }
-    .quick-actions button {
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 30px;
-      padding: 0.4rem 1rem;
-      font-weight: 600;
-      color: #007b5e;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .quick-actions button:hover { background: #fff; transform: scale(1.05); }
-
-    /* ---------- AYAH CARD (for My Hadiths) ---------- */
-    .ayah-card {
-      flex: 0 0 auto;
-      width: 300px;
-      background: linear-gradient(145deg, #2e5c4a, #1e3a30);
-      border-radius: 20px;
-      padding: 1.5rem;
-      color: white;
-      position: relative;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-      border: 1px solid #0c8;
-    }
-    .ayah-card .hadith-number {
-      background: #0c8;
-      display: inline-block;
-      padding: 0.2rem 1rem;
-      border-radius: 40px;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-    .ayah-card .hadith-text {
-      font-family: 'Noto Naskh Arabic', serif;
-      font-size: 1.2rem;
-      direction: rtl;
-      text-align: right;
       max-height: 100px;
-      overflow: hidden;
-      margin-bottom: 1rem;
+      opacity: 1;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .ayah-card button {
-      background: #fff;
-      color: #1e3a30;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 30px;
+
+    .card .additional-details .detail-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .card .additional-details .detail-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card .additional-details .detail-value {
+      color: #fff;
       font-weight: 600;
-      cursor: pointer;
-    }
-    .ayah-card:hover {
-      cursor: pointer;
     }
 
-    /* ---------- MODAL & CAROUSEL (fully styled) ---------- */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-      z-index: 20000;
-      animation: fadeIn 0.3s;
-    }
-    .modal.show { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .modal-content {
-      background: white;
-      max-width: 1000px;
-      width: 95%;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 24px;
-      padding: 2rem;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      animation: slideUp 0.3s;
-    }
-    @keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
-    .dark-mode .modal-content { background: #1f2a2a; color: #eee; }
-
-    .hadith-info { text-align: center; margin-bottom: 1.5rem; }
-    .hadith-info h1 { color: #007b5e; }
-    .dark-mode .hadith-info h1 { color: #0c8; }
-
-    .tabs { display: flex; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
-    .tab-button {
-      padding: 0.6rem 1.8rem;
-      border: none;
-      border-radius: 40px;
-      background: #ddd;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .tab-button.active { background: #007b5e; color: white; }
-    .dark-mode .tab-button { background: #444; color: #ddd; }
-    .dark-mode .tab-button.active { background: #0c8; }
-
-    /* carousel container */
-    .carousel-container { max-width: 900px; margin: 0 auto; }
-    .carousel-hadith {
-      background: #fff;
-      border-radius: 24px;
-      padding: 2.5rem;
-      padding-top: 4rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      border: 1px solid #e0e0e0;
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-    .dark-mode .carousel-hadith { background: #2a3636; border-color: #3a4a4a; }
-    .carousel-hadith .hadith-number {
+    .card .icons {
       position: absolute;
-      top: 1.2rem; right: 1.5rem;
-      background: rgba(0,123,94,0.15);
-      color: #007b5e;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      font-weight: 700;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 2;
+      opacity: 0.8;
+      transition: all 0.3s ease;
     }
 
-    .arabic {
-      font-family: 'Noto Naskh Arabic', serif;
-    }
-    .dark-mode .carousel-hadith .hadith-number { background: #0c82; color: #8ff; }
-    .carousel-hadith .arabic {
-      font-family: 'Noto Naskh Arabic', serif;
-      font-size: 1.5rem;
-      direction: rtl;
-      text-align: right;
-      line-height: 1.9;
-      margin: 1rem 0 1.5rem;
-      color: #1a2c2c;
-    }
-    .dark-mode .carousel-hadith .arabic { color: #f0f0f0; }
-    .carousel-hadith .translation {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #3a4a4a;
-      margin-bottom: 1.2rem;
-    }
-    .dark-mode .carousel-hadith .translation { color: #ccc; }
-    .carousel-hadith .translation.ur {
-      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
-      font-size: 1.2rem;
-      line-height: 2.4;
-      direction: rtl;
-      text-align: right;
-    }
-    .carousel-hadith .hadith-meta {
-      font-size: 0.95rem;
-      color: #5a6a6a;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .dark-mode .carousel-hadith .hadith-meta { color: #aab; }
-
-    /* action buttons inside carousel */
-    .hadith-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 2px solid #e4e4e4;
-    }
-    .dark-mode .hadith-actions { border-top-color: #3a4a4a; }
-    .action-button {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: #f5f7fa;
-      border: 1px solid #cbd5e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.25s;
-    }
-    .action-button:hover {
-      background: #e2e8f0;
+    .card:hover .icons {
+      opacity: 1;
       transform: scale(1.1);
-      box-shadow: 0 6px 14px rgba(0,123,94,0.25);
     }
-    .dark-mode .action-button {
-      background: #3a4e4e;
-      border-color: #0c8;
-    }
-    .dark-mode .action-button:hover { background: #4e6b6b; }
-    .action-button svg {
+
+    .favorite-icon, .bookmark-icon {
       width: 28px;
       height: 28px;
-      stroke: #007b5e;
-      fill: none;
-      transition: 0.2s;
-    }
-    .dark-mode .action-button svg { stroke: #8ff; }
-    .action-button.favorited svg { fill: #007b5e; stroke: #007b5e; }
-    .dark-mode .action-button.favorited svg { fill: #0c8; stroke: #0c8; }
-    .action-button.bookmarked svg { fill: #007b5e; stroke: #007b5e; }
-    .dark-mode .action-button.bookmarked svg { fill: #0c8; stroke: #0c8; }
-
-    /* .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.8rem;
-    }
-    .nav-buttons button {
-      padding: 0.8rem 2rem;
-      background: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1rem;
       cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 4px 8px rgba(0,123,94,0.2);
-    }
-    .nav-buttons button:hover:not(:disabled) { background: #005f4a; transform: scale(1.02); }
-    .nav-buttons button:disabled { background: #aaa; cursor: default; }
-    .dark-mode .nav-buttons button { background: #0c8; }
-    .dark-mode .nav-buttons button:hover:not(:disabled) { background: #0a6; } */
-    
-    /* ===== HADITH NAVIGATION BUTTONS STYLING ===== */
-    .nav-buttons {
+      transition: all 0.2s ease;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 2px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 2rem;
-      padding: 1rem 0.5rem;
+      justify-content: center;
+    }
+
+    .favorite-icon:hover, .bookmark-icon:hover {
+      transform: scale(1.2);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .card .quick-actions {
+      display: flex;
+      justify-content: center;
       gap: 1rem;
-    }
-    .nav-buttons button {
-      padding: 0.75rem 1.8rem;
-      background: linear-gradient(135deg, #007b5e 0%, #009f7a 100%);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .nav-buttons button:hover:not(:disabled) {
-      background: linear-gradient(135deg, #005f4a 0%, #007b5e 100%);
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 20px rgba(0, 123, 94, 0.4);
-    }
-    .nav-buttons button:active:not(:disabled) {
-      transform: translateY(0) scale(0.98);
-    }
-    .nav-buttons button:disabled {
-      background: linear-gradient(135deg, #b0b0b0 0%, #d0d0d0 100%);
-      color: #888;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-    .nav-buttons button:disabled:hover {
-      transform: none;
-      box-shadow: none;
-    }
-    .dark-mode .nav-buttons button {
-      background: linear-gradient(135deg, #0c8 0%, #00d9a5 100%);
-      box-shadow: 0 4px 15px rgba(0, 200, 136, 0.3);
-    }
-    .dark-mode .nav-buttons button:hover:not(:disabled) {
-      background: linear-gradient(135deg, #0a6 0%, #0c8 100%);
-      box-shadow: 0 6px 20px rgba(0, 200, 136, 0.4);
-    }
-    .dark-mode .nav-buttons button:disabled {
-      background: linear-gradient(135deg, #444 0%, #555 100%);
-      color: #777;
-    }
-    .nav-buttons button svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-    .nav-buttons button.nav-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .nav-buttons button.nav-btn span {
-      white-space: nowrap;
-    }
-    
-    /* Mobile responsive styles for nav buttons */
-    @media (max-width: 480px) {
-      .nav-buttons {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0.8rem 0.25rem;
-        gap: 0.5rem;
-      }
-      .nav-buttons button {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-      }
-      .nav-buttons button.nav-btn span {
-        display: none;
-      }
-      .nav-buttons button.nav-btn svg {
-        width: 20px;
-        height: 20px;
-      }
-      .carousel-counter {
-        font-weight: 700;
-        color: #007b5e;
-        font-size: 1.2rem;
-      }
-      .dark-mode .carousel-counter { color: #8ff; }
-    }
-    
-    /* ---------- LANGUAGE SELECT (styled) ---------- */
-    .carousel-lang-select {
-      background: #f1f5f9;
-      padding: 1rem;
-      border-radius: 60px;
-      text-align: center;
-      margin-bottom: 1.8rem;
-      border: 1px solid #cbd5e0;
-    }
-    .dark-mode .carousel-lang-select { background: #2a3a3a; border-color: #0c8; }
-    .carousel-lang-select label {
-      font-weight: 600;
-      margin-right: 0.8rem;
-      color: #1a2c2c;
-    }
-    .dark-mode .carousel-lang-select label { color: #e0f0f0; }
-    .carousel-lang-select select {
-      padding: 0.6rem 2.2rem 0.6rem 1.2rem;
-      border: 2px solid #007b5e;
-      border-radius: 40px;
-      background: white;
-      font-size: 1rem;
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 0.8rem center;
-      cursor: pointer;
-    }
-    .dark-mode .carousel-lang-select select {
-      background-color: #1f2a2a;
-      border-color: #0c8;
-      color: #eee;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M7 10l5 5 5-5z"/></svg>');
-    }
-    .carousel-lang-select select:hover { border-color: #005f4a; transform: scale(1.02); }
-
-    /* ---------- GO TO HADITH ---------- */
-    .go-to-hadith { text-align: center; margin: 1.5rem 0; }
-    .go-to-hadith input {
-      padding: 0.6rem;
-      width: 90px;
-      border: 2px solid #007b5e;
-      border-radius: 12px;
-      font-size: 1rem;
-      text-align: center;
-    }
-    .go-to-hadith button {
-      padding: 0.6rem 1.4rem;
-      background: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      margin-left: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease 0.1s;
     }
 
-    /* ---------- SHARE MODAL (exact style from request) ---------- */
-    #share-modal.modal {
-      display: none;
+    .card:hover .quick-actions {
+      opacity: 1;
+      transform: translateY(0);
     }
-    #share-modal.modal.show {
-      display: flex;
-    }
-    #share-modal .modal-content {
-      background: white;
-      padding: 30px;
+
+    .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
       border-radius: 20px;
-      text-align: center;
-      max-width: 500px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #007b5e;
     }
-    .dark-mode #share-modal .modal-content { background: #2c2c2c; }
-    #share-modal h2 { margin-bottom: 1.5rem; color: #007b5e; }
-    .dark-mode #share-modal h2 { color: #0c8; }
-    #share-modal div { margin-bottom: 1rem; text-align: left; }
-    #share-modal label {
+
+    .dark-mode .card .quick-actions button {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0c8;
+    }
+
+    .card .quick-actions button:hover {
+      background: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .dark-mode .card p {
+      color: #ccc;
+    }
+
+    .tabs {
       display: flex;
-      align-items: center;
-      font-weight: 600;
-      cursor: pointer;
+      justify-content: center;
+      margin-bottom: 2rem;
     }
-    #share-modal input[type="checkbox"] {
-      margin-right: 0.8rem;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      appearance: none;
-      background: white;
-      transition: 0.2s;
-    }
-    #share-modal input[type="checkbox"]:checked {
-      background: #007b5e;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-    .dark-mode #share-modal input[type="checkbox"] {
-      background: #2c2c2c;
-      border-color: #0c8;
-    }
-    .dark-mode #share-modal input[type="checkbox"]:checked { background: #0c8; }
-    #share-modal select {
-      padding: 0.6rem 2rem 0.6rem 1rem;
-      border: 2px solid #007b5e;
-      border-radius: 30px;
-      background: white;
-      font-size: 1rem;
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 0.8rem center;
-    }
-    .dark-mode #share-modal select { background-color: #2c2c2c; border-color: #0c8; color: #eee; background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>'); }
-    #share-modal button {
-      margin: 0.5rem;
-      padding: 0.7rem 1.8rem;
-      background: #007b5e;
-      color: white;
+
+    .tab-button {
+      background-color: #f0f0f0;
       border: none;
-      border-radius: 40px;
-      font-weight: 600;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
       cursor: pointer;
-      transition: 0.2s;
-    }
-    #share-modal button:hover { background: #005f4a; transform: scale(1.02); }
-    .dark-mode #share-modal button { background: #0c8; }
-    .dark-mode #share-modal button:hover { background: #0a6; }
-    #copy-message { color: #0c8; font-weight: bold; margin-top: 1rem; }
-
-    /* ---------- SCROLL TO TOP ---------- */
-    #scrollToTop {
-      position: fixed; bottom: 30px; right: 30px;
-      width: 55px; height: 55px;
-      background: #007b5e; color: white;
-      border: none; border-radius: 50%;
-      font-size: 26px;
-      cursor: pointer;
-      display: none;
-      align-items: center; justify-content: center;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-      z-index: 3000;
-      transition: 0.25s;
-    }
-    #scrollToTop.show { display: flex; }
-    #scrollToTop:hover { background: #005f4a; transform: scale(1.1); }
-    .dark-mode #scrollToTop { background: #0c8; }
-
-    /* ============================================
-       RESPONSIVE STYLES FOR ALL SCREENS
-       ============================================ */
-
-    /* Tablet Styles (max-width: 992px) */
-    @media (max-width: 992px) {
-      /* .navbar {
-        padding: 0.8rem 1rem;
-      }
-      .nav-links a {
-        margin-left: 0.5rem;
-        font-size: 0.9rem;
-      } */
-      .container {
-        padding: 1.5rem 0.8rem;
-      }
-      .modal-content {
-        width: 90%;
-        padding: 1.5rem;
-      }
-      .carousel-hadith {
-        padding: 2rem 1.5rem;
-        padding-top: 3rem;
-      }
-      .carousel-hadith .arabic {
-        font-size: 1.3rem;
-      }
-      .hadith-actions {
-        gap: 0.8rem;
-      }
-      .action-button {
-        width: 48px;
-        height: 48px;
-      }
-      /* .nav-buttons button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-      } */
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    /* Mobile Styles (max-width: 600px) */
+    .tab-button.active {
+      background-color: #007b5e;
+      color: white;
+    }
+
+    .dark-mode .tab-button {
+      background-color: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .tab-button.active {
+      background-color: #0c8;
+    }
+
     @media (max-width: 600px) {
-      .main-title {
-        font-size: 1.5rem;
-      }
-
       .navbar h1 {
         font-size: 1.25rem;
       }
@@ -777,20 +470,434 @@
 
       .nav-links a {
         margin: 0.5rem 0;
-      }
-
-      .theme-toggle {
-        margin: 0;
       }
 
       .menu-toggle {
         display: block;
       }
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
+      }
+      
+      .card {
+        width: 130px;
+      }
+      
+      .card .additional-details {
+        font-size: 0.75rem;
+      }
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+      }
+      
+      .ayah-card {
+        width: 220px;
+        height: 180px;
+      }
+      
+      .ayah-text {
+        font-size: 0.9rem;
+        max-height: 60px;
+      }
+      
+      .ayah-header {
+        font-size: 0.9rem;
+      }
+      
+      .ayah-card-actions button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 80px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+      }
     }
 
-    /* Tablet Styles (max-width: 768px) */
+    /* Enhanced Ayah Card Styling */
+    .ayah-card {
+      flex: 0 0 auto;
+      width: 300px;
+      background: linear-gradient(135deg, #333333 0%, #2a2a2a 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ayah-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      border-color: rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #222222 100%);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .ayah-card:hover {
+      border-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid rgba(0, 123, 94, 0.3);
+      position: relative;
+    }
+
+    .dark-mode .ayah-header {
+      border-bottom-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, #007b5e, #00a884);
+      border-radius: 1px;
+    }
+
+    .dark-mode .ayah-header::after {
+      background: linear-gradient(90deg, #0c8, #00d9a5);
+    }
+
+    .surah-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .surah-name::before {
+      /* content: '📖'; */
+      font-size: 0.9rem;
+    }
+
+    .revelation-badge {
+      background: linear-gradient(135deg, #007b5e, #00a884);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 123, 94, 0.2);
+    }
+
+    .dark-mode .revelation-badge {
+      background: linear-gradient(135deg, #0c8, #00d9a5);
+      box-shadow: 0 2px 4px rgba(0, 200, 136, 0.2);
+    }
+
+    .ayah-text-container {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .ayah-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 123, 94, 0.15);
+      color: #007b5e;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border: 2px solid rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-number {
+      background: rgba(0, 200, 136, 0.15);
+      color: #0c8;
+      border-color: rgba(0, 200, 136, 0.3);
+    }
+
+    .ayah-text {
+      padding-left: 2.5rem;
+      line-height: 1.5;
+      font-size: 1rem;
+      font-family: 'Amiri', serif;
+      text-align: right;
+      direction: rtl;
+      color: #fff;
+      max-height: 70px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ayah-text::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 2.5rem;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, rgba(42, 42, 42, 0.95));
+    }
+
+    .dark-mode .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(34, 34, 34, 0.95));
+    }
+
+    .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 123, 94, 0.1));
+    }
+
+    .dark-mode .ayah-card:hover .ayah-text::after {
+      background: linear-gradient(to bottom, transparent, rgba(0, 200, 136, 0.1));
+    }
+
+    .ayah-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .verse-info {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .verse-info::before {
+      /* content: '🔢'; */
+      font-size: 0.8rem;
+    }
+
+    .surah-meaning {
+      font-style: italic;
+      color: #bbb;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .surah-meaning::before {
+      /* content: '💡'; */
+      font-size: 0.8rem;
+    }
+
+    .ayah-card-actions {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .ayah-card-actions button {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      letter-spacing: 0.3px;
+      min-width: 100px;
+    }
+
+    .ayah-card-actions button.remove-btn {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      box-shadow: 0 3px 6px rgba(220, 53, 69, 0.2);
+    }
+
+    .ayah-card-actions button.remove-btn:hover {
+      background: linear-gradient(135deg, #c82333, #bd2130);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #007b5e, #005a45);
+      color: white;
+      box-shadow: 0 3px 6px rgba(0, 123, 94, 0.2);
+    }
+
+    .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #005a45, #004535);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0, 123, 94, 0.3);
+    }
+
+    .dark-mode .ayah-card-actions button.view-btn {
+      background: linear-gradient(135deg, #0c8, #00a884);
+      box-shadow: 0 3px 6px rgba(0, 200, 136, 0.2);
+    }
+
+    .dark-mode .ayah-card-actions button.view-btn:hover {
+      background: linear-gradient(135deg, #00a884, #008c6d);
+      box-shadow: 0 5px 12px rgba(0, 200, 136, 0.3);
+    }
+
+    /* Hover effect gradients */
+    .favorite-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .bookmark-card:hover {
+      background: linear-gradient(135deg, #333333 0%, #1a2a2a 100%);
+      border-color: rgba(78, 205, 196, 0.3);
+    }
+
+    .dark-mode .favorite-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    .dark-mode .bookmark-card:hover {
+      background: linear-gradient(135deg, #2a2a2a 0%, #0a1a1a 100%);
+    }
+
+    /* For the My Hadiths sections */
+    #favorited-hadiths .horizontal-cards,
+    #bookmarked-hadiths .horizontal-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      overflow-y: auto;
+      max-height: 500px;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .dark-mode #favorited-hadiths .horizontal-cards,
+    .dark-mode #bookmarked-hadiths .horizontal-cards {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    #favorited-hadiths .horizontal-cards::-webkit-scrollbar,
+    #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #favorited-hadiths .horizontal-cards::-webkit-scrollbar-thumb,
+    #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 4px;
+    }
+
+    .dark-mode #favorited-hadiths .horizontal-cards::-webkit-scrollbar-thumb,
+    .dark-mode #bookmarked-hadiths .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark-mode #scrollToTop {
+      background-color: #0c8;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
     @media (max-width: 768px) {
-      /* .navbar h1 {
+      
+      .cards-vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .ayah-card {
+        width: 260px;
+        height: 190px;
+      }
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
         font-size: 1.25rem;
       }
 
@@ -816,334 +923,71 @@
 
       .nav-links a {
         margin: 0.5rem 0;
-      } */
-      .theme-toggle {
-        margin-left: 0;
-        margin-top: 0.5rem;
       }
-      .banner-img {
-        max-height: 150px;
-      }
-      .container {
-        padding: 1rem 0.5rem;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-      h1 .arabic {
-        font-size: 1.2rem;
-      }
-      .description {
-        font-size: 0.9rem;
-        padding: 0 0.5rem;
-      }
-      /* Cards Grid - Responsive for all screens */
-      .cards-vertical-grid {
-        max-height: none;
-        overflow-y: visible;
-        grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 30vw, 200px), 1fr));
-        gap: 1rem;
-        padding: 0.5rem;
-      }
-      .card {
-        width: 100%;
-        min-width: clamp(120px, 30vw, 200px);
-        aspect-ratio: 3/4;
-        min-height: 180px;
-      }
-      /* Horizontal scrolling cards */
-      .horizontal-cards {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 1rem;
-        gap: 0.8rem;
-      }
-      .horizontal-cards .card {
-        flex: 0 0 clamp(140px, 35vw, 200px);
-        scroll-snap-align: start;
-      }
-      /* Modal responsive */
-      .modal-content {
-        width: 95%;
-        max-height: 85vh;
-        padding: 1rem;
-        border-radius: 16px;
-        margin: 0.5rem;
-      }
-      .hadith-info h1 {
-        font-size: 1.3rem;
-      }
-      .hadith-info p {
-        font-size: 0.85rem;
-      }
-      /* Carousel responsive */
-      .carousel-container {
-        max-width: 100%;
-      }
-      .carousel-hadith {
-        padding: 1.5rem 1rem;
-        padding-top: 2.5rem;
-        border-radius: 16px;
-      }
-      .carousel-hadith .hadith-number {
-        top: 0.8rem;
-        right: 1rem;
-        padding: 0.3rem 0.8rem;
-        font-size: 0.85rem;
-      }
-      .carousel-hadith .arabic {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        margin: 0.8rem 0 1rem;
-      }
-      .carousel-hadith .translation {
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-      .carousel-hadith .translation.ur {
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-      .carousel-hadith .hadith-meta {
-        font-size: 0.8rem;
-        margin-top: 0.8rem;
-      }
-      /* Hadith actions */
-      .hadith-actions {
-        gap: 0.6rem;
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .action-button {
-        width: 44px;
-        height: 44px;
-      }
-      .action-button svg {
-        width: 22px;
-        height: 22px;
-      }
-      /* Navigation buttons */
-      .nav-buttons {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-      }
-      .nav-buttons button {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-        border-radius: 30px;
-      }
-      .carousel-counter {
-        font-size: 1rem;
-        width: 100%;
-        text-align: center;
-        order: -1;
-        margin-bottom: 0.5rem;
-      }
-      /* Language select */
-      .carousel-lang-select {
-        padding: 0.8rem;
-        border-radius: 30px;
-        margin-bottom: 1rem;
-      }
-      .carousel-lang-select label {
+
+      .menu-toggle {
         display: block;
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
       }
-      .carousel-lang-select select {
-        width: 100%;
-        padding: 0.5rem 2rem 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-      /* Go to hadith */
-      .go-to-hadith {
-        margin: 1rem 0;
-      }
-      .go-to-hadith input {
-        width: 70px;
-        padding: 0.5rem;
-        font-size: 0.9rem;
-      }
-      .go-to-hadith button {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-      }
-      /* Footer */
-      .footer {
-        padding: 1.5rem 0.5rem;
-        margin-top: 2rem;
-        font-size: 0.85rem;
-      }
-      /* Scroll to top */
-      #scrollToTop {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-      }
-      /* Ayah card (My Hadiths) */
-      .ayah-card {
-        width: 260px;
-        padding: 1.2rem;
-        border-radius: 16px;
-      }
-      .ayah-card .hadith-number {
-        padding: 0.15rem 0.8rem;
-        font-size: 0.85rem;
-        margin-bottom: 0.8rem;
-      }
-      .ayah-card .hadith-text {
-        font-size: 1rem;
-        max-height: 80px;
-      }
-    }
-
-    /* Small Mobile Styles (max-width: 480px) */
-    @media (max-width: 480px) {
-      .navbar h1 {
-        font-size: 1rem;
-      }
-      .menu-toggle img {
-        width: 20px;
-        height: 20px;
-      }
-      .theme-toggle img {
-        width: 20px;
-        height: 20px;
-      }
-      .banner-img {
-        max-height: 100px;
-      }
-      h1 {
-        font-size: 1.3rem;
-      }
-      h1 hr {
-        margin: 0.5rem 0;
-      }
-      h1 .arabic {
-        font-size: 1rem;
-      }
-      .description {
-        font-size: 0.85rem;
-      }
+      
       .cards-vertical-grid {
-        grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 35vw, 180px), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 0.8rem;
-        padding: 0.3rem;
       }
+      
       .card {
-        min-width: clamp(100px, 35vw, 180px);
-        aspect-ratio: 2/3;
-        border-radius: 12px;
+        width: 130px;
       }
-      .card .overlay {
-        padding: 0.8rem 0.6rem 0.6rem;
+      
+      .card .additional-details {
+        font-size: 0.75rem;
       }
-      .card .surah-number {
-        font-size: 0.8rem;
+      
+      .card .quick-actions button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
       }
-      /* Modal */
-      .modal-content {
-        width: 98%;
-        padding: 0.8rem;
-        border-radius: 12px;
+      
+      .ayah-card {
+        width: 220px;
+        height: 180px;
       }
-      .hadith-info h1 {
-        font-size: 1.1rem;
+      
+      .ayah-text {
+        font-size: 0.9rem;
+        max-height: 60px;
       }
-      /* Carousel */
-      .carousel-hadith {
-        padding: 1.2rem 0.8rem;
-        padding-top: 2rem;
-      }
-      .carousel-hadith .arabic {
-        font-size: 1rem;
-      }
-      .carousel-hadith .translation {
+      
+      .ayah-header {
         font-size: 0.9rem;
       }
-      .carousel-hadith .translation.ur {
-        font-size: 0.95rem;
-      }
-      .hadith-actions {
-        gap: 0.5rem;
-      }
-      .action-button {
-        width: 40px;
-        height: 40px;
-      }
-      .action-button svg {
-        width: 20px;
-        height: 20px;
-      }
-      .nav-buttons button {
+      
+      .ayah-card-actions button {
         padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        min-width: 80px;
       }
-      /* Ayah card */
-      .ayah-card {
-        width: 240px;
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
         padding: 1rem;
       }
-      .ayah-card .hadith-text {
-        font-size: 0.95rem;
-      }
     }
 
-    /* Extra Small Mobile (max-width: 360px) */
-    @media (max-width: 360px) {
-      .cards-vertical-grid {
-        grid-template-columns: repeat(auto-fill, minmax(clamp(90px, 40vw, 140px), 1fr));
-        gap: 0.6rem;
+    @media (max-width: 480px) {
+      
+      .ayah-card {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
       }
-      .card {
-        min-width: clamp(90px, 40vw, 140px);
-        aspect-ratio: 2/3;
-        border-radius: 10px;
+      
+      #favorited-ayahs .cards,
+      #bookmarked-ayahs .cards {
+        grid-template-columns: 1fr;
+        justify-items: center;
       }
-      .card .overlay {
-        padding: 0.6rem;
-      }
-    }
-
-/* Horizontal Cards Hover Animation */
-    .horizontal-cards .card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .horizontal-cards .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
-      border-color: rgba(0, 123, 94, 0.3);
-    }
-    .horizontal-cards .card img {
-      transition: transform 0.4s;
-    }
-    .horizontal-cards .card:hover img {
-      transform: scale(1.08);
-      filter: brightness(0.6);
-    }
-    .horizontal-cards .card .overlay {
-      transition: all 0.3s;
-    }
-    .horizontal-cards .card:hover .overlay {
-      background: linear-gradient(to top, rgba(0, 123, 94, 0.98), rgba(0, 123, 94, 0.8), transparent);
-      height: 60%;
-    }
-
-    /* Ayah Card Hover Animation (My Hadiths) */
-    .ayah-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .ayah-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
-      border-color: rgba(0, 200, 136, 0.5);
     }
 
     /* Footer Styles */
@@ -1567,7 +1411,7 @@
     }
 
     .bismillah {
-      font-family: 'Noto Naskh Arabic', serif;
+      font-family: 'Amiri', serif;
       font-size: 1.2rem;
       color: #007b5e;
       margin-bottom: 1rem;
@@ -1915,67 +1759,42 @@
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
-    <button class="menu-toggle" onclick="toggleMenu()"><img src="menu.png" alt="Menu"></button>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu.png" alt="Menu" />
+    </button>
     <div class="nav-links">
-      <a href="index.html">Home</a> 
-      <a href="quran.html">Quran</a> 
+      <a href="index.html">Home</a>
+      <a href="quran.html">Quran</a>
       <a href="hadith.html">Hadiths</a>
-      <a href="islamic-books.html">Books</a> 
+      <a href="islamic-books.html">Books</a>
       <a href="quran-recitations.html">Recitations</a>
-      <a href="islamic-calendar.html">Calendar</a> 
+      <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
-      <button class="theme-toggle" onclick="toggleTheme()"><img id="theme-icon" src="moon.png" alt="Toggle Theme"></button>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
+      </button>
     </div>
   </nav>
-  <div class="banner"><img class="banner-img" src="banner.png" alt="Banner"></div>
-  
+
+  <!-- Banner -->
+  <div class="banner">
+    <img class="banner-img" src="banner.png" alt="Banner" />
+  </div>
+
+  <!-- Main Content -->
   <div class="container">
     <h1><hr>Sahih al-Bukhari (<span class="arabic">صحيح البخاري</span>)<hr></h1>
-
-    <p class="description">Sahih al-Bukhari, compiled by Imam Muhammad al-Bukhari (<span class="arabic">رحمه الله</span>, d. 256 AH/870 CE), is widely regarded as the most authentic collection of hadith in Islamic scholarship. This esteemed work documents the <span class="arabic">Sunnah</span> of the Prophet Muhammad (<span class="arabic">ﷺ</span>), encompassing over 7,500 narrations across 97 books, serving as a cornerstone for Islamic guidance and practice.<hr></p><br>
-
+    <p class="description">
+      Sahih al-Bukhari, compiled by Imam Muhammad al-Bukhari (<span class="arabic">رحمه الله</span>, d. 256 AH/870 CE), is widely regarded as the most authentic collection of hadith in Islamic scholarship. This esteemed work documents the <span class="arabic">Sunnah</span> of the Prophet Muhammad (<span class="arabic">ﷺ</span>), encompassing over 7,500 narrations across 97 books, serving as a cornerstone for Islamic guidance and practice.<hr></p><br>
     <div class="tabs">
       <button class="tab-button active" onclick="showAll()">All Hadiths</button>
       <button class="tab-button" onclick="showMy()">My Hadiths</button>
     </div>
-
-    <div id="chaptersGrid" class="cards-vertical-grid"></div>
-  </div>
-
-  <!-- ========== HADITH MODAL (CAROUSEL) ========== -->
-  <div id="hadith-modal" class="modal">
-    <div class="modal-content">
-      <span style="position:absolute; top:20px; right:25px; font-size:30px; cursor:pointer;" onclick="closeHadithModal()">&times;</span>
-      <div class="hadith-info">
-        <h1 id="modal-chapter-title"></h1>
-        <p id="modal-chapter-subtitle" class="subtitle"></p>
-        <p id="modal-chapter-meta" class="meta"></p>
-      </div>
-      <div class="tabs" style="margin-top:0;">
-        <button class="tab-button active" onclick="switchModalTab('carousel')">Carousel</button>
-      </div>
-      <div id="modal-carousel-tab"></div>
-    </div>
-  </div>
-
-  <!-- ========== SHARE MODAL (fully styled) ========== -->
-  <div id="share-modal" class="modal">
-    <div class="modal-content">
-      <h2>Share Hadith</h2>
-      <div><label><input type="checkbox" id="include-arabic" checked> Include Arabic text</label></div>
-      <div><label><input type="checkbox" id="include-translation" checked> Include translation</label></div>
-      <div>
-        <label for="share-language">Translation language:</label>
-        <select id="share-language">
-          <option value="en">English</option>
-          <option value="ur">Urdu</option>
-        </select>
-      </div>
-      <button onclick="shareHadith()">Copy to Clipboard</button>
-      <button onclick="closeShareModal()">Cancel</button>
-      <div id="copy-message" style="display:none;">✓ Copied to clipboard!</div>
+    <div class="cards-vertical-grid" id="chaptersGrid">
+      <!-- Cards will be generated here -->
     </div>
   </div>
 
@@ -2129,120 +1948,207 @@
   </footer>
 
   <script>
-    // ---------- HADITH DATASET (BOOK1 & BOOK2) ----------
-    const hadiths = [
-      // Book 1 (chp=1) – Revelation – 7 hadiths
-      { id:1, 
-        volume:1, 
-        book:1, chp:1, 
-        chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا الْحُمَيْدِيُّ عَبْدُ اللَّهِ بْنُ الزُّبَيْرِ ، قَالَ : حَدَّثَنَا سُفْيَانُ ، قَالَ : حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ الْأَنْصَارِيُّ ، قَالَ : أَخْبَرَنِي مُحَمَّدُ بْنُ إِبْرَاهِيمَ التَّيْمِيُّ ، أَنَّهُ سَمِعَ عَلْقَمَةَ بْنَ وَقَّاصٍ اللَّيْثِيَّ ، يَقُولُ : سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ رَضِيَ اللَّهُ عَنْهُ عَلَى الْمِنْبَرِ، قَالَ : سَمِعْتُ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ، يَقُولُ : \" إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى دُنْيَا يُصِيبُهَا أَوْ إِلَى امْرَأَةٍ يَنْكِحُهَا، فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ \"",
-        en: "Narrated 'Umar bin Al-Khattab: <br> I heard Allah's Messenger (ﷺ) saying, \"The reward of deeds depends upon the intentions and every person will get the reward according to what he has intended. So whoever emigrated for worldly benefits or for a woman to marry, his emigration was for what he emigrated for.\"",
-        ur: "ہم کو حمیدی نے یہ حدیث بیان کی ، انھوں نے کہا کہ ہم کو سفیان نے یہ حدیث بیان کی ، وہ کہتے ہیں ہم کو یحییٰ بن سعید انصاری نے یہ حدیث بیان کی ، انھوں نے کہا کہ مجھے یہ حدیث محمد بن ابراہیم تیمی سے حاصل ہوئی ۔ انھوں نے اس حدیث کو علقمہ بن وقاص لیثی سے سنا ، ان کا بیان ہے کہ میں نے مسجدنبوی میں منبر رسول صلی اللہ علیہ وسلم پر حضرت عمر بن خطاب رضی اللہ عنہ کی زبان سے سنا ، وہ فرما رہے تھے کہ میں نے جناب رسول اللہ صلی اللہ علیہ وسلم سے سنا آپ صلی اللہ علیہ وسلم فرما رہے تھے کہ تمام اعمال کا دارومدار نیت پر ہے اور ہر عمل کا نتیجہ ہر انسان کو اس کی نیت کے مطابق ہی ملے گا ۔ پس جس کی ہجرت ( ترک وطن ) دولت دنیا حاصل کرنے کے لیے ہو یا کسی عورت سے شادی کی غرض ہو ۔ پس اس کی ہجرت ان ہی چیزوں کے لیے ہو گی جن کے حاصل کرنے کی نیت سے اس نے ہجرت کی ہے ۔", },
+    const unfavoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const favoriteSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    const unbookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#00CC88" stroke-width="66.66" stroke-miterlimit="10" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const bookmarkedSVG = `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#00CC88" d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
 
-      { id:2, 
-        volume:1, 
-        book:1, 
-        chp:1,
-        chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ أُمِّ الْمُؤْمِنِينَ ـ رضى الله عنها ـ أَنَّ الْحَارِثَ بْنَ هِشَامٍ ـ رضى الله عنه ـ سَأَلَ رَسُولَ اللَّهِ صلى الله عليه وسلم فَقَالَ يَا رَسُولَ اللَّهِ كَيْفَ يَأْتِيكَ الْوَحْىُ فَقَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ أَحْيَانًا يَأْتِينِي مِثْلَ صَلْصَلَةِ الْجَرَسِ ـ وَهُوَ أَشَدُّهُ عَلَىَّ ـ فَيُفْصَمُ عَنِّي وَقَدْ وَعَيْتُ عَنْهُ مَا قَالَ، وَأَحْيَانًا يَتَمَثَّلُ لِيَ الْمَلَكُ رَجُلاً فَيُكَلِّمُنِي فَأَعِي مَا يَقُولُ ‏\"‏‏.‏ قَالَتْ عَائِشَةُ رضى الله عنها وَلَقَدْ رَأَيْتُهُ يَنْزِلُ عَلَيْهِ الْوَحْىُ فِي الْيَوْمِ الشَّدِيدِ الْبَرْدِ، فَيَفْصِمُ عَنْهُ وَإِنَّ جَبِينَهُ لَيَتَفَصَّدُ عَرَقًا‏.‏",
-        en: "Narrated 'Aisha: <br> (the mother of the faithful believers) Al-Harith bin Hisham asked Allah's Messenger (ﷺ) \"O Allah's Messenger (ﷺ)! How is the Divine Inspiration revealed to you?\" Allah's Messenger (ﷺ) replied, \"Sometimes it is (revealed) like the ringing of a bell, this form of Inspiration is the hardest of all and then this state passes off after I have grasped what is inspired. Sometimes the Angel comes in the form of a man and talks to me and I grasp whatever he says.\" 'Aisha added: Verily I saw the Prophet (ﷺ) being inspired divinely on a very cold day and noticed the sweat dropping from his forehead (as the Inspiration was over).",
-        ur: "ہم کو عبداللہ بن یوسف نے حدیث بیان کی ، ان کو مالک نے ہشام بن عروہ کی روایت سے خبر دی ، انھوں نے اپنے والد سے نقل کی ، انھوں نے ام المؤمنین حضرت عائشہ صدیقہ رضی اللہ عنہا سے نقل کی آپ نے فرمایا کہ ایک شخص حارث بن ہشام نامی نے آنحضرت صلی اللہ علیہ وسلم سے سوال کیا تھا کہ یا رسول اللہ ! آپ پر وحی کیسے نازل ہوتی ہے ؟ آپ صلی اللہ علیہ وسلم نے فرمایا کہ وحی نازل ہوتے وقت کبھی مجھ کو گھنٹی کی سی آواز محسوس ہوتی ہے اور وحی کی یہ کیفیت مجھ پر بہت شاق گذرتی ہے ۔ جب یہ کیفیت ختم ہوتی ہے تو میرے دل و دماغ پر اس ( فرشتے ) کے ذریعہ نازل شدہ وحی محفوظ ہو جاتی ہے اور کسی وقت ایسا ہوتا ہے کہ فرشتہ بشکل انسان میرے پاس آتا ہے اور مجھ سے کلام کرتا ہے ۔ پس میں اس کا کہا ہوا یاد رکھ لیتا ہوں ۔ حضرت عائشہ رضی اللہ عنہا کا بیان ہے کہ میں نے سخت کڑاکے کی سردی میں آنحضرت صلی اللہ علیہ وسلم کو دیکھا ہے کہ آپ صلی اللہ علیہ وسلم پر وحی نازل ہوئی اور جب اس کا سلسلہ موقوف ہوا تو آپ صلی اللہ علیہ وسلم کی پیشانی پسینے سے شرابور تھی ۔",},
-      { id:3, 
-        volume:1, 
-        book:1, 
-        chp:1, 
-        chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا يَحْيَى بْنُ بُكَيْرٍ، قَالَ حَدَّثَنَا اللَّيْثُ، عَنْ عُقَيْلٍ، عَنِ ابْنِ شِهَابٍ، عَنْ عُرْوَةَ بْنِ الزُّبَيْرِ، عَنْ عَائِشَةَ أُمِّ الْمُؤْمِنِينَ، أَنَّهَا قَالَتْ أَوَّلُ مَا بُدِئَ بِهِ رَسُولُ اللَّهِ صلى الله عليه وسلم مِنَ الْوَحْىِ الرُّؤْيَا الصَّالِحَةُ فِي النَّوْمِ، فَكَانَ لاَ يَرَى رُؤْيَا إِلاَّ جَاءَتْ مِثْلَ فَلَقِ الصُّبْحِ، ثُمَّ حُبِّبَ إِلَيْهِ الْخَلاَءُ، وَكَانَ يَخْلُو بِغَارِ حِرَاءٍ فَيَتَحَنَّثُ فِيهِ ـ وَهُوَ التَّعَبُّدُ ـ اللَّيَالِيَ ذَوَاتِ الْعَدَدِ قَبْلَ أَنْ يَنْزِعَ إِلَى أَهْلِهِ، وَيَتَزَوَّدُ لِذَلِكَ، ثُمَّ يَرْجِعُ إِلَى خَدِيجَةَ، فَيَتَزَوَّدُ لِمِثْلِهَا، حَتَّى جَاءَهُ الْحَقُّ وَهُوَ فِي غَارِ حِرَاءٍ، فَجَاءَهُ الْمَلَكُ فَقَالَ اقْرَأْ‏.‏ قَالَ \"‏ مَا أَنَا بِقَارِئٍ \"‏‏.‏ قَالَ \"‏ فَأَخَذَنِي فَغَطَّنِي حَتَّى بَلَغَ مِنِّي الْجَهْدَ، ثُمَّ أَرْسَلَنِي فَقَالَ اقْرَأْ‏.‏ قُلْتُ مَا أَنَا بِقَارِئٍ‏.‏ فَأَخَذَنِي فَغَطَّنِي الثَّانِيَةَ حَتَّى بَلَغَ مِنِّي الْجَهْدَ، ثُمَّ أَرْسَلَنِي فَقَالَ اقْرَأْ‏.‏ فَقُلْتُ مَا أَنَا بِقَارِئٍ‏.‏ فَأَخَذَنِي فَغَطَّنِي الثَّالِثَةَ، ثُمَّ أَرْسَلَنِي فَقَالَ ‏{‏اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ * خَلَقَ الإِنْسَانَ مِنْ عَلَقٍ * اقْرَأْ وَرَبُّكَ الأَكْرَمُ‏}‏ \"‏‏.‏ فَرَجَعَ بِهَا رَسُولُ اللَّهِ صلى الله عليه وسلم يَرْجُفُ فُؤَادُهُ، فَدَخَلَ عَلَى خَدِيجَةَ بِنْتِ خُوَيْلِدٍ رضى الله عنها فَقَالَ \"‏ زَمِّلُونِي زَمِّلُونِي ‏\"‏‏.‏ فَزَمَّلُوهُ حَتَّى ذَهَبَ عَنْهُ الرَّوْعُ، فَقَالَ لِخَدِيجَةَ وَأَخْبَرَهَا الْخَبَرَ ‏\"‏ لَقَدْ خَشِيتُ عَلَى نَفْسِي ‏\"‏‏.‏ فَقَالَتْ خَدِيجَةُ كَلاَّ وَاللَّهِ مَا يُخْزِيكَ اللَّهُ أَبَدًا، إِنَّكَ لَتَصِلُ الرَّحِمَ، وَتَحْمِلُ الْكَلَّ، وَتَكْسِبُ الْمَعْدُومَ، وَتَقْرِي الضَّيْفَ، وَتُعِينُ عَلَى نَوَائِبِ الْحَقِّ‏.‏ فَانْطَلَقَتْ بِهِ خَدِيجَةُ حَتَّى أَتَتْ بِهِ وَرَقَةَ بْنَ نَوْفَلِ بْنِ أَسَدِ بْنِ عَبْدِ الْعُزَّى ابْنَ عَمِّ خَدِيجَةَ ـ وَكَانَ امْرَأً تَنَصَّرَ فِي الْجَاهِلِيَّةِ، وَكَانَ يَكْتُبُ الْكِتَابَ الْعِبْرَانِيَّ، فَيَكْتُبُ مِنَ الإِنْجِيلِ بِالْعِبْرَانِيَّةِ مَا شَاءَ اللَّهُ أَنْ يَكْتُبَ، وَكَانَ شَيْخًا كَبِيرًا قَدْ عَمِيَ ـ فَقَالَتْ لَهُ خَدِيجَةُ يَا ابْنَ عَمِّ اسْمَعْ مِنَ ابْنِ أَخِيكَ‏.‏ فَقَالَ لَهُ وَرَقَةُ يَا ابْنَ أَخِي مَاذَا تَرَى فَأَخْبَرَهُ رَسُولُ اللَّهِ صلى الله عليه وسلم خَبَرَ مَا رَأَى‏.‏ فَقَالَ لَهُ وَرَقَةُ هَذَا النَّامُوسُ الَّذِي نَزَّلَ اللَّهُ عَلَى مُوسَى صلى الله عليه وسلم يَا لَيْتَنِي فِيهَا جَذَعًا، لَيْتَنِي أَكُونُ حَيًّا إِذْ يُخْرِجُكَ قَوْمُكَ‏.‏ فَقَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏\"‏ أَوَمُخْرِجِيَّ هُمْ ‏\"‏‏.‏ قَالَ نَعَمْ، لَمْ يَأْتِ رَجُلٌ قَطُّ بِمِثْلِ مَا جِئْتَ بِهِ إِلاَّ عُودِيَ، وَإِنْ يُدْرِكْنِي يَوْمُكَ أَنْصُرْكَ نَصْرًا مُؤَزَّرًا‏.‏ ثُمَّ لَمْ يَنْشَبْ وَرَقَةُ أَنْ تُوُفِّيَ وَفَتَرَ الْوَحْىُ‏.‏",
-        en: "Narrated 'Aisha (the mother of the faithful believers): <br> The commencement of the Divine Inspiration to Allah's Messenger (ﷺ) was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to go in seclusion in the cave of Hira where he used to worship (Allah alone) continuously for many days before his desire to see his family. He used to take with him the journey food for the stay and then come back to (his wife) Khadija to take his food likewise again till suddenly the Truth descended upon him while he was in the cave of Hira. The angel came to him and asked him to read. The Prophet (ﷺ) replied, \"I do not know how to read.\" The Prophet (ﷺ) added, \"The angel caught me (forcefully) and pressed me so hard that I could not bear it any more. He then released me and again asked me to read and I replied, 'I do not know how to read.' Thereupon he caught me again and pressed me a second time till I could not bear it any more. He then released me and again asked me to read but again I replied, 'I do not know how to read (or what shall I read)?' Thereupon he caught me for the third time and pressed me, and then released me and said, 'Read in the name of your Lord, who has created (all that exists), created man from a clot. Read! And your Lord is the Most Generous.\" (96.1, 96.2, 96.3) Then Allah's Messenger (ﷺ) returned with the Inspiration and with his heart beating severely. Then he went to Khadija bint Khuwailid and said, \"Cover me! Cover me!\" They covered him till his fear was over and after that he told her everything that had happened and said, \"I fear that something may happen to me.\" Khadija replied, \"Never! By Allah, Allah will never disgrace you. You keep good relations with your kith and kin, help the poor and the destitute, serve your guests generously and assist the deserving calamity-afflicted ones.\" Khadija then accompanied him to her cousin Waraqa bin Naufal bin Asad bin 'Abdul 'Uzza, who, during the pre-Islamic Period became a Christian and used to write the writing with Hebrew letters. He would write from the Gospel in Hebrew as much as Allah wished him to write. He was an old man and had lost his eyesight. Khadija said to Waraqa, \"Listen to the story of your nephew, O my cousin!\" Waraqa asked, \"O my nephew! What have you seen?\" Allah's Messenger (ﷺ) described whatever he had seen. Waraqa said, \"This is the same one who keeps the secrets (angel Gabriel) whom Allah had sent to Moses. I wish I were young and could live up to the time when your people would turn you out.\" Allah's Messenger (ﷺ) asked, \"Will they drive me out?\" Waraqa replied in the affirmative and said, \"Anyone (man) who came with something similar to what you have brought was treated with hostility; and if I should remain alive till the day when you will be turned out then I would support you strongly.\" But after a few days Waraqa died and the Divine Inspiration was also paused for a while.",
-        ur: "ہم کو یحییٰ بن بکیر نے یہ حدیث بیان کی ، وہ کہتے ہیں کہ اس حدیث کی ہم کو لیث نے خبر دی ، لیث عقیل سے روایت کرتے ہیں ۔ عقیل ابن شہاب سے ، وہ عروہ بن زبیر سے ، وہ ام المؤمنین حضرت عائشہ رضی اللہ عنہا سے نقل کرتے ہیں کہ انھوں نے بتلایا کہ آنحضرت صلی اللہ علیہ وسلم پر وحی کا ابتدائی دور اچھے سچے پاکیزہ خوابوں سے شروع ہوا ۔ آپ صلی اللہ علیہ وسلم خواب میں جو کچھ دیکھتے وہ صبح کی روشنی کی طرح صحیح اور سچا ثابت ہوتا ۔ پھر من جانب قدرت آپ صلی اللہ علیہ وسلم تنہائی پسند ہو گئے اور آپ صلی اللہ علیہ وسلم نے غار حرا میں خلوت نشینی اختیار فرمائی اور کئی کئی دن اور رات وہاں مسلسل عبادت اور یاد الٰہی و ذکر و فکر میں مشغول رہتے ۔ جب تک گھر آنے کو دل نہ چاہتا توشہ ہمراہ لیے ہوئے وہاں رہتے ۔ توشہ ختم ہونے پر ہی اہلیہ محترمہ حضرت خدیجہ رضی اللہ عنہا کے پاس تشریف لاتے اور کچھ توشہ ہمراہ لے کر پھر وہاں جا کر خلوت گزیں ہو جاتے ، یہی طریقہ جاری رہا یہاں تک کہ آپ صلی اللہ علیہ وسلم پر حق منکشف ہو گیا اور آپ صلی اللہ علیہ وسلم غار حرا ہی میں قیام پذیر تھے کہ اچانک حضرت جبرائیل علیہ السلام آپ صلی اللہ علیہ وسلم کے پاس حاضر ہوئے اور کہنے لگے کہ اے محمد ! پڑھو آپ صلی اللہ علیہ وسلم فرماتے ہیں کہ میں نے کہا کہ میں پڑھنا نہیں جانتا ، آپ صلی اللہ علیہ وسلم فرماتے ہیں کہ فرشتے نے مجھے پکڑ کر اتنے زور سے بھینچا کہ میری طاقت جواب دے گئی ، پھر مجھے چھوڑ کر کہا کہ پڑھو ، میں نے پھر وہی جواب دیا کہ میں پڑھا ہوا نہیں ہوں ۔ اس فرشتے نے مجھ کو نہایت ہی زور سے بھینچا کہ مجھ کو سخت تکلیف محسوس ہوئی ، پھر اس نے کہا کہ پڑھ ! میں نے کہا کہ میں پڑھا ہوا نہیں ہوں ۔ فرشتے نے تیسری بار مجھ کو پکڑا اور تیسری مرتبہ پھر مجھ کو بھینچا پھر مجھے چھوڑ دیا اور کہنے لگا کہ پڑھو اپنے رب کے نام کی مدد سے جس نے پیدا کیا اور انسان کو خون کی پھٹکی سے بنایا ، پڑھو اور آپ کا رب بہت ہی مہربانیاں کرنے والا ہے ۔ پس یہی آیتیں آپ صلی اللہ علیہ وسلم حضرت جبرائیل علیہ السلام سے سن کر اس حال میں غار حرا سے واپس ہوئے کہ آپ صلی اللہ علیہ وسلم کا دل اس انوکھے واقعہ سے کانپ رہا تھا ۔ آپ صلی اللہ علیہ وسلم حضرت خدیجہ کے ہاں تشریف لائے اور فرمایا کہ مجھے کمبل اڑھا دو ، مجھے کمبل اڑھا دو ۔ لوگوں نے آپ صلی اللہ علیہ وسلم کو کمبل اڑھا دیا ۔ جب آپ صلی اللہ علیہ وسلم کا ڈر جاتا رہا ۔ تو آپ صلی اللہ علیہ وسلم نے اپنی زوجہ محترمہ حضرت خدیجہ رضی اللہ عنہا کو تفصیل کے ساتھ یہ واقعہ سنایا اور فرمانے لگے کہ مجھ کو اب اپنی جان کا خوف ہو گیا ہے ۔ آپ صلی اللہ علیہ وسلم کی اہلیہ محترمہ حضرت خدیجہ رضی اللہ عنہا نے آپ صلی اللہ علیہ وسلم کی ڈھارس بندھائی اور کہا کہ آپ کا خیال صحیح نہیں ہے ۔ خدا کی قسم آپ کو اللہ کبھی رسوا نہیں کرے گا ، آپ تو اخلاق فاضلہ کے مالک ہیں ، آپ تو کنبہ پرور ہیں ، بے کسوں کا بوجھ اپنے سر پر رکھ لیتے ہیں ، مفلسوں کے لیے آپ کماتے ہیں ، مہمان نوازی میں آپ بےمثال ہیں اور مشکل وقت میں آپ امر حق کا ساتھ دیتے ہیں ۔ ایسے اوصاف حسنہ والا انسان یوں بے وقت ذلت و خواری کی موت نہیں پا سکتا ۔ پھر مزید تسلی کے لیے حضرت خدیجہ رضی اللہ عنہا آپ صلی اللہ علیہ وسلم کو ورقہ بن نوفل کے پاس لے گئیں ، جو ان کے چچا زاد بھائی تھے اور زمانہ جاہلیت میں نصرانی مذہب اختیار کر چکے تھے اور عبرانی زبان کے کاتب تھے ، چنانچہ انجیل کو بھی حسب منشائے خداوندی عبرانی زبان میں لکھا کرتے تھے ۔ ( انجیل سریانی زبان میں نازل ہوئی تھی پھر اس کا ترجمہ عبرانی زبان میں ہوا ۔ ورقہ اسی کو لکھتے تھے ) وہ بہت بوڑھے ہو گئے تھے یہاں تک کہ ان کی بینائی بھی رخصت ہو چکی تھی ۔ حضرت خدیجہ رضی اللہ عنہا نے ان کے سامنے آپ صلی اللہ علیہ وسلم کے حالات بیان کیے اور کہا کہ اے چچا زاد بھائی ! اپنے بھتیجے ( محمد صلی اللہ علیہ وسلم ) کی زبانی ذرا ان کی کیفیت سن لیجیئے وہ بولے کہ بھتیجے آپ نے جو کچھ دیکھا ہے ، اس کی تفصیل سناؤ ۔ چنانچہ آپ صلی اللہ علیہ وسلم نے از اول تا آخر پورا واقعہ سنایا ، جسے سن کر ورقہ بے اختیار ہو کر بول اٹھے کہ یہ تو وہی ناموس ( معزز راز دان فرشتہ ) ہے جسے اللہ نے حضرت موسیٰ علیہ السلام پر وحی دے کر بھیجا تھا ۔ کاش ، میں آپ کے اس عہد نبوت کے شروع ہونے پر جوان عمر ہوتا ۔ کاش میں اس وقت تک زندہ رہتا جب کہ آپ کی قوم آپ کو اس شہر سے نکال دے گی ۔ رسول کریم صلی اللہ علیہ وسلم نے یہ سن کر تعجب سے پوچھا کہ کیا وہ لوگ مجھ کو نکال دیں گے ؟ ( حالانکہ میں تو ان میں صادق و امین و مقبول ہوں ) ورقہ بولا ہاں یہ سب کچھ سچ ہے ۔ مگر جو شخص بھی آپ کی طرح امر حق لے کر آیا لوگ اس کے دشمن ہی ہو گئے ہیں ۔ اگر مجھے آپ کی نبوت کا وہ زمانہ مل جائے تو میں آپ کی پوری پوری مدد کروں گا ۔ مگر ورقہ کچھ دنوں کے بعد انتقال کر گئے ۔ پھر کچھ عرصہ تک وحی کی آمد موقوف رہی ۔", },
-      { id:4, 
-        volume:1, 
-        book:1, 
-        chp:1, 
-        chp_title:"Revelation", 
-        arabic: "قَالَ ابْنُ شِهَابٍ وَأَخْبَرَنِي أَبُو سَلَمَةَ بْنُ عَبْدِ الرَّحْمَنِ، أَنَّ جَابِرَ بْنَ عَبْدِ اللَّهِ الأَنْصَارِيَّ، قَالَ ـ وَهُوَ يُحَدِّثُ عَنْ فَتْرَةِ الْوَحْىِ، فَقَالَ ـ فِي حَدِيثِهِ ‏\"‏ بَيْنَا أَنَا أَمْشِي، إِذْ سَمِعْتُ صَوْتًا، مِنَ السَّمَاءِ، فَرَفَعْتُ بَصَرِي فَإِذَا الْمَلَكُ الَّذِي جَاءَنِي بِحِرَاءٍ جَالِسٌ عَلَى كُرْسِيٍّ بَيْنَ السَّمَاءِ وَالأَرْضِ، فَرُعِبْتُ مِنْهُ، فَرَجَعْتُ فَقُلْتُ زَمِّلُونِي‏.‏ فَأَنْزَلَ اللَّهُ تَعَالَى ‏{‏يَا أَيُّهَا الْمُدَّثِّرُ * قُمْ فَأَنْذِرْ‏}‏ إِلَى قَوْلِهِ ‏{‏وَالرُّجْزَ فَاهْجُرْ‏}‏ فَحَمِيَ الْوَحْىُ وَتَتَابَعَ \"‏‏.‏ تَابَعَهُ عَبْدُ اللَّهِ بْنُ يُوسُفَ وَأَبُو صَالِحٍ‏.‏ وَتَابَعَهُ هِلاَلُ بْنُ رَدَّادٍ عَنِ الزُّهْرِيِّ‏.‏ وَقَالَ يُونُسُ وَمَعْمَرٌ ‏\"‏ بَوَادِرُهُ \"‏.‏ ",
-        en: "Narrated Jabir bin 'Abdullah Al-Ansari (while talking about the period of pause in revelation) reporting the speech of the Prophet: <br> \"While I was walking, all of a sudden I heard a voice from the sky. I looked up and saw the same angel who had visited me at the cave of Hira' sitting on a chair between the sky and the earth. I got afraid of him and came back home and said, 'Wrap me (in blankets).' And then Allah revealed the following Holy Verses (of Quran): 'O you (i.e. Muhammad)! wrapped up in garments!' Arise and warn (the people against Allah's Punishment),... up to 'and desert the idols.' (74.1-5) After this the revelation started coming strongly, frequently and regularly.\"",
-        ur: "ابن شہاب کہتے ہیں مجھ کو ابوسلمہ بن عبدالرحمٰن نے حضرت جابر بن عبداللہ انصاری رضی اللہ عنہما سے یہ روایت نقل کی کہ آپ صلی اللہ علیہ وسلم نے وحی کے رک جانے کے زمانے کے حالات بیان فرماتے ہوئے کہا کہ ایک روز میں چلا جا رہا تھا کہ اچانک میں نے آسمان کی طرف ایک آواز سنی اور میں نے اپنا سر آسمان کی طرف اٹھایا کیا دیکھتا ہوں کہ وہی فرشتہ جو میرے پاس غار حرا میں آیا تھا وہ آسمان و زمین کے بیچ میں ایک کرسی پر بیٹھا ہوا ہے ۔ میں اس سے ڈر گیا اور گھر آنے پر میں نے پھر کمبل اوڑھنے کی خواہش ظاہر کی ۔ اس وقت اللہ پاک کی طرف سے یہ آیات نازل ہوئیں ۔ اے لحاف اوڑھ کر لیٹنے والے ! اٹھ کھڑا ہو اور لوگوں کو عذاب الٰہی سے ڈرا اور اپنے رب کی بڑائی بیان کر اور اپنے کپڑوں کو پاک صاف رکھ اور گندگی سے دور رہ ۔ اس کے بعد وحی تیزی کے ساتھ پے در پے آنے لگی ۔ اس حدیث کو یحییٰ بن بکیر کے علاوہ لیث بن سعد سے عبداللہ بن یوسف اور ابوصالح نے بھی روایت کیا ہے ۔ اور عقیل کے علاوہ زہری سے ہلال بن رواد نے بھی روایت کیا ہے ۔ یونس اور معمر نے اپنی روایت میں لفظ «فواده» کی جگہ «بوادره» نقل کیا ہے ۔", },
-      { id:5, 
-        volume:1, 
-        book:1, 
-        chp:1, 
-        chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ، قَالَ حَدَّثَنَا أَبُو عَوَانَةَ، قَالَ حَدَّثَنَا مُوسَى بْنُ أَبِي عَائِشَةَ، قَالَ حَدَّثَنَا سَعِيدُ بْنُ جُبَيْرٍ، عَنِ ابْنِ عَبَّاسٍ، فِي قَوْلِهِ تَعَالَى ‏{‏لاَ تُحَرِّكْ بِهِ لِسَانَكَ لِتَعْجَلَ بِهِ‏}‏ قَالَ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يُعَالِجُ مِنَ التَّنْزِيلِ شِدَّةً، وَكَانَ مِمَّا يُحَرِّكُ شَفَتَيْهِ ـ فَقَالَ ابْنُ عَبَّاسٍ فَأَنَا أُحَرِّكُهُمَا لَكُمْ كَمَا كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يُحَرِّكُهُمَا‏.‏ وَقَالَ سَعِيدٌ أَنَا أُحَرِّكُهُمَا كَمَا رَأَيْتُ ابْنَ عَبَّاسٍ يُحَرِّكُهُمَا‏.‏ فَحَرَّكَ شَفَتَيْهِ ـ فَأَنْزَلَ اللَّهُ تَعَالَى ‏{‏لاَ تُحَرِّكْ بِهِ لِسَانَكَ لِتَعْجَلَ بِهِ* إِنَّ عَلَيْنَا جَمْعَهُ وَقُرْآنَهُ‏}‏ قَالَ جَمْعُهُ لَهُ فِي صَدْرِكَ، وَتَقْرَأَهُ ‏{‏فَإِذَا قَرَأْنَاهُ فَاتَّبِعْ قُرْآنَهُ‏}‏ قَالَ فَاسْتَمِعْ لَهُ وَأَنْصِتْ ‏{‏ثُمَّ إِنَّ عَلَيْنَا بَيَانَهُ‏}‏ ثُمَّ إِنَّ عَلَيْنَا أَنْ تَقْرَأَهُ‏.‏ فَكَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم بَعْدَ ذَلِكَ إِذَا أَتَاهُ جِبْرِيلُ اسْتَمَعَ، فَإِذَا انْطَلَقَ جِبْرِيلُ قَرَأَهُ النَّبِيُّ صلى الله عليه وسلم كَمَا قَرَأَهُ‏.‏",
-        en: "Narrated Said bin Jubair: <br> Ibn 'Abbas in the explanation of the statement of Allah \"Move not your tongue concerning (the Quran) to make haste therewith.move his lips (quickly) with the Inspiration.\" Ibn 'Abbas moved his lips saying, \"I am moving my lips in front of you as Allah's Messenger (ﷺ) used to move his.\" Said moved his lips saying: \"I am moving my lips, as I saw Ibn 'Abbas moving his.\" Ibn 'Abbas added, \"So Allah revealed 'Move not your tongue concerning (the Qur'an) to make haste therewith. It is for Us to collect it and to give you (O Muhammad) the ability to recite it (the Quran)' (75.16-17) which means that Allah will make him (the Prophet) remember the portion of the Qur'an which was revealed at that time by heart and recite it. The statement of Allah: 'And when we have recited it to you (O Muhammad through Gabriel) then you follow its (Quran) recital' (75.18) means 'listen to it and be silent.' Then it is for Us (Allah) to make it clear to you' (75.19) means 'Then it is (for Allah) to make you recite it (and its meaning will be clear by itself through your tongue). Afterwards, Allah's Messenger (ﷺ) used to listen to Gabriel whenever he came and after his departure he used to recite it as Gabriel had recited it.\"",
-        ur: "موسیٰ بن اسماعیل نے ہم سے حدیث بیان کی ، ان کو ابوعوانہ نے خبر دی ، ان سے موسیٰ ابن ابی عائشہ نے بیان کی ، ان سے سعید بن جبیر نے انھوں نے ابن عباس رضی اللہ عنہما سے کلام الٰہی «لا تحرك به لسانك لتعجل به‏» الخ کی تفسیر کے سلسلہ میں سنا کہ رسول اللہ صلی اللہ علیہ وسلم نزول قرآن کے وقت بہت سختی محسوس فرمایا کرتے تھے اور اس کی ( علامتوں ) میں سے ایک یہ تھی کہ یاد کرنے کے لیے آپ اپنے ہونٹوں کو ہلاتے تھے ۔ ابن عباس رضی اللہ عنہما نے کہا میں اپنے ہونٹ ہلاتا ہوں جس طرح آپ ہلاتے تھے ۔ سعید کہتے ہیں میں بھی اپنے ہونٹ ہلاتا ہوں جس طرح ابن عباس رضی اللہ عنہما کو میں نے ہلاتے دیکھا ۔ پھر انھوں نے اپنے ہونٹ ہلائے ۔ ( ابن عباس رضی اللہ عنہما نے کہا ) پھر یہ آیت اتری کہ اے محمد ! قرآن کو جلد جلد یاد کرنے کے لیے اپنی زبان نہ ہلاؤ ۔ اس کا جمع کر دینا اور پڑھا دینا ہمارا ذمہ ہے ۔ حضرت ابن عباس رضی اللہ عنہما کہتے ہیں یعنی قرآن آپ صلی اللہ علیہ وسلم کے دل میں جما دینا اور پڑھا دینا ہمارے ذمہ ہے ۔ پھر جب ہم پڑھ چکیں تو اس پڑھے ہوئے کی اتباع کرو ۔ ابن عباس رضی اللہ عنہما فرماتے ہیں ( اس کا مطلب یہ ہے ) کہ آپ اس کو خاموشی کے ساتھ سنتے رہو ۔ اس کے بعد مطلب سمجھا دینا ہمارے ذمہ ہے ۔ پھر یقیناً یہ ہماری ذمہ داری ہے کہ آپ اس کو پڑھو ( یعنی اس کو محفوظ کر سکو ) چنانچہ اس کے بعد جب آپ کے پاس حضرت جبرائیل علیہ السلام ( وحی لے کر ) آتے تو آپ ( توجہ سے ) سنتے ۔ جب وہ چلے جاتے تو رسول اللہ صلی اللہ علیہ وسلم اس ( وحی ) کو اسی طرح پڑھتے جس طرح حضرت جبرائیل علیہ السلام نے اسے پڑھا تھا ۔", },
-      { id:6, 
-      volume:1, 
-      book:1, 
-      chp:1, 
-      chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا عَبْدَانُ، قَالَ أَخْبَرَنَا عَبْدُ اللَّهِ، قَالَ أَخْبَرَنَا يُونُسُ، عَنِ الزُّهْرِيِّ، ح وَحَدَّثَنَا بِشْرُ بْنُ مُحَمَّدٍ، قَالَ أَخْبَرَنَا عَبْدُ اللَّهِ، قَالَ أَخْبَرَنَا يُونُسُ، وَمَعْمَرٌ، عَنِ الزُّهْرِيِّ، نَحْوَهُ قَالَ أَخْبَرَنِي عُبَيْدُ اللَّهِ بْنُ عَبْدِ اللَّهِ، عَنِ ابْنِ عَبَّاسٍ، قَالَ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم أَجْوَدَ النَّاسِ، وَكَانَ أَجْوَدُ مَا يَكُونُ فِي رَمَضَانَ حِينَ يَلْقَاهُ جِبْرِيلُ، وَكَانَ يَلْقَاهُ فِي كُلِّ لَيْلَةٍ مِنْ رَمَضَانَ فَيُدَارِسُهُ الْقُرْآنَ، فَلَرَسُولُ اللَّهِ صلى الله عليه وسلم أَجْوَدُ بِالْخَيْرِ مِنَ الرِّيحِ الْمُرْسَلَةِ‏.‏",
-        en: "Narrated Ibn 'Abbas: <br> Allah's Messenger (ﷺ) was the most generous of all the people, and he used to reach the peak in generosity in the month of Ramadan when Gabriel met him. Gabriel used to meet him every night of Ramadan to teach him the Qur'an. Allah's Messenger (ﷺ) was the most generous person, even more generous than the strong uncontrollable wind (in readiness and haste to do charitable deeds).",
-        ur: "ہم کو عبدان نے حدیث بیان کی ، انہیں عبداللہ بن مبارک نے خبر دی ، ان کو یونس نے ، انھوں نے زہری سے یہ حدیث سنی ۔ ( دوسری سند یہ ہے کہ ) ہم سے بشر بن محمد نے یہ حدیث بیان کی ۔ ان سے عبداللہ بن مبارک نے ، ان سے یونس اور معمر دونوں نے ، ان دونوں نے زہری سے روایت کی پہلی سند کے مطابق زہری سے عبیداللہ بن عبداللہ نے ، انھوں نے حضرت ابن عباس رضی اللہ عنہما سے یہ روایت نقل کی کہ رسول اللہ صلی اللہ علیہ وسلم سب لوگوں سے زیادہ جواد ( سخی ) تھے اور رمضان میں ( دوسرے اوقات کے مقابلہ میں جب ) جبرائیل علیہ السلام آپ صلی اللہ علیہ وسلم سے ملتے بہت ہی زیادہ جود و کرم فرماتے ۔ جبرائیل علیہ السلام رمضان کی ہر رات میں آپ صلی اللہ علیہ وسلم سے ملاقات کرتے اور آپ صلی اللہ علیہ وسلم کے ساتھ قرآن کا دورہ کرتے ، غرض آنحضرت صلی اللہ علیہ وسلم لوگوں کو بھلائی پہنچانے میں بارش لانے والی ہوا سے بھی زیادہ جود و کرم فرمایا کرتے تھے ۔)", },
-      { id:7, 
-        volume:1, 
-        book:1, 
-        chp:1, 
-        chp_title:"Revelation", 
-        arabic: "حَدَّثَنَا أَبُو الْيَمَانِ الْحَكَمُ بْنُ نَافِعٍ، قَالَ أَخْبَرَنَا شُعَيْبٌ، عَنِ الزُّهْرِيِّ، قَالَ أَخْبَرَنِي عُبَيْدُ اللَّهِ بْنُ عَبْدِ اللَّهِ بْنِ عُتْبَةَ بْنِ مَسْعُودٍ، أَنَّ عَبْدَ اللَّهِ بْنَ عَبَّاسٍ، أَخْبَرَهُ أَنَّ أَبَا سُفْيَانَ بْنَ حَرْبٍ أَخْبَرَهُ أَنَّ هِرَقْلَ أَرْسَلَ إِلَيْهِ فِي رَكْبٍ مِنْ قُرَيْشٍ ـ وَكَانُوا تُجَّارًا بِالشَّأْمِ ـ فِي الْمُدَّةِ الَّتِي كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم مَادَّ فِيهَا أَبَا سُفْيَانَ وَكُفَّارَ قُرَيْشٍ، فَأَتَوْهُ وَهُمْ بِإِيلِيَاءَ فَدَعَاهُمْ فِي مَجْلِسِهِ، وَحَوْلَهُ عُظَمَاءُ الرُّومِ ثُمَّ دَعَاهُمْ وَدَعَا بِتَرْجُمَانِهِ فَقَالَ أَيُّكُمْ أَقْرَبُ نَسَبًا بِهَذَا الرَّجُلِ الَّذِي يَزْعُمُ أَنَّهُ نَبِيٌّ فَقَالَ أَبُو سُفْيَانَ فَقُلْتُ أَنَا أَقْرَبُهُمْ نَسَبًا‏.‏ فَقَالَ أَدْنُوهُ مِنِّي، وَقَرِّبُوا أَصْحَابَهُ، فَاجْعَلُوهُمْ عِنْدَ ظَهْرِهِ‏.‏ ثُمَّ قَالَ لِتَرْجُمَانِهِ قُلْ لَهُمْ إِنِّي سَائِلٌ هَذَا عَنْ هَذَا الرَّجُلِ، فَإِنْ كَذَبَنِي فَكَذِّبُوهُ‏.‏ فَوَاللَّهِ لَوْلاَ الْحَيَاءُ مِنْ أَنْ يَأْثِرُوا عَلَىَّ كَذِبًا لَكَذَبْتُ عَنْهُ، ثُمَّ كَانَ أَوَّلَ مَا سَأَلَنِي عَنْهُ أَنْ قَالَ كَيْفَ نَسَبُهُ فِيكُمْ قُلْتُ هُوَ فِينَا ذُو نَسَبٍ‏.‏ قَالَ فَهَلْ قَالَ هَذَا الْقَوْلَ مِنْكُمْ أَحَدٌ قَطُّ قَبْلَهُ قُلْتُ لاَ‏.‏ قَالَ فَهَلْ كَانَ مِنْ آبَائِهِ مِنْ مَلِكٍ قُلْتُ لاَ‏.‏ قَالَ فَأَشْرَافُ النَّاسِ يَتَّبِعُونَهُ أَمْ ضُعَفَاؤُهُمْ فَقُلْتُ بَلْ ضُعَفَاؤُهُمْ‏.‏ قَالَ أَيَزِيدُونَ أَمْ يَنْقُصُونَ قُلْتُ بَلْ يَزِيدُونَ‏.‏ قَالَ فَهَلْ يَرْتَدُّ أَحَدٌ مِنْهُمْ سَخْطَةً لِدِينِهِ بَعْدَ أَنْ يَدْخُلَ فِيهِ قُلْتُ لاَ‏.‏ قَالَ فَهَلْ كُنْتُمْ تَتَّهِمُونَهُ بِالْكَذِبِ قَبْلَ أَنْ يَقُولَ مَا قَالَ قُلْتُ لاَ‏.‏ قَالَ فَهَلْ يَغْدِرُ قُلْتُ لاَ، وَنَحْنُ مِنْهُ فِي مُدَّةٍ لاَ نَدْرِي مَا هُوَ فَاعِلٌ فِيهَا‏.‏ قَالَ وَلَمْ تُمْكِنِّي كَلِمَةٌ أُدْخِلُ فِيهَا شَيْئًا غَيْرُ هَذِهِ الْكَلِمَةِ‏.‏ قَالَ فَهَلْ قَاتَلْتُمُوهُ قُلْتُ نَعَمْ‏.‏ قَالَ فَكَيْفَ كَانَ قِتَالُكُمْ إِيَّاهُ قُلْتُ الْحَرْبُ بَيْنَنَا وَبَيْنَهُ سِجَالٌ، يَنَالُ مِنَّا وَنَنَالُ مِنْهُ‏.‏ قَالَ مَاذَا يَأْمُرُكُمْ قُلْتُ يَقُولُ اعْبُدُوا اللَّهَ وَحْدَهُ، وَلاَ تُشْرِكُوا بِهِ شَيْئًا، وَاتْرُكُوا مَا يَقُولُ آبَاؤُكُمْ، وَيَأْمُرُنَا بِالصَّلاَةِ وَالصِّدْقِ وَالْعَفَافِ وَالصِّلَةِ‏.‏ فَقَالَ لِلتَّرْجُمَانِ قُلْ لَهُ سَأَلْتُكَ عَنْ نَسَبِهِ، فَذَكَرْتَ أَنَّهُ فِيكُمْ ذُو نَسَبٍ، فَكَذَلِكَ الرُّسُلُ تُبْعَثُ فِي نَسَبِ قَوْمِهَا، وَسَأَلْتُكَ هَلْ قَالَ أَحَدٌ مِنْكُمْ هَذَا الْقَوْلَ فَذَكَرْتَ أَنْ لاَ، فَقُلْتُ لَوْ كَانَ أَحَدٌ قَالَ هَذَا الْقَوْلَ قَبْلَهُ لَقُلْتُ رَجُلٌ يَأْتَسِي بِقَوْلٍ قِيلَ قَبْلَهُ، وَسَأَلْتُكَ هَلْ كَانَ مِنْ آبَائِهِ مِنْ مَلِكٍ فَذَكَرْتَ أَنْ لاَ، قُلْتُ فَلَوْ كَانَ مِنْ آبَائِهِ مِنْ مَلِكٍ قُلْتُ رَجُلٌ يَطْلُبُ مُلْكَ أَبِيهِ، وَسَأَلْتُكَ هَلْ كُنْتُمْ تَتَّهِمُونَهُ بِالْكَذِبِ قَبْلَ أَنْ يَقُولَ مَا قَالَ فَذَكَرْتَ أَنْ لاَ، فَقَدْ أَعْرِفُ أَنَّهُ لَمْ يَكُنْ لِيَذَرَ الْكَذِبَ عَلَى النَّاسِ وَيَكْذِبَ عَلَى اللَّهِ، وَسَأَلْتُكَ أَشْرَافُ النَّاسِ اتَّبَعُوهُ أَمْ ضُعَفَاؤُهُمْ فَذَكَرْتَ أَنَّ ضُعَفَاءَهُمُ اتَّبَعُوهُ، وَهُمْ أَتْبَاعُ الرُّسُلِ، وَسَأَلْتُكَ أَيَزِيدُونَ أَمْ يَنْقُصُونَ فَذَكَرْتَ أَنَّهُمْ يَزِيدُونَ، وَكَذَلِكَ أَمْرُ الإِيمَانِ حَتَّى يَتِمَّ، وَسَأَلْتُكَ أَيَرْتَدُّ أَحَدٌ سَخْطَةً لِدِينِهِ بَعْدَ أَنْ يَدْخُلَ فِيهِ فَذَكَرْتَ أَنْ لاَ، وَكَذَلِكَ الإِيمَانُ حِينَ تُخَالِطُ بَشَاشَتُهُ الْقُلُوبَ، وَسَأَلْتُكَ هَلْ يَغْدِرُ فَذَكَرْتَ أَنْ لاَ، وَكَذَلِكَ الرُّسُلُ لاَ تَغْدِرُ، وَسَأَلْتُكَ بِمَا يَأْمُرُكُمْ، فَذَكَرْتَ أَنَّهُ يَأْمُرُكُمْ أَنْ تَعْبُدُوا اللَّهَ، وَلاَ تُشْرِكُوا بِهِ شَيْئًا، وَيَنْهَاكُمْ عَنْ عِبَادَةِ الأَوْثَانِ، وَيَأْمُرُكُمْ بِالصَّلاَةِ وَالصِّدْقِ وَالْعَفَافِ‏.‏ فَإِنْ كَانَ مَا تَقُولُ حَقًّا فَسَيَمْلِكُ مَوْضِعَ قَدَمَىَّ هَاتَيْنِ، وَقَدْ كُنْتُ أَعْلَمُ أَنَّهُ خَارِجٌ، لَمْ أَكُنْ أَظُنُّ أَنَّهُ مِنْكُمْ، فَلَوْ أَنِّي أَعْلَمُ أَنِّي أَخْلُصُ إِلَيْهِ لَتَجَشَّمْتُ لِقَاءَهُ، وَلَوْ كُنْتُ عِنْدَهُ لَغَسَلْتُ عَنْ قَدَمِهِ‏.‏ ثُمَّ دَعَا بِكِتَابِ رَسُولِ اللَّهِ صلى الله عليه وسلم الَّذِي بَعَثَ بِهِ دِحْيَةُ إِلَى عَظِيمِ بُصْرَى، فَدَفَعَهُ إِلَى هِرَقْلَ فَقَرَأَهُ فَإِذَا فِيهِ بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ‏.‏ مِنْ مُحَمَّدٍ عَبْدِ اللَّهِ وَرَسُولِهِ إِلَى هِرَقْلَ عَظِيمِ الرُّومِ‏.‏ سَلاَمٌ عَلَى مَنِ اتَّبَعَ الْهُدَى، أَمَّا بَعْدُ فَإِنِّي أَدْعُوكَ بِدِعَايَةِ الإِسْلاَمِ، أَسْلِمْ تَسْلَمْ، يُؤْتِكَ اللَّهُ أَجْرَكَ مَرَّتَيْنِ، فَإِنْ تَوَلَّيْتَ فَإِنَّ عَلَيْكَ إِثْمَ الأَرِيسِيِّينَ وَ‏{‏يَا أَهْلَ الْكِتَابِ تَعَالَوْا إِلَى كَلِمَةٍ سَوَاءٍ بَيْنَنَا وَبَيْنَكُمْ أَنْ لاَ نَعْبُدَ إِلاَّ اللَّهَ وَلاَ نُشْرِكَ بِهِ شَيْئًا وَلاَ يَتَّخِذَ بَعْضُنَا بَعْضًا أَرْبَابًا مِنْ دُونِ اللَّهِ فَإِنْ تَوَلَّوْا فَقُولُوا اشْهَدُوا بِأَنَّا مُسْلِمُونَ‏}‏ قَالَ أَبُو سُفْيَانَ فَلَمَّا قَالَ مَا قَالَ، وَفَرَغَ مِنْ قِرَاءَةِ الْكِتَابِ كَثُرَ عِنْدَهُ الصَّخَبُ، وَارْتَفَعَتِ الأَصْوَاتُ وَأُخْرِجْنَا، فَقُلْتُ لأَصْحَابِي حِينَ أُخْرِجْنَا لَقَدْ أَمِرَ أَمْرُ ابْنِ أَبِي كَبْشَةَ، إِنَّهُ يَخَافُهُ مَلِكُ بَنِي الأَصْفَرِ‏.‏ فَمَا زِلْتُ مُوقِنًا أَنَّهُ سَيَظْهَرُ حَتَّى أَدْخَلَ اللَّهُ عَلَىَّ الإِسْلاَمَ‏.‏ وَكَانَ ابْنُ النَّاظُورِ صَاحِبُ إِيلِيَاءَ وَهِرَقْلَ سُقُفًّا عَلَى نَصَارَى الشَّأْمِ، يُحَدِّثُ أَنَّ هِرَقْلَ حِينَ قَدِمَ إِيلِيَاءَ أَصْبَحَ يَوْمًا خَبِيثَ النَّفْسِ، فَقَالَ بَعْضُ بَطَارِقَتِهِ قَدِ اسْتَنْكَرْنَا هَيْئَتَكَ‏.‏ قَالَ ابْنُ النَّاظُورِ وَكَانَ هِرَقْلُ حَزَّاءً يَنْظُرُ فِي النُّجُومِ، فَقَالَ لَهُمْ حِينَ سَأَلُوهُ إِنِّي رَأَيْتُ اللَّيْلَةَ حِينَ نَظَرْتُ فِي النُّجُومِ مَلِكَ الْخِتَانِ قَدْ ظَهَرَ، فَمَنْ يَخْتَتِنُ مِنْ هَذِهِ الأُمَّةِ قَالُوا لَيْسَ يَخْتَتِنُ إِلاَّ الْيَهُودُ فَلاَ يُهِمَّنَّكَ شَأْنُهُمْ وَاكْتُبْ إِلَى مَدَايِنِ مُلْكِكَ، فَيَقْتُلُوا مَنْ فِيهِمْ مِنَ الْيَهُودِ‏.‏ فَبَيْنَمَا هُمْ عَلَى أَمْرِهِمْ أُتِيَ هِرَقْلُ بِرَجُلٍ أَرْسَلَ بِهِ مَلِكُ غَسَّانَ، يُخْبِرُ عَنْ خَبَرِ رَسُولِ اللَّهِ صلى الله عليه وسلم فَلَمَّا اسْتَخْبَرَهُ هِرَقْلُ قَالَ اذْهَبُوا فَانْظُرُوا أَمُخْتَتِنٌ هُوَ أَمْ لاَ‏.‏ فَنَظَرُوا إِلَيْهِ، فَحَدَّثُوهُ أَنَّهُ مُخْتَتِنٌ، وَسَأَلَهُ عَنِ الْعَرَبِ فَقَالَ هُمْ يَخْتَتِنُونَ‏.‏ فَقَالَ هِرَقْلُ هَذَا مَلِكُ هَذِهِ الأُمَّةِ قَدْ ظَهَرَ‏.‏ ثُمَّ كَتَبَ هِرَقْلُ إِلَى صَاحِبٍ لَهُ بِرُومِيَةَ، وَكَانَ نَظِيرَهُ فِي الْعِلْمِ، وَسَارَ هِرَقْلُ إِلَى حِمْصَ، فَلَمْ يَرِمْ حِمْصَ حَتَّى أَتَاهُ كِتَابٌ مِنْ صَاحِبِهِ يُوَافِقُ رَأْىَ هِرَقْلَ عَلَى خُرُوجِ النَّبِيِّ صلى الله عليه وسلم وَأَنَّهُ نَبِيٌّ، فَأَذِنَ هِرَقْلُ لِعُظَمَاءِ الرُّومِ فِي دَسْكَرَةٍ لَهُ بِحِمْصَ ثُمَّ أَمَرَ بِأَبْوَابِهَا فَغُلِّقَتْ، ثُمَّ اطَّلَعَ فَقَالَ يَا مَعْشَرَ الرُّومِ، هَلْ لَكُمْ فِي الْفَلاَحِ وَالرُّشْدِ وَأَنْ يَثْبُتَ مُلْكُكُمْ فَتُبَايِعُوا هَذَا النَّبِيَّ، فَحَاصُوا حَيْصَةَ حُمُرِ الْوَحْشِ إِلَى الأَبْوَابِ، فَوَجَدُوهَا قَدْ غُلِّقَتْ، فَلَمَّا رَأَى هِرَقْلُ نَفْرَتَهُمْ، وَأَيِسَ مِنَ الإِيمَانِ قَالَ رُدُّوهُمْ عَلَىَّ‏.‏ وَقَالَ إِنِّي قُلْتُ مَقَالَتِي آنِفًا أَخْتَبِرُ بِهَا شِدَّتَكُمْ عَلَى دِينِكُمْ، فَقَدْ رَأَيْتُ‏.‏ فَسَجَدُوا لَهُ وَرَضُوا عَنْهُ، فَكَانَ ذَلِكَ آخِرَ شَأْنِ هِرَقْلَ‏.‏ رَوَاهُ صَالِحُ بْنُ كَيْسَانَ وَيُونُسُ وَمَعْمَرٌ عَنِ الزُّهْرِيِّ‏.‏",
-        en: "Narrated 'Abdullah bin 'Abbas: <br> Abu Sufyan bin Harb informed me that Heraclius had sent a messenger to him while he had been accompanying a caravan from Quraish. They were merchants doing business in Sham (Syria, Palestine, Lebanon and Jordan), at the time when Allah's Messenger (ﷺ) had truce with Abu Sufyan and Quraish infidels. So Abu Sufyan and his companions went to Heraclius at Ilya (Jerusalem). Heraclius called them in the court and he had all the senior Roman dignitaries around him. He called for his translator who, translating Heraclius's question said to them, \"Who amongst you is closely related to that man who claims to be a Prophet?\" Abu Sufyan replied, \"I am the nearest relative to him (amongst the group). <br> \" Heraclius said, \"Bring him (Abu Sufyan) close to me and make his companions stand behind him.\" Abu Sufyan added, Heraclius told his translator to tell my companions that he wanted to put some questions to me regarding that man (The Prophet) and that if I told a lie they (my companions) should contradict me.\" Abu Sufyan added, \"By Allah! Had I not been afraid of my companions labeling me a liar, I would not have spoken the truth about the Prophet. The first question he asked me about him was: 'What is his family status amongst you?' <br> I replied, 'He belongs to a good (noble) family amongst us.' <br> Heraclius further asked, 'Has anybody amongst you ever claimed the same (i.e. to be a Prophet) before him?' <br> I replied, 'No.' <br> He said, 'Was anybody amongst his ancestors a king?' <br> I replied, 'No.' <br> Heraclius asked, 'Do the nobles or the poor follow him?' <br> I replied, 'It is the poor who follow him.' <br> He said, 'Are his followers increasing decreasing (day by day)?' <br> I replied, 'They are increasing.' <br> He then asked, 'Does anybody amongst those who embrace his religion become displeased and renounce the religion afterwards?' <br> I replied, 'No.' <br> Heraclius said, 'Have you ever accused him of telling lies before his claim (to be a Prophet)?' <br> I replied, 'No. ' <br> Heraclius said, 'Does he break his promises?' <br> I replied, 'No. We are at truce with him but we do not know what he will do in it.' I could not find opportunity to say anything against him except that. <br> Heraclius asked, 'Have you ever had a war with him?' <br> I replied, 'Yes.' <br> Then he said, 'What was the outcome of the battles?' <br> I replied, 'Sometimes he was victorious and sometimes we.' <br> Heraclius said, 'What does he order you to do?' <br> I said, 'He tells us to worship Allah and Allah alone and not to worship anything along with Him, and to renounce all that our ancestors had said. He orders us to pray, to speak the truth, to be chaste and to keep good relations with our Kith and kin.' <br> Heraclius asked the translator to convey to me the following, I asked you about his family and your reply was that he belonged to a very noble family. In fact all the Apostles come from noble families amongst their respective peoples. I questioned you whether anybody else amongst you claimed such a thing, your reply was in the negative. If the answer had been in the affirmative, I would have thought that this man was following the previous man's statement. Then I asked you whether anyone of his ancestors was a king. Your reply was in the negative, and if it had been in the affirmative, I would have thought that this man wanted to take back his ancestral kingdom. <br> I further asked whether he was ever accused of telling lies before he said what he said, and your reply was in the negative. So I wondered how a person who does not tell a lie about others could ever tell a lie about Allah. I, then asked you whether the rich people followed him or the poor. You replied that it was the poor who followed him. And in fact all the Apostle have been followed by this very class of people. Then I asked you whether his followers were increasing or decreasing. You replied that they were increasing, and in fact this is the way of true faith, till it is complete in all respects. I further asked you whether there was anybody, who, after embracing his religion, became displeased and discarded his religion. Your reply was in the negative, and in fact this is (the sign of) true faith, when its delight enters the hearts and mixes with them completely. I asked you whether he had ever betrayed. You replied in the negative and likewise the Apostles never betray. Then I asked you what he ordered you to do. You replied that he ordered you to worship Allah and Allah alone and not to worship any thing along with Him and forbade you to worship idols and ordered you to pray, to speak the truth and to be chaste. If what you have said is true, he will very soon occupy this place underneath my feet and I knew it (from the scriptures) that he was going to appear but I did not know that he would be from you, and if I could reach him definitely, I would go immediately to meet him and if I were with him, I would certainly wash his feet.' <br> Heraclius then asked for the letter addressed by Allah's Apostle which was delivered by Dihya to the Governor of Busra, who forwarded it to Heraclius to read. The contents of the letter were as follows: \"In the name of Allah the Beneficent, the Merciful (This letter is) from Muhammad the slave of Allah and His Apostle to Heraclius the ruler of Byzantine. Peace be upon him, who follows the right path. Furthermore I invite you to Islam, and if you become a Muslim you will be safe, and Allah will double your reward, and if you reject this invitation of Islam you will be committing a sin of Arisiyin (tillers, farmers i.e. your people). And (Allah's Statement:) <br> 'O people of the scripture! Come to a word common to you and us that we worship none but Allah and that we associate nothing in worship with Him, and that none of us shall take others as Lords beside Allah. Then, if they turn away, say: Bear witness that we are Muslims (those who have surrendered to Allah).' (3:64). <br> Abu Sufyan then added, \"When Heraclius had finished his speech and had read the letter, there was a great hue and cry in the Royal Court. So we were turned out of the court. I told my companions that the question of Ibn-Abi-Kabsha) (the Prophet (ﷺ) Muhammad) has become so prominent that even the King of Bani Al-Asfar (Byzantine) is afraid of him. Then I started to become sure that he (the Prophet) would be the conqueror in the near future till I embraced Islam (i.e. Allah guided me to it).\" <br> The sub narrator adds, \"Ibn An-Natur was the Governor of llya' (Jerusalem) and Heraclius was the head of the Christians of Sham. Ibn An-Natur narrates that once while Heraclius was visiting ilya' (Jerusalem), he got up in the morning with a sad mood. Some of his priests asked him why he was in that mood? Heraclius was a foreteller and an astrologer. He replied, 'At night when I looked at the stars, I saw that the leader of those who practice circumcision had appeared (become the conqueror). Who are they who practice circumcision?' The people replied, 'Except the Jews nobody practices circumcision, so you should not be afraid of them (Jews). <br> 'Just Issue orders to kill every Jew present in the country.' While they were discussing it, a messenger sent by the king of Ghassan to convey the news of Allah's Messenger (ﷺ) to Heraclius was brought in. Having heard the news, he (Heraclius) ordered the people to go and see whether the messenger of Ghassan was circumcised. The people, after seeing him, told Heraclius that he was circumcised. Heraclius then asked him about the Arabs. The messenger replied, 'Arabs also practice circumcision.' <br> (After hearing that) Heraclius remarked that sovereignty of the 'Arabs had appeared. Heraclius then wrote a letter to his friend in Rome who was as good as Heraclius in knowledge. Heraclius then left for Homs. (a town in Syrian and stayed there till he received the reply of his letter from his friend who agreed with him in his opinion about the emergence of the Prophet (ﷺ) and the fact that he was a Prophet. On that Heraclius invited all the heads of the Byzantines to assemble in his palace at Homs. When they assembled, he ordered that all the doors of his palace be closed. Then he came out and said, 'O Byzantines! If success is your desire and if you seek right guidance and want your empire to remain then give a pledge of allegiance to this Prophet (i.e. embrace Islam).' <br> (On hearing the views of Heraclius) the people ran towards the gates of the palace like onagers but found the doors closed. Heraclius realized their hatred towards Islam and when he lost the hope of their embracing Islam, he ordered that they should be brought back in audience. <br> (When they returned) he said, 'What already said was just to test the strength of your conviction and I have seen it.' The people prostrated before him and became pleased with him, and this was the end of Heraclius's story (in connection with his faith).",
-        ur: "ہم کو ابوالیمان حکم بن نافع نے حدیث بیان کی ، انہیں اس حدیث کی شعیب نے خبر دی ۔ انھوں نے زہری سے یہ حدیث سنی ۔ انہیں عبیداللہ ابن عبداللہ ابن عتبہ بن مسعود نے خبر دی کہ عبداللہ بن عباس سے ابوسفیان بن حرب نے یہ واقعہ بیان کیا کہ ہرقل ( شاہ روم ) نے ان کے پاس قریش کے قافلے میں ایک آدمی بلانے کو بھیجا اور اس وقت یہ لوگ تجارت کے لیے ملک شام گئے ہوئے تھے اور یہ وہ زمانہ تھا جب رسول اللہ صلی اللہ علیہ وسلم نے قریش اور ابوسفیان سے ایک وقتی عہد کیا ہوا تھا ۔ جب ابوسفیان اور دوسرے لوگ ہرقل کے پاس ایلیاء پہنچے جہاں ہرقل نے دربار طلب کیا تھا ۔ اس کے گرد روم کے بڑے بڑے لوگ ( علماء وزراء امراء ) بیٹھے ہوئے تھے ۔ ہرقل نے ان کو اور اپنے ترجمان کو بلوایا ۔ پھر ان سے پوچھا کہ تم میں سے کون شخص مدعی رسالت کا زیادہ قریبی عزیز ہے ؟ ابوسفیان کہتے ہیں کہ میں بول اٹھا کہ میں اس کا سب سے زیادہ قریبی رشتہ دار ہوں ۔ ( یہ سن کر ) ہرقل نے حکم دیا کہ اس کو ( ابوسفیان کو ) میرے قریب لا کر بٹھاؤ اور اس کے ساتھیوں کو اس کی پیٹھ کے پیچھے بٹھا دو ۔ پھر اپنے ترجمان سے کہا کہ ان لوگوں سے کہہ دو کہ میں ابوسفیان سے اس شخص کے ( یعنی محمد صلی اللہ علیہ وسلم کے ) حالات پوچھتا ہوں ۔ اگر یہ مجھ سے کسی بات میں جھوٹ بول دے تو تم اس کا جھوٹ ظاہر کر دینا ، ( ابوسفیان کا قول ہے کہ ) خدا کی قسم ! اگر مجھے یہ غیرت نہ آتی کہ یہ لوگ مجھ کو جھٹلائیں گے تو میں آپ صلی اللہ علیہ وسلم کی نسبت ضرور غلط گوئی سے کام لیتا ۔ خیر پہلی بات جو ہرقل نے مجھ سے پوچھی وہ یہ کہ اس شخص کا خاندان تم لوگوں میں کیسا ہے ؟ میں نے کہا وہ تو بڑے اونچے عالی نسب والے ہیں ۔ کہنے لگا اس سے پہلے بھی کسی نے تم لوگوں میں ایسی بات کہی تھی ؟ میں نے کہا نہیں کہنے لگا ، اچھا اس کے بڑوں میں کوئی بادشاہ ہوا ہے ؟ میں نے کہا نہیں ۔ پھر اس نے کہا ، بڑے لوگوں نے اس کی پیروی اختیار کی ہے یا کمزوروں نے ؟ میں نے کہا نہیں کمزوروں نے ۔ پھر کہنے لگا ، اس کے تابعدار روز بڑھتے جاتے ہیں یا کوئی ساتھی پھر بھی جاتا ہے ؟ میں نے کہا نہیں ۔ کہنے لگا کہ کیا اپنے اس دعوائے ( نبوت ) سے پہلے کبھی ( کسی بھی موقع پر ) اس نے جھوٹ بولا ہے ؟ میں نے کہا نہیں ۔ اور اب ہماری اس سے ( صلح کی ) ایک مقررہ مدت ٹھہری ہوئی ہے ۔ معلوم نہیں وہ اس میں کیا کرنے والا ہے ۔ ( ابوسفیان کہتے ہیں ) میں اس بات کے سوا اور کوئی ( جھوٹ ) اس گفتگو میں شامل نہ کر سکا ۔ ہرقل نے کہا کیا تمہاری اس سے کبھی لڑائی بھی ہوتی ہے ؟ ہم نے کہا کہ ہاں ۔ بولا پھر تمہاری اور اس کی جنگ کا کیا حال ہوتا ہے ؟ میں نے کہا ، لڑائی ڈول کی طرح ہے ، کبھی وہ ہم سے ( میدان جنگ ) جیت لیتے ہیں اور کبھی ہم ان سے جیت لیتے ہیں ۔ ہرقل نے پوچھا ۔ وہ تمہیں کس بات کا حکم دیتا ہے ؟ میں نے کہا وہ کہتا ہے کہ صرف ایک اللہ ہی کی عبادت کرو ، اس کا کسی کو شریک نہ بناؤ اور اپنے باپ دادا کی ( شرک کی ) باتیں چھوڑ دو اور ہمیں نماز پڑھنے ، سچ بولنے ، پرہیزگاری اور صلہ رحمی کا حکم دیتا ہے ۔ ( یہ سب سن کر ) پھر ہرقل نے اپنے ترجمان سے کہا کہ ابوسفیان سے کہہ دے کہ میں نے تم سے اس کا نسب پوچھا تو تم نے کہا کہ وہ ہم میں عالی نسب ہے اور پیغمبر اپنی قوم میں عالی نسب ہی بھیجے جایا کرتے ہیں ۔ میں نے تم سے پوچھا کہ ( دعویٰ نبوت کی ) یہ بات تمہارے اندر اس سے پہلے کسی اور نے بھی کہی تھی ، تو تم نے جواب دیا کہ نہیں ، تب میں نے ( اپنے دل میں ) کہا کہ اگر یہ بات اس سے پہلے کسی نے کہی ہوتی تو میں سمجھتا کہ اس شخص نے بھی اسی بات کی تقلید کی ہے جو پہلے کہی جا چکی ہے ۔ میں نے تم سے پوچھا کہ اس کے بڑوں میں کوئی بادشاہ بھی گزرا ہے ، تم نے کہا کہ نہیں ۔ تو میں نے ( دل میں ) کہا کہ ان کے بزرگوں میں سے کوئی بادشاہ ہوا ہو گا تو کہہ دوں گا کہ وہ شخص ( اس بہانہ ) اپنے آباء و اجداد کی بادشاہت اور ان کا ملک ( دوبارہ ) حاصل کرنا چاہتا ہے ۔ اور میں نے تم سے پوچھا کہ اس بات کے کہنے ( یعنی پیغمبری کا دعویٰ کرنے ) سے پہلے تم نے کبھی اس کو دروغ گوئی کا الزام لگایا ہے ؟ تم نے کہا کہ نہیں ۔ تو میں نے سمجھ لیا کہ جو شخص آدمیوں کے ساتھ دروغ گوئی سے بچے وہ اللہ کے بارے میں کیسے جھوٹی بات کہہ سکتا ہے ۔ اور میں نے تم سے پوچھا کہ بڑے لوگ اس کے پیرو ہوتے ہیں یا کمزور آدمی ۔ تم نے کہا کمزوروں نے اس کی اتباع کی ہے ، تو ( دراصل ) یہی لوگ پیغمبروں کے متبعین ہوتے ہیں ۔ اور میں نے تم سے پوچھا کہ اس کے ساتھی بڑھ رہے ہیں یا کم ہو رہے ہیں ۔ تم نے کہا کہ وہ بڑھ رہے ہیں اور ایمان کی کیفیت یہی ہوتی ہے ۔ حتیٰ کہ وہ کامل ہو جاتا ہے اور میں نے تم سے پوچھا کہ آیا کوئی شخص اس کے دین سے ناخوش ہو کر مرتد بھی ہو جاتا ہے تم نے کہا نہیں ، تو ایمان کی خاصیت بھی یہی ہے جن کے دلوں میں اس کی مسرت رچ بس جائے وہ اس سے لوٹا نہیں کرتے ۔ اور میں نے تم سے پوچھا کہ آیا وہ کبھی عہد شکنی کرتے ہیں ۔ تم نے کہا نہیں ، پیغمبروں کا یہی حال ہوتا ہے ، وہ عہد کی خلاف ورزی نہیں کرتے ۔ اور میں نے تم سے کہا کہ وہ تم سے کس چیز کے لیے کہتے ہیں ۔ تم نے کہا کہ وہ ہمیں حکم دیتے ہیں کہ اللہ کی عبادت کرو ، اس کے ساتھ کسی کو شریک نہ ٹھہراؤ اور تمہیں بتوں کی پرستش سے روکتے ہیں ۔ سچ بولنے اور پرہیزگاری کا حکم دیتے ہیں ۔ لہٰذا اگر یہ باتیں جو تم کہہ رہے ہو سچ ہیں تو عنقریب وہ اس جگہ کا مالک ہو جائے گا کہ جہاں میرے یہ دونوں پاؤں ہیں ۔ مجھے معلوم تھا کہ وہ ( پیغمبر ) آنے والا ہے ۔ مگر مجھے یہ معلوم نہیں تھا کہ وہ تمہارے اندر ہو گا ۔ اگر میں جانتا کہ اس تک پہنچ سکوں گا تو اس سے ملنے کے لیے ہر تکلیف گوارا کرتا ۔ اگر میں اس کے پاس ہوتا تو اس کے پاؤں دھوتا ۔ ہرقل نے رسول اللہ صلی اللہ علیہ وسلم وہ خط منگایا جو آپ نے دحیہ کلبی رضی اللہ عنہ کے ذریعہ حاکم بصریٰ کے پاس بھیجا تھا اور اس نے وہ ہرقل کے پاس بھیج دیا تھا ۔ پھر اس کو پڑھا تو اس میں ( لکھا تھا ) : ¤¤ اللہ کے نام کے ساتھ جو نہایت مہربان اور رحم والا ہے ۔ ¤ اللہ کے بندے اور اس کے پیغمبر محمد صلی اللہ علیہ وسلم کی طرف سے یہ خط ہے شاہ روم کے لیے ۔ اس شخص پر سلام ہو جو ہدایت کی پیروی کرے اس کے بعد میں آپ کے سامنے دعوت اسلام پیش کرتا ہوں ۔ اگر آپ اسلام لے آئیں گے تو ( دین و دنیا میں ) سلامتی نصیب ہو گی ۔ اللہ آپ کو دوہرا ثواب دے گا اور اگر آپ ( میری دعوت سے ) روگردانی کریں گے تو آپ کی رعایا کا گناہ بھی آپ ہی پر ہو گا ۔ اور اے اہل کتاب ! ایک ایسی بات پر آ جاؤ جو ہمارے اور تمہارے درمیان یکساں ہے ۔ وہ یہ کہ ہم اللہ کے سوا کسی کی عبادت نہ کریں اور کسی کو اس کا شریک نہ ٹھہرائیں اور نہ ہم میں سے کوئی کسی کو خدا کے سوا اپنا رب بنائے ۔ پھر اگر وہ اہل کتاب ( اس بات سے ) منہ پھیر لیں تو ( مسلمانو ! ) تم ان سے کہہ دو کہ ( تم مانو یا نہ مانو ) ہم تو ایک خدا کے اطاعت گزار ہیں ۔ ابوسفیان کہتے ہیں : جب ہرقل نے جو کچھ کہنا تھا کہہ دیا اور خط پڑھ کر فارغ ہوا تو اس کے اردگرد بہت شور و غوغہ ہوا ، بہت سی آوازیں اٹھیں اور ہمیں باہر نکال دیا گیا ۔ تب میں نے اپنے ساتھیوں سے کہا کہ ابوکبشہ کے بیٹے ( آنحضرت صلی اللہ علیہ وسلم ) کا معاملہ تو بہت بڑھ گیا ( دیکھو تو ) اس سے بنی اصفر ( روم ) کا بادشاہ بھی ڈرتا ہے ۔ مجھے اس وقت سے اس بات کا یقین ہو گیا کہ حضور صلی اللہ علیہ وسلم عنقریب غالب ہو کر رہیں گے ۔ حتیٰ کہ اللہ نے مجھے مسلمان کر دیا ۔ ( راوی کا بیان ہے کہ ) ابن ناطور ایلیاء کا حاکم ہرقل کا مصاحب اور شام کے نصاریٰ کا لاٹ پادری بیان کرتا تھا کہ ہرقل جب ایلیاء آیا ، ایک دن صبح کو پریشان اٹھا تو اس کے درباریوں نے دریافت کیا کہ آج ہم آپ کی حالت بدلی ہوئی پاتے ہیں ۔ ( کیا وجہ ہے ؟ ) ابن ناطور کا بیان ہے کہ ہرقل نجومی تھا ، علم نجوم میں وہ پوری مہارت رکھتا تھا ۔ اس نے اپنے ہم نشینوں کو بتایا کہ میں نے آج رات ستاروں پر نظر ڈالی تو دیکھا کہ ختنہ کرنے والوں کا بادشاہ ہمارے ملک پر غالب آ گیا ہے ۔ ( بھلا ) اس زمانے میں کون لوگ ختنہ کرتے ہیں ؟ انھوں نے کہا کہ یہود کے سوا کوئی ختنہ نہیں کرتا ۔ سو ان کی وجہ سے پریشان نہ ہوں ۔ سلطنت کے تمام شہروں میں یہ حکم لکھ بھیجئے کہ وہاں جتنے یہودی ہوں سب قتل کر دئیے جائیں ۔ وہ لوگ انہی باتوں میں مشغول تھے کہ ہرقل کے پاس ایک آدمی لایا گیا ۔ جسے شاہ غسان نے بھیجا تھا ۔ اس نے رسول اللہ صلی اللہ علیہ وسلم کے حالات بیان کئے ۔ جب ہرقل نے ( سارے حالات ) سن لیے تو کہا کہ جا کر دیکھو وہ ختنہ کئے ہوئے ہے یا نہیں ؟ انھوں نے اسے دیکھا تو بتلایا کہ وہ ختنہ کیا ہوا ہے ۔ ہرقل نے جب اس شخص سے عرب کے بارے میں پوچھا تو اس نے بتلایا کہ وہ ختنہ کرتے ہیں ۔ تب ہرقل نے کہا کہ یہ ہی ( محمد صلی اللہ علیہ وسلم ) اس امت کے بادشاہ ہیں جو پیدا ہو چکے ہیں ۔ پھر اس نے اپنے ایک دوست کو رومیہ خط لکھا اور وہ بھی علم نجوم میں ہرقل کی طرح ماہر تھا ۔ پھر وہاں سے ہرقل حمص چلا گیا ۔ ابھی حمص سے نکلا نہیں تھا کہ اس کے دوست کا خط ( اس کے جواب میں ) آ گیا ۔ اس کی رائے بھی حضور صلی اللہ علیہ وسلم کے ظہور کے بارے میں ہرقل کے موافق تھی کہ محمد صلی اللہ علیہ وسلم ( واقعی ) پیغمبر ہیں ۔ اس کے بعد ہرقل نے روم کے بڑے آدمیوں کو اپنے حمص کے محل میں طلب کیا اور اس کے حکم سے محل کے دروازے بند کر لیے گئے ۔ پھر وہ ( اپنے خاص محل سے ) باہر آیا اور کہا ” اے روم والو ! کیا ہدایت اور کامیابی میں کچھ حصہ تمہارے لیے بھی ہے ؟ اگر تم اپنی سلطنت کی بقا چاہتے ہو تو پھر اس نبی کی بیعت کر لو اور مسلمان ہو جاؤ “ ( یہ سننا تھا کہ ) پھر وہ لوگ وحشی گدھوں کی طرح دروازوں کی طرف دوڑے ( مگر ) انہیں بند پایا ۔ آخر جب ہرقل نے ( اس بات سے ) ان کی یہ نفرت دیکھی اور ان کے ایمان لانے سے مایوس ہو گیا تو کہنے لگا کہ ان لوگوں کو میرے پاس لاؤ ۔ ( جب وہ دوبارہ آئے ) تو اس نے کہا میں نے جو بات کہی تھی اس سے تمہاری دینی پختگی کی آزمائش مقصود تھی سو وہ میں نے دیکھ لی ۔ تب ( یہ بات سن کر ) وہ سب کے سب اس کے سامنے سجدے میں گر پڑے اور اس سے خوش ہو گئے ۔ بالآخر ہرقل کی آخری حالت یہ ہی رہی ۔ ابوعبداللہ کہتے ہیں کہ اس حدیث کو صالح بن کیسان ، یونس اور معمر نے بھی زہری سے روایت کیا ہے ۔", },
-      
-      // Book 2 (chp=2) – Belief – 3 hadiths
-      { id:8, volume:1, book:2, chp:2, chp_title:"Belief", arabic:"حَدَّثَنَا عُبَيْدُ اللَّهِ بْنُ مُوسَى، قَالَ أَخْبَرَنَا حَنْظَلَةُ، عَنِ الْقَاسِمِ بْنِ مُحَمَّدٍ، عَنْ عَائِشَةَ، قَالَتْ قَالَ النَّبِيُّ صلى الله عليه وسلم ‏ \"‏ مَنْ عَمِلَ عَمَلاً لَيْسَ عَلَيْهِ أَمْرُنَا فَهُوَ رَدٌّ ‏\"‏‏.‏", en:"Narrated 'Aisha: The Prophet (ﷺ) said: Whoever introduces into this matter of ours that which is not from it, will have it rejected.", ur:"عائشہ رضی اللہ عنہا سے روایت ہے کہ نبی صلی اللہ علیہ وسلم نے فرمایا: جس نے ہمارے دین میں کوئی نئی بات ایجاد کی جو اس میں سے نہیں، وہ مردود ہے۔" },
-      { id:9, volume:1, book:2, chp:2, chp_title:"Belief", arabic:"حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ، قَالَ حَدَّثَنَا مَالِكٌ، عَنْ عَمِّهِ أَبِي سُهَيْلٍ، عَنْ أَبِيهِ، عَنْ أَبِي هُرَيْرَةَ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ ‏ \"‏ الإِيمَانُ بِضْعٌ وَسَبْعُونَ شُعْبَةً، فَأَفْضَلُهَا قَوْلُ لاَ إِلَهَ إِلاَّ اللَّهُ، وَأَدْنَاهَا إِمَاطَةُ الأَذَى عَنِ الطَّرِيقِ، وَالْحَيَاءُ شُعْبَةٌ مِنَ الإِيمَانِ ‏\"‏‏.‏", en:"Narrated Abu Huraira: Faith has over seventy branches ... modesty is a branch of faith.", ur:"ابوہریرہ رضی اللہ عنہ سے روایت ہے کہ ایمان کے ستر سے زائد شعبے ہیں، حیاء بھی ایمان کا ایک شعبہ ہے۔" },
-      { id:10, volume:1, book:2, chp:2, chp_title:"Belief", arabic:"حَدَّثَنَا إِسْمَاعِيلُ، قَالَ حَدَّثَنِي مَالِكٌ، عَنْ عَمْرِو بْنِ يَحْيَى الْمَازِنِيِّ، عَنْ أَبِيهِ، عَنْ أَبِي سَعِيدٍ الْخُدْرِيِّ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏ \"‏ يَدْخُلُ أَهْلُ الْجَنَّةِ الْجَنَّةَ ... أَخْرِجُوا مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ حَبَّةٍ مِنْ خَرْدَلٍ مِنْ إِيمَانٍ ‏\"‏‏.‏", en:"Narrated Abu Sa'id Al-Khudri: Allah will bring out from Hellfire whoever has an atom's weight of faith.", ur:"ابوسعید خدری رضی اللہ عنہ سے روایت ہے کہ جہنم سے اس شخص کو نکالا جائے گا جس کے دل میں رائی برابر بھی ایمان ہوگا۔" }
-    ];
+    // Array of placeholder image names - currently all using pic1.jpeg
+    const chapterPlaceholders = Array(97).fill("pic1.jpeg");
 
-    // ---------- CHAPTERS METADATA ----------
     const chapters = [
-      { id: 1, title: "Revelation", artitle: "<span class=\"arabic\">(كتاب بدء الوحى)</span>", subtitle: "Start of Divine Revelation", hadithCount: 7, file: "bukhari-chp1.html" },
-      { id: 2, title: "Belief", artitle: "<span class=\"arabic\">(كتاب الإيمان)</span>", subtitle: "Faith And Its Branches", hadithCount: 3, file: "bukhari-chp2.html" }
+      { id: 1, title: "Revelation", artitle: "(<span class=\"arabic\">كتاب بدء الوحى</span>)", subtitle: "Start of Divine Revelation", hadithCount: 7, file: "bukhari-chp1.html" },
+      { id: 2, title: "Belief", artitle: "(<span class=\"arabic\">كتاب الإيمان</span>)", subtitle: "Faith And Its Branches", hadithCount: 51, file: "bukhari-chp2.html" },
+      { id: 3, title: "Knowledge", artitle: "(<span class=\"arabic\">كتاب العلم</span>)", subtitle: "Importance Of Seeking Knowledge", hadithCount: 76, file: "bukhari-chp3.html" },
+      { id: 4, title: "Ablution (Wudu')", artitle: "(<span class=\"arabic\">كتاب الوضوء</span>)", subtitle: "How To Make Wudu'", hadithCount: 113, file: "bukhari-chp4.html" },
+      { id: 5, title: "Bathing (Ghusl)", artitle: "(<span class=\"arabic\">كتاب الغسل</span>)", subtitle: "Performing Ghusl", hadithCount: 46, file: "bukhari-chp5.html" },
+      // Add more chapters here
     ];
 
-    // ---------- STORAGE ----------
-    let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths') || '[]');
-    let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths') || '[]');
-    let favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
-    let bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
-    
-    // Fix legacy
-    if (favoritedHadiths.length && typeof favoritedHadiths[0] === 'number') favoritedHadiths = favoritedHadiths.map(id=>({chp:1,id}));
-    if (bookmarkedHadiths.length && typeof bookmarkedHadiths[0] === 'number') bookmarkedHadiths = bookmarkedHadiths.map(id=>({chp:1,id}));
+    // Sample hadiths array - in a real app, this would be loaded from the chapter files or API
+    const hadiths = [
+      { id: 1, arabic: "حديث عربي 1", en: "English translation 1" },
+      { id: 2, arabic: "حديث عربي 2", en: "English translation 2" },
+      { id: 3, arabic: "حديث عربي 3", en: "English translation 3" },
+      // Add more hadiths as needed
+    ];
 
-    // ---------- SVG ICONS ----------
-    const favSvg = (filled=false)=> filled 
-      ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="#0c8" stroke="#0c8" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`
-      : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c8" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-    const bkmSvg = (filled=false)=> filled
-      ? `<svg width="24" height="24" viewBox="0 0 800 800" fill="#00CC88"><path d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`
-      : `<svg width="24" height="24" viewBox="0 0 800 800" fill="none" stroke="#00CC88" stroke-width="66.66"><path d="M166.7,206.7c0-37.3,0-56,7.3-70.3c6.4-12.5,16.6-22.7,29.1-29.1c14.3-7.3,32.9-7.3,70.3-7.3h253.3c37.3,0,56,0,70.3,7.3c12.5,6.4,22.7,16.6,29.1,29.1c7.3,14.3,7.3,32.9,7.3,70.3V700L400,533.3L166.7,700V206.7z"/></svg>`;
+    const grid = document.getElementById("chaptersGrid");
 
-    // ---------- RENDER ALL CHAPTERS (FIXED GRID) ----------
-    const grid = document.getElementById('chaptersGrid');
-    function renderAllChapters() {
+    chapters.forEach(chapter => {
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = chapter.file;
+      card.setAttribute('data-chapter', chapter.id);
+      const placeholderImage = chapterPlaceholders[chapter.id - 1];
+      const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+      const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+      const isFavorited = favoritedChapters.includes(chapter.id);
+      const isBookmarked = bookmarkedChapters.includes(chapter.id);
+      card.innerHTML = `
+        <img src="${placeholderImage}" alt="${chapter.title}">
+        <div class="icons">
+          <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+          <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
+        </div>
+        <div class="overlay">
+          <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+          <div class="additional-details">
+            <div class="detail-item">
+              <span class="detail-label">Hadiths:</span>
+              <span class="detail-value">${chapter.hadithCount}</span>
+            </div>
+          </div>
+          <div class="quick-actions">
+            <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+      icon.src = document.body.classList.contains('dark-mode')
+        ? "sun.png"
+        : "moon.png";
+      icon.alt = document.body.classList.contains('dark-mode')
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function toggleFavoriteChapter(chapterId) {
+      let favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+      if (favoritedChapters.includes(chapterId)) {
+        favoritedChapters = favoritedChapters.filter(id => id !== chapterId);
+      } else {
+        favoritedChapters.push(chapterId);
+      }
+      localStorage.setItem('favoritedChapters', JSON.stringify(favoritedChapters));
+      // Update the icon immediately
+      const card = document.querySelector(`[data-chapter="${chapterId}"]`);
+      if (card) {
+        const favoriteIcon = card.querySelector('.favorite-icon');
+        const isFavorited = favoritedChapters.includes(chapterId);
+        favoriteIcon.innerHTML = isFavorited ? favoriteSVG : unfavoriteSVG;
+      }
+    }
+
+    function toggleBookmarkChapter(chapterId) {
+      let bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+      if (bookmarkedChapters.includes(chapterId)) {
+        bookmarkedChapters = bookmarkedChapters.filter(id => id !== chapterId);
+      } else {
+        bookmarkedChapters.push(chapterId);
+      }
+      localStorage.setItem('bookmarkedChapters', JSON.stringify(bookmarkedChapters));
+      // Update the icon immediately
+      const card = document.querySelector(`[data-chapter="${chapterId}"]`);
+      if (card) {
+        const bookmarkIcon = card.querySelector('.bookmark-icon');
+        const isBookmarked = bookmarkedChapters.includes(chapterId);
+        bookmarkIcon.innerHTML = isBookmarked ? bookmarkedSVG : unbookmarkedSVG;
+      }
+    }
+
+    function populateFavoriteSection() {
+      const favoriteSection = document.getElementById('favoriteSection');
+      favoriteSection.innerHTML = '';
+      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths')) || [];
+      if (favoritedHadiths.length > 0) {
+        favoriteSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favorite Hadiths</h2>';
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        favoritedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        favoriteSection.appendChild(horizontalContainer);
+      }
+    }
+
+    function populateBookmarkedSection() {
+      const bookmarkedSection = document.getElementById('bookmarkedSection');
+      bookmarkedSection.innerHTML = '';
+      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths')) || [];
+      if (bookmarkedHadiths.length > 0) {
+        bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        bookmarkedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.onclick = () => window.location.href = `bukhari-chp1.html#hadith${hadith.id}`;
+            card.innerHTML = `
+              <h3>Hadith ${hadith.id}</h3>
+              <p class="arabic">${hadith.arabic.substring(0, 100)}...</p>
+              <p>${hadith.en.substring(0, 100)}...</p>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        bookmarkedSection.appendChild(horizontalContainer);
+      }
+    }
+
+    function showAll() {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('button[onclick="showAll()"]').classList.add('active');
+      const grid = document.getElementById("chaptersGrid");
       grid.innerHTML = '';
-      chapters.forEach(ch => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.setAttribute('data-chapter', ch.id);
-        card.onclick = (e) => { if (!e.target.closest('.icons')) openHadithModal(ch); };
-        const isFav = favoritedChapters.includes(ch.id);
-        const isBkm = bookmarkedChapters.includes(ch.id);
+      grid.style.display = 'grid';
+      chapters.forEach(chapter => {
+        const card = document.createElement("a");
+        card.className = "card";
+        card.href = chapter.file;
+        card.setAttribute('data-chapter', chapter.id);
+        const placeholderImage = chapterPlaceholders[chapter.id - 1];
+        const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters') || '[]');
+        const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters') || '[]');
+        const isFavorited = favoritedChapters.includes(chapter.id);
+        const isBookmarked = bookmarkedChapters.includes(chapter.id);
         card.innerHTML = `
-          <img src="pic1.jpeg" alt="${ch.title}">
+          <img src="${placeholderImage}" alt="${chapter.title}">
           <div class="icons">
-            <span class="favorite-icon" onclick="event.stopPropagation(); toggleFavoriteChapter(${ch.id});">${favSvg(isFav)}</span>
-            <span class="bookmark-icon" onclick="event.stopPropagation(); toggleBookmarkChapter(${ch.id});">${bkmSvg(isBkm)}</span>
+            <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${isFavorited ? favoriteSVG : unfavoriteSVG}</span>
+            <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${isBookmarked ? bookmarkedSVG : unbookmarkedSVG}</span>
           </div>
           <div class="overlay">
-            <span class="surah-number">Book ${ch.id}: ${ch.title}</span>
+            <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
             <div class="additional-details">
-              <span>Hadiths: ${ch.hadithCount}</span>
+              <div class="detail-item">
+                <span class="detail-label">Hadiths:</span>
+                <span class="detail-value">${chapter.hadithCount}</span>
+              </div>
             </div>
             <div class="quick-actions">
-              <button onclick="event.stopPropagation(); openHadithModal(${JSON.stringify(ch).replace(/"/g,'&quot;')});">Read</button>
+              <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
             </div>
           </div>
         `;
@@ -2250,242 +2156,243 @@
       });
     }
 
-    // ---------- CHAPTER FAV/BOOKMARK ----------
-    window.toggleFavoriteChapter = (id) => {
-      let f = JSON.parse(localStorage.getItem('favoritedChapters')||'[]');
-      f.includes(id) ? f = f.filter(i=>i!==id) : f.push(id);
-      localStorage.setItem('favoritedChapters',JSON.stringify(f));
-      favoritedChapters = f;
-      renderAllChapters();
-    };
-    window.toggleBookmarkChapter = (id) => {
-      let b = JSON.parse(localStorage.getItem('bookmarkedChapters')||'[]');
-      b.includes(id) ? b = b.filter(i=>i!==id) : b.push(id);
-      localStorage.setItem('bookmarkedChapters',JSON.stringify(b));
-      bookmarkedChapters = b;
-      renderAllChapters();
-    };
+    function showMy() {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('button[onclick="showMy()"]').classList.add('active');
+      const grid = document.getElementById("chaptersGrid");
+      grid.innerHTML = '';
+      grid.style.display = 'block'; // Ensure vertical stacking for sections
 
-    // ---------- MODAL CAROUSEL ----------
-    let currentChapterHadiths = [];
-    let currentCarouselIndex = 0;
+      const favoritedChapters = JSON.parse(localStorage.getItem('favoritedChapters')) || [];
+      const bookmarkedChapters = JSON.parse(localStorage.getItem('bookmarkedChapters')) || [];
 
-    window.openHadithModal = (chapter, hadithId = null) => {
-      currentChapterHadiths = hadiths.filter(h => h.chp === chapter.id);
-      if (!currentChapterHadiths.length) return alert('No hadiths');
-      currentCarouselIndex = 0;
-      if (hadithId !== null) {
-        const idx = currentChapterHadiths.findIndex(h => h.id === hadithId);
-        if (idx > -1) currentCarouselIndex = idx;
+      // Section for Favourited Chapters
+      const favouritedSection = document.createElement("div");
+      favouritedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem;">Favourited Chapters</h2>';
+      if (favoritedChapters.length === 0) {
+        favouritedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited chapters yet.</p>';
+      } else {
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        favoritedChapters.forEach(chapterId => {
+          const chapter = chapters.find(c => c.id === chapterId);
+          if (chapter) {
+            const card = document.createElement("a");
+            card.className = "card";
+            card.href = chapter.file;
+            card.setAttribute('data-chapter', chapter.id);
+            const placeholderImage = chapterPlaceholders[chapter.id - 1];
+            card.innerHTML = `
+              <img src="${placeholderImage}" alt="${chapter.title}">
+              <div class="icons">
+                <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${favoriteSVG}</span>
+                <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${bookmarkedSVG}</span>
+              </div>
+              <div class="overlay">
+                <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+                <div class="additional-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Hadiths:</span>
+                    <span class="detail-value">${chapter.hadithCount}</span>
+                  </div>
+                </div>
+                <div class="quick-actions">
+                  <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+                </div>
+              </div>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        favouritedSection.appendChild(horizontalContainer);
       }
-      document.getElementById('modal-chapter-title').innerHTML = `Book ${chapter.id}: ${chapter.title} ${chapter.artitle}`;
-      document.getElementById('modal-chapter-subtitle').innerText = chapter.subtitle || '';
-      document.getElementById('modal-chapter-meta').innerText = `Hadiths: ${currentChapterHadiths.length}`;
-      renderCarouselTab();
-      document.getElementById('hadith-modal').classList.add('show');
-    };
-    window.closeHadithModal = () => document.getElementById('hadith-modal').classList.remove('show');
-    window.switchModalTab = () => {};
+      grid.appendChild(favouritedSection);
 
-    function renderCarouselTab() {
-      const tab = document.getElementById('modal-carousel-tab');
-      tab.innerHTML = '';
-      if (!currentChapterHadiths.length) return;
-      // language select
-      const langDiv = document.createElement('div');
-      langDiv.className = 'carousel-lang-select';
-      langDiv.innerHTML = `<label>Translation:</label>
-        <select id="carousel-lang" onchange="renderCarouselHadith()">
-          <option value="en">English</option>
-          <option value="ur">اردو</option>
-        </select>`;
-      tab.appendChild(langDiv);
-      // Go to Hadith
-      const goToDiv = document.createElement('div');
-      goToDiv.className = 'go-to-hadith';
-      goToDiv.innerHTML = `<input type="number" id="go-to-hadith-input" placeholder="Go" min="1" max="${currentChapterHadiths.length}" onkeypress="if(event.key==='Enter')goToHadith()">
-        <button onclick="goToHadith()">Go</button>`;
-      tab.appendChild(goToDiv);
-      const carouselDiv = document.createElement('div');
-      carouselDiv.id = 'carousel-container';
-      carouselDiv.className = 'carousel-container';
-      tab.appendChild(carouselDiv);
-      const nav = document.createElement('div');
-      nav.className = 'nav-buttons';
-      nav.innerHTML = `<button onclick="prevHadith()" id="prevBtn" class="nav-btn">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-          <span>Previous</span>
-        </button>
-        <span id="carouselCounter" class="carousel-counter">1 / ${currentChapterHadiths.length}</span>
-        <button onclick="nextHadith()" id="nextBtn" class="nav-btn">
-          <span>Next</span>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </button>`;
-      tab.appendChild(nav);
-      renderCarouselHadith();
+      // Section for Bookmarked Chapters
+      const bookmarkedSection = document.createElement("div");
+      bookmarkedSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Chapters</h2>';
+      if (bookmarkedChapters.length === 0) {
+        bookmarkedSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked chapters yet.</p>';
+      } else {
+        const horizontalContainer = document.createElement("div");
+        horizontalContainer.className = "horizontal-cards";
+        bookmarkedChapters.forEach(chapterId => {
+          const chapter = chapters.find(c => c.id === chapterId);
+          if (chapter) {
+            const card = document.createElement("a");
+            card.className = "card";
+            card.href = chapter.file;
+            card.setAttribute('data-chapter', chapter.id);
+            const placeholderImage = chapterPlaceholders[chapter.id - 1];
+            card.innerHTML = `
+              <img src="${placeholderImage}" alt="${chapter.title}">
+              <div class="icons">
+                <span class="favorite-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleFavoriteChapter(${chapter.id});">${favoriteSVG}</span>
+                <span class="bookmark-icon" onclick="event.preventDefault(); event.stopPropagation(); toggleBookmarkChapter(${chapter.id});">${bookmarkedSVG}</span>
+              </div>
+              <div class="overlay">
+                <span class="surah-number">Book ${chapter.id}: ${chapter.title}</span>
+                <div class="additional-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Hadiths:</span>
+                    <span class="detail-value">${chapter.hadithCount}</span>
+                  </div>
+                </div>
+                <div class="quick-actions">
+                  <button onclick="event.preventDefault(); event.stopPropagation(); window.open('${chapter.file}', '_blank');">Read</button>
+                </div>
+              </div>
+            `;
+            horizontalContainer.appendChild(card);
+          }
+        });
+        bookmarkedSection.appendChild(horizontalContainer);
+      }
+      grid.appendChild(bookmarkedSection);
+
+      // Section for Favourited Hadiths
+      const favouritedHadithsSection = document.createElement("div");
+      favouritedHadithsSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Favourited Hadiths</h2>';
+      const favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths') || '[]');
+      if (favoritedHadiths.length === 0) {
+        favouritedHadithsSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No favourited hadiths yet.</p>';
+      } else {
+        const container = document.createElement("div");
+        container.id = "favorited-hadiths";
+        container.className = "horizontal-cards";
+        favoritedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            container.appendChild(createFavoritedHadithCard(hadith));
+          }
+        });
+        favouritedHadithsSection.appendChild(container);
+      }
+      grid.appendChild(favouritedHadithsSection);
+
+      // Section for Bookmarked Hadiths
+      const bookmarkedHadithsSection = document.createElement("div");
+      bookmarkedHadithsSection.innerHTML = '<h2 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem;">Bookmarked Hadiths</h2>';
+      const bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths') || '[]');
+      if (bookmarkedHadiths.length === 0) {
+        bookmarkedHadithsSection.innerHTML += '<p style="text-align: center; font-size: 1.1rem; color: #666;">No bookmarked hadiths yet.</p>';
+      } else {
+        const container = document.createElement("div");
+        container.id = "bookmarked-hadiths";
+        container.className = "horizontal-cards";
+        bookmarkedHadiths.forEach(hadithId => {
+          const hadith = hadiths.find(h => h.id === hadithId);
+          if (hadith) {
+            container.appendChild(createBookmarkedHadithCard(hadith));
+          }
+        });
+        bookmarkedHadithsSection.appendChild(container);
+      }
+      grid.appendChild(bookmarkedHadithsSection);
     }
 
-    window.goToHadith = function() {
-      const input = document.getElementById('go-to-hadith-input');
-      if (!input || !currentChapterHadiths.length) return;
-      const hadithNum = parseInt(input.value);
-      if (isNaN(hadithNum) || hadithNum < 1 || hadithNum > currentChapterHadiths.length) {
-        alert(`Please enter a number between 1 and ${currentChapterHadiths.length}`);
-        return;
-      }
-      currentCarouselIndex = hadithNum - 1;
-      renderCarouselHadith();
-      input.value = '';
-    };
-
-    window.renderCarouselHadith = function() {
-      const carouselDiv = document.getElementById('carousel-container');
-      if (!carouselDiv) return;
-      const hadith = currentChapterHadiths[currentCarouselIndex];
-      const lang = document.getElementById('carousel-lang')?.value || 'en';
-      const isFav = favoritedHadiths.some(f => f.chp === hadith.chp && f.id === hadith.id);
-      const isBkm = bookmarkedHadiths.some(b => b.chp === hadith.chp && b.id === hadith.id);
-      carouselDiv.innerHTML = `
-        <div class="carousel-hadith">
-          <span class="hadith-number">Hadith ${hadith.id}</span>
-          <div class="arabic">${hadith.arabic}</div>
-          <div class="translation ${lang==='ur'?'ur':''}">${hadith[lang]}</div>
-          <div class="hadith-meta">Sahih al-Bukhari • Book ${hadith.book} • Vol ${hadith.volume}</div>
-          <div class="hadith-actions">
-            <button class="action-button ${isFav?'favorited':''}" onclick="toggleFavoriteHadith(${hadith.chp}, ${hadith.id}, event)">${favSvg(isFav)}</button>
-            <button class="action-button ${isBkm?'bookmarked':''}" onclick="toggleBookmarkHadith(${hadith.chp}, ${hadith.id}, event)">${bkmSvg(isBkm)}</button>
-            <button class="action-button" onclick="openShareModal(${hadith.chp}, ${hadith.id}, event)"><svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg></button>
+    function createFavoritedHadithCard(hadith) {
+      const card = document.createElement('a');
+      card.href = `bukhari-chp1.html#hadith${hadith.id}`;
+      card.className = 'ayah-card favorite-card';
+      card.setAttribute('data-hadith', hadith.id);
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">Hadith ${hadith.id}</span>
+            <span class="revelation-badge">Sahih al-Bukhari</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${hadith.id}</div>
+            <div class="ayah-text">
+              ${hadith.arabic.substring(0, 100)}...
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Hadith ${hadith.id}</span>
+            <span class="surah-meaning">${hadith.en.substring(0, 50)}...</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('bukhari-chp1.html#hadith${hadith.id}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeFavoritedHadith(${hadith.id})">Remove</button>
           </div>
         </div>
       `;
-      document.getElementById('carouselCounter').innerText = `${currentCarouselIndex+1} / ${currentChapterHadiths.length}`;
-      document.getElementById('prevBtn').disabled = currentCarouselIndex === 0;
-      document.getElementById('nextBtn').disabled = currentCarouselIndex === currentChapterHadiths.length-1;
-    };
-    window.nextHadith = function() { if (currentCarouselIndex < currentChapterHadiths.length-1) { currentCarouselIndex++; renderCarouselHadith(); } };
-    window.prevHadith = function() { if (currentCarouselIndex > 0) { currentCarouselIndex--; renderCarouselHadith(); } };
+      return card;
+    }
 
-    // ---------- FAV/BOOKMARK HADITH ----------
-    window.toggleFavoriteHadith = (chp, id, ev) => {
-      ev?.stopPropagation();
-      let favs = JSON.parse(localStorage.getItem('favoritedHadiths')||'[]');
-      const idx = favs.findIndex(f => f.chp===chp && f.id===id);
-      idx>-1 ? favs.splice(idx,1) : favs.push({chp,id});
-      localStorage.setItem('favoritedHadiths', JSON.stringify(favs));
-      favoritedHadiths = favs;
-      renderCarouselHadith();
-    };
-    window.toggleBookmarkHadith = (chp, id, ev) => {
-      ev?.stopPropagation();
-      let bks = JSON.parse(localStorage.getItem('bookmarkedHadiths')||'[]');
-      const idx = bks.findIndex(f => f.chp===chp && f.id===id);
-      idx>-1 ? bks.splice(idx,1) : bks.push({chp,id});
-      localStorage.setItem('bookmarkedHadiths', JSON.stringify(bks));
-      bookmarkedHadiths = bks;
-      renderCarouselHadith();
-    };
-
-    // ---------- SHARE MODAL ----------
-    let currentShareHadith = null;
-    window.openShareModal = (chp, id, ev) => {
-      ev?.stopPropagation();
-      currentShareHadith = hadiths.find(h => h.chp===chp && h.id===id);
-      document.getElementById('share-modal').classList.add('show');
-    };
-    window.closeShareModal = () => document.getElementById('share-modal').classList.remove('show');
-    window.shareHadith = async function() {
-      if (!currentShareHadith) return;
-      const incAr = document.getElementById('include-arabic').checked;
-      const incTr = document.getElementById('include-translation').checked;
-      const lang = document.getElementById('share-language').value;
-      let shareText = `Hadith ${currentShareHadith.id} – Sahih al-Bukhari, Book ${currentShareHadith.book}\n\n`;
-      if (incAr) shareText += `${currentShareHadith.arabic}\n\n`;
-      if (incTr) shareText += `${currentShareHadith[lang]}\n\n`;
-      shareText += `— MuslimBro1400\nhttps://adil43534.github.io/Muslimbro1400.com/`;
-      await navigator.clipboard.writeText(shareText);
-      document.getElementById('copy-message').style.display = 'block';
-      setTimeout(() => { document.getElementById('copy-message').style.display = 'none'; closeShareModal(); }, 2000);
-    };
-
-    // ---------- MY HADITHS TAB ----------
-    window.showAll = function() {
-      document.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('active'));
-      document.querySelector('button[onclick="showAll()"]').classList.add('active');
-      grid.style.display = '';
-      renderAllChapters();
-    };
-window.showMy = function() {
-      document.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('active'));
-      document.querySelector('button[onclick="showMy()"]').classList.add('active');
-      grid.style.display = 'block';
-      grid.innerHTML = `
-        <h2 style="margin:2rem 0 0.5rem; text-align:center;">Favourited Chapters</h2>
-        <div class="horizontal-cards" style="min-height:150px;">${
-          favoritedChapters.map(id => {
-            let ch = chapters.find(c=>c.id===id);
-            return ch? `<div class="card" style="width:200px;" onclick="openHadithModal(chapters.find(c=>c.id===${ch.id}), ${ch.id})">
-              <img src="pic1.jpeg" alt="${ch.title}">
-              <div class="icons">
-                <span class="favorite-icon" onclick="event.stopPropagation(); toggleFavoriteChapter(${ch.id}); showMy();">${favSvg(true)}</span>
-                <span class="bookmark-icon" onclick="event.stopPropagation(); toggleBookmarkChapter(${ch.id}); showMy();">${bkmSvg(bookmarkedChapters.includes(ch.id))}</span>
-             </div>
-             <div class="overlay">
-              <span>Book ${ch.id}: ${ch.title}</span>
-              </div>
-            </div>`:'';
-          }).join('') || '<p style="padding:1rem;">No favourite chapters</p>'
-        }</div>
-        <h2 style="margin:2rem 0 0.5rem; text-align:center;">Bookmarked Chapters</h2>
-        <div class="horizontal-cards">${
-          bookmarkedChapters.map(id => {
-            let ch = chapters.find(c=>c.id===id);
-            return ch? `<div class="card" style="width:200px;" onclick="openHadithModal(chapters.find(c=>c.id===${ch.id}), ${ch.id})">
-              <img src="pic1.jpeg" alt="${ch.title}">
-              <div class="icons">
-                <span class="favorite-icon" onclick="event.stopPropagation(); toggleFavoriteChapter(${ch.id}); showMy();">${favSvg(favoritedChapters.includes(ch.id))}</span>
-                <span class="bookmark-icon" onclick="event.stopPropagation(); toggleBookmarkChapter(${ch.id}); showMy();">${bkmSvg(true)}</span>
-              </div>
-              <div class="overlay"><span>Book ${ch.id}: ${ch.title}</span></div>
-            </div>`:'';
-          }).join('') || '<p style="padding:1rem;">No bookmarked chapters</p>'
-        }</div>
-        <h2 style="margin:2rem 0 0.5rem; text-align:center;">Favourited Hadiths</h2>
-        <div class="horizontal-cards">${
-          favoritedHadiths.map(obj => {
-            let h = hadiths.find(h=>h.chp===obj.chp && h.id===obj.id);
-return h? `<div class="ayah-card" onclick="let ch=chapters.find(c=>c.id===${h.chp});if(ch)openHadithModal(ch,${h.id});"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="event.stopPropagation();toggleFavoriteHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
-          }).join('') || '<p style="padding:1rem;">No favourited hadiths</p>'
-        }</div>
-        <h2 style="margin:2rem 0 0.5rem; text-align:center;">Bookmarked Hadiths</h2>
-        <div class="horizontal-cards">${
-          bookmarkedHadiths.map(obj => {
-            let h = hadiths.find(h=>h.chp===obj.chp && h.id===obj.id);
-return h? `<div class="ayah-card" onclick="let ch=chapters.find(c=>c.id===${h.chp});if(ch)openHadithModal(ch,${h.id});"><span class="hadith-number">Hadith ${h.id}</span><div class="hadith-text">${h.arabic.substring(0,80)}…</div><button onclick="event.stopPropagation();toggleBookmarkHadith(${h.chp},${h.id},event);showMy();">Remove</button></div>`:'';
-          }).join('') || '<p style="padding:1rem;">No bookmarked hadiths</p>'
-        }</div>
+    function createBookmarkedHadithCard(hadith) {
+      const card = document.createElement('a');
+      card.href = `bukhari-chp1.html#hadith${hadith.id}`;
+      card.className = 'ayah-card bookmark-card';
+      card.setAttribute('data-hadith', hadith.id);
+      card.innerHTML = `
+        <div class="card-type-indicator"></div>
+        <div class="ayah-card-content">
+          <div class="ayah-header">
+            <span class="surah-name">Hadith ${hadith.id}</span>
+            <span class="revelation-badge">Sahih al-Bukhari</span>
+          </div>
+          <div class="ayah-text-container">
+            <div class="ayah-number">${hadith.id}</div>
+            <div class="ayah-text">
+              ${hadith.arabic.substring(0, 100)}...
+            </div>
+          </div>
+          <div class="ayah-details">
+            <span class="verse-info">Hadith ${hadith.id}</span>
+            <span class="surah-meaning">${hadith.en.substring(0, 50)}...</span>
+          </div>
+          <div class="ayah-card-actions">
+            <button class="view-btn" onclick="event.preventDefault(); event.stopPropagation(); window.open('bukhari-chp1.html#hadith${hadith.id}', '_blank');">View</button>
+            <button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeBookmarkedHadith(${hadith.id})">Remove</button>
+          </div>
+        </div>
       `;
-    };
+      return card;
+    }
 
-    // ---------- UTILITIES ----------
-    window.toggleTheme = function() { 
-      document.body.classList.toggle('dark-mode'); 
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light');
-      document.getElementById('theme-icon').src = document.body.classList.contains('dark-mode') ? "sun.png" : "moon.png";
-    };
-    window.toggleMenu = function() { document.querySelector('.nav-links').classList.toggle('active'); };
-    window.scrollToTop = function() { window.scrollTo({top:0,behavior:'smooth'}); };
-    window.onscroll = function() { 
-      const btn = document.getElementById('scrollToTop'); 
-      window.scrollY>300 ? btn.classList.add('show') : btn.classList.remove('show'); 
-    };
-    window.onload = function() {
-      if (localStorage.getItem('theme')==='dark') document.body.classList.add('dark-mode');
-      document.getElementById('theme-icon').src = document.body.classList.contains('dark-mode') ? "sun.png" : "moon.png";
-      renderAllChapters();
+    function removeFavoritedHadith(hadithId) {
+      let favoritedHadiths = JSON.parse(localStorage.getItem('favoritedHadiths') || '[]');
+      const index = favoritedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        favoritedHadiths.splice(index, 1);
+        localStorage.setItem('favoritedHadiths', JSON.stringify(favoritedHadiths));
+        showMy();
+      }
+    }
+
+    function removeBookmarkedHadith(hadithId) {
+      let bookmarkedHadiths = JSON.parse(localStorage.getItem('bookmarkedHadiths') || '[]');
+      const index = bookmarkedHadiths.indexOf(hadithId);
+      if (index > -1) {
+        bookmarkedHadiths.splice(index, 1);
+        localStorage.setItem('bookmarkedHadiths', JSON.stringify(bookmarkedHadiths));
+        showMy();
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+      populateBookmarkedSection();
+      showAll(); // Initialize with All Hadiths active
     };
   </script>
 </body>
