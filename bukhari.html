@@ -2598,7 +2598,7 @@
           const hadith = chapterHadiths.find(h => h.id === id);
           if (hadith) {
             html += `<div class="ayah-card" onclick="openHadithModal(chapters.find(c=>c.id===${hadith.chp}), ${hadith.id});">
-              <span class="hadith-number">Hadith ${hadith.id}</span>
+              <span class="hadith-number">${hadith.book} | Hadith ${hadith.id} | Book ${hadith.chp_title}</span>
               <div class="hadith-text">${hadith.arabic.substring(0,80)}…</div>
               <button onclick="event.stopPropagation(); ${type === 'favourited' ? 'toggleFavoriteHadith' : 'toggleBookmarkHadith'}(${hadith.chp},${hadith.id},event); showMy();">Remove</button>
             </div>`;
