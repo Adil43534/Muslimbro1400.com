@@ -16,7 +16,7 @@
       font-display: swap;
     }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
+    * { box-sizing: border-box;}
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -71,29 +71,34 @@
     .dark-mode .nav-links a:hover {
       color: #0c8;
     }
-    
+
     .theme-toggle {
       cursor: pointer;
       margin-left: 1rem;
-      background: transparent;
+      background-color: transparent;
       border: none;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
     }
+
     .theme-toggle img {
       width: 24px;
       height: 24px;
       transition: transform 0.3s ease;
     }
-    .theme-toggle img.rotate { transform: rotate(180deg); }
+
     .menu-toggle {
       display: none;
       cursor: pointer;
-      background: transparent;
+      background-color: transparent;
       border: none;
       padding: 0.4rem 0.6rem;
     }
-    .menu-toggle img { width: 24px; height: 24px; }
+
+    .menu-toggle img {
+      width: 24px;
+      height: 24px;
+    }
     
     .banner {
       width: 100%;
@@ -810,10 +815,6 @@
 
     /* Mobile Styles (max-width: 600px) */
     @media (max-width: 600px) {
-      .main-title {
-        font-size: 1.5rem;
-      }
-
       .navbar h1 {
         font-size: 1.25rem;
       }
@@ -842,10 +843,6 @@
         margin: 0.5rem 0;
       }
 
-      .theme-toggle {
-        margin: 0;
-      }
-
       .menu-toggle {
         display: block;
       }
@@ -860,9 +857,9 @@
       .container {
         padding: 1rem 0.5rem;
       }
-      h1 {
+      /* h1 {
         font-size: 1.5rem;
-      }
+      } */
       h1 .arabic {
         font-size: 1.2rem;
       }
@@ -1014,9 +1011,6 @@
 
     /* Small Mobile Styles (max-width: 480px) */
     @media (max-width: 480px) {
-      .navbar h1 {
-        font-size: 1rem;
-      }
       .menu-toggle img {
         width: 20px;
         height: 20px;
