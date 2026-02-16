@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <style>
-/* ---------- COMPLETE STYLESHEET (merged + enhanced) ---------- */
+/* ---------- COMPLETE STYLESHEET (merged + enhanced + global scroll bars) ---------- */
     @font-face {
       font-family: 'Jameel Noori Nastaleeq';
       src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
@@ -27,6 +27,95 @@
     body.dark-mode {
       background-color: #1a1a1a;
       color: #e0e0e0;
+    }
+
+    /* ---------- GLOBAL SCROLL BAR STYLING (THEME MATCHING) ---------- */
+
+    /* WebKit Browsers (Chrome, Safari, Edge, Opera) */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 10px;
+      border: 2px solid #f1f1f1;
+      transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: #f1f1f1;
+    }
+
+    /* Dark mode scroll bars */
+    .dark-mode ::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode ::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode ::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    .dark-mode ::-webkit-scrollbar-corner {
+      background: #2c2c2c;
+    }
+
+    /* Firefox scroll bar styling */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode * {
+      scrollbar-color: #0c8 #2c2c2c;
+    }
+
+    /* Body scroll bar (for the main page) */
+    body::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    body::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 12px;
+      border: 3px solid #f1f1f1;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode body::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode body::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 3px solid #2c2c2c;
+    }
+
+    .dark-mode body::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
     }
 
     /* ---------- NAVBAR ---------- */
@@ -145,6 +234,50 @@
       max-height: 70vh;
       overflow-y: auto;
       scroll-behavior: smooth;
+    }
+
+    /* Cards vertical grid scroll bar */
+    .cards-vertical-grid::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 8px;
+      border: 2px solid #f1f1f1;
+    }
+
+    .cards-vertical-grid::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode .cards-vertical-grid::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    /* Firefox for cards vertical grid */
+    .cards-vertical-grid {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode .cards-vertical-grid {
+      scrollbar-color: #0c8 #2c2c2c;
     }
 
     /* Responsive breakpoints for card grid */
@@ -341,10 +474,79 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
+
+    /* Horizontal cards scroll bar */
+    .horizontal-cards::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 8px;
+      border: 2px solid #f1f1f1;
+    }
+
+    .horizontal-cards::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    /* Firefox for horizontal cards */
+    .horizontal-cards {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode .horizontal-cards {
+      scrollbar-color: #0c8 #2c2c2c;
+    }
+
     .horizontal-cards .card {
       flex: 0 0 auto;
       width: clamp(120px, 30vw, 180px);
       aspect-ratio: 2/3;
+    }
+
+    /* Horizontal Cards Hover Animation */
+    .horizontal-cards .card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .horizontal-cards .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      border-color: rgba(0, 123, 94, 0.3);
+    }
+    .horizontal-cards .card img {
+      transition: transform 0.4s;
+    }
+    .horizontal-cards .card:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.6);
+    }
+    .horizontal-cards .card .overlay {
+      transition: all 0.3s;
+    }
+    .horizontal-cards .card:hover .overlay {
+      background: linear-gradient(to top, rgba(0, 123, 94, 0.98), rgba(0, 123, 94, 0.8), transparent);
+      height: 60%;
     }
 
     /* ---------- AYAH CARD (for My Hadiths) - UNCHANGED ---------- */
@@ -359,6 +561,17 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.3);
       border: 1px solid #0c8;
     }
+
+    /* Ayah Card Hover Animation (My Hadiths) */
+    .ayah-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ayah-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      border-color: rgba(0, 200, 136, 0.5);
+    }
+
     .ayah-card .hadith-number {
       background: #0c8;
       display: inline-block;
@@ -416,6 +629,51 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       animation: slideUp 0.3s;
     }
+
+    /* Modal content scroll bar */
+    .modal-content::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 10px;
+      border: 2px solid #f1f1f1;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode .modal-content::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode .modal-content::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode .modal-content::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    /* Firefox for modal content */
+    .modal-content {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode .modal-content {
+      scrollbar-color: #0c8 #2c2c2c;
+    }
+
     @keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
     .dark-mode .modal-content { background: #1f2a2a; color: #eee; }
 
@@ -472,7 +730,7 @@
       direction: rtl;
       text-align: justify;
       line-height: 1.9;
-      margin: 1rem 0 1.5rem;
+      margin: 2rem 0 1.5rem;
       /* color: #1a2c2c; */
     }
     .dark-mode .carousel-hadith .arabic { color: #f0f0f0; }
@@ -667,6 +925,51 @@
       background-position: right 0.8rem center;
       cursor: pointer;
     }
+
+    /* Select dropdown scroll bar */
+    select::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    select::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    select::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 8px;
+      border: 2px solid #f1f1f1;
+    }
+
+    select::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode select::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode select::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode select::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    /* Firefox for selects */
+    select {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode select {
+      scrollbar-color: #0c8 #2c2c2c;
+    }
+
     .dark-mode .carousel-lang-select select {
       background-color: #1f2a2a;
       border-color: #0c8;
@@ -792,6 +1095,50 @@
     #scrollToTop:hover { background: #005f4a; transform: scale(1.1); }
     .dark-mode #scrollToTop { background: #0c8; }
 
+    /* Textarea scroll bars (if any) */
+    textarea::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    textarea::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    textarea::-webkit-scrollbar-thumb {
+      background: #007b5e;
+      border-radius: 8px;
+      border: 2px solid #f1f1f1;
+    }
+
+    textarea::-webkit-scrollbar-thumb:hover {
+      background: #005f4a;
+    }
+
+    .dark-mode textarea::-webkit-scrollbar-track {
+      background: #2c2c2c;
+    }
+
+    .dark-mode textarea::-webkit-scrollbar-thumb {
+      background: #0c8;
+      border: 2px solid #2c2c2c;
+    }
+
+    .dark-mode textarea::-webkit-scrollbar-thumb:hover {
+      background: #0a6;
+    }
+
+    /* Firefox for textareas */
+    textarea {
+      scrollbar-width: thin;
+      scrollbar-color: #007b5e #f1f1f1;
+    }
+
+    .dark-mode textarea {
+      scrollbar-color: #0c8 #2c2c2c;
+    }
+
     /* ============================================
        RESPONSIVE STYLES FOR ALL SCREENS
        ============================================ */
@@ -855,12 +1202,24 @@
         display: block;
       }
     }
-    .carousel-hadith .arabic{
-      margin: 2rem 0 1.5rem;
-    }
 
     /* Tablet Styles (max-width: 768px) */
     @media (max-width: 768px) {
+      /* Responsive adjustments for scroll bars */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      
+      body::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      
+      body::-webkit-scrollbar-thumb {
+        border-width: 2px;
+      }
+
       .container {
         padding: 1rem 0.5rem;
       }
@@ -1018,6 +1377,17 @@
 
     /* Small Mobile Styles (max-width: 480px) */
     @media (max-width: 480px) {
+      /* Responsive adjustments for scroll bars */
+      ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      
+      body::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
       .menu-toggle img {
         width: 20px;
         height: 20px;
@@ -1075,40 +1445,6 @@
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
       }
-    }
-
-/* Horizontal Cards Hover Animation */
-    .horizontal-cards .card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .horizontal-cards .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
-      border-color: rgba(0, 123, 94, 0.3);
-    }
-    .horizontal-cards .card img {
-      transition: transform 0.4s;
-    }
-    .horizontal-cards .card:hover img {
-      transform: scale(1.08);
-      filter: brightness(0.6);
-    }
-    .horizontal-cards .card .overlay {
-      transition: all 0.3s;
-    }
-    .horizontal-cards .card:hover .overlay {
-      background: linear-gradient(to top, rgba(0, 123, 94, 0.98), rgba(0, 123, 94, 0.8), transparent);
-      height: 60%;
-    }
-
-    /* Ayah Card Hover Animation (My Hadiths) */
-    .ayah-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .ayah-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
-      border-color: rgba(0, 200, 136, 0.5);
     }
 
     /* Footer Styles */
