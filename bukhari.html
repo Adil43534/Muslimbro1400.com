@@ -126,9 +126,10 @@
     }
     
     .description { 
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       text-align: center; 
       margin-bottom: 2rem; 
-      color: #666; 
+      color: #ffffff; 
       max-width:800px; 
       margin-left:auto; 
       margin-right:auto; 
@@ -451,18 +452,20 @@
     .dark-mode .carousel-hadith { background: #2a3636; border-color: #3a4a4a; }
     .carousel-hadith .hadith-number {
       position: absolute;
-      top: 1.2rem; right: 1.5rem;
+      top: 1.2rem; 
+      right: 1rem;
+      left: 1rem;
       background: rgba(0,123,94,0.15);
       color: #007b5e;
       padding: 0.4rem 1.2rem;
-      border-radius: 40px;
+      border-radius: 10px;
       font-weight: 700;
     }
 
     .arabic {
       font-family: 'Noto Naskh Arabic', serif;
     }
-    .dark-mode .carousel-hadith .hadith-number { background: #0c82; color: #8ff; }
+    .dark-mode .carousel-hadith .hadith-number { background: #0c82; color: #0c8; }
     .carousel-hadith .arabic {
       font-family: 'Noto Naskh Arabic', serif;
       font-size: 1.5rem;
@@ -470,7 +473,7 @@
       text-align: justify;
       line-height: 1.9;
       margin: 1rem 0 1.5rem;
-      color: #1a2c2c;
+      /* color: #1a2c2c; */
     }
     .dark-mode .carousel-hadith .arabic { color: #f0f0f0; }
     .carousel-hadith .translation {
@@ -535,7 +538,7 @@
       fill: none;
       transition: 0.2s;
     }
-    .dark-mode .action-button svg { stroke: #8ff; }
+    .dark-mode .action-button svg { stroke: #0c8; }
     .action-button.favorited svg { fill: #007b5e; stroke: #007b5e; }
     .dark-mode .action-button.favorited svg { fill: #0c8; stroke: #0c8; }
     .action-button.bookmarked svg { fill: #007b5e; stroke: #007b5e; }
@@ -693,6 +696,11 @@
       cursor: pointer;
     }
 
+    .dark-mode .go-to-hadith input{
+      background: #1f2a2a;
+      color: white;
+    }
+
     /* ---------- SHARE MODAL (exact style from request) ---------- */
     #share-modal.modal {
       display: none;
@@ -847,6 +855,9 @@
         display: block;
       }
     }
+    .carousel-hadith .arabic{
+      margin: 2rem 0 1.5rem;
+    }
 
     /* Tablet Styles (max-width: 768px) */
     @media (max-width: 768px) {
@@ -896,7 +907,7 @@
       .carousel-hadith .arabic {
         font-size: 1.1rem;
         line-height: 1.7;
-        margin: 0.8rem 0 1rem;
+        margin: 2rem 0 1rem;
       }
       .carousel-hadith .translation {
         font-size: 0.95rem;
@@ -1038,8 +1049,10 @@
         padding: 1.2rem 0.8rem;
         padding-top: 2rem;
       }
+
       .carousel-hadith .arabic {
         font-size: 1rem;
+        margin: 3rem 0 1.5rem;
       }
       .carousel-hadith .translation {
         font-size: 0.9rem;
@@ -2398,7 +2411,7 @@
       
       carouselDiv.innerHTML = `
         <div class="carousel-hadith">
-          <span class="hadith-number">Hadith ${hadith.id}</span>
+          <span class="hadith-number">Hadith ${hadith.id} | Chapter: ${hadith.chp_title}</span>
           <div class="arabic">${hadith.arabic}</div>
           <div class="translation ${lang==='ur'?'ur':''}">${hadith[lang]}</div>
           <div class="hadith-meta">Sahih al-Bukhari • Book ${hadith.book} • Vol ${hadith.volume}</div>
