@@ -176,6 +176,10 @@
       transition: transform 0.3s ease;
     }
 
+    .theme-toggle img.rotate {
+      transform: rotate(180deg);
+    }
+
     .menu-toggle {
       display: none;
       cursor: pointer;
@@ -465,64 +469,73 @@
     }
     .quick-actions button:hover { background: #fff; transform: scale(1.05); }
 
-    /* Horizontal scrolling cards */
+    /* Horizontal scrolling cards container */
+    .horizontal-cards-container {
+      width: 100%;
+      overflow-x: auto;
+      padding: 1rem 0;
+      margin-bottom: 1.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Horizontal scrolling cards - fluid and responsive */
     .horizontal-cards {
       display: flex;
-      overflow-x: auto;
-      gap: clamp(0.6rem, 2vw, 1rem);
-      padding-bottom: 1rem;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      gap: clamp(0.8rem, 2vw, 1.2rem);
+      padding: 0.5rem 0.2rem;
+      width: max-content;
+      min-width: 100%;
+    }
+    
+    /* Fluid cards inside horizontal scrolling containers */
+    .horizontal-cards .card {
+      flex: 0 0 clamp(140px, 25vw, 200px);
+      width: clamp(140px, 25vw, 200px);
+      aspect-ratio: 2/3;
     }
 
     /* Horizontal cards scroll bar */
-    .horizontal-cards::-webkit-scrollbar {
+    .horizontal-cards-container::-webkit-scrollbar {
       height: 8px;
       width: 8px;
     }
 
-    .horizontal-cards::-webkit-scrollbar-track {
+    .horizontal-cards-container::-webkit-scrollbar-track {
       background: #f1f1f1;
       border-radius: 8px;
     }
 
-    .horizontal-cards::-webkit-scrollbar-thumb {
+    .horizontal-cards-container::-webkit-scrollbar-thumb {
       background: #007b5e;
       border-radius: 8px;
       border: 2px solid #f1f1f1;
     }
 
-    .horizontal-cards::-webkit-scrollbar-thumb:hover {
+    .horizontal-cards-container::-webkit-scrollbar-thumb:hover {
       background: #005f4a;
     }
 
-    .dark-mode .horizontal-cards::-webkit-scrollbar-track {
+    .dark-mode .horizontal-cards-container::-webkit-scrollbar-track {
       background: #2c2c2c;
     }
 
-    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb {
+    .dark-mode .horizontal-cards-container::-webkit-scrollbar-thumb {
       background: #0c8;
       border: 2px solid #2c2c2c;
     }
 
-    .dark-mode .horizontal-cards::-webkit-scrollbar-thumb:hover {
+    .dark-mode .horizontal-cards-container::-webkit-scrollbar-thumb:hover {
       background: #0a6;
     }
 
     /* Firefox for horizontal cards */
-    .horizontal-cards {
+    .horizontal-cards-container {
       scrollbar-width: thin;
       scrollbar-color: #007b5e #f1f1f1;
     }
 
-    .dark-mode .horizontal-cards {
+    .dark-mode .horizontal-cards-container {
       scrollbar-color: #0c8 #2c2c2c;
-    }
-
-    .horizontal-cards .card {
-      flex: 0 0 auto;
-      width: clamp(120px, 30vw, 180px);
-      aspect-ratio: 2/3;
     }
 
     /* Horizontal Cards Hover Animation */
@@ -547,6 +560,18 @@
     .horizontal-cards .card:hover .overlay {
       background: linear-gradient(to top, rgba(0, 123, 94, 0.98), rgba(0, 123, 94, 0.8), transparent);
       height: 60%;
+    }
+
+    /* Section titles for My Hadiths tab */
+    .my-hadiths-section-title {
+      margin: 2rem 0 0.5rem;
+      text-align: center;
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      color: #007b5e;
+    }
+    
+    .dark-mode .my-hadiths-section-title {
+      color: #0c8;
     }
 
     /* ---------- AYAH CARD (for My Hadiths) - UNCHANGED ---------- */
@@ -1166,6 +1191,12 @@
         width: 48px;
         height: 48px;
       }
+      
+      /* Responsive horizontal cards */
+      .horizontal-cards .card {
+        flex: 0 0 clamp(130px, 22vw, 180px);
+        width: clamp(130px, 22vw, 180px);
+      }
     }
 
     /* Mobile Styles (max-width: 600px) */
@@ -1198,6 +1229,10 @@
         margin: 0.5rem 0;
       }
 
+      .theme-toggle {
+        margin: 0;
+      }
+
       .menu-toggle {
         display: block;
       }
@@ -1223,9 +1258,6 @@
       .container {
         padding: 1rem 0.5rem;
       }
-      /* h1 {
-        font-size: 1.5rem;
-      } */
       h1 .arabic {
         font-size: 1.2rem;
       }
@@ -1373,6 +1405,12 @@
         padding: 0.3rem 0.8rem;
         font-size: 0.75rem;
       }
+      
+      /* Responsive horizontal cards */
+      .horizontal-cards .card {
+        flex: 0 0 clamp(120px, 28vw, 160px);
+        width: clamp(120px, 28vw, 160px);
+      }
     }
 
     /* Small Mobile Styles (max-width: 480px) */
@@ -1444,6 +1482,12 @@
       .nav-buttons button {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
+      }
+      
+      /* Responsive horizontal cards */
+      .horizontal-cards .card {
+        flex: 0 0 clamp(110px, 32vw, 140px);
+        width: clamp(110px, 32vw, 140px);
       }
     }
 
@@ -2619,7 +2663,7 @@ function renderAllChapters() {
     const isFav = favoritedChapters.includes(ch.id);
     const isBkm = bookmarkedChapters.includes(ch.id);
     card.innerHTML = `
-      <img src="pic1.jpeg" alt="${ch.title}">
+      <img src="bukhari images/book${ch.id}.jpg" alt="${ch.title}" onerror="this.src='pic1.jpg'">
       <div class="icons">
         <span class="favorite-icon" onclick="event.stopPropagation(); toggleFavoriteChapter(${ch.id});">${favSvg(isFav)}</span>
         <span class="bookmark-icon" onclick="event.stopPropagation(); toggleBookmarkChapter(${ch.id});">${bkmSvg(isBkm)}</span>
@@ -2951,7 +2995,7 @@ window.shareHadith = async function() {
   }, 2000);
 };
 
-// ---------- MY HADITHS TAB (Now properly implemented) ----------
+// ---------- MY HADITHS TAB (Now with fluid responsive chapter cards) ----------
 window.showAll = function() {
   document.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('active'));
   document.querySelector('button[onclick="showAll()"]').classList.add('active');
@@ -2963,45 +3007,54 @@ window.showMy = function() {
   document.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('active'));
   document.querySelector('button[onclick="showMy()"]').classList.add('active');
   
-  // Show my hadiths content
+  // Hide the main grid
   grid.style.display = 'block';
-  grid.innerHTML = `
-    <h2 style="margin:2rem 0 0.5rem; text-align:center;">Favourited Chapters</h2>
-    <div class="horizontal-cards" style="min-height:150px;" id="favourited-chapters-container">Loading...</div>
-    
-    <h2 style="margin:2rem 0 0.5rem; text-align:center;">Bookmarked Chapters</h2>
-    <div class="horizontal-cards" id="bookmarked-chapters-container">Loading...</div>
-    
-    <h2 style="margin:2rem 0 0.5rem; text-align:center;">Favourited Hadiths</h2>
-    <div class="horizontal-cards" id="favourited-hadiths-container">Loading...</div>
-    
-    <h2 style="margin:2rem 0 0.5rem; text-align:center;">Bookmarked Hadiths</h2>
-    <div class="horizontal-cards" id="bookmarked-hadiths-container">Loading...</div>
-  `;
   
-  // Load favourited chapters
-  loadSavedChapters('favourited', favoritedChapters, 'favourited-chapters-container');
+  // Create fluid horizontal scrolling sections for saved items
+  let html = '';
   
-  // Load bookmarked chapters
-  loadSavedChapters('bookmarked', bookmarkedChapters, 'bookmarked-chapters-container');
+  // Favourited Chapters Section
+  html += `<h2 class="my-hadiths-section-title">Favourited Chapters</h2>`;
+  html += `<div class="horizontal-cards-container" id="favourited-chapters-container"><div class="horizontal-cards">Loading...</div></div>`;
+  
+  // Bookmarked Chapters Section
+  html += `<h2 class="my-hadiths-section-title">Bookmarked Chapters</h2>`;
+  html += `<div class="horizontal-cards-container" id="bookmarked-chapters-container"><div class="horizontal-cards">Loading...</div></div>`;
+  
+  // Favourited Hadiths Section
+  html += `<h2 class="my-hadiths-section-title">Favourited Hadiths</h2>`;
+  html += `<div class="horizontal-cards-container" id="favourited-hadiths-container"><div class="horizontal-cards">Loading...</div></div>`;
+  
+  // Bookmarked Hadiths Section
+  html += `<h2 class="my-hadiths-section-title">Bookmarked Hadiths</h2>`;
+  html += `<div class="horizontal-cards-container" id="bookmarked-hadiths-container"><div class="horizontal-cards">Loading...</div></div>`;
+  
+  grid.innerHTML = html;
+  
+  // Load favourited chapters with fluid cards
+  loadSavedChaptersFluid('favourited', favoritedChapters, 'favourited-chapters-container');
+  
+  // Load bookmarked chapters with fluid cards
+  loadSavedChaptersFluid('bookmarked', bookmarkedChapters, 'bookmarked-chapters-container');
   
   // Load favourited hadiths asynchronously
-  loadSavedHadiths('favourited', favoritedHadiths, 'favourited-hadiths-container');
+  loadSavedHadithsFluid('favourited', favoritedHadiths, 'favourited-hadiths-container');
   
   // Load bookmarked hadiths asynchronously
-  loadSavedHadiths('bookmarked', bookmarkedHadiths, 'bookmarked-hadiths-container');
+  loadSavedHadithsFluid('bookmarked', bookmarkedHadiths, 'bookmarked-hadiths-container');
 };
 
-// Helper function to load saved chapters
-function loadSavedChapters(type, savedList, containerId) {
+// Helper function to load saved chapters with fluid responsive cards
+function loadSavedChaptersFluid(type, savedList, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   
-  // Clear container first
-  container.innerHTML = '';
+  // Get the horizontal-cards div inside
+  const cardsContainer = container.querySelector('.horizontal-cards');
+  if (!cardsContainer) return;
   
   if (!savedList.length) {
-    container.innerHTML = '<p style="padding:1rem;">No ' + type + ' chapters</p>';
+    cardsContainer.innerHTML = '<p style="padding:1rem;">No ' + type + ' chapters</p>';
     return;
   }
   
@@ -3011,37 +3064,38 @@ function loadSavedChapters(type, savedList, containerId) {
     if (ch) {
       const isFav = favoritedChapters.includes(ch.id);
       const isBkm = bookmarkedChapters.includes(ch.id);
-      html += `<div class="card" style="width:200px;" onclick="openHadithModal(chapters.find(c=>c.id===${ch.id}), ${ch.id})">
-        <img src="pic1.jpeg" alt="${ch.title}">
+      html += `<div class="card" onclick="openHadithModal(chapters.find(c=>c.id===${ch.id}), ${ch.id})">
+        <img src="bukhari images/book${ch.id}.jpg" alt="${ch.title}" onerror="this.src='pic1.jpg'">
         <div class="icons">
           <span class="favorite-icon" onclick="event.stopPropagation(); toggleFavoriteChapter(${ch.id}); showMy();">${favSvg(type === 'favourited' ? true : isFav)}</span>
           <span class="bookmark-icon" onclick="event.stopPropagation(); toggleBookmarkChapter(${ch.id}); showMy();">${bkmSvg(type === 'bookmarked' ? true : isBkm)}</span>
         </div>
         <div class="overlay">
-          <span>Book ${ch.id}: ${ch.title}</span>
+          <span class="surah-number">Book ${ch.id}: ${ch.title}</span>
         </div>
       </div>`;
     }
   });
   
-  container.innerHTML = html || '<p style="padding:1rem;">No ' + type + ' chapters</p>';
+  cardsContainer.innerHTML = html || '<p style="padding:1rem;">No ' + type + ' chapters</p>';
 }
 
-// Helper function to load saved hadiths from various chapters
-async function loadSavedHadiths(type, savedList, containerId) {
+// Helper function to load saved hadiths with fluid responsive ayah cards
+async function loadSavedHadithsFluid(type, savedList, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   
-  // Clear container first
-  container.innerHTML = '';
+  // Get the horizontal-cards div inside
+  const cardsContainer = container.querySelector('.horizontal-cards');
+  if (!cardsContainer) return;
   
   if (!savedList.length) {
-    container.innerHTML = '<p style="padding:1rem;">No ' + type + ' hadiths</p>';
+    cardsContainer.innerHTML = '<p style="padding:1rem;">No ' + type + ' hadiths</p>';
     return;
   }
   
   // Show loading state
-  container.innerHTML = '<div class="loading-spinner" style="padding:1rem;">Loading...</div>';
+  cardsContainer.innerHTML = '<div class="loading-spinner" style="padding:1rem;">Loading...</div>';
   
   let html = '';
   const chaptersToLoad = {};
@@ -3076,7 +3130,7 @@ async function loadSavedHadiths(type, savedList, containerId) {
     });
   }
   
-  container.innerHTML = html || '<p style="padding:1rem;">No ' + type + ' hadiths found</p>';
+  cardsContainer.innerHTML = html || '<p style="padding:1rem;">No ' + type + ' hadiths found</p>';
 }
 
 // ---------- UTILITIES ----------
@@ -3145,20 +3199,6 @@ style.textContent = `
   
   .error-placeholder {
     display: none;
-  }
-  
-  .horizontal-cards {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 1rem 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .horizontal-cards .card {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
   }
 `;
 document.head.appendChild(style);
