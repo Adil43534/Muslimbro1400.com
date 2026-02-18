@@ -6,885 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="surah-style.css" />
 
-  <style>
-    /* Jameel Noori Nastaleeq Custom Font Face */
-    @font-face {
-      font-family: 'Jameel Noori Nastaleeq';
-      src: url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff2') format('woff2'),
-           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.woff') format('woff'),
-           url('https://db.onlinewebfonts.com/t/173976378411b22976d3381e494d4ef7.ttf') format('truetype');
-      font-display: swap;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-    body.dark-mode {
-      background-color: #1a1a1a;
-      color: #e0e0e0;
-    }
-
-    #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 4px;
-      background-color: #007b5e;
-      z-index: 1001;
-      transition: width 0.25s ease;
-    }
-
-    .dark-mode #progress-bar {
-      background-color: #0c8;
-    }
-
-    .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #f0f0f0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: background-color 0.5s ease;
-    }
-
-    .dark-mode .navbar { background-color: #2c2c2c; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-links a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .dark-mode .nav-links a { color: #e0e0e0; }
-
-    .nav-links a:hover {
-      color: #007b5e;
-    }
-
-    .theme-toggle {
-      cursor: pointer;
-      margin-left: 1rem;
-      background-color: transparent;
-      border: none;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .theme-toggle img {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.3s ease;
-    }
-
-    .theme-toggle img.rotate {
-      transform: rotate(180deg);
-    }
-
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      padding: 0.4rem 0.6rem;
-    }
-
-    .menu-toggle img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .container {
-      padding: 2rem 1rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .surah-info {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .surah-info h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      font-family: 'Amiri', serif;
-    }
-
-    .meaning {
-      font-style: italic;
-      color: #666;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-    .dark-mode .meaning { color: #bbb; }
-
-    .meta {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #888;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-    .dark-mode .meta { color: #aaa; }
-
-    .bismillah {
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
-      color: #007b5e;
-      font-weight: bold;
-      font-family: 'Amiri', serif;
-    }
-
-    .dark-mode .bismillah { color: #0c8; }
-
-    .ayah {
-      background-color: #fff;
-      padding: 3rem 3rem 3rem 3rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid #007b5e;
-      border-radius: 6px;
-      position: relative;
-    }
-
-    .dark-mode .ayah {
-      background-color: #2c2c2c;
-      border-left-color: #0c8;
-    }
-
-    .ayah-number {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      font-size: 0.9rem;
-      color: #007b5e;
-      text-align: left;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .ayah-number { color: #0c8; }
-
-    .arabic {
-      font-size: 1.8rem;
-      text-align: right;
-      direction: rtl;
-      font-family: 'Amiri', serif;
-    }
-
-    .translation {
-      margin-top: 0.5rem;
-      color: #666;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      font-size: 1.2rem
-    }
-
-    /* Updated Urdu Translation Class */
-    .translation.ur {
-      text-align: right;
-      direction: rtl;
-      /* Prioritizing Jameel Noori */
-      font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
-      font-size: 1.5rem;
-      line-height: 2.2; /* Increased line-height for Nastaliq script */
-      margin-top: 10px;
-      color: #444;
-    }
-
-    .dark-mode .translation { color: #ccc; }
-
-    .transliteration {
-      margin-top: 0.5rem;
-      color: #666;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      font-style: italic;
-    }
-
-    .dark-mode .transliteration { color: #ccc; }
-
-    .verse-icon {
-      display: inline-block;
-      font-size: 1.2rem;
-      margin-left: 0.5rem;
-      vertical-align: middle;
-      color: #007b5e;
-      font-family: 'Amiri', serif;
-    }
-
-    .dark-mode .verse-icon {
-      color: #0c8;
-    }
-
-    .favorite-btn, .bookmark-btn, .share-icon {
-      position: absolute;
-      right: 1rem;
-      width: 24px;
-      height: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .favorite-btn:hover, .bookmark-btn:hover, .share-icon:hover {
-      opacity: 1;
-    }
-
-    .share-icon {
-      top: 1rem;
-    }
-
-    .favorite-btn {
-      top: 3rem;
-    }
-
-    .bookmark-btn {
-      top: 5rem;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-
-    .navigation a {
-      color: #007b5e;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .navigation a { color: #0c8; }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      gap: 1rem;
-    }
-
-    .tab-button {
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #ddd;
-      cursor: pointer;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .tab-button.active {
-      background-color: #007b5e;
-      color: white;
-    }
-
-    .dark-mode .tab-button {
-      background-color: #444;
-      color: #eee;
-    }
-
-    .dark-mode .tab-button.active {
-      background-color: #0c8;
-    }
-
-    .transliteration-toggle {
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #ddd;
-      cursor: pointer;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      margin-top: 1rem;
-    }
-
-    .transliteration-toggle.active {
-      background-color: #007b5e;
-      color: white;
-    }
-
-    .dark-mode .transliteration-toggle {
-      background-color: #444;
-      color: #eee;
-    }
-
-    .dark-mode .transliteration-toggle.active {
-      background-color: #0c8;
-    }
-
-    .translation-toggle {
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #ddd;
-      cursor: pointer;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      margin-top: 1rem;
-    }
-
-    .translation-toggle.active {
-      background-color: #007b5e;
-      color: white;
-    }
-
-    .dark-mode .translation-toggle {
-      background-color: #444;
-      color: #eee;
-    }
-
-    .dark-mode .translation-toggle.active {
-      background-color: #0c8;
-    }
-
-    .lang-select, .audio-select {
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    .lang-select label, .audio-select label {
-      margin-right: 0.5rem;
-      font-weight: 600;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .dark-mode .lang-select label, .dark-mode .audio-select label {
-      color: #e0e0e0;
-    }
-
-    .lang-select select, .audio-select select {
-      padding: 0.6rem 2rem 0.6rem 1rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #fff;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 18px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-
-    .audio-select button {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #007b5e;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-      margin-left: 0.5rem;
-    }
-
-    .audio-select button:hover {
-      background-color: #005f4a;
-      border-color: #005f4a;
-      transform: scale(1.02);
-    }
-
-    .dark-mode .audio-select button {
-      background-color: #0c8;
-      border-color: #0c8;
-    }
-
-    .dark-mode .audio-select button:hover {
-      background-color: #0a6;
-      border-color: #0a6;
-    }
-
-    .dark-mode .lang-select select, .dark-mode .audio-select select {
-      background-color: #2c2c2c;
-      border-color: #0c8;
-      color: #e0e0e0;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
-    }
-
-    .lang-select select:hover, .audio-select select:hover {
-      border-color: #005f4a;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transform: scale(1.02);
-    }
-
-    .dark-mode .lang-select select:hover, .dark-mode .audio-select select:hover {
-      border-color: #0a6;
-    }
-
-    .lang-select select:focus, .audio-select select:focus {
-      outline: none;
-      border-color: #005f4a;
-      box-shadow: 0 0 8px rgba(0,123,94,0.3);
-    }
-
-    .dark-mode .lang-select select:focus, .dark-mode .audio-select select:focus {
-      border-color: #0a6;
-      box-shadow: 0 0 8px rgba(0,204,136,0.3);
-    }
-
-    .hidden { display: none; }
-
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      max-width: 600px;
-      width: 90%;
-      position: relative;
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .dark-mode .modal-content {
-      background-color: #2c2c2c;
-      color: #e0e0e0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    }
-
-    .modal-content iframe {
-      border-radius: 8px;
-      border: none;
-      width: 100%;
-      height: 60px;
-    }
-
-    .modal-content button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .modal-content button:hover {
-      background-color: #005f4a;
-    }
-
-    .dark-mode .modal-content button {
-      background-color: #0c8;
-    }
-
-    .dark-mode .modal-content button:hover {
-      background-color: #0a6;
-    }
-
-        .go-to-verse {
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    .go-to-verse label {
-      margin-right: 0.5rem;
-      font-weight: 600;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .dark-mode .go-to-verse label {
-      color: #e0e0e0;
-    }
-
-    .go-to-verse input {
-      padding: 0.6rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      width: 80px;
-      text-align: center;
-    }
-
-    .dark-mode .go-to-verse input {
-      background-color: #2c2c2c;
-      border-color: #0c8;
-      color: #e0e0e0;
-    }
-
-    .go-to-verse input:hover {
-      border-color: #005f4a;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transform: scale(1.02);
-    }
-
-    .dark-mode .go-to-verse input:hover {
-      border-color: #0a6;
-    }
-
-    .go-to-verse input:focus {
-      outline: none;
-      border-color: #005f4a;
-      box-shadow: 0 0 8px rgba(0,123,94,0.3);
-    }
-
-    .dark-mode .go-to-verse input:focus {
-      border-color: #0a6;
-      box-shadow: 0 0 8px rgba(0,204,136,0.3);
-    }
-
-    .go-to-verse button {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #007b5e;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-      margin-left: 0.5rem;
-    }
-
-    .go-to-verse button:hover {
-      background-color: #005f4a;
-      border-color: #005f4a;
-      transform: scale(1.02);
-    }
-
-    .dark-mode .go-to-verse button {
-      background-color: #0c8;
-      border-color: #0c8;
-    }
-
-    .dark-mode .go-to-verse button:hover {
-      background-color: #0a6;
-      border-color: #0a6;
-    }
-
-    /* Scroll to Top Button */
-    #scrollToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    #scrollToTop:hover {
-      background-color: #005f4a;
-    }
-
-    #scrollToTop.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .dark-mode #scrollToTop {
-      background-color: #0c8;
-    }
-
-    .dark-mode #scrollToTop:hover {
-      background-color: #0a6;
-    }
-
-    /* Share Modal Styling */
-    .modal-content h2 {
-      margin-top: 0;
-      color: #333;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .modal-content h2 {
-      color: #e0e0e0;
-    }
-
-    .modal-content div {
-      margin-bottom: 1rem;
-      text-align: left;
-    }
-
-    .modal-content label {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      color: #333;
-      transition: color 0.3s ease;
-      cursor: pointer;
-    }
-
-    .dark-mode .modal-content label {
-      color: #e0e0e0;
-    }
-
-    .modal-content input[type="checkbox"] {
-      margin-right: 0.5rem;
-      width: 18px;
-      height: 18px;
-      border: 2px solid #007b5e;
-      border-radius: 4px;
-      background-color: #fff;
-      cursor: pointer;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-
-    .modal-content input[type="checkbox"]:checked {
-      background-color: #007b5e;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .dark-mode .modal-content input[type="checkbox"] {
-      background-color: #2c2c2c;
-      border-color: #0c8;
-    }
-
-    .dark-mode .modal-content input[type="checkbox"]:checked {
-      background-color: #0c8;
-      border-color: #0c8;
-    }
-
-    .modal-content select {
-      padding: 0.6rem 2rem 0.6rem 1rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #fff;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 18px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-
-    .modal-content select:hover {
-      border-color: #005f4a;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transform: scale(1.02);
-    }
-
-    .dark-mode .modal-content select {
-      background-color: #2c2c2c;
-      border-color: #0c8;
-      color: #e0e0e0;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%230c8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5z"/></svg>');
-    }
-
-    .dark-mode .modal-content select:hover {
-      border-color: #0a6;
-    }
-
-    .modal-content select:focus {
-      outline: none;
-      border-color: #005f4a;
-      box-shadow: 0 0 8px rgba(0,123,94,0.3);
-    }
-
-    .dark-mode .modal-content select:focus {
-      border-color: #0a6;
-      box-shadow: 0 0 8px rgba(0,204,136,0.3);
-    }
-
-    .modal-content button {
-      margin-top: 1rem;
-      margin-right: 0.5rem;
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #007b5e;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .modal-content button:hover {
-      background-color: #005f4a;
-      border-color: #005f4a;
-      transform: scale(1.02);
-    }
-
-    .dark-mode .modal-content button {
-      background-color: #0c8;
-      border-color: #0c8;
-    }
-
-    .modal-content button:hover {
-      background-color: #0a6;
-      border-color: #0a6;
-    }
-
-    .modal-content input[type="text"] {
-      padding: 0.6rem;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      border: 2px solid #007b5e;
-      border-radius: 6px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .modal-content input[type="text"]:hover {
-      border-color: #005f4a;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transform: scale(1.02);
-    }
-
-    .dark-mode .modal-content input[type="text"] {
-      background-color: #2c2c2c;
-      border-color: #0c8;
-      color: #e0e0e0;
-    }
-
-    .dark-mode .modal-content input[type="text"]:hover {
-      border-color: #0a6;
-    }
-
-    .modal-content input[type="text"]:focus {
-      outline: none;
-      border-color: #005f4a;
-      box-shadow: 0 0 8px rgba(0,123,94,0.3);
-    }
-
-    .dark-mode .modal-content input[type="text"]:focus {
-      border-color: #0a6;
-      box-shadow: 0 0 8px rgba(0,204,136,0.3);
-    }
-
-    @media (max-width: 600px) {
-      .navbar h1 {
-        font-size: 1.25rem;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #f0f0f0;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-      }
-
-      .dark-mode .nav-links {
-        background-color: #2c2c2c;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        margin: 0.5rem 0;
-        font-size: 1.1rem;
-      }
-
-      .theme-toggle {
-        margin: 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .lang-select select, .audio-select select {
-        padding: 0.5rem 1.8rem 0.5rem 0.8rem;
-        font-size: 0.9rem;
-        background-size: 16px;
-      }
-
-      .surah-info h1 {
-        font-size: 1.5rem;
-      }
-
-      .bismillah {
-        font-size: 1.3rem;
-      }
-
-      .arabic {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <div id="progress-bar"></div>
@@ -1682,5 +805,152 @@
       }
     };
   </script>
+
+  <footer class="footer">
+    <div class="footer-pattern"></div>
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+        <div class="footer-logo">
+          <img src="favicon.png" alt="MuslimBro1400 Logo" />
+        </div>
+        <h2>MuslimBro1400</h2>
+        <p class="footer-tagline">Your Trusted Islamic Resource</p>
+        <div class="social-links">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section footer-links-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quran.html">Quran with Translations</a></li>
+          <li><a href="hadith.html">Hadiths and Sunnah</a></li>
+          <li><a href="islamic-books.html">Islamic Books</a></li>
+          <li><a href="quran-recitations.html">Quran Recitations</a></li>
+          <li><a href="islamic-calendar.html">Islamic Calendar</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section footer-contact">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="email-box">
+            <a href="mailto:muhammadadil43534@gmail.com" target="_blank">muhammadadil43534@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient2" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient2)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 <a href="index.html">MuslimBro1400</a>. All rights reserved.</p>
+      <p>Made with ❤️ for the Ummah</p>
+    </div>
+  </footer>
 </body>
 </html>
