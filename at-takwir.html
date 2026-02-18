@@ -52,6 +52,15 @@
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
@@ -75,6 +84,7 @@
         <a href="abasa.html">← Surah 'Abasa</a>
         <a href="al-infitar.html">Next: Surah Al-Infitar →</a>
       </div>
+  </div>
 
   <!-- Audio Modal -->
   <div id="audioModal" class="modal" style="display: none;">
