@@ -3,1379 +3,418 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MuslimBro1400 - Saad Al-Ghamdi Recitations</title>
+  <title>Saad Al-Ghamdi Recitations – MuslimBro1400</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="recitations-style.css">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      text-align: center;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    body.dark-mode {
-      background-color: #1a1a1a;
-      color: #e0e0e0;
-    }
-
-    .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #f0f0f0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: background-color 0.5s ease;
-    }
-
-    .dark-mode .navbar {
-      background-color: #2c2c2c;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-links a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .dark-mode .nav-links a {
-      color: #e0e0e0;
-    }
-
-    .nav-links a:hover {
-      color: #007b5e;
-    }
-
-    .theme-toggle {
-      cursor: pointer;
-      margin-left: 1rem;
-      background-color: transparent;
-      border: none;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .theme-toggle img {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.3s ease;
-    }
-
-    .theme-toggle img.rotate {
-      transform: rotate(180deg);
-    }
-
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      padding: 0.4rem 0.6rem;
-    }
-
-    .menu-toggle img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .container {
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .reciter-info {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .reciter-info h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .reciter-info img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-
-    .reciter-info p {
-      font-size: 1rem;
-      color: #555;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .reciter-info p {
-      color: #ccc;
-    }
-
-    .main-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .card {
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s ease, color 0.5s ease;
-      text-align: center;
-    }
-
-    .dark-mode .card {
-      background-color: #2c2c2c;
-      color: #e0e0e0;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      background-color: #e6f5f0;
-      border-left: 5px solid #007b5e;
-    }
-
-    .dark-mode .card:hover {
-      background-color: #244c3a;
-      border-left: 5px solid #0c8;
-    }
-
-    .card h3 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .card .arabic {
-      font-family: 'Amiri', serif;
-      font-size: 1.1rem;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin: 0.5rem 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .card p {
-      color: #ccc;
-    }
-
-    .card audio {
-      width: 100%;
-      border-radius: 6px;
-      border: 0cap solid #ccc;
-      margin-top: 0.75rem;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: flex-start;
-      margin-top: 2rem;
-    }
-
-    .navigation a {
-      color: #007b5e;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .navigation a {
-      color: #0c8;
-    }
-
-    @media (max-width: 600px) {
-      .reciter-info h1 {
-        font-size: 1.5rem;
-      }
-
-      .reciter-info img {
-        width: 100px;
-        height: 100px;
-      }
-
-      .main-title {
-        font-size: 1.5rem;
-      }
-
-      .navbar h1 {
-        font-size: 1.25rem;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #f0f0f0;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-      }
-
-      .dark-mode .nav-links {
-        background-color: #2c2c2c;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        margin: 0.5rem 0;
-        font-size: 1.1rem;
-      }
-
-      .theme-toggle {
-        margin: 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .card h3 {
-        font-size: 1.1rem;
-      }
-
-      .card .arabic {
-        font-size: 1rem;
-      }
-
-      .card p {
-        font-size: 0.9rem;
-      }
-
-      .card audio {
-        max-width: 200px;
-      }
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar">
     <h1>MuslimBro1400</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="/assets/icons/menu.png" alt="Menu" />
-    </button>
+    <button class="menu-toggle" onclick="toggleMenu()"><img src="menu.png" alt="Menu" /></button>
     <div class="nav-links">
-      <a href="/home.html">Home</a>
-      <a href="/quran.html">Quran</a>
-      <a href="/hadith.html">Hadith</a>
-      <a href="/islamic-books.html">Islamic Books</a>
-      <a href="/quran-recitations.html">Quran Recitations</a>
-      <a href="/about.html">About</a>
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <img id="theme-icon" src="/assets/icons/moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
-      </button>
+      <a href="index.html">Home</a> 
+      <a href="quran.html">Quran</a> 
+      <a href="hadith.html">Hadiths</a>
+      <a href="islamic-books.html">Books</a> 
+      <a href="quran-recitations.html">Recitations</a>
+      <a href="islamic-calendar.html">Calendar</a> 
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()"><img id="theme-icon" src="moon.png" alt="Toggle Theme" /></button>
     </div>
   </nav>
 
   <main class="container">
     <div class="reciter-info">
-      <img src="/assets/reciters/Saad Al Ghamdi.jpeg" alt="Saad Al-Ghamdi" />
+      <img src="reciter images/saad-al-ghamdi.jpg" alt="Saad Al-Ghamdi" />
       <h1><hr>Sheikh Saad Al-Ghamdi</h1>
-      <p>Sheikh Saad Al-Ghamdi is a renowned Saudi Qari known for his soothing and melodious Quran recitations, captivating listeners worldwide.<hr></p>
+      <p>Sheikh Saad Al-Ghamdi is a renowned Saudi Qari known for his soothing and melodious Quran recitations.<hr></p>
     </div>
 
-    <h1 class="main-title">Surah Recitations<hr></h1>
-    <section class="cards" id="surah-cards">
-      <div class="card" data-surah="1" data-name="Al-Fatihah">
-        <h3>1. Al-Fatihah <span class="arabic">الفاتحة</span></h3>
-        <p class="meaning">The Opening</p>
-        <p>7 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/001.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="2" data-name="Al-Baqarah">
-        <h3>2. Al-Baqarah <span class="arabic">البقرة</span></h3>
-        <p class="meaning">The Cow</p>
-        <p>286 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/002.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="3" data-name="Aal-E-Imran">
-        <h3>3. Aal-E-Imran <span class="arabic">آل عمران</span></h3>
-        <p class="meaning">Family Of Imran</p>
-        <p>200 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/003.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="4" data-name="An-Nisa">
-        <h3>4. An-Nisa <span class="arabic">النساء</span></h3>
-        <p class="meaning">The Women</p>
-        <p>176 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/004.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="5" data-name="Al-Ma'idah">
-        <h3>5. Al-Ma'idah <span class="arabic">المائدة</span></h3>
-        <p class="meaning">The Table Spread</p>
-        <p>120 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/005.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="6" data-name="Al-An'am">
-        <h3>6. Al-An'am <span class="arabic">الأنعام</span></h3>
-        <p class="meaning">The Cattle</p>
-        <p>165 verses</p>
-        <audio controls>
-          <source src="/assets/audio/Saad Al Ghamdi/006.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="7" data-name="Al-A'raf">
-        <h3>7. Al-A'raf <span class="arabic">الأعراف</span></h3>
-        <p class="meaning">The Heights</p>
-        <p>206 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-7.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="8" data-name="Al-Anfal">
-        <h3>8. Al-Anfal <span class="arabic">الأنفال</span></h3>
-        <p class="meaning">The Spoils Of War</p>
-        <p>75 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-8.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="9" data-name="At-Tawbah">
-        <h3>9. At-Tawbah <span class="arabic">التوبة</span></h3>
-        <p class="meaning">The Repentance</p>
-        <p>129 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-9.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="10" data-name="Yunus">
-        <h3>10. Yunus <span class="arabic">يونس</span></h3>
-        <p class="meaning">Yonus</p>
-        <p>109 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-10.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="11" data-name="Hud">
-        <h3>11. Hud <span class="arabic">هود</span></h3>
-        <p class="meaning">Hud</p>
-        <p>123 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-11.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="12" data-name="Yusuf">
-        <h3>12. Yusuf <span class="arabic">يوسف</span></h3>
-        <p class="meaning">Joseph</p>
-        <p>111 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-12.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="13" data-name="Ar-Ra'd">
-        <h3>13. Ar-Ra'd <span class="arabic">الرعد</span></h3>
-        <p class="meaning">The Thunder</p>
-        <p>43 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-13.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="14" data-name="Ibrahim">
-        <h3>14. Ibrahim <span class="arabic">إبراهيم</span></h3>
-        <p class="meaning">Abraham</p>
-        <p>52 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-14.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="15" data-name="Al-Hijr">
-        <h3>15. Al-Hijr <span class="arabic">الحجر</span></h3>
-        <p class="meaning">The Rocky Tract</p>
-        <p>99 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-15.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="16" data-name="An-Nahl">
-        <h3>16. An-Nahl <span class="arabic">النحل</span></h3>
-        <p class="meaning">The Bee</p>
-        <p>128 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-16.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="17" data-name="Al-Isra">
-        <h3>17. Al-Isra <span class="arabic">الإسراء</span></h3>
-        <p class="meaning">The Night Journey</p>
-        <p>111 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-17.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="18" data-name="Al-Kahf">
-        <h3>18. Al-Kahf <span class="arabic">الكهف</span></h3>
-        <p class="meaning">The Cave</p>
-        <p>110 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-18.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="19" data-name="Maryam">
-        <h3>19. Maryam <span class="arabic">مريم</span></h3>
-        <p class="meaning">Mary</p>
-        <p>98 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-19.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="20" data-name="Ta-Ha">
-        <h3>20. Ta-Ha <span class="arabic">طه</span></h3>
-        <p class="meaning">Ta-Ha</p>
-        <p>135 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-20.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="21" data-name="Al-Anbiya">
-        <h3>21. Al-Anbiya <span class="arabic">الأنبياء</span></h3>
-        <p class="meaning">The Prophets</p>
-        <p>112 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-21.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="22" data-name="Al-Hajj">
-        <h3>22. Al-Hajj <span class="arabic">الحج</span></h3>
-        <p class="meaning">The Pilgrimage</p>
-        <p>78 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-22.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="23" data-name="Al-Mu'minun">
-        <h3>23. Al-Mu'minun <span class="arabic">المؤمنون</span></h3>
-        <p class="meaning">The Believers</p>
-        <p>118 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-23.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="24" data-name="An-Nur">
-        <h3>24. An-Nur <span class="arabic">النور</span></h3>
-        <p class="meaning">The Light</p>
-        <p>64 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-24.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="25" data-name="Al-Furqan">
-        <h3>25. Al-Furqan <span class="arabic">الفرقان</span></h3>
-        <p class="meaning">The Criterion</p>
-        <p>77 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-25.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="26" data-name="Ash-Shu'ara">
-        <h3>26. Ash-Shu'ara <span class="arabic">الشعراء</span></h3>
-        <p class="meaning">The Poets</p>
-        <p>227 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-26.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="27" data-name="An-Naml">
-        <h3>27. An-Naml <span class="arabic">النمل</span></h3>
-        <p class="meaning">The Ant</p>
-        <p>93 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-27.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="28" data-name="Al-Qasas">
-        <h3>28. Al-Qasas <span class="arabic">القصص</span></h3>
-        <p class="meaning">The Stories</p>
-        <p>88 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-28.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="29" data-name="Al-Ankabut">
-        <h3>29. Al-Ankabut <span class="arabic">العنكبوت</span></h3>
-        <p class="meaning">The Spider</p>
-        <p>69 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-29.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="30" data-name="Ar-Rum">
-        <h3>30. Ar-Rum <span class="arabic">الروم</span></h3>
-        <p class="meaning">The Romans</p>
-        <p>60 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-30.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="31" data-name="Luqman">
-        <h3>31. Luqman <span class="arabic">لقمان</span></h3>
-        <p class="meaning">Luqman</p>
-        <p>34 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-31.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="32" data-name="As-Sajdah">
-        <h3>32. As-Sajdah <span class="arabic">السجدة</span></h3>
-        <p class="meaning">The Prostration</p>
-        <p>30 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-32.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="33" data-name="Al-Ahzab">
-        <h3>33. Al-Ahzab <span class="arabic">الأحزاب</span></h3>
-        <p class="meaning">The Combined Forces</p>
-        <p>73 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-33.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="34" data-name="Saba">
-        <h3>34. Saba <span class="arabic">سبأ</span></h3>
-        <p class="meaning">Sheba</p>
-        <p>54 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-34.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="35" data-name="Fatir">
-        <h3>35. Fatir <span class="arabic">فاطر</span></h3>
-        <p class="meaning">Originator</p>
-        <p>45 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-35.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="36" data-name="Ya-Sin">
-        <h3>36. Ya-Sin <span class="arabic">يس</span></h3>
-        <p class="meaning">Ya sin</p>
-        <p>83 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-36.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="37" data-name="As-Saffat">
-        <h3>37. As-Saffat <span class="arabic">الصافات</span></h3>
-        <p class="meaning">Those Who Set The Ranks</p>
-        <p>182 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-37.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="38" data-name="Sad">
-        <h3>38. Sad <span class="arabic">ص</span></h3>
-        <p class="meaning">The Letter "Saad"</p>
-        <p>88 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-38.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="39" data-name="Az-Zumar">
-        <h3>39. Az-Zumar <span class="arabic">الزمر</span></h3>
-        <p class="meaning">The Troops</p>
-        <p>75 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-39.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="40" data-name="Ghafir">
-        <h3>40. Ghafir <span class="arabic">غافر</span></h3>
-        <p class="meaning">The Forgiver</p>
-        <p>85 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-40.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="41" data-name="Fussilat">
-        <h3>41. Fussilat <span class="arabic">فصلت</span></h3>
-        <p class="meaning">Explained In Detail</p>
-        <p>54 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-41.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="42" data-name="Ash-Shura">
-        <h3>42. Ash-Shura <span class="arabic">الشورى</span></h3>
-        <p class="meaning">The Consultation</p>
-        <p>53 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-42.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="43" data-name="Az-Zukhruf">
-        <h3>43. Az-Zukhruf <span class="arabic">الزخرف</span></h3>
-        <p class="meaning">The Ornaments Of Gold</p>
-        <p>89 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-43.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="44" data-name="Ad-Dukhan">
-        <h3>44. Ad-Dukhan <span class="arabic">الدخان</span></h3>
-        <p class="meaning">The Smoke</p>
-        <p>59 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-44.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="45" data-name="Al-Jathiyah">
-        <h3>45. Al-Jathiyah <span class="arabic">الجاثية</span></h3>
-        <p class="meaning">The Crouching</p>
-        <p>37 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-45.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="46" data-name="Al-Ahqaf">
-        <h3>46. Al-Ahqaf <span class="arabic">الأحقاف</span></h3>
-        <p class="meaning">The Wind-Curved Sandhills</p>
-        <p>35 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-46.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="47" data-name="Muhammad">
-        <h3>47. Muhammad <span class="arabic">محمد</span></h3>
-        <p class="meaning">Muhammad</p>
-        <p>38 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-47.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="48" data-name="Al-Fath">
-        <h3>48. Al-Fath <span class="arabic">الفتح</span></h3>
-        <p class="meaning">The Victory</p>
-        <p>29 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-48.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="49" data-name="Al-Hujurat">
-        <h3>49. Al-Hujurat <span class="arabic">الحجرات</span></h3>
-        <p class="meaning">The Rooms</p>
-        <p>18 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-49.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="50" data-name="Qaf">
-        <h3>50. Qaf <span class="arabic">ق</span></h3>
-        <p class="meaning">The Letter "Qaf"</p>
-        <p>45 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-50.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="51" data-name="Adh-Dhariyat">
-        <h3>51. Adh-Dhariyat <span class="arabic">الذاريات</span></h3>
-        <p class="meaning">The Winnowing Winds</p>
-        <p>60 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-51.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="52" data-name="At-Tur">
-        <h3>52. At-Tur <span class="arabic">الطور</span></h3>
-        <p class="meaning">The Mount</p>
-        <p>49 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-52.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="53" data-name="An-Najm">
-        <h3>53. An-Najm <span class="arabic">النجم</span></h3>
-        <p class="meaning">The Star</p>
-        <p>62 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-53.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="54" data-name="Al-Qamar">
-        <h3>54. Al-Qamar <span class="arabic">القمر</span></h3>
-        <p class="meaning">The Moon</p>
-        <p>55 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-54.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="55" data-name="Ar-Rahman">
-        <h3>55. Ar-Rahman <span class="arabic">الرحمن</span></h3>
-        <p class="meaning">The Beneficent</p>
-        <p>78 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-55.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="56" data-name="Al-Waqi'ah">
-        <h3>56. Al-Waqi'ah <span class="arabic">الواقعة</span></h3>
-        <p class="meaning">The Inevitable</p>
-        <p>96 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-56.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="57" data-name="Al-Hadid">
-        <h3>57. Al-Hadid <span class="arabic">الحديد</span></h3>
-        <p class="meaning">The Iron</p>
-        <p>29 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-57.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="58" data-name="Al-Mujadilah">
-        <h3>58. Al-Mujadilah <span class="arabic">المجادلة</span></h3>
-        <p class="meaning">The Pleading Women</p>
-        <p>22 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-58.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="59" data-name="Al-Hashr">
-        <h3>59. Al-Hashr <span class="arabic">الحشر</span></h3>
-        <p class="meaning">The Exile</p>
-        <p>24 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-59.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="60" data-name="Al-Mumtahanah">
-        <h3>60. Al-Mumtahanah <span class="arabic">الممتحنة</span></h3>
-        <p class="meaning">She That Is To Be Examined</p>
-        <p>13 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-60.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="61" data-name="As-Saff">
-        <h3>61. As-Saff <span class="arabic">الصف</span></h3>
-        <p class="meaning">The Ranks</p>
-        <p>14 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-61.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="62" data-name="Al-Jumu'ah">
-        <h3>62. Al-Jumu'ah <span class="arabic">الجمعة</span></h3>
-        <p class="meaning">The Congregation, Friday</p>
-        <p>11 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-62.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="63" data-name="Al-Munafiqun">
-        <h3>63. Al-Munafiqun <span class="arabic">المنافقون</span></h3>
-        <p class="meaning">The Hypocrites/p>
-        <p>11 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-63.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="64" data-name="At-Taghabun">
-        <h3>64. At-Taghabun <span class="arabic">التغابن</span></h3>
-        <p class="meaning">The Mutual Disillusion</p>
-        <p>18 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-64.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="65" data-name="At-Talaq">
-        <h3>65. At-Talaq <span class="arabic">الطلاق</span></h3>
-        <p class="meaning">The Divorce</p>
-        <p>12 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-65.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="66" data-name="At-Tahrim">
-        <h3>66. At-Tahrim <span class="arabic">التحريم</span></h3>
-        <p class="meaning">The Prohibition</p>
-        <p>12 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-66.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="67" data-name="Al-Mulk">
-        <h3>67. Al-Mulk <span class="arabic">الملك</span></h3>
-        <p class="meaning">The Sovereignty</p>
-        <p>30 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-67.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="68" data-name="Al-Qalam">
-        <h3>68. Al-Qalam <span class="arabic">القلم</span></h3>
-        <p class="meaning">The Pen</p>
-        <p>52 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-68.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="69" data-name="Al-Haqqah">
-        <h3>69. Al-Haqqah <span class="arabic">الحاقة</span></h3>
-        <p class="meaning">The Reality</p>
-        <p>52 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-69.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="70" data-name="Al-Ma'arij">
-        <h3>70. Al-Ma'arij <span class="arabic">المعارج</span></h3>
-        <p class="meaning">The Ascending Staircase</p>
-        <p>44 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-70.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="71" data-name="Nuh">
-        <h3>71. Nuh <span class="arabic">نوح</span></h3>
-        <p class="meaning">Noah</p>
-        <p>28 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-71.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="72" data-name="Al-Jinn">
-        <h3>72. Al-Jinn <span class="arabic">الجن</span></h3>
-        <p class="meaning">The Jinn</p>
-        <p>28 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-72.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="73" data-name="Al-Muzzammil">
-        <h3>73. Al-Muzzammil <span class="arabic">المزمل</span></h3>
-        <p class="meaning">The Enshrouded One</p>
-        <p>20 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-73.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="74" data-name="Al-Muddathir">
-        <h3>74. Al-Muddathir <span class="arabic">المدثر</span></h3>
-        <p class="meaning">The Cloaked One</p>
-        <p>56 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-74.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="75" data-name="Al-Qiyamah">
-        <h3>75. Al-Qiyamah <span class="arabic">القيامة</span></h3>
-        <p class="meaning">The Resurrection</p>
-        <p>40 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-75.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="76" data-name="Al-Insan">
-        <h3>76. Al-Insan <span class="arabic">الإنسان</span></h3>
-        <p class="meaning">The Man</p>
-        <p>31 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-76.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="77" data-name="Al-Mursalat">
-        <h3>77. Al-Mursalat <span class="arabic">المرسلات</span></h3>
-        <p class="meaning">The Emissaries</p>
-        <p>50 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-77.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="78" data-name="An-Naba">
-        <h3>78. An-Naba <span class="arabic">النبأ</span></h3>
-        <p class="meaning">The Tidings</p>
-        <p>40 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-78.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="79" data-name="An-Nazi'at">
-        <h3>79. An-Nazi'at <span class="arabic">النازعات</span></h3>
-        <p class="meaning">Those Who Drag Forth</p>
-        <p>46 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-79.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="80" data-name="Abasa">
-        <h3>80. Abasa <span class="arabic">عبس</span></h3>
-        <p class="meaning">He Frowned</p>
-        <p>42 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-80.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="81" data-name="At-Takwir">
-        <h3>81. At-Takwir <span class="arabic">التكوير</span></h3>
-        <p class="meaning">The Overthrowing</p>
-        <p>29 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-81.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="82" data-name="Al-Infitar">
-        <h3>82. Al-Infitar <span class="arabic">الانفطار</span></h3>
-        <p class="meaning">The Cleaving</p>
-        <p>19 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-82.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="83" data-name="Al-Mutaffifin">
-        <h3>83. Al-Mutaffifin <span class="arabic">المطففين</span></h3>
-        <p class="meaning">The Defrauding</p>
-        <p>36 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-83.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="84" data-name="Al-Inshiqaq">
-        <h3>84. Al-Inshiqaq <span class="arabic">الانشقاق</span></h3>
-        <p class="meaning">The Sundering</p>
-        <p>25 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-84.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="85" data-name="Al-Buruj">
-        <h3>85. Al-Buruj <span class="arabic">البروج</span></h3>
-        <p class="meaning">The Mansions Of The Stars</p>
-        <p>22 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-85.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="86" data-name="At-Tariq">
-        <h3>86. At-Tariq <span class="arabic">الطارق</span></h3>
-        <p class="meaning">The Nightcommer</p>
-        <p>17 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-86.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="87" data-name="Al-A'la">
-        <h3>87. Al-A'la <span class="arabic">الأعلى</span></h3>
-        <p class="meaning">The Most High</p>
-        <p>19 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-87.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="88" data-name="Al-Ghashiyah">
-        <h3>88. Al-Ghashiyah <span class="arabic">الغاشية</span></h3>
-        <p class="meaning">The Overwhelming</p>
-        <p>26 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-88.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="89" data-name="Al-Fajr">
-        <h3>89. Al-Fajr <span class="arabic">الفجر</span></h3>
-        <p class="meaning">The Dawn</p>
-        <p>30 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-89.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="90" data-name="Al-Balad">
-        <h3>90. Al-Balad <span class="arabic">البلد</span></h3>
-        <p class="meaning">The City</p>
-        <p>20 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-90.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="91" data-name="Ash-Shams">
-        <h3>91. Ash-Shams <span class="arabic">الشمس</span></h3>
-        <p class="meaning">The Sun</p>
-        <p>15 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-91.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="92" data-name="Al-Layl">
-        <h3>92. Al-Layl <span class="arabic">الليل</span></h3>
-        <p class="meaning">The Night</p>
-        <p>21 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-92.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="93" data-name="Ad-Duha">
-        <h3>93. Ad-Duha <span class="arabic">الضحى</span></h3>
-        <p class="meaning">The Morning Hours</p>
-        <p>11 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-93.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="94" data-name="Ash-Sharh">
-        <h3>94. Ash-Sharh <span class="arabic">الشرح</span></h3>
-        <p class="meaning">The Relief</p>
-        <p>8 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-94.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="95" data-name="At-Tin">
-        <h3>95. At-Tin <span class="arabic">التين</span></h3>
-        <p class="meaning">The Fig</p>
-        <p>8 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-95.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="96" data-name="Al-Alaq">
-        <h3>96. Al-Alaq <span class="arabic">العلق</span></h3>
-        <p class="meaning">The Clot</p>
-        <p>19 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-96.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="97" data-name="Al-Qadr">
-        <h3>97. Al-Qadr <span class="arabic">القدر</span></h3>
-        <p class="meaning">The Power</p>
-        <p>5 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-97.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="98" data-name="Al-Bayyinah">
-        <h3>98. Al-Bayyinah <span class="arabic">البينة</span></h3>
-        <p class="meaning">The Clear Proof</p>
-        <p>8 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-98.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="99" data-name="Az-Zalzalah">
-        <h3>99. Az-Zalzalah <span class="arabic">الزلزلة</span></h3>
-        <p class="meaning">The Earthquake</p>
-        <p>8 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-99.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="100" data-name="Al-Adiyat">
-        <h3>100. Al-Adiyat <span class="arabic">العاديات</span></h3>
-        <p class="meaning">The Courser</p>
-        <p>11 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-100.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="101" data-name="Al-Qari'ah">
-        <h3>101. Al-Qari'ah <span class="arabic">القارعة</span></h3>
-        <p class="meaning">The Calamity/p>
-        <p>11 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-101.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="102" data-name="At-Takathur">
-        <h3>102. At-Takathur <span class="arabic">التكاثر</span></h3>
-        <p class="meaning">The Rivalry In World Increase</p>
-        <p>8 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-102.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="103" data-name="Al-Asr">
-        <h3>103. Al-Asr <span class="arabic">العصر</span></h3>
-        <p class="meaning">The Declining Day</p>
-        <p>3 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-103.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="104" data-name="Al-Humazah">
-        <h3>104. Al-Humazah <span class="arabic">الهمزة</span></h3>
-        <p class="meaning">The Traducer</p>
-        <p>9 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-104.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="105" data-name="Al-Fil">
-        <h3>105. Al-Fil <span class="arabic">الفيل</span></h3>
-        <p class="meaning">The Elephant</p>
-        <p>5 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-105.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="106" data-name="Quraysh">
-        <h3>106. Quraysh <span class="arabic">قريش</span></h3>
-        <p class="meaning">Quraysh</p>
-        <p>4 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-106.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="107" data-name="Al-Ma'un">
-        <h3>107. Al-Ma'un <span class="arabic">الماعون</span></h3>
-        <p class="meaning">The Smell kindness</p>
-        <p>7 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-107.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="108" data-name="Al-Kawthar">
-        <h3>108. Al-Kawthar <span class="arabic">الكوثر</span></h3>
-        <p class="meaning">The Abundance</p>
-        <p>3 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-108.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="109" data-name="Al-Kafirun">
-        <h3>109. Al-Kafirun <span class="arabic">الكافرون</span></h3>
-        <p class="meaning">The Disbeliever</p>
-        <p>6 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-109.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="110" data-name="An-Nasr">
-        <h3>110. An-Nasr <span class="arabic">النصر</span></h3>
-        <p class="meaning">The Divine Support</p>
-        <p>3 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-110.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="111" data-name="Al-Masad">
-        <h3>111. Al-Masad <span class="arabic">المسد</span></h3>
-        <p class="meaning">The Palm Fiber</p>
-        <p>5 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-111.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="112" data-name="Al-Ikhlas">
-        <h3>112. Al-Ikhlas <span class="arabic">الإخلاص</span></h3>
-        <p class="meaning">The Sincerity</p>
-        <p>4 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-112.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="113" data-name="Al-Falaq">
-        <h3>113. Al-Falaq <span class="arabic">الفلق</span></h3>
-        <p class="meaning">The Daybreak</p>
-        <p>5 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-113.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="card" data-surah="114" data-name="An-Nas">
-        <h3>114. An-Nas <span class="arabic">الناس</span></h3>
-        <p class="meaning">Mankind>
-        <p>6 verses</p>
-        <audio controls>
-          <source src="/assets/audio/saad-al-ghamdi/surah-114.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-    </section>
+    <h1 class="main-title">Quran Recitations<hr></h1>
+
+    <!-- CAROUSEL -->
+    <div class="carousel-container">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous surah">‹</button>
+      <div class="card-wrapper" id="cardWrapper">
+        <!-- dynamic card injected by javascript -->
+      </div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next surah">›</button>
+    </div>
+
+    <!-- PROGRESS + JUMP SECTION -->
+    <div class="progress-row">
+      <span class="progress-indicator" id="progress">1 / 114</span>
+      <div class="jump-box">
+        <input type="number" id="jumpInput" min="1" max="114" placeholder="No." value="1">
+        <button id="jumpBtn">Go</button>
+      </div>
+    </div>
 
     <div class="navigation">
-      <a href="/quran-recitations.html">← Back to Quran Recitations</a>
+      <a href="quran-recitations.html">← Back to Quran Recitations</a>
     </div>
   </main>
 
-  <script>
-    function setThemeIcon() {
-      const icon = document.getElementById('theme-icon');
-      icon.classList.remove('rotate');
-      void icon.offsetWidth;
-      icon.classList.add('rotate');
+  <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
-      if (document.body.classList.contains('dark-mode')) {
-        icon.src = "/assets/icons/sun.png";
-        icon.alt = "Switch to light mode";
-      } else {
-        icon.src = "/assets/icons/moon.png";
-        icon.alt = "Switch to dark mode";
-      }
+  <footer class="footer">
+    <div class="footer-pattern"></div>
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+        <div class="footer-logo">
+          <img src="favicon.png" alt="MuslimBro1400 Logo" />
+        </div>
+        <h2>MuslimBro1400</h2>
+        <p class="footer-tagline">Your Trusted Islamic Resource</p>
+        <div class="social-links">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section footer-links-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quran.html">Quran with Translations</a></li>
+          <li><a href="hadith.html">Hadiths and Sunnah</a></li>
+          <li><a href="islamic-books.html">Islamic Books</a></li>
+          <li><a href="quran-recitations.html">Quran Recitations</a></li>
+          <li><a href="islamic-calendar.html">Islamic Calendar</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section footer-contact">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="email-box">
+            <a href="mailto:muhammadadil43534@gmail.com" target="_blank">muhammadadil43534@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-link facebook" title="Facebook">
+            <!-- Updated Facebook SVG -->
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
+              </defs>
+              <path class="cls-1" d="M224.74,112.37c0,1,0,1.94,0,2.9s0,1.82-.1,2.73c0,.12,0,.24,0,.36,0,.7-.08,1.4-.13,2.1s-.1,1.38-.17,2.07c-.1,1.17-.23,2.35-.37,3.51q-.42,3.37-1,6.69a112.33,112.33,0,0,1-20,46.27c-.43.59-.87,1.17-1.32,1.75s-.89,1.16-1.35,1.73c-1.61,2-3.29,4-5,5.89-.38.42-.77.84-1.17,1.25-.75.8-1.51,1.58-2.29,2.36q-1.83,1.83-3.75,3.57c-.67.6-1.34,1.2-2,1.79s-1.35,1.15-2,1.71l-.07.06c-.68.56-1.37,1.12-2.06,1.66s-1.43,1.11-2.15,1.65l-2.09,1.52-.34.24-1.62,1.13c-.63.43-1.26.85-1.89,1.25l-1.07.7c-2,1.25-4,2.44-6,3.56-.64.36-1.3.71-1.95,1.05l-2,1-2,1c-1.36.65-2.74,1.28-4.13,1.86l-2.06.85a.09.09,0,0,1-.07,0l-2,.78a.44.44,0,0,1-.16.06l-2.09.77c-1.44.51-2.89,1-4.36,1.45V146.3h27l4-31.34h-31V95c0-9.08,2.52-15.26,15.52-15.26h16.6v-28a221.85,221.85,0,0,0-24.18-1.23c-23.92,0-40.3,14.6-40.3,41.41V115h-27v31.38h27v78.37h-1A112.37,112.37,0,1,1,224.74,112.37Z" transform="translate(0 0)"/>
+              <path class="cls-2" d="M145.73,95v20h31l-4,31.34h-27v73.39c1.47-.46,2.92-.94,4.36-1.45a111.67,111.67,0,0,1-36.72,6.49V146.37h-27V115h27V91.88c0-26.81,16.38-41.41,40.3-41.41a221.85,221.85,0,0,1,24.18,1.23v28h-16.6C148.25,79.7,145.73,85.88,145.73,95Z" transform="translate(0 0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter" title="Twitter">
+            <!-- Twitter SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
+              <path fill="#fff" d="M184.14,59.88Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M163.86,161.37l-40.29-58.56L119,96.19,90.19,54.31,87.8,50.84H52.37L61,63.37l38.36,55.71,4.56,6.61,30.79,44.75,2.39,3.46h35.42Zm-22.57,4.54-32-46.48-4.56-6.62L67.61,58.87h16l30,43.62,4.56,6.62,39.09,56.8Z" transform="translate(0 0.01)"/>
+              <polygon fill="#fff" points="104.75 112.8 109.3 119.42 103.9 125.71 62.46 173.92 52.24 173.92 99.35 119.09 104.75 112.8"/>
+              <polygon fill="#fff" points="168.24 50.85 123.57 102.82 118.17 109.1 113.61 102.49 119.02 96.2 149.28 60.98 158.03 50.85 168.24 50.85"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <defs>
+                <radialGradient id="instagram-gradient2" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f9ed32"/>
+                  <stop offset="0.05" stop-color="#f8d939"/>
+                  <stop offset="0.17" stop-color="#f5a54d"/>
+                  <stop offset="0.33" stop-color="#f0536c"/>
+                  <stop offset="0.4" stop-color="#ee2a7b"/>
+                  <stop offset="0.56" stop-color="#9e2aa7"/>
+                  <stop offset="0.72" stop-color="#5b2acd"/>
+                  <stop offset="0.85" stop-color="#2a2ae8"/>
+                  <stop offset="0.95" stop-color="#0b2af9"/>
+                  <stop offset="1" stop-color="#002aff"/>
+                </radialGradient>
+              </defs>
+              <path fill="url(#instagram-gradient2)" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0h0A112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0)"/>
+              <path fill="#fff" d="M142.82,188.21H81.93a49.05,49.05,0,0,1-49-49V85.54a49.05,49.05,0,0,1,49-49h60.89a49.05,49.05,0,0,1,49,49V139.2A49.06,49.06,0,0,1,142.82,188.21ZM81.93,47.42A38.16,38.16,0,0,0,43.81,85.54V139.2a38.16,38.16,0,0,0,38.12,38.17h60.89a38.16,38.16,0,0,0,38.11-38.12V85.54a38.16,38.16,0,0,0-38.11-38.12Z" transform="translate(0)"/>
+              <path fill="#fff" d="M112.37,156A43.63,43.63,0,1,1,156,112.37,43.63,43.63,0,0,1,112.37,156Zm0-76.37a32.74,32.74,0,1,0,32.74,32.74h0A32.78,32.78,0,0,0,112.37,79.63Z" transform="translate(0)"/>
+              <path fill="#fff" d="M164.37,70.09A9.05,9.05,0,1,1,155.32,61a9,9,0,0,1,9.05,9.06Z" transform="translate(0)"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" title="YouTube">
+            <!-- YouTube SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
+              <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
+              <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 <a href="index.html">MuslimBro1400</a>. All rights reserved.</p>
+      <p>Made with ❤️ for the Ummah</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- complete Surah dataset (114 surahs) ----------
+    const surahList = [
+      { number:1, name:"Al-Fatihah", arabic:"الفاتحة", meaning:"The Opening", verses:7, archive:"001_20251230" },
+      { number:2, name:"Al-Baqarah", arabic:"البقرة", meaning:"The Cow", verses:286, archive:"002_20260101" },
+      { number:3, name:"Ali'-Imran", arabic:"آل عمران", meaning:"Family Of Imran", verses:200, archive:"003_20260101" },
+      { number:4, name:"An-Nisa", arabic:"النساء", meaning:"The Women", verses:176, archive:"004_20260101" },
+      { number:5, name:"Al-Ma'idah", arabic:"المائدة", meaning:"The Table Spread", verses:120, archive:"005_20260101" },
+      { number:6, name:"Al-An'am", arabic:"الأنعام", meaning:"The Cattle", verses:165, archive:"006_20260102" },
+      { number:7, name:"Al-A'raf", arabic:"الأعراف", meaning:"The Heights", verses:206, archive:"007_20260102" },
+      { number:8, name:"Al-Anfal", arabic:"الأنفال", meaning:"The Spoils Of War", verses:75, archive:"008_20260102" },
+      { number:9, name:"At-Tawbah", arabic:"التوبة", meaning:"The Repentance", verses:129, archive:"009_20260102" },
+      { number:10, name:"Yunus", arabic:"يونس", meaning:"Yonus", verses:109, archive:"010_20260102_202601" },
+      { number:11, name:"Hud", arabic:"هود", meaning:"Hud", verses:123, archive:"011_20260102" },
+      { number:12, name:"Yusuf", arabic:"يوسف", meaning:"Joseph", verses:111, archive:"012_20260102" },
+      { number:13, name:"Ar-Ra'd", arabic:"الرعد", meaning:"The Thunder", verses:43, archive:"013_20260102" },
+      { number:14, name:"Ibrahim", arabic:"إبراهيم", meaning:"Abraham", verses:52, archive:"014_20260102" },
+      { number:15, name:"Al-Hijr", arabic:"الحجر", meaning:"The Rocky Tract", verses:99, archive:"015_20260102" },
+      { number:16, name:"An-Nahl", arabic:"النحل", meaning:"The Bee", verses:128, archive:"016_20260102" },
+      { number:17, name:"Al-Isra", arabic:"الإسراء", meaning:"The Night Journey", verses:111, archive:"017_20260102" },
+      { number:18, name:"Al-Kahf", arabic:"الكهف", meaning:"The Cave", verses:110, archive:"018_20260102" },
+      { number:19, name:"Maryam", arabic:"مريم", meaning:"Mary", verses:98, archive:"019_20260102" },
+      { number:20, name:"Taha", arabic:"طه", meaning:"Ta-Ha", verses:135, archive:"020_20260102" },
+      { number:21, name:"Al-Anbya", arabic:"الأنبياء", meaning:"The Prophets", verses:112, archive:"021_20260102_202601" },
+      { number:22, name:"Al-Hajj", arabic:"الحج", meaning:"The Pilgrimage", verses:78, archive:"022_20260102" },
+      { number:23, name:"Al-Mu'minun", arabic:"المؤمنون", meaning:"The Believers", verses:118, archive:"023_20260102" },
+      { number:24, name:"An-Nur", arabic:"النور", meaning:"The Light", verses:64, archive:"024_20260102" },
+      { number:25, name:"Al-Furqan", arabic:"الفرقان", meaning:"The Criterion", verses:77, archive:"025_20260102" },
+      { number:26, name:"Ash-Shu'ara", arabic:"الشعراء", meaning:"The Poets", verses:227, archive:"026_20260102" },
+      { number:27, name:"An-Naml", arabic:"النمل", meaning:"The Ant", verses:93, archive:"027_20260102" },
+      { number:28, name:"Al-Qasas", arabic:"القصص", meaning:"The Stories", verses:88, archive:"028_20260102" },
+      { number:29, name:"Al-'Ankabut", arabic:"العنكبوت", meaning:"The Spider", verses:69, archive:"029_20260102" },
+      { number:30, name:"Ar-Rum", arabic:"الروم", meaning:"The Romans", verses:60, archive:"030_20260102" },
+      { number:31, name:"Luqman", arabic:"لقمان", meaning:"Luqman", verses:34, archive:"031_20260102" },
+      { number:32, name:"As-Sajdah", arabic:"السجدة", meaning:"The Prostration", verses:30, archive:"032_20260102" },
+      { number:33, name:"Al-Ahzab", arabic:"الأحزاب", meaning:"The Combined Forces", verses:73, archive:"033_20260102" },
+      { number:34, name:"Saba", arabic:"سبأ", meaning:"Sheba", verses:54, archive:"034_20260102" },
+      { number:35, name:"Fatir", arabic:"فاطر", meaning:"Originator", verses:45, archive:"035_20260102" },
+      { number:36, name:"Ya-Sin", arabic:"يس", meaning:"Ya sin", verses:83, archive:"036_20260102" },
+      { number:37, name:"As-Saffat", arabic:"الصافات", meaning:"Those Who Set The Ranks", verses:182, archive:"037_20260102" },
+      { number:38, name:"Sad", arabic:"ص", meaning:"The Letter 'Saad'", verses:88, archive:"038_20260102" },
+      { number:39, name:"Az-Zumar", arabic:"الزمر", meaning:"The Troops", verses:75, archive:"039_20251228" },
+      { number:40, name:"Ghafir", arabic:"غافر", meaning:"The Forgiver", verses:85, archive:"040_20251228" },
+      { number:41, name:"Fussilat", arabic:"فصلت", meaning:"Explained In Detail", verses:54, archive:"041_20260102" },
+      { number:42, name:"Ash-Shura", arabic:"الشورى", meaning:"The Consultation", verses:53, archive:"042_20260102" },
+      { number:43, name:"Az-Zukhruf", arabic:"الزخرف", meaning:"The Ornaments Of Gold", verses:89, archive:"043_20260102" },
+      { number:44, name:"Ad-Dukhan", arabic:"الدخان", meaning:"The Smoke", verses:59, archive:"044_20260102" },
+      { number:45, name:"Al-Jathiyah", arabic:"الجاثية", meaning:"The Crouching", verses:37, archive:"045_20260102" },
+      { number:46, name:"Al-Ahqaf", arabic:"الأحقاف", meaning:"The Wind-Curved Sandhills", verses:35, archive:"046_20260102" },
+      { number:47, name:"Muhammad", arabic:"محمد", meaning:"Muhammad", verses:38, archive:"047_20260102" },
+      { number:48, name:"Al-Fath", arabic:"الفتح", meaning:"The Victory", verses:29, archive:"048_20260102" },
+      { number:49, name:"Al-Hujurat", arabic:"الحجرات", meaning:"The Rooms", verses:18, archive:"049_20260102" },
+      { number:50, name:"Qaf", arabic:"ق", meaning:"The Letter 'Qaf'", verses:45, archive:"050_20260102" },
+      { number:51, name:"Adh-Dhariyat", arabic:"الذاريات", meaning:"The Winnowing Winds", verses:60, archive:"051_20260102" },
+      { number:52, name:"At-Tur", arabic:"الطور", meaning:"The Mount", verses:49, archive:"052_20260102" },
+      { number:53, name:"An-Najm", arabic:"النجم", meaning:"The Star", verses:62, archive:"053_20260102" },
+      { number:54, name:"Al-Qamar", arabic:"القمر", meaning:"The Moon", verses:55, archive:"054_20260102" },
+      { number:55, name:"Ar-Rahman", arabic:"الرحمن", meaning:"The Beneficent", verses:78, archive:"055_20260102" },
+      { number:56, name:"Al-Waqi'ah", arabic:"الواقعة", meaning:"The Inevitable", verses:96, archive:"056_20260102" },
+      { number:57, name:"Al-Hadid", arabic:"الحديد", meaning:"The Iron", verses:29, archive:"057_20260102" },
+      { number:58, name:"Al-Mujadilah", arabic:"المجادلة", meaning:"The Pleading Women", verses:22, archive:"058_20260102" },
+      { number:59, name:"Al-Hashr", arabic:"الحشر", meaning:"The Exile", verses:24, archive:"059_20260102" },
+      { number:60, name:"Al-Mumtahanah", arabic:"الممتحنة", meaning:"She That Is To Be Examined", verses:13, archive:"060_20260102" },
+      { number:61, name:"As-Saf", arabic:"الصف", meaning:"The Ranks", verses:14, archive:"061_20260102" },
+      { number:62, name:"Al-Jumu'ah", arabic:"الجمعة", meaning:"The Congregation", verses:11, archive:"062_20260102" },
+      { number:63, name:"Al-Munafiqun", arabic:"المنافقون", meaning:"The Hypocrites", verses:11, archive:"063_20260102" },
+      { number:64, name:"At-Taghabun", arabic:"التغابن", meaning:"Mutual Disillusion", verses:18, archive:"064_20260102" },
+      { number:65, name:"At-Talaq", arabic:"الطلاق", meaning:"The Divorce", verses:12, archive:"065_20260102" },
+      { number:66, name:"At-Tahrim", arabic:"التحريم", meaning:"The Prohibition", verses:12, archive:"066_20260102" },
+      { number:67, name:"Al-Mulk", arabic:"الملك", meaning:"The Sovereignty", verses:30, archive:"067_20260102" },
+      { number:68, name:"Al-Qalam", arabic:"القلم", meaning:"The Pen", verses:52, archive:"068_20260102" },
+      { number:69, name:"Al-Haqqah", arabic:"الحاقة", meaning:"The Reality", verses:52, archive:"069_20260102" },
+      { number:70, name:"Al-Ma'arij", arabic:"المعارج", meaning:"The Ascending Staircase", verses:44, archive:"070_20260102" },
+      { number:71, name:"Nuh", arabic:"نوح", meaning:"Noah", verses:28, archive:"071_20260102" },
+      { number:72, name:"Al-Jinn", arabic:"الجن", meaning:"The Jinn", verses:28, archive:"072_20260102" },
+      { number:73, name:"Al-Muzzammil", arabic:"المزمل", meaning:"The Enshrouded One", verses:20, archive:"073_20260102" },
+      { number:74, name:"Al-Muddaththir", arabic:"المدثر", meaning:"The Cloaked One", verses:56, archive:"074_20260102" },
+      { number:75, name:"Al-Qiyamah", arabic:"القيامة", meaning:"The Resurrection", verses:40, archive:"075_20260102" },
+      { number:76, name:"Al-Insan", arabic:"الإنسان", meaning:"The Man", verses:31, archive:"076_20260102" },
+      { number:77, name:"Al-Mursalat", arabic:"المرسلات", meaning:"The Emissaries", verses:50, archive:"077_20260102" },
+      { number:78, name:"An-Naba", arabic:"النبأ", meaning:"The Tidings", verses:40, archive:"078_20260102" },
+      { number:79, name:"An-Nazi'at", arabic:"النازعات", meaning:"Those Who Drag Forth", verses:46, archive:"079_20260102" },
+      { number:80, name:"'Abasa", arabic:"عبس", meaning:"He Frowned", verses:42, archive:"080_20260102" },
+      { number:81, name:"At-Takwir", arabic:"التكوير", meaning:"The Overthrowing", verses:29, archive:"081_20260102" },
+      { number:82, name:"Al-Infitar", arabic:"الانفطار", meaning:"The Cleaving", verses:19, archive:"082_20260102" },
+      { number:83, name:"Al-Mutaffifin", arabic:"المطففين", meaning:"The Defrauding", verses:36, archive:"083_20260102" },
+      { number:84, name:"Al-Inshiqaq", arabic:"الانشقاق", meaning:"The Sundering", verses:25, archive:"084_20260102" },
+      { number:85, name:"Al-Buruj", arabic:"البروج", meaning:"The Mansions Of The Stars", verses:22, archive:"085_20260102" },
+      { number:86, name:"At-Tariq", arabic:"الطارق", meaning:"The Nightcommer", verses:17, archive:"086_20260102" },
+      { number:87, name:"Al-A'la", arabic:"الأعلى", meaning:"The Most High", verses:19, archive:"087_20260102" },
+      { number:88, name:"Al-Ghashiyah", arabic:"الغاشية", meaning:"The Overwhelming", verses:26, archive:"088_20260102" },
+      { number:89, name:"Al-Fajr", arabic:"الفجر", meaning:"The Dawn", verses:30, archive:"089_20260102" },
+      { number:90, name:"Al-Balad", arabic:"البلد", meaning:"The City", verses:20, archive:"090_20260102" },
+      { number:91, name:"Ash-Shams", arabic:"الشمس", meaning:"The Sun", verses:15, archive:"091_20260102" },
+      { number:92, name:"Al-Layl", arabic:"الليل", meaning:"The Night", verses:21, archive:"092_20260102" },
+      { number:93, name:"Ad-Duhaa", arabic:"الضحى", meaning:"The Morning Hours", verses:11, archive:"093_20260102" },
+      { number:94, name:"Ash-Sharh", arabic:"الشرح", meaning:"The Relief", verses:8, archive:"094_20260107" },
+      { number:95, name:"At-Tin", arabic:"التين", meaning:"The Fig", verses:8, archive:"095_20260102" },
+      { number:96, name:"Al-Alaq", arabic:"العلق", meaning:"The Clot", verses:19, archive:"096_20260102" },
+      { number:97, name:"Al-Qadr", arabic:"القدر", meaning:"The Power", verses:5, archive:"097_20260102" },
+      { number:98, name:"Al-Bayyinah", arabic:"البينة", meaning:"The Clear Proof", verses:8, archive:"098_20260102" },
+      { number:99, name:"Az-Zalzalah", arabic:"الزلزلة", meaning:"The Earthquake", verses:8, archive:"099_20260102" },
+      { number:100, name:"Al-Adiyat", arabic:"العاديات", meaning:"The Courser", verses:11, archive:"100_20260102" },
+      { number:101, name:"Al-Qari'ah", arabic:"القارعة", meaning:"The Calamity", verses:11, archive:"101_20260102_202601" },
+      { number:102, name:"At-Takathur", arabic:"التكاثر", meaning:"Rivalry In Increase", verses:8, archive:"102_20260102" },
+      { number:103, name:"Al-'Asr", arabic:"العصر", meaning:"The Declining Day", verses:3, archive:"103_20260102" },
+      { number:104, name:"Al-Humazah", arabic:"الهمزة", meaning:"The Traducer", verses:9, archive:"104_20260102" },
+      { number:105, name:"Al-Fil", arabic:"الفيل", meaning:"The Elephant", verses:5, archive:"105_20260102" },
+      { number:106, name:"Quraysh", arabic:"قريش", meaning:"Quraysh", verses:4, archive:"106_20260102" },
+      { number:107, name:"Al-Ma'un", arabic:"الماعون", meaning:"Small Kindness", verses:7, archive:"107_20260102" },
+      { number:108, name:"Al-Kawthar", arabic:"الكوثر", meaning:"The Abundance", verses:3, archive:"108_20260102" },
+      { number:109, name:"Al-Kafirun", arabic:"الكافرون", meaning:"The Disbelievers", verses:6, archive:"109_20260102" },
+      { number:110, name:"An-Nasr", arabic:"النصر", meaning:"The Divine Support", verses:3, archive:"110_20260102" },
+      { number:111, name:"Al-Masad", arabic:"المسد", meaning:"The Palm Fiber", verses:5, archive:"111_20260102" },
+      { number:112, name:"Al-Ikhlas", arabic:"الإخلاص", meaning:"The Sincerity", verses:4, archive:"112_20260102" },
+      { number:113, name:"Al-Falaq", arabic:"الفلق", meaning:"The Daybreak", verses:5, archive:"113_20260102_202601" },
+      { number:114, name:"An-Nas", arabic:"الناس", meaning:"Mankind", verses:6, archive:"114_20260102" }
+    ];
+
+    let currentIndex = 0;  // 0-based
+    const wrapper = document.getElementById('cardWrapper');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progress = document.getElementById('progress');
+    const jumpInput = document.getElementById('jumpInput');
+    const jumpBtn = document.getElementById('jumpBtn');
+
+    function renderCard(index) {
+      const s = surahList[index];
+      const iframeSrc = `https://archive.org/embed/${s.archive}`;
+      wrapper.innerHTML = `
+        <div class="card" data-surah="${s.number}">
+          <h3>${s.number}. ${s.name} <span class="arabic">${s.arabic}</span></h3>
+          <p class="meaning">${s.meaning}</p>
+          <p class="verses">${s.verses} verses</p>
+          <iframe class="archive-frame" src="${iframeSrc}" width="100%" height="38" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+        </div>
+      `;
+      progress.innerText = `${index+1} / ${surahList.length}`;
+      jumpInput.value = index+1;   // keep input synced
+      // disable buttons at boundaries
+      prevBtn.disabled = (index === 0);
+      nextBtn.disabled = (index === surahList.length-1);
     }
 
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCard(currentIndex);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < surahList.length-1) {
+        currentIndex++;
+        renderCard(currentIndex);
+      }
+    });
+
+    // JUMP TO SURAH functionality
+    jumpBtn.addEventListener('click', () => {
+      let rawValue = jumpInput.value.trim();
+      if (rawValue === '') return;
+      let surahNumber = Number(rawValue);
+      // validate
+      if (isNaN(surahNumber) || surahNumber < 1 || surahNumber > surahList.length) {
+        alert(`Please enter a valid number between 1 and ${surahList.length}`);
+        jumpInput.value = currentIndex + 1; // reset to current
+        return;
+      }
+      // convert to zero-based index
+      const newIndex = surahNumber - 1;
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        renderCard(currentIndex);
+      }
+    });
+
+    // optional: allow Enter key in input
+    jumpInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        jumpBtn.click();
+      }
+    });
+
+    // initial render
+    renderCard(0);
+
+    // ---------- theme / menu / scroll functions ----------
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      icon.classList.add('rotate');
+      if (document.body.classList.contains('dark-mode')) { icon.src = "sun.png"; } 
+      else { icon.src = "moon.png"; }
+      setTimeout(() => icon.classList.remove('rotate'), 300);
+    }
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
       setThemeIcon();
     }
-
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
-    }
-
+    function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    window.addEventListener('scroll', () => {
+      document.getElementById('scrollToTop').classList.toggle('show', window.scrollY > 300);
+    });
     window.onload = () => {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
+      if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
       setThemeIcon();
     };
   </script>
