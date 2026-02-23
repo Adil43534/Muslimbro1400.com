@@ -49,10 +49,6 @@
       color: #007b5e;
     }
 
-    .dark-mode .nav-links a:hover {
-      color: #0c8;
-    }
-
     .theme-toggle {
       cursor: pointer;
       margin-left: 1rem;
