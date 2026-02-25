@@ -437,7 +437,7 @@
     }
 
     #footer-install-button::before {
-      /* content: "📲"; */
+      content: "📲";
       font-size: 1.3rem;
     }
 
@@ -454,113 +454,6 @@
       background: linear-gradient(135deg, #0c8, #0ad9a0);
       color: #1a1a1a;
       box-shadow: 0 5px 15px rgba(0, 200, 136, 0.3);
-    }
-
-    /* ===== IMPROVED PWA INSTALL BUTTON STYLES ===== */
-    #install-container {
-      display: none;
-      text-align: center;
-      margin: 25px 0;
-      animation: slideDown 0.5s ease, pulse 2s infinite;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0.4);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(7, 94, 84, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0);
-      }
-    }
-
-    #install-button {
-      background: linear-gradient(135deg, #075E54, #0a786a, #0c8);
-      background-size: 200% 200%;
-      color: white;
-      padding: 16px 40px;
-      border: none;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(7, 94, 84, 0.4);
-      transition: all 0.4s ease;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-      animation: gradientShift 3s ease infinite;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #install-button::before {
-      /* content: "📲"; */
-      font-size: 1.4rem;
-      transition: transform 0.3s ease;
-    }
-
-    #install-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(7, 94, 84, 0.6);
-      border-color: rgba(255, 255, 255, 0.4);
-    }
-
-    #install-button:hover::before {
-      transform: rotate(15deg) scale(1.1);
-    }
-
-    #install-button:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    /* Badge for install button */
-    #install-button::after {
-      content: "✨ NEW";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: #ff4757;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-      animation: badgePulse 1.5s infinite;
-    }
-
-    @keyframes badgePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .dark-mode #install-button {
-      background: linear-gradient(135deg, #0c8, #0ad9a0, #0c8);
-      background-size: 200% 200%;
-      color: #1a1a1a;
-      box-shadow: 0 8px 25px rgba(0, 200, 136, 0.4);
-      animation: gradientShift 3s ease infinite;
     }
 
     /* ===== FOOTER STYLES ===== */
@@ -1018,17 +911,6 @@
         display: block;
       }
 
-      #install-button {
-        padding: 14px 28px;
-        font-size: 1rem;
-      }
-
-      #install-button::after {
-        content: "NEW";
-        font-size: 0.6rem;
-        padding: 3px 6px;
-      }
-
       .footer {
         padding: 2rem 1rem 1rem;
       }
@@ -1092,7 +974,7 @@
       <div class="dropdown">
         <button class="dropbtn">More</button>
         <div class="dropdown-content">
-          <a href="#" id="dropdown-install-link">Download App</a>
+          <a href="#" id="dropdown-install-link">📲 Download App</a>
         </div>
       </div>
       
@@ -1106,17 +988,10 @@
     <img src="banner.png" alt="Banner" class="banner-img">
   </header>
 
-  <!-- IMPROVED PWA INSTALL BUTTON -->
-  <!-- <div id="install-container" style="display: none; text-align: center; margin: 20px 0;">
-    <button id="install-button">
-      Get App
-    </button>
-  </div> -->
-
   <!-- NEW: Welcome Popup Message -->
   <div class="popup-overlay" id="welcomePopup">
     <div class="popup-content">
-      <!-- <div class="popup-icon">📲</div> -->
+      <div class="popup-icon">📲</div>
       <h2>Get Our App!</h2>
       <p>Install MuslimBro1400 on your device for quick access to Quran, Hadith, and more. Get a better experience with our app!</p>
       <div class="popup-buttons">
@@ -1313,8 +1188,6 @@
   <script>
     // ===== PWA INSTALL LOGIC =====
     let deferredPrompt;
-    const installContainer = document.getElementById('install-container');
-    const installButton = document.getElementById('install-button');
     const footerInstallButton = document.getElementById('footer-install-button');
     const dropdownInstallLink = document.getElementById('dropdown-install-link');
     const popupOverlay = document.getElementById('welcomePopup');
@@ -1331,7 +1204,6 @@
 
     // Hide install buttons if already installed
     if (isAppInstalled()) {
-      installContainer.style.display = 'none';
       if (footerInstallButton) footerInstallButton.style.display = 'none';
       if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
       console.log('App already installed');
@@ -1344,7 +1216,6 @@
         return;
       }
       
-      installContainer.style.display = 'none';
       if (footerInstallButton) footerInstallButton.style.display = 'none';
       if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
       
@@ -1356,7 +1227,6 @@
       } else {
         console.log('❌ User dismissed');
         if (!isAppInstalled()) {
-          installContainer.style.display = 'block';
           if (footerInstallButton) footerInstallButton.style.display = 'block';
           if (dropdownInstallLink) dropdownInstallLink.style.display = 'block';
         }
@@ -1371,7 +1241,6 @@
       deferredPrompt = e;
       
       // Show install buttons
-      installContainer.style.display = 'block';
       if (footerInstallButton) footerInstallButton.style.display = 'block';
       if (dropdownInstallLink) dropdownInstallLink.style.display = 'block';
       
@@ -1387,10 +1256,6 @@
     });
 
     // Handle install button clicks
-    if (installButton) {
-      installButton.addEventListener('click', triggerInstallPrompt);
-    }
-
     if (footerInstallButton) {
       footerInstallButton.addEventListener('click', triggerInstallPrompt);
     }
@@ -1429,7 +1294,6 @@
     });
 
     window.addEventListener('appinstalled', () => {
-      installContainer.style.display = 'none';
       if (footerInstallButton) footerInstallButton.style.display = 'none';
       if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
       if (popupOverlay) popupOverlay.style.display = 'none';
@@ -1438,7 +1302,6 @@
 
     window.addEventListener('load', () => {
       if (isAppInstalled()) {
-        installContainer.style.display = 'none';
         if (footerInstallButton) footerInstallButton.style.display = 'none';
         if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
       }
