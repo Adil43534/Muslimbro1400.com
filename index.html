@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WCQ59DFF9M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WCQ59DFF9M');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCQ59DFF9M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WCQ59DFF9M');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - MuslimBro1400</title>
@@ -199,7 +198,6 @@
     }
 
     .welcome-box {
-      /* background-color: #dcfbff; */
       padding: 1rem;
       border-left: 4px solid #007b5e;
       margin-bottom: 2rem;
@@ -216,6 +214,47 @@
     .welcome-box .arabic {
       font-family: 'Amiri', serif;
       font-size: 1.1rem;
+    }
+
+    /* ===== PWA INSTALL BUTTON STYLES ===== */
+    #install-container {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #install-button {
+      background-color: #075E54;
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 123, 94, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    #install-button:hover {
+      background-color: #0a786a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 94, 0.4);
+    }
+
+    #install-button:active {
+      transform: translateY(0);
+    }
+
+    .dark-mode #install-button {
+      background-color: #0c8;
+      color: #1a1a1a;
+      box-shadow: 0 4px 15px rgba(0, 200, 136, 0.3);
+    }
+
+    .dark-mode #install-button:hover {
+      background-color: #0ad9a0;
     }
 
     @media (max-width: 600px) {
@@ -260,9 +299,14 @@
       .menu-toggle {
         display: block;
       }
+
+      #install-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
     }
 
-    /* Footer Styles */
+    /* Footer Styles - Complete as in your original */
     .footer {
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
       padding: 3rem 1rem 1.5rem;
@@ -519,7 +563,6 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
-    /* Social Links Styles */
     .social-links {
       display: flex;
       justify-content: center;
@@ -554,11 +597,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Facebook specific styles */
-    .social-link.facebook {
-      background-color: #fff;
-    }
-
     .social-link.facebook:hover {
       background-color: #395398;
     }
@@ -567,78 +605,24 @@
       fill: #fff;
     }
 
-    /* Twitter specific styles */
-    .social-link.twitter {
-      background-color: #fff;
-    }
-
     .social-link.twitter:hover {
       background-color: #111;
     }
 
-    /* Instagram specific styles - FIXED: Pink background fill on hover, white camera icon */
-    .social-link.instagram {
-      background-color: #fff;
-    }
-
     .social-link.instagram:hover {
-      background-color: #e4405f; /* Instagram pink background on hover */
+      background-color: #e4405f;
     }
 
-    /* Only change the fill of the camera icon paths, not the gradient background */
     .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
-      fill: #fff; /* Make only camera icon paths white on hover */
-    }
-
-    /* YouTube specific styles */
-    .social-link.youtube {
-      background-color: #fff;
+      fill: #fff;
     }
 
     .social-link.youtube:hover {
       background-color: #e52929;
     }
 
-    /* For dark mode */
     .dark-mode .social-link {
       background-color: #2c2c2c;
-    }
-
-    .dark-mode .social-link.facebook {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode .social-link.facebook:hover {
-      background-color: #395398;
-    }
-
-    .dark-mode .social-link.twitter {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode .social-link.twitter:hover {
-      background-color: #111;
-    }
-
-    /* For dark mode */
-    .dark-mode .social-link.instagram {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode .social-link.instagram:hover {
-      background-color: #e4405f; /* Instagram pink background on hover */
-    }
-
-    .dark-mode .social-link.instagram:hover svg path:not([fill="url(#instagram-gradient)"]):not([fill="url(#instagram-gradient2)"]) {
-      fill: #fff; /* Make only camera icon paths white on hover */
-    }
-
-    .dark-mode .social-link.youtube {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode .social-link.youtube:hover {
-      background-color: #e52929;
     }
 
     .footer-bottom {
@@ -694,138 +678,32 @@
       color: #0c8;
     }
 
-    /* Footer Responsive Styles */
-    
-    /* Large Desktop (1200px and up) */
-    @media (min-width: 1200px) {
-      .footer-content {
-        gap: 3rem;
-      }
-      
-      .footer-section {
-        padding: 2rem;
-      }
-      
-      .footer-logo img {
-        width: 90px;
-        height: 90px;
-      }
-    }
-
-    /* Desktop (992px - 1199px) */
-    @media (max-width: 1199px) {
-      .footer-content {
-        gap: 2rem;
-      }
-      
-      .footer-section {
-        padding: 1.5rem;
-      }
-      
-      .footer-logo img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    /* Tablet Landscape (992px - 1199px) */
     @media (max-width: 992px) {
       .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
 
-      .footer-section {
-        padding: 1.3rem;
-      }
-
       .footer-logo-section {
         grid-column: 1 / -1;
         order: -1;
       }
-
-      .footer-links-section {
-        order: 1;
-      }
-
-      .footer-contact {
-        order: 2;
-      }
-
-      .footer-bottom {
-        padding-top: 1.5rem;
-        margin-top: 1.5rem;
-      }
     }
 
-    /* Tablet Portrait (768px - 991px) */
-    @media (max-width: 991px) {
-      .footer {
-        padding: 2.5rem 1.5rem 1.5rem;
-      }
-
-      .footer-content {
-        gap: 1.25rem;
-      }
-
-      .footer-section {
-        padding: 1.25rem;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.7rem;
-      }
-
-      .footer-section-title {
-        font-size: 1.2rem;
-      }
-    }
-
-    /* Tablet (768px) */
     @media (max-width: 768px) {
       .footer-content {
         grid-template-columns: 1fr;
         gap: 1.25rem;
       }
-
-      .footer-section {
-        padding: 1.2rem;
-      }
-
-      .footer-logo-section {
-        order: -1;
-      }
-
-      .footer-links-section {
-        order: 1;
-      }
-
-      .footer-contact {
-        order: 2;
-      }
-
-      .email-box {
-        padding: 1rem 1.2rem;
-      }
-
-      .email-box a {
-        font-size: 0.9rem;
-      }
     }
 
-    /* Large Mobile (576px - 767px) */
     @media (max-width: 576px) {
       .footer {
         padding: 2rem 1rem 1rem;
       }
 
-      .footer-content {
-        gap: 1rem;
-      }
-
       .footer-section {
         padding: 1rem;
-        border-radius: 12px;
       }
 
       .footer-logo img {
@@ -835,197 +713,6 @@
 
       .footer-logo h2 {
         font-size: 1.5rem;
-      }
-
-      .footer-tagline {
-        font-size: 0.9rem;
-      }
-
-      .footer-section-title {
-        font-size: 1.15rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.6rem;
-      }
-
-      .footer-section-title::after {
-        width: 40px;
-        height: 2px;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .footer-links li {
-        margin: 0.4rem 0;
-      }
-
-      .footer-links a {
-        padding: 0.4rem 1rem 0.4rem 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .social-links {
-        gap: 0.8rem;
-      }
-
-      .social-link {
-        width: 42px;
-        height: 42px;
-      }
-
-      .social-link svg {
-        width: 22px;
-        height: 22px;
-      }
-
-      .email-box {
-        padding: 1rem;
-        border-radius: 10px;
-      }
-
-      .email-box a {
-        font-size: 0.85rem;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-
-      .email-box a::before {
-        font-size: 1rem;
-      }
-
-      .footer-bottom {
-        padding-top: 1.25rem;
-        margin-top: 1.25rem;
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Medium Mobile (480px) */
-    @media (max-width: 480px) {
-      .footer {
-        padding: 1.75rem 0.75rem 0.75rem;
-      }
-
-      .footer-section {
-        padding: 0.9rem;
-        border-radius: 10px;
-      }
-
-      .footer-logo img {
-        width: 65px;
-        height: 65px;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.4rem;
-      }
-
-      .footer-tagline {
-        font-size: 0.85rem;
-      }
-
-      .bismillah {
-        font-size: 1.1rem;
-      }
-
-      .footer-section-title {
-        font-size: 1.1rem;
-      }
-
-      .footer-links a {
-        padding: 0.35rem 0.8rem 0.35rem 1.3rem;
-        font-size: 0.9rem;
-      }
-
-      .footer-links a:hover {
-        padding-left: 1.5rem;
-      }
-
-      .social-link {
-        width: 40px;
-        height: 40px;
-      }
-
-      .social-link svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .footer-bottom {
-        padding-top: 1rem;
-        margin-top: 1rem;
-        font-size: 0.8rem;
-      }
-    }
-
-    /* Small Mobile (375px) */
-    @media (max-width: 400px) {
-      .footer {
-        padding: 1.5rem 0.5rem 0.5rem;
-      }
-
-      .footer-section {
-        padding: 0.8rem;
-        border-radius: 8px;
-      }
-
-      .footer-logo img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .footer-logo h2 {
-        font-size: 1.3rem;
-      }
-
-      .footer-tagline {
-        font-size: 0.8rem;
-      }
-
-      .bismillah {
-        font-size: 1rem;
-      }
-
-      .footer-section-title {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .footer-links a {
-        padding: 0.3rem 0.6rem 0.3rem 1.2rem;
-        font-size: 0.85rem;
-      }
-
-      .social-link {
-        width: 38px;
-        height: 38px;
-      }
-
-      .social-link svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      .email-box {
-        padding: 0.8rem;
-      }
-
-      .email-box a {
-        font-size: 0.8rem;
-      }
-
-      .footer-bottom {
-        padding-top: 0.8rem;
-        margin-top: 0.8rem;
-        font-size: 0.75rem;
-      }
-
-      .footer-bottom p {
-        margin: 0.4rem 0;
       }
     }
   </style>
@@ -1053,6 +740,13 @@
   <header class="banner">
     <img src="banner.png" alt="Banner" class="banner-img">
   </header>
+
+  <!-- ===== PWA INSTALL BUTTON ===== -->
+  <div id="install-container" style="display: none; text-align: center; margin: 20px 0;">
+    <button id="install-button">
+      📲 Install MuslimBro1400 App
+    </button>
+  </div>
 
   <main class="container">
     <div class="welcome-box">
@@ -1092,52 +786,6 @@
     </section>
   </main>
   
-  <script>
-    // --- Theme Logic ---
-    function setThemeIcon() {
-      const icon = document.getElementById('theme-icon');
-      if (!icon) return;
-      icon.classList.remove('rotate');
-      void icon.offsetWidth;
-      icon.classList.add('rotate');
-  
-      if (document.body.classList.contains('dark-mode')) {
-        icon.src = "sun.png";
-        icon.alt = "Switch to light mode";
-      } else {
-        icon.src = "moon.png";
-        icon.alt = "Switch to dark mode";
-      }
-    }
-  
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-      setThemeIcon();
-    }
-  
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
-    }
-  
-    // --- Initialize Theme and Service Worker ---
-    window.addEventListener('load', () => {
-      // Load Theme
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-      setThemeIcon();
-  
-      // Register PWA Service Worker
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('Service Worker Registered!'))
-          .catch(err => console.log('Service Worker Failed:', err));
-      }
-    });
-  </script>
-
   <footer class="footer">
     <div class="footer-pattern"></div>
     <div class="footer-content">
@@ -1150,7 +798,6 @@
         <p class="footer-tagline">Your Trusted Islamic Resource</p>
         <div class="social-links">
           <a href="#" class="social-link facebook" title="Facebook">
-            <!-- Updated Facebook SVG -->
             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <defs>
                 <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
@@ -1160,7 +807,6 @@
             </svg>
           </a>
           <a href="https://x.com/MuslimBro1400" class="social-link twitter" title="Twitter" target="_blank">
-            <!-- Twitter SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
               <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
@@ -1171,7 +817,6 @@
             </svg>
           </a>
           <a href="https://www.instagram.com/muslimbro1400" class="social-link instagram" title="Instagram" target="_blank">
-            <!-- Instagram SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <defs>
                 <radialGradient id="instagram-gradient" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
@@ -1194,7 +839,6 @@
             </svg>
           </a>
           <a href="https://www.youtube.com/@muslimbro1400" class="social-link youtube" title="YouTube" target="_blank">
-            <!-- YouTube SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
               <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
@@ -1225,7 +869,6 @@
         </div>
         <div class="social-links" style="margin-top: 1rem;">
           <a href="#" class="social-link facebook" title="Facebook">
-            <!-- Updated Facebook SVG -->
             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <defs>
                 <style>.cls-1{fill:#395398;}.cls-2{fill:#fff;}</style>
@@ -1235,7 +878,6 @@
             </svg>
           </a>
           <a href="https://x.com/MuslimBro1400" class="social-link twitter" title="Twitter" target="_blank">
-            <!-- Twitter SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <path fill="#111" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
               <polygon fill="#fff" points="184.14 59.9 184.14 59.9 184.14 59.9 184.14 59.9"/>
@@ -1246,7 +888,6 @@
             </svg>
           </a>
           <a href="https://www.instagram.com/muslimbro1400" class="social-link instagram" title="Instagram" target="_blank">
-            <!-- Instagram SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <defs>
                 <radialGradient id="instagram-gradient2" cx="81.51" cy="-395.56" fx="-51.82007726007717" r="317.66" gradientTransform="matrix(0.65, -0.76, -0.61, -0.53, -185.81, -27)" gradientUnits="userSpaceOnUse">
@@ -1269,7 +910,6 @@
             </svg>
           </a>
           <a href="https://www.youtube.com/@muslimbro1400" class="social-link youtube" title="YouTube" target="_blank">
-            <!-- YouTube SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.74 224.74">
               <path fill="#e52929" d="M224.74,112.37A112.37,112.37,0,1,1,112.37,0,112.37,112.37,0,0,1,224.74,112.37Z" transform="translate(0 0.01)"/>
               <path fill="#fff" d="M181.69,93.87A30.17,30.17,0,0,0,151.52,63.7H73.22A30.17,30.17,0,0,0,43.05,93.87h0v37A30.17,30.17,0,0,0,73.22,161h78.3a30.17,30.17,0,0,0,30.17-30.17h0Zm-50.32,19.57L100.2,130.56c-1.36.73-2.56-.25-2.56-1.79V93.64c0-1.56,1.24-2.54,2.59-1.77l31.41,18a2,2,0,0,1,.69,2.74A1.94,1.94,0,0,1,131.37,113.44Z" transform="translate(0 0.01)"/>
@@ -1284,5 +924,110 @@
       <p>Made with ❤️ for the Ummah</p>
     </div>
   </footer>
+
+  <script>
+    // ===== PWA INSTALL LOGIC =====
+    let deferredPrompt;
+    const installContainer = document.getElementById('install-container');
+    const installButton = document.getElementById('install-button');
+
+    // Listen for the beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installContainer.style.display = 'block';
+      console.log('✅ beforeinstallprompt fired - app can be installed');
+    });
+
+    // Handle install button click
+    if (installButton) {
+      installButton.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+          console.log('No install prompt available');
+          return;
+        }
+        
+        // Hide the button
+        installContainer.style.display = 'none';
+        
+        // Show the install prompt
+        deferredPrompt.prompt();
+        
+        // Wait for the user to respond
+        const choiceResult = await deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          console.log('✅ User accepted the install prompt');
+        } else {
+          console.log('❌ User dismissed the install prompt');
+        }
+        
+        // Clear the saved prompt
+        deferredPrompt = null;
+      });
+    }
+
+    // Hide the button if the app is already installed
+    window.addEventListener('appinstalled', () => {
+      installContainer.style.display = 'none';
+      console.log('✅ PWA was installed successfully');
+    });
+
+    // Also check if already in standalone mode (already installed)
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      installContainer.style.display = 'none';
+      console.log('App already installed - running in standalone mode');
+    }
+
+    // ===== THEME LOGIC =====
+    function setThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      if (!icon) return;
+      icon.classList.remove('rotate');
+      void icon.offsetWidth;
+      icon.classList.add('rotate');
+  
+      if (document.body.classList.contains('dark-mode')) {
+        icon.src = "sun.png";
+        icon.alt = "Switch to light mode";
+      } else {
+        icon.src = "moon.png";
+        icon.alt = "Switch to dark mode";
+      }
+    }
+  
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      setThemeIcon();
+    }
+  
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  
+    // ===== INITIALIZATION =====
+    window.addEventListener('load', () => {
+      // Load Theme
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      setThemeIcon();
+  
+      // Register PWA Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('✅ Service Worker Registered!', reg))
+          .catch(err => console.log('❌ Service Worker Failed:', err));
+      }
+    });
+
+    // Make functions global for onclick handlers
+    window.toggleTheme = toggleTheme;
+    window.toggleMenu = toggleMenu;
+  </script>
 </body>
 </html>
