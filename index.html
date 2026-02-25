@@ -12,8 +12,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - MuslimBro1400</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- ===== FIXED: MULTIPLE ICON FORMATS FOR BETTER COMPATIBILITY ===== -->
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="logo-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="logo-512x512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  
   <meta name="theme-color" content="#075E54">
   <link rel="manifest" href="./manifest.json">
 
@@ -216,18 +224,18 @@
       font-size: 1.1rem;
     }
 
-    /* ===== PWA INSTALL BUTTON STYLES ===== */
+    /* ===== IMPROVED PWA INSTALL BUTTON STYLES ===== */
     #install-container {
       display: none;
       text-align: center;
-      margin: 20px 0;
-      animation: slideDown 0.5s ease;
+      margin: 25px 0;
+      animation: slideDown 0.5s ease, pulse 2s infinite;
     }
 
     @keyframes slideDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
       }
       to {
         opacity: 1;
@@ -235,44 +243,95 @@
       }
     }
 
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(7, 94, 84, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0);
+      }
+    }
+
     #install-button {
-      background: linear-gradient(135deg, #075E54, #0a786a);
+      background: linear-gradient(135deg, #075E54, #0a786a, #0c8);
+      background-size: 200% 200%;
       color: white;
-      padding: 14px 32px;
+      padding: 16px 40px;
       border: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1.1rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(7, 94, 84, 0.3);
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
+      box-shadow: 0 8px 25px rgba(7, 94, 84, 0.4);
+      transition: all 0.4s ease;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 3s ease infinite;
     }
 
-    #install-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(7, 94, 84, 0.4);
-    }
-
-    #install-button:active {
-      transform: translateY(0);
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     #install-button::before {
       content: "📲";
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+
+    #install-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(7, 94, 84, 0.6);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    #install-button:hover::before {
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    #install-button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Badge for install button */
+    #install-button::after {
+      content: "✨ NEW";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff4757;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+      animation: badgePulse 1.5s infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     .dark-mode #install-button {
-      background: linear-gradient(135deg, #0c8, #0ad9a0);
+      background: linear-gradient(135deg, #0c8, #0ad9a0, #0c8);
+      background-size: 200% 200%;
       color: #1a1a1a;
-      box-shadow: 0 4px 15px rgba(0, 200, 136, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 200, 136, 0.4);
+      animation: gradientShift 3s ease infinite;
     }
 
-    /* ===== FOOTER STYLES ===== */
+    /* ===== FOOTER STYLES (Keep your existing footer styles) ===== */
     .footer {
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
       padding: 3rem 1rem 1.5rem;
@@ -708,8 +767,14 @@
       }
 
       #install-button {
-        padding: 12px 24px;
+        padding: 14px 28px;
         font-size: 1rem;
+      }
+
+      #install-button::after {
+        content: "NEW";
+        font-size: 0.6rem;
+        padding: 3px 6px;
       }
 
       .footer {
@@ -771,10 +836,10 @@
     <img src="banner.png" alt="Banner" class="banner-img">
   </header>
 
-  <!-- PWA INSTALL BUTTON -->
+  <!-- IMPROVED PWA INSTALL BUTTON -->
   <div id="install-container" style="display: none; text-align: center; margin: 20px 0;">
     <button id="install-button">
-      Install MuslimBro1400 App
+      Get App
     </button>
   </div>
 
@@ -956,7 +1021,7 @@
   </footer>
 
   <script>
-    // ===== FIXED PWA INSTALL LOGIC =====
+    // ===== PWA INSTALL LOGIC =====
     let deferredPrompt;
     const installContainer = document.getElementById('install-container');
     const installButton = document.getElementById('install-button');
@@ -977,55 +1042,40 @@
 
     // Listen for beforeinstallprompt event
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
-      // Stash the event so it can be triggered later
       deferredPrompt = e;
-      
-      // Show the install button with animation
       installContainer.style.display = 'block';
-      
-      console.log('✅ Install prompt available - button shown');
+      console.log('✅ Install prompt available');
     });
 
     // Handle install button click
     if (installButton) {
       installButton.addEventListener('click', async () => {
         if (!deferredPrompt) {
-          console.log('No install prompt available');
-          // Fallback: Show manual instructions
           alert('To install: Tap menu (⋮) → "Add to Home screen"');
           return;
         }
         
-        // Hide the button
         installContainer.style.display = 'none';
-        
-        // Show the install prompt
         deferredPrompt.prompt();
         
-        // Wait for the user to respond
         const choiceResult = await deferredPrompt.userChoice;
         if (choiceResult.outcome === 'accepted') {
-          console.log('✅ User accepted the install prompt');
+          console.log('✅ User accepted');
         } else {
-          console.log('❌ User dismissed the install prompt');
-          // Show button again if they dismissed
+          console.log('❌ User dismissed');
           installContainer.style.display = 'block';
         }
         
-        // Clear the saved prompt
         deferredPrompt = null;
       });
     }
 
-    // Hide the button when app is installed
     window.addEventListener('appinstalled', () => {
       installContainer.style.display = 'none';
-      console.log('✅ PWA installed successfully');
+      console.log('✅ PWA installed');
     });
 
-    // Also check if user manually installed via browser menu
     window.addEventListener('load', () => {
       if (isAppInstalled()) {
         installContainer.style.display = 'none';
@@ -1060,40 +1110,19 @@
       navLinks.classList.toggle('active');
     }
   
-    // ===== INITIALIZATION =====
     window.addEventListener('load', () => {
-      // Load Theme
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
   
-      // Register PWA Service Worker with better error handling
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
-          .then(reg => {
-            console.log('✅ Service Worker Registered!', reg.scope);
-            
-            // Check for updates
-            reg.addEventListener('updatefound', () => {
-              const newWorker = reg.installing;
-              console.log('New service worker installing...');
-            });
-          })
-          .catch(err => {
-            console.log('❌ Service Worker Failed:', err);
-          });
-      }
-
-      // Check if the browser supports PWA
-      if ('BeforeInstallPromptEvent' in window) {
-        console.log('Browser supports PWA installation');
-      } else {
-        console.log('Browser may not support automatic PWA install');
+          .then(reg => console.log('✅ Service Worker Registered!'))
+          .catch(err => console.log('❌ Service Worker Failed:', err));
       }
     });
 
-    // Make functions global
     window.toggleTheme = toggleTheme;
     window.toggleMenu = toggleMenu;
   </script>
