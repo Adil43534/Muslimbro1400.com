@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="logo-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="logo-512x512.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   
   <meta name="theme-color" content="#075E54">
   <link rel="manifest" href="./manifest.json">
@@ -42,10 +42,6 @@
     body.dark-mode {
       background-color: #1a1a1a;
       color: #e0e0e0;
-    }
-
-    body.popup-open {
-      overflow: hidden;
     }
 
     .navbar {
@@ -84,77 +80,6 @@
 
     .nav-links a:hover {
       color: #007b5e;
-    }
-
-    /* Dropdown Styles - NEW */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      margin-left: 1rem;
-    }
-
-    .dropbtn {
-      background: transparent;
-      color: #333;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-
-    .dark-mode .dropbtn {
-      color: #e0e0e0;
-    }
-
-    .dropbtn:hover {
-      color: #007b5e;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      border-radius: 4px;
-      z-index: 1000;
-    }
-
-    .dark-mode .dropdown-content {
-      background-color: #2c2c2c;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content a {
-      color: #333;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      margin: 0;
-      text-align: left;
-    }
-
-    .dark-mode .dropdown-content a {
-      color: #e0e0e0;
-    }
-
-    .dropdown-content a:hover {
-      background-color: rgba(7, 94, 84, 0.1);
-      color: #007b5e;
-    }
-
-    .dark-mode .dropdown-content a:hover {
-      background-color: rgba(0, 200, 136, 0.1);
-      color: #0c8;
     }
 
     .theme-toggle {
@@ -299,37 +224,18 @@
       font-size: 1.1rem;
     }
 
-    /* ===== POPUP MESSAGE STYLES - NEW ===== */
-    .popup-overlay {
+    /* ===== IMPROVED PWA INSTALL BUTTON STYLES ===== */
+    #install-container {
       display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(3px);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-content {
-      background: white;
-      max-width: 400px;
-      width: 90%;
-      border-radius: 12px;
-      padding: 2rem;
       text-align: center;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      animation: popupFadeIn 0.4s ease;
+      margin: 25px 0;
+      animation: slideDown 0.5s ease, pulse 2s infinite;
     }
 
-    @keyframes popupFadeIn {
+    @keyframes slideDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
       }
       to {
         opacity: 1;
@@ -337,126 +243,95 @@
       }
     }
 
-    .dark-mode .popup-content {
-      background: #2c2c2c;
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(7, 94, 84, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(7, 94, 84, 0);
+      }
     }
 
-    .popup-icon {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .popup-content h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #075E54;
-    }
-
-    .dark-mode .popup-content h2 {
-      color: #0c8;
-    }
-
-    .popup-content p {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-
-    .dark-mode .popup-content p {
-      color: #aaa;
-    }
-
-    .popup-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .popup-btn {
-      padding: 0.8rem 1.8rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .popup-btn.download {
-      background: linear-gradient(135deg, #075E54, #0c8);
+    #install-button {
+      background: linear-gradient(135deg, #075E54, #0a786a, #0c8);
+      background-size: 200% 200%;
       color: white;
-    }
-
-    .popup-btn.download:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(7, 94, 84, 0.3);
-    }
-
-    .popup-btn.not-now {
-      background: #f0f0f0;
-      color: #333;
-    }
-
-    .dark-mode .popup-btn.not-now {
-      background: #3a3a3a;
-      color: #e0e0e0;
-    }
-
-    .popup-btn.not-now:hover {
-      background: #e0e0e0;
-      transform: translateY(-2px);
-    }
-
-    .dark-mode .popup-btn.not-now:hover {
-      background: #4a4a4a;
-    }
-
-    /* ===== FOOTER INSTALL BUTTON - NEW ===== */
-    .footer-install-btn {
-      margin-top: 1.5rem;
-      width: 100%;
-    }
-
-    #footer-install-button {
-      background: linear-gradient(135deg, #075E54, #0c8);
-      color: white;
-      padding: 1rem 2rem;
+      padding: 16px 40px;
       border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(7, 94, 84, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(7, 94, 84, 0.4);
+      transition: all 0.4s ease;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      width: 100%;
-      justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 3s ease infinite;
     }
 
-    #footer-install-button::before {
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #install-button::before {
       content: "📲";
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
     }
 
-    #footer-install-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(7, 94, 84, 0.5);
+    #install-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(7, 94, 84, 0.6);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
-    #footer-install-button:active {
-      transform: translateY(0);
+    #install-button:hover::before {
+      transform: rotate(15deg) scale(1.1);
     }
 
-    .dark-mode #footer-install-button {
-      background: linear-gradient(135deg, #0c8, #0ad9a0);
+    #install-button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Badge for install button */
+    #install-button::after {
+      content: "✨ NEW";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff4757;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+      animation: badgePulse 1.5s infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .dark-mode #install-button {
+      background: linear-gradient(135deg, #0c8, #0ad9a0, #0c8);
+      background-size: 200% 200%;
       color: #1a1a1a;
-      box-shadow: 0 5px 15px rgba(0, 200, 136, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 200, 136, 0.4);
+      animation: gradientShift 3s ease infinite;
     }
 
-    /* ===== FOOTER STYLES ===== */
+    /* ===== FOOTER STYLES (Keep your existing footer styles) ===== */
     .footer {
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
       padding: 3rem 1rem 1.5rem;
@@ -846,26 +721,6 @@
         grid-template-columns: 1fr;
         gap: 1.25rem;
       }
-
-      .dropdown {
-        width: 100%;
-        margin-left: 0;
-      }
-
-      .dropdown-content {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        margin-top: 0.5rem;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: none;
-      }
-
-      .dropdown.active .dropdown-content {
-        display: block;
-      }
     }
 
     @media (max-width: 600px) {
@@ -911,6 +766,17 @@
         display: block;
       }
 
+      #install-button {
+        padding: 14px 28px;
+        font-size: 1rem;
+      }
+
+      #install-button::after {
+        content: "NEW";
+        font-size: 0.6rem;
+        padding: 3px 6px;
+      }
+
       .footer {
         padding: 2rem 1rem 1rem;
       }
@@ -926,15 +792,6 @@
 
       .footer-logo h2 {
         font-size: 1.5rem;
-      }
-
-      .popup-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .popup-btn {
-        width: 100%;
       }
     }
 
@@ -969,15 +826,6 @@
       <a href="quran-recitations.html">Recitations</a>
       <a href="islamic-calendar.html">Calendar</a>
       <a href="about.html">About</a>
-      
-      <!-- NEW: More Dropdown with Download App -->
-      <div class="dropdown">
-        <button class="dropbtn">More</button>
-        <div class="dropdown-content">
-          <a href="#" id="dropdown-install-link">📲 Download App</a>
-        </div>
-      </div>
-      
       <button class="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="moon.png" alt="Toggle Theme" title="Toggle light/dark mode" />
       </button>
@@ -988,17 +836,11 @@
     <img src="banner.png" alt="Banner" class="banner-img">
   </header>
 
-  <!-- NEW: Welcome Popup Message -->
-  <div class="popup-overlay" id="welcomePopup">
-    <div class="popup-content">
-      <div class="popup-icon">📲</div>
-      <h2>Get Our App!</h2>
-      <p>Install MuslimBro1400 on your device for quick access to Quran, Hadith, and more. Get a better experience with our app!</p>
-      <div class="popup-buttons">
-        <button class="popup-btn download" id="popupDownloadBtn">Download</button>
-        <button class="popup-btn not-now" id="popupNotNowBtn">Not Now</button>
-      </div>
-    </div>
+  <!-- IMPROVED PWA INSTALL BUTTON -->
+  <div id="install-container" style="display: none; text-align: center; margin: 20px 0;">
+    <button id="install-button">
+      Get App
+    </button>
   </div>
 
   <main class="container">
@@ -1169,13 +1011,6 @@
             </svg>
           </a>
         </div>
-
-        <!-- NEW: Install button moved to footer below social media links -->
-        <div class="footer-install-btn">
-          <button id="footer-install-button">
-            Install App
-          </button>
-        </div>
       </div>
     </div>
     
@@ -1188,11 +1023,8 @@
   <script>
     // ===== PWA INSTALL LOGIC =====
     let deferredPrompt;
-    const footerInstallButton = document.getElementById('footer-install-button');
-    const dropdownInstallLink = document.getElementById('dropdown-install-link');
-    const popupOverlay = document.getElementById('welcomePopup');
-    const popupDownloadBtn = document.getElementById('popupDownloadBtn');
-    const popupNotNowBtn = document.getElementById('popupNotNowBtn');
+    const installContainer = document.getElementById('install-container');
+    const installButton = document.getElementById('install-button');
 
     // Check if app is already installed
     function isAppInstalled() {
@@ -1202,108 +1034,51 @@
              window.matchMedia('(display-mode: minimal-ui)').matches;
     }
 
-    // Hide install buttons if already installed
+    // Hide button if already installed
     if (isAppInstalled()) {
-      if (footerInstallButton) footerInstallButton.style.display = 'none';
-      if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
+      installContainer.style.display = 'none';
       console.log('App already installed');
-    }
-
-    // Function to trigger install prompt
-    async function triggerInstallPrompt() {
-      if (!deferredPrompt) {
-        alert('To install: Tap menu (⋮) → "Add to Home screen"');
-        return;
-      }
-      
-      if (footerInstallButton) footerInstallButton.style.display = 'none';
-      if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
-      
-      deferredPrompt.prompt();
-      
-      const choiceResult = await deferredPrompt.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        console.log('✅ User accepted');
-      } else {
-        console.log('❌ User dismissed');
-        if (!isAppInstalled()) {
-          if (footerInstallButton) footerInstallButton.style.display = 'block';
-          if (dropdownInstallLink) dropdownInstallLink.style.display = 'block';
-        }
-      }
-      
-      deferredPrompt = null;
     }
 
     // Listen for beforeinstallprompt event
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      
-      // Show install buttons
-      if (footerInstallButton) footerInstallButton.style.display = 'block';
-      if (dropdownInstallLink) dropdownInstallLink.style.display = 'block';
-      
+      installContainer.style.display = 'block';
       console.log('✅ Install prompt available');
-      
-      // Show welcome popup after 1 second (only if not installed and not shown before)
-      if (!isAppInstalled() && !localStorage.getItem('popupShown')) {
-        setTimeout(() => {
-          popupOverlay.style.display = 'flex';
-          document.body.classList.add('popup-open');
-        }, 1000);
-      }
     });
 
-    // Handle install button clicks
-    if (footerInstallButton) {
-      footerInstallButton.addEventListener('click', triggerInstallPrompt);
-    }
-
-    if (dropdownInstallLink) {
-      dropdownInstallLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        triggerInstallPrompt();
+    // Handle install button click
+    if (installButton) {
+      installButton.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+          alert('To install: Tap menu (⋮) → "Add to Home screen"');
+          return;
+        }
+        
+        installContainer.style.display = 'none';
+        deferredPrompt.prompt();
+        
+        const choiceResult = await deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          console.log('✅ User accepted');
+        } else {
+          console.log('❌ User dismissed');
+          installContainer.style.display = 'block';
+        }
+        
+        deferredPrompt = null;
       });
     }
-
-    // Handle popup buttons
-    if (popupDownloadBtn) {
-      popupDownloadBtn.addEventListener('click', () => {
-        popupOverlay.style.display = 'none';
-        document.body.classList.remove('popup-open');
-        triggerInstallPrompt();
-      });
-    }
-
-    if (popupNotNowBtn) {
-      popupNotNowBtn.addEventListener('click', () => {
-        popupOverlay.style.display = 'none';
-        document.body.classList.remove('popup-open');
-        localStorage.setItem('popupShown', 'true');
-      });
-    }
-
-    // Close popup if clicked outside
-    window.addEventListener('click', (e) => {
-      if (e.target === popupOverlay) {
-        popupOverlay.style.display = 'none';
-        document.body.classList.remove('popup-open');
-        localStorage.setItem('popupShown', 'true');
-      }
-    });
 
     window.addEventListener('appinstalled', () => {
-      if (footerInstallButton) footerInstallButton.style.display = 'none';
-      if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
-      if (popupOverlay) popupOverlay.style.display = 'none';
+      installContainer.style.display = 'none';
       console.log('✅ PWA installed');
     });
 
     window.addEventListener('load', () => {
       if (isAppInstalled()) {
-        if (footerInstallButton) footerInstallButton.style.display = 'none';
-        if (dropdownInstallLink) dropdownInstallLink.style.display = 'none';
+        installContainer.style.display = 'none';
       }
     });
 
@@ -1333,17 +1108,6 @@
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
-    }
-
-    // Handle dropdown on mobile
-    const dropbtn = document.querySelector('.dropbtn');
-    if (dropbtn) {
-      dropbtn.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          document.querySelector('.dropdown').classList.toggle('active');
-        }
-      });
     }
   
     window.addEventListener('load', () => {
