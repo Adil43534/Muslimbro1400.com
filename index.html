@@ -15,6 +15,9 @@
   <title>Home - MuslimBro1400</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.png" type="image/x-icon">
+  <meta name="theme-color" content="#075E54">
+  <link rel="manifest" href="./manifest.json">
+
   <style>
     * {
       box-sizing: border-box;
@@ -1088,14 +1091,16 @@
       </a>
     </section>
   </main>
-
+  
   <script>
+    // --- Theme Logic ---
     function setThemeIcon() {
       const icon = document.getElementById('theme-icon');
+      if (!icon) return;
       icon.classList.remove('rotate');
       void icon.offsetWidth;
       icon.classList.add('rotate');
-
+  
       if (document.body.classList.contains('dark-mode')) {
         icon.src = "sun.png";
         icon.alt = "Switch to light mode";
@@ -1104,24 +1109,33 @@
         icon.alt = "Switch to dark mode";
       }
     }
-
+  
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
       setThemeIcon();
     }
-
+  
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
     }
-
-    window.onload = () => {
+  
+    // --- Initialize Theme and Service Worker ---
+    window.addEventListener('load', () => {
+      // Load Theme
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
       }
       setThemeIcon();
-    }
+  
+      // Register PWA Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker Registered!'))
+          .catch(err => console.log('Service Worker Failed:', err));
+      }
+    });
   </script>
 
   <footer class="footer">
