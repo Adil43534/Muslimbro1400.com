@@ -54,7 +54,7 @@
       <p class="author">Al-Imam ibn Kathir</p>
       <div class="lang-select">
         <label for="language">Read in:</label>
-        <select id="language" onchange="renderChapter()"></select>
+        <select id="language" onchange="renderAllChapters()"></select>
       </div>
     </div>
 
@@ -93,7 +93,36 @@
       </ol>
     </section>
 
+    <!-- Individual chapter sections -->
     <section class="chapter" id="prophet1"></section>
+    <section class="chapter" id="prophet2"></section>
+    <section class="chapter" id="prophet3"></section>
+    <section class="chapter" id="prophet4"></section>
+    <section class="chapter" id="prophet5"></section>
+    <section class="chapter" id="prophet6"></section>
+    <section class="chapter" id="prophet7"></section>
+    <section class="chapter" id="prophet8"></section>
+    <section class="chapter" id="prophet9"></section>
+    <section class="chapter" id="prophet10"></section>
+    <section class="chapter" id="prophet11"></section>
+    <section class="chapter" id="prophet12"></section>
+    <section class="chapter" id="prophet13"></section>
+    <section class="chapter" id="prophet14"></section>
+    <section class="chapter" id="prophet15"></section>
+    <section class="chapter" id="prophet16"></section>
+    <section class="chapter" id="prophet17"></section>
+    <section class="chapter" id="prophet18"></section>
+    <section class="chapter" id="prophet19"></section>
+    <section class="chapter" id="prophet20"></section>
+    <section class="chapter" id="prophet21"></section>
+    <section class="chapter" id="prophet22"></section>
+    <section class="chapter" id="prophet23"></section>
+    <section class="chapter" id="prophet24"></section>
+    <section class="chapter" id="prophet25"></section>
+    <section class="chapter" id="prophet26"></section>
+    <section class="chapter" id="prophet27"></section>
+    <section class="chapter" id="prophet28"></section>
+    <section class="chapter" id="prophet29"></section>
 
     <div class="navigation">
       <a href="../islamic-books.html">← Back to Islamic Books</a>
@@ -604,7 +633,7 @@
         },
         ur: {
           title: "حضرت ادریس (حنوک)",
-          subheading: "اللہ تعالیٰ نے ادریس کی تعریف کرتے ہوئے انہیں ایک نبی اور سچا قرار دیا ہے:",
+          subheading: "<strong>اللہ تعالیٰ نے ادریس کی تعریف کرتے ہوئے انہیں ایک نبی اور سچا قرار دیا ہے:</strong>",
           content: [
             "\"کتاب (قرآن) میں ادریس (حنوک) کا ذکر کرو، بے شک وہ سچے (اور) نبی تھے، ہم نے انہیں بلند مقام پر پہنچایا۔\" (Ch 19:56-57 Quran)۔",
             "<strong>پیدائش اور تعلیمات</strong>",
@@ -622,10 +651,9 @@
       }
     ];
 
-    let currentChapterId = 1;
     let checkpoints = [];
 
-    const chapterSection = document.getElementById('prophet1');
+    const chapterSections = document.querySelectorAll('.chapter');
     const langSelect = document.getElementById('language');
     const resumePrompt = document.getElementById('resumePrompt');
 
@@ -663,7 +691,6 @@
             text: text
           });
           
-          // Add RTL class for Urdu language
           const rtlClass = lang === 'ur' ? 'rtl-checkpoint' : '';
           
           const wrappedText = `
@@ -745,25 +772,46 @@
       }
     }
 
-    function renderChapter() {
+    // Render all chapters
+    function renderAllChapters() {
       const lang = langSelect.value;
-      const chapter = chapters.find(ch => ch.id === currentChapterId);
       
-      if (chapter && chapter[lang]) {
-        checkpoints = [];
+      chapterSections.forEach((section, index) => {
+        const chapterId = index + 1; // Since sections start at prophet1
+        const chapter = chapters.find(ch => ch.id === chapterId);
         
-        const processedContent = processContentWithCheckpoints(chapter[lang].content, currentChapterId, lang);
-        
-        chapterSection.innerHTML = `
-          <h2 class="${lang}">${chapter[lang].title}</h2>
-          <p class="${lang}">${chapter[lang].subheading}</p>
-          ${processedContent.join('')}
-        `;
-        
-        restoreCheckpointState();
-        checkForLastCheckpoint();
-      }
+        if (chapter && chapter[lang]) {
+          const processedContent = processContentWithCheckpoints(chapter[lang].content, chapterId, lang);
+          
+          section.innerHTML = `
+            <h2 class="${lang}">${chapter[lang].title}</h2>
+            <p class="${lang}">${chapter[lang].subheading}</p>
+            ${processedContent.join('')}
+          `;
+        } else {
+          section.innerHTML = `<p class="${lang}">Content not available for this chapter</p>`;
+        }
+      });
+      
+      restoreCheckpointState();
+      checkForLastCheckpoint();
     }
+
+    // Handle hash change to scroll to specific chapter
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+
+    // Handle language change
+    langSelect.addEventListener('change', function() {
+      renderAllChapters();
+    });
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -815,7 +863,17 @@
       }
       setThemeIcon();
       populateLanguageSelector();
-      renderChapter();
+      renderAllChapters();
+      
+      // Check if there's a hash and scroll to it
+      if (window.location.hash) {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
     };
   </script>
 </body>
