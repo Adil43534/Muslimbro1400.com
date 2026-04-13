@@ -58,15 +58,18 @@
       
       <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('read')">Read</button>
-        <button class="tab-button" onclick="switchTab('translate')">Translation</button>
-      </div>
-
             <!-- Transliteration Toggle -->
       <button id="transliteration-toggle" class="transliteration-toggle" onclick="toggleTransliteration()">Show Transliteration</button>
 
+      <!-- Translation Toggle -->
+      <button id="translation-toggle" class="translation-toggle" onclick="toggleTranslation()">Show Translation</button>
+
+      <!-- Language Selector -->
+      <div class="lang-select hidden" id="languageSelector">
+        <label for="language">Translation Language:</label>
+        <select id="language" onchange="changeLanguage()"></select>
+      </div>
+      
                <!-- Go to Verse -->
       <div class="go-to-verse">
         <label for="verse-number">Go to Verse:</label>
